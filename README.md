@@ -21,7 +21,7 @@ buttons that need a backend show a ⚙️ placeholder note.
 
 ## John 待办清单（上线前必须做）
 
-1. **Google OAuth client ID** — `submit.html` 里搜 `googleBtn`，把占位 alert 换成真实 Google Identity Services 登录流（`https://accounts.google.com/gsi/client`）。
+1. **Google OAuth** — ✅ 已完成（2026-09-29）：Cloud Console 项目 `launch-arr-club`、OAuth consent screen 已发布为 Production、client ID 已写入 `submit.html` 并启用真实 Google Identity Services 登录。注意：Google 备注设置可能需要几分钟到几小时完全生效。
 2. **收款链接** — `submit.html` 里搜 `payBtn`：$5 一次性收款。二选一：
    - Stripe Payment Link（最快，几分钟生成一个链接填进去），或
    - Dodo Payments（FasLaunch 用的 Merchant of Record，全球税务省心，印度开发者常用；你在美国/中国主体的话 Stripe 更直接）。
