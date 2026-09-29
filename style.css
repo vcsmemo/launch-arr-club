@@ -289,3 +289,9 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
   .nav-links a:not(.cta) { display: none; }
   .hero { padding: 1.8rem 0.8rem 1.5rem; }
 }
+
+/* Google sign-in state */
+.signed-in{font-size:.92rem;color:#134e4a;background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:.6rem .9rem;margin:.6rem 0 0}
+.linklike{background:none;border:0;color:#0d9488;text-decoration:underline;cursor:pointer;font-size:.88rem;padding:0;margin-left:.4rem}
+.oauth-note{font-size:.85rem;color:#4a5568;margin:.5rem 0 0}
+#gsiButton{display:flex;justify-content:center}

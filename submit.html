@@ -8,6 +8,7 @@
 <link rel="canonical" href="https://launch.arr.club/submit.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d9488'/%3E%3Cpath d='M32 12c8 6 12 14 12 22l-7 3-3 9h-4l-2-7-8 2 2-8-4-3c0-8 6-14 14-18z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='24' r='4' fill='%230d9488'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/style.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -24,12 +25,10 @@
   </section>
 
   <div class="wizard">
-    <div class="card oauth-box">
-      <button class="google-btn" id="googleBtn" type="button">
-        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3l5.7-5.7C34.5 6.1 29.5 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3l5.7-5.7C34.5 6.1 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C36.9 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
-        Sign in with Google
-      </button>
-      <p class="oauth-note">⚙️ Placeholder — connect Google OAuth client ID in <code>submit.html</code> (see README). We only see your name, email and profile photo.</p>
+    <div class="card oauth-box" id="oauthBox">
+      <div id="gsiButton"></div>
+      <p class="oauth-note">Sign in to save your progress and submit. We only see your name, email and profile photo.</p>
+      <p class="signed-in" id="signedInAs" hidden></p>
     </div>
 
     <div class="wiz-progress" aria-hidden="true">
@@ -302,7 +301,34 @@
   });
   launchBtn.addEventListener('click', function(){ alert('🎉 Launched! (M1 demo — in production your page would be live now.)'); });
   document.getElementById('payBtn').addEventListener('click', function(){ alert('M1 demo — connect a Stripe Payment Link or Dodo checkout URL here (see README).'); });
-  document.getElementById('googleBtn').addEventListener('click', function(){ alert('M1 demo — add your Google OAuth client ID here (see README).'); });
+
+  /* Google Identity Services sign-in (M1: identifies the submitter client-side) */
+  var GOOGLE_CLIENT_ID = '659455206571-e0rd1e7iq8os25s4441elss3960bkfjs.apps.googleusercontent.com';
+  window.__launchUser = null;
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function parseJwt(t){ try{ var p=t.split('.')[1]; var b=p.replace(/-/g,'+').replace(/_/g,'/'); return JSON.parse(decodeURIComponent(escape(atob(b)))); }catch(e){ return null; } }
+  function onGoogleSignIn(resp){
+    var profile = parseJwt(resp.credential);
+    if(!profile || !profile.email) return;
+    window.__launchUser = { name: profile.name || '', email: profile.email, picture: profile.picture || '', sub: profile.sub || '' };
+    var box = document.getElementById('signedInAs');
+    box.hidden = false;
+    box.innerHTML = '✓ Signed in as <strong>'+escapeHtml(profile.name || profile.email)+'</strong> ('+escapeHtml(profile.email)+') <button type="button" id="signOutBtn" class="linklike">Sign out</button>';
+    document.getElementById('gsiButton').style.display = 'none';
+    document.getElementById('signOutBtn').addEventListener('click', function(){
+      window.__launchUser = null; box.hidden = true; box.innerHTML = '';
+      document.getElementById('gsiButton').style.display = '';
+    });
+  }
+  function initGsi(){
+    if(!(window.google && google.accounts && google.accounts.id)){
+      document.getElementById('gsiButton').innerHTML = '<p class="oauth-note">Could not load Google sign-in (ad blocker?). You can still fill the form — sign-in will be required at launch.</p>';
+      return;
+    }
+    google.accounts.id.initialize({ client_id: GOOGLE_CLIENT_ID, callback: onGoogleSignIn });
+    google.accounts.id.renderButton(document.getElementById('gsiButton'), { theme: 'outline', size: 'large', width: 280, text: 'signin_with' });
+  }
+  if(document.readyState === 'complete'){ initGsi(); } else { window.addEventListener('load', initGsi); }
 })();
 </script>
 </body>
