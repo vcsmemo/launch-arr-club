@@ -35,18 +35,17 @@
       <div class="wiz-dot now" data-dot="0"></div>
       <div class="wiz-dot" data-dot="1"></div>
       <div class="wiz-dot" data-dot="2"></div>
-      <div class="wiz-dot" data-dot="3"></div>
     </div>
 
     <form id="launchForm" novalidate>
       <!-- STEP 1 -->
       <section class="wiz-step active card" data-step="0">
-        <h2>Step 1 · Product info</h2>
+        <h2>Step 1 · Your product</h2>
         <div class="field"><label>Product name <span class="req">*</span></label><input type="text" id="f-name" placeholder="e.g. Inkwell AI"></div>
-        <div class="field"><label>Website URL <span class="req">*</span></label><input type="url" id="f-url" placeholder="https://yourproduct.com"><p class="hint">Used for the badge ref link and dofollow backlink.</p></div>
+        <div class="field"><label>Website URL <span class="req">*</span></label><input type="url" id="f-url" placeholder="https://yourproduct.com"></div>
         <div class="field"><label>Tagline <span class="req">*</span></label><input type="text" id="f-tagline" maxlength="80" placeholder="One line: what it does, for whom (max 80 chars)"></div>
         <div class="field"><label>Short description</label><textarea id="f-desc" maxlength="300" placeholder="150–300 characters shown on your launch card."></textarea></div>
-        <div class="field"><label>Categories <span class="req">*</span> <span class="hint">(pick up to 3)</span></label>
+        <div class="field"><label>Categories <span class="req">*</span> <span class="hint">(up to 3)</span></label>
           <div class="chips" id="catChips">
             <button type="button" class="chip" aria-pressed="false">AI Writing</button>
             <button type="button" class="chip" aria-pressed="false">Productivity</button>
@@ -70,29 +69,26 @@
           </select>
         </div>
         <div class="field"><label>Starting price / discount for launch visitors</label><input type="text" id="f-deal" placeholder="e.g. $12/mo · 20% off with code LAUNCH"></div>
-        <div class="wiz-nav"><span></span><button type="button" class="btn" data-next>Continue →</button></div>
-      </section>
-
-      <!-- STEP 2 -->
-      <section class="wiz-step card" data-step="1">
-        <h2>Step 2 · Your story (5 questions)</h2>
-        <p>These answers are rendered directly on your launch page — they're what Google, visitors, and AI assistants quote. Write them well.</p>
+        <h3 class="sub-h">Your story — 5 questions</h3>
         <div class="field"><label>1. Who is it for? <span class="req">*</span></label><textarea class="q" placeholder="e.g. Solo founders and small teams who publish content weekly…"></textarea></div>
         <div class="field"><label>2. What problem does it solve? <span class="req">*</span></label><textarea class="q" placeholder="e.g. Writing in a consistent brand voice takes hours every week…"></textarea></div>
         <div class="field"><label>3. What job does it do? <span class="req">*</span></label><textarea class="q" placeholder="e.g. Drafts blog posts and newsletters in your own voice from a bullet list…"></textarea></div>
         <div class="field"><label>4. How does it solve it? <span class="req">*</span></label><textarea class="q" placeholder="e.g. It fine-tunes on your past writing, then generates drafts you edit…"></textarea></div>
         <div class="field"><label>5. What makes it different? <span class="req">*</span></label><textarea class="q" placeholder="e.g. Unlike generic AI writers, it never sounds like a robot because…"></textarea></div>
-        <div class="wiz-nav"><button type="button" class="btn ghost" data-back>← Back</button><button type="button" class="btn" data-next>Continue →</button></div>
+        <div class="wiz-nav"><span></span><button type="button" class="btn" data-next>Continue →</button></div>
       </section>
 
-      <!-- STEP 3 -->
-      <section class="wiz-step card" data-step="2">
-        <h2>Step 3 · Revenue <span style="font-size:0.9rem;color:var(--muted)">(optional — skip anytime)</span></h2>
-        <p>Launch boards rank products. Ours ranks <strong>revenue</strong>. Share it — self-reported or Stripe-verified — and get a revenue badge, top placement, and investor exposure on ARR.Club.</p>
+      <!-- STEP 2 -->
+      <section class="wiz-step card" data-step="1">
+        <h2>Step 2 · Revenue</h2>
+        <button type="button" class="rev-toggle" id="revToggle" aria-expanded="false">
+          <span class="rev-plus">＋</span> Add revenue data <span class="rev-opt">(optional) — earn a revenue badge</span>
+        </button>
+        <div class="rev-body" id="revBody" hidden>
         <div class="rev-tabs">
           <div class="rev-pane">
             <h4>💰 Self-report <small style="color:var(--muted)">(free)</small></h4>
-            <p>Type a number. It's labeled <em>self-reported</em> — honest, not verified.</p>
+            <p>Labeled <em>self-reported</em> — honest, not verified.</p>
             <div class="field"><label>Metric</label>
               <select id="f-metric"><option>MRR</option><option>ARR</option><option>Annual run rate</option><option>Annual revenue</option></select>
             </div>
@@ -100,27 +96,27 @@
           </div>
           <div class="rev-pane">
             <h4>✓ Verify with Stripe <small style="color:var(--muted)">(free)</small></h4>
-            <p>Paste a <strong>read-only</strong> restricted key. We auto-sync MRR daily and give you the verified badge — the highest trust on the board.</p>
+            <p>Read-only key. Auto-syncs MRR daily — the highest trust on the board.</p>
             <div class="field"><label>Stripe restricted key</label><input type="text" id="f-stripe" placeholder="rk_live_…" autocomplete="off"></div>
             <ul class="privacy-list">
-              <li>Read-only: we can only see aggregate charges — never customer details.</li>
+              <li>Read-only: aggregate charges only — never customer details.</li>
               <li>We display only the MRR number you approve.</li>
               <li>Disconnect anytime — key deleted immediately.</li>
               <li>⚙️ Placeholder — backend sync runs on a Cloudflare Worker (see README).</li>
             </ul>
           </div>
         </div>
+        </div>
         <div class="wiz-nav"><button type="button" class="btn ghost" data-back>← Back</button><button type="button" class="btn" data-next>Continue →</button></div>
-        <a class="skip-link" href="#" id="skipRev">Skip revenue — continue without it →</a>
       </section>
 
-      <!-- STEP 4 -->
-      <section class="wiz-step card" data-step="3">
-        <h2>Step 4 · Choose how to launch</h2>
+      <!-- STEP 3 -->
+      <section class="wiz-step card" data-step="2">
+        <h2>Step 3 · Choose how to launch</h2>
         <p>Pick one. Every option puts your product live the moment it is done.</p>
         <div class="pick-grid" role="radiogroup" aria-label="Launch options">
           <button type="button" class="pick" role="radio" aria-checked="true" data-plan="badge">
-            <span class="radio-dot"></span><span class="best">★ Best value</span>
+            <span class="radio-dot"></span><span class="best">★ Best value: free and dofollow</span>
             <span class="pick-tag"><span class="t1">FREE</span><span class="t2">DOFOLLOW</span></span>
             <h3>Add our badge, launch free</h3>
             <p>Continue free by adding our badge on your homepage. Launch for free and get a dofollow backlink.</p>
@@ -167,7 +163,6 @@
             <button type="button" class="mini-btn" id="verifyBtn" style="padding:0.5rem 1.2rem">Verify the badge</button>
             <span class="verify-msg" id="verifyMsg">We look at your homepage for the badge.</span>
           </div>
-          <p class="oauth-note">⚙️ Frontend mock — real check runs on a Cloudflare Worker (see README).</p>
           <div class="verify-row" style="margin-top:1.2rem">
             <button type="button" class="btn" id="launchFreeBtn" disabled>Launch for free</button>
             <span class="verify-msg" id="launchHint">Verify the badge to unlock this button.</span>
@@ -214,20 +209,27 @@
       });
       var cats = document.querySelectorAll('#catChips .chip[aria-pressed="true"]');
       if(!cats.length){ alert('Pick at least one category.'); return false; }
-      if(!ok){ alert('Please fill in the required fields.'); return false; }
-      return true;
-    }
-    if(n===1){
-      var qs = document.querySelectorAll('.q'), ok = true;
-      qs.forEach(function(q){ var bad = !q.value.trim(); q.style.borderColor = bad ? 'var(--err)' : ''; if(bad) ok = false; });
-      if(!ok){ alert('All 5 story questions are required — they become your launch page.'); return false; }
+      document.querySelectorAll('.q').forEach(function(q){
+        var bad = !q.value.trim();
+        q.style.borderColor = bad ? 'var(--err)' : '';
+        if(bad){ ok = false; }
+      });
+      if(!ok){ alert('Fill in the required fields — the 5 story questions become your launch page.'); return false; }
       return true;
     }
     return true;
   }
-  document.querySelectorAll('[data-next]').forEach(function(b){ b.addEventListener('click', function(){ if(valid(step)) show(Math.min(step+1, 3)); }); });
+  document.querySelectorAll('[data-next]').forEach(function(b){ b.addEventListener('click', function(){ if(valid(step)) show(Math.min(step+1, 2)); }); });
   document.querySelectorAll('[data-back]').forEach(function(b){ b.addEventListener('click', function(){ show(Math.max(step-1, 0)); }); });
-  document.getElementById('skipRev').addEventListener('click', function(e){ e.preventDefault(); show(3); });
+
+  // revenue step: collapsed by default, expand on demand
+  document.getElementById('revToggle').addEventListener('click', function(){
+    var body = document.getElementById('revBody');
+    var open = body.hidden;
+    body.hidden = !open;
+    this.setAttribute('aria-expanded', String(open));
+    this.querySelector('.rev-plus').textContent = open ? '－' : '＋';
+  });
 
   // category chips (max 3)
   document.querySelectorAll('#catChips .chip').forEach(function(c){

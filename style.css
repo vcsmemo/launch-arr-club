@@ -295,3 +295,11 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .linklike{background:none;border:0;color:#0d9488;text-decoration:underline;cursor:pointer;font-size:.88rem;padding:0;margin-left:.4rem}
 .oauth-note{font-size:.85rem;color:#4a5568;margin:.5rem 0 0}
 #gsiButton{display:flex;justify-content:center}
+
+/* submit: merged product step + collapsed revenue step */
+.sub-h{font-size:1.02rem;color:var(--navy);margin:1.8rem 0 .4rem;padding-top:1.4rem;border-top:1px solid var(--border)}
+.rev-toggle{width:100%;text-align:left;background:#f0fdfa;border:1px solid #99f6e4;border-radius:10px;padding:.85rem 1.1rem;font-size:.96rem;font-weight:600;color:#134e4a;cursor:pointer;display:flex;gap:.6rem;align-items:center;font-family:inherit;margin-top:.4rem}
+.rev-toggle:hover{border-color:var(--accent)}
+.rev-toggle .rev-plus{font-size:1.05rem;line-height:1;flex:none}
+.rev-toggle .rev-opt{color:#4a5568;font-weight:400;font-size:.88rem}
+.rev-body{margin-top:1rem}
