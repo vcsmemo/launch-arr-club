@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://launch.arr.club/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d9488'/%3E%3Cpath d='M32 12c8 6 12 14 12 22l-7 3-3 9h-4l-2-7-8 2 2-8-4-3c0-8 6-14 14-18z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='24' r='4' fill='%230d9488'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/style.css?v=20260930d">
+<link rel="stylesheet" href="/style.css?v=20260930e">
 </head>
 <body>
 <header class="site-header">
@@ -30,7 +30,13 @@
     <p class="lede">Discover what just launched. Publishing yours takes minutes — <strong>free</strong> — and revenue can be tracked on <strong>ARR.Club</strong> from day one.</p>
     <div class="btn-row">
       <a class="btn" href="/submit.html">🚀 Launch your product</a>
-      <a class="btn secondary" href="#recently">Browse launches</a>
+    </div>
+    <div class="hero-searchrow">
+      <div class="hero-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" id="heroSearch" placeholder="Search launched products…" autocomplete="off" aria-label="Search launched products">
+        <div class="search-drop" id="searchDrop" hidden></div>
+      </div>
     </div>
   </section>
 
@@ -93,6 +99,40 @@
     <span class="sample-note">Sample data for preview — listings shown are placeholders, not real products.</span>
   </div>
 </footer>
+<script>
+/* Hero search over launches.json */
+(function(){
+  var input = document.getElementById('heroSearch'), drop = document.getElementById('searchDrop'), data = [];
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  fetch('/launches.json').then(function(r){ return r.json(); }).then(function(j){ data = j; }).catch(function(){});
+  function render(q){
+    q = q.trim().toLowerCase();
+    if(!q){ drop.hidden = true; drop.innerHTML = ''; return; }
+    var hits = data.filter(function(p){
+      return (p.name + ' ' + p.tagline + ' ' + p.category).toLowerCase().indexOf(q) !== -1;
+    }).slice(0, 6);
+    if(!hits.length){
+      drop.innerHTML = '<div class="sd-empty">No launches match "' + esc(q) + '" — <a href="/submit.html" style="display:inline;padding:0;border:0;color:var(--accent-hover);font-weight:700">launch it yourself →</a></div>';
+    } else {
+      drop.innerHTML = hits.map(function(p){
+        return '<a href="' + esc(p.url) + '"><span class="sd-name">' + esc(p.name) + '</span><span class="sd-cat">' + esc(p.category) + '</span><div class="sd-tag">' + esc(p.tagline) + '</div></a>';
+      }).join('');
+    }
+    drop.hidden = false;
+  }
+  input.addEventListener('input', function(){ render(input.value); });
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ drop.hidden = true; input.blur(); }
+    if(e.key === 'Enter'){
+      var first = drop.querySelector('a[href^="/launches/"]');
+      if(first && !drop.hidden){ window.location.href = first.getAttribute('href'); }
+    }
+  });
+  document.addEventListener('click', function(e){
+    if(!document.querySelector('.hero-search').contains(e.target)) drop.hidden = true;
+  });
+})();
+</script>
 <script>
 /* Board stats count-up */
 (function(){
