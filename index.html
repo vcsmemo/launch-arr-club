@@ -11,17 +11,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://launch.arr.club/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d9488'/%3E%3Cpath d='M32 12c8 6 12 14 12 22l-7 3-3 9h-4l-2-7-8 2 2-8-4-3c0-8 6-14 14-18z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='24' r='4' fill='%230d9488'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/style.css?v=20260930i">
+<link rel="stylesheet" href="/style.css?v=20260930j">
 </head>
 <body>
 <header class="site-header">
   <nav class="nav">
     <a class="brand" href="/">launch<span>.arr.club</span></a>
-    <div class="nav-links">
-      <a href="#recently">Launches</a>
-      <a href="/2026/w40/">Archive</a>
-      <a class="cta" href="/submit.html">Launch yours →</a>
-    </div>
     <div class="nav-auth" id="authSlot"></div>
   </nav>
 </header>
@@ -112,8 +107,8 @@
   <section id="leaderboard">
     <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by Domain Rating</span></h2>
     <div class="lb-table">
-      <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">DR ↓</span></div>
-      <div id="lbBody"><div class="lb-row"><span></span><span class="lb-founder">Loading…</span><span></span><span></span></div></div>
+      <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">DR ↓</span><span style="text-align:right">Revenue</span></div>
+      <div id="lbBody"><div class="lb-row"><span></span><span class="lb-founder">Loading…</span><span></span><span></span><span></span></div></div>
     </div>
     <p class="lb-note">DR is checked manually via Ahrefs at review time — new launches show – until checked.</p>
   </section>
@@ -128,10 +123,14 @@
         var logo = it.logo
           ? '<img src="' + String(it.logo).replace(/"/g, '') + '" alt="" loading="lazy">'
           : '<span class="lc-logo-ph">' + esc(String(it.name || '?').charAt(0)) + '</span>';
+        var revCell = it.revenue
+          ? '<span class="lb-rev-col has">' + esc(it.revenue) + '</span>'
+          : '<span class="lb-rev-col">–</span>';
         return '<a class="lb-row" href="' + esc(it.url) + '"><span class="lb-rank">' + (medals[i] || (i + 1)) + '</span>'
           + '<span class="lb-startup">' + logo + '<span><strong>' + esc(it.name) + '</strong><p>' + esc(it.tagline || '') + '</p></span></span>'
           + '<span class="lb-founder">' + esc(it.founder || '–') + '</span>'
-          + '<span class="lb-dr">' + (it.dr == null ? '–' : it.dr) + '</span></a>';
+          + '<span class="lb-dr">' + (it.dr == null ? '–' : it.dr) + '</span>'
+          + revCell + '</a>';
       }).join('');
     }).catch(function(){ document.getElementById('lbBody').innerHTML = ''; });
   })();

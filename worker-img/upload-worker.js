@@ -371,6 +371,7 @@ async function handleApprove(request, env) {
 
   // 3. launches.json
   const idx = JSON.parse(launchesJson0);
+  const rev = revenueOf(d);
   idx.unshift({
     category: (d.categories && d.categories[0]) || 'Product',
     name: d.name,
@@ -379,6 +380,7 @@ async function handleApprove(request, env) {
     logo: d.logo || null,
     founder: d.founder || null,
     dr: dr,
+    revenue: rev ? rev.amount + (rev.metric ? ' ' + rev.metric : '') : null,
   });
   const launchesJson = JSON.stringify(idx);
 

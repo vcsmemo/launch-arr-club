@@ -126,7 +126,7 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 /* Leaderboard */
 .lb-table { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
   overflow: hidden; box-shadow: var(--shadow-sm); }
-.lb-row { display: grid; grid-template-columns: 3rem 1fr 9rem 4.5rem; gap: 0.8rem; align-items: center;
+.lb-row { display: grid; grid-template-columns: 3rem 1fr 9rem 4.5rem 6rem; gap: 0.8rem; align-items: center;
   padding: 0.75rem 1.2rem; border-top: 1px solid var(--border); text-decoration: none; color: var(--text); }
 a.lb-row:hover { background: var(--bg-soft); }
 .lb-row:first-child { border-top: 0; }
@@ -141,13 +141,16 @@ a.lb-row:hover { background: var(--bg-soft); }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lb-founder { font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lb-dr { font-family: var(--mono); font-weight: 700; text-align: right; }
+.lb-rev-col { font-family: var(--mono); font-size: 0.82rem; text-align: right; color: var(--text-muted); white-space: nowrap; }
+.lb-rev-col.has { color: var(--accent-hover); font-weight: 700; }
 .lb-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.7rem; }
 .lb-sub { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
 .dr-input { width: 3.4em; border: 0; background: transparent; font: inherit; color: inherit; outline: none; }
 .dr-input::-webkit-outer-spin-button, .dr-input::-webkit-inner-spin-button { -webkit-appearance: none; }
 @media (max-width: 640px) {
   .lb-row { grid-template-columns: 2.2rem 1fr 3.5rem; }
-  .lb-head span:nth-child(3), .lb-row .lb-founder { display: none; }
+  .lb-head span:nth-child(3), .lb-head span:nth-child(5),
+  .lb-row .lb-founder, .lb-row .lb-rev-col { display: none; }
 }
 
 /* Revenue badge hierarchy — most prominent first */
