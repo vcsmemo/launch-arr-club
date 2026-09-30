@@ -9,39 +9,5 @@
     "url": "/launches/vidsizer/",
     "revenue": null,
     "launched": "2026-09-30"
-  },
-  {
-    "category": "Productivity",
-    "dr": null,
-    "founder": null,
-    "logo": null,
-    "name": "TaskFlow AI",
-    "tagline": "Turns chaotic team chat into prioritized tasks, automatically.",
-    "url": "/launches/taskflow-ai/",
-    "revenue": "$48k MRR",
-    "launched": "2026-09-27",
-    "revenue_verified": true
-  },
-  {
-    "category": "AI Writing",
-    "dr": null,
-    "founder": null,
-    "logo": null,
-    "name": "Inkwell AI",
-    "tagline": "An AI writing copilot that learns your voice and drafts in it.",
-    "url": "/launches/inkwell-ai/",
-    "revenue": "$12k MRR",
-    "launched": "2026-09-28"
-  },
-  {
-    "category": "Design",
-    "dr": null,
-    "founder": null,
-    "logo": null,
-    "name": "PixelPilot",
-    "tagline": "Get AI design feedback on any mockup in under 30 seconds.",
-    "url": "/launches/pixelpilot/",
-    "revenue": null,
-    "launched": "2026-09-26"
   }
 ]
