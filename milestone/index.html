@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milestone Card Generator — launch.arr.club</title>
+<meta name="description" content="Generate beautiful shareable milestone cards when your startup hits revenue milestones.">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20260930w">
+<style>
+.mile-hero { max-width: 800px; margin: 0 auto; padding: 48px 24px 24px; text-align: center; }
+.mile-hero h1 { font-size: 32px; margin-bottom: 12px; }
+.mile-hero p { color: #475569; font-size: 16px; }
+.mile-builder { max-width: 900px; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+@media (max-width: 768px) { .mile-builder { grid-template-columns: 1fr; } }
+.mile-form { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; }
+.mile-form label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px; margin-top: 16px; }
+.mile-form label:first-child { margin-top: 0; }
+.mile-form input, .mile-form select { width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; }
+.mile-preview { display: flex; align-items: flex-start; justify-content: center; }
+.milestone-card { width: 100%; max-width: 400px; background: #0f172a; border-radius: 16px; padding: 32px; color: #fff; position: relative; overflow: hidden; }
+.milestone-card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: #0d9488; opacity: 0.15; border-radius: 50%; }
+.milestone-card .mc-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #5eead4; font-weight: 700; margin-bottom: 8px; }
+.milestone-card .mc-revenue { font-size: 48px; font-weight: 800; margin: 8px 0; }
+.milestone-card .mc-product { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.milestone-card .mc-growth { font-size: 14px; color: #94a3b8; }
+.milestone-card .mc-footer { margin-top: 24px; padding-top: 16px; border-top: 1px solid #1e293b; font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 8px; }
+.milestone-card .mc-footer .rocket { font-size: 16px; }
+.mile-actions { max-width: 900px; margin: 0 auto; padding: 0 24px 48px; text-align: center; }
+.btn-share { display: inline-block; background: #0d9488; color: #fff; padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 16px; margin: 8px; }
+.btn-share:hover { background: #0f766e; }
+.btn-download { display: inline-block; background: #fff; color: #0d9488; border: 2px solid #0d9488; padding: 12px 30px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 16px; margin: 8px; cursor: pointer; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">launch<span>.arr.club</span></a>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main>
+  <div class="mile-hero">
+    <h1>🎉 Milestone Card Generator</h1>
+    <p>Hit a revenue milestone? Generate a beautiful card and share it with the world.</p>
+  </div>
+
+  <div class="mile-builder">
+    <div class="mile-form">
+      <label>Your product</label>
+      <select id="mileProduct" onchange="updateCard()"><option value="">Select…</option></select>
+      
+      <label>Milestone revenue</label>
+      <input type="text" id="mileRevenue" placeholder="$100k MRR" oninput="updateCard()">
+      
+      <label>Previous revenue (for growth %)</label>
+      <input type="text" id="milePrev" placeholder="$50k MRR" oninput="updateCard()">
+      
+      <label>Timeframe</label>
+      <input type="text" id="mileTime" placeholder="in 6 months" oninput="updateCard()">
+    </div>
+    
+    <div class="mile-preview">
+      <div class="milestone-card" id="mileCard">
+        <div class="mc-label">🚀 Revenue Milestone</div>
+        <div class="mc-revenue" id="mcRev">$100k MRR</div>
+        <div class="mc-product" id="mcProduct">Your Product</div>
+        <div class="mc-growth" id="mcGrowth">2× growth in 6 months</div>
+        <div class="mc-footer"><span class="rocket">🚀</span> Tracked on launch.arr.club</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mile-actions">
+    <a href="#" class="btn-share" id="shareX" target="_blank">Share on X</a>
+    <button class="btn-download" onclick="downloadCard()">Download PNG</button>
+    <p style="font-size: 13px; color: #64748b; margin-top: 16px;">Every share drives traffic back to your launch.arr.club page.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div class="fcol"><h5>Discover</h5><a href="/#recently">Launches</a><a href="/#leaderboard">Leaderboard</a></div>
+    <div class="fcol"><h5>Launch</h5><a href="/submit.html">Submit your product</a><a href="/badge/">Get your badge</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 launch.arr.club · A part of <a href="https://arr.club">ARR.Club</a></span></div>
+</footer>
+
+<script>
+let products = [];
+fetch('/launches.json').then(r => r.json()).then(data => {
+  products = data;
+  const sel = document.getElementById('mileProduct');
+  data.forEach(p => {
+    if (!p.revenue) return;
+    const opt = document.createElement('option');
+    opt.value = p.name;
+    opt.textContent = p.name + ' (' + p.revenue + ')';
+    opt.dataset.revenue = p.revenue;
+    const m = (p.url || '').match(/\/launches\/([^/]+)\//);
+    opt.dataset.slug = m ? m[1] : '';
+    sel.appendChild(opt);
+  });
+});
+
+function parseNum(s) {
+  const m = String(s).replace(/,/g, '').match(/\$?([\d.]+)\s*k?/i);
+  if (!m) return 0;
+  let v = parseFloat(m[1]);
+  if (/k/i.test(s)) v *= 1000;
+  return v;
+}
+
+function updateCard() {
+  const sel = document.getElementById('mileProduct');
+  const opt = sel.selectedOptions[0];
+  const name = sel.value || 'Your Product';
+  const rev = document.getElementById('mileRevenue').value || (opt && opt.dataset.revenue) || '$100k MRR';
+  const prev = document.getElementById('milePrev').value;
+  const time = document.getElementById('mileTime').value || '';
+  
+  document.getElementById('mcProduct').textContent = name;
+  document.getElementById('mcRev').textContent = rev;
+  
+  let growth = '';
+  if (prev) {
+    const curr = parseNum(rev), old = parseNum(prev);
+    if (curr > 0 && old > 0) {
+      const mult = (curr / old).toFixed(1);
+      growth = mult + '× growth ' + time;
+    }
+  } else if (time) {
+    growth = time;
+  }
+  document.getElementById('mcGrowth').textContent = growth;
+  
+  // Update X share link
+  const slug = opt && opt.dataset.slug ? opt.dataset.slug : '';
+  const url = slug ? 'https://launch.arr.club/launches/' + slug + '/' : 'https://launch.arr.club/';
+  const text = encodeURIComponent('🚀 ' + name + ' just hit ' + rev + (growth ? ' (' + growth + ')' : '') + ' — tracked on launch.arr.club');
+  document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + encodeURIComponent(url);
+}
+
+function downloadCard() {
+  alert('PNG download coming soon! For now, take a screenshot of the card above — it\'s designed to look great on X/Twitter.');
+}
+</script>
+<script src="/auth.js"></script>
+</body>
+</html>

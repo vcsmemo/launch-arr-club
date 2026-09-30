@@ -27,7 +27,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/salesrobot.png",
-    "launch_no": 24
+    "launch_no": 24,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$70k / 30d",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "MyPlots",
@@ -42,7 +49,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/myplots-r.png",
-    "launch_no": 23
+    "launch_no": 23,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$500k / 30d",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Comp AI",
@@ -57,7 +71,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/comp-ai.png",
-    "launch_no": 22
+    "launch_no": 22,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$12k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Campfire",
@@ -87,7 +108,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/superx.png",
-    "launch_no": 21
+    "launch_no": 21,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$21k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "ConvertLabs",
@@ -102,7 +130,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/convertlabs.png",
-    "launch_no": 20
+    "launch_no": 20,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$27k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Liinks",
@@ -117,7 +152,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/liinks.png",
-    "launch_no": 19
+    "launch_no": 19,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$31k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "GitBot",
@@ -147,7 +189,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/capgo.png",
-    "launch_no": 18
+    "launch_no": 18,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$31k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Based Labs AI",
@@ -162,7 +211,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/based-labs-ai.png",
-    "launch_no": 17
+    "launch_no": 17,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$29k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "AI Interview Copilot",
@@ -177,7 +233,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/ai-interview-copilot.png",
-    "launch_no": 16
+    "launch_no": 16,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$31k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Squint",
@@ -207,7 +270,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/web3forms.svg",
-    "launch_no": 15
+    "launch_no": 15,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$41k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Indexsy",
@@ -222,7 +292,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/indexsy-r.svg",
-    "launch_no": 14
+    "launch_no": 14,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$41k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "SEOBOT",
@@ -237,7 +314,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/seobot.png",
-    "launch_no": 13
+    "launch_no": 13,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$47k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "getcta",
@@ -267,7 +351,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/dataexpert.svg",
-    "launch_no": 12
+    "launch_no": 12,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$63k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "AEO Engine",
@@ -282,7 +373,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/aeo-engine.png",
-    "launch_no": 11
+    "launch_no": 11,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$70k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Vid.AI",
@@ -297,7 +395,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/vid-ai.png",
-    "launch_no": 10
+    "launch_no": 10,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$78k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "category": "Video",
@@ -327,7 +432,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/llm-gateway.png",
-    "launch_no": 9
+    "launch_no": 9,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$79k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Codédex",
@@ -342,7 +454,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/codedex-r.png",
-    "launch_no": 8
+    "launch_no": 8,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$85k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Supliful",
@@ -357,7 +476,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/supliful-r.png",
-    "launch_no": 7
+    "launch_no": 7,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$179k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Postiz",
@@ -372,7 +498,14 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/postiz.png",
-    "launch_no": 6
+    "launch_no": 6,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$184k MRR",
+        "note": "Launch"
+      }
+    ]
   },
   {
     "name": "Rezi",
@@ -387,6 +520,13 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/rezi.png",
-    "launch_no": 5
+    "launch_no": 5,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$261k MRR",
+        "note": "Launch"
+      }
+    ]
   }
 ]

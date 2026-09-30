@@ -67,6 +67,34 @@
     <p class="chart-cap" id="drCap"></p>
   </div>
 
+  
+
+<style>
+.growth-timeline { margin: 24px 0; }
+.timeline-track { position: relative; padding-left: 32px; }
+.timeline-track::before { content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px; width: 2px; background: #e2e8f0; }
+.timeline-item { position: relative; margin-bottom: 24px; }
+.timeline-item::before { content: ''; position: absolute; left: -24px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: #0d9488; border: 3px solid #fff; box-shadow: 0 0 0 2px #0d9488; }
+.timeline-item.milestone::before { background: #f59e0b; box-shadow: 0 0 0 2px #f59e0b; }
+.timeline-date { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.timeline-rev { font-size: 20px; font-weight: 700; color: #0f172a; margin: 4px 0; }
+.timeline-note { font-size: 14px; color: #475569; }
+.timeline-growth { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+.timeline-growth.up { background: #dcfce7; color: #166534; }
+.share-milestone { margin-top: 16px; padding: 16px; background: #f0fdfa; border-radius: 12px; text-align: center; }
+.share-milestone p { font-size: 14px; color: #475569; margin-bottom: 12px; }
+</style>
+  <h2 class="section-title caps"><span class="dot"></span>Growth timeline</h2>
+  <div class="card growth-timeline">
+    <div class="timeline-track">
+    <div class="timeline-item">
+      <div class="timeline-date">2026-09-30</div>
+      <div class="timeline-rev">$41k MRR</div>
+      <div class="timeline-note">Launch</div>
+    </div>
+    </div>
+  </div>
+
   <h2 class="section-title caps"><span class="dot"></span>Product insights</h2>
   <div class="insights-2col">
     <div class="card" style="padding:1.3rem">
