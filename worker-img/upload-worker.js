@@ -167,44 +167,103 @@ function archiveCard(d, slug, launchNo, dr) {
   return homeCard(d, slug, launchNo, dr).replace(/^      /gm, '    ');
 }
 
-function detailPage(d, slug, launchNo, badgeVerified, dr) {
+const DETAIL_SHARED_JS = `<script>
+(function(){
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var label = b.getAttribute('data-label') || b.textContent;
+      navigator.clipboard.writeText(location.href).then(function(){
+        b.textContent = 'Copied \\u2713';
+        setTimeout(function(){ b.textContent = label; }, 1500);
+      });
+    });
+  });
+  var wrap = document.getElementById('drChart');
+  if (wrap) {
+    var myDr = wrap.getAttribute('data-dr');
+    myDr = (myDr === null || myDr === '') ? null : parseInt(myDr, 10);
+    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
+      var drs = items.map(function(i){ return i.dr; }).filter(function(d){ return d != null; });
+      if (!drs.length) return;
+      var buckets = [0,0,0,0,0,0,0,0,0,0];
+      drs.forEach(function(d){ buckets[Math.min(9, Math.floor(d / 10))]++; });
+      var max = Math.max.apply(null, buckets.concat([1]));
+      var avg = Math.round(drs.reduce(function(a,b){ return a + b; }, 0) / drs.length);
+      document.getElementById('drBars').innerHTML = buckets.map(function(c, i){
+        var h = Math.max(3, Math.round(c / max * 64));
+        var mine = (myDr != null && Math.min(9, Math.floor(myDr / 10)) === i);
+        return '<div class="bar' + (mine ? ' mine' : '') + '" style="height:' + h + 'px" title="' + (i*10) + '-' + (i*10+9) + ': ' + c + '"></div>';
+      }).join('');
+      document.getElementById('drCap').textContent = 'vs. average DR of ' + avg + ' across ' + drs.length + ' rated launches';
+      wrap.hidden = false;
+    }).catch(function(){});
+  }
+})();
+</script>
+`;
+
+function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount) {
   const now = new Date();
   const dateLong = now.getDate() + ' ' + MONTHS[now.getMonth()] + ' ' + now.getFullYear();
   const dateShort = now.getDate() + ' ' + MONTHS[now.getMonth()].toUpperCase();
   const rev = revenueOf(d);
   const cats = d.categories && d.categories.length ? d.categories : ['Product'];
-  const catTags = cats.map(function (c) { return '<span class="tag cat">' + esc(c) + '</span>'; }).join('');
+  const catPills = cats.map(function (c) { return '<span class="tag cat">' + esc(c) + '</span>'; }).join('');
   const logoImg = d.logo
-    ? '<img class="logo-img" src="' + esc(d.logo) + '" alt="' + esc(d.name) + ' logo">'
-    : '<div class="logo-ph" style="background:var(--mint)">🚀</div>';
-  const shot = d.screenshots && d.screenshots[0]
-    ? '\n  <img class="detail-shot" src="' + esc(d.screenshots[0]) + '" alt="' + esc(d.name) + ' screenshot">\n'
+    ? '<img class="d-logo" src="' + esc(d.logo) + '" alt="' + esc(d.name) + ' logo">'
+    : '<span class="d-logo-ph">' + esc(String(d.name || '?').charAt(0)) + '</span>';
+  const shots = (d.screenshots || [])
+    .map(function (s) { return '    <img src="' + esc(s) + '" alt="' + esc(d.name) + ' screenshot" loading="lazy">'; })
+    .join('\n');
+  const shotSection = shots
+    ? '  <h2 class="section-title caps"><span class="dot"></span>Screenshots</h2>\n' +
+      '  <div class="card shot-card">\n' + shots + '\n  </div>\n' +
+      '  <p class="shot-cap">' + esc(d.tagline || '') + '</p>\n\n'
     : '';
-  const story = (d.story || [])
+  const storyLabels = ['Who it is for', 'The problem', 'Job to be done', 'How it solves it', 'What makes it different'];
+  const storyCards = (d.story || [])
     .map(function (a, i) {
       a = a != null ? String(a).trim() : '';
       if (!a) return '';
-      return '<div class="qa"><h3>' + STORY_QS[i] + '</h3><p>' + esc(a) + '</p></div>';
+      const cls = i === 4 ? 'story-card wide' : 'story-card';
+      return '    <div class="' + cls + '"><h4>' + storyLabels[i] + '</h4><p>' + esc(a) + '</p></div>';
     })
-    .join('');
+    .join('\n');
   let host = '';
   try { host = new URL(d.url).hostname.replace(/^www\./, ''); } catch (e) {}
   const badgeLine =
     d.plan === 'badge'
-      ? '\n  <p class="rev-note">🏅 Launch badge' +
+      ? '      <p class="rev-note">🏅 Launch badge' +
         (badgeVerified ? ' verified on <a href="' + esc(d.url) + '">' + esc(host) + '</a>' : ' · founder: ' + esc(d.founder || '')) +
         '</p>\n'
       : '';
-  const revInsight = rev
-    ? esc(rev.amount) + (rev.metric ? ' ' + esc(rev.metric) : '') + ' (self-reported)'
-    : 'Not shared yet';
+  const revBig = rev ? '<b class="rev">' + esc(rev.amount) + (rev.metric ? ' ' + esc(rev.metric) : '') + '</b>' : '<b>–</b>';
+  const revSub = rev
+    ? '<small>Self-reported · tracked on <a href="https://arr.club">ARR.Club</a></small>'
+    : '<small>Not shared yet</small>';
+  const drBig = dr !== null && dr !== undefined ? '<b>' + dr + '<i>/100</i></b>' : '<b>–<i>/100</i></b>';
+  const drSub = dr !== null && dr !== undefined ? '<small>Checked manually at review</small>' : '<small>Not checked yet</small>';
+  const makerBig = d.founder ? '<b>' + esc(d.founder) + '</b>' : '<b>–</b>';
+  const makerSub = makerCount === 1 ? '<small>1 product launched</small>'
+    : makerCount > 1 ? '<small>' + makerCount + ' products launched</small>' : '<small>–</small>';
   const links = ['<a href="' + esc(d.url) + '">Website</a>'];
   if (d.x) links.push('<a href="' + esc(d.x) + '">X / Twitter</a>');
   if (d.demo) links.push('<a href="' + esc(d.demo) + '">Demo</a>');
+  const about = (d.description || d.tagline || '').trim();
+  const moreRows = (others || []).map(function (o, i) {
+    const logo = o.logo
+      ? '<img src="' + esc(o.logo) + '" alt="">'
+      : '<span class="lc-logo-ph">' + esc(String(o.name || '?').charAt(0)) + '</span>';
+    return '    <a class="more-row" href="' + esc(o.url) + '"><span class="more-rank">#' + (i + 1) + '</span>' + logo +
+      '<span class="more-main"><strong>' + esc(o.name) + '</strong><p>' + esc(o.tagline || '') + '</p>' +
+      '<small>' + esc((o.categories || []).join(' · ')) + '</small></span>' +
+      '<span class="more-dr"><span>DR</span><b>' + (o.dr === null || o.dr === undefined ? '–' : o.dr) + '</b></span></a>';
+  }).join('\n');
   const priceNum = (function () {
     const m = /([\d,.]+)/.exec(priceLabelOf(d));
     return m ? m[1].replace(/,/g, '') : '0';
   })();
+  const drAttr = dr === null || dr === undefined ? '' : String(dr);
   return (
 '<!DOCTYPE html>\n' +
 '<html lang="en">\n' +
@@ -215,7 +274,7 @@ function detailPage(d, slug, launchNo, badgeVerified, dr) {
 '<meta name="description" content="' + esc((d.description || d.tagline || '').slice(0, 155)) + '">\n' +
 '<link rel="canonical" href="https://launch.arr.club/launches/' + slug + '/">\n' +
 '<link rel="icon" href="' + FAVICON + '">\n' +
-'<link rel="stylesheet" href="/style.css?v=20260930h">\n' +
+'<link rel="stylesheet" href="/style.css?v=20260930k">\n' +
 '<script type="application/ld+json">\n' +
 '{"@context":"https://schema.org","@type":"SoftwareApplication",\n' +
 '"name":' + JSON.stringify(d.name) + ',"applicationCategory":"WebApplication","operatingSystem":"Web",\n' +
@@ -228,48 +287,74 @@ function detailPage(d, slug, launchNo, badgeVerified, dr) {
 '<header class="site-header">\n' +
 '  <nav class="nav">\n' +
 '    <a class="brand" href="/">launch<span>.arr.club</span></a>\n' +
-'    <div class="nav-links"><a href="/#recently">Launches</a><a class="cta" href="/submit.html">Launch yours →</a></div>\n' +
+'    <div class="nav-auth" id="authSlot"></div>\n' +
 '  </nav>\n' +
 '</header>\n' +
 '<main>\n' +
-'  <div class="detail-head">\n' +
+'  <nav class="crumbs"><a href="/">launch.arr.club</a> <span>&rsaquo;</span> <a href="/#recently">Launches</a> <span>&rsaquo;</span> <strong>' + esc(d.name) + '</strong><button class="copy-link" data-copy data-label="&#10697; copy link">&#10697; copy link</button></nav>\n' +
+'\n' +
+'  <div class="d-hero">\n' +
 '    ' + logoImg + '\n' +
-'    <div>\n' +
-'      <span class="launch-no">#' + launchNo + '</span>\n' +
-'      <h1>' + esc(d.name) + '</h1>\n' +
-'      <p class="detail-tagline">' + esc(d.tagline || '') + '</p>\n' +
-'      <div class="tag-row">\n' +
-'        <span class="tag price">' + esc(priceLabelOf(d)) + '</span>\n' +
-'        ' + catTags + '\n' +
-'      </div>\n' +
+'    <div class="d-hero-main">\n' +
+'      <div class="d-title-row"><h1>' + esc(d.name) + '</h1><span class="launch-no">#' + launchNo + '</span></div>\n' +
+'      <p class="d-tagline">' + esc(d.tagline || '') + '</p>\n' +
+badgeLine +
+'    </div>\n' +
+'    <div class="d-hero-actions">\n' +
+'      <button class="btn ghost" data-copy data-label="Share">Share</button>\n' +
+'      <a class="btn dark" href="' + esc(d.url) + '" target="_blank" rel="noopener">Visit &#8599;</a>\n' +
 '    </div>\n' +
 '  </div>\n' +
-badgeLine +
-'\n' +
-'  <p class="meta-line">Launched ' + dateLong + ' · Live on launch.arr.club · Category: ' + esc(cats.join(', ')) + ' · Website: ' + esc(host) + '</p>\n' +
 '\n' +
 '  <div class="mission">\n' +
 '    <span class="m-step"><span class="m-dot"></span>Submitted</span><span class="m-line"></span>\n' +
 '    <span class="m-step"><span class="m-dot"></span>Launched <span class="tnum">' + dateShort + '</span></span><span class="m-line"></span>\n' +
 '    <span class="m-step' + (rev ? '' : ' dim') + '"><span class="m-dot"></span>' + (rev ? 'Revenue tracked' : 'Awaiting revenue') + '</span>\n' +
 '  </div>\n' +
-shot +
 '\n' +
-'  <section class="story card">\n' +
-'    <h2>What ' + esc(d.name) + ' is about</h2>\n' +
-'    ' + story + '\n' +
-'  </section>\n' +
-'\n' +
-'  <h2 class="section-title"><span class="dot"></span>Product insights</h2>\n' +
-'  <div class="insights">\n' +
-'    <div class="insight"><h4>Pricing</h4><p>' + esc(priceLabelOf(d)) + '</p></div>\n' +
-'    <div class="insight"><h4>Domain Rating</h4><p>' + drText(dr) + '</p></div>\n' +
-'    <div class="insight"><h4>Revenue</h4><p>' + revInsight + '</p></div>\n' +
-'    <div class="insight"><h4>Categories</h4><p>' + esc(cats.join(', ')) + '</p></div>\n' +
-'    <div class="insight"><h4>Links</h4><p>' + links.join(' · ') + '</p></div>\n' +
+'  <h2 class="section-title caps"><span class="dot"></span>What ' + esc(d.name) + ' is about</h2>\n' +
+'  <div class="story-wrap">\n' +
+'    <div class="story-grid">\n' +
+storyCards + '\n' +
+'    </div>\n' +
 '  </div>\n' +
 '\n' +
-'  <p class="center mt2"><a class="btn" href="/submit.html">🚀 Launch your product</a></p>\n' +
+'  <div class="stat-grid">\n' +
+'    <div class="stat-card"><span>Revenue</span>' + revBig + revSub + '</div>\n' +
+'    <div class="stat-card"><span>Domain Rating</span>' + drBig + drSub + '</div>\n' +
+'    <div class="stat-card"><span>Pricing</span><b>' + esc(priceLabelOf(d)) + '</b><small>' + esc(d.pricing && /free/i.test(d.pricing) ? 'No cost to start' : priceLabelOf(d)) + '</small></div>\n' +
+'    <div class="stat-card"><span>Launched</span><b>' + dateLong + '</b><small>L+0 &middot; Live on launch.arr.club</small></div>\n' +
+'    <div class="stat-card"><span>Category</span><div class="pills">' + catPills + '</div></div>\n' +
+'    <div class="stat-card"><span>Maker</span>' + makerBig + makerSub + '</div>\n' +
+'  </div>\n' +
+'\n' +
+'  <div class="card chart-card" id="drChart" data-dr="' + drAttr + '" hidden>\n' +
+'    <h4>Products by Domain Rating</h4>\n' +
+'    <div class="bars" id="drBars"></div>\n' +
+'    <p class="chart-cap" id="drCap"></p>\n' +
+'  </div>\n' +
+'\n' +
+shotSection +
+'  <h2 class="section-title caps"><span class="dot"></span>Product insights</h2>\n' +
+'  <div class="insights-2col">\n' +
+'    <div class="card" style="padding:1.3rem">\n' +
+'      <div class="ins-block"><h4>About</h4><p>' + esc(about) + '</p></div>\n' +
+'      <div class="ins-block"><h4>Categories</h4><div class="pills">' + catPills + '</div></div>\n' +
+'      <div class="ins-block"><h4>Pricing</h4><p>' + esc(priceLabelOf(d)) + '</p></div>\n' +
+'      <div class="ins-block"><h4>Links</h4><p>' + links.join(' &middot; ') + '</p></div>\n' +
+'    </div>\n' +
+'    <aside class="card track-box" style="padding:1.3rem">\n' +
+'      <h4>Get tracked forever</h4>\n' +
+'      <p>Revenue growing? Announce your milestone on <a href="https://arr.club">ARR.Club</a> and join long-term revenue tracking.</p>\n' +
+'      <a class="btn" href="/submit.html">Launch your product</a>\n' +
+'    </aside>\n' +
+'  </div>\n' +
+'\n' +
+'  <h2 class="section-title caps"><span class="dot"></span>More launches <a class="view-all" href="/2026/w40/">View all &rsaquo;</a></h2>\n' +
+'  <div class="more-list">\n' +
+moreRows + '\n' +
+'  </div>\n' +
+DETAIL_SHARED_JS +
 '</main>\n' +
 '<footer class="site-footer">\n' +
 '  <div class="footer-inner">\n' +
@@ -277,6 +362,7 @@ shot +
 '    <span><a href="/">Home</a> · <a href="/submit">Submit</a> · <a href="/privacy">Privacy</a> · <a href="/sponsor.html">Sponsor · $29/mo</a></span>\n' +
 '  </div>\n' +
 '</footer>\n' +
+'<script src="/auth.js"></script>\n' +
 '</body>\n' +
 '</html>\n'
   );
@@ -346,8 +432,22 @@ async function handleApprove(request, env) {
   const badgeVerified = d.plan === 'badge' && d.url ? await checkBadge(d.url) : false;
   const dr = validDr(body.dr);
 
+  // launch index + numbers (feed order == launches.json order, newest first)
+  const idx = JSON.parse(launchesJson0);
+  const nos = [];
+  const noRe2 = /<span class="launch-no">#(\d{3})<\/span>/g;
+  let mm2;
+  while ((mm2 = noRe2.exec(indexHtml0)) !== null) nos.push(mm2[1]);
+  const others = idx.slice(0, 8).map(function (e, i) {
+    return { name: e.name, tagline: e.tagline, url: e.url, logo: e.logo,
+             categories: [e.category || 'Product'], dr: e.dr, no: nos[i] || '–––' };
+  });
+  const makerCount = d.founder
+    ? idx.filter(function (e) { return (e.founder || '') === d.founder; }).length + 1
+    : null;
+
   // 1. detail page
-  const detail = detailPage(d, slug, launchNo, badgeVerified === true, dr);
+  const detail = detailPage(d, slug, launchNo, badgeVerified === true, dr, others, makerCount);
 
   // 2. homepage: insert card + bump counts
   let indexHtml = indexHtml0.replace('<div class="feed">', '<div class="feed">\n' + homeCard(d, slug, launchNo, dr).replace(/\n$/, ''));
@@ -369,8 +469,7 @@ async function handleApprove(request, env) {
     );
   }
 
-  // 3. launches.json
-  const idx = JSON.parse(launchesJson0);
+  // 3. launches.json (idx parsed above)
   const rev = revenueOf(d);
   idx.unshift({
     category: (d.categories && d.categories[0]) || 'Product',
