@@ -641,14 +641,6 @@ a.lb-row:hover { background: var(--bg-soft); }
 #recently .lc-rev{font-size:.84rem}
 #recently .ribbon{font-size:.62rem;padding:.15rem .45rem}
 
-/* Top: hero left, board stats right */
-.top-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:2rem;max-width:1200px;margin:0 auto 1.6rem;padding:0 1.2rem;align-items:center}
-.top-grid .hero-slim{padding-left:0;padding-right:0;margin-bottom:0}
-.top-grid .board-stats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;background:none;padding:0}
-.top-grid .bs{background:linear-gradient(180deg,#26374f 0%,var(--navy,#0f1f3d) 100%);border-radius:12px;padding:.85rem .4rem;text-align:center;min-width:0}
-.top-grid .bs + .bs{border-left:0}
-.top-grid .bs-num{font-size:1.35rem}
-@media(max-width:900px){.top-grid{grid-template-columns:1fr}}
 /* Compact recently-launched cards: 4 per row */
 #recently .launch-card{flex:0 0 200px}
 #recently .launch-card .lc-logo,#recently .launch-card .lc-logo-ph{width:44px;height:44px;border-radius:12px;font-size:1.1rem}
