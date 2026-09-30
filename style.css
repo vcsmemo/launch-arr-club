@@ -630,25 +630,25 @@ a.lb-row:hover { background: var(--bg-soft); }
 .seo-faq p{margin:.5rem 0 0;color:var(--text-secondary);font-size:.92rem;line-height:1.6}
 .seo-launches{display:grid;gap:.7rem}
 
-/* Two-column home: main feed + right sidebar */
-.home-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:1.6rem;max-width:1200px;margin:0 auto;padding:0 1.2rem;align-items:start}
-.home-main{min-width:0}
-.home-side{display:flex;flex-direction:column;gap:1.1rem;position:sticky;top:1rem}
-@media(max-width:960px){.home-grid{grid-template-columns:1fr}.home-side{position:static;display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}}
-@media(max-width:640px){.home-side{grid-template-columns:1fr}}
-.side-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.1rem .9rem}
-.side-title{margin:0 0 .8rem;font-size:.95rem;display:flex;align-items:center;gap:.5rem}
-.side-lb-row{display:flex;align-items:center;gap:.6rem;padding:.5rem 0;border-top:1px solid var(--border);text-decoration:none;color:var(--text)}
-.side-lb-row:first-child{border-top:0}
-.side-lb-row img,.side-lb-row .lc-logo-ph{width:30px;height:30px;border-radius:8px;font-size:.85rem;flex:none}
-.side-lb-row img{object-fit:cover;background:var(--bg-soft)}
-.side-lb-rank{font-variant-numeric:tabular-nums;font-weight:700;color:var(--text-muted);font-size:.82rem;width:1.2rem;flex:none}
-.side-lb-name{flex:1;font-weight:600;font-size:.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.side-lb-rev{font-size:.82rem;font-weight:700;color:var(--accent);white-space:nowrap}
-.side-empty{color:var(--text-muted);font-size:.88rem;margin:.2rem 0 .4rem}
-.side-cta h3{margin:0 0 .5rem;font-size:1rem}
-.side-cta p{margin:0 0 .9rem;font-size:.88rem;color:var(--text-secondary);line-height:1.55}
-.side-cta .btn{width:100%;justify-content:center;box-sizing:border-box}
+/* Compact recently-launched cards: 4 per row */
+#recently .launch-card{flex:0 0 200px}
+#recently .launch-card .lc-logo,#recently .launch-card .lc-logo-ph{width:44px;height:44px;border-radius:12px;font-size:1.1rem}
+#recently .launch-card h3{font-size:.92rem}
+#recently .launch-card .lc-tag{font-size:.8rem;min-height:2.4em}
+#recently .launch-card .lc-meta{gap:.7rem}
+#recently .lc-m span{font-size:.66rem}
+#recently .lc-m b{font-size:.8rem}
+#recently .lc-rev{font-size:.84rem}
+#recently .ribbon{font-size:.62rem;padding:.15rem .45rem}
+
+/* Top: hero left, board stats right */
+.top-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:2rem;max-width:1200px;margin:0 auto 1.6rem;padding:0 1.2rem;align-items:center}
+.top-grid .hero-slim{padding-left:0;padding-right:0;margin-bottom:0}
+.top-grid .board-stats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;background:none;padding:0}
+.top-grid .bs{background:linear-gradient(180deg,#26374f 0%,var(--navy,#0f1f3d) 100%);border-radius:12px;padding:.85rem .4rem;text-align:center;min-width:0}
+.top-grid .bs + .bs{border-left:0}
+.top-grid .bs-num{font-size:1.35rem}
+@media(max-width:900px){.top-grid{grid-template-columns:1fr}}
 /* Compact recently-launched cards: 4 per row */
 #recently .launch-card{flex:0 0 200px}
 #recently .launch-card .lc-logo,#recently .launch-card .lc-logo-ph{width:44px;height:44px;border-radius:12px;font-size:1.1rem}
