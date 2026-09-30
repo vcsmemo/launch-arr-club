@@ -319,3 +319,18 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .tag.rev { font-weight: 700; }
 .tag.rev.verified { background: #f0fdfa; border-color: #99f6e4; color: #0f766e; }
 .tag.rev.tracked { background: #fffbeb; border-color: #fde68a; color: #b45309; }
+
+/* Mission-control signature: launch numbers, L+ counters, tabular data numerals */
+.tag, .rev-note, .dr-label, .meta-line, .launch-no, .tag.lp { font-variant-numeric: tabular-nums; }
+.launch-no { font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.06em; display: block; margin-bottom: 0.15rem; }
+.detail-head .launch-no { margin-bottom: 0.35rem; }
+.tag.lp { font-family: var(--mono); font-size: 0.72rem; background: var(--accent-soft); border-color: var(--accent-border); color: var(--accent-hover); font-weight: 700; }
+/* mission timeline (detail pages) */
+.mission { display: flex; align-items: center; margin: 1.1rem 0 0.2rem; padding: 0.9rem 1.1rem; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.mission .m-step { display: flex; align-items: center; gap: 0.5rem; font-size: 0.83rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
+.mission .m-step .tnum { font-family: var(--mono); font-weight: 500; color: var(--text-muted); }
+.mission .m-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+.mission .m-line { flex: 1; height: 2px; background: var(--border); margin: 0 0.8rem; min-width: 20px; }
+.mission .m-step.dim { color: var(--text-muted); font-weight: 500; }
+.mission .m-step.dim .m-dot { background: var(--border-strong); box-shadow: none; }
+@media (max-width: 560px) { .mission .m-step .tnum { display: none; } }
