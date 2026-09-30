@@ -284,7 +284,7 @@ function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount, ra
 '<meta name="description" content="' + esc((d.description || d.tagline || '').slice(0, 155)) + '">\n' +
 '<link rel="canonical" href="https://launch.arr.club/launches/' + slug + '/">\n' +
 '<link rel="icon" href="' + FAVICON + '">\n' +
-'<link rel="stylesheet" href="/style.css?v=20260930r">\n' +
+'<link rel="stylesheet" href="/style.css?v=20260930s">\n' +
 '<script type="application/ld+json">\n' +
 '{"@context":"https://schema.org","@type":"SoftwareApplication",\n' +
 '"name":' + JSON.stringify(d.name) + ',"applicationCategory":"WebApplication","operatingSystem":"Web",\n' +
