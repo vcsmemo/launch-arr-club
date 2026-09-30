@@ -7,7 +7,7 @@
 <meta name="description" content="Launch your AI startup on launch.arr.club in minutes. Submit your product, optionally share revenue, and get in front of investors. Free to launch.">
 <link rel="canonical" href="https://launch.arr.club/submit.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d9488'/%3E%3Cpath d='M32 12c8 6 12 14 12 22l-7 3-3 9h-4l-2-7-8 2 2-8-4-3c0-8 6-14 14-18z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='24' r='4' fill='%230d9488'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/style.css?v=20260930l">
+<link rel="stylesheet" href="/style.css?v=20260930m">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -106,32 +106,24 @@
 
       <!-- STEP 2 -->
       <section class="wiz-step card" data-step="1">
-        <h2>Step 2 · Revenue</h2>
-        <button type="button" class="rev-toggle" id="revToggle" aria-expanded="false">
-          <span class="rev-plus">＋</span> Add revenue data <span class="rev-opt">(optional) — earn a revenue badge</span>
-        </button>
-        <div class="rev-body" id="revBody" hidden>
-        <div class="rev-tabs">
-          <div class="rev-pane">
-            <h4>💰 Self-report <small style="color:var(--muted)">(free)</small></h4>
-            <p>Labeled <em>self-reported</em> — honest, not verified.</p>
+        <h2>Step 2 · Revenue <span class="step-opt">optional, but worth it</span></h2>
+        <div class="rev-pitch">
+          <p class="rev-pitch-title">💰 <strong>Share your revenue → get tracked on ARR.Club.</strong></p>
+          <ul class="rev-perks">
+            <li>💰 A <strong>revenue badge</strong> on your launch page — revenue is the headline here</li>
+            <li>📈 A <strong>listing on ARR.Club</strong>, tracked alongside 1,300+ AI companies</li>
+            <li>📣 A <strong>milestone announcement</strong> investors actually read</li>
+          </ul>
+        </div>
+        <div class="rev-body" id="revBody">
+          <div class="rev-grid">
             <div class="field"><label>Metric</label>
               <select id="f-metric"><option>MRR</option><option>ARR</option><option>Annual run rate</option><option>Annual revenue</option></select>
             </div>
             <div class="field"><label>Amount (USD)</label><input type="number" id="f-amount" min="0" placeholder="e.g. 12000"></div>
           </div>
-          <div class="rev-pane">
-            <h4>✓ Verify with Stripe <small style="color:var(--muted)">(free)</small></h4>
-            <p>Read-only key. Auto-syncs MRR daily — the highest trust on the board.</p>
-            <div class="field"><label>Stripe restricted key</label><input type="text" id="f-stripe" placeholder="rk_live_…" autocomplete="off"></div>
-            <ul class="privacy-list">
-              <li>Read-only: aggregate charges only — never customer details.</li>
-              <li>We display only the MRR number you approve.</li>
-              <li>Disconnect anytime — key deleted immediately.</li>
-              <li>⚙️ Placeholder — backend sync runs on a Cloudflare Worker (see README).</li>
-            </ul>
-          </div>
-        </div>
+          <label class="rev-optin"><input type="checkbox" id="f-arrclub" checked> <span><strong>List my product on ARR.Club</strong> and write a milestone for it <span class="rec">(recommended)</span></span></label>
+          <p class="rev-note">Self-reported for now — labeled honestly on your page. ✓ Stripe-verified badges coming soon. No revenue yet? Just hit Continue →</p>
         </div>
         <div class="wiz-nav"><button type="button" class="btn ghost" data-back>← Back</button><button type="button" class="btn" data-next>Continue →</button></div>
       </section>
@@ -265,15 +257,6 @@
   }
   document.querySelectorAll('[data-next]').forEach(function(b){ b.addEventListener('click', function(){ if(valid(step)) show(Math.min(step+1, 2)); }); });
   document.querySelectorAll('[data-back]').forEach(function(b){ b.addEventListener('click', function(){ show(Math.max(step-1, 0)); }); });
-
-  // revenue step: collapsed by default, expand on demand
-  document.getElementById('revToggle').addEventListener('click', function(){
-    var body = document.getElementById('revBody');
-    var open = body.hidden;
-    body.hidden = !open;
-    this.setAttribute('aria-expanded', String(open));
-    this.querySelector('.rev-plus').textContent = open ? '－' : '＋';
-  });
 
   // category chips (max 3)
   document.querySelectorAll('#catChips .chip').forEach(function(c){
@@ -467,6 +450,7 @@
         metric: document.getElementById('f-metric').value,
         amount: document.getElementById('f-amount').value.trim()
       },
+      arrclub_optin: document.getElementById('f-arrclub').checked,
       submitted_at: new Date().toISOString()
     };
   }

@@ -567,3 +567,30 @@ a.lb-row:hover { background: var(--bg-soft); }
 .rail-btn.next { right: -16px; }
 .rail-btn:hover { border-color: var(--accent); color: var(--accent-hover); }
 @media (hover: none), (max-width: 640px) { .rail-btn { display: none; } }
+
+/* Submit Step 2: revenue pitch */
+.step-opt { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.rev-pitch { background: linear-gradient(180deg, #f0fdfa 0%, #fff 100%); border: 1px solid #99f6e4;
+  border-radius: var(--radius-lg); padding: 1rem 1.2rem; margin-bottom: 1.1rem; }
+.rev-pitch-title { margin: 0 0 0.6rem; font-size: 1.02rem; }
+.rev-perks { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.4rem; }
+.rev-perks li { font-size: 0.9rem; color: var(--text-secondary); }
+.rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.9rem; }
+@media (max-width: 560px) { .rev-grid { grid-template-columns: 1fr; } }
+.rev-optin { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.92rem; cursor: pointer;
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.8rem 1rem; margin-bottom: 0.7rem; }
+.rev-optin input { margin-top: 0.2rem; width: 1.05rem; height: 1.05rem; accent-color: var(--accent); flex: none; }
+.rev-optin .rec { color: var(--accent-hover); font-weight: 600; }
+.rev-note { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+
+/* Review console: revenue highlight + milestone draft */
+.pill.rev-hot { background: #fef3c7; border-color: #f59e0b; color: #92400e; font-weight: 700; }
+.pill.arrclub { background: #f0fdfa; border-color: #5eead4; color: #0f766e; font-weight: 700; }
+.milestone-box { margin-top: 0.9rem; border: 1px dashed var(--border-strong); border-radius: var(--radius);
+  padding: 0.9rem 1rem; background: #fffdf5; }
+.milestone-box h4 { margin: 0 0 0.5rem; font-size: 0.85rem; }
+.milestone-box pre { margin: 0 0 0.7rem; padding: 0.8rem; background: #fff; border: 1px solid var(--border);
+  border-radius: 8px; font-size: 0.82rem; line-height: 1.55; white-space: pre-wrap; font-family: var(--font); }
+.milestone-copy { font-size: 0.82rem; padding: 0.45rem 0.9rem; border-radius: 8px; border: 1px solid var(--border-strong);
+  background: #fff; cursor: pointer; font-family: var(--font); font-weight: 600; }
+.milestone-copy:hover { border-color: var(--accent); color: var(--accent-hover); }
