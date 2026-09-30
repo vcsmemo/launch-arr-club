@@ -60,24 +60,30 @@
           </div>
         </div>
         <div class="field"><label>Logo</label>
-          <div class="up-row">
-            <label class="up-btn">Upload image<input type="file" id="f-logo-file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label>
-            <span class="up-or">or</span>
-            <input type="url" id="f-logo-url" placeholder="paste logo URL">
+          <div class="up-drop" id="logoDrop">
+            <input type="file" id="f-logo-file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+            <div class="up-drop-inner">
+              <svg class="up-drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span class="up-drop-text"><strong>Click to upload</strong> or drag &amp; drop</span>
+              <span class="up-drop-sub">PNG / JPG / WebP · up to 5MB</span>
+            </div>
           </div>
           <div class="up-prev" id="logoPrev" hidden><img id="logoPrevImg" alt="Logo preview"></div>
+          <div class="up-urlrow"><span class="up-or2">or paste URL</span><input type="url" id="f-logo-url" placeholder="https://…"></div>
           <input type="hidden" id="f-logo">
-          <p class="up-note">PNG / JPG / WebP, up to 5MB — uploads instantly.</p>
         </div>
         <div class="field"><label>Screenshots</label>
-          <div class="up-row">
-            <label class="up-btn">Upload images<input type="file" id="f-shots-file" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden></label>
-            <span class="up-or">or</span>
+          <div class="up-drop" id="shotsDrop">
+            <input type="file" id="f-shots-file" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>
+            <div class="up-drop-inner">
+              <svg class="up-drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span class="up-drop-text"><strong>Click to upload</strong> or drag &amp; drop</span>
+              <span class="up-drop-sub">PNG / JPG / WebP · up to 5MB each · multiple OK</span>
+            </div>
           </div>
-          <textarea id="f-shots-url" style="min-height:56px" placeholder="paste screenshot URLs, one per line"></textarea>
           <div class="up-thumbs" id="shotsPrev"></div>
+          <div class="up-urlrow"><span class="up-or2">or paste URLs</span><textarea id="f-shots-url" rows="2" placeholder="one per line"></textarea></div>
           <textarea id="f-shots" hidden></textarea>
-          <p class="up-note">PNG / JPG / WebP, up to 5MB each — uploads instantly.</p>
         </div>
         <div class="field"><label>X (Twitter) username</label><input type="text" id="f-x" placeholder="@yourproduct"></div>
         <div class="field"><label>Demo video URL</label><input type="url" id="f-demo" placeholder="https://youtube.com/…"></div>
@@ -320,7 +326,7 @@
     }, 1500);
   });
   launchBtn.addEventListener('click', function(){ alert('🎉 Launched! (M1 demo — in production your page would be live now.)'); });
-  /* Image uploads via Cloudflare Worker + R2 */
+  /* Image uploads via Cloudflare Worker + R2 (dropzone: click or drag & drop) */
   var IMG_WORKER = 'https://launch-arr-club-img.johntian2015.workers.dev';
   function uploadToWorker(file){
     var fd = new FormData();
@@ -333,13 +339,26 @@
       return j.url;
     });
   }
-  var logoFile = document.getElementById('f-logo-file'),
-      logoUrl = document.getElementById('f-logo-url'),
+  function wireDrop(dropId, inputId, onFiles){
+    var drop = document.getElementById(dropId), input = document.getElementById(inputId);
+    drop.addEventListener('click', function(){ input.click(); });
+    input.addEventListener('change', function(){ onFiles(input.files); input.value = ''; });
+    ['dragenter', 'dragover'].forEach(function(ev){
+      drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add('drag'); });
+    });
+    ['dragleave', 'drop'].forEach(function(ev){
+      drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove('drag'); });
+    });
+    drop.addEventListener('drop', function(e){
+      if(e.dataTransfer && e.dataTransfer.files.length) onFiles(e.dataTransfer.files);
+    });
+  }
+  var logoUrl = document.getElementById('f-logo-url'),
       logoHidden = document.getElementById('f-logo'),
       logoPrev = document.getElementById('logoPrev'),
       logoPrevImg = document.getElementById('logoPrevImg');
-  logoFile.addEventListener('change', function(){
-    var f = logoFile.files[0];
+  wireDrop('logoDrop', 'f-logo-file', function(files){
+    var f = files[0];
     if(!f) return;
     logoPrev.hidden = false;
     logoPrevImg.removeAttribute('src');
@@ -348,7 +367,6 @@
       logoHidden.value = u; logoUrl.value = '';
       logoPrevImg.src = u; logoPrevImg.alt = 'Logo preview';
     }).catch(function(){ logoPrev.hidden = true; alert('Upload failed — try a PNG/JPG under 5MB, or paste a URL instead.'); });
-    logoFile.value = '';
   });
   logoUrl.addEventListener('input', function(){
     var u = logoUrl.value.trim();
@@ -356,8 +374,7 @@
     if(u){ logoPrev.hidden = false; logoPrevImg.src = u; logoPrevImg.alt = 'Logo preview'; }
     else { logoPrev.hidden = true; }
   });
-  var shotsFile = document.getElementById('f-shots-file'),
-      shotsUrl = document.getElementById('f-shots-url'),
+  var shotsUrl = document.getElementById('f-shots-url'),
       shotsHidden = document.getElementById('f-shots'),
       shotsPrev = document.getElementById('shotsPrev'),
       shotsUploaded = [];
@@ -365,14 +382,13 @@
     var pasted = shotsUrl.value.split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
     shotsHidden.value = shotsUploaded.concat(pasted).join('\n');
   }
-  shotsFile.addEventListener('change', function(){
-    Array.prototype.slice.call(shotsFile.files).forEach(function(f){
+  wireDrop('shotsDrop', 'f-shots-file', function(files){
+    Array.prototype.slice.call(files).forEach(function(f){
       var ph = document.createElement('img'); ph.alt = 'Uploading…'; shotsPrev.appendChild(ph);
       uploadToWorker(f).then(function(u){
         shotsUploaded.push(u); ph.src = u; ph.alt = 'Screenshot'; syncShots();
       }).catch(function(){ ph.remove(); alert('One upload failed — try PNG/JPG under 5MB, or paste the URL instead.'); });
     });
-    shotsFile.value = '';
   });
   shotsUrl.addEventListener('input', syncShots);
 
