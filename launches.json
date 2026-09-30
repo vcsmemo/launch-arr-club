@@ -2,7 +2,7 @@
   {
     "name": "Otter.ai",
     "tagline": "Otter Meeting Agent - AI Notetaker, Transcription, Insights",
-    "url": "https://otter.ai",
+    "url": "/launches/otter-ai/",
     "category": "Productivity",
     "pricing": "Freemium",
     "founder": null,
@@ -15,7 +15,7 @@
   {
     "name": "Perplexity",
     "tagline": "Track your AI visibility in minutes",
-    "url": "https://www.perplexity.ai/",
+    "url": "/launches/perplexity/",
     "category": "Productivity",
     "pricing": null,
     "founder": null,
@@ -28,7 +28,7 @@
   {
     "name": "Gamma",
     "tagline": "Best AI Presentation Maker & Website Builder",
-    "url": "https://gamma.app",
+    "url": "/launches/gamma/",
     "category": "Productivity",
     "pricing": "Freemium",
     "founder": null,
@@ -41,7 +41,7 @@
   {
     "name": "v0",
     "tagline": "Prompt. Build. Publish.",
-    "url": "https://v0.app",
+    "url": "/launches/v0/",
     "category": "Dev Tools",
     "pricing": null,
     "founder": null,
@@ -54,7 +54,7 @@
   {
     "name": "Replit",
     "tagline": "AI App and Website Builder",
-    "url": "https://replit.com/",
+    "url": "/launches/replit/",
     "category": "Dev Tools",
     "pricing": "Freemium",
     "founder": null,
@@ -67,7 +67,7 @@
   {
     "name": "Cursor",
     "tagline": "The new way to build software.",
-    "url": "https://cursor.com",
+    "url": "/launches/cursor/",
     "category": "Dev Tools",
     "pricing": null,
     "founder": null,
@@ -80,7 +80,7 @@
   {
     "name": "Descript",
     "tagline": "AI-editing for every kind of video",
-    "url": "https://www.descript.com",
+    "url": "/launches/descript/",
     "category": "Audio",
     "pricing": "Freemium",
     "founder": null,
@@ -93,7 +93,7 @@
   {
     "name": "Murf",
     "tagline": "Build AI Voice Experiences That Are Natural, Scalable & Efficient",
-    "url": "https://murf.ai",
+    "url": "/launches/murf/",
     "category": "Audio",
     "pricing": "Freemium",
     "founder": null,
@@ -106,7 +106,7 @@
   {
     "name": "Leonardo AI",
     "tagline": "The Creator-First Generative AI Platform",
-    "url": "https://leonardo.ai",
+    "url": "/launches/leonardo-ai/",
     "category": "Image",
     "pricing": null,
     "founder": null,
@@ -119,7 +119,7 @@
   {
     "name": "Ideogram",
     "tagline": "The open model for visual intelligence.",
-    "url": "https://ideogram.ai/",
+    "url": "/launches/ideogram/",
     "category": "Image",
     "pricing": null,
     "founder": null,
@@ -132,7 +132,7 @@
   {
     "name": "Midjourney",
     "tagline": "Building the most beautiful AI models in the world.",
-    "url": "https://www.midjourney.com",
+    "url": "/launches/midjourney/",
     "category": "Image",
     "pricing": null,
     "founder": null,
@@ -145,7 +145,7 @@
   {
     "name": "HeyGen",
     "tagline": "AI videos starring you, made in minutes",
-    "url": "https://www.heygen.com/",
+    "url": "/launches/heygen/",
     "category": "Video",
     "pricing": "Freemium",
     "founder": null,
@@ -158,7 +158,7 @@
   {
     "name": "Pika",
     "tagline": "AI Creative Tools Built for Creatives",
-    "url": "https://pika.art/",
+    "url": "/launches/pika/",
     "category": "Video",
     "pricing": null,
     "founder": null,
@@ -171,7 +171,7 @@
   {
     "name": "Runway",
     "tagline": "Your complete Creative Suite with everything you need, to make anything you want.",
-    "url": "https://runway.com/",
+    "url": "/launches/runway/",
     "category": "Video",
     "pricing": null,
     "founder": null,
@@ -184,7 +184,7 @@
   {
     "name": "Recraft",
     "tagline": "tastefully crafted AI image models",
-    "url": "https://www.recraft.ai/",
+    "url": "/launches/recraft/",
     "category": "Design",
     "pricing": null,
     "founder": null,
@@ -197,7 +197,7 @@
   {
     "name": "Grammarly",
     "tagline": "Think big. We’ll take care of the details.",
-    "url": "https://www.grammarly.com/",
+    "url": "/launches/grammarly/",
     "category": "AI Writing",
     "pricing": "Freemium",
     "founder": null,
@@ -210,7 +210,7 @@
   {
     "name": "Sudowrite",
     "tagline": "Try the AI writing tool with unparalleled story smarts.",
-    "url": "https://sudowrite.com",
+    "url": "/launches/sudowrite/",
     "category": "AI Writing",
     "pricing": "$10/mo",
     "founder": "Amit Gupta & James Yu",
@@ -223,7 +223,7 @@
   {
     "name": "Writesonic",
     "tagline": "The AI Search Growth Engine. Win Customers.",
-    "url": "https://writesonic.com",
+    "url": "/launches/writesonic/",
     "category": "Marketing",
     "pricing": null,
     "founder": null,
@@ -236,7 +236,7 @@
   {
     "name": "Copy.ai",
     "tagline": "Future proof your business with GTM AI",
-    "url": "https://www.copy.ai",
+    "url": "/launches/copy-ai/",
     "category": "Marketing",
     "pricing": null,
     "founder": null,
@@ -249,7 +249,7 @@
   {
     "name": "Jasper",
     "tagline": "Put AI agents to work for marketing",
-    "url": "https://www.jasper.ai",
+    "url": "/launches/jasper/",
     "category": "Marketing",
     "pricing": null,
     "founder": null,

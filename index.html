@@ -22,8 +22,14 @@
 </header>
 <main>
   <section class="hero hero-slim">
+    <p class="live-strip"><span class="pulse"></span><span><b id="liveCount">–</b> products on the board · updated daily</span></p>
     <h1>Launch today. <span class="hl">Get tracked forever.</span></h1>
     <p class="lede">The launch board for AI startups where <strong>revenue is the headline</strong>. Publish in minutes — <strong>free</strong> — and let investors follow your numbers on <strong>ARR.Club</strong> from day one.</p>
+    <ul class="hero-perks">
+      <li>📄 Permanent product page</li>
+      <li>🔗 Dofollow backlink</li>
+      <li>📈 Revenue tracked on ARR.Club</li>
+    </ul>
     <div class="hero-searchrow">
       <div class="hero-search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
@@ -384,11 +390,16 @@
   </section>
 </main>
 <footer class="site-footer">
+  <div class="footer-cols">
+    <div class="fcol"><h5>Discover</h5><a href="/#recently">Launches</a><a href="/2026/w40/">Weekly archive</a><a href="/#leaderboard">Leaderboard</a></div>
+    <div class="fcol"><h5>Alternatives</h5><a href="/alternatives/product-hunt/">Product Hunt alternative</a><a href="/alternatives/faslaunch/">FasLaunch alternative</a></div>
+    <div class="fcol"><h5>Launch</h5><a href="/launch-your-startup/">Launch your startup</a><a href="/launch-your-ai-tool/">Launch your AI tool</a><a href="/launch-your-saas/">Launch your SaaS</a></div>
+    <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a></div>
+  </div>
   <div class="footer-inner">
     <span>© 2026 launch.arr.club · A part of <a href="https://arr.club">ARR.Club</a></span>
-    <span><a href="/2026/w40/">Weekly archive</a> · <a href="/submit.html">Submit</a> · <a href="/privacy.html">Privacy</a></span>
-      <span class="sample-note">Curated listings: a mix of founder submissions and our editors’ picks of public launches.</span>
-</div>
+    <span class="sample-note">Curated listings: a mix of founder submissions and our editors’ picks of public launches.</span>
+  </div>
 </footer>
 <script>
 /* Hero search over launches.json */
@@ -460,6 +471,7 @@
     var avgDr = drs.length ? Math.round(drs.reduce(function(a,b){ return a + b; }, 0) / drs.length) : null;
     var set = function(k, v){ var el = board.querySelector('[data-stat="' + k + '"]'); if(el) el.textContent = v; };
     set('mrr', '$' + mrr + 'k');
+    var lc = document.getElementById('liveCount'); if(lc) lc.textContent = n;
     set('dr', avgDr === null ? '–' : String(avgDr));
     var el;
     el = board.querySelector('[data-stat="launches"]'); if(el) countUp(el, n);

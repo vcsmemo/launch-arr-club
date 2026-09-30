@@ -1,0 +1,45 @@
+# launch.arr.club
+
+> The launch board for AI startups where revenue is the headline. Founders publish a permanent product page,
+> get a dofollow backlink, and can optionally share revenue to be tracked long-term on ARR.Club.
+
+## Key pages
+
+- Launch board: https://launch.arr.club/
+- Submit your product: https://launch.arr.club/submit.html
+- Weekly archive: https://launch.arr.club/2026/w40/
+- Product Hunt alternative: https://launch.arr.club/alternatives/product-hunt/
+- FasLaunch alternative: https://launch.arr.club/alternatives/faslaunch/
+- Launch your startup: https://launch.arr.club/launch-your-startup/
+- Launch your AI tool: https://launch.arr.club/launch-your-ai-tool/
+- Launch your SaaS: https://launch.arr.club/launch-your-saas/
+- Privacy: https://launch.arr.club/privacy.html
+
+## Launches
+
+- Jasper (Marketing): Put AI agents to work for marketing https://launch.arr.club/launches/jasper/
+- Copy.ai (Marketing): Future proof your business with GTM AI https://launch.arr.club/launches/copy-ai/
+- Writesonic (Marketing): The AI Search Growth Engine. Win Customers. https://launch.arr.club/launches/writesonic/
+- Sudowrite (AI Writing): Try the AI writing tool with unparalleled story smarts. https://launch.arr.club/launches/sudowrite/
+- Grammarly (AI Writing): Think big. We’ll take care of the details. https://launch.arr.club/launches/grammarly/
+- Recraft (Design): tastefully crafted AI image models https://launch.arr.club/launches/recraft/
+- Runway (Video): Your complete Creative Suite with everything you need, to make anything you want. https://launch.arr.club/launches/runway/
+- Pika (Video): AI Creative Tools Built for Creatives https://launch.arr.club/launches/pika/
+- HeyGen (Video): AI videos starring you, made in minutes https://launch.arr.club/launches/heygen/
+- Midjourney (Image): Building the most beautiful AI models in the world. https://launch.arr.club/launches/midjourney/
+- Ideogram (Image): The open model for visual intelligence. https://launch.arr.club/launches/ideogram/
+- Leonardo AI (Image): The Creator-First Generative AI Platform https://launch.arr.club/launches/leonardo-ai/
+- Murf (Audio): Build AI Voice Experiences That Are Natural, Scalable & Efficient https://launch.arr.club/launches/murf/
+- Descript (Audio): AI-editing for every kind of video https://launch.arr.club/launches/descript/
+- Cursor (Dev Tools): The new way to build software. https://launch.arr.club/launches/cursor/
+- Replit (Dev Tools): AI App and Website Builder https://launch.arr.club/launches/replit/
+- v0 (Dev Tools): Prompt. Build. Publish. https://launch.arr.club/launches/v0/
+- Gamma (Productivity): Best AI Presentation Maker & Website Builder https://launch.arr.club/launches/gamma/
+- Perplexity (Productivity): Track your AI visibility in minutes https://launch.arr.club/launches/perplexity/
+- Otter.ai (Productivity): Otter Meeting Agent - AI Notetaker, Transcription, Insights https://launch.arr.club/launches/otter-ai/
+- VidSizer (Video): Compress any video to any exact size, 100% locally in browser. https://launch.arr.club/launches/vidsizer/
+
+## Submit
+
+Founders submit at https://launch.arr.club/submit.html — badge-verified launches are free and dofollow,
+instant listing is $5 one-time. Sharing revenue is optional; shared revenue may be tracked on ARR.Club (https://arr.club).

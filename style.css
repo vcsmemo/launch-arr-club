@@ -594,3 +594,38 @@ a.lb-row:hover { background: var(--bg-soft); }
 .milestone-copy { font-size: 0.82rem; padding: 0.45rem 0.9rem; border-radius: 8px; border: 1px solid var(--border-strong);
   background: #fff; cursor: pointer; font-family: var(--font); font-weight: 600; }
 .milestone-copy:hover { border-color: var(--accent); color: var(--accent-hover); }
+
+/* CodeHype-inspired: concrete hero perks + live strip */
+.live-strip{display:flex;align-items:center;gap:.55rem;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:0 0 .7rem}
+.live-strip .pulse{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.45)}70%{box-shadow:0 0 0 9px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.hero-perks{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;list-style:none;margin:1rem 0 1.2rem;padding:0}
+.hero-perks li{display:flex;align-items:center;gap:.45rem;font-weight:600;font-size:.93rem;color:var(--text-secondary)}
+/* Board position card (detail pages) */
+.rank-card{margin-top:1.1rem}
+.rank-card h4{margin:0 0 .7rem;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.rank-rows{display:flex;gap:.8rem;flex-wrap:wrap}
+.rank-row{flex:1;min-width:150px;background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:.7rem .9rem;display:flex;flex-direction:column;gap:.15rem}
+.rank-row span{font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em}
+.rank-row b{font-size:1.25rem;font-variant-numeric:tabular-nums}
+.rank-cap{margin:.6rem 0 0;font-size:.8rem;color:var(--text-muted)}
+/* Footer link columns */
+.footer-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;max-width:1100px;margin:0 auto 1.6rem;padding:0 1.2rem}
+.fcol h5{margin:0 0 .55rem;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.fcol a{display:block;font-size:.88rem;color:var(--text-secondary);text-decoration:none;margin:.34rem 0}
+.fcol a:hover{color:var(--accent)}
+@media(max-width:640px){.footer-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* SEO landing pages */
+.seo-page{max-width:820px;margin:0 auto;padding:2.2rem 1.2rem 3rem}
+.seo-page h1{font-size:2rem;line-height:1.25;margin:.4rem 0 .9rem}
+.seo-page .lede{font-size:1.08rem;color:var(--text-secondary);line-height:1.65}
+.seo-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.4rem 0 2.2rem}
+.seo-page h2{font-size:1.25rem;margin:2rem 0 .8rem}
+.seo-points{list-style:none;margin:0;padding:0;display:grid;gap:.7rem}
+.seo-points li{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.85rem 1rem;font-size:.95rem;line-height:1.55}
+.seo-points li b{color:var(--text)}
+.seo-steps{margin:0;padding-left:1.3rem;display:grid;gap:.55rem;color:var(--text-secondary);line-height:1.6}
+.seo-faq details{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.8rem 1rem;margin-bottom:.6rem}
+.seo-faq summary{font-weight:700;cursor:pointer;font-size:.95rem}
+.seo-faq p{margin:.5rem 0 0;color:var(--text-secondary);font-size:.92rem;line-height:1.6}
+.seo-launches{display:grid;gap:.7rem}

@@ -202,7 +202,7 @@ const DETAIL_SHARED_JS = `<script>
 </script>
 `;
 
-function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount) {
+function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount, rank) {
   const now = new Date();
   const dateLong = now.getDate() + ' ' + MONTHS[now.getMonth()] + ' ' + now.getFullYear();
   const dateShort = now.getDate() + ' ' + MONTHS[now.getMonth()].toUpperCase();
@@ -264,6 +264,16 @@ function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount) {
     return m ? m[1].replace(/,/g, '') : '0';
   })();
   const drAttr = dr === null || dr === undefined ? '' : String(dr);
+  const rankCard = rank
+    ? '  <div class="card rank-card">\n' +
+      '    <h4>Board position</h4>\n' +
+      '    <div class="rank-rows">\n' +
+      '      <div class="rank-row"><span>Overall</span><b>#' + rank.no + ' of ' + rank.total + '</b></div>\n' +
+      '      <div class="rank-row"><span>In ' + esc(rank.cat) + '</span><b>#' + rank.catNo + ' of ' + rank.catTotal + '</b></div>\n' +
+      '    </div>\n' +
+      '    <p class="rank-cap">Earlier launches rank first · updates as the board grows</p>\n' +
+      '  </div>\n'
+    : '';
   return (
 '<!DOCTYPE html>\n' +
 '<html lang="en">\n' +
@@ -274,7 +284,7 @@ function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount) {
 '<meta name="description" content="' + esc((d.description || d.tagline || '').slice(0, 155)) + '">\n' +
 '<link rel="canonical" href="https://launch.arr.club/launches/' + slug + '/">\n' +
 '<link rel="icon" href="' + FAVICON + '">\n' +
-'<link rel="stylesheet" href="/style.css?v=20260930k">\n' +
+'<link rel="stylesheet" href="/style.css?v=20260930n">\n' +
 '<script type="application/ld+json">\n' +
 '{"@context":"https://schema.org","@type":"SoftwareApplication",\n' +
 '"name":' + JSON.stringify(d.name) + ',"applicationCategory":"WebApplication","operatingSystem":"Web",\n' +
@@ -328,6 +338,7 @@ storyCards + '\n' +
 '    <div class="stat-card"><span>Maker</span>' + makerBig + makerSub + '</div>\n' +
 '  </div>\n' +
 '\n' +
+rankCard +
 '  <div class="card chart-card" id="drChart" data-dr="' + drAttr + '" hidden>\n' +
 '    <h4>Products by Domain Rating</h4>\n' +
 '    <div class="bars" id="drBars"></div>\n' +
@@ -357,9 +368,15 @@ moreRows + '\n' +
 DETAIL_SHARED_JS +
 '</main>\n' +
 '<footer class="site-footer">\n' +
+'  <div class="footer-cols">\n' +
+'    <div class="fcol"><h5>Discover</h5><a href="/#recently">Launches</a><a href="/2026/w40/">Weekly archive</a><a href="/#leaderboard">Leaderboard</a></div>\n' +
+'    <div class="fcol"><h5>Alternatives</h5><a href="/alternatives/product-hunt/">Product Hunt alternative</a><a href="/alternatives/faslaunch/">FasLaunch alternative</a></div>\n' +
+'    <div class="fcol"><h5>Launch</h5><a href="/launch-your-startup/">Launch your startup</a><a href="/launch-your-ai-tool/">Launch your AI tool</a><a href="/launch-your-saas/">Launch your SaaS</a></div>\n' +
+'    <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a></div>\n' +
+'  </div>\n' +
 '  <div class="footer-inner">\n' +
 '    <span>© 2026 launch.arr.club · A part of <a href="https://arr.club">ARR.Club</a></span>\n' +
-'    <span><a href="/">Home</a> · <a href="/submit">Submit</a> · <a href="/privacy">Privacy</a> · <a href="/sponsor.html">Sponsor · $29/mo</a></span>\n' +
+'    <span class="sample-note">Curated listings: a mix of founder submissions and our editors\u2019 picks of public launches.</span>\n' +
 '  </div>\n' +
 '</footer>\n' +
 '<script src="/auth.js"></script>\n' +
@@ -434,9 +451,12 @@ async function handleApprove(request, env) {
   const makerCount = d.founder
     ? idx.filter(function (e) { return (e.founder || '') === d.founder; }).length + 1
     : null;
+  const rankCatName = (d.categories && d.categories[0]) || 'Product';
+  const rankCatN = idx.filter(function (e) { return (e.category || 'Product') === rankCatName; }).length;
+  const rank = { no: launchNo, total: idx.length + 1, cat: rankCatName, catNo: rankCatN + 1, catTotal: rankCatN + 1 };
 
   // 1. detail page
-  const detail = detailPage(d, slug, launchNo, badgeVerified === true, dr, others, makerCount);
+  const detail = detailPage(d, slug, launchNo, badgeVerified === true, dr, others, makerCount, rank);
 
   // 2. homepage: insert card (board stats are computed client-side from launches.json)
   let indexHtml = indexHtml0.replace('<div class="feed" id="launchRail">', '<div class="feed" id="launchRail">\n' + homeCard(d, slug, launchNo, dr).replace(/\n$/, ''));
