@@ -392,7 +392,9 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .sp-table td:last-child { text-align: right; font-weight: 700; font-family: var(--mono); }
 
 /* Hero search */
-.hero-searchrow { display: flex; justify-content: center; margin-top: 1.1rem; }
+.hero-searchrow { display: flex; gap: 0.7rem; justify-content: center; align-items: center; margin-top: 1.1rem; }
+.hero-searchrow .btn { white-space: nowrap; flex: none; }
+@media (max-width: 560px) { .hero-searchrow { flex-direction: column; align-items: stretch; } }
 .hero-search { position: relative; width: 100%; max-width: 520px; display: flex; align-items: center; }
 .hero-search svg { position: absolute; left: 14px; color: var(--text-muted); pointer-events: none; }
 .hero-search input[type="search"] { width: 100%; padding: 0.75rem 1rem 0.75rem 2.6rem; font-size: 0.95rem; font-family: var(--font);
