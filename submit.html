@@ -302,7 +302,7 @@
     }, 1500);
   });
   launchBtn.addEventListener('click', function(){ alert('🎉 Launched! (M1 demo — in production your page would be live now.)'); });
-  document.getElementById('payBtn').addEventListener('click', function(){ alert('M1 demo — connect a Stripe Payment Link or Dodo checkout URL here (see README).'); });
+  document.getElementById('payBtn').addEventListener('click', function(){ window.open('https://buy.stripe.com/fZu9ATdir8uT0kM9Mfcs802', '_blank', 'noopener'); });
 
   /* Google Identity Services sign-in (M1: identifies the submitter client-side) */
   var GOOGLE_CLIENT_ID = '659455206571-e0rd1e7iq8os25s4441elss3960bkfjs.apps.googleusercontent.com';
