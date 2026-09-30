@@ -369,3 +369,24 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .lc-top .launch-no { margin-bottom: 0; }
 .rev-big { font-family: var(--mono); font-weight: 800; font-size: 0.98rem; color: var(--accent-hover); letter-spacing: -0.01em; }
 .rev-big.tracked { color: var(--orange); }
+
+/* Step 3: plan note + featured upsell */
+.plan-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.9rem 0 0; }
+.feat-strip { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  margin-top: 1.4rem; padding: 1.1rem 1.3rem; border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, #26374f 0%, var(--navy) 100%); color: #fff; box-shadow: var(--shadow-lg); }
+.feat-copy { display: flex; flex-direction: column; gap: 0.2rem; }
+.feat-copy strong { font-size: 1.02rem; letter-spacing: -0.01em; }
+.feat-copy strong .once { font-size: 0.78rem; font-weight: 500; color: #94a3b8; }
+.feat-copy span { font-size: 0.85rem; color: #cbd5e1; }
+.feat-strip .btn { flex: none; }
+
+/* Sponsored cards (max 2, top of feed) */
+.launch-card.sponsored { border: 1px solid #fcd34d; background: linear-gradient(180deg, #fffdf4 0%, #fff 65%); }
+.ribbon.sp { background: #b45309; }
+
+/* Sponsor page */
+.sp-hero { text-align: center; padding: 2rem 1rem 1rem; }
+.sp-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.92rem; }
+.sp-table td { padding: 0.7rem 0.4rem; border-bottom: 1px solid var(--border); }
+.sp-table td:last-child { text-align: right; font-weight: 700; font-family: var(--mono); }

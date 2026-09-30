@@ -7,7 +7,7 @@
 <meta name="description" content="Launch your AI startup on launch.arr.club in minutes. Submit your product, optionally share revenue, and get in front of investors. Free to launch.">
 <link rel="canonical" href="https://launch.arr.club/submit.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d9488'/%3E%3Cpath d='M32 12c8 6 12 14 12 22l-7 3-3 9h-4l-2-7-8 2 2-8-4-3c0-8 6-14 14-18z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='24' r='4' fill='%230d9488'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/style.css?v=20260930c">
+<link rel="stylesheet" href="/style.css?v=20260930d">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -141,24 +141,33 @@
         <p>Pick one. Every option puts your product live the moment it is done.</p>
         <div class="pick-grid" role="radiogroup" aria-label="Launch options">
           <button type="button" class="pick" role="radio" aria-checked="true" data-plan="badge">
-            <span class="radio-dot"></span><span class="best">★ Best value: free and dofollow</span>
+            <span class="radio-dot"></span><span class="best">★ Best value</span>
             <span class="pick-tag"><span class="t1">FREE</span><span class="t2">DOFOLLOW</span></span>
-            <h3>Add our badge, launch free</h3>
-            <p>Continue free by adding our badge on your homepage. Launch for free and get a dofollow backlink.</p>
+            <h3>Badge launch</h3>
+            <p>Add our badge to your homepage. Free forever, dofollow listing.</p>
           </button>
           <button type="button" class="pick" role="radio" aria-checked="false" data-plan="paid">
             <span class="radio-dot"></span>
             <span class="pick-tag"><span class="t1">$5 ONCE</span><span class="t2">DOFOLLOW</span></span>
-            <h3>No badge? Pay and launch</h3>
-            <p>Don't want to add the badge? Pay $5 once, get a dofollow backlink, and launch right away. Nothing to add to your site.</p>
+            <h3>Instant launch</h3>
+            <p>No badge needed. One $5 payment, dofollow listing, live now.</p>
           </button>
           <button type="button" class="pick" role="radio" aria-checked="false" data-plan="free">
             <span class="radio-dot"></span>
             <span class="pick-tag"><span class="t1">FREE</span><span class="t2">NOFOLLOW</span></span>
-            <h3>Free, no badge</h3>
-            <p>Launch with a nofollow link and nothing to add. Every account gets 2 free launches.</p>
+            <h3>Free launch</h3>
+            <p>Nofollow listing, nothing to add. 2 free per account — then $5 each.</p>
             <p class="left-note">1 of 2 free launches left</p>
           </button>
+        </div>
+        <p class="plan-note">Badge and $5 launches: unlimited. Free nofollow: 2 per account, then $5 each.</p>
+
+        <div class="feat-strip">
+          <div class="feat-copy">
+            <strong>🚀 Featured Launch — $29 <span class="once">once</span></strong>
+            <span>Top of the homepage for 7 days · Sponsored slot in the ARR.Club investor digest · X announcement</span>
+          </div>
+          <button type="button" class="btn" id="featBtn">Get featured</button>
         </div>
 
         <!-- badge subflow -->
@@ -210,7 +219,7 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <span>© 2026 launch.arr.club · A part of <a href="https://arr.club">ARR.Club</a></span>
-    <span><a href="/">Home</a> · <a href="/privacy">Privacy</a></span>
+    <span><a href="/">Home</a> · <a href="/privacy">Privacy</a> · <a href="/sponsor.html">Sponsor · $29/mo</a></span>
     <span class="sample-note">Sample data for preview.</span>
   </div>
 </footer>
@@ -393,6 +402,12 @@
   });
   shotsUrl.addEventListener('input', syncShots);
 
+  /* Payments: $5 instant launch (live) + $29 featured (John to provide link) */
+  var FEATURED_URL = '';
+  document.getElementById('featBtn').addEventListener('click', function(){
+    if(FEATURED_URL){ window.open(FEATURED_URL, '_blank', 'noopener'); }
+    else { alert('Featured launches open soon — check back shortly.'); }
+  });
   document.getElementById('payBtn').addEventListener('click', function(){ window.open('https://buy.stripe.com/fZu9ATdir8uT0kM9Mfcs802', '_blank', 'noopener'); });
 
   /* Google Identity Services sign-in (M1: identifies the submitter client-side) */
