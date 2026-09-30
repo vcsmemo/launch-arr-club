@@ -433,7 +433,7 @@
     function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
     var medals = ['🥇','🥈','🥉'];
     fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
-      function revVal(it){ var m = String(it.revenue || '').match(/\$([\\d.]+)k/); return m ? parseFloat(m[1]) : -1; }
+      function revVal(it){ var m = String(it.revenue || '').match(/\$(\d[\d.]+)k/); return m ? parseFloat(m[1]) : -1; }
       items.sort(function(a, b){ return revVal(b) - revVal(a); });
       document.getElementById('lbBody').innerHTML = items.map(function(it, i){
         var logo = it.logo
