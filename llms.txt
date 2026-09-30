@@ -32,13 +32,13 @@
 - DataExpert (Education): Master data engineering and AI like a big tech engineer https://launch.arr.club/launches/dataexpert/
 - SEOBOT (Marketing): Fully autonomous SEO robot with AI agents for busy founders https://launch.arr.club/launches/seobot/
 - Indexsy (Marketing): We Build, Acquire & Scale Digital Assets https://launch.arr.club/launches/indexsy/
-- Lunchbreak (AI Writing): Check Your Writing for AI, Always Free https://launch.arr.club/launches/lunchbreak/
+- Web3Forms (#015): Contact Form API for Modern Websites — https://launch.arr.club/launches/web3forms/
 - AI Interview Copilot (Education): AI Interview Assistant for real-time support https://launch.arr.club/launches/ai-interview-copilot/
 - Based Labs AI (Video): Turn any idea into stunning images and cinematic video https://launch.arr.club/launches/based-labs-ai/
-- Talefy (Entertainment): AI Story Generator - Create Interactive Stories Online https://launch.arr.club/launches/talefy/
-- Brevilabs (Dev Tools): Stop re-explaining yourself to every AI https://launch.arr.club/launches/brevilabs/
-- Esferas (Sales): LinkedIn automation that works https://launch.arr.club/launches/esferas/
-- iCollect Everything (Productivity): The #1 app for managing your collectibles or inventory https://launch.arr.club/launches/icollect-everything/
+- Capgo (#018): Capacitor plugin to update your app without sending to store — https://launch.arr.club/launches/capgo/
+- Liinks (#019): Link in bio with Instagram auto-posting and analytics — https://launch.arr.club/launches/liinks/
+- ConvertLabs (#020): Run your home service business from one screen — https://launch.arr.club/launches/convertlabs/
+- SuperX (#021): X growth tool: scheduling, analytics, AI content — https://launch.arr.club/launches/superx/
 - Comp AI (Dev Tools): The AI-first compliance platform https://launch.arr.club/launches/comp-ai/
 - MyPlots (Entertainment): Discover & host unforgettable events https://launch.arr.club/launches/myplots/
 - SalesRobot (Sales): Message 100s of people on LinkedIn and cold email. Every week. Automatically. https://launch.arr.club/launches/salesrobot/
