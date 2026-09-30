@@ -35,9 +35,9 @@
   </section>
 
   <div class="board-stats">
-    <div class="bs"><span class="bs-num">3</span><span class="bs-label">launches</span></div>
-    <div class="bs"><span class="bs-num teal">$60k</span><span class="bs-label">MRR tracked</span></div>
-    <div class="bs"><span class="bs-num">1</span><span class="bs-label">verified</span></div>
+    <div class="bs"><span class="bs-num" data-count="3">3</span><span class="bs-label">launches</span></div>
+    <div class="bs"><span class="bs-num teal" data-count="60" data-prefix="$" data-suffix="k">$60k</span><span class="bs-label">MRR tracked</span></div>
+    <div class="bs"><span class="bs-num" data-count="1">1</span><span class="bs-label">verified</span></div>
   </div>
 
   <section id="recently">
@@ -93,5 +93,30 @@
     <span class="sample-note">Sample data for preview — listings shown are placeholders, not real products.</span>
   </div>
 </footer>
+<script>
+/* Board stats count-up */
+(function(){
+  var els = document.querySelectorAll('.bs-num[data-count]');
+  function animate(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var prefix = el.getAttribute('data-prefix') || '', suffix = el.getAttribute('data-suffix') || '';
+    var dur = 900, t0 = null;
+    function frame(t){
+      if(!t0) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(target * e) + suffix;
+      if(p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ animate(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.4 });
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(animate); }
+})();
+</script>
 </body>
 </html>

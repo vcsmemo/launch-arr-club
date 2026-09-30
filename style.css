@@ -353,13 +353,16 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .up-urlrow .up-or2 { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
 .up-urlrow input, .up-urlrow textarea { flex: 1; font-size: 0.88rem; }
 
-/* Board stats: revenue is the headline */
-.board-stats { display: flex; justify-content: center; margin: 0.6rem 0 0.4rem; }
-.bs { text-align: center; padding: 0 1.6rem; }
-.bs + .bs { border-left: 1px solid var(--border); }
-.bs-num { display: block; font-family: var(--mono); font-weight: 800; font-size: 1.45rem; color: var(--navy); letter-spacing: -0.02em; }
-.bs-num.teal { color: var(--accent-hover); }
-.bs-label { display: block; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-top: 0.2rem; }
+/* Board stats: mission-control readout panel */
+.board-stats { display: flex; justify-content: center; background: linear-gradient(180deg, #26374f 0%, var(--navy) 100%);
+  border-radius: var(--radius-lg); padding: 1.15rem 1rem; margin: 1.3rem 0 0.5rem; box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255,255,255,.06); }
+.bs { text-align: center; padding: 0 1.8rem; }
+.bs + .bs { border-left: 1px solid rgba(255,255,255,.12); }
+.bs-num { display: block; font-family: var(--mono); font-weight: 800; font-size: 1.6rem; color: #fff; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.bs-num.teal { color: #5eead4; text-shadow: 0 0 18px rgba(94,234,212,.35); }
+.bs-label { display: block; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.14em; color: #94a3b8; margin-top: 0.25rem; }
+@media (max-width: 560px) { .bs { padding: 0 1rem; } .bs-num { font-size: 1.25rem; } }
 
 /* Revenue-first cards */
 .lc-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.2rem; }
