@@ -282,6 +282,18 @@ function mrrK(rev) {
   return v;
 }
 
+function b64encode(str) {
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+async function ghFileSha(env, path) {
+  const d = await gh(env, '/contents/' + path + '?ref=main');
+  return { text: b64decode(d.content), sha: d.sha };
+}
+
 async function handleApprove(request, env) {
   let body;
   try { body = await request.json(); } catch (e) { return json({ error: 'invalid json' }, 400); }
@@ -303,13 +315,14 @@ async function handleApprove(request, env) {
     } catch (e) { break; }
   }
 
-  // current files
-  const [indexHtml0, launchesJson0, sitemap0, archive0] = await Promise.all([
-    ghFile(env, 'index.html'),
-    ghFile(env, 'launches.json'),
-    ghFile(env, 'sitemap.xml'),
-    ghFile(env, '2026/w40/index.html'),
+  // current files (with shas for update)
+  const [indexF, launchesF, sitemapF, archiveF] = await Promise.all([
+    ghFileSha(env, 'index.html'),
+    ghFileSha(env, 'launches.json'),
+    ghFileSha(env, 'sitemap.xml'),
+    ghFileSha(env, '2026/w40/index.html'),
   ]);
+  const indexHtml0 = indexF.text, launchesJson0 = launchesF.text, sitemap0 = sitemapF.text, archive0 = archiveF.text;
 
   // next launch number
   let maxNo = 0;
@@ -370,32 +383,20 @@ async function handleApprove(request, env) {
     return parseInt(n, 10) + 1 + ' launches</strong>';
   });
 
-  // commit via GitHub API
-  const ref = await gh(env, '/git/ref/heads/main');
-  const commitSha = ref.object.sha;
-  const baseCommit = await gh(env, '/git/commits/' + commitSha);
-  const files = {
-    ['launches/' + slug + '/index.html']: detail,
-    'index.html': indexHtml,
-    'launches.json': launchesJson,
-    'sitemap.xml': sitemap,
-    '2026/w40/index.html': archive,
-  };
-  const tree = await gh(env, '/git/trees', 'POST', {
-    base_tree: baseCommit.tree.sha,
-    tree: await Promise.all(
-      Object.keys(files).map(async function (p) {
-        const b = await gh(env, '/git/blobs', 'POST', { content: files[p], encoding: 'utf-8' });
-        return { path: p, mode: '100644', type: 'blob', sha: b.sha };
-      })
-    ),
-  });
-  const newCommit = await gh(env, '/git/commits', 'POST', {
-    message: 'Publish ' + d.name + ' (#' + launchNo + ') via review console',
-    tree: tree.sha,
-    parents: [commitSha],
-  });
-  await gh(env, '/git/ref/heads/main', 'PATCH', { sha: newCommit.sha });
+  // publish via Contents API (one PUT per file; fine-grained tokens handle this reliably)
+  const msg = 'Publish ' + d.name + ' (#' + launchNo + ') via review console';
+  const updates = [
+    { path: 'launches/' + slug + '/index.html', content: detail, sha: null },
+    { path: 'index.html', content: indexHtml, sha: indexF.sha },
+    { path: 'launches.json', content: launchesJson, sha: launchesF.sha },
+    { path: 'sitemap.xml', content: sitemap, sha: sitemapF.sha },
+    { path: '2026/w40/index.html', content: archive, sha: archiveF.sha },
+  ];
+  for (const u of updates) {
+    const payload = { message: msg, content: b64encode(u.content), branch: 'main' };
+    if (u.sha) payload.sha = u.sha;
+    await gh(env, '/contents/' + u.path, 'PUT', payload);
+  }
 
   // move submission to reviewed/approved/
   const base = key.split('/').pop();
