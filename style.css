@@ -411,3 +411,24 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .search-drop .sd-tag { font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.1rem; }
 .search-drop .sd-cat { font-size: 0.7rem; color: var(--accent-hover); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 0.5rem; }
 .search-drop .sd-empty { padding: 0.9rem 1rem; font-size: 0.88rem; color: var(--text-muted); }
+
+/* Profile chip + dropdown (shared auth) */
+.nav-auth { display: flex; align-items: center; margin-left: 0.4rem; }
+.profile-wrap { position: relative; }
+.profile-chip { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; border: 1.5px solid var(--accent);
+  border-radius: 100px; padding: 0.22rem 0.8rem 0.22rem 0.28rem; cursor: pointer; font-family: var(--font);
+  font-size: 0.85rem; font-weight: 600; color: var(--text); }
+.profile-chip:hover { box-shadow: var(--shadow-sm); }
+.profile-chip img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; }
+.profile-chip span { max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.profile-menu { position: absolute; right: 0; top: calc(100% + 8px); min-width: 230px; background: #fff;
+  border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 0.4rem; z-index: 50; }
+.pm-head { padding: 0.55rem 0.8rem 0.7rem; border-bottom: 1px solid var(--border); margin-bottom: 0.3rem; }
+.pm-head strong { display: block; font-size: 0.78rem; letter-spacing: 0.05em; color: var(--navy); }
+.pm-head span { font-size: 0.8rem; color: var(--text-muted); }
+.profile-menu a, .profile-menu button { display: block; width: 100%; text-align: left; padding: 0.55rem 0.8rem;
+  font-size: 0.88rem; font-weight: 500; color: var(--text); text-decoration: none; background: none; border: 0;
+  border-radius: var(--radius); cursor: pointer; font-family: var(--font); }
+.profile-menu a:hover, .profile-menu button:hover { background: var(--bg-soft); }
+.nav-signin { font-size: 0.875rem; font-weight: 600; color: var(--accent-hover); text-decoration: none; white-space: nowrap; }
+.nav-signin:hover { color: var(--accent-dark); }
