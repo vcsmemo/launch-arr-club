@@ -334,3 +334,18 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .mission .m-step.dim { color: var(--text-muted); font-weight: 500; }
 .mission .m-step.dim .m-dot { background: var(--border-strong); box-shadow: none; }
 @media (max-width: 560px) { .mission .m-step .tnum { display: none; } }
+
+/* Image upload fields (submit form) */
+.up-row { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.6rem; }
+.up-btn { display: inline-block; font-weight: 600; font-size: 0.88rem; color: var(--accent-hover); background: var(--accent-soft);
+  border: 1px dashed var(--accent-border); border-radius: var(--radius); padding: 0.55rem 1.1rem; cursor: pointer; transition: border-color 0.15s, background 0.15s; white-space: nowrap; }
+.up-btn:hover { border-color: var(--accent); background: #e6faf8; }
+.up-or { font-size: 0.85rem; color: var(--text-muted); }
+.up-row input[type="url"] { flex: 1; }
+.up-note { font-size: 0.8rem; color: var(--text-muted); margin: 0.45rem 0 0; }
+.up-prev { margin-top: 0.6rem; }
+.up-prev img { max-height: 72px; max-width: 220px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-soft); }
+.up-thumbs { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.6rem; }
+.up-thumbs img { height: 64px; width: auto; max-width: 120px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-soft); }
+.up-status { font-size: 0.83rem; color: var(--accent-hover); margin-top: 0.4rem; }
+.up-status.err { color: var(--err); }

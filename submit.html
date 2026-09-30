@@ -59,8 +59,26 @@
             <button type="button" class="chip" aria-pressed="false">Customer Support</button>
           </div>
         </div>
-        <div class="field"><label>Logo URL</label><input type="url" id="f-logo" placeholder="https://yourproduct.com/logo.png"></div>
-        <div class="field"><label>Screenshots (URLs, one per line)</label><textarea id="f-shots" style="min-height:70px" placeholder="https://…&#10;https://…"></textarea></div>
+        <div class="field"><label>Logo</label>
+          <div class="up-row">
+            <label class="up-btn">Upload image<input type="file" id="f-logo-file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label>
+            <span class="up-or">or</span>
+            <input type="url" id="f-logo-url" placeholder="paste logo URL">
+          </div>
+          <div class="up-prev" id="logoPrev" hidden><img id="logoPrevImg" alt="Logo preview"></div>
+          <input type="hidden" id="f-logo">
+          <p class="up-note">PNG / JPG / WebP, up to 5MB — uploads instantly.</p>
+        </div>
+        <div class="field"><label>Screenshots</label>
+          <div class="up-row">
+            <label class="up-btn">Upload images<input type="file" id="f-shots-file" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden></label>
+            <span class="up-or">or</span>
+          </div>
+          <textarea id="f-shots-url" style="min-height:56px" placeholder="paste screenshot URLs, one per line"></textarea>
+          <div class="up-thumbs" id="shotsPrev"></div>
+          <textarea id="f-shots" hidden></textarea>
+          <p class="up-note">PNG / JPG / WebP, up to 5MB each — uploads instantly.</p>
+        </div>
         <div class="field"><label>X (Twitter) username</label><input type="text" id="f-x" placeholder="@yourproduct"></div>
         <div class="field"><label>Demo video URL</label><input type="url" id="f-demo" placeholder="https://youtube.com/…"></div>
         <div class="field"><label>Pricing</label>
@@ -302,6 +320,62 @@
     }, 1500);
   });
   launchBtn.addEventListener('click', function(){ alert('🎉 Launched! (M1 demo — in production your page would be live now.)'); });
+  /* Image uploads via Cloudflare Worker + R2 */
+  var IMG_WORKER = 'https://launch-arr-club-img.johntian2015.workers.dev';
+  function uploadToWorker(file){
+    var fd = new FormData();
+    fd.append('file', file);
+    return fetch(IMG_WORKER + '/upload', { method: 'POST', body: fd }).then(function(r){
+      if(!r.ok) throw new Error('upload failed');
+      return r.json();
+    }).then(function(j){
+      if(!j.url) throw new Error(j.error || 'upload failed');
+      return j.url;
+    });
+  }
+  var logoFile = document.getElementById('f-logo-file'),
+      logoUrl = document.getElementById('f-logo-url'),
+      logoHidden = document.getElementById('f-logo'),
+      logoPrev = document.getElementById('logoPrev'),
+      logoPrevImg = document.getElementById('logoPrevImg');
+  logoFile.addEventListener('change', function(){
+    var f = logoFile.files[0];
+    if(!f) return;
+    logoPrev.hidden = false;
+    logoPrevImg.removeAttribute('src');
+    logoPrevImg.alt = 'Uploading…';
+    uploadToWorker(f).then(function(u){
+      logoHidden.value = u; logoUrl.value = '';
+      logoPrevImg.src = u; logoPrevImg.alt = 'Logo preview';
+    }).catch(function(){ logoPrev.hidden = true; alert('Upload failed — try a PNG/JPG under 5MB, or paste a URL instead.'); });
+    logoFile.value = '';
+  });
+  logoUrl.addEventListener('input', function(){
+    var u = logoUrl.value.trim();
+    logoHidden.value = u;
+    if(u){ logoPrev.hidden = false; logoPrevImg.src = u; logoPrevImg.alt = 'Logo preview'; }
+    else { logoPrev.hidden = true; }
+  });
+  var shotsFile = document.getElementById('f-shots-file'),
+      shotsUrl = document.getElementById('f-shots-url'),
+      shotsHidden = document.getElementById('f-shots'),
+      shotsPrev = document.getElementById('shotsPrev'),
+      shotsUploaded = [];
+  function syncShots(){
+    var pasted = shotsUrl.value.split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
+    shotsHidden.value = shotsUploaded.concat(pasted).join('\n');
+  }
+  shotsFile.addEventListener('change', function(){
+    Array.prototype.slice.call(shotsFile.files).forEach(function(f){
+      var ph = document.createElement('img'); ph.alt = 'Uploading…'; shotsPrev.appendChild(ph);
+      uploadToWorker(f).then(function(u){
+        shotsUploaded.push(u); ph.src = u; ph.alt = 'Screenshot'; syncShots();
+      }).catch(function(){ ph.remove(); alert('One upload failed — try PNG/JPG under 5MB, or paste the URL instead.'); });
+    });
+    shotsFile.value = '';
+  });
+  shotsUrl.addEventListener('input', syncShots);
+
   document.getElementById('payBtn').addEventListener('click', function(){ window.open('https://buy.stripe.com/fZu9ATdir8uT0kM9Mfcs802', '_blank', 'noopener'); });
 
   /* Google Identity Services sign-in (M1: identifies the submitter client-side) */
