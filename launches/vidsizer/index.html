@@ -7,7 +7,7 @@
 <meta name="description" content="VidSizer is a free, privacy-first video compressor that runs 100% locally in your browser. Launched on launch.arr.club, tracked on ARR.Club.">
 <link rel="canonical" href="https://launch.arr.club/launches/vidsizer/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d9488'/%3E%3Cpath d='M32 12c8 6 12 14 12 22l-7 3-3 9h-4l-2-7-8 2 2-8-4-3c0-8 6-14 14-18z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='24' r='4' fill='%230d9488'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/style.css?v=20260930u">
+<link rel="stylesheet" href="/style.css?v=20260930v">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication",
 "name":"VidSizer","applicationCategory":"MultimediaApplication","operatingSystem":"Web",
@@ -58,7 +58,6 @@
 
   <div class="stat-grid">
     <div class="stat-card"><span>Revenue</span><b>&ndash;</b><small>Not shared yet</small></div>
-    <div class="stat-card"><span>Domain Rating</span><b>&ndash;<i>/100</i></b><small>Not checked yet</small></div>
     <div class="stat-card"><span>Pricing</span><b>Free</b><small>No cost to start</small></div>
     <div class="stat-card"><span>Launched</span><b>30 Sept 2026</b><small>L+0 &middot; Live on launch.arr.club</small></div>
     <div class="stat-card"><span>Category</span><div class="pills"><span class="tag cat">Video</span><span class="tag cat">Productivity</span></div></div>
@@ -74,9 +73,6 @@
     <p class="rank-cap">Earlier launches rank first · updates as the board grows</p>
   </div>
 
-  <div class="card chart-card" id="drChart" data-dr="" hidden>
-    <h4>Products by Domain Rating</h4>
-    <div class="bars" id="drBars"></div>
     <p class="chart-cap" id="drCap"></p>
   </div>
 
@@ -118,26 +114,6 @@
       });
     });
   });
-  var wrap = document.getElementById('drChart');
-  if (wrap) {
-    var myDr = wrap.getAttribute('data-dr');
-    myDr = (myDr === null || myDr === '') ? null : parseInt(myDr, 10);
-    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
-      var drs = items.map(function(i){ return i.dr; }).filter(function(d){ return d != null; });
-      if (!drs.length) return;
-      var buckets = [0,0,0,0,0,0,0,0,0,0];
-      drs.forEach(function(d){ buckets[Math.min(9, Math.floor(d / 10))]++; });
-      var max = Math.max.apply(null, buckets.concat([1]));
-      var avg = Math.round(drs.reduce(function(a,b){ return a + b; }, 0) / drs.length);
-      document.getElementById('drBars').innerHTML = buckets.map(function(c, i){
-        var h = Math.max(3, Math.round(c / max * 64));
-        var mine = (myDr != null && Math.min(9, Math.floor(myDr / 10)) === i);
-        return '<div class="bar' + (mine ? ' mine' : '') + '" style="height:' + h + 'px" title="' + (i*10) + '-' + (i*10+9) + ': ' + c + '"></div>';
-      }).join('');
-      document.getElementById('drCap').textContent = 'vs. average DR of ' + avg + ' across ' + drs.length + ' rated launches';
-      wrap.hidden = false;
-    }).catch(function(){});
-  }
 })();
 </script>
 </main>

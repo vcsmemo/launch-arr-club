@@ -127,18 +127,9 @@ function logoHtml(d) {
   return '<span class="lc-logo-ph">' + esc(String(d.name || '?').charAt(0)) + '</span>';
 }
 
-function drText(dr) {
-  return dr === null || dr === undefined || dr === '' ? '–' : String(dr);
-}
 
-function validDr(v) {
-  if (v === undefined || v === null || v === '') return null;
-  const n = parseInt(v, 10);
-  if (isNaN(n)) return null;
-  return Math.max(0, Math.min(100, n));
-}
 
-function homeCard(d, slug, launchNo, dr) {
+function homeCard(d, slug, launchNo) {
   const rev = revenueOf(d);
   const revLine = rev
     ? '          <div class="lc-rev tracked">💰 ' + esc(rev.amount) + (rev.metric ? ' ' + esc(rev.metric) : '') + '</div>\n'
@@ -153,7 +144,7 @@ function homeCard(d, slug, launchNo, dr) {
     '          <p class="lc-tag">' + esc(d.tagline || '') + '</p>\n' +
     revLine +
     '          <div class="lc-meta">\n' +
-    '            <div class="lc-m"><span>DR</span><b>' + drText(dr) + '</b></div>\n' +
+
     '            <div class="lc-m"><span>Price</span><b>' + esc(priceLabelOf(d)) + '</b></div>\n' +
     '            <div class="lc-m"><span>Category</span><b>' + esc(cats[0]) + '</b></div>\n' +
     '            <span class="lc-lp" title="Launched today">L+0</span>\n' +
@@ -163,8 +154,8 @@ function homeCard(d, slug, launchNo, dr) {
   );
 }
 
-function archiveCard(d, slug, launchNo, dr) {
-  return homeCard(d, slug, launchNo, dr).replace(/^      /gm, '    ');
+function archiveCard(d, slug, launchNo) {
+  return homeCard(d, slug, launchNo).replace(/^      /gm, '    ');
 }
 
 const DETAIL_SHARED_JS = `<script>
@@ -178,31 +169,11 @@ const DETAIL_SHARED_JS = `<script>
       });
     });
   });
-  var wrap = document.getElementById('drChart');
-  if (wrap) {
-    var myDr = wrap.getAttribute('data-dr');
-    myDr = (myDr === null || myDr === '') ? null : parseInt(myDr, 10);
-    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
-      var drs = items.map(function(i){ return i.dr; }).filter(function(d){ return d != null; });
-      if (!drs.length) return;
-      var buckets = [0,0,0,0,0,0,0,0,0,0];
-      drs.forEach(function(d){ buckets[Math.min(9, Math.floor(d / 10))]++; });
-      var max = Math.max.apply(null, buckets.concat([1]));
-      var avg = Math.round(drs.reduce(function(a,b){ return a + b; }, 0) / drs.length);
-      document.getElementById('drBars').innerHTML = buckets.map(function(c, i){
-        var h = Math.max(3, Math.round(c / max * 64));
-        var mine = (myDr != null && Math.min(9, Math.floor(myDr / 10)) === i);
-        return '<div class="bar' + (mine ? ' mine' : '') + '" style="height:' + h + 'px" title="' + (i*10) + '-' + (i*10+9) + ': ' + c + '"></div>';
-      }).join('');
-      document.getElementById('drCap').textContent = 'vs. average DR of ' + avg + ' across ' + drs.length + ' rated launches';
-      wrap.hidden = false;
-    }).catch(function(){});
-  }
 })();
 </script>
 `;
 
-function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount, rank) {
+function detailPage(d, slug, launchNo, badgeVerified, others, makerCount, rank) {
   const now = new Date();
   const dateLong = now.getDate() + ' ' + MONTHS[now.getMonth()] + ' ' + now.getFullYear();
   const dateShort = now.getDate() + ' ' + MONTHS[now.getMonth()].toUpperCase();
@@ -241,8 +212,6 @@ function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount, ra
   const revSub = rev
     ? '<small>Self-reported · tracked on <a href="https://arr.club">ARR.Club</a></small>'
     : '<small>Not shared yet</small>';
-  const drBig = dr !== null && dr !== undefined ? '<b>' + dr + '<i>/100</i></b>' : '<b>–<i>/100</i></b>';
-  const drSub = dr !== null && dr !== undefined ? '<small>Checked manually at review</small>' : '<small>Not checked yet</small>';
   const makerBig = d.founder ? '<b>' + esc(d.founder) + '</b>' : '<b>–</b>';
   const makerSub = makerCount === 1 ? '<small>1 product launched</small>'
     : makerCount > 1 ? '<small>' + makerCount + ' products launched</small>' : '<small>–</small>';
@@ -257,13 +226,12 @@ function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount, ra
     return '    <a class="more-row" href="' + esc(o.url) + '"><span class="more-rank">#' + (i + 1) + '</span>' + logo +
       '<span class="more-main"><strong>' + esc(o.name) + '</strong><p>' + esc(o.tagline || '') + '</p>' +
       '<small>' + esc((o.categories || []).join(' · ')) + '</small></span>' +
-      '<span class="more-dr"><span>DR</span><b>' + (o.dr === null || o.dr === undefined ? '–' : o.dr) + '</b></span></a>';
+      '</a>';
   }).join('\n');
   const priceNum = (function () {
     const m = /([\d,.]+)/.exec(priceLabelOf(d));
     return m ? m[1].replace(/,/g, '') : '0';
   })();
-  const drAttr = dr === null || dr === undefined ? '' : String(dr);
   const rankCard = rank
     ? '  <div class="card rank-card">\n' +
       '    <h4>Board position</h4>\n' +
@@ -284,7 +252,7 @@ function detailPage(d, slug, launchNo, badgeVerified, dr, others, makerCount, ra
 '<meta name="description" content="' + esc((d.description || d.tagline || '').slice(0, 155)) + '">\n' +
 '<link rel="canonical" href="https://launch.arr.club/launches/' + slug + '/">\n' +
 '<link rel="icon" href="' + FAVICON + '">\n' +
-'<link rel="stylesheet" href="/style.css?v=20260930u">\n' +
+'<link rel="stylesheet" href="/style.css?v=20260930v">\n' +
 '<script type="application/ld+json">\n' +
 '{"@context":"https://schema.org","@type":"SoftwareApplication",\n' +
 '"name":' + JSON.stringify(d.name) + ',"applicationCategory":"WebApplication","operatingSystem":"Web",\n' +
@@ -339,11 +307,7 @@ storyCards + '\n' +
 '  </div>\n' +
 '\n' +
 rankCard +
-'  <div class="card chart-card" id="drChart" data-dr="' + drAttr + '" hidden>\n' +
-'    <h4>Products by Domain Rating</h4>\n' +
-'    <div class="bars" id="drBars"></div>\n' +
-'    <p class="chart-cap" id="drCap"></p>\n' +
-'  </div>\n' +
+
 '\n' +
 shotSection +
 '  <h2 class="section-title caps"><span class="dot"></span>Product insights</h2>\n' +
@@ -436,7 +400,6 @@ async function handleApprove(request, env) {
   const launchNo = String(maxNo + 1).padStart(3, '0');
 
   const badgeVerified = d.plan === 'badge' && d.url ? await checkBadge(d.url) : false;
-  const dr = validDr(body.dr);
 
   // launch index + numbers (feed order == launches.json order, newest first)
   const idx = JSON.parse(launchesJson0);
@@ -446,7 +409,7 @@ async function handleApprove(request, env) {
   while ((mm2 = noRe2.exec(indexHtml0)) !== null) nos.push(mm2[1]);
   const others = idx.slice(0, 8).map(function (e, i) {
     return { name: e.name, tagline: e.tagline, url: e.url, logo: e.logo,
-             categories: [e.category || 'Product'], dr: e.dr, no: nos[i] || '–––' };
+             categories: [e.category || 'Product'], no: nos[i] || '–––' };
   });
   const makerCount = d.founder
     ? idx.filter(function (e) { return (e.founder || '') === d.founder; }).length + 1
@@ -456,10 +419,10 @@ async function handleApprove(request, env) {
   const rank = { no: launchNo, total: idx.length + 1, cat: rankCatName, catNo: rankCatN + 1, catTotal: rankCatN + 1 };
 
   // 1. detail page
-  const detail = detailPage(d, slug, launchNo, badgeVerified === true, dr, others, makerCount, rank);
+  const detail = detailPage(d, slug, launchNo, badgeVerified === true, others, makerCount, rank);
 
   // 2. homepage: insert card (board stats are computed client-side from launches.json)
-  let indexHtml = indexHtml0.replace('<div class="feed" id="launchRail">', '<div class="feed" id="launchRail">\n' + homeCard(d, slug, launchNo, dr).replace(/\n$/, ''));
+  let indexHtml = indexHtml0.replace('<div class="feed" id="launchRail">', '<div class="feed" id="launchRail">\n' + homeCard(d, slug, launchNo).replace(/\n$/, ''));
 
   // 3. launches.json (idx parsed above)
   const rev = revenueOf(d);
@@ -470,7 +433,6 @@ async function handleApprove(request, env) {
     url: '/launches/' + slug + '/',
     logo: d.logo || null,
     founder: d.founder || null,
-    dr: dr,
     revenue: rev ? rev.amount + (rev.metric ? ' ' + rev.metric : '') : null,
     revenue_verified: false,
     launched: todayISO(),
@@ -489,7 +451,7 @@ async function handleApprove(request, env) {
   );
 
   // 5. weekly archive
-  let archive = archive0.replace('<div class="feed">', '<div class="feed">\n' + archiveCard(d, slug, launchNo, dr).replace(/\n$/, ''));
+  let archive = archive0.replace('<div class="feed">', '<div class="feed">\n' + archiveCard(d, slug, launchNo).replace(/\n$/, ''));
   archive = archive.replace(/(\d+) launches<\/strong>/, function (full, n) {
     return parseInt(n, 10) + 1 + ' launches</strong>';
   });
