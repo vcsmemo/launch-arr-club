@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://launch.arr.club/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d9488'/%3E%3Cpath d='M32 12c8 6 12 14 12 22l-7 3-3 9h-4l-2-7-8 2 2-8-4-3c0-8 6-14 14-18z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='24' r='4' fill='%230d9488'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/style.css?v=20260930n">
+<link rel="stylesheet" href="/style.css?v=20260930o">
 </head>
 <body>
 <header class="site-header">
@@ -49,6 +49,8 @@
     <div class="bs"><span class="bs-num" data-stat="dr">–</span><span class="bs-label">avg DR</span></div>
   </div>
 
+  <div class="home-grid">
+    <div class="home-main">
   <section id="recently">
     <h2 class="section-title"><span class="dot"></span>Recently launched <a class="view-all" href="/2026/w40/">View all ›</a></h2>
     <div class="rail-wrap">
@@ -353,41 +355,51 @@
     </div>
   </section>
 
-  <section id="leaderboard">
-    <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by Domain Rating</span></h2>
-    <div class="lb-table">
-      <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">DR ↓</span><span style="text-align:right">Revenue</span></div>
-      <div id="lbBody"><div class="lb-row"><span></span><span class="lb-founder">Loading…</span><span></span><span></span><span></span></div></div>
+    <section class="strip">
+      <p><strong>Launching?</strong> No review queue — verify your badge or pay $5 once, live in minutes. <a href="/submit.html">Submit your product →</a></p>
+    </section>
     </div>
-    <p class="lb-note">DR is checked manually via Ahrefs at review time — new launches show – until checked.</p>
-  </section>
-
+    <aside class="home-side">
+      <div class="side-card">
+        <h3 class="side-title"><span class="dot"></span>Top by revenue</h3>
+        <div id="sideLb"><p class="side-empty">Loading…</p></div>
+      </div>
+      <div class="side-card side-cta">
+        <h3>Launching soon?</h3>
+        <p>Permanent page, dofollow backlink, and revenue tracking on ARR.Club.</p>
+        <a class="btn" href="/submit.html">🚀 Launch your product</a>
+      </div>
+    </aside>
+  </div>
   <script>
+  /* Sidebar: top by revenue */
   (function(){
     function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-    var medals = ['🥇','🥈','🥉'];
+    function revNum(s){
+      if(!s) return 0;
+      var m = /\$([\d,.]+)\s*([kKmM]?)/.exec(s);
+      if(!m) return 0;
+      var n = parseFloat(m[1].replace(/,/g, ''));
+      var u = (m[2] || '').toLowerCase();
+      return n * (u === 'm' ? 1000000 : u === 'k' ? 1000 : 1);
+    }
     fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
-      items.sort(function(a, b){ return ((b.dr == null ? -1 : b.dr) - (a.dr == null ? -1 : a.dr)); });
-      document.getElementById('lbBody').innerHTML = items.map(function(it, i){
+      items = items.filter(function(i){ return revNum(i.revenue) > 0; });
+      items.sort(function(a, b){ return revNum(b.revenue) - revNum(a.revenue); });
+      var top = items.slice(0, 8);
+      var el = document.getElementById('sideLb');
+      if(!top.length){ el.innerHTML = '<p class="side-empty">No revenue shared yet — be the first.</p>'; return; }
+      el.innerHTML = top.map(function(it, i){
         var logo = it.logo
           ? '<img src="' + String(it.logo).replace(/"/g, '') + '" alt="" loading="lazy">'
           : '<span class="lc-logo-ph">' + esc(String(it.name || '?').charAt(0)) + '</span>';
-        var revCell = it.revenue
-          ? '<span class="lb-rev-col has">' + esc(it.revenue) + '</span>'
-          : '<span class="lb-rev-col">–</span>';
-        return '<a class="lb-row" href="' + esc(it.url) + '"><span class="lb-rank">' + (medals[i] || (i + 1)) + '</span>'
-          + '<span class="lb-startup">' + logo + '<span><strong>' + esc(it.name) + '</strong><p>' + esc(it.tagline || '') + '</p></span></span>'
-          + '<span class="lb-founder">' + esc(it.founder || '–') + '</span>'
-          + '<span class="lb-dr">' + (it.dr == null ? '–' : it.dr) + '</span>'
-          + revCell + '</a>';
+        return '<a class="side-lb-row" href="' + esc(it.url) + '"><span class="side-lb-rank">' + (i + 1) + '</span>'
+          + logo + '<span class="side-lb-name">' + esc(it.name) + '</span>'
+          + '<span class="side-lb-rev">' + esc(it.revenue) + '</span></a>';
       }).join('');
-    }).catch(function(){ document.getElementById('lbBody').innerHTML = ''; });
+    }).catch(function(){ document.getElementById('sideLb').innerHTML = '<p class="side-empty">Could not load.</p>'; });
   })();
   </script>
-
-  <section class="strip">
-    <p><strong>Launching?</strong> No review queue — verify your badge or pay $5 once, live in minutes. <a href="/submit.html">Submit your product →</a></p>
-  </section>
 </main>
 <footer class="site-footer">
   <div class="footer-cols">
