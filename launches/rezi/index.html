@@ -114,5 +114,34 @@
   </div>
 </footer>
 <script src="/auth.js"></script>
+<script>
+(function(){
+  var m = location.pathname.match(/\/launches\/([^/]+)\//);
+  if (!m) return;
+  var slug = m[1];
+  var W = 'https://launch-arr-club-img.johntian2015.workers.dev';
+  // Track view
+  try {
+    fetch(W + '/track', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({type: 'view', slug: slug})
+    });
+  } catch(e) {}
+  // Track outbound clicks
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest('a[href^="http"]');
+    if (a && a.hostname !== location.hostname) {
+      try {
+        fetch(W + '/track', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({type: 'click', slug: slug})
+        });
+      } catch(e) {}
+    }
+  });
+})();
+</script>
 </body>
 </html>

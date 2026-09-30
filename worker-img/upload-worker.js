@@ -575,6 +575,31 @@ async function badgeSvg(slug, style, theme, env) {
   return new Response(svg, { headers });
 }
 
+/* ---------- analytics: view/click tracking ---------- */
+async function trackEvent(env, type, slug) {
+  const key = 'stats/' + slug + '.json';
+  let stats = { views: 0, clicks: 0 };
+  try {
+    const obj = await env.IMAGES.get(key);
+    if (obj) stats = await obj.json();
+  } catch (e) {}
+  if (type === 'view') stats.views = (stats.views || 0) + 1;
+  if (type === 'click') stats.clicks = (stats.clicks || 0) + 1;
+  stats.updated = new Date().toISOString().slice(0, 10);
+  await env.IMAGES.put(key, JSON.stringify(stats), {
+    httpMetadata: { contentType: 'application/json' },
+  });
+}
+
+async function getStats(env, slug) {
+  const key = 'stats/' + slug + '.json';
+  try {
+    const obj = await env.IMAGES.get(key);
+    if (obj) return await obj.json();
+  } catch (e) {}
+  return { views: 0, clicks: 0 };
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -591,6 +616,28 @@ export default {
       const style = url.searchParams.get('style') || 'numbered';
       const theme = url.searchParams.get('theme') || 'light';
       return await badgeSvg(slug, style, theme, env);
+    }
+
+    // ---- Analytics: track page views and outbound clicks ----
+    // POST /track {type: 'view'|'click', slug: 'product-slug'}
+    if (request.method === 'POST' && url.pathname === '/track') {
+      try {
+        const body = await request.json();
+        const type = body.type;
+        const slug = String(body.slug || '').replace(/[^a-z0-9-]/g, '').slice(0, 50);
+        if ((type === 'view' || type === 'click') && slug) {
+          await trackEvent(env, type, slug);
+        }
+      } catch (e) {}
+      const headers = cors(new Headers({ 'content-type': 'application/json' }));
+      return new Response(JSON.stringify({ ok: true }), { headers });
+    }
+
+    // GET /stats/:slug - get view/click counts (public, for founder dashboard)
+    if (request.method === 'GET' && url.pathname.startsWith('/stats/')) {
+      const slug = url.pathname.slice(7).replace(/[^a-z0-9-]/g, '').slice(0, 50);
+      const stats = await getStats(env, slug);
+      return json(stats);
     }
 
     // ---- Image upload ----
