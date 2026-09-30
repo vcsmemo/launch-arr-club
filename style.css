@@ -432,3 +432,7 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .profile-menu a:hover, .profile-menu button:hover { background: var(--bg-soft); }
 .nav-signin { font-size: 0.875rem; font-weight: 600; color: var(--accent-hover); text-decoration: none; white-space: nowrap; }
 .nav-signin:hover { color: var(--accent-dark); }
+
+/* Real product media */
+.logo-img { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; background: var(--mint); flex: none; }
+.detail-shot { width: 100%; border-radius: var(--radius-lg); border: 1px solid var(--border); margin: 1.2rem 0 0; }
