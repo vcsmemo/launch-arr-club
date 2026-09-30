@@ -341,7 +341,7 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .up-drop:hover { border-color: var(--accent); background: var(--accent-soft); }
 .up-drop.drag { border-color: var(--accent); background: var(--accent-soft); border-style: solid; }
 .up-drop-inner { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; pointer-events: none; }
-.up-drop-icon { width: 32px; height: 32px; color: var(--accent); margin-bottom: 0.25rem; }
+.up-drop-icon { width: 22px; height: 22px; color: var(--accent); margin-bottom: 0.2rem; }
 .up-drop-text { font-size: 0.92rem; color: var(--text); }
 .up-drop-text strong { color: var(--accent-hover); }
 .up-drop-sub { font-size: 0.78rem; color: var(--text-muted); }

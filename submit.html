@@ -45,6 +45,7 @@
         <div class="field"><label>Website URL <span class="req">*</span></label><input type="url" id="f-url" placeholder="https://yourproduct.com"></div>
         <div class="field"><label>Tagline <span class="req">*</span></label><input type="text" id="f-tagline" maxlength="80" placeholder="One line: what it does, for whom (max 80 chars)"></div>
         <div class="field"><label>Short description</label><textarea id="f-desc" maxlength="300" placeholder="150–300 characters shown on your launch card."></textarea></div>
+        <div class="field"><label>Your name (founder) <span class="req">*</span></label><input type="text" id="f-founder" placeholder="e.g. Jane Doe"></div>
         <div class="field"><label>Categories <span class="req">*</span> <span class="hint">(up to 3)</span></label>
           <div class="chips" id="catChips">
             <button type="button" class="chip" aria-pressed="false">AI Writing</button>
@@ -225,7 +226,7 @@
   function valid(n){
     if(n===0){
       var ok = true;
-      [['f-name','Product name'],['f-url','Website URL'],['f-tagline','Tagline']].forEach(function(p){
+      [['f-name','Product name'],['f-url','Website URL'],['f-tagline','Tagline'],['f-founder','Founder name']].forEach(function(p){
         var el = document.getElementById(p[0]);
         var bad = !el.value.trim();
         el.style.borderColor = bad ? 'var(--err)' : '';
