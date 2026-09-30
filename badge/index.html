@@ -44,6 +44,45 @@
     <p>Show the world you launched on <strong>launch.arr.club</strong>. Embed a badge on your site — it links back to your product page with a dofollow backlink, and tells visitors your revenue is being tracked.</p>
   </div>
 
+  <div style="max-width: 800px; margin: 0 auto; padding: 0 24px 24px;">
+    <div class="badge-card" style="border: 2px solid #0d9488;">
+      <h3>✨ Generate your personalized badge</h3>
+      <p>Enter your launch details to get a badge with your real number and revenue.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+        <div>
+          <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px;">Launch number</label>
+          <input type="text" id="genNum" placeholder="#025" value="#025" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px;">
+        </div>
+        <div>
+          <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px;">Revenue (optional)</label>
+          <input type="text" id="genRev" placeholder="$5k MRR" value="$5k MRR" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px;">
+        </div>
+      </div>
+      <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+        <label style="font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="radio" name="genTheme" value="light" checked> Light
+        </label>
+        <label style="font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="radio" name="genTheme" value="dark"> Dark
+        </label>
+        <label style="font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="radio" name="genStyle" value="numbered" checked> Numbered
+        </label>
+        <label style="font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="radio" name="genStyle" value="revenue"> Revenue
+        </label>
+      </div>
+      <div class="badge-preview" id="genPreview" style="min-height: 100px;">
+        <p style="color: #94a3b8;">Your badge preview will appear here</p>
+      </div>
+      <div class="embed-box" id="genEmbedBox" style="display: none;">
+        <textarea readonly id="genEmbed" style="height: 80px;"></textarea>
+        <button class="copy-btn" onclick="copyEmbed('genEmbed', this)">Copy embed code</button>
+      </div>
+      <button class="copy-btn" onclick="generateBadge()" style="margin-top: 12px;">Generate my badge</button>
+    </div>
+  </div>
+
   <div class="badge-grid">
     <div class="badge-card">
       <h3>Classic — Light</h3>
@@ -135,6 +174,76 @@ function copyEmbed(id, btn) {
   btn.classList.add('copied');
   setTimeout(function(){ btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
 }
+
+function generateBadge() {
+  var num = document.getElementById('genNum').value.trim() || '#025';
+  var rev = document.getElementById('genRev').value.trim() || '$5k MRR';
+  var theme = document.querySelector('input[name="genTheme"]:checked').value;
+  var style = document.querySelector('input[name="genStyle"]:checked').value;
+  
+  if (num.charAt(0) !== '#') num = '#' + num;
+  
+  var isDark = theme === 'dark';
+  var bg = isDark ? '#0f172a' : '#ffffff';
+  var border = isDark ? '' : ' stroke="#e2e8f0" stroke-width="1"';
+  var textColor = isDark ? '#f1f5f9' : '#0f172a';
+  var accent = isDark ? '#5eead4' : '#0d9488';
+  var pillBg = isDark ? '#134e4a' : '#f0fdfa';
+  var pillBorder = isDark ? '' : ' stroke="#99f6e4"';
+  var pillText = isDark ? '#5eead4' : '#0f766e';
+  
+  var rocket = '<g transform="translate(12,7)">'
+    + '<path d="M2 20 C 2 12, 8 4, 18 2" stroke="#0d9488" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.7"/>'
+    + '<g transform="translate(4,2) rotate(40 8 8)">'
+    + '<ellipse cx="8" cy="7" rx="4" ry="6.5" fill="#0d9488"/>'
+    + '<path d="M4.5 10.5 L2.5 14 L5 13.2 L4.2 15.8 L6.8 12.5 Z" fill="#0d9488"/>'
+    + '<path d="M11.5 10.5 L13.5 14 L11 13.2 L11.8 15.8 L9.2 12.5 Z" fill="#0d9488"/>'
+    + '<path d="M6.8 13.5 L8 16.5 L9.2 13.5 Z" fill="#0f766e"/>'
+    + '</g></g>';
+  
+  var svg = '';
+  var width = 0;
+  
+  if (style === 'numbered') {
+    width = 230;
+    // Calculate pill width based on number length
+    var numWidth = Math.max(38, num.length * 8 + 16);
+    svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="36" viewBox="0 0 ' + width + ' 36">'
+      + '<rect width="' + width + '" height="36" rx="18" fill="' + bg + '"' + border + '/>'
+      + rocket
+      + '<rect x="42" y="9" width="' + numWidth + '" height="18" rx="9" fill="' + pillBg + '"' + pillBorder + '/>'
+      + '<text x="' + (42 + numWidth/2) + '" y="22" text-anchor="middle" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="11" font-weight="700" fill="' + pillText + '">' + num.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</text>'
+      + '<text x="' + (42 + numWidth + 8) + '" y="22.5" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="' + textColor + '">on <tspan fill="' + accent + '">launch.arr.club</tspan></text>'
+      + '</svg>';
+  } else {
+    width = 250;
+    var revWidth = Math.max(62, rev.length * 7 + 16);
+    // Adjust total width based on revenue text length
+    width = 42 + revWidth + 8 + 130;
+    svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="36" viewBox="0 0 ' + width + ' 36">'
+      + '<rect width="' + width + '" height="36" rx="18" fill="' + bg + '"' + border + '/>'
+      + rocket
+      + '<rect x="42" y="9" width="' + revWidth + '" height="18" rx="9" fill="' + pillBg + '"' + pillBorder + '/>'
+      + '<text x="' + (42 + revWidth/2) + '" y="22" text-anchor="middle" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="11" font-weight="700" fill="' + pillText + '">' + rev.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</text>'
+      + '<text x="' + (42 + revWidth + 8) + '" y="22.5" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="' + textColor + '">tracked on <tspan fill="' + accent + '">launch.arr.club</tspan></text>'
+      + '</svg>';
+  }
+  
+  // Show preview
+  var preview = document.getElementById('genPreview');
+  preview.innerHTML = svg;
+  preview.style.background = isDark ? '#1e293b' : '#f8fafc';
+  
+  // Generate embed code (using data URI for the custom SVG)
+  var encoded = 'data:image/svg+xml,' + encodeURIComponent(svg);
+  var embed = '<a href="https://launch.arr.club" target="_blank"><img src="' + encoded + '" alt="' + (style === 'numbered' ? num : rev) + ' on launch.arr.club" width="' + width + '" height="36"></a>';
+  
+  document.getElementById('genEmbed').value = embed;
+  document.getElementById('genEmbedBox').style.display = 'block';
+}
+
+// Auto-generate on load
+window.addEventListener('load', function() { generateBadge(); });
 </script>
 <script src="/auth.js"></script>
 </body>

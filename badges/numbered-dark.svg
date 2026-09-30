@@ -1,10 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="230" height="36" viewBox="0 0 230 36">
   <rect width="230" height="36" rx="18" fill="#0f172a"/>
   <g transform="translate(12,7)">
-    <ellipse cx="11" cy="11" rx="11" ry="11" fill="#0d9488"/>
-    <path d="M11 4.5c2.8 0 4.8 3.2 4.8 6.8 0 2-0.8 3.8-2 5L11 18.5l-2.8-2.2c-1.2-1.2-2-3-2-5 0-3.6 2-6.8 4.8-6.8z" fill="#fff"/>
-    <path d="M7.2 13.2L5 12.4l1.2 2.4 2-.6zM14.8 13.2l2.2-.8-1.2 2.4-2-.6z" fill="#fff"/>
-    <path d="M10 18.5l-.8 2.5 1.5-.8.8 1.8 1.2-3z" fill="#ccfbf1"/>
+    <path d="M2 20 C 2 12, 8 4, 18 2" stroke="#0d9488" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <g transform="translate(4,2) rotate(40 8 8)">
+      <ellipse cx="8" cy="7" rx="4" ry="6.5" fill="#0d9488"/>
+      <path d="M4.5 10.5 L2.5 14 L5 13.2 L4.2 15.8 L6.8 12.5 Z" fill="#0d9488"/>
+      <path d="M11.5 10.5 L13.5 14 L11 13.2 L11.8 15.8 L9.2 12.5 Z" fill="#0d9488"/>
+      <path d="M6.8 13.5 L8 16.5 L9.2 13.5 Z" fill="#0f766e"/>
+    </g>
   </g>
   <rect x="42" y="9" width="38" height="18" rx="9" fill="#134e4a"/>
   <text x="61" y="22" text-anchor="middle" font-family="Inter,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="700" fill="#5eead4">#025</text>

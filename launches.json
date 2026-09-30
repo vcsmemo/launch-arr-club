@@ -11,7 +11,8 @@
     "revenue_verified": false,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/ace.png"
+    "logo": "/logos/ace.png",
+    "launch_no": 25
   },
   {
     "name": "SalesRobot",
@@ -25,7 +26,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/salesrobot.png"
+    "logo": "/logos/salesrobot.png",
+    "launch_no": 24
   },
   {
     "name": "MyPlots",
@@ -39,7 +41,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/myplots-r.png"
+    "logo": "/logos/myplots-r.png",
+    "launch_no": 23
   },
   {
     "name": "Comp AI",
@@ -53,7 +56,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/comp-ai.png"
+    "logo": "/logos/comp-ai.png",
+    "launch_no": 22
   },
   {
     "name": "Campfire",
@@ -67,7 +71,8 @@
     "revenue_verified": false,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/campfire.png"
+    "logo": "/logos/campfire.png",
+    "launch_no": 26
   },
   {
     "name": "SuperX",
@@ -81,7 +86,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/superx.png"
+    "logo": "/logos/superx.png",
+    "launch_no": 21
   },
   {
     "name": "ConvertLabs",
@@ -95,7 +101,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/convertlabs.png"
+    "logo": "/logos/convertlabs.png",
+    "launch_no": 20
   },
   {
     "name": "Liinks",
@@ -109,7 +116,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/liinks.png"
+    "logo": "/logos/liinks.png",
+    "launch_no": 19
   },
   {
     "name": "GitBot",
@@ -123,7 +131,8 @@
     "revenue_verified": false,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/gitbot.png"
+    "logo": "/logos/gitbot.png",
+    "launch_no": 27
   },
   {
     "name": "Capgo",
@@ -137,7 +146,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/capgo.png"
+    "logo": "/logos/capgo.png",
+    "launch_no": 18
   },
   {
     "name": "Based Labs AI",
@@ -151,7 +161,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/based-labs-ai.png"
+    "logo": "/logos/based-labs-ai.png",
+    "launch_no": 17
   },
   {
     "name": "AI Interview Copilot",
@@ -165,7 +176,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/ai-interview-copilot.png"
+    "logo": "/logos/ai-interview-copilot.png",
+    "launch_no": 16
   },
   {
     "name": "Squint",
@@ -179,7 +191,8 @@
     "revenue_verified": false,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/squint.png"
+    "logo": "/logos/squint.png",
+    "launch_no": 28
   },
   {
     "name": "Web3Forms",
@@ -193,7 +206,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/web3forms.svg"
+    "logo": "/logos/web3forms.svg",
+    "launch_no": 15
   },
   {
     "name": "Indexsy",
@@ -207,7 +221,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/indexsy-r.svg"
+    "logo": "/logos/indexsy-r.svg",
+    "launch_no": 14
   },
   {
     "name": "SEOBOT",
@@ -221,7 +236,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/seobot.png"
+    "logo": "/logos/seobot.png",
+    "launch_no": 13
   },
   {
     "name": "getcta",
@@ -235,7 +251,8 @@
     "revenue_verified": false,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/getcta.png"
+    "logo": "/logos/getcta.png",
+    "launch_no": 29
   },
   {
     "name": "DataExpert",
@@ -249,7 +266,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/dataexpert.svg"
+    "logo": "/logos/dataexpert.svg",
+    "launch_no": 12
   },
   {
     "name": "AEO Engine",
@@ -263,7 +281,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/aeo-engine.png"
+    "logo": "/logos/aeo-engine.png",
+    "launch_no": 11
   },
   {
     "name": "Vid.AI",
@@ -277,7 +296,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/vid-ai.png"
+    "logo": "/logos/vid-ai.png",
+    "launch_no": 10
   },
   {
     "category": "Video",
@@ -291,7 +311,8 @@
     "pricing": "Free",
     "plan": "badge",
     "revenue_metric": null,
-    "revenue_verified": false
+    "revenue_verified": false,
+    "launch_no": 4
   },
   {
     "name": "LLM Gateway",
@@ -305,7 +326,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/llm-gateway.png"
+    "logo": "/logos/llm-gateway.png",
+    "launch_no": 9
   },
   {
     "name": "Codédex",
@@ -319,7 +341,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/codedex-r.png"
+    "logo": "/logos/codedex-r.png",
+    "launch_no": 8
   },
   {
     "name": "Supliful",
@@ -333,7 +356,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/supliful-r.png"
+    "logo": "/logos/supliful-r.png",
+    "launch_no": 7
   },
   {
     "name": "Postiz",
@@ -347,7 +371,8 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/postiz.png"
+    "logo": "/logos/postiz.png",
+    "launch_no": 6
   },
   {
     "name": "Rezi",
@@ -361,6 +386,7 @@
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
-    "logo": "/logos/rezi.png"
+    "logo": "/logos/rezi.png",
+    "launch_no": 5
   }
 ]

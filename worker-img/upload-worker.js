@@ -497,12 +497,100 @@ async function handleReject(request, env) {
   return json({ ok: true });
 }
 
+/* ---------- dynamic badge SVG generation ---------- */
+async function badgeSvg(slug, style, theme, env) {
+  // Fetch product data from GitHub (launches.json)
+  let product = null;
+  try {
+    const r = await fetch('https://raw.githubusercontent.com/' + REPO + '/main/launches.json');
+    if (r.ok) {
+      const launches = await r.json();
+      product = launches.find(function (p) {
+        const url = p.url || '';
+        const m = url.match(/\/launches\/([^/]+)\//);
+        return m && m[1] === slug;
+      });
+    }
+  } catch (e) {}
+
+  const isDark = theme === 'dark';
+  const bg = isDark ? '#0f172a' : '#ffffff';
+  const border = isDark ? '' : ' stroke="#e2e8f0" stroke-width="1"';
+  const textColor = isDark ? '#f1f5f9' : '#0f172a';
+  const accent = isDark ? '#5eead4' : '#0d9488';
+  const pillBg = isDark ? '#134e4a' : '#f0fdfa';
+  const pillBorder = isDark ? '' : ' stroke="#99f6e4"';
+  const pillText = isDark ? '#5eead4' : '#0f766e';
+
+  const rocket = '<g transform="translate(12,7)">'
+    + '<path d="M2 20 C 2 12, 8 4, 18 2" stroke="#0d9488" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.7"/>'
+    + '<g transform="translate(4,2) rotate(40 8 8)">'
+    + '<ellipse cx="8" cy="7" rx="4" ry="6.5" fill="#0d9488"/>'
+    + '<path d="M4.5 10.5 L2.5 14 L5 13.2 L4.2 15.8 L6.8 12.5 Z" fill="#0d9488"/>'
+    + '<path d="M11.5 10.5 L13.5 14 L11 13.2 L11.8 15.8 L9.2 12.5 Z" fill="#0d9488"/>'
+    + '<path d="M6.8 13.5 L8 16.5 L9.2 13.5 Z" fill="#0f766e"/>'
+    + '</g></g>';
+
+  function escXml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  let svg = '';
+  if (style === 'revenue' && product && product.revenue) {
+    const rev = product.revenue;
+    const revWidth = Math.max(62, rev.length * 7 + 16);
+    const width = 42 + revWidth + 8 + 130;
+    svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="36" viewBox="0 0 ' + width + ' 36">'
+      + '<rect width="' + width + '" height="36" rx="18" fill="' + bg + '"' + border + '/>'
+      + rocket
+      + '<rect x="42" y="9" width="' + revWidth + '" height="18" rx="9" fill="' + pillBg + '"' + pillBorder + '/>'
+      + '<text x="' + (42 + revWidth / 2) + '" y="22" text-anchor="middle" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="11" font-weight="700" fill="' + pillText + '">' + escXml(rev) + '</text>'
+      + '<text x="' + (42 + revWidth + 8) + '" y="22.5" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="' + textColor + '">tracked on <tspan fill="' + accent + '">launch.arr.club</tspan></text>'
+      + '</svg>';
+  } else {
+    // numbered (default) — use launch number from product or #025 fallback
+    let num = '#025';
+    if (product) {
+      // Try to extract number from URL or use index
+      const m = (product.url || '').match(/#(\d+)/);
+      if (m) num = '#' + m[1].padStart(3, '0');
+      // Fallback: use the launch_no field if present
+      if (product.launch_no) num = '#' + String(product.launch_no).padStart(3, '0');
+    }
+    const numWidth = Math.max(38, num.length * 8 + 16);
+    const width = 42 + numWidth + 8 + 100;
+    svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="36" viewBox="0 0 ' + width + ' 36">'
+      + '<rect width="' + width + '" height="36" rx="18" fill="' + bg + '"' + border + '/>'
+      + rocket
+      + '<rect x="42" y="9" width="' + numWidth + '" height="18" rx="9" fill="' + pillBg + '"' + pillBorder + '/>'
+      + '<text x="' + (42 + numWidth / 2) + '" y="22" text-anchor="middle" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="11" font-weight="700" fill="' + pillText + '">' + escXml(num) + '</text>'
+      + '<text x="' + (42 + numWidth + 8) + '" y="22.5" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="' + textColor + '">on <tspan fill="' + accent + '">launch.arr.club</tspan></text>'
+      + '</svg>';
+  }
+
+  const headers = cors(new Headers({
+    'content-type': 'image/svg+xml',
+    'cache-control': 'public, max-age=3600',
+  }));
+  return new Response(svg, { headers });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: cors(new Headers()) });
+    }
+
+    // ---- Dynamic badge SVG ----
+    // GET /badge/:slug.svg?style=numbered|revenue&theme=light|dark
+    // Generates a personalized badge with the product's launch number and revenue
+    if (request.method === 'GET' && url.pathname.startsWith('/badge/') && url.pathname.endsWith('.svg')) {
+      const slug = url.pathname.slice(7, -4); // remove /badge/ and .svg
+      const style = url.searchParams.get('style') || 'numbered';
+      const theme = url.searchParams.get('theme') || 'light';
+      return await badgeSvg(slug, style, theme, env);
     }
 
     // ---- Image upload ----
