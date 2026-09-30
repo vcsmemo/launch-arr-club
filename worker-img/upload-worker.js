@@ -122,41 +122,52 @@ function revenueOf(d) {
   return { amount: amount, metric: (rev.metric || '').trim() };
 }
 
-function homeCard(d, slug, launchNo) {
+function logoHtml(d) {
+  if (d.logo) return '<img class="lc-logo" src="' + esc(d.logo) + '" alt="' + esc(d.name) + '">';
+  return '<span class="lc-logo-ph">' + esc(String(d.name || '?').charAt(0)) + '</span>';
+}
+
+function drText(dr) {
+  return dr === null || dr === undefined || dr === '' ? '–' : String(dr);
+}
+
+function validDr(v) {
+  if (v === undefined || v === null || v === '') return null;
+  const n = parseInt(v, 10);
+  if (isNaN(n)) return null;
+  return Math.max(0, Math.min(100, n));
+}
+
+function homeCard(d, slug, launchNo, dr) {
   const rev = revenueOf(d);
-  const revBig = rev
-    ? '<span class="rev-big tracked">💰 ' + esc(rev.amount) + (rev.metric ? ' ' + esc(rev.metric) : '') + '</span>'
+  const revLine = rev
+    ? '          <div class="lc-rev tracked">💰 ' + esc(rev.amount) + (rev.metric ? ' ' + esc(rev.metric) : '') + '</div>\n'
     : '';
   const cats = d.categories && d.categories.length ? d.categories : ['Product'];
   return (
     '      <a class="launch-card" href="/launches/' + slug + '/">\n' +
     '        <span class="ribbon">NEW</span>\n' +
-    '        <div class="lc-top"><span class="launch-no">#' + launchNo + '</span>' + revBig + '</div>\n' +
-    '        <h3>' + esc(d.name) + '</h3>\n' +
-    '        <p>' + esc(d.tagline || '') + '</p>\n' +
-    '        <div class="tag-row">\n' +
-    '          <span class="tag lp" title="Launched today">L+0</span>\n' +
-    '          <span class="tag price">' + esc(priceLabelOf(d)) + '</span>\n' +
-    '          <span class="tag cat">' + esc(cats[0]) + '</span>\n' +
+    '        ' + logoHtml(d) + '\n' +
+    '        <div class="lc-main">\n' +
+    '          <h3><span class="launch-no">#' + launchNo + '</span> ' + esc(d.name) + '</h3>\n' +
+    '          <p class="lc-tag">' + esc(d.tagline || '') + '</p>\n' +
+    revLine +
+    '          <div class="lc-meta">\n' +
+    '            <div class="lc-m"><span>DR</span><b>' + drText(dr) + '</b></div>\n' +
+    '            <div class="lc-m"><span>Price</span><b>' + esc(priceLabelOf(d)) + '</b></div>\n' +
+    '            <div class="lc-m"><span>Category</span><b>' + esc(cats[0]) + '</b></div>\n' +
+    '            <span class="lc-lp" title="Launched today">L+0</span>\n' +
+    '          </div>\n' +
     '        </div>\n' +
     '      </a>\n'
   );
 }
 
-function archiveCard(d, slug) {
-  const rev = revenueOf(d);
-  const badge = rev ? '<span class="rev-badge tracked">💰 Revenue Tracked</span>' : '';
-  const note = rev ? '<p class="rev-note">Self-reported: ' + esc(rev.amount) + (rev.metric ? ' ' + esc(rev.metric) : '') + '</p>' : '';
-  const cats = d.categories && d.categories.length ? d.categories : ['Product'];
-  return (
-    '    <a class="launch-card" href="/launches/' + slug + '/"><span class="ribbon">NEW</span>' + badge +
-    '<h3>' + esc(d.name) + '</h3><p>' + esc(d.tagline || '') + '</p>' +
-    '<div class="tag-row"><span class="tag price">' + esc(priceLabelOf(d)) + '</span>' +
-    '<span class="tag cat">' + esc(cats[0]) + '</span></div>' + note + '</a>\n'
-  );
+function archiveCard(d, slug, launchNo, dr) {
+  return homeCard(d, slug, launchNo, dr).replace(/^      /gm, '    ');
 }
 
-function detailPage(d, slug, launchNo, badgeVerified) {
+function detailPage(d, slug, launchNo, badgeVerified, dr) {
   const now = new Date();
   const dateLong = now.getDate() + ' ' + MONTHS[now.getMonth()] + ' ' + now.getFullYear();
   const dateShort = now.getDate() + ' ' + MONTHS[now.getMonth()].toUpperCase();
@@ -252,6 +263,7 @@ shot +
 '  <h2 class="section-title"><span class="dot"></span>Product insights</h2>\n' +
 '  <div class="insights">\n' +
 '    <div class="insight"><h4>Pricing</h4><p>' + esc(priceLabelOf(d)) + '</p></div>\n' +
+'    <div class="insight"><h4>Domain Rating</h4><p>' + drText(dr) + '</p></div>\n' +
 '    <div class="insight"><h4>Revenue</h4><p>' + revInsight + '</p></div>\n' +
 '    <div class="insight"><h4>Categories</h4><p>' + esc(cats.join(', ')) + '</p></div>\n' +
 '    <div class="insight"><h4>Links</h4><p>' + links.join(' · ') + '</p></div>\n' +
@@ -332,12 +344,13 @@ async function handleApprove(request, env) {
   const launchNo = String(maxNo + 1).padStart(3, '0');
 
   const badgeVerified = d.plan === 'badge' && d.url ? await checkBadge(d.url) : false;
+  const dr = validDr(body.dr);
 
   // 1. detail page
-  const detail = detailPage(d, slug, launchNo, badgeVerified === true);
+  const detail = detailPage(d, slug, launchNo, badgeVerified === true, dr);
 
   // 2. homepage: insert card + bump counts
-  let indexHtml = indexHtml0.replace('<div class="feed">', '<div class="feed">\n' + homeCard(d, slug, launchNo).replace(/\n$/, ''));
+  let indexHtml = indexHtml0.replace('<div class="feed">', '<div class="feed">\n' + homeCard(d, slug, launchNo, dr).replace(/\n$/, ''));
   indexHtml = indexHtml.replace(
     /(<span class="bs-num" data-count=")(\d+)(">)\d+(<\/span><span class="bs-label">launches<\/span>)/,
     function (full, a, n, b, c) {
@@ -363,6 +376,9 @@ async function handleApprove(request, env) {
     name: d.name,
     tagline: d.tagline || '',
     url: '/launches/' + slug + '/',
+    logo: d.logo || null,
+    founder: d.founder || null,
+    dr: dr,
   });
   const launchesJson = JSON.stringify(idx);
 
@@ -378,7 +394,7 @@ async function handleApprove(request, env) {
   );
 
   // 5. weekly archive
-  let archive = archive0.replace('<div class="feed">', '<div class="feed">\n' + archiveCard(d, slug).replace(/\n$/, ''));
+  let archive = archive0.replace('<div class="feed">', '<div class="feed">\n' + archiveCard(d, slug, launchNo, dr).replace(/\n$/, ''));
   archive = archive.replace(/(\d+) launches<\/strong>/, function (full, n) {
     return parseInt(n, 10) + 1 + ' launches</strong>';
   });
