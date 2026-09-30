@@ -208,10 +208,19 @@
           <h4>Pay $5 once, launch right away</h4>
           <p style="font-size:0.9rem">One-time payment. No subscription. Your launch goes live the second payment confirms.</p>
           <button type="button" class="btn" id="payBtn">$5 — Pay &amp; launch</button>
-          <p class="oauth-note">⚙️ Placeholder — connect Stripe Payment Link or Dodo Payments checkout URL (see README).</p>
         </div>
 
-        <div class="wiz-nav"><button type="button" class="btn ghost" data-back>← Back</button><span class="oauth-note">M1 demo — nothing is submitted anywhere yet.</span></div>
+        <!-- free nofollow subflow -->
+        <div class="badge-flow" id="freeFlow" hidden>
+          <h4>Free launch — nofollow</h4>
+          <p style="font-size:0.9rem">Your launch goes live with a nofollow link once we take a quick look (usually within 24 hours).</p>
+          <div class="verify-row" style="margin-top:1rem">
+            <button type="button" class="btn" id="launchFreeNoBtn">Launch for free</button>
+            <span class="verify-msg" id="freeHint"></span>
+          </div>
+        </div>
+
+        <div class="wiz-nav"><button type="button" class="btn ghost" data-back>← Back</button><span class="oauth-note">Launches are reviewed personally and published within 24 hours.</span></div>
       </section>
     </form>
   </div>
@@ -277,7 +286,7 @@
 
   // plan picker
   var picks = document.querySelectorAll('.pick');
-  var badgeFlow = document.getElementById('badgeFlow'), paidFlow = document.getElementById('paidFlow');
+  var badgeFlow = document.getElementById('badgeFlow'), paidFlow = document.getElementById('paidFlow'), freeFlow = document.getElementById('freeFlow');
   picks.forEach(function(p){
     p.addEventListener('click', function(){
       picks.forEach(function(x){ x.setAttribute('aria-checked','false'); });
@@ -285,7 +294,7 @@
       var plan = p.getAttribute('data-plan');
       badgeFlow.hidden = plan !== 'badge';
       paidFlow.hidden = plan !== 'paid';
-      if(plan === 'free'){ alert('Free nofollow launch selected. In production this would publish immediately (1 of 2 free launches).'); }
+      freeFlow.hidden = plan !== 'free';
     });
   });
 
@@ -335,7 +344,29 @@
       launchHint.textContent = 'Badge verified — you can launch now.';
     }, 1500);
   });
-  launchBtn.addEventListener('click', function(){ alert('🎉 Launched! (M1 demo — in production your page would be live now.)'); });
+  launchBtn.addEventListener('click', function(){
+    launchBtn.disabled = true;
+    postSubmission().then(function(){
+      launchBtn.textContent = '✓ Received';
+      launchHint.textContent = '✓ Received! We review every launch personally and publish within 24 hours.';
+      launchHint.className = 'verify-msg ok';
+    }).catch(function(){
+      launchBtn.disabled = false;
+      alert('Could not send your submission — check your connection and try again.');
+    });
+  });
+  var freeBtn = document.getElementById('launchFreeNoBtn'), freeHint = document.getElementById('freeHint');
+  freeBtn.addEventListener('click', function(){
+    freeBtn.disabled = true;
+    postSubmission().then(function(){
+      freeBtn.textContent = '✓ Received';
+      freeHint.textContent = '✓ Received! We review every launch personally and publish within 24 hours.';
+      freeHint.className = 'verify-msg ok';
+    }).catch(function(){
+      freeBtn.disabled = false;
+      alert('Could not send your submission — check your connection and try again.');
+    });
+  });
   /* Image uploads via Cloudflare Worker + R2 (dropzone: click or drag & drop) */
   var IMG_WORKER = 'https://launch-arr-club-img.johntian2015.workers.dev';
   function uploadToWorker(file){
@@ -402,13 +433,67 @@
   });
   shotsUrl.addEventListener('input', syncShots);
 
+  /* Submissions inbox: POST the form to the Worker -> R2, published manually within 24h */
+  function collectSubmission(){
+    var cats = Array.prototype.map.call(
+      document.querySelectorAll('#catChips .chip[aria-pressed="true"]'),
+      function(c){ return c.textContent.trim(); }
+    );
+    var planEl = document.querySelector('.pick[aria-checked="true"]');
+    var stories = Array.prototype.map.call(
+      document.querySelectorAll('.q'), function(q){ return q.value.trim(); }
+    );
+    var shots = document.getElementById('f-shots').value.split('\n')
+      .map(function(s){ return s.trim(); }).filter(Boolean);
+    return {
+      name: document.getElementById('f-name').value.trim(),
+      url: document.getElementById('f-url').value.trim(),
+      tagline: document.getElementById('f-tagline').value.trim(),
+      description: document.getElementById('f-desc').value.trim(),
+      categories: cats,
+      founder: document.getElementById('f-founder').value.trim(),
+      founder_email: (window.__launchUser && window.__launchUser.email) || '',
+      logo: document.getElementById('f-logo').value.trim(),
+      screenshots: shots,
+      x: document.getElementById('f-x').value.trim(),
+      demo: document.getElementById('f-demo').value.trim(),
+      pricing: document.getElementById('f-pricing').value,
+      deal: document.getElementById('f-deal').value.trim(),
+      story: stories,
+      plan: planEl ? planEl.getAttribute('data-plan') : '',
+      badge_style: (typeof style !== 'undefined') ? style : 'dark',
+      revenue: {
+        metric: document.getElementById('f-metric').value,
+        amount: document.getElementById('f-amount').value.trim()
+      },
+      submitted_at: new Date().toISOString()
+    };
+  }
+  function postSubmission(){
+    return fetch(IMG_WORKER + '/submit', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(collectSubmission())
+    }).then(function(r){
+      if(!r.ok) throw new Error('submit failed');
+      return r.json();
+    }).then(function(j){
+      if(!j.ok) throw new Error('submit failed');
+    });
+  }
+
   /* Payments: $5 instant launch (live) + $29 featured (John to provide link) */
   var FEATURED_URL = '';
   document.getElementById('featBtn').addEventListener('click', function(){
     if(FEATURED_URL){ window.open(FEATURED_URL, '_blank', 'noopener'); }
     else { alert('Featured launches open soon — check back shortly.'); }
   });
-  document.getElementById('payBtn').addEventListener('click', function(){ window.open('https://buy.stripe.com/fZu9ATdir8uT0kM9Mfcs802', '_blank', 'noopener'); });
+  document.getElementById('payBtn').addEventListener('click', function(){
+    var btn = this;
+    btn.disabled = true;
+    function goStripe(){ btn.disabled = false; window.open('https://buy.stripe.com/fZu9ATdir8uT0kM9Mfcs802', '_blank', 'noopener'); }
+    postSubmission().then(goStripe).catch(goStripe); /* payment still works; email captured at checkout lets us follow up */
+  });
 
   /* Google Identity Services sign-in (M1: identifies the submitter client-side) */
   var GOOGLE_CLIENT_ID = '659455206571-e0rd1e7iq8os25s4441elss3960bkfjs.apps.googleusercontent.com';
