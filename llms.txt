@@ -16,6 +16,11 @@
 - Privacy: https://launch.arr.club/privacy.html
 
 ## Launches
+- Ace (#025): Meet Ace, an agentic teammate for work — https://launch.arr.club/launches/ace-automat/
+- Campfire (#026): The shared workspace for humans and coding agents — https://launch.arr.club/launches/campfire/
+- GitBot (#027): Build bots on the coding agent you already use — https://launch.arr.club/launches/gitbot/
+- Squint (#028): Drag a box on your screen and ask AI about it — https://launch.arr.club/launches/squint/
+- getcta (#029): An AI teleprompter that lives under your MacBook notch — https://launch.arr.club/launches/getcta/
 
 - Rezi (AI Writing): The #1 AI Resume Builder – Forbes' Top Pick. Trusted by 4.5M https://launch.arr.club/launches/rezi/
 - Postiz (Marketing): Run your social media on autopilot with AI agents https://launch.arr.club/launches/postiz/
