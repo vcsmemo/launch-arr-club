@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="36" viewBox="0 0 200 36">
+  <rect width="200" height="36" rx="18" fill="#0f172a"/>
+  <g transform="translate(12,7)">
+    <ellipse cx="11" cy="11" rx="11" ry="11" fill="#0d9488"/>
+    <path d="M11 4.5c2.8 0 4.8 3.2 4.8 6.8 0 2-0.8 3.8-2 5L11 18.5l-2.8-2.2c-1.2-1.2-2-3-2-5 0-3.6 2-6.8 4.8-6.8z" fill="#fff"/>
+    <path d="M7.2 13.2L5 12.4l1.2 2.4 2-.6zM14.8 13.2l2.2-.8-1.2 2.4-2-.6z" fill="#fff"/>
+    <path d="M10 18.5l-.8 2.5 1.5-.8.8 1.8 1.2-3z" fill="#ccfbf1"/>
+  </g>
+  <text x="42" y="22.5" font-family="Inter,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="#f1f5f9">Launched on <tspan fill="#5eead4">launch.arr.club</tspan></text>
+</svg>

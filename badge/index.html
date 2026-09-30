@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get your launch badge — launch.arr.club</title>
+<meta name="description" content="Show off your launch with an official launch.arr.club badge. Embed it on your site and get a dofollow backlink.">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20260930w">
+<style>
+.badge-hero { text-align: center; padding: 48px 20px 24px; }
+.badge-hero h1 { font-size: 32px; margin-bottom: 12px; }
+.badge-hero p { color: #475569; max-width: 600px; margin: 0 auto; font-size: 16px; }
+.badge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; padding: 24px; max-width: 1000px; margin: 0 auto; }
+.badge-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; }
+.badge-card.dark-preview { background: #0f172a; border-color: #1e293b; }
+.badge-card.dark-preview h3 { color: #f1f5f9; }
+.badge-card.dark-preview p { color: #94a3b8; }
+.badge-card h3 { font-size: 16px; margin: 0 0 8px; }
+.badge-card p { font-size: 13px; color: #64748b; margin: 0 0 16px; }
+.badge-preview { display: flex; align-items: center; justify-content: center; min-height: 80px; padding: 16px; background: #f8fafc; border-radius: 8px; margin-bottom: 16px; }
+.dark-preview .badge-preview { background: #1e293b; }
+.badge-preview img { max-width: 100%; height: auto; }
+.embed-box { position: relative; }
+.embed-box textarea { width: 100%; height: 64px; font-family: ui-monospace, monospace; font-size: 11px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; resize: none; background: #f8fafc; color: #334155; }
+.dark-preview .embed-box textarea { background: #1e293b; border-color: #334155; color: #cbd5e1; }
+.copy-btn { margin-top: 8px; width: 100%; padding: 10px; background: #0d9488; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
+.copy-btn:hover { background: #0f766e; }
+.copy-btn.copied { background: #16a34a; }
+.badge-note { max-width: 800px; margin: 0 auto; padding: 0 24px 48px; color: #64748b; font-size: 14px; line-height: 1.6; }
+.badge-note strong { color: #0f172a; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">launch<span>.arr.club</span></a>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main>
+  <div class="badge-hero">
+    <h1>🚀 Get your launch badge</h1>
+    <p>Show the world you launched on <strong>launch.arr.club</strong>. Embed a badge on your site — it links back to your product page with a dofollow backlink, and tells visitors your revenue is being tracked.</p>
+  </div>
+
+  <div class="badge-grid">
+    <div class="badge-card">
+      <h3>Classic — Light</h3>
+      <p>The standard badge. Clean and simple.</p>
+      <div class="badge-preview"><img src="/badges/launched-light.svg" alt="Launched on launch.arr.club"></div>
+      <div class="embed-box">
+        <textarea readonly id="embed1">&lt;a href="https://launch.arr.club" target="_blank"&gt;&lt;img src="https://launch.arr.club/badges/launched-light.svg" alt="Launched on launch.arr.club" width="200" height="36"&gt;&lt;/a&gt;</textarea>
+        <button class="copy-btn" onclick="copyEmbed('embed1', this)">Copy embed code</button>
+      </div>
+    </div>
+
+    <div class="badge-card dark-preview">
+      <h3>Classic — Dark</h3>
+      <p>For dark footers and landing pages.</p>
+      <div class="badge-preview"><img src="/badges/launched-dark.svg" alt="Launched on launch.arr.club"></div>
+      <div class="embed-box">
+        <textarea readonly id="embed2">&lt;a href="https://launch.arr.club" target="_blank"&gt;&lt;img src="https://launch.arr.club/badges/launched-dark.svg" alt="Launched on launch.arr.club" width="200" height="36"&gt;&lt;/a&gt;</textarea>
+        <button class="copy-btn" onclick="copyEmbed('embed2', this)">Copy embed code</button>
+      </div>
+    </div>
+
+    <div class="badge-card">
+      <h3>Launch Number — Light</h3>
+      <p>Show your exclusive launch number. Lower = earlier = OG.</p>
+      <div class="badge-preview"><img src="/badges/numbered-light.svg" alt="#025 on launch.arr.club"></div>
+      <div class="embed-box">
+        <textarea readonly id="embed3">&lt;a href="https://launch.arr.club" target="_blank"&gt;&lt;img src="https://launch.arr.club/badges/numbered-light.svg" alt="#025 on launch.arr.club" width="230" height="36"&gt;&lt;/a&gt;</textarea>
+        <button class="copy-btn" onclick="copyEmbed('embed3', this)">Copy embed code</button>
+      </div>
+    </div>
+
+    <div class="badge-card dark-preview">
+      <h3>Launch Number — Dark</h3>
+      <p>Your launch number on dark backgrounds.</p>
+      <div class="badge-preview"><img src="/badges/numbered-dark.svg" alt="#025 on launch.arr.club"></div>
+      <div class="embed-box">
+        <textarea readonly id="embed4">&lt;a href="https://launch.arr.club" target="_blank"&gt;&lt;img src="https://launch.arr.club/badges/numbered-dark.svg" alt="#025 on launch.arr.club" width="230" height="36"&gt;&lt;/a&gt;</textarea>
+        <button class="copy-btn" onclick="copyEmbed('embed4', this)">Copy embed code</button>
+      </div>
+    </div>
+
+    <div class="badge-card" style="border-color: #0d9488; border-width: 2px;">
+      <h3>⭐ Revenue — Light <span style="font-size: 11px; background: #0d9488; color: #fff; padding: 2px 8px; border-radius: 10px; font-weight: 600;">MOST POPULAR</span></h3>
+      <p>Brag about your numbers. Updates as your revenue grows.</p>
+      <div class="badge-preview"><img src="/badges/revenue-light.svg" alt="$5k MRR tracked on launch.arr.club"></div>
+      <div class="embed-box">
+        <textarea readonly id="embed5">&lt;a href="https://launch.arr.club" target="_blank"&gt;&lt;img src="https://launch.arr.club/badges/revenue-light.svg" alt="$5k MRR tracked on launch.arr.club" width="250" height="36"&gt;&lt;/a&gt;</textarea>
+        <button class="copy-btn" onclick="copyEmbed('embed5', this)">Copy embed code</button>
+      </div>
+    </div>
+
+    <div class="badge-card dark-preview" style="border-color: #0d9488; border-width: 2px;">
+      <h3>⭐ Revenue — Dark</h3>
+      <p>Your revenue badge for dark themes.</p>
+      <div class="badge-preview"><img src="/badges/revenue-dark.svg" alt="$5k MRR tracked on launch.arr.club"></div>
+      <div class="embed-box">
+        <textarea readonly id="embed6">&lt;a href="https://launch.arr.club" target="_blank"&gt;&lt;img src="https://launch.arr.club/badges/revenue-dark.svg" alt="$5k MRR tracked on launch.arr.club" width="250" height="36"&gt;&lt;/a&gt;</textarea>
+        <button class="copy-btn" onclick="copyEmbed('embed6', this)">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="badge-note">
+    <p><strong>How it works:</strong> Copy the embed code and paste it anywhere on your site — footer, about page, or launch announcement. The badge links to your product page on launch.arr.club with a dofollow backlink, which helps both of us rank better.</p>
+    <p><strong>Revenue badges</strong> are only available if you shared your revenue at launch. They show your current tracked revenue and update automatically. Nothing to brag about yet? Start with the Classic badge.</p>
+    <p><strong>Want a custom badge</strong> with your actual launch number and revenue? <a href="/submit.html" style="color: #0d9488;">Launch your product</a> and we'll generate one for you.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div class="fcol"><h5>Discover</h5><a href="/#recently">Launches</a><a href="/2026/w40/">Weekly archive</a><a href="/#leaderboard">Leaderboard</a></div>
+    <div class="fcol"><h5>Launch</h5><a href="/submit.html">Submit your product</a><a href="/badge/">Get your badge</a></div>
+    <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 launch.arr.club · A part of <a href="https://arr.club">ARR.Club</a> · <a href="https://www.toolpilot.ai">Listed on ToolPilot</a> · <a target="_blank" href="https://goodaitools.com/ai/launch-arr"><img src="https://goodaitools.com/assets/images/badge.png" alt="Good AI Tools" style="height:20px;vertical-align:middle"></a> · <a href="https://fazier.com/launches/launch.arr.club" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width="120" alt="Fazier badge"></a></span>
+  </div>
+</footer>
+
+<script>
+function copyEmbed(id, btn) {
+  var ta = document.getElementById(id);
+  ta.select();
+  ta.setSelectionRange(0, 99999);
+  document.execCommand('copy');
+  var orig = btn.textContent;
+  btn.textContent = '✓ Copied!';
+  btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+}
+</script>
+<script src="/auth.js"></script>
+</body>
+</html>
