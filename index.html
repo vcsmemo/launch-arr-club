@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://launch.arr.club/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d9488'/%3E%3Cpath d='M32 12c8 6 12 14 12 22l-7 3-3 9h-4l-2-7-8 2 2-8-4-3c0-8 6-14 14-18z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='24' r='4' fill='%230d9488'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/style.css?v=20260930k">
+<link rel="stylesheet" href="/style.css?v=20260930l">
 </head>
 <body>
 <header class="site-header">
@@ -34,15 +34,20 @@
     </div>
   </section>
 
-  <div class="board-stats">
-    <div class="bs"><span class="bs-num" data-count="4">4</span><span class="bs-label">launches</span></div>
-    <div class="bs"><span class="bs-num teal" data-count="60" data-prefix="$" data-suffix="k">$60k</span><span class="bs-label">MRR tracked</span></div>
-    <div class="bs"><span class="bs-num" data-count="1">1</span><span class="bs-label">verified</span></div>
+  <div class="board-stats" id="boardStats">
+    <div class="bs"><span class="bs-num" data-stat="launches">4</span><span class="bs-label">launches</span></div>
+    <div class="bs"><span class="bs-num teal" data-stat="mrr">$60k</span><span class="bs-label">MRR tracked</span></div>
+    <div class="bs"><span class="bs-num" data-stat="verified">1</span><span class="bs-label">verified</span></div>
+    <div class="bs"><span class="bs-num" data-stat="week">4</span><span class="bs-label">this week</span></div>
+    <div class="bs"><span class="bs-num" data-stat="cats">4</span><span class="bs-label">categories</span></div>
+    <div class="bs"><span class="bs-num" data-stat="dr">–</span><span class="bs-label">avg DR</span></div>
   </div>
 
   <section id="recently">
     <h2 class="section-title"><span class="dot"></span>Recently launched <a class="view-all" href="/2026/w40/">View all ›</a></h2>
-    <div class="feed">
+    <div class="rail-wrap">
+      <button class="rail-btn prev" id="railPrev" aria-label="Scroll launches left">‹</button>
+      <div class="feed" id="launchRail">
             <a class="launch-card" href="/launches/vidsizer/">
         <span class="ribbon">NEW</span>
         <img class="lc-logo" src="https://launch-arr-club-img.johntian2015.workers.dev/img/uploads/2026-09-30-a1015926.png" alt="VidSizer">
@@ -101,6 +106,8 @@
           </div>
         </div>
       </a>
+      </div>
+      <button class="rail-btn next" id="railNext" aria-label="Scroll launches right">›</button>
     </div>
   </section>
 
@@ -182,28 +189,60 @@
 })();
 </script>
 <script>
-/* Board stats count-up */
+/* Board stats: computed live from launches.json */
 (function(){
-  var els = document.querySelectorAll('.bs-num[data-count]');
-  function animate(el){
-    var target = parseFloat(el.getAttribute('data-count'));
-    var prefix = el.getAttribute('data-prefix') || '', suffix = el.getAttribute('data-suffix') || '';
+  var board = document.getElementById('boardStats');
+  if(!board) return;
+  function countUp(el, target){
     var dur = 900, t0 = null;
     function frame(t){
       if(!t0) t0 = t;
       var p = Math.min((t - t0) / dur, 1);
       var e = 1 - Math.pow(1 - p, 3);
-      el.textContent = prefix + Math.round(target * e) + suffix;
+      el.textContent = Math.round(target * e);
       if(p < 1) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   }
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ animate(e.target); io.unobserve(e.target); } });
-    }, { threshold: 0.4 });
-    els.forEach(function(el){ io.observe(el); });
-  } else { els.forEach(animate); }
+  function mrrKNum(rev){
+    if(!rev) return 0;
+    var m = /\$([\d.]+)k/i.exec(rev);
+    return m ? parseFloat(m[1]) : 0;
+  }
+  function paint(items){
+    var n = items.length;
+    var mrr = items.reduce(function(a,i){ return a + mrrKNum(i.revenue); }, 0);
+    var verified = items.filter(function(i){ return i.revenue_verified; }).length;
+    var nowMs = Date.now();
+    var week = items.filter(function(i){
+      if(!i.launched) return false;
+      return (nowMs - new Date(i.launched + 'T00:00:00').getTime()) < 7 * 864e5;
+    }).length;
+    var cats = {};
+    items.forEach(function(i){ if(i.category) cats[i.category] = 1; });
+    var drs = items.map(function(i){ return i.dr; }).filter(function(x){ return x != null; });
+    var avgDr = drs.length ? Math.round(drs.reduce(function(a,b){ return a + b; }, 0) / drs.length) : null;
+    var set = function(k, v){ var el = board.querySelector('[data-stat="' + k + '"]'); if(el) el.textContent = v; };
+    set('mrr', '$' + mrr + 'k');
+    set('dr', avgDr === null ? '–' : String(avgDr));
+    var el;
+    el = board.querySelector('[data-stat="launches"]'); if(el) countUp(el, n);
+    el = board.querySelector('[data-stat="verified"]'); if(el) countUp(el, verified);
+    el = board.querySelector('[data-stat="week"]'); if(el) countUp(el, week);
+    el = board.querySelector('[data-stat="cats"]'); if(el) countUp(el, Object.keys(cats).length);
+  }
+  fetch('/launches.json').then(function(r){ return r.json(); }).then(paint).catch(function(){});
+})();
+/* Rail arrows */
+(function(){
+  var rail = document.getElementById('launchRail');
+  if(!rail) return;
+  function go(dir){
+    rail.scrollBy({ left: dir * 300, behavior: 'smooth' });
+  }
+  var prev = document.getElementById('railPrev'), next = document.getElementById('railNext');
+  if(prev) prev.addEventListener('click', function(){ go(-1); });
+  if(next) next.addEventListener('click', function(){ go(1); });
 })();
 </script>
 <script src="/auth.js"></script>

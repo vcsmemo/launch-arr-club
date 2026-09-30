@@ -346,7 +346,7 @@ shotSection +
 '    <aside class="card track-box" style="padding:1.3rem">\n' +
 '      <h4>Get tracked forever</h4>\n' +
 '      <p>Revenue growing? Announce your milestone on <a href="https://arr.club">ARR.Club</a> and join long-term revenue tracking.</p>\n' +
-'      <a class="btn" href="/submit.html">Launch your product</a>\n' +
+'      <a class="btn" href="https://arr.club" target="_blank" rel="noopener">Announce on ARR.Club &#8599;</a>\n' +
 '    </aside>\n' +
 '  </div>\n' +
 '\n' +
@@ -368,17 +368,6 @@ DETAIL_SHARED_JS +
   );
 }
 
-/* parse "$48k MRR" / "$500 MRR" / "$1.2M ARR" into $k of MRR */
-function mrrK(rev) {
-  if (!rev) return 0;
-  const m = /\$?\s*([\d,.]+)\s*([kKmM])?/.exec(rev.amount);
-  if (!m) return 0;
-  let v = parseFloat(m[1].replace(/,/g, ''));
-  if (m[2]) { v *= m[2].toLowerCase() === 'm' ? 1000 : 1; }
-  if (/ARR/i.test(rev.metric || '')) v = v / 12;
-  else if (!/MRR/i.test(rev.metric || '')) return 0;
-  return v;
-}
 
 function b64encode(str) {
   const bytes = new TextEncoder().encode(str);
@@ -449,25 +438,8 @@ async function handleApprove(request, env) {
   // 1. detail page
   const detail = detailPage(d, slug, launchNo, badgeVerified === true, dr, others, makerCount);
 
-  // 2. homepage: insert card + bump counts
-  let indexHtml = indexHtml0.replace('<div class="feed">', '<div class="feed">\n' + homeCard(d, slug, launchNo, dr).replace(/\n$/, ''));
-  indexHtml = indexHtml.replace(
-    /(<span class="bs-num" data-count=")(\d+)(">)\d+(<\/span><span class="bs-label">launches<\/span>)/,
-    function (full, a, n, b, c) {
-      const v = parseInt(n, 10) + 1;
-      return a + v + b + v + c;
-    }
-  );
-  const addK = mrrK(revenueOf(d));
-  if (addK > 0) {
-    indexHtml = indexHtml.replace(
-      /(<span class="bs-num teal" data-count=")(\d+)(" data-prefix="\$" data-suffix="k">\$)\d+k(<\/span>)/,
-      function (full, a, n, b, c) {
-        const v = Math.round(parseFloat(n) + addK);
-        return a + v + b + v + 'k' + c;
-      }
-    );
-  }
+  // 2. homepage: insert card (board stats are computed client-side from launches.json)
+  let indexHtml = indexHtml0.replace('<div class="feed" id="launchRail">', '<div class="feed" id="launchRail">\n' + homeCard(d, slug, launchNo, dr).replace(/\n$/, ''));
 
   // 3. launches.json (idx parsed above)
   const rev = revenueOf(d);
@@ -480,6 +452,8 @@ async function handleApprove(request, env) {
     founder: d.founder || null,
     dr: dr,
     revenue: rev ? rev.amount + (rev.metric ? ' ' + rev.metric : '') : null,
+    revenue_verified: false,
+    launched: todayISO(),
   });
   const launchesJson = JSON.stringify(idx);
 
