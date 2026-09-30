@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Review console · launch.arr.club</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d9488'/%3E%3Cpath d='M32 12c8 6 12 14 12 22l-7 3-3 9h-4l-2-7-8 2 2-8-4-3c0-8 6-14 14-18z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='24' r='4' fill='%230d9488'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/style.css?v=20260930h">
+<style>
+  .review-wrap { max-width: 860px; margin: 0 auto; padding: 2rem 1.2rem 4rem; }
+  .review-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.6rem; }
+  .review-head h1 { font-size: 1.4rem; margin: 0; }
+  .review-head h1 span { color: var(--accent); }
+  .lock-note { font-size: 0.8rem; color: var(--text-muted); }
+  .gate { max-width: 380px; margin: 6rem auto; text-align: center; }
+  .gate input { width: 100%; padding: 0.7rem 0.9rem; font-size: 1rem; border: 1.5px solid var(--border); border-radius: var(--radius); margin: 1rem 0; font-family: var(--font); }
+  .gate .err { color: #dc2626; font-size: 0.85rem; min-height: 1.2em; }
+  .sub-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; margin-bottom: 1.2rem; box-shadow: var(--shadow-sm); }
+  .sub-top { display: flex; gap: 1rem; align-items: flex-start; }
+  .sub-top img.logo { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; flex: none; background: var(--mint); }
+  .sub-top h2 { margin: 0 0 0.2rem; font-size: 1.25rem; }
+  .sub-top h2 a { color: var(--navy); text-decoration: none; }
+  .sub-top h2 a:hover { color: var(--accent-hover); }
+  .sub-tagline { color: var(--text-muted); margin: 0 0 0.6rem; font-size: 0.95rem; }
+  .sub-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
+  .pill { font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 100px; background: var(--bg-soft); border: 1px solid var(--border); }
+  .pill.plan-badge { background: #0d9488; color: #fff; border-color: #0d9488; }
+  .pill.plan-paid { background: #1e293b; color: #fff; border-color: #1e293b; }
+  .pill.ok { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+  .pill.warn { background: #fffbeb; color: #b45309; border-color: #fde68a; }
+  .sub-desc { font-size: 0.92rem; margin: 0 0 0.8rem; }
+  .sub-shots { display: flex; gap: 0.6rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+  .sub-shots img { max-width: 220px; border-radius: var(--radius); border: 1px solid var(--border); }
+  .sub-story { background: var(--bg-soft); border-radius: var(--radius); padding: 0.9rem 1rem; margin-bottom: 0.8rem; font-size: 0.88rem; }
+  .sub-story summary { cursor: pointer; font-weight: 600; }
+  .sub-story .qa { margin-top: 0.6rem; }
+  .sub-story .qa h4 { margin: 0 0 0.15rem; font-size: 0.82rem; color: var(--text-muted); }
+  .sub-story .qa p { margin: 0 0 0.6rem; }
+  .sub-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .sub-when { font-size: 0.8rem; color: var(--text-muted); }
+  .sub-actions { display: flex; gap: 0.6rem; }
+  .btn-approve { background: var(--accent); color: #fff; border: 0; border-radius: var(--radius); padding: 0.55rem 1.2rem; font-weight: 700; cursor: pointer; font-size: 0.9rem; font-family: var(--font); }
+  .btn-approve:hover { background: var(--accent-dark); }
+  .btn-approve:disabled { opacity: 0.5; cursor: wait; }
+  .btn-reject { background: #fff; color: #991b1b; border: 1.5px solid #fecaca; border-radius: var(--radius); padding: 0.55rem 1.2rem; font-weight: 600; cursor: pointer; font-size: 0.9rem; font-family: var(--font); }
+  .btn-reject:hover { background: #fef2f2; }
+  .btn-reject:disabled { opacity: 0.5; cursor: wait; }
+  .empty { text-align: center; color: var(--text-muted); padding: 4rem 0; }
+  .published-link { font-size: 0.9rem; color: #047857; font-weight: 600; }
+  .signout { background: none; border: 0; color: var(--text-muted); font-size: 0.8rem; cursor: pointer; text-decoration: underline; font-family: var(--font); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">launch<span>.arr.club</span></a>
+    <div class="nav-links"><span class="lock-note">🔒 internal review console</span></div>
+  </nav>
+</header>
+<main class="review-wrap">
+  <div id="gate" class="gate" hidden>
+    <h1>Review <span>console</span></h1>
+    <p class="lock-note">Enter the review password to continue.</p>
+    <input type="password" id="tokenInput" placeholder="Review password" autocomplete="off">
+    <div class="err" id="gateErr"></div>
+    <button class="btn-approve" id="gateBtn" type="button">Unlock</button>
+  </div>
+  <div id="console" hidden>
+    <div class="review-head">
+      <h1>Pending <span>submissions</span></h1>
+      <div>
+        <button class="btn-reject" id="refreshBtn" type="button" style="color:var(--text);border-color:var(--border)">↻ Refresh</button>
+        <button class="signout" id="lockBtn" type="button">Lock</button>
+      </div>
+    </div>
+    <div id="list"></div>
+  </div>
+</main>
+<script>
+(function(){
+  var WORKER = 'https://launch-arr-club-img.johntian2015.workers.dev';
+  var LS_KEY = 'lac_review_token';
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function token(){ return localStorage.getItem(LS_KEY) || ''; }
+  function showGate(msg){
+    document.getElementById('console').hidden = true;
+    document.getElementById('gate').hidden = false;
+    document.getElementById('gateErr').textContent = msg || '';
+  }
+  function api(path, method, body){
+    return fetch(WORKER + path, {
+      method: method || 'GET',
+      headers: { 'Content-Type': 'application/json', 'X-Review-Token': token() },
+      body: body ? JSON.stringify(body) : undefined
+    }).then(function(r){
+      if (r.status === 401){ localStorage.removeItem(LS_KEY); showGate('Wrong password, try again.'); throw new Error('auth'); }
+      return r.json().then(function(j){ return { status: r.status, body: j }; });
+    });
+  }
+  var QS = ['Who is it for?','What problem does it solve?','What job does it do?','How does it solve it?','What makes it different?'];
+  function badgePill(item){
+    var d = item.data;
+    if (d.plan === 'badge'){
+      if (item.badge_check === true) return '<span class="pill ok">✓ badge found on site</span>';
+      if (item.badge_check === false) return '<span class="pill warn">⚠ badge NOT found on site</span>';
+      return '<span class="pill">badge check inconclusive</span>';
+    }
+    return '';
+  }
+  function planPill(plan){
+    if (plan === 'badge') return '<span class="pill plan-badge">Badge launch · free</span>';
+    if (plan === 'paid') return '<span class="pill plan-paid">Instant · $5</span>';
+    return '<span class="pill">Free · nofollow</span>';
+  }
+  function render(items){
+    var list = document.getElementById('list');
+    if (!items.length){
+      list.innerHTML = '<div class="empty">🎉 Inbox zero — no pending submissions.</div>';
+      return;
+    }
+    list.innerHTML = items.map(function(item, i){
+      var d = item.data;
+      var rev = d.revenue && d.revenue.amount ? esc(d.revenue.amount) + (d.revenue.metric ? ' ' + esc(d.revenue.metric) : '') : '—';
+      var shots = (d.screenshots || []).map(function(s){ return '<img src="' + esc(s) + '" alt="screenshot" loading="lazy">'; }).join('');
+      var story = (d.story || []).map(function(a, k){
+        a = a != null ? String(a).trim() : '';
+        if (!a) return '';
+        return '<div class="qa"><h4>' + QS[k] + '</h4><p>' + esc(a) + '</p></div>';
+      }).join('');
+      var when = item.uploaded ? new Date(item.uploaded).toLocaleString() : '';
+      return '<div class="sub-card" data-i="' + i + '">' +
+        '<div class="sub-top">' +
+        (d.logo ? '<img class="logo" src="' + esc(d.logo) + '" alt="">' : '') +
+        '<div><h2><a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.name) + '</a></h2>' +
+        '<p class="sub-tagline">' + esc(d.tagline || '') + '</p></div></div>' +
+        '<div class="sub-meta">' + planPill(d.plan) + badgePill(item) +
+        '<span class="pill">' + esc(priceLabel(d)) + '</span>' +
+        '<span class="pill">💰 ' + rev + '</span>' +
+        '<span class="pill">' + esc((d.categories || []).join(', ') || 'Product') + '</span>' +
+        '<span class="pill">👤 ' + esc(d.founder || '—') + '</span></div>' +
+        '<p class="sub-desc">' + esc(d.description || '') + '</p>' +
+        (shots ? '<div class="sub-shots">' + shots + '</div>' : '') +
+        (story ? '<details class="sub-story"><summary>Founder story (5 answers)</summary>' + story + '</details>' : '') +
+        '<div class="sub-foot"><span class="sub-when">Submitted ' + esc(when) + ' · ' + esc(item.key) + '</span>' +
+        '<span class="sub-actions"><button class="btn-reject" data-act="reject" type="button">Reject</button>' +
+        '<button class="btn-approve" data-act="approve" type="button">✓ Approve &amp; publish</button></span></div>' +
+        '<div class="published-link" hidden></div>' +
+      '</div>';
+    }).join('');
+  }
+  function priceLabel(d){ return d.pricing && String(d.pricing).trim() ? d.pricing : 'Free'; }
+  var items = [];
+  function load(){
+    document.getElementById('gate').hidden = true;
+    document.getElementById('console').hidden = false;
+    document.getElementById('list').innerHTML = '<div class="empty">Loading…</div>';
+    api('/review/list').then(function(res){
+      if (res.status !== 200 || !res.body.ok){ showGate(res.body.error || 'Failed to load.'); return; }
+      items = res.body.items || [];
+      render(items);
+    }).catch(function(e){ if (e.message !== 'auth') showGate('Network error.'); });
+  }
+  document.getElementById('list').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-act]');
+    if (!btn) return;
+    var card = btn.closest('.sub-card');
+    var item = items[parseInt(card.getAttribute('data-i'), 10)];
+    if (!item) return;
+    var act = btn.getAttribute('data-act');
+    var label = act === 'approve' ? 'Approve and publish "' + item.data.name + '" to the homepage?' : 'Reject "' + item.data.name + '"? (moves to rejected archive)';
+    if (!confirm(label)) return;
+    btn.disabled = true;
+    var other = card.querySelector(act === 'approve' ? '[data-act="reject"]' : '[data-act="approve"]');
+    if (other) other.disabled = true;
+    btn.textContent = act === 'approve' ? 'Publishing…' : 'Rejecting…';
+    api('/review/' + act, 'POST', { key: item.key }).then(function(res){
+      if (res.status === 200 && res.body.ok){
+        if (act === 'approve'){
+          var pl = card.querySelector('.published-link');
+          pl.hidden = false;
+          pl.innerHTML = '✓ Live: <a href="' + esc(res.body.url) + '" target="_blank" rel="noopener">' + esc(res.body.url) + '</a>';
+          card.querySelector('.sub-actions').innerHTML = '';
+        } else {
+          card.style.opacity = '0.4';
+          card.querySelector('.sub-actions').innerHTML = '<span class="sub-when">Rejected &amp; archived.</span>';
+        }
+      } else {
+        alert('Failed: ' + (res.body.error || res.status));
+        btn.disabled = false;
+        if (other) other.disabled = false;
+        btn.textContent = act === 'approve' ? '✓ Approve & publish' : 'Reject';
+      }
+    }).catch(function(){ alert('Network error.'); btn.disabled = false; });
+  });
+  document.getElementById('refreshBtn').addEventListener('click', load);
+  document.getElementById('lockBtn').addEventListener('click', function(){ localStorage.removeItem(LS_KEY); showGate(''); });
+  function unlock(){
+    var v = document.getElementById('tokenInput').value.trim();
+    if (!v) return;
+    localStorage.setItem(LS_KEY, v);
+    document.getElementById('tokenInput').value = '';
+    load();
+  }
+  document.getElementById('gateBtn').addEventListener('click', unlock);
+  document.getElementById('tokenInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') unlock(); });
+  if (token()) load(); else showGate('');
+})();
+</script>
+</body>
+</html>
