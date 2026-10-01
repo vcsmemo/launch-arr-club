@@ -1,7 +1,7 @@
-# launch.arr.club
+# ARR.Club Launch
 
-> The launch board for AI startups where revenue is the headline. Founders publish a permanent product page,
-> get a dofollow backlink, and can optionally share revenue to be tracked long-term on ARR.Club.
+> The launchpad for early-stage AI startups — a part of ARR.Club. Revenue is the headline: founders launch free,
+> get discovered, share revenue, and graduate to ARR.Club when they scale. From launch to $100M.
 
 ## Key pages
 
