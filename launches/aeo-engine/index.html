@@ -87,14 +87,35 @@
 </style>
   <h2 class="section-title caps"><span class="dot"></span>Growth timeline</h2>
   <div class="card growth-timeline">
-    <div class="timeline-track">
-    <div class="timeline-item">
-      <div class="timeline-date">2026-09-30</div>
-      <div class="timeline-rev">$70k MRR</div>
-      <div class="timeline-note">Launch</div>
+    <div class="timeline-track" id="timelineTrack">
+      <!-- Rendered from launches.json -->
     </div>
     </div>
   </div>
+  <script>
+  (function(){
+    var slug = "aeo-engine";
+    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
+      var product = items.find(function(p){ 
+        return p.url && p.url.indexOf('/' + slug + '/') !== -1; 
+      });
+      if(!product || !product.revenue_history || !product.revenue_history.length){
+        document.getElementById('timelineTrack').innerHTML = '<div class="timeline-item"><div class="timeline-note">No revenue shared yet.</div></div>';
+        return;
+      }
+      var html = product.revenue_history.map(function(h){
+        return '<div class="timeline-item">'
+          + '<div class="timeline-date">' + h.date + '</div>'
+          + '<div class="timeline-rev">' + h.revenue + '</div>'
+          + (h.note ? '<div class="timeline-note">' + h.note + '</div>' : '')
+          + '</div>';
+      }).join('');
+      document.getElementById('timelineTrack').innerHTML = html;
+    }).catch(function(){
+      document.getElementById('timelineTrack').innerHTML = '<div class="timeline-item"><div class="timeline-note">Could not load timeline.</div></div>';
+    });
+  })();
+  </script>
 
   <h2 class="section-title caps"><span class="dot"></span>Product insights</h2>
   <div class="insights-2col">
