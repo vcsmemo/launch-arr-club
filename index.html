@@ -70,7 +70,7 @@
   <section id="leaderboard">
     <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span></h2>
     <div class="lb-tabs" style="margin-bottom:12px;">
-      <button class="lb-tab active" data-tab="all" style="padding:8px 16px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">All time</button><button class="lb-tab" data-tab="week" style="padding:8px 16px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">This week</button>
+      <button class="lb-tab active" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">Top revenue</button><button class="lb-tab" data-tab="week" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">This week</button><button class="lb-tab" data-tab="newest" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">Newest</button><button class="lb-tab" data-tab="discover" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">🎲 Discover</button>
     </div>
     <div class="lb-table">
       <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">Revenue &#8595;</span></div>
@@ -85,13 +85,27 @@
     var medals = ['🥇','🥈','🥉'];
     var allItems = [];
     function revVal(it){ var m = String(it.revenue || '').match(/\$(\d[\d.]+)k/); return m ? parseFloat(m[1]) : -1; }
+    function seededShuffle(arr, seed){
+      var a = arr.slice(), m = a.length, t, i;
+      var s = seed;
+      function rnd(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }
+      while(m){ i = Math.floor(rnd() * m--); t = a[m]; a[m] = a[i]; a[i] = t; }
+      return a;
+    }
     function render(tab){
       var items = allItems.slice();
       if(tab === 'week'){
         var weekAgo = new Date(Date.now() - 7*24*60*60*1000);
         items = items.filter(function(it){ return it.launched && new Date(it.launched+'T00:00:00') >= weekAgo; });
+        items.sort(function(a, b){ return revVal(b) - revVal(a); });
+      } else if(tab === 'newest'){
+        items.sort(function(a, b){ return (b.launch_no || 0) - (a.launch_no || 0); });
+      } else if(tab === 'discover'){
+        var today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        items = seededShuffle(items, parseInt(today, 10));
+      } else {
+        items.sort(function(a, b){ return revVal(b) - revVal(a); });
       }
-      items.sort(function(a, b){ return revVal(b) - revVal(a); });
       document.getElementById('lbBody').innerHTML = items.length ? items.map(function(it, i){
         var logo = it.logo
           ? '<img src="' + String(it.logo).replace(/"/g, '') + '" alt="" loading="lazy">'
