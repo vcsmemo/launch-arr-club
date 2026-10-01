@@ -262,7 +262,7 @@
       return '<a class="launch-card" href="' + esc(it.url) + '">' + ribbon + logo
         + '<div class="lc-main"><h3>' + num + esc(it.name) + '</h3>'
         + '<p class="lc-tag">' + esc(it.tagline || '') + '</p>'
-        + '<div class="lc-meta">' + price + cat + rev + lp + '</div></div></a>';
+        + '<div class="lc-meta">' + cat + rev + lp + '</div></div></a>';
     }).join('');
   }).catch(function(){});
 })();
