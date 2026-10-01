@@ -397,7 +397,7 @@ a.lb-row:hover { background: var(--bg-soft); }
 .bs { text-align: center; padding: 0 1.8rem; }
 .bs + .bs { border-left: 1px solid rgba(255,255,255,.12); }
 .bs-num { display: block; font-family: var(--mono); font-weight: 800; font-size: 1.6rem; color: #fff; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.bs-num.teal { color: #5eead4; text-shadow: 0 0 18px rgba(94,234,212,.35); }
+.bs-num.teal { color: #34d399; text-shadow: 0 0 22px rgba(52,211,153,.5); font-size: 1.75rem; }
 .bs-label { display: block; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.14em; color: #94a3b8; margin-top: 0.25rem; }
 @media (max-width: 560px) { .bs { padding: 0 1rem; } .bs-num { font-size: 1.25rem; } }
 

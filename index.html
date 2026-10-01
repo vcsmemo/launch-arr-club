@@ -252,7 +252,6 @@
       var logo = it.logo ? '<img class="lc-logo" src="' + esc(it.logo) + '" alt="' + esc(it.name) + '" loading="lazy">' : '';
       var num = it.launch_no ? '<span class="launch-no">#' + String(it.launch_no).padStart(3,'0') + '</span> ' : '';
       var rev = it.revenue ? '<div class="lc-m"><span>Revenue</span><b>' + esc(it.revenue) + '</b></div>' : '';
-      var price = it.pricing ? '<div class="lc-m"><span>Price</span><b>' + esc(it.pricing) + '</b></div>' : '';
       var cat = it.category ? '<div class="lc-m"><span>Category</span><b>' + esc(it.category) + '</b></div>' : '';
       // Days since launch for L+N badge
       var launched = new Date(it.launched + 'T00:00:00');
