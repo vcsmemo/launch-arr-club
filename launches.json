@@ -528,5 +528,71 @@
         "note": "Launch"
       }
     ]
+  },
+  {
+    "name": "Cometly",
+    "tagline": "AI marketing attribution — chat with your ads data",
+    "url": "/launches/cometly/",
+    "category": "Marketing",
+    "pricing": "Usage-based",
+    "founder": "Grant Cooper, Matt Pattoli",
+    "revenue": "$208k",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/cometly.svg",
+    "launch_no": 30,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$208k",
+        "note": "Launch · TrustMRR Stripe-verified"
+      }
+    ]
+  },
+  {
+    "name": "Stack Influence",
+    "tagline": "Micro-influencer marketing for eCommerce brands",
+    "url": "/launches/stack-influence/",
+    "category": "Marketing",
+    "pricing": "$39/post",
+    "founder": "William Gasner",
+    "revenue": "$761k / 30d",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": true,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/stackinfluence.svg",
+    "launch_no": 31,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$761k / 30d",
+        "note": "Launch · TrustMRR Stripe-verified"
+      }
+    ]
+  },
+  {
+    "name": "PressWhizz",
+    "tagline": "AI-powered link-building marketplace",
+    "url": "/launches/presswhizz/",
+    "category": "Marketing",
+    "pricing": "Pay per link",
+    "founder": "Dusan Novakovic",
+    "revenue": "$189k / 30d",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": true,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/presswhizz.png",
+    "launch_no": 32,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$189k / 30d",
+        "note": "Launch · TrustMRR Stripe-verified"
+      }
+    ]
   }
 ]
