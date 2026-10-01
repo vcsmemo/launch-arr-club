@@ -462,7 +462,7 @@ a.lb-row:hover { background: var(--bg-soft); }
 .nav-signin:hover { color: var(--accent-dark); }
 
 /* Real product media */
-.logo-img { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; background: var(--mint); flex: none; }
+.logo-img { width: 64px; height: 64px; border-radius: 16px; object-fit: contain; background: #fff; padding: 4px; flex: none; }
 .detail-shot { width: 100%; border-radius: var(--radius-lg); border: 1px solid var(--border); margin: 1.2rem 0 0; }
 
 /* Detail page v2 — FasLaunch-inspired layout, our identity */
@@ -473,7 +473,7 @@ a.lb-row:hover { background: var(--bg-soft); }
   padding: 0.3rem 0.7rem; font-size: 0.78rem; color: var(--text-muted); cursor: pointer; font-family: var(--font); }
 .crumbs .copy-link:hover { border-color: var(--accent); color: var(--accent-hover); }
 .d-hero { display: flex; gap: 1.1rem; align-items: flex-start; margin-bottom: 1.1rem; }
-.d-logo { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; flex: none; background: var(--mint); }
+.d-logo { width: 64px; height: 64px; border-radius: 16px; object-fit: contain; flex: none; background: #fff; padding: 4px; }
 .d-logo-ph { width: 64px; height: 64px; border-radius: 16px; flex: none; display: flex; align-items: center; justify-content: center;
   font-weight: 800; font-size: 1.8rem; color: #fff; background: var(--navy); }
 .d-hero-main { flex: 1; min-width: 0; }
@@ -527,7 +527,7 @@ a.lb-row:hover { background: var(--bg-soft); }
 .more-row:first-child { border-top: 0; }
 .more-row:hover { background: var(--bg-soft); }
 .more-rank { font-family: var(--mono); font-weight: 700; color: var(--text-muted); width: 2rem; flex: none; }
-.more-row img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; flex: none; }
+.more-row img { width: 40px; height: 40px; border-radius: 10px; object-fit: contain; background: #fff; padding: 2px; flex: none; }
 .more-row .lc-logo-ph { width: 40px; height: 40px; border-radius: 10px; font-size: 1rem; }
 .more-main { flex: 1; min-width: 0; }
 .more-main strong { display: block; font-size: 0.95rem; }
