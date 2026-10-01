@@ -616,5 +616,49 @@
         "note": "Launch · Founder-reported"
       }
     ]
+  },
+  {
+    "name": "Bazzly",
+    "tagline": "Get customers from Reddit on autopilot",
+    "url": "/launches/bazzly/",
+    "category": "Marketing",
+    "pricing": "$199/mo",
+    "founder": "Tibo",
+    "revenue": "$10k MRR",
+    "revenue_metric": "MRR",
+    "revenue_verified": false,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/bazzly.svg",
+    "launch_no": 34,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$10k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ]
+  },
+  {
+    "name": "CreativeClaw",
+    "tagline": "AI media studio inside Claude & ChatGPT",
+    "url": "/launches/creativeclaw/",
+    "category": "Dev Tools",
+    "pricing": "Pay as you go",
+    "founder": "Itay Dressler",
+    "revenue": "$12k / 30d",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": false,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/creativeclaw.png",
+    "launch_no": 35,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$12k / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ]
   }
 ]
