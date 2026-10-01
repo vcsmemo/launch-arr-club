@@ -547,7 +547,7 @@
       {
         "date": "2026-10-01",
         "revenue": "$208k",
-        "note": "Launch · TrustMRR Stripe-verified"
+        "note": "Launch · Founder-reported"
       }
     ]
   },
@@ -569,7 +569,7 @@
       {
         "date": "2026-10-01",
         "revenue": "$761k / 30d",
-        "note": "Launch · TrustMRR Stripe-verified"
+        "note": "Launch · Founder-reported"
       }
     ]
   },
@@ -591,7 +591,29 @@
       {
         "date": "2026-10-01",
         "revenue": "$189k / 30d",
-        "note": "Launch · TrustMRR Stripe-verified"
+        "note": "Launch · Founder-reported"
+      }
+    ]
+  },
+  {
+    "name": "Blogr",
+    "tagline": "AI blogger tool for SaaS, eCommerce & local SEO",
+    "url": "/launches/blogr/",
+    "category": "Marketing",
+    "pricing": "From $29/mo",
+    "founder": "Serg Karakhanyan",
+    "revenue": "$10k all-time",
+    "revenue_metric": "all-time revenue",
+    "revenue_verified": false,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/blogr.svg",
+    "launch_no": 33,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$10k all-time",
+        "note": "Launch · Founder-reported"
       }
     ]
   }
