@@ -47,10 +47,18 @@
   <script>
   (function(){
     fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
-      // Pick 3 with revenue, sorted by launch_no desc (recent) — prefer ones with revenue
-      var withRev = items.filter(function(p){ return p.revenue; });
-      withRev.sort(function(a,b){ return (b.launch_no||0) - (a.launch_no||0); });
-      var picks = withRev.slice(0, 3);
+      // Pick top 4 by revenue (different from Recently launched which is by recency)
+      function revNum(rev){
+        if(!rev) return 0;
+        var m = /\$([\d.]+)(k|m)?/i.exec(rev);
+        if(!m) return 0;
+        var n = parseFloat(m[1]);
+        if(/m/i.test(m[2]||'')) n *= 1000;
+        return n;
+      }
+      var withRev = items.filter(function(p){ return p.revenue && revNum(p.revenue) > 0; });
+      withRev.sort(function(a,b){ return revNum(b.revenue) - revNum(a.revenue); });
+      var picks = withRev.slice(0, 4);
       var el = document.getElementById('hsCards');
       if(!el || !picks.length) return;
       el.innerHTML = picks.map(function(p){
