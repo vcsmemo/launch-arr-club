@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://launch.arr.club/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261002d">
+<link rel="stylesheet" href="/style.css?v=20261002e">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"ARR.Club Launch","url":"https://launch.arr.club/","description":"The launchpad for early-stage AI startups. Revenue is the headline — launch free, get discovered, graduate to ARR.Club."}
 </script>
@@ -25,32 +25,43 @@
   </nav>
 </header>
 <main>
-  <section class="hero hero-slim">
-    <h1>Where startups <span class="hl">launch.</span></h1>
-    <p class="lede">Revenue is the headline. Launch free, get discovered.</p>
-    <ul class="hero-perks">
-      <li>Permanent product page</li>
-      <li>Dofollow backlink</li>
-      <li>Revenue tracked on ARR.Club</li>
-    </ul>
-    <div class="hero-searchrow">
-      <div class="hero-search">
+  <section class="hero hero-split">
+    <div class="hs-left">
+      <div class="hs-kicker">For indie hackers</div>
+      <h1>Ship it.<br>Show revenue.<br>Get discovered.</h1>
+      <p class="hs-sub">Launch your product where investors and users actually look at the numbers.</p>
+      <div class="hs-cta-row">
+        <a class="btn" href="/submit.html">🚀 Launch free</a>
+      </div>
+      <div class="hero-search hs-search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
         <input type="search" id="heroSearch" placeholder="Search launched products…" autocomplete="off" aria-label="Search launched products">
         <div class="search-drop" id="searchDrop" hidden></div>
       </div>
-      <a class="btn" href="/submit.html">🚀 Launch your product</a>
+    </div>
+    <div class="hs-right" id="hsCards">
+      <!-- Top revenue cards, rendered from launches.json -->
     </div>
   </section>
 
-  <div class="board-stats" id="boardStats">
-    <div class="bs"><span class="bs-num" data-stat="launches">4</span><span class="bs-label">launches</span></div>
-    <div class="bs"><span class="bs-num teal" data-stat="mrr">$60k</span><span class="bs-label">MRR tracked</span></div>
-    <div class="bs"><span class="bs-num" data-stat="verified">1</span><span class="bs-label">with revenue</span></div>
-    <div class="bs"><span class="bs-num" data-stat="week">4</span><span class="bs-label">this week</span></div>
-    <div class="bs"><span class="bs-num" data-stat="cats">4</span><span class="bs-label">categories</span></div>
-    
-  </div>
+  <script>
+  (function(){
+    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
+      // Pick 3 with revenue, sorted by launch_no desc (recent) — prefer ones with revenue
+      var withRev = items.filter(function(p){ return p.revenue; });
+      withRev.sort(function(a,b){ return (b.launch_no||0) - (a.launch_no||0); });
+      var picks = withRev.slice(0, 3);
+      var el = document.getElementById('hsCards');
+      if(!el || !picks.length) return;
+      el.innerHTML = picks.map(function(p){
+        var logo = p.logo ? '<img src="' + p.logo + '" alt="" loading="lazy">' : '';
+        return '<a class="hs-card" href="' + p.url + '">' + logo
+          + '<div class="hs-card-main"><b>' + p.name + '</b><small>' + (p.category||'') + ' · ' + p.revenue + '</small></div>'
+          + '<span class="hs-card-rev">' + p.revenue + '</span></a>';
+      }).join('');
+    }).catch(function(){});
+  })();
+  </script>
 
   <section id="recently">
     <h2 class="section-title"><span class="dot"></span>Recently launched <a class="view-all" href="/2026/w40/">View all ›</a></h2>
