@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://launch.arr.club/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261002j">
+<link rel="stylesheet" href="/style.css?v=20261002k">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"ARR.Club Launch","url":"https://launch.arr.club/","description":"The launchpad for early-stage AI startups. Revenue is the headline — launch free, get discovered, graduate to ARR.Club."}
 </script>
@@ -25,52 +25,17 @@
   </nav>
 </header>
 <main>
-  <section class="hero hero-split">
-    <div class="hs-left">
-      <div class="hs-kicker">For indie hackers</div>
-      <h1>Ship it.<br>Show revenue.<br>Get discovered.</h1>
-      <p class="hs-sub">Launch your product where investors and users actually look at the numbers.</p>
-      <div class="hs-cta-row">
-        <a class="btn" href="/submit.html">🚀 Launch free</a>
-      </div>
-      <div class="hero-search hs-search">
+  <section class="hero hero-simple">
+    <h1>Ship it. Show revenue. Get discovered.</h1>
+    <div class="hero-searchrow">
+      <div class="hero-search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
         <input type="search" id="heroSearch" placeholder="Search launched products…" autocomplete="off" aria-label="Search launched products">
         <div class="search-drop" id="searchDrop" hidden></div>
       </div>
-    </div>
-    <div class="hs-right" id="hsCards">
-      <!-- Top revenue cards, rendered from launches.json -->
+      <a class="btn" href="/submit.html">🚀 Launch free</a>
     </div>
   </section>
-
-  <script>
-  (function(){
-    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
-      // Pick 4 randomly from revenue products, rotated daily (so every product gets featured)
-      var withRev = items.filter(function(p){ return p.revenue; });
-      var seed = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-      var h = 0;
-      for(var i = 0; i < seed.length; i++){ h = ((h << 5) - h + seed.charCodeAt(i)) | 0; }
-      var shuffled = withRev.slice();
-      for(var j = shuffled.length - 1; j > 0; j--){
-        h = (h * 1103515245 + 12345) & 0x7fffffff;
-        var k = h % (j + 1);
-        var tmp = shuffled[j]; shuffled[j] = shuffled[k]; shuffled[k] = tmp;
-      }
-      var picks = shuffled.slice(0, 4);
-      var el = document.getElementById('hsCards');
-      if(!el || !picks.length) return;
-      el.innerHTML = picks.map(function(p){
-        var logo = p.logo ? '<img src="' + p.logo + '" alt="" loading="lazy">' : '';
-        var esc = function(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); };
-        return '<a class="hs-card" href="' + p.url + '">' + logo
-          + '<div class="hs-card-main"><b>' + esc(p.name) + '</b><small>' + esc(p.category||'') + '</small></div>'
-          + '<span class="hs-card-rev">' + esc(p.revenue) + '</span></a>';
-      }).join('');
-    }).catch(function(){});
-  })();
-  </script>
 
   <section id="recently">
     <h2 class="section-title"><span class="dot"></span>Recently launched <a class="view-all" href="/2026/w40/">View all ›</a></h2>

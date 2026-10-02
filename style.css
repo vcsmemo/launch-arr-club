@@ -642,38 +642,10 @@ a.lb-row:hover { background: var(--bg-soft); }
 #recently .ribbon{font-size:.62rem;padding:.15rem .45rem}
 @media(max-width:700px){#recently .launch-card{flex:0 0 220px}#recently .feed{padding:0.25rem 0.25rem 1rem}}
 
-/* Hero split (Option E) */
-.hero-split { display: flex; gap: 2rem; align-items: center; padding: 2.2rem 1.5rem; margin-bottom: 1rem;
+/* Hero simple */
+.hero-simple { text-align: center; padding: 2.6rem 1.5rem; margin-bottom: 1rem;
   background: linear-gradient(120deg, #fdf2f0 0%, #fff 60%); border-radius: var(--radius-lg); }
-.hs-left { flex: 1; min-width: 0; }
-.hs-kicker { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
-.hero-split h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 0.7rem; }
-.hs-sub { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.5; }
-.hs-cta-row { margin-bottom: 1.1rem; }
-.hs-search { max-width: 340px; }
-.hs-right { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.7rem; }
-.hs-card { display: flex; align-items: center; gap: 0.8rem; background: #fff; border: 1px solid var(--border);
-  border-radius: 12px; padding: 0.8rem 1rem; text-decoration: none; color: var(--text);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.15s, box-shadow 0.15s; }
-.hs-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-.hs-card img { width: 40px; height: 40px; border-radius: 10px; object-fit: contain; background: #f8fafc; padding: 3px; flex: none; }
-.hs-card-main { flex: 1; min-width: 0; }
-.hs-card-main b { display: block; font-size: 0.9rem; }
-.hs-card-main small { font-size: 0.76rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
-.hs-card-rev { font-weight: 800; color: var(--accent); font-size: 0.95rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
-@media (max-width: 640px) {
-  .hero-split { flex-direction: column; padding: 1.6rem 1.2rem; }
-  .hs-left { text-align: center; }
-  .hs-cta-row { text-align: center; }
-  .hs-search { max-width: none; margin: 0 auto; }
-  .hs-right { width: 100%; }
-  .hs-card { display: flex !important; flex-direction: row !important; align-items: center !important; }
-  .hs-card img { width: 40px !important; height: 40px !important; min-width: 40px !important; min-height: 40px !important; max-width: 40px !important; max-height: 40px !important; object-fit: contain !important; }
-  .hs-card-main { flex: 1 1 auto !important; min-width: 0 !important; }
-  .hs-card-main b { font-size: 0.88rem !important; }
-  .hs-card-main small { font-size: 0.72rem !important; }
-  .hs-card-rev { flex: none !important; font-size: 0.85rem !important; }
-}
+.hero-simple h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin: 0; }
 
 /* Stripe Connect Modal */
 .modal { position: fixed; inset: 0; background: rgba(15,23,42,0.6); display: flex; align-items: center; justify-content: center; z-index: 100; padding: 1rem; }
