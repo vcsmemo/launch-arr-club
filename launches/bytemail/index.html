@@ -7,7 +7,7 @@
 <meta name="description" content="bytemail is a fast, native email client for Mac — SwiftUI, private by design, one-time purchase. $238 in 9 days, Founder-reported.">
 <link rel="canonical" href="https://launch.arr.club/launches/bytemail/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261002g">
+<link rel="stylesheet" href="/style.css?v=20261002h">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"bytemail","applicationCategory":"WebApplication","operatingSystem":"Web","description":"Fast, native email for Mac","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://launch.arr.club/launches/bytemail/"}
 </script>
@@ -49,7 +49,7 @@
   </div>
 
   <div class="stat-grid">
-    <div class="stat-card"><span>Revenue</span><b>$238</b><small>9-day revenue · Founder-reported</small></div>
+    <div class="stat-card"><span>Revenue</span><b>$238</b><small>9-day revenue · Founder-reported</small></div><div style="margin-top:0.6rem"><button class="btn ghost" data-stripe-connect style="font-size:0.82rem;padding:0.5rem 1rem">⚡ Verify with Stripe</button><span data-stripe-status style="margin-left:0.5rem"></span></div>
     <div class="stat-card"><span>Pricing</span><b>$29 one-time</b><small>Pre-order, lifetime licence</small></div>
     <div class="stat-card"><span>Launched</span><b>2 October 2026</b><small>L+0 &middot; Live on ARR.Club Launch</small></div>
     <div class="stat-card"><span>Category</span><div class="pills"><span class="tag cat">Email</span></div></div>
@@ -189,5 +189,73 @@
   });
 })();
 </script>
+
+<!-- Stripe Connect Modal -->
+<div id="stripeModal" class="modal" hidden>
+  <div class="modal-box">
+    <h3>Verify revenue with Stripe</h3>
+    <p class="modal-sub">Connect a Stripe <b>Restricted API key</b> (read-only) and we'll show your live MRR with a verified badge. Your key is stored securely and never shown publicly.</p>
+    <ol class="modal-steps">
+      <li>Go to <a href="https://dashboard.stripe.com/apikeys" target="_blank" rel="noopener">Stripe Dashboard → API keys</a></li>
+      <li>Click "Create restricted key", give it a name like "ARR.Club Launch"</li>
+      <li>Grant <b>read</b> access to: Subscriptions, Prices, Products</li>
+      <li>Paste the key below (starts with <code>rk_</code>)</li>
+    </ol>
+    <input type="text" id="stripeKeyInput" placeholder="rk_live_..." autocomplete="off" spellcheck="false">
+    <div class="modal-err" id="stripeErr" hidden></div>
+    <div class="modal-actions">
+      <button class="btn ghost" id="stripeCancel">Cancel</button>
+      <button class="btn" id="stripeSubmit">Verify &amp; Connect</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var modal = document.getElementById('stripeModal');
+  var openBtns = document.querySelectorAll('[data-stripe-connect]');
+  var cancel = document.getElementById('stripeCancel');
+  var submit = document.getElementById('stripeSubmit');
+  var input = document.getElementById('stripeKeyInput');
+  var err = document.getElementById('stripeErr');
+  var slug = (location.pathname.match(/\/launches\/([^/]+)\//) || [])[1] || '';
+  openBtns.forEach(function(b){
+    b.addEventListener('click', function(){ modal.hidden = false; input.focus(); });
+  });
+  cancel.addEventListener('click', function(){ modal.hidden = true; err.hidden = true; });
+  modal.addEventListener('click', function(e){ if(e.target === modal){ modal.hidden = true; } });
+  submit.addEventListener('click', function(){
+    var key = input.value.trim();
+    if(!key.startsWith('rk_')){ err.textContent = 'Key must start with rk_ (Restricted key)'; err.hidden = false; return; }
+    submit.disabled = true; submit.textContent = 'Verifying…'; err.hidden = true;
+    fetch('https://launch-arr-club-img.johntian2015.workers.dev/stripe/connect', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug, stripe_key: key })
+    }).then(function(r){ return r.json(); }).then(function(d){
+      if(d.ok){
+        modal.innerHTML = '<div class="modal-box"><h3>✓ Connected</h3><p class="modal-sub">Your live MRR is now verified and will update daily.</p><div class="modal-actions"><button class="btn" onclick="location.reload()">Done</button></div></div>';
+      } else {
+        err.textContent = d.error || 'Verification failed'; err.hidden = false;
+        submit.disabled = false; submit.textContent = 'Verify & Connect';
+      }
+    }).catch(function(){
+      err.textContent = 'Network error, try again'; err.hidden = false;
+      submit.disabled = false; submit.textContent = 'Verify & Connect';
+    });
+  });
+  // Check if already verified, show live MRR
+  fetch('https://launch-arr-club-img.johntian2015.workers.dev/stripe/mrr/' + slug)
+    .then(function(r){ return r.json(); }).then(function(d){
+      if(d.verified){
+        document.querySelectorAll('[data-stripe-status]').forEach(function(el){
+          var mrr = '$' + (d.mrr_cents / 100).toLocaleString(undefined, {maximumFractionDigits: 0});
+          el.innerHTML = '<span class="verified-badge">✓ Stripe-verified</span> <b>' + mrr + '</b> <small>MRR · live</small>';
+        });
+        document.querySelectorAll('[data-stripe-connect]').forEach(function(b){ b.style.display = 'none'; });
+      }
+    }).catch(function(){});
+})();
+</script>
+
 </body>
 </html>

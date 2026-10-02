@@ -640,6 +640,23 @@ export default {
       return json(stats);
     }
 
+    // ---- Stripe-verified MRR ----
+    // POST /stripe/connect {slug, stripe_key}
+    if (request.method === 'POST' && url.pathname === '/stripe/connect') {
+      return await handleStripeConnect(request, env);
+    }
+    // GET /stripe/mrr/:slug
+    if (request.method === 'GET' && url.pathname.startsWith('/stripe/mrr/')) {
+      const slug = url.pathname.slice(12).replace(/[^a-z0-9-]/g, '').slice(0, 50);
+      return await handleStripeMrr(slug, env);
+    }
+    // GET /stripe/refresh (cron or manual, token-gated)
+    if (request.method === 'GET' && url.pathname === '/stripe/refresh') {
+      if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
+      const result = await refreshAllStripeMrr(env);
+      return json(result);
+    }
+
     // ---- Image upload ----
     if (request.method === 'POST' && url.pathname === '/upload') {
       let form;
@@ -781,4 +798,115 @@ export default {
 
     return new Response('not found', { status: 404 });
   },
+
+  async scheduled(event, env, ctx) {
+    // Daily cron: refresh all Stripe-verified MRR
+    ctx.waitUntil(refreshAllStripeMrr(env));
+  },
 };
+
+/* ---------- Stripe-verified MRR ---------- */
+// POST /stripe/connect {slug, stripe_key} -> validates key, computes MRR, stores in KV
+// GET  /stripe/mrr/:slug -> returns cached {mrr_cents, currency, updated_at, verified}
+// KV binding required: STRIPE_KV
+
+async function stripeApi(key, path) {
+  const r = await fetch('https://api.stripe.com' + path, {
+    headers: { 'Authorization': 'Bearer ' + key },
+  });
+  if (!r.ok) {
+    const t = await r.text().catch(function(){ return ''; });
+    throw new Error('Stripe API ' + r.status + ': ' + t.slice(0, 200));
+  }
+  return await r.json();
+}
+
+function calcMrrCents(subscriptions) {
+  let total = 0;
+  const subs = subscriptions.data || [];
+  for (const sub of subs) {
+    if (sub.status !== 'active' && sub.status !== 'trialing') continue;
+    const items = (sub.items && sub.items.data) || [];
+    for (const item of items) {
+      const price = item.price || {};
+      const unit = price.unit_amount || 0;
+      const qty = item.quantity || 1;
+      const interval = (price.recurring && price.recurring.interval) || 'month';
+      const count = price.recurring && price.recurring.interval_count ? price.recurring.interval_count : 1;
+      let monthly = 0;
+      if (interval === 'month') monthly = (unit * qty) / count;
+      else if (interval === 'year') monthly = (unit * qty) / (12 * count);
+      else if (interval === 'week') monthly = (unit * qty * 52) / (12 * count);
+      else if (interval === 'day') monthly = (unit * qty * 365) / (12 * count);
+      total += monthly;
+    }
+  }
+  return Math.round(total);
+}
+
+async function handleStripeConnect(request, env) {
+  if (!env.STRIPE_KV) return json({ error: 'stripe KV not configured' }, 500);
+  let body;
+  try { body = await request.json(); } catch (e) { return json({ error: 'invalid JSON' }, 400); }
+  const slug = String(body.slug || '').replace(/[^a-z0-9-]/g, '').slice(0, 50);
+  const key = String(body.stripe_key || '').trim();
+  if (!slug || !key) return json({ error: 'slug and stripe_key required' }, 400);
+  if (!key.startsWith('rk_')) return json({ error: 'must be a Restricted API key (starts with rk_)' }, 400);
+
+  // Validate key by fetching subscriptions
+  let mrrCents, currency;
+  try {
+    const subs = await stripeApi(key, '/v1/subscriptions?status=active&limit=100');
+    mrrCents = calcMrrCents(subs);
+    // Get currency from first subscription or default USD
+    currency = 'usd';
+    const firstSub = (subs.data || [])[0];
+    if (firstSub && firstSub.currency) currency = firstSub.currency;
+  } catch (e) {
+    return json({ error: 'could not validate Stripe key: ' + e.message }, 400);
+  }
+
+  const record = {
+    slug: slug,
+    stripe_key: key, // restricted key, stored in KV (not in git)
+    mrr_cents: mrrCents,
+    currency: currency,
+    connected_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    verified: true,
+  };
+  await env.STRIPE_KV.put('stripe:' + slug, JSON.stringify(record));
+  return json({ ok: true, slug: slug, mrr_cents: mrrCents, currency: currency, verified: true });
+}
+
+async function handleStripeMrr(slug, env) {
+  if (!env.STRIPE_KV) return json({ error: 'not configured' }, 500);
+  const raw = await env.STRIPE_KV.get('stripe:' + slug);
+  if (!raw) return json({ verified: false });
+  const rec = JSON.parse(raw);
+  return json({
+    verified: true,
+    slug: rec.slug,
+    mrr_cents: rec.mrr_cents,
+    currency: rec.currency,
+    updated_at: rec.updated_at,
+  });
+}
+
+async function refreshAllStripeMrr(env) {
+  if (!env.STRIPE_KV) return { error: 'no KV' };
+  const list = await env.STRIPE_KV.list({ prefix: 'stripe:' });
+  let ok = 0, fail = 0;
+  for (const k of list.keys) {
+    try {
+      const raw = await env.STRIPE_KV.get(k.name);
+      const rec = JSON.parse(raw);
+      const subs = await stripeApi(rec.stripe_key, '/v1/subscriptions?status=active&limit=100');
+      rec.mrr_cents = calcMrrCents(subs);
+      rec.updated_at = new Date().toISOString();
+      await env.STRIPE_KV.put(k.name, JSON.stringify(rec));
+      ok++;
+    } catch (e) { fail++; }
+  }
+  return { ok: ok, fail: fail, total: list.keys.length };
+}

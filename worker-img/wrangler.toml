@@ -1,0 +1,14 @@
+name = "launch-arr-club-img"
+main = "upload-worker.js"
+compatibility_date = "2024-09-23"
+
+[[kv_namespaces]]
+binding = "STRIPE_KV"
+id = "e5599539ac3d4da686dab95b31e2af49"
+
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "launch-images"
+
+[triggers]
+crons = ["0 2 * * *"]
