@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://launch.arr.club/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261002e">
+<link rel="stylesheet" href="/style.css?v=20261002f">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"ARR.Club Launch","url":"https://launch.arr.club/","description":"The launchpad for early-stage AI startups. Revenue is the headline — launch free, get discovered, graduate to ARR.Club."}
 </script>
@@ -55,9 +55,10 @@
       if(!el || !picks.length) return;
       el.innerHTML = picks.map(function(p){
         var logo = p.logo ? '<img src="' + p.logo + '" alt="" loading="lazy">' : '';
+        var esc = function(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); };
         return '<a class="hs-card" href="' + p.url + '">' + logo
-          + '<div class="hs-card-main"><b>' + p.name + '</b><small>' + (p.category||'') + ' · ' + p.revenue + '</small></div>'
-          + '<span class="hs-card-rev">' + p.revenue + '</span></a>';
+          + '<div class="hs-card-main"><b>' + esc(p.name) + '</b><small>' + esc(p.category||'') + '</small></div>'
+          + '<span class="hs-card-rev">' + esc(p.revenue) + '</span></a>';
       }).join('');
     }).catch(function(){});
   })();

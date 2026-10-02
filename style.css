@@ -663,6 +663,14 @@ a.lb-row:hover { background: var(--bg-soft); }
 .hs-card-rev { font-weight: 800; color: var(--accent); font-size: 0.95rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
 @media (max-width: 640px) {
   .hero-split { flex-direction: column; padding: 1.6rem 1.2rem; }
+  .hs-left { text-align: center; }
+  .hs-cta-row { text-align: center; }
+  .hs-search { max-width: none; margin: 0 auto; }
   .hs-right { width: 100%; }
-  .hs-search { max-width: none; }
+  .hs-card { display: flex !important; flex-direction: row !important; align-items: center !important; }
+  .hs-card img { width: 40px !important; height: 40px !important; min-width: 40px !important; min-height: 40px !important; max-width: 40px !important; max-height: 40px !important; object-fit: contain !important; }
+  .hs-card-main { flex: 1 1 auto !important; min-width: 0 !important; }
+  .hs-card-main b { font-size: 0.88rem !important; }
+  .hs-card-main small { font-size: 0.72rem !important; }
+  .hs-card-rev { flex: none !important; font-size: 0.85rem !important; }
 }
