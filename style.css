@@ -60,7 +60,7 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; font-weight: 800; }
 /* Header */
 .site-header { background: rgba(255,255,255,.96); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(6px); }
 .nav { max-width: 980px; margin: 0 auto; padding: 0 1.2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.brand { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; text-decoration: none; color: var(--text); display: inline-flex; align-items: center; }
+.brand { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; text-decoration: none; color: var(--text); display: inline-flex; align-items: center; gap: 0.35rem; }
 .brand::before { content: ""; display: inline-block; width: 28px; height: 28px; margin-right: 0.55rem; border-radius: 8px;
   background: url("/logo.png") center/cover no-repeat; }
 .brand span { color: var(--accent); font-weight: 600; }
