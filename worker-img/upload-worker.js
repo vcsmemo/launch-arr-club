@@ -6,6 +6,7 @@
  *   GET  /review/list      token-gated: pending submissions with badge check results
  *   POST /review/approve   token-gated: {key} -> builds pages, commits to GitHub, publishes
  *   POST /review/reject    token-gated: {key} -> moves submission to reviewed/rejected/
+ *   POST /claim-interest   {slug, email} -> saves founder claim intent to KV (claim:<slug>:<md5(email)>)
  * R2 binding required: IMAGES (bucket: launch-images)
  * Secrets required for review: REVIEW_TOKEN, GITHUB_TOKEN (repo contents read+write)
  */
@@ -53,6 +54,51 @@ function slugify(name) {
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
+}
+
+/* Compact MD5 (for claim-interest dedupe keys). Not for security use. */
+function md5(str) {
+  var s = unescape(encodeURIComponent(str));
+  var bytes = [];
+  for (var i = 0; i < s.length; i++) bytes.push(s.charCodeAt(i));
+  var bitLen = bytes.length * 8;
+  bytes.push(0x80);
+  while (bytes.length % 64 !== 56) bytes.push(0);
+  for (var i = 0; i < 4; i++) bytes.push((bitLen >>> (i * 8)) & 0xff);
+  for (var i = 0; i < 4; i++) bytes.push(0);
+  var sft = [7,12,17,22, 7,12,17,22, 7,12,17,22, 7,12,17,22,
+             5, 9,14,20, 5, 9,14,20, 5, 9,14,20, 5, 9,14,20,
+             4,11,16,23, 4,11,16,23, 4,11,16,23, 4,11,16,23,
+             6,10,15,21, 6,10,15,21, 6,10,15,21, 6,10,15,21];
+  var K = [];
+  for (var i = 0; i < 64; i++) K.push(Math.floor(Math.abs(Math.sin(i + 1)) * 4294967296));
+  var a0 = 0x67452301, b0 = 0xefcdab89, c0 = 0x98badcfe, d0 = 0x10325476;
+  for (var off = 0; off < bytes.length; off += 64) {
+    var M = [];
+    for (var j = 0; j < 16; j++)
+      M.push(bytes[off + j * 4] | (bytes[off + j * 4 + 1] << 8) | (bytes[off + j * 4 + 2] << 16) | (bytes[off + j * 4 + 3] << 24));
+    var A = a0, B = b0, C = c0, D = d0;
+    for (var i = 0; i < 64; i++) {
+      var F, g;
+      if (i < 16)      { F = (B & C) | (~B & D); g = i; }
+      else if (i < 32) { F = (D & B) | (~D & C); g = (5 * i + 1) % 16; }
+      else if (i < 48) { F = B ^ C ^ D; g = (3 * i + 5) % 16; }
+      else             { F = C ^ (B | ~D); g = (7 * i) % 16; }
+      F = F + A + K[i] + M[g];
+      A = D; D = C; C = B;
+      B = B + (((F << sft[i]) | (F >>> (32 - sft[i]))) | 0);
+    }
+    a0 = (a0 + A) | 0; b0 = (b0 + B) | 0; c0 = (c0 + C) | 0; d0 = (d0 + D) | 0;
+  }
+  function hexLE(n) {
+    var hex = '0123456789abcdef', s = '';
+    for (var i = 0; i < 4; i++) {
+      var b = (n >>> (i * 8)) & 0xff;
+      s += hex[(b >> 4) & 15] + hex[b & 15];
+    }
+    return s;
+  }
+  return hexLE(a0) + hexLE(b0) + hexLE(c0) + hexLE(d0);
 }
 
 /* ---------- review auth ---------- */
@@ -655,6 +701,22 @@ export default {
       if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
       const result = await refreshAllStripeMrr(env);
       return json(result);
+    }
+
+    // ---- Claim interest ----
+    // POST /claim-interest {slug, email} -> saves founder claim intent to KV
+    if (request.method === 'POST' && url.pathname === '/claim-interest') {
+      let data;
+      try { data = await request.json(); }
+      catch (e) { return json({ error: 'invalid JSON' }, 400); }
+      const slug = String(data.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 50);
+      const email = String(data.email || '').trim().toLowerCase().slice(0, 120);
+      if (!slug) return json({ error: 'missing slug' }, 400);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'invalid email' }, 400);
+      if (!env.STRIPE_KV) return json({ error: 'KV not configured' }, 500);
+      const key = 'claim:' + slug + ':' + md5(email);
+      await env.STRIPE_KV.put(key, JSON.stringify({ email: email, slug: slug, created_at: new Date().toISOString() }));
+      return json({ ok: true });
     }
 
     // ---- Image upload ----
