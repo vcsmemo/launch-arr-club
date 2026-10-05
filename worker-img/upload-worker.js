@@ -696,6 +696,11 @@ export default {
       const slug = url.pathname.slice(12).replace(/[^a-z0-9-]/g, '').slice(0, 50);
       return await handleStripeMrr(slug, env);
     }
+    // GET /stripe/milestones/:slug - milestone crossings, newest first
+    if (request.method === 'GET' && url.pathname.startsWith('/stripe/milestones/')) {
+      const slug = url.pathname.slice(19).replace(/[^a-z0-9-]/g, '').slice(0, 50);
+      return await handleStripeMilestones(slug, env);
+    }
     // GET /stripe/refresh (cron or manual, token-gated)
     if (request.method === 'GET' && url.pathname === '/stripe/refresh') {
       if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
@@ -955,20 +960,50 @@ async function handleStripeMrr(slug, env) {
   });
 }
 
+const MILESTONE_THRESHOLDS = [100000, 500000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 100000000]; // cents: $1k, $5k, $10k, $25k, $50k, $100k, $250k, $500k, $1M
+
+async function checkMilestones(env, slug, oldCents, newCents) {
+  if (!Number.isFinite(oldCents) || !Number.isFinite(newCents) || newCents <= oldCents) return [];
+  const crossed = [];
+  const ts = Math.floor(Date.now() / 1000);
+  for (const t of MILESTONE_THRESHOLDS) {
+    if (oldCents < t && t <= newCents) {
+      const rec = { slug: slug, threshold_cents: t, mrr_cents: newCents, crossed_at: new Date().toISOString() };
+      await env.STRIPE_KV.put('milestone:' + slug + ':' + t + ':' + ts, JSON.stringify(rec));
+      crossed.push(t);
+    }
+  }
+  return crossed;
+}
+
+async function handleStripeMilestones(slug, env) {
+  if (!env.STRIPE_KV) return json({ error: 'stripe KV not configured' }, 500);
+  const list = await env.STRIPE_KV.list({ prefix: 'milestone:' + slug + ':' });
+  const out = [];
+  for (const k of list.keys) {
+    try { out.push(JSON.parse(await env.STRIPE_KV.get(k.name))); } catch (e) {}
+  }
+  out.sort(function(a, b){ return a.crossed_at < b.crossed_at ? 1 : -1; });
+  return json({ slug: slug, milestones: out });
+}
+
 async function refreshAllStripeMrr(env) {
   if (!env.STRIPE_KV) return { error: 'no KV' };
   const list = await env.STRIPE_KV.list({ prefix: 'stripe:' });
-  let ok = 0, fail = 0;
+  let ok = 0, fail = 0, milestones = 0;
   for (const k of list.keys) {
     try {
       const raw = await env.STRIPE_KV.get(k.name);
       const rec = JSON.parse(raw);
+      const slug = k.name.slice('stripe:'.length);
+      const oldCents = rec.mrr_cents;
       const subs = await stripeApi(rec.stripe_key, '/v1/subscriptions?status=active&limit=100');
       rec.mrr_cents = calcMrrCents(subs);
       rec.updated_at = new Date().toISOString();
       await env.STRIPE_KV.put(k.name, JSON.stringify(rec));
+      milestones += (await checkMilestones(env, slug, oldCents, rec.mrr_cents)).length;
       ok++;
     } catch (e) { fail++; }
   }
-  return { ok: ok, fail: fail, total: list.keys.length };
+  return { ok: ok, fail: fail, total: list.keys.length, milestones: milestones };
 }

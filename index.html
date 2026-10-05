@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://launch.arr.club/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261002n">
+<link rel="stylesheet" href="/style.css?v=20261002o">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"ARR.Club Launch","url":"https://launch.arr.club/","description":"The launchpad for early-stage AI startups. Revenue is the headline — launch free, get discovered, graduate to ARR.Club."}
 </script>
@@ -36,6 +36,47 @@
       <a class="btn" href="/submit.html">🚀 Launch free</a>
     </div>
   </section>
+
+  <section id="celebrations">
+    <h2 class="section-title"><span class="dot"></span>Milestones we&rsquo;re celebrating <span class="sec-note">Founder-reported</span></h2>
+    <div class="celeb-grid" id="celebGrid"></div>
+  </section>
+
+  <script>
+  (function(){
+    var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function fmtDate(iso){
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+      if(!m) return '';
+      return MONTHS[parseInt(m[2], 10) - 1] + ' ' + parseInt(m[3], 10);
+    }
+    function esc(s){ return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
+      var rows = [];
+      items.forEach(function(p){
+        var latest = null;
+        if(p.revenue_history && p.revenue_history.length){
+          latest = p.revenue_history[p.revenue_history.length - 1];
+        } else if(p.revenue){
+          if(!p.launched) return;
+          latest = { date: p.launched, revenue: p.revenue };
+        }
+        if(!latest || !latest.date || !latest.revenue) return;
+        rows.push({ p: p, date: latest.date, revenue: latest.revenue });
+      });
+      rows.sort(function(a, b){ return a.date < b.date ? 1 : (a.date > b.date ? -1 : 0); });
+      var el = document.getElementById('celebGrid');
+      if(!el) return;
+      el.innerHTML = rows.slice(0, 8).map(function(r){
+        var p = r.p;
+        var logo = p.logo ? '<img src="' + esc(p.logo) + '" alt="" loading="lazy">' : '';
+        return '<a class="celeb-card" href="' + esc(p.url) + '">' + logo
+          + '<span class="celeb-main"><b>' + esc(p.name) + '</b><i>reached ' + esc(r.revenue) + '</i></span>'
+          + '<small>' + esc(fmtDate(r.date)) + '</small></a>';
+      }).join('');
+    }).catch(function(){});
+  })();
+  </script>
 
   <section id="recently">
     <h2 class="section-title"><span class="dot"></span>Recently launched <a class="view-all" href="/2026/w40/">View all ›</a></h2>
