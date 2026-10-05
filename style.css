@@ -348,11 +348,10 @@ a.lb-row:hover { background: var(--bg-soft); }
 .hero-slim .btn-row { margin-top: 0; }
 .view-all { margin-left: auto; font-size: 0.88rem; font-weight: 600; color: var(--accent); text-decoration: none; white-space: nowrap; }
 .view-all:hover { color: var(--accent-hover); text-decoration: underline; }
-.strip { margin-top: 2.5rem; background: var(--accent-soft); border: 1px solid var(--accent-border); border-radius: var(--radius-lg); padding: 1.1rem 1.4rem; text-align: center; }
-.strip p { margin: 0; color: var(--text-secondary); font-size: 0.95rem; }
-.strip strong { color: var(--text); }
-.strip a { color: var(--accent); font-weight: 700; text-decoration: none; }
-.strip a:hover { text-decoration: underline; }
+.opt-details { margin: 1.2rem 0; border: 1px dashed var(--border); border-radius: var(--radius); padding: 0.9rem 1.1rem; }
+.opt-details summary { cursor: pointer; font-weight: 700; font-size: 0.9rem; color: var(--text-secondary); }
+.opt-details summary:hover { color: var(--text); }
+.opt-details .field { margin-top: 1rem; }
 .tag.rev { font-weight: 700; }
 .tag.rev.verified { background: #f0fdfa; border-color: #99f6e4; color: #0f766e; }
 .tag.rev.tracked { background: #fffbeb; border-color: #fde68a; color: #b45309; }

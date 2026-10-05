@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Submit your AI startup — ARR.Club Launch</title>
+<title>Get your celebration card — ARR.Club Launch</title>
 <meta name="description" content="Launch your AI startup on ARR.Club Launch in minutes. Share revenue, get discovered, and graduate to ARR.Club. Free to launch.">
 <link rel="canonical" href="https://launch.arr.club/submit.html">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261002o">
+<link rel="stylesheet" href="/style.css?v=20261002p">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -21,8 +21,8 @@
 <main>
   <section class="hero">
     <span class="eyebrow">Go live the moment you're done</span>
-    <h1>Launch your product</h1>
-    <p class="lede">No review queue. Fill in the details, pick how you launch, and you're live in minutes.</p>
+    <h1>Share your milestone</h1>
+    <p class="lede">Share your numbers — we&rsquo;ll turn your milestone into a celebration card ready to post.</p>
   </section>
 
   <div class="wizard">
@@ -45,22 +45,7 @@
         <div class="field"><label>Product name <span class="req">*</span></label><input type="text" id="f-name" placeholder="e.g. Inkwell AI"></div>
         <div class="field"><label>Website URL <span class="req">*</span></label><input type="url" id="f-url" placeholder="https://yourproduct.com"></div>
         <div class="field"><label>Tagline <span class="req">*</span></label><input type="text" id="f-tagline" maxlength="80" placeholder="One line: what it does, for whom (max 80 chars)"></div>
-        <div class="field"><label>Short description</label><textarea id="f-desc" maxlength="300" placeholder="150–300 characters shown on your launch card."></textarea></div>
         <div class="field"><label>Your name (founder) <span class="req">*</span> <span class="hint" id="founderHint" hidden> — from your Google account, edit if needed</span></label><input type="text" id="f-founder" placeholder="e.g. Jane Doe"></div>
-        <div class="field"><label>Categories <span class="req">*</span> <span class="hint">(up to 3)</span></label>
-          <div class="chips" id="catChips">
-            <button type="button" class="chip" aria-pressed="false">AI Writing</button>
-            <button type="button" class="chip" aria-pressed="false">Productivity</button>
-            <button type="button" class="chip" aria-pressed="false">Marketing</button>
-            <button type="button" class="chip" aria-pressed="false">Design</button>
-            <button type="button" class="chip" aria-pressed="false">Developer Tools</button>
-            <button type="button" class="chip" aria-pressed="false">Video</button>
-            <button type="button" class="chip" aria-pressed="false">Audio</button>
-            <button type="button" class="chip" aria-pressed="false">Education</button>
-            <button type="button" class="chip" aria-pressed="false">Sales</button>
-            <button type="button" class="chip" aria-pressed="false">Customer Support</button>
-          </div>
-        </div>
         <div class="field"><label>Logo</label>
           <div class="up-drop" id="logoDrop">
             <input type="file" id="f-logo-file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
@@ -73,6 +58,23 @@
           <div class="up-prev" id="logoPrev" hidden><img id="logoPrevImg" alt="Logo preview"></div>
           <div class="up-urlrow"><span class="up-or2">or paste URL</span><input type="url" id="f-logo-url" placeholder="https://…"></div>
           <input type="hidden" id="f-logo">
+        </div>
+        <details class="opt-details">
+<summary>More details (optional)</summary>
+<div class="field"><label>Short description</label><textarea id="f-desc" maxlength="300" placeholder="150–300 characters shown on your launch card."></textarea></div>
+        <div class="field"><label>Categories <span class="hint">(up to 3, optional)</span></label>
+          <div class="chips" id="catChips">
+            <button type="button" class="chip" aria-pressed="false">AI Writing</button>
+            <button type="button" class="chip" aria-pressed="false">Productivity</button>
+            <button type="button" class="chip" aria-pressed="false">Marketing</button>
+            <button type="button" class="chip" aria-pressed="false">Design</button>
+            <button type="button" class="chip" aria-pressed="false">Developer Tools</button>
+            <button type="button" class="chip" aria-pressed="false">Video</button>
+            <button type="button" class="chip" aria-pressed="false">Audio</button>
+            <button type="button" class="chip" aria-pressed="false">Education</button>
+            <button type="button" class="chip" aria-pressed="false">Sales</button>
+            <button type="button" class="chip" aria-pressed="false">Customer Support</button>
+          </div>
         </div>
         <div class="field"><label>Screenshots</label>
           <div class="up-drop" id="shotsDrop">
@@ -95,20 +97,21 @@
           </select>
         </div>
         <div class="field"><label>Starting price / discount for launch visitors</label><input type="text" id="f-deal" placeholder="e.g. $12/mo · 20% off with code LAUNCH"></div>
-        <h3 class="sub-h">Your story — 5 questions</h3>
-        <div class="field"><label>1. Who is it for? <span class="req">*</span></label><textarea class="q" placeholder="e.g. Solo founders and small teams who publish content weekly…"></textarea></div>
-        <div class="field"><label>2. What problem does it solve? <span class="req">*</span></label><textarea class="q" placeholder="e.g. Writing in a consistent brand voice takes hours every week…"></textarea></div>
-        <div class="field"><label>3. What job does it do? <span class="req">*</span></label><textarea class="q" placeholder="e.g. Drafts blog posts and newsletters in your own voice from a bullet list…"></textarea></div>
-        <div class="field"><label>4. How does it solve it? <span class="req">*</span></label><textarea class="q" placeholder="e.g. It fine-tunes on your past writing, then generates drafts you edit…"></textarea></div>
-        <div class="field"><label>5. What makes it different? <span class="req">*</span></label><textarea class="q" placeholder="e.g. Unlike generic AI writers, it never sounds like a robot because…"></textarea></div>
+        <h3 class="sub-h">Your story <span class="hint">(optional)</span></h3>
+        <div class="field"><label>1. Who is it for?</label><textarea class="q" placeholder="e.g. Solo founders and small teams who publish content weekly…"></textarea></div>
+        <div class="field"><label>2. What problem does it solve?</label><textarea class="q" placeholder="e.g. Writing in a consistent brand voice takes hours every week…"></textarea></div>
+        <div class="field"><label>3. What job does it do?</label><textarea class="q" placeholder="e.g. Drafts blog posts and newsletters in your own voice from a bullet list…"></textarea></div>
+        <div class="field"><label>4. How does it solve it?</label><textarea class="q" placeholder="e.g. It fine-tunes on your past writing, then generates drafts you edit…"></textarea></div>
+        <div class="field"><label>5. What makes it different?</label><textarea class="q" placeholder="e.g. Unlike generic AI writers, it never sounds like a robot because…"></textarea></div>
+</details>
         <div class="wiz-nav"><span></span><button type="button" class="btn" data-next>Continue →</button></div>
       </section>
 
       <!-- STEP 2 -->
       <section class="wiz-step card" data-step="1">
-        <h2>Step 2 · Revenue <span class="step-opt">optional, but worth it</span></h2>
+        <h2>Step 2 · Your milestone <span class="step-opt">optional, but worth it</span></h2>
         <div class="rev-pitch">
-          <p class="rev-pitch-title">💰 <strong>Share your revenue → get discovered.</strong></p>
+          <p class="rev-pitch-title">🎉 <strong>Share your numbers → get celebrated.</strong></p>
           <ul class="rev-perks">
             <li>💰 A <strong>revenue badge</strong> on your launch page — revenue is the headline here</li>
             <li>📈 <strong>Revenue tracked</strong> — and a path to graduate to ARR.Club when you scale</li>
@@ -243,14 +246,7 @@
         el.style.borderColor = bad ? 'var(--err)' : '';
         if(bad){ ok = false; }
       });
-      var cats = document.querySelectorAll('#catChips .chip[aria-pressed="true"]');
-      if(!cats.length){ alert('Pick at least one category.'); return false; }
-      document.querySelectorAll('.q').forEach(function(q){
-        var bad = !q.value.trim();
-        q.style.borderColor = bad ? 'var(--err)' : '';
-        if(bad){ ok = false; }
-      });
-      if(!ok){ alert('Fill in the required fields — the 5 story questions become your launch page.'); return false; }
+      if(!ok){ alert('Fill in the required fields.'); return false; }
       return true;
     }
     return true;
