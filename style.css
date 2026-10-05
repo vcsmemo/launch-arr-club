@@ -446,7 +446,7 @@ a.lb-row:hover { background: var(--bg-soft); }
 .search-drop .sd-empty { padding: 0.9rem 1rem; font-size: 0.88rem; color: var(--text-muted); }
 
 /* Profile chip + dropdown (shared auth) */
-.nav-auth { display: flex; align-items: center; margin-left: 0.4rem; }
+.nav-auth { display: none; } /* header sign-in hidden: nothing in the current flow requires login (submit.html has its own sign-in button) */
 .profile-wrap { position: relative; }
 .profile-chip { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; border: 1.5px solid var(--accent);
   border-radius: 100px; padding: 0.22rem 0.8rem 0.22rem 0.28rem; cursor: pointer; font-family: var(--font);

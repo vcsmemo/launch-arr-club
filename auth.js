@@ -1,6 +1,10 @@
 /* launch.arr.club shared Google sign-in state.
  * Display-only: stores name/email/picture in localStorage so the profile
- * chip + dropdown show on every page. No backend auth decisions from this. */
+ * chip + dropdown show on every page. No backend auth decisions from this.
+ * NOTE 2026-10-05: header sign-in hidden via CSS (.nav-auth) — nothing in the
+ * current growth-card flow requires login; submit.html keeps its own button.
+ * LAC_NO_GSI skips loading Google's GSI script on every page. */
+window.LAC_NO_GSI = true;
 (function(){
   var KEY = 'lac_user_v1';
   var CLIENT_ID = '659455206571-e0rd1e7iq8os25s4441elss3960bkfjs.apps.googleusercontent.com';
