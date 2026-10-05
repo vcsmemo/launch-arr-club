@@ -974,5 +974,53 @@
         "note": "Launch · Founder-reported"
       }
     ]
+  },
+  {
+    "launch_no": 50,
+    "name": "Caldef",
+    "slug": "caldef",
+    "tagline": "AI calorie tracker — describe your meal or snap a photo, get calories and macros in 10 seconds",
+    "url": "https://launch.arr.club/launches/caldef/",
+    "website": "https://caldefapp.com",
+    "logo": "/logos/caldef.png",
+    "revenue": "$280 MRR",
+    "revenue_metric": "MRR",
+    "founder": "Cedric Isubol",
+    "category": "Health",
+    "pricing": "~$3/mo",
+    "launched": "2026-10-05",
+    "source": "https://www.indiehackers.com/post/from-1-000-to-8-000-downloads-and-35-to-280-mrr-5-months-of-growing-an-ai-calorie-tracker-with-0-ads-ec8983e67f",
+    "source_label": "Founder's Indie Hackers post",
+    "revenue_history": [
+      {
+        "date": "2026-10-05",
+        "revenue": "$280 MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ]
+  },
+  {
+    "launch_no": 51,
+    "name": "Subscribr",
+    "slug": "subscribr",
+    "tagline": "AI YouTube production platform — ideate, script and edit a month of videos in a day",
+    "url": "https://launch.arr.club/launches/subscribr/",
+    "website": "https://subscribr.ai",
+    "logo": "/logos/subscribr.png",
+    "revenue": "$62k+ / 30d",
+    "revenue_metric": "30d",
+    "founder": "Gil Hildebrand",
+    "category": "Marketing",
+    "pricing": "$49/mo",
+    "launched": "2026-10-05",
+    "source": "https://www.indiehackers.com/post/tech/leaving-a-funded-startup-and-bootstrapping-to-1m-yr-in-18-months-kPBpdxsTeQitOWOOVs2g",
+    "source_label": "Founder's Indie Hackers interview",
+    "revenue_history": [
+      {
+        "date": "2026-10-05",
+        "revenue": "$62k+ / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ]
   }
 ]
