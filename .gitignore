@@ -1,2 +1,3 @@
 ops/
 .wrangler/
+node_modules/
