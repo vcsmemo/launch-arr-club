@@ -128,6 +128,19 @@
           <label class="rev-optin"><input type="checkbox" id="f-arrclub" checked> <span><strong>List my product on ARR.Club</strong> and write a milestone for it <span class="rec">(recommended)</span></span></label>
           <p class="rev-note">Self-reported for now — labeled honestly on your page. ✓ Stripe-verified badges coming soon. No revenue yet? Just hit Continue →</p>
         </div>
+        <details class="opt-details">
+<summary>How you got there <span class="hint">(optional)</span></summary>
+        <div class="field"><label>Where did your first user come from?</label>
+          <select id="f-first-src">
+            <option value="">—</option><option>X / Twitter</option><option>Reddit</option><option>Indie Hackers</option><option>Product Hunt</option><option>Friends &amp; family</option><option>Cold outreach</option><option>SEO / Google</option><option>Paid ads</option><option>Community (Discord / Slack)</option><option>Other</option>
+          </select></div>
+        <div class="field"><label>One line on that <span class="hint">(which post or community? roughly how many users?)</span></label><input type="text" id="f-first-detail" maxlength="140" placeholder="e.g. My launch post on X, ~30 signups"></div>
+        <div class="field"><label>Which channel worked best overall?</label>
+          <select id="f-best-channel">
+            <option value="">—</option><option>X / Twitter</option><option>Reddit</option><option>Indie Hackers</option><option>Product Hunt</option><option>Friends &amp; family</option><option>Cold outreach</option><option>SEO / Google</option><option>Paid ads</option><option>Community (Discord / Slack)</option><option>Other</option>
+          </select></div>
+        <div class="field"><label>Days from launch to first dollar <span class="hint">(optional)</span></label><input type="number" id="f-days-dollar" min="0" placeholder="e.g. 12"></div>
+</details>
         <div class="wiz-nav"><button type="button" class="btn ghost" data-back>← Back</button><button type="button" class="btn" data-next>Continue →</button></div>
       </section>
 
@@ -445,6 +458,12 @@
       revenue: {
         metric: document.getElementById('f-metric').value,
         amount: document.getElementById('f-amount').value.trim()
+      },
+      growth: {
+        first_user_source: document.getElementById('f-first-src').value,
+        first_user_detail: document.getElementById('f-first-detail').value.trim(),
+        best_channel: document.getElementById('f-best-channel').value,
+        days_to_first_dollar: document.getElementById('f-days-dollar').value.trim()
       },
       arrclub_optin: document.getElementById('f-arrclub').checked,
       submitted_at: new Date().toISOString()

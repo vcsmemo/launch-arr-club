@@ -265,6 +265,19 @@ function detailPage(d, slug, launchNo, badgeVerified, others, makerCount, rank) 
   if (d.x) links.push('<a href="' + esc(d.x) + '">X / Twitter</a>');
   if (d.demo) links.push('<a href="' + esc(d.demo) + '">Demo</a>');
   const about = (d.description || d.tagline || '').trim();
+  const gw = d.growth || {};
+  const gwRows = [];
+  if (gw.first_user_source) gwRows.push(['First user came from', esc(gw.first_user_source) + (gw.first_user_detail ? ' — ' + esc(gw.first_user_detail) : '')]);
+  if (gw.best_channel) gwRows.push(['Best channel so far', esc(gw.best_channel)]);
+  if (gw.days_to_first_dollar) gwRows.push(['Days to first dollar', esc(String(gw.days_to_first_dollar))]);
+  const growthSection = gwRows.length
+    ? '  <h2 class="section-title caps"><span class="dot"></span>How they got there</h2>\n' +
+      '  <div class="story-wrap">\n' +
+      '    <div class="story-grid">\n' +
+      gwRows.map(function (r) { return '    <div class="story-card"><h4>' + r[0] + '</h4><p>' + r[1] + '</p></div>'; }).join('\n') +
+      '\n    </div>\n' +
+      '  </div>\n\n'
+    : '';
   const moreRows = (others || []).map(function (o, i) {
     const logo = o.logo
       ? '<img src="' + esc(o.logo) + '" alt="">'
@@ -343,6 +356,7 @@ storyCards + '\n' +
 '    </div>\n' +
 '  </div>\n' +
 '\n' +
+growthSection +
 '  <div class="stat-grid">\n' +
 '    <div class="stat-card"><span>Revenue</span>' + revBig + revSub + '</div>\n' +
 '    <div class="stat-card"><span>Domain Rating</span>' + drBig + drSub + '</div>\n' +
@@ -481,6 +495,12 @@ async function handleApprove(request, env) {
     founder: d.founder || null,
     revenue: rev ? rev.amount + (rev.metric ? ' ' + rev.metric : '') : null,
     revenue_verified: false,
+    growth: (d.growth && (d.growth.first_user_source || d.growth.best_channel || d.growth.days_to_first_dollar)) ? {
+      first_user_source: d.growth.first_user_source || null,
+      first_user_detail: d.growth.first_user_detail || null,
+      best_channel: d.growth.best_channel || null,
+      days_to_first_dollar: d.growth.days_to_first_dollar || null
+    } : null,
     launched: todayISO(),
   });
   const launchesJson = JSON.stringify(idx);

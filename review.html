@@ -146,6 +146,12 @@
         if (!a) return '';
         return '<div class="qa"><h4>' + QS[k] + '</h4><p>' + esc(a) + '</p></div>';
       }).join('');
+      var g = d.growth || {};
+      var growthBits = [];
+      if (g.first_user_source) growthBits.push('First user: ' + g.first_user_source + (g.first_user_detail ? ' — ' + g.first_user_detail : ''));
+      if (g.best_channel) growthBits.push('Best channel: ' + g.best_channel);
+      if (g.days_to_first_dollar) growthBits.push(g.days_to_first_dollar + ' days to first $');
+      var growthHtml = growthBits.length ? '<p class="sub-desc">🌱 <strong>How they got there:</strong> ' + esc(growthBits.join(' · ')) + '</p>' : '';
       var when = item.uploaded ? new Date(item.uploaded).toLocaleString() : '';
       return '<div class="sub-card" data-i="' + i + '">' +
         '<div class="sub-top">' +
@@ -160,6 +166,7 @@
         '<p class="sub-desc">' + esc(d.description || '') + '</p>' +
         (shots ? '<div class="sub-shots">' + shots + '</div>' : '') +
         (story ? '<details class="sub-story"><summary>Founder story (5 answers)</summary>' + story + '</details>' : '') +
+        growthHtml +
         milestone +
         '<div class="sub-foot"><span class="sub-when">Submitted ' + esc(when) + ' · ' + esc(item.key) + '</span>' +
         '<span class="sub-actions"><button class="btn-reject" data-act="reject" type="button">Reject</button>' +
