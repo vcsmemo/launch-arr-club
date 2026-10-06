@@ -256,6 +256,13 @@ a.lb-row:hover { background: var(--bg-soft); }
 .verify-row { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
 .verify-msg { font-size: 0.86rem; color: var(--text-secondary); }
 .verify-msg.ok { color: var(--green); font-weight: 600; }
+.listed-banner { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; background: #faf5ff;
+  border: 1px solid #e9d5ff; border-radius: 12px; padding: 0.7rem 1rem; margin: 0.6rem 0; font-size: 0.9rem; }
+.listed-banner .btn.small { padding: 0.45rem 0.9rem; font-size: 0.85rem; }
+.update-summary { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px;
+  padding: 0.9rem 1rem; margin-bottom: 1rem; }
+.update-summary .us-row { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 0.5rem; }
+.update-summary .us-row span { font-size: 0.85rem; color: var(--text-secondary); }
 .verify-rules { font-size: 0.8rem; color: var(--text-muted); margin: 0.8rem 0 0; padding-left: 1.1rem; }
 .verify-rules li { margin-bottom: 0.2rem; }
 

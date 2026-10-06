@@ -44,6 +44,15 @@
         <h2>Step 1 · Your product</h2>
         <div class="field"><label>Product name <span class="req">*</span></label><input type="text" id="f-name" placeholder="e.g. Inkwell AI"></div>
         <div class="field"><label>Website URL <span class="req">*</span></label><input type="url" id="f-url" placeholder="https://yourproduct.com"></div>
+        <div id="listedBanner" class="listed-banner" hidden>
+          <span>🎉 <strong id="listedName"></strong> is already celebrating on MilestoneWins.</span>
+          <button type="button" id="listedUpdateBtn" class="btn small">Share a new milestone →</button>
+          <button type="button" id="listedDismiss" class="linklike">It's a new product</button>
+        </div>
+        <div id="updateSummary" class="update-summary" hidden>
+          <div class="us-row"><strong id="usName"></strong><span id="usTagline"></span></div>
+          <button type="button" id="usStartOver" class="linklike">Wrong product? Start over</button>
+        </div>
         <div class="field"><label>Tagline <span class="req">*</span></label><input type="text" id="f-tagline" maxlength="80" placeholder="One line: what it does, for whom (max 80 chars)"></div>
         <div class="field"><label>Your name (founder) <span class="req">*</span> <span class="hint" id="founderHint" hidden> — from your Google account, edit if needed</span></label><input type="text" id="f-founder" placeholder="e.g. Jane Doe"></div>
         <div class="field"><label>Logo</label>
@@ -140,7 +149,8 @@
           </select></div>
         <div class="field"><label>Days from launch to first dollar <span class="hint">(optional)</span></label><input type="number" id="f-days-dollar" min="0" placeholder="e.g. 12"></div>
 </details>
-        <div class="wiz-nav"><button type="button" class="btn ghost" data-back>← Back</button><button type="button" class="btn" data-next>Continue →</button></div>
+        <div class="wiz-nav"><button type="button" class="btn ghost" data-back>← Back</button><button type="button" class="btn" data-next id="step2Next">Continue →</button><button type="button" class="btn" id="updateSubmitBtn" hidden>Submit milestone update →</button></div>
+        <p id="updateHint" class="verify-msg" hidden></p>
       </section>
 
       <!-- STEP 3 -->
@@ -425,6 +435,111 @@
   });
   shotsUrl.addEventListener('input', syncShots);
 
+  /* Milestone-update mode: detect already-listed products by website domain */
+  var updateFor = null, launchesCache = null, dismissedUrl = '';
+  function normDomain(u){
+    u = String(u || '').trim().toLowerCase();
+    if(!u) return '';
+    u = u.replace(/^https?:\/\//, '').replace(/^www\./, '');
+    return u.split('/')[0].split('?')[0].split('#')[0].split(':')[0];
+  }
+  function getLaunches(){
+    if(launchesCache) return Promise.resolve(launchesCache);
+    return fetch('/launches.json').then(function(r){ return r.json(); }).then(function(d){
+      launchesCache = Array.isArray(d) ? d : []; return launchesCache;
+    }).catch(function(){ return []; });
+  }
+  var urlInput = document.getElementById('f-url'),
+      listedBanner = document.getElementById('listedBanner'),
+      listedName = document.getElementById('listedName'),
+      urlTimer = null;
+  urlInput.addEventListener('input', function(){
+    clearTimeout(urlTimer);
+    listedBanner.hidden = true;
+    if(updateFor) return;
+    var v = urlInput.value.trim();
+    if(!v || v === dismissedUrl || normDomain(v).length < 4) return;
+    urlTimer = setTimeout(function(){ checkListed(v); }, 600);
+  });
+  function checkListed(v){
+    var dom = normDomain(v);
+    getLaunches().then(function(items){
+      var hit = null;
+      for(var i = 0; i < items.length; i++){
+        var x = items[i];
+        if(x && x.website && normDomain(x.website) === dom){ hit = x; break; }
+      }
+      if(hit && urlInput.value.trim() === v && !updateFor){
+        listedName.textContent = hit.name || 'Your product';
+        listedBanner.hidden = false;
+        listedBanner._hit = hit;
+      }
+    });
+  }
+  document.getElementById('listedDismiss').addEventListener('click', function(){
+    dismissedUrl = urlInput.value.trim();
+    listedBanner.hidden = true;
+  });
+  document.getElementById('listedUpdateBtn').addEventListener('click', function(){
+    if(listedBanner._hit) enterUpdateMode(listedBanner._hit);
+  });
+  function slugOf(x){ return String(x.url || '').replace(/^\/|\/$/g, '').split('/').pop(); }
+  function enterUpdateMode(hit){
+    updateFor = { slug: slugOf(hit), name: hit.name, tagline: hit.tagline };
+    listedBanner.hidden = true;
+    /* prefill identity fields so Worker validation passes */
+    document.getElementById('f-name').value = hit.name || '';
+    document.getElementById('f-tagline').value = hit.tagline || '';
+    document.getElementById('f-url').value = hit.website || urlInput.value;
+    /* step 1: summary instead of fields */
+    var s0 = document.querySelector('.wiz-step[data-step="0"]');
+    Array.prototype.forEach.call(s0.querySelectorAll('.field, .opt-details'), function(el){ el.style.display = 'none'; });
+    document.getElementById('usName').textContent = hit.name || '';
+    document.getElementById('usTagline').textContent = hit.tagline || '';
+    document.getElementById('updateSummary').hidden = false;
+    /* step 2 becomes the submit step */
+    document.querySelector('.wiz-step[data-step="1"] h2').innerHTML = 'Step 2 · Your new milestone';
+    document.getElementById('step2Next').hidden = true;
+    document.getElementById('updateSubmitBtn').hidden = false;
+    /* step 3 not needed for an update */
+    document.querySelector('.wiz-step[data-step="2"]').style.display = 'none';
+    if(dots[2]) dots[2].style.display = 'none';
+    show(1);
+  }
+  function exitUpdateMode(){
+    updateFor = null;
+    var s0 = document.querySelector('.wiz-step[data-step="0"]');
+    Array.prototype.forEach.call(s0.querySelectorAll('.field, .opt-details'), function(el){ el.style.display = ''; });
+    document.getElementById('updateSummary').hidden = true;
+    document.getElementById('f-name').value = '';
+    document.getElementById('f-tagline').value = '';
+    document.querySelector('.wiz-step[data-step="1"] h2').innerHTML = 'Step 2 · Your milestone <span class="step-opt">optional, but worth it</span>';
+    document.getElementById('step2Next').hidden = false;
+    document.getElementById('updateSubmitBtn').hidden = true;
+    document.getElementById('updateHint').hidden = true;
+    document.querySelector('.wiz-step[data-step="2"]').style.display = '';
+    if(dots[2]) dots[2].style.display = '';
+    dismissedUrl = '';
+    listedBanner.hidden = true;
+    show(0);
+  }
+  document.getElementById('usStartOver').addEventListener('click', exitUpdateMode);
+  document.getElementById('updateSubmitBtn').addEventListener('click', function(){
+    var amt = document.getElementById('f-amount').value.trim();
+    if(!amt){ alert('Enter your new milestone amount.'); document.getElementById('f-amount').focus(); return; }
+    var btn = this, hint = document.getElementById('updateHint');
+    btn.disabled = true;
+    postSubmission().then(function(){
+      btn.textContent = '✓ Received';
+      hint.hidden = false;
+      hint.className = 'verify-msg ok';
+      hint.textContent = '✓ Received! We review every milestone personally and your Growth Timeline updates within 24 hours.';
+    }).catch(function(){
+      btn.disabled = false;
+      alert('Could not send your update — check your connection and try again.');
+    });
+  });
+
   /* Submissions inbox: POST the form to the Worker -> R2, published manually within 24h */
   function collectSubmission(){
     var cats = Array.prototype.map.call(
@@ -438,6 +553,7 @@
     var shots = document.getElementById('f-shots').value.split('\n')
       .map(function(s){ return s.trim(); }).filter(Boolean);
     return {
+      update_for: updateFor ? updateFor.slug : '',
       name: document.getElementById('f-name').value.trim(),
       url: document.getElementById('f-url').value.trim(),
       tagline: document.getElementById('f-tagline').value.trim(),

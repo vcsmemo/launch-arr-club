@@ -12,7 +12,8 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/ace.png",
-    "launch_no": 25
+    "launch_no": 25,
+    "website": "https://runautomat.com/workforce"
   },
   {
     "name": "SalesRobot",
@@ -34,7 +35,8 @@
         "revenue": "$70k / 30d",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://salesrobot.co"
   },
   {
     "name": "MyPlots",
@@ -56,7 +58,8 @@
         "revenue": "$500k / 30d",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://myplots.com"
   },
   {
     "name": "Comp AI",
@@ -78,7 +81,8 @@
         "revenue": "$12k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://trycomp.ai"
   },
   {
     "name": "Campfire",
@@ -93,7 +97,8 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/campfire.png",
-    "launch_no": 26
+    "launch_no": 26,
+    "website": "https://boringinfra.company/campfire"
   },
   {
     "name": "SuperX",
@@ -115,7 +120,8 @@
         "revenue": "$21k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://superx.so"
   },
   {
     "name": "ConvertLabs",
@@ -137,7 +143,8 @@
         "revenue": "$27k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://convertlabs.io"
   },
   {
     "name": "Liinks",
@@ -159,7 +166,8 @@
         "revenue": "$31k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://www.liinks.co"
   },
   {
     "name": "GitBot",
@@ -174,7 +182,8 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/gitbot.png",
-    "launch_no": 27
+    "launch_no": 27,
+    "website": "https://github.com/gitbot-hq/GitBot"
   },
   {
     "name": "Capgo",
@@ -196,7 +205,8 @@
         "revenue": "$31k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://capgo.app"
   },
   {
     "name": "Based Labs AI",
@@ -218,7 +228,8 @@
         "revenue": "$29k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://basedlabs.ai"
   },
   {
     "name": "AI Interview Copilot",
@@ -240,7 +251,8 @@
         "revenue": "$31k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://interviews.chat"
   },
   {
     "name": "Squint",
@@ -255,7 +267,8 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/squint.png",
-    "launch_no": 28
+    "launch_no": 28,
+    "website": "https://heysquint.com/"
   },
   {
     "name": "Web3Forms",
@@ -277,7 +290,8 @@
         "revenue": "$41k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://web3forms.com"
   },
   {
     "name": "Indexsy",
@@ -299,7 +313,8 @@
         "revenue": "$41k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://indexsy.com"
   },
   {
     "name": "SEOBOT",
@@ -321,7 +336,8 @@
         "revenue": "$47k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://seobotai.com"
   },
   {
     "name": "getcta",
@@ -336,7 +352,8 @@
     "launched": "2026-09-30",
     "plan": "curated",
     "logo": "/logos/getcta.png",
-    "launch_no": 29
+    "launch_no": 29,
+    "website": "https://www.getcta.store/"
   },
   {
     "name": "DataExpert",
@@ -358,7 +375,8 @@
         "revenue": "$63k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://dataexpert.io"
   },
   {
     "name": "AEO Engine",
@@ -380,7 +398,8 @@
         "revenue": "$70k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://aeoengine.ai"
   },
   {
     "name": "Vid.AI",
@@ -402,7 +421,8 @@
         "revenue": "$78k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://vid.ai"
   },
   {
     "category": "Video",
@@ -417,7 +437,8 @@
     "plan": "badge",
     "revenue_metric": null,
     "revenue_verified": false,
-    "launch_no": 4
+    "launch_no": 4,
+    "website": "https://vidsizer.com/"
   },
   {
     "name": "LLM Gateway",
@@ -439,7 +460,8 @@
         "revenue": "$79k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://llmgateway.io"
   },
   {
     "name": "Codédex",
@@ -461,7 +483,8 @@
         "revenue": "$85k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://www.codedex.io"
   },
   {
     "name": "Supliful",
@@ -483,7 +506,8 @@
         "revenue": "$179k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://supliful.com"
   },
   {
     "name": "Postiz",
@@ -505,7 +529,8 @@
         "revenue": "$184k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://postiz.com"
   },
   {
     "name": "Rezi",
@@ -527,7 +552,8 @@
         "revenue": "$261k MRR",
         "note": "Launch"
       }
-    ]
+    ],
+    "website": "https://rezi.ai"
   },
   {
     "name": "Cometly",
@@ -549,7 +575,8 @@
         "revenue": "$208k",
         "note": "Launch · Founder-reported"
       }
-    ]
+    ],
+    "website": "https://cometly.com"
   },
   {
     "name": "Stack Influence",
@@ -571,7 +598,8 @@
         "revenue": "$761k / 30d",
         "note": "Launch · Founder-reported"
       }
-    ]
+    ],
+    "website": "https://www.stackinfluence.com"
   },
   {
     "name": "PressWhizz",
@@ -593,7 +621,8 @@
         "revenue": "$189k / 30d",
         "note": "Launch · Founder-reported"
       }
-    ]
+    ],
+    "website": "https://presswhizz.com"
   },
   {
     "name": "Blogr",
@@ -615,7 +644,8 @@
         "revenue": "$10k all-time",
         "note": "Launch · Founder-reported"
       }
-    ]
+    ],
+    "website": "https://blogr.ai"
   },
   {
     "name": "Bazzly",
@@ -637,7 +667,8 @@
         "revenue": "$10k MRR",
         "note": "Launch · Founder-reported"
       }
-    ]
+    ],
+    "website": "https://bazzly.ai"
   },
   {
     "name": "CreativeClaw",
@@ -659,7 +690,8 @@
         "revenue": "$12k / 30d",
         "note": "Launch · Founder-reported"
       }
-    ]
+    ],
+    "website": "https://creativeclaw.ai"
   },
   {
     "name": "Launch Club AI",
@@ -681,7 +713,8 @@
         "revenue": "$68.7k / 30d",
         "note": "Launch · Founder-reported"
       }
-    ]
+    ],
+    "website": "https://launchclub.ai"
   },
   {
     "name": "LocalRank.so",
@@ -703,7 +736,8 @@
         "revenue": "$25k MRR",
         "note": "Launch · Founder-reported"
       }
-    ]
+    ],
+    "website": "https://localrank.so"
   },
   {
     "name": "Taja AI",
@@ -725,7 +759,8 @@
         "revenue": "$13.1k / 30d",
         "note": "Launch · Founder-reported"
       }
-    ]
+    ],
+    "website": "https://www.taja.ai"
   },
   {
     "launch_no": 39,
@@ -1029,7 +1064,7 @@
     "slug": "rightblogger",
     "tagline": "AI blog automation tool that researches, writes, publishes, and keeps your site’s posts ranking on Google and ChatGPT",
     "url": "https://launch.arr.club/launches/rightblogger/",
-    "website": "https://rightblogger.com",
+    "website": "https://rightblogger.com/",
     "logo": "/logos/rightblogger.png",
     "revenue": "$29k MRR",
     "revenue_metric": "MRR",
@@ -1053,7 +1088,7 @@
     "slug": "searchable",
     "tagline": "AI search visibility & analytics — see how ChatGPT, Google and Perplexity see your brand",
     "url": "https://launch.arr.club/launches/searchable/",
-    "website": "https://www.searchable.com",
+    "website": "https://www.searchable.com/",
     "logo": "/logos/searchable.jpg",
     "revenue": "$75k MRR",
     "revenue_metric": "MRR",

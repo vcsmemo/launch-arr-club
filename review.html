@@ -29,6 +29,7 @@
   .pill.plan-paid { background: #1e293b; color: #fff; border-color: #1e293b; }
   .pill.ok { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
   .pill.warn { background: #fffbeb; color: #b45309; border-color: #fde68a; }
+  .pill.update { background: #faf5ff; color: #7c3aed; border-color: #e9d5ff; }
   .sub-desc { font-size: 0.92rem; margin: 0 0 0.8rem; }
   .sub-shots { display: flex; gap: 0.6rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
   .sub-shots img { max-width: 220px; border-radius: var(--radius); border: 1px solid var(--border); }
@@ -124,6 +125,8 @@
     }
     list.innerHTML = items.map(function(item, i){
       var d = item.data;
+      var isUpdate = !!(d.update_for);
+      var updatePill = isUpdate ? '<span class="pill update">🔄 Milestone update → /launches/' + esc(d.update_for) + '/</span>' : '';
       var hasRev = !!(d.revenue && d.revenue.amount);
       var rev = hasRev ? esc(d.revenue.amount) + (d.revenue.metric ? ' ' + esc(d.revenue.metric) : '') : '—';
       var revRaw = hasRev ? String(d.revenue.amount).trim() + (d.revenue.metric ? ' ' + String(d.revenue.metric).trim() : '') : '';
@@ -142,12 +145,17 @@
       if (g.days_to_first_dollar) growthBits.push(g.days_to_first_dollar + ' days to first $');
       var growthHtml = growthBits.length ? '<p class="sub-desc">🌱 <strong>How they got there:</strong> ' + esc(growthBits.join(' · ')) + '</p>' : '';
       var when = item.uploaded ? new Date(item.uploaded).toLocaleString() : '';
+      var actionsHtml = isUpdate
+        ? '<span class="sub-when">Manual for now: append to <code>revenue_history</code> in launches.json, then Reject to archive.</span>' +
+          '<button class="btn-reject" data-act="reject" type="button">Reject &amp; archive</button>'
+        : '<button class="btn-reject" data-act="reject" type="button">Reject</button>' +
+          '<button class="btn-approve" data-act="approve" type="button">✓ Approve &amp; publish</button>';
       return '<div class="sub-card" data-i="' + i + '">' +
         '<div class="sub-top">' +
         (d.logo ? '<img class="logo" src="' + esc(d.logo) + '" alt="">' : '') +
         '<div><h2><a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.name) + '</a></h2>' +
         '<p class="sub-tagline">' + esc(d.tagline || '') + '</p></div></div>' +
-        '<div class="sub-meta">' + planPill(d.plan) + badgePill(item) +
+        '<div class="sub-meta">' + updatePill + planPill(d.plan) + badgePill(item) +
         '<span class="pill">' + esc(priceLabel(d)) + '</span>' +
         revPill +
         '<span class="pill">' + esc((d.categories || []).join(', ') || 'Product') + '</span>' +
@@ -158,8 +166,7 @@
         growthHtml +
         milestone +
         '<div class="sub-foot"><span class="sub-when">Submitted ' + esc(when) + ' · ' + esc(item.key) + '</span>' +
-        '<span class="sub-actions"><button class="btn-reject" data-act="reject" type="button">Reject</button>' +
-        '<button class="btn-approve" data-act="approve" type="button">✓ Approve &amp; publish</button></span></div>' +
+        '<span class="sub-actions">' + actionsHtml + '</span></div>' +
         '<div class="published-link" hidden></div>' +
       '</div>';
     }).join('');
