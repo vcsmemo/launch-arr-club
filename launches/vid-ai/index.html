@@ -53,11 +53,11 @@
   <div class="celebrate-card" id="celebrateCard" data-slug="vid-ai" data-name="Vid.AI" data-revenue="$78k" data-metric="MRR" data-logo="/logos/vid-ai.png" data-founder="Matt Par">
     <div class="cc-confetti" aria-hidden="true"></div>
     <div class="cc-top">
-      <span class="cc-brand">🎉 MILESTONEWINS</span>
+      <span class="cc-brand">🎉 MILESTONEWINS CELEBRATES</span>
     </div>
     <div class="cc-hero">
       <div class="cc-amount">$78k</div>
-      <div class="cc-metric">Congratulations on your MRR milestone!</div>
+      <div class="cc-metric">MRR milestone</div>
     </div>
     <div class="cc-product">
       <img class="cc-logo" src="/logos/vid-ai.png" alt="Vid.AI logo" loading="lazy" onerror="this.style.display='none'">
@@ -310,14 +310,14 @@
       ctx.textBaseline = 'alphabetic';
       ctx.textAlign = 'left';
       ctx.fillStyle = '#fcd34d'; ctx.font = '800 30px system-ui, -apple-system, "Segoe UI", sans-serif';
-      ctx.fillText('\u2726 MILESTONEWINS', 60, 86);
+      ctx.fillText('\u2726 MILESTONEWINS CELEBRATES', 60, 86);
       ctx.textAlign = 'center';
       ctx.fillStyle = '#fbbf24'; ctx.font = '800 160px system-ui, -apple-system, "Segoe UI", sans-serif';
       ctx.shadowColor = 'rgba(251,191,36,0.35)'; ctx.shadowBlur = 42;
       ctx.fillText(revenue || '\u2013', W / 2, 352);
       ctx.shadowBlur = 0;
-      ctx.fillStyle = '#e9d5ff'; ctx.font = '600 36px system-ui, -apple-system, "Segoe UI", sans-serif';
-      ctx.fillText('Congratulations on your ' + (metric ? metric + ' ' : '') + 'milestone!', W / 2, 418);
+      ctx.fillStyle = '#e9d5ff'; ctx.font = '600 40px system-ui, -apple-system, "Segoe UI", sans-serif';
+      ctx.fillText((metric ? metric + ' ' : '') + 'milestone', W / 2, 418);
       var nm = name.length > 26 ? name.slice(0, 25) + '\u2026' : name;
       ctx.font = '800 56px system-ui, -apple-system, "Segoe UI", sans-serif';
       var nw = ctx.measureText(nm).width;
