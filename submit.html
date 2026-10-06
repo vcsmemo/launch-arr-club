@@ -7,7 +7,7 @@
 <meta name="description" content="Share your revenue milestone on MilestoneWins and get a celebration card ready to post. Free to launch.">
 <link rel="canonical" href="https://launch.arr.club/submit.html">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261006c">
+<link rel="stylesheet" href="/style.css?v=20261006d">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -134,7 +134,7 @@
             </div>
             <div class="field"><label>Amount (USD)</label><input type="number" id="f-amount" min="0" placeholder="e.g. 12000"></div>
           </div>
-          <p class="rev-note">Self-reported for now — labeled honestly on your page. ✓ Stripe-verified badges coming soon. No revenue yet? Just hit Continue →</p>
+          <p class="rev-note" id="revNote">Self-reported for now — labeled honestly on your page. ✓ Stripe-verified badges coming soon. No revenue yet? Just hit Continue →</p>
         </div>
         <details class="opt-details">
 <summary>How you got there <span class="hint">(optional)</span></summary>
@@ -499,6 +499,7 @@
     document.getElementById('updateSummary').hidden = false;
     /* step 2 becomes the submit step */
     document.querySelector('.wiz-step[data-step="1"] h2').innerHTML = 'Step 2 · Your new milestone';
+    document.getElementById('revNote').textContent = 'Enter your new milestone amount below, then hit Submit milestone update →';
     document.getElementById('step2Next').hidden = true;
     document.getElementById('updateSubmitBtn').hidden = false;
     /* step 3 not needed for an update */
@@ -514,6 +515,7 @@
     document.getElementById('f-name').value = '';
     document.getElementById('f-tagline').value = '';
     document.querySelector('.wiz-step[data-step="1"] h2').innerHTML = 'Step 2 · Your milestone <span class="step-opt">optional, but worth it</span>';
+    document.getElementById('revNote').textContent = 'Self-reported for now — labeled honestly on your page. ✓ Stripe-verified badges coming soon. No revenue yet? Just hit Continue →';
     document.getElementById('step2Next').hidden = false;
     document.getElementById('updateSubmitBtn').hidden = true;
     document.getElementById('updateHint').hidden = true;
