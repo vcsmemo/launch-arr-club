@@ -359,7 +359,6 @@ storyCards + '\n' +
 growthSection +
 '  <div class="stat-grid">\n' +
 '    <div class="stat-card"><span>Revenue</span>' + revBig + revSub + '</div>\n' +
-'    <div class="stat-card"><span>Domain Rating</span>' + drBig + drSub + '</div>\n' +
 '    <div class="stat-card"><span>Pricing</span><b>' + esc(priceLabelOf(d)) + '</b><small>' + esc(d.pricing && /free/i.test(d.pricing) ? 'No cost to start' : priceLabelOf(d)) + '</small></div>\n' +
 '    <div class="stat-card"><span>Launched</span><b>' + dateLong + '</b><small>L+0 &middot; Live on launch.arr.club</small></div>\n' +
 '    <div class="stat-card"><span>Category</span><div class="pills">' + catPills + '</div></div>\n' +
