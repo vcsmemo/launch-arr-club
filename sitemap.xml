@@ -65,4 +65,8 @@
   <url><loc>https://launch.arr.club/launches/sleek/</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://launch.arr.club/launches/caldef/</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://launch.arr.club/launches/subscribr/</loc><lastmod>2026-10-05</lastmod></url>
+  <url>
+    <loc>https://launch.arr.club/leaderboard/</loc>
+    <changefreq>daily</changefreq>
+  </url>
 </urlset>

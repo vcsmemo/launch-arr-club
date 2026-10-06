@@ -8,6 +8,7 @@
 - Launch board: https://launch.arr.club/
 - Submit your product: https://launch.arr.club/submit.html
 - Weekly archive: https://launch.arr.club/2026/w40/
+- Revenue leaderboard: https://launch.arr.club/leaderboard/
 - Product Hunt alternative: https://launch.arr.club/alternatives/product-hunt/
 - FasLaunch alternative: https://launch.arr.club/alternatives/faslaunch/
 - Launch your startup: https://launch.arr.club/launch-your-startup/

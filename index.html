@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://launch.arr.club/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261002p">
+<link rel="stylesheet" href="/style.css?v=20261006a">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"MilestoneWins","url":"https://launch.arr.club/","description":"The launchpad for early-stage AI startups. Hit a milestone and we celebrate it with a shareable card."}
 </script>
@@ -38,7 +38,7 @@
   </section>
 
   <section id="celebrations">
-    <h2 class="section-title"><span class="dot"></span>Milestones we&rsquo;re celebrating <span class="sec-note">Founder-reported</span></h2>
+    <h2 class="section-title"><span class="dot"></span>Milestones we&rsquo;re celebrating</h2>
     <div class="celeb-grid" id="celebGrid"></div>
   </section>
 
@@ -78,18 +78,6 @@
   })();
   </script>
 
-  <section id="recently">
-    <h2 class="section-title"><span class="dot"></span>Recently launched <a class="view-all" href="/2026/w41/">View all ›</a></h2>
-    <div class="rail-wrap">
-      <button class="rail-btn prev" id="railPrev" aria-label="Scroll launches left">‹</button>
-      <div class="feed" id="launchRail">
-        <!-- Dynamically rendered: last 7 days only -->
-      </div>
-      </div>
-      <button class="rail-btn next" id="railNext" aria-label="Scroll launches right">›</button>
-    </div>
-  </section>
-
   <section id="leaderboard">
     <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span></h2>
     <div class="lb-tabs" style="margin-bottom:12px;">
@@ -99,7 +87,7 @@
       <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">Revenue &#8595;</span></div>
       <div id="lbBody"><div class="lb-row"><span></span><span class="lb-founder">Loading\u2026</span><span></span><span></span></div></div>
     </div>
-    <p class="lb-note">Revenue is shared by founders at submission time.</p>
+    <p class="lb-note">Revenue is shared by founders at submission time. <a class="view-all" href="/leaderboard/">View full leaderboard &rsaquo;</a></p>
   </section>
 
   <script>
@@ -129,6 +117,7 @@
       } else {
         items.sort(function(a, b){ return revVal(b) - revVal(a); });
       }
+      items = items.slice(0, 10);
       document.getElementById('lbBody').innerHTML = items.length ? items.map(function(it, i){
         var logo = it.logo
           ? '<img src="' + String(it.logo).replace(/"/g, '') + '" alt="" loading="lazy">'
@@ -162,7 +151,7 @@
 </main>
 <footer class="site-footer">
   <div class="footer-cols">
-    <div class="fcol"><h5>Discover</h5><a href="/#recently">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/#leaderboard">Leaderboard</a></div>
+    <div class="fcol"><h5>Discover</h5><a href="/#celebrations">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/#leaderboard">Leaderboard</a></div>
     <div class="fcol"><h5>Alternatives</h5><a href="/alternatives/product-hunt/">Product Hunt alternative</a><a href="/alternatives/faslaunch/">FasLaunch alternative</a></div>
     <div class="fcol"><h5>Launch</h5><a href="/launch-your-startup/">Launch your startup</a><a href="/launch-your-ai-tool/">Launch your AI tool</a><a href="/launch-your-saas/">Launch your SaaS</a></div>
     <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a></div>
@@ -250,55 +239,6 @@
     el = board.querySelector('[data-stat="cats"]'); if(el) countUp(el, Object.keys(cats).length);
   }
   fetch('/launches.json').then(function(r){ return r.json(); }).then(paint).catch(function(){});
-})();
-/* Dynamic "Recently launched" rail: last 7 days only, newest first */
-(function(){
-  var rail = document.getElementById('launchRail');
-  if(!rail) return;
-  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
-    var now = new Date();
-    var weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    var recent = items.filter(function(it){
-      if(!it.launched) return false;
-      var d = new Date(it.launched + 'T00:00:00');
-      return d >= weekAgo;
-    }).sort(function(a, b){
-      return new Date(b.launched) - new Date(a.launched) || (b.launch_no || 0) - (a.launch_no || 0);
-    });
-    if(recent.length === 0){
-      rail.innerHTML = '<p style="padding:20px;color:#64748b;">No launches in the last 7 days. <a href="/submit.html" style="color:#0d9488;">Launch yours →</a></p>';
-      return;
-    }
-    rail.innerHTML = recent.map(function(it){
-      var m = (it.url || '').match(/\/launches\/([^/]+)\//);
-      var logo = it.logo ? '<img class="lc-logo" src="' + esc(it.logo) + '" alt="' + esc(it.name) + '" loading="lazy">' : '';
-      var num = it.launch_no ? '<span class="launch-no">#' + String(it.launch_no).padStart(3,'0') + '</span> ' : '';
-      var rev = it.revenue ? '<div class="lc-m"><span>Revenue</span><b>' + esc(it.revenue) + '</b></div>' : '';
-      var cat = it.category ? '<div class="lc-m"><span>Category</span><b>' + esc(it.category) + '</b></div>' : '';
-      // Days since launch for L+N badge
-      var launched = new Date(it.launched + 'T00:00:00');
-      var days = Math.floor((now - launched) / (24*60*60*1000));
-      var lp = '<span class="lc-lp" title="Launched ' + days + ' days ago">L+' + days + '</span>';
-      // NEW ribbon for last 48h
-      var ribbon = days <= 2 ? '<span class="ribbon">NEW</span>' : '';
-      return '<a class="launch-card" href="' + esc(it.url) + '">' + ribbon + logo
-        + '<div class="lc-main"><h3>' + num + esc(it.name) + '</h3>'
-        + '<p class="lc-tag">' + esc(it.tagline || '') + '</p>'
-        + '<div class="lc-meta">' + cat + rev + lp + '</div></div></a>';
-    }).join('');
-  }).catch(function(){});
-})();
-/* Rail arrows */
-(function(){
-  var rail = document.getElementById('launchRail');
-  if(!rail) return;
-  function go(dir){
-    rail.scrollBy({ left: dir * 300, behavior: 'smooth' });
-  }
-  var prev = document.getElementById('railPrev'), next = document.getElementById('railNext');
-  if(prev) prev.addEventListener('click', function(){ go(-1); });
-  if(next) next.addEventListener('click', function(){ go(1); });
 })();
 </script>
 <script src="/auth.js"></script>

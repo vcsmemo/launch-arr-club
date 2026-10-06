@@ -168,6 +168,16 @@ function revenueOf(d) {
   return { amount: amount, metric: (rev.metric || '').trim() };
 }
 
+function revDollars(r) {
+  if (!r) return null;
+  const m = String(r).match(/\$([\d.]+)\s*([kKmM]?)/);
+  if (!m) return null;
+  let v = parseFloat(m[1]);
+  if (m[2].toLowerCase() === 'k') v *= 1000;
+  if (m[2].toLowerCase() === 'm') v *= 1000000;
+  return v;
+}
+
 function logoHtml(d) {
   if (d.logo) return '<img class="lc-logo" src="' + esc(d.logo) + '" alt="' + esc(d.name) + '">';
   return '<span class="lc-logo-ph">' + esc(String(d.name || '?').charAt(0)) + '</span>';
@@ -282,9 +292,9 @@ function detailPage(d, slug, launchNo, badgeVerified, others, makerCount, rank) 
     const logo = o.logo
       ? '<img src="' + esc(o.logo) + '" alt="">'
       : '<span class="lc-logo-ph">' + esc(String(o.name || '?').charAt(0)) + '</span>';
-    return '    <a class="more-row" href="' + esc(o.url) + '"><span class="more-rank">#' + (i + 1) + '</span>' + logo +
+    return '    <a class="more-row" href="' + esc(o.url) + '"><span class="more-rank">#' + esc(o.no) + '</span>' + logo +
       '<span class="more-main"><strong>' + esc(o.name) + '</strong><p>' + esc(o.tagline || '') + '</p>' +
-      '<small>' + esc((o.categories || []).join(' · ')) + '</small></span>' +
+      '<small>' + esc((o.categories || []).join(' · ') + (o.revenue ? ' · ' + o.revenue : '')) + '</small></span>' +
       '</a>';
   }).join('\n');
   const priceNum = (function () {
@@ -457,14 +467,26 @@ async function handleApprove(request, env) {
 
   // launch index + numbers (feed order == launches.json order, newest first)
   const idx = JSON.parse(launchesJson0);
-  const nos = [];
-  const noRe2 = /<span class="launch-no">#(\d{3})<\/span>/g;
-  let mm2;
-  while ((mm2 = noRe2.exec(indexHtml0)) !== null) nos.push(mm2[1]);
-  const others = idx.slice(0, 8).map(function (e, i) {
-    return { name: e.name, tagline: e.tagline, url: e.url, logo: e.logo,
-             categories: [e.category || 'Product'], no: nos[i] || '–––' };
-  });
+  const selfUrl = '/launches/' + slug + '/';
+  const selfRev = revDollars(typeof d.revenue === 'string' ? d.revenue : (d.revenue && d.revenue.amount));
+  const others = idx
+    .filter(function (e) { return e.url !== selfUrl; })
+    .map(function (e) {
+      const v = revDollars(e.revenue);
+      const proximity = (selfRev && v) ? Math.abs(Math.log(v / selfRev)) : Infinity;
+      return { e: e, proximity: proximity };
+    })
+    .sort(function (a, b) { return a.proximity - b.proximity; })
+    .slice(0, 8)
+    .map(function (x) {
+      const e = x.e;
+      return {
+        name: e.name, tagline: e.tagline, url: e.url, logo: e.logo,
+        categories: [e.category || 'Product'],
+        no: e.launch_no ? String(e.launch_no).padStart(3, '0') : '–––',
+        revenue: e.revenue || ''
+      };
+    });
   const makerCount = d.founder
     ? idx.filter(function (e) { return (e.founder || '') === d.founder; }).length + 1
     : null;

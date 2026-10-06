@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Leaderboard — MilestoneWins</title>
+<meta name="description" content="The revenue leaderboard for AI startups on MilestoneWins: ranked by MRR, 30-day revenue and all-time revenue. Founder-reported.">
+<link rel="canonical" href="https://launch.arr.club/leaderboard/">
+<meta property="og:title" content="Revenue Leaderboard — MilestoneWins">
+<meta property="og:description" content="AI startups ranked by revenue: MRR, 30-day and all-time. Founder-reported milestones.">
+<meta property="og:url" content="https://launch.arr.club/leaderboard/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=20261006a">
+</head>
+<body>
+<header class="nav"><div class="nav-inner">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+<nav><a href="/#celebrations">Launches</a><a href="/submit.html">Submit</a></nav>
+</div></header>
+<main class="wrap">
+  <h1 style="margin:1.5rem 0 0.4rem;">Revenue leaderboard</h1>
+  <p class="muted" style="margin-bottom:1.2rem;">Ranked within each revenue metric — MRR, 30-day revenue and all-time revenue are never mixed. All numbers are founder-reported.</p>
+  <div class="lb-tabs" style="margin-bottom:12px;">
+    <button class="lb-tab active" data-tab="mrr" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">MRR</button><button class="lb-tab" data-tab="d30" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">30-day revenue</button><button class="lb-tab" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;border-radius:0 8px 8px 0;">All-time revenue</button>
+  </div>
+  <div class="lb-table">
+    <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">Revenue &#8595;</span></div>
+    <div id="lbBody"><div class="lb-row"><span></span><span class="lb-founder">Loading&hellip;</span><span></span><span></span></div></div>
+  </div>
+  <div id="lbPager" style="display:flex;justify-content:center;align-items:center;gap:12px;margin:18px 0;"></div>
+  <p class="lb-note">Revenue is shared by founders at submission time. <a href="/submit.html">Share your milestone &rarr;</a></p>
+</main>
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div class="fcol"><h5>Discover</h5><a href="/#celebrations">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/leaderboard/">Leaderboard</a></div>
+    <div class="fcol"><h5>Alternatives</h5><a href="/alternatives/product-hunt/">Product Hunt alternative</a><a href="/alternatives/faslaunch/">FasLaunch alternative</a></div>
+    <div class="fcol"><h5>Launch</h5><a href="/launch-your-startup/">Launch your startup</a><a href="/launch-your-ai-tool/">Launch your AI tool</a><a href="/launch-your-saas/">Launch your SaaS</a></div>
+    <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a></div>
+  </div>
+  <div class="footer-inner">
+    <span>&copy; 2026 MilestoneWins</span>
+  </div>
+</footer>
+<script>
+(function(){
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  var PAGE = 25, tab = 'mrr', page = 1, items = [];
+  // Parse "$12k MRR" / "$4.5k / mo" / "$70k / 30d" / "$10k all-time" / "$1M total" -> {v: dollars, m: 'mrr'|'d30'|'all'}
+  function parseRev(r){
+    if(!r) return null;
+    var m = String(r).match(/\$([\d.]+)\s*([kKmM]?)/);
+    if(!m) return null;
+    var v = parseFloat(m[1]);
+    if(m[2].toLowerCase() === 'k') v *= 1000;
+    if(m[2].toLowerCase() === 'm') v *= 1000000;
+    var s = String(r);
+    var metric = /all-time|total/i.test(s) ? 'all' : (/\/\s*30d/i.test(s) ? 'd30' : (/MRR|\/ ?mo/i.test(s) ? 'mrr' : (/\/\s*\d+d/i.test(s) ? 'd30' : 'all')));
+    return { v: v, m: metric };
+  }
+  function row(it, i){
+    var logo = it.logo
+      ? '<img src="' + String(it.logo).replace(/"/g, '') + '" alt="" loading="lazy">'
+      : '<span class="lc-logo-ph">' + esc(String(it.name || '?').charAt(0)) + '</span>';
+    return '<a class="lb-row" href="' + esc(it.url) + '"><span class="lb-rank">' + ((page - 1) * PAGE + i + 1) + '</span>'
+      + '<span class="lb-startup">' + logo + '<span><strong>' + esc(it.name) + '</strong><p>' + esc(it.tagline || '') + '</p></span></span>'
+      + '<span class="lb-founder">' + esc(it.founder || '\u2013') + '</span>'
+      + '<span class="lb-rev-col has">' + esc(it.revenue) + '</span></a>';
+  }
+  function render(){
+    var list = items.filter(function(it){ return it._rev && it._rev.m === tab; })
+      .sort(function(a, b){ return b._rev.v - a._rev.v; });
+    var pages = Math.max(1, Math.ceil(list.length / PAGE));
+    if(page > pages) page = pages;
+    var slice = list.slice((page - 1) * PAGE, page * PAGE);
+    document.getElementById('lbBody').innerHTML = slice.length
+      ? slice.map(row).join('')
+      : '<div class="lb-row"><span></span><span class="lb-founder">Nothing here yet.</span><span></span><span></span></div>';
+    var pg = document.getElementById('lbPager');
+    pg.innerHTML = pages > 1
+      ? '<button class="btn ghost" id="pgPrev"' + (page <= 1 ? ' disabled' : '') + '>&larr; Prev</button>'
+        + '<span class="muted">Page ' + page + ' of ' + pages + '</span>'
+        + '<button class="btn ghost" id="pgNext"' + (page >= pages ? ' disabled' : '') + '>Next &rarr;</button>'
+      : '<span class="muted">' + list.length + ' startups</span>';
+    var pv = document.getElementById('pgPrev'), nx = document.getElementById('pgNext');
+    if(pv) pv.addEventListener('click', function(){ if(page > 1){ page--; render(); window.scrollTo(0, 0); } });
+    if(nx) nx.addEventListener('click', function(){ if(page < pages){ page++; render(); window.scrollTo(0, 0); } });
+  }
+  document.querySelectorAll('.lb-tab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.lb-tab').forEach(function(b){ b.classList.remove('active'); b.style.background = '#fff'; b.style.color = '#475569'; });
+      btn.classList.add('active'); btn.style.background = '#0d9488'; btn.style.color = '#fff';
+      tab = btn.dataset.tab; page = 1; render();
+    });
+  });
+  fetch('/launches.json').then(function(r){ return r.json(); }).then(function(data){
+    items = data.map(function(it){ it._rev = parseRev(it.revenue); return it; }).filter(function(it){ return it._rev; });
+    render();
+  }).catch(function(){ document.getElementById('lbBody').innerHTML = ''; });
+})();
+</script>
+</body>
+</html>
