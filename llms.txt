@@ -1,7 +1,7 @@
-# ARR.Club Launch
+# MilestoneWins
 
-> The launchpad for early-stage AI startups — a part of ARR.Club. Revenue is the headline: founders launch free,
-> get discovered, share revenue, and graduate to ARR.Club when they scale. From launch to $100M.
+> Hit a milestone. We celebrate it. MilestoneWins is the board where founders share revenue milestones
+> and get a shareable celebration card for each win. Revenue is the headline.
 
 ## Key pages
 
@@ -46,4 +46,4 @@
 ## Submit
 
 Founders submit at https://launch.arr.club/submit.html — badge-verified launches are free and dofollow,
-instant listing is $5 one-time. Sharing revenue is optional; shared revenue may be tracked on ARR.Club (https://arr.club).
+instant listing is $5 one-time. Sharing revenue is optional; shared revenue is labeled Founder-reported.

@@ -256,7 +256,7 @@ function detailPage(d, slug, launchNo, badgeVerified, others, makerCount, rank) 
       : '';
   const revBig = rev ? '<b class="rev">' + esc(rev.amount) + (rev.metric ? ' ' + esc(rev.metric) : '') + '</b>' : '<b>–</b>';
   const revSub = rev
-    ? '<small>Self-reported · tracked on <a href="https://arr.club">ARR.Club</a></small>'
+    ? '<small>Founder-reported</small>'
     : '<small>Not shared yet</small>';
   const makerBig = d.founder ? '<b>' + esc(d.founder) + '</b>' : '<b>–</b>';
   const makerSub = makerCount === 1 ? '<small>1 product launched</small>'
@@ -323,7 +323,7 @@ function detailPage(d, slug, launchNo, badgeVerified, others, makerCount, rank) 
 '<body>\n' +
 '<header class="site-header">\n' +
 '  <nav class="nav">\n' +
-'    <a class="brand" href="/">launch<span>.arr.club</span></a>\n' +
+'    <a class="brand" href="/">Milestone<span>Wins</span></a>\n' +
 '    <div class="nav-auth" id="authSlot"></div>\n' +
 '  </nav>\n' +
 '</header>\n' +
@@ -377,11 +377,6 @@ shotSection +
 '      <div class="ins-block"><h4>Pricing</h4><p>' + esc(priceLabelOf(d)) + '</p></div>\n' +
 '      <div class="ins-block"><h4>Links</h4><p>' + links.join(' &middot; ') + '</p></div>\n' +
 '    </div>\n' +
-'    <aside class="card track-box" style="padding:1.3rem">\n' +
-'      <h4>Get tracked forever</h4>\n' +
-'      <p>Revenue growing? Announce your milestone on <a href="https://arr.club">ARR.Club</a> and join long-term revenue tracking.</p>\n' +
-'      <a class="btn" href="https://arr.club" target="_blank" rel="noopener">Announce on ARR.Club &#8599;</a>\n' +
-'    </aside>\n' +
 '  </div>\n' +
 '\n' +
 '  <h2 class="section-title caps"><span class="dot"></span>More launches <a class="view-all" href="/2026/w40/">View all &rsaquo;</a></h2>\n' +
@@ -398,7 +393,7 @@ DETAIL_SHARED_JS +
 '    <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a></div>\n' +
 '  </div>\n' +
 '  <div class="footer-inner">\n' +
-'    <span>© 2026 launch.arr.club · A part of <a href="https://arr.club">ARR.Club</a></span>\n' +
+'    <span>© 2026 MilestoneWins</span>\n' +
 '    <span class="sample-note">Curated listings: a mix of founder submissions and our editors\u2019 picks of public launches.</span>\n' +
 '  </div>\n' +
 '</footer>\n' +

@@ -54,7 +54,7 @@
 <body>
 <header class="site-header">
   <nav class="nav">
-    <a class="brand" href="/">launch<span>.arr.club</span></a>
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
     <div class="nav-links"><span class="lock-note">🔒 internal review console</span></div>
   </nav>
 </header>
@@ -127,19 +127,8 @@
       var hasRev = !!(d.revenue && d.revenue.amount);
       var rev = hasRev ? esc(d.revenue.amount) + (d.revenue.metric ? ' ' + esc(d.revenue.metric) : '') : '—';
       var revRaw = hasRev ? String(d.revenue.amount).trim() + (d.revenue.metric ? ' ' + String(d.revenue.metric).trim() : '') : '';
-      var optIn = !!d.arrclub_optin;
       var revPill = '<span class="pill' + (hasRev ? ' rev-hot' : '') + '">💰 ' + rev + '</span>';
-      var optInPill = (hasRev && optIn) ? '<span class="pill arrclub">📈 ARR.Club opt-in</span>' : '';
       var milestone = '';
-      if (hasRev && optIn) {
-        var mtext = '🚀 ' + d.name + ' just launched on launch.arr.club\n' +
-          '💰 ' + revRaw + ' (self-reported)\n' +
-          (d.tagline ? '📝 ' + d.tagline + '\n' : '') +
-          '🔗 https://launch.arr.club/launches/' + slugify(d.name) + '/';
-        milestone = '<div class="milestone-box"><h4>📈 ARR.Club milestone draft — copy &amp; publish on ARR.Club</h4>' +
-          '<pre>' + esc(mtext) + '</pre>' +
-          '<button type="button" class="milestone-copy">Copy milestone</button></div>';
-      }
       var shots = (d.screenshots || []).map(function(s){ return '<img src="' + esc(s) + '" alt="screenshot" loading="lazy">'; }).join('');
       var story = (d.story || []).map(function(a, k){
         a = a != null ? String(a).trim() : '';
@@ -160,7 +149,7 @@
         '<p class="sub-tagline">' + esc(d.tagline || '') + '</p></div></div>' +
         '<div class="sub-meta">' + planPill(d.plan) + badgePill(item) +
         '<span class="pill">' + esc(priceLabel(d)) + '</span>' +
-        revPill + optInPill +
+        revPill +
         '<span class="pill">' + esc((d.categories || []).join(', ') || 'Product') + '</span>' +
         '<span class="pill">👤 ' + esc(d.founder || '—') + '</span>' +
         '<p class="sub-desc">' + esc(d.description || '') + '</p>' +
@@ -188,17 +177,6 @@
     }).catch(function(e){ if (e.message !== 'auth') showGate('Network error.'); });
   }
   document.getElementById('list').addEventListener('click', function(e){
-    var cp = e.target.closest('.milestone-copy');
-    if (cp) {
-      var pre = cp.parentElement.querySelector('pre');
-      if (pre && navigator.clipboard) {
-        navigator.clipboard.writeText(pre.textContent).then(function(){
-          cp.textContent = 'Copied ✓';
-          setTimeout(function(){ cp.textContent = 'Copy milestone'; }, 1500);
-        });
-      }
-      return;
-    }
     var btn = e.target.closest('button[data-act]');
     if (!btn) return;
     var card = btn.closest('.sub-card');
