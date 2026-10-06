@@ -497,8 +497,9 @@ a.lb-row:hover { background: var(--bg-soft); }
 .story-card.wide { grid-column: 1 / -1; }
 .story-card h4 { margin: 0 0 0.45rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-muted); }
 .story-card p { margin: 0; font-size: 0.9rem; line-height: 1.55; }
+.story-card p + p { margin-top: 0.75em; }
 @media (max-width: 640px){ .story-grid { grid-template-columns: 1fr; } }
-.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin-bottom: 1.4rem; }
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-bottom: 1.4rem; }
 .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.2rem; box-shadow: var(--shadow-sm); }
 .stat-card > span { display: block; font-size: 0.92rem; font-weight: 700; margin-bottom: 0.45rem; }
 .stat-card > b { display: block; font-size: 1.3rem; font-weight: 800; font-family: var(--mono); letter-spacing: -0.01em; }
