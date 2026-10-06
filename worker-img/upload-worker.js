@@ -292,9 +292,24 @@ function detailPage(d, slug, launchNo, badgeVerified, others, makerCount, rank) 
     const logo = o.logo
       ? '<img src="' + esc(o.logo) + '" alt="">'
       : '<span class="lc-logo-ph">' + esc(String(o.name || '?').charAt(0)) + '</span>';
+    const revParts = (function (r) {
+      if (!r) return null;
+      const m = String(r).match(/(\$[\d.]+\s*[kKmM]?)\s*(.*)/);
+      if (!m) return { amount: r, metric: '' };
+      let metric = (m[2] || '').replace(/^\//, '').trim();
+      const low = metric.toLowerCase();
+      if (/mrr/.test(low) || low === 'mo') metric = 'MRR';
+      else if (/30d/.test(low)) metric = '30-day';
+      else if (/all-time/.test(low)) metric = 'all-time';
+      else if (/total/.test(low)) metric = 'total';
+      return { amount: m[1].trim(), metric: metric };
+    })(o.revenue);
+    const revHtml = revParts
+      ? '<span class="more-rev">' + esc(revParts.amount) + (revParts.metric ? '<small>' + esc(revParts.metric) + '</small>' : '') + '</span>'
+      : '';
     return '    <a class="more-row" href="' + esc(o.url) + '"><span class="more-rank">#' + esc(o.no) + '</span>' + logo +
       '<span class="more-main"><strong>' + esc(o.name) + '</strong><p>' + esc(o.tagline || '') + '</p>' +
-      '<small>' + esc((o.categories || []).join(' · ') + (o.revenue ? ' · ' + o.revenue : '')) + '</small></span>' +
+      '<small>' + esc((o.categories || []).join(' · ')) + '</small></span>' + revHtml +
       '</a>';
   }).join('\n');
   const priceNum = (function () {

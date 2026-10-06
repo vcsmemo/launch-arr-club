@@ -534,6 +534,9 @@ a.lb-row:hover { background: var(--bg-soft); }
 .more-main strong { display: block; font-size: 0.95rem; }
 .more-main p { margin: 0.1rem 0; font-size: 0.82rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .more-main small { font-size: 0.72rem; color: var(--text-muted); }
+.more-rev { margin-left: auto; flex: none; text-align: right; font-weight: 800; font-size: 1.02rem;
+  color: var(--text); font-variant-numeric: tabular-nums; line-height: 1.2; }
+.more-rev small { display: block; font-size: 0.68rem; font-weight: 600; color: var(--text-muted); }
 .more-dr { text-align: right; flex: none; }
 .more-dr span { display: block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text-muted); }
 .more-dr b { font-family: var(--mono); font-size: 1rem; }
