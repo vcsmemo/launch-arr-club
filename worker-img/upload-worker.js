@@ -379,16 +379,6 @@ rankCard +
 
 '\n' +
 shotSection +
-'  <h2 class="section-title caps"><span class="dot"></span>Product insights</h2>\n' +
-'  <div class="insights-2col">\n' +
-'    <div class="card" style="padding:1.3rem">\n' +
-'      <div class="ins-block"><h4>About</h4><p>' + esc(about) + '</p></div>\n' +
-'      <div class="ins-block"><h4>Categories</h4><div class="pills">' + catPills + '</div></div>\n' +
-'      <div class="ins-block"><h4>Pricing</h4><p>' + esc(priceLabelOf(d)) + '</p></div>\n' +
-'      <div class="ins-block"><h4>Links</h4><p>' + links.join(' &middot; ') + '</p></div>\n' +
-'    </div>\n' +
-'  </div>\n' +
-'\n' +
 '  <h2 class="section-title caps"><span class="dot"></span>More launches <a class="view-all" href="/2026/w40/">View all &rsaquo;</a></h2>\n' +
 '  <div class="more-list">\n' +
 moreRows + '\n' +

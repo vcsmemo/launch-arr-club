@@ -77,7 +77,7 @@
 
 
   <h2 class="section-title caps"><span class="dot"></span>What Sleek is about</h2>
-    <div class="story-card wide"><h4>What makes it different</h4><p>Sleek is an AI mobile-app designer: chat with AI and go from idea to beautiful, editable app designs in minutes — exportable to Figma as native layers or to React/Tailwind code, with an API and agent skill for Claude Code and Cursor. Built in three weeks by Mattia Pomelli with two friends, repurposing one of their earlier design tools. Launched about six weeks before Mattia's Indie Hackers post, it hit $10k MRR with zero marketing spend — a viral X launch post plus daily design content did the distribution. Stripe payments, subscription tiers with AI credits.</p></div>
+    <div class="story-card wide"><h4>What makes it different</h4><p>Sleek is an AI mobile-app designer: chat with AI and go from idea to beautiful, editable app designs in minutes — exportable to Figma as native layers or to React/Tailwind code, with an API and agent skill for Claude Code and Cursor.</p><p>Built in three weeks by Mattia Pomelli with two friends, repurposing one of their earlier design tools. Launched about six weeks before Mattia's Indie Hackers post, it hit $10k MRR with zero marketing spend — a viral X launch post plus daily design content did the distribution.</p><p>Stripe payments, subscription tiers with AI credits.</p></div>
 
   <div class="stat-grid">
 
@@ -127,7 +127,7 @@
         return '<div class="timeline-item">'
           + '<div class="timeline-date">' + h.date + '</div>'
           + '<div class="timeline-rev">' + h.revenue + '</div>'
-          + (h.note ? '<div class="timeline-note">' + h.note + '</div>' : '')
+          + (h.note ? '<div class="timeline-note">' + String(h.note).replace(/ \u00b7 Founder-reported$/, '') + '</div>' : '')
           + '</div>';
       }).join('');
       document.getElementById('timelineTrack').innerHTML = html;
@@ -137,12 +137,6 @@
   })();
   </script>
 
-  <h2 class="section-title caps"><span class="dot"></span>Product insights</h2>
-  <div class="card product-facts" style="padding:1.3rem">
-    <div class="ins-block"><h4>Categories</h4><div class="pills"><span class="tag cat">Marketing</span></div></div>
-    <div class="ins-block"><h4>Pricing</h4><p>Free · Starter $29/mo · Growth $49/mo · Pro $149/mo</p></div>
-    <div class="ins-block"><h4>Links</h4><p><a href="https://sleek.design">Website</a></p></div>
-  </div>
 
   <h2 class="section-title caps"><span class="dot"></span>More launches <a class="view-all" href="/2026/w40/">View all &rsaquo;</a></h2>
   <div class="more-list">

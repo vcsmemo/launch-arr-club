@@ -77,7 +77,7 @@
 
 
   <h2 class="section-title caps"><span class="dot"></span>What Caldef is about</h2>
-    <div class="story-card wide"><h4>What makes it different</h4><p>Caldef is an AI calorie tracker built by Cedric Isubol out of his own struggle — obese with high blood pressure and told he would need medication for life, he built the tracker he actually needed and lost 18kg using it. Type "two cups of rice, grilled tilapia, and sinigang" or snap a photo of your plate and get calories, protein, carbs and fat in seconds — no databases, no barcode scanning, and it understands Filipino and other non-Western dishes that traditional food databases ignore. Launched on Google Play in April 2026, it hit 1,000 downloads and $35 MRR in its first two weeks; five months later it is at 8,000+ downloads, 130 subscribers and $280 MRR — with $0 spent on ads. Priced for emerging markets at ~$3/month (₱179).</p></div>
+    <div class="story-card wide"><h4>What makes it different</h4><p>Caldef is an AI calorie tracker built by Cedric Isubol out of his own struggle — obese with high blood pressure and told he would need medication for life, he built the tracker he actually needed and lost 18kg using it.</p><p>Type "two cups of rice, grilled tilapia, and sinigang" or snap a photo of your plate and get calories, protein, carbs and fat in seconds — no databases, no barcode scanning, and it understands Filipino and other non-Western dishes that traditional food databases ignore.</p><p>Launched on Google Play in April 2026, it hit 1,000 downloads and $35 MRR in its first two weeks; five months later it is at 8,000+ downloads, 130 subscribers and $280 MRR — with $0 spent on ads. Priced for emerging markets at ~$3/month (₱179).</p></div>
 
   <div class="stat-grid">
 
@@ -127,7 +127,7 @@
         return '<div class="timeline-item">'
           + '<div class="timeline-date">' + h.date + '</div>'
           + '<div class="timeline-rev">' + h.revenue + '</div>'
-          + (h.note ? '<div class="timeline-note">' + h.note + '</div>' : '')
+          + (h.note ? '<div class="timeline-note">' + String(h.note).replace(/ \u00b7 Founder-reported$/, '') + '</div>' : '')
           + '</div>';
       }).join('');
       document.getElementById('timelineTrack').innerHTML = html;
@@ -137,12 +137,6 @@
   })();
   </script>
 
-  <h2 class="section-title caps"><span class="dot"></span>Product insights</h2>
-  <div class="card product-facts" style="padding:1.3rem">
-    <div class="ins-block"><h4>Categories</h4><div class="pills"><span class="tag cat">Health</span></div></div>
-    <div class="ins-block"><h4>Pricing</h4><p>~$3/mo (₱179/mo) · 7-day free trial</p></div>
-    <div class="ins-block"><h4>Links</h4><p><a href="https://caldefapp.com">Website</a></p></div>
-  </div>
 
   <h2 class="section-title caps"><span class="dot"></span>More launches <a class="view-all" href="/2026/w41/">View all &rsaquo;</a></h2>
   <div class="more-list">
