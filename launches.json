@@ -1129,5 +1129,77 @@
         "note": "Launch · Founder-reported"
       }
     ]
+  },
+  {
+    "launch_no": 55,
+    "name": "Lancer",
+    "slug": "lancer",
+    "tagline": "The #1 Upwork AI Agent — land Upwork jobs 24/7 without the grind",
+    "url": "https://launch.arr.club/launches/lancer/",
+    "website": "https://lancer.app",
+    "logo": "/logos/lancer.svg",
+    "revenue": "$10K MRR",
+    "revenue_metric": "MRR",
+    "founder": "Ivan Nedelkovski",
+    "category": "Sales",
+    "pricing": "From $99/mo",
+    "launched": "2026-10-07",
+    "source": "https://www.youtube.com/watch?v=LKARRA0MvY4",
+    "source_label": "Founder's Starter Story interview",
+    "revenue_history": [
+      {
+        "date": "2026-10-07",
+        "revenue": "$10K MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "growth_story": {
+      "facts": [
+        "Grew to $10K MRR with zero paid advertising",
+        "Recruited top Upwork coaches as affiliates ('connector' strategy), paying 20–30% lifetime commissions",
+        "Secured one coach via personal introduction, another with a $1,000 LinkedIn outreach incentive"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=LKARRA0MvY4",
+        "https://www.youtube.com/watch?v=LKARRA0MvY4",
+        "https://www.youtube.com/watch?v=LKARRA0MvY4"
+      ]
+    }
+  },
+  {
+    "launch_no": 56,
+    "name": "Arvow",
+    "slug": "arvow",
+    "tagline": "Rank on Google and get cited by AI search — without manual work",
+    "url": "https://launch.arr.club/launches/arvow/",
+    "website": "https://arvow.com",
+    "logo": "/logos/arvow.png",
+    "revenue": "$75K MRR",
+    "revenue_metric": "MRR",
+    "founder": "Vasco Montiero, Afonso Matos",
+    "category": "SEO",
+    "pricing": "From $69/mo",
+    "launched": "2026-10-07",
+    "source": "https://www.youtube.com/watch?v=jNlIhyEoc0M",
+    "source_label": "Founder's YouTube video",
+    "revenue_history": [
+      {
+        "date": "2026-10-07",
+        "revenue": "$75K MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "growth_story": {
+      "facts": [
+        "Grew from $0 to $79K/month 'all through YouTube'",
+        "Playbook: teaching-not-selling YouTube content, then recruiting 'creators' to run multiple B2B YouTube channels",
+        "Ranks his SaaS on Google and engineers ChatGPT/LLM brand mentions via automated backlinks and stats pages"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=VZ1XspToV1E",
+        "https://www.youtube.com/watch?v=hJ2-hX95eJE",
+        "https://www.youtube.com/watch?v=jNlIhyEoc0M"
+      ]
+    }
   }
 ]
