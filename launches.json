@@ -1201,5 +1201,41 @@
         "https://www.youtube.com/watch?v=jNlIhyEoc0M"
       ]
     }
+  },
+  {
+    "launch_no": 57,
+    "name": "Vibe3D",
+    "slug": "vibe3d",
+    "tagline": "3D Render AI for Architecture & Interior Design",
+    "url": "https://launch.arr.club/launches/vibe3d/",
+    "website": "https://vibe3d.ai",
+    "logo": "/logos/vibe3d.png",
+    "revenue": "$10k MRR",
+    "revenue_metric": "MRR",
+    "founder": "Brijesh Patel",
+    "category": "Design Tools",
+    "pricing": "From $19/mo",
+    "launched": "2026-10-07",
+    "source": "https://instalker.org/erione_",
+    "source_label": "Founder's X posts (mirror)",
+    "revenue_history": [
+      {
+        "date": "2026-10-07",
+        "revenue": "$10k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "growth_story": {
+      "facts": [
+        "Went from $1k to $10k MRR in 3 months, shared publicly via monthly X updates",
+        "Monthly build-in-public updates: $3.3k MRR (Sep 2025) → $4.6k MRR (Oct 2025) → $10k MRR",
+        "20k+ designers on board at the $10k MRR mark; free tier (3 renders, no card) as the acquisition hook"
+      ],
+      "sources": [
+        "https://instalker.org/erione_",
+        "https://instalker.org/erione_",
+        "https://instalker.org/erione_"
+      ]
+    }
   }
 ]
