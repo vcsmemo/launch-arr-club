@@ -1,1360 +1,1493 @@
 [
- {
-  "name": "Ace",
-  "tagline": "Meet Ace, an agentic teammate for work",
-  "url": "/launches/ace-automat/",
-  "category": "AI Agents",
-  "pricing": "$1,800/mo",
-  "founder": "Lucas Ochoa, Gautam Bose",
-  "revenue": null,
-  "revenue_metric": null,
-  "revenue_verified": false,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/ace.png",
-  "launch_no": 25,
-  "website": "https://runautomat.com/workforce"
- },
- {
-  "name": "SalesRobot",
-  "tagline": "Message 100s of people on LinkedIn and cold email. Every week. Automatically.",
-  "url": "/launches/salesrobot/",
-  "category": "Sales",
-  "pricing": "$59/mo",
-  "founder": "Saurav Gupta",
-  "revenue": "$70k / 30d",
-  "revenue_metric": "30-day revenue",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/salesrobot.png",
-  "launch_no": 24,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+  {
+    "name": "Ace",
+    "tagline": "Meet Ace, an agentic teammate for work",
+    "url": "/launches/ace-automat/",
+    "category": "AI Agents",
+    "pricing": "$1,800/mo",
+    "founder": "Lucas Ochoa, Gautam Bose",
+    "revenue": null,
+    "revenue_metric": null,
+    "revenue_verified": false,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/ace.png",
+    "launch_no": 25,
+    "website": "https://runautomat.com/workforce",
+    "founder_x": [
+      "lucas0choa",
+      null
+    ]
+  },
+  {
+    "name": "SalesRobot",
+    "tagline": "Message 100s of people on LinkedIn and cold email. Every week. Automatically.",
+    "url": "/launches/salesrobot/",
+    "category": "Sales",
+    "pricing": "$59/mo",
+    "founder": "Saurav Gupta",
     "revenue": "$70k / 30d",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://salesrobot.co"
- },
- {
-  "name": "MyPlots",
-  "tagline": "Discover & host unforgettable events",
-  "url": "/launches/myplots/",
-  "category": "Entertainment",
-  "pricing": null,
-  "founder": "Jack Schwartz",
-  "revenue": "$500k / 30d",
-  "revenue_metric": "30-day revenue",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/myplots-r.png",
-  "launch_no": 23,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/salesrobot.png",
+    "launch_no": 24,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$70k / 30d",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://salesrobot.co"
+  },
+  {
+    "name": "MyPlots",
+    "tagline": "Discover & host unforgettable events",
+    "url": "/launches/myplots/",
+    "category": "Entertainment",
+    "pricing": null,
+    "founder": "Jack Schwartz",
     "revenue": "$500k / 30d",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://myplots.com"
- },
- {
-  "name": "Comp AI",
-  "tagline": "The AI-first compliance platform",
-  "url": "/launches/comp-ai/",
-  "category": "Dev Tools",
-  "pricing": null,
-  "founder": "Lewis Carhart, Mariano Fuentes, Claudio Fuentes",
-  "revenue": "$12k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/comp-ai.png",
-  "launch_no": 22,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/myplots-r.png",
+    "launch_no": 23,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$500k / 30d",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://myplots.com"
+  },
+  {
+    "name": "Comp AI",
+    "tagline": "The AI-first compliance platform",
+    "url": "/launches/comp-ai/",
+    "category": "Dev Tools",
+    "pricing": null,
+    "founder": "Lewis Carhart, Mariano Fuentes, Claudio Fuentes",
     "revenue": "$12k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://trycomp.ai"
- },
- {
-  "name": "Campfire",
-  "tagline": "The shared workspace for humans and coding agents",
-  "url": "/launches/campfire/",
-  "category": "Dev Tools",
-  "pricing": "Free",
-  "founder": "Sergio Rovira",
-  "revenue": null,
-  "revenue_metric": null,
-  "revenue_verified": false,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/campfire.png",
-  "launch_no": 26,
-  "website": "https://boringinfra.company/campfire"
- },
- {
-  "name": "SuperX",
-  "tagline": "X growth tool: scheduling, analytics, AI content",
-  "url": "/launches/superx/",
-  "category": "Marketing",
-  "pricing": "$49/mo",
-  "founder": "Rob Hallam",
-  "revenue": "$21k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/superx.png",
-  "launch_no": 21,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/comp-ai.png",
+    "launch_no": 22,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$12k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://trycomp.ai",
+    "founder_x": [
+      "lewisbuildsai",
+      null,
+      null
+    ]
+  },
+  {
+    "name": "Campfire",
+    "tagline": "The shared workspace for humans and coding agents",
+    "url": "/launches/campfire/",
+    "category": "Dev Tools",
+    "pricing": "Free",
+    "founder": "Sergio Rovira",
+    "revenue": null,
+    "revenue_metric": null,
+    "revenue_verified": false,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/campfire.png",
+    "launch_no": 26,
+    "website": "https://boringinfra.company/campfire",
+    "founder_x": [
+      "therealsergio91"
+    ]
+  },
+  {
+    "name": "SuperX",
+    "tagline": "X growth tool: scheduling, analytics, AI content",
+    "url": "/launches/superx/",
+    "category": "Marketing",
+    "pricing": "$49/mo",
+    "founder": "Rob Hallam",
     "revenue": "$21k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://superx.so"
- },
- {
-  "name": "ConvertLabs",
-  "tagline": "Run your home service business from one screen",
-  "url": "/launches/convertlabs/",
-  "category": "Marketing",
-  "pricing": "$67/mo",
-  "founder": "Rohan Gilkes",
-  "revenue": "$27k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/convertlabs.png",
-  "launch_no": 20,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/superx.png",
+    "launch_no": 21,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$21k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://superx.so",
+    "founder_x": [
+      "robj3d3"
+    ]
+  },
+  {
+    "name": "ConvertLabs",
+    "tagline": "Run your home service business from one screen",
+    "url": "/launches/convertlabs/",
+    "category": "Marketing",
+    "pricing": "$67/mo",
+    "founder": "Rohan Gilkes",
     "revenue": "$27k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://convertlabs.io"
- },
- {
-  "name": "Liinks",
-  "tagline": "Link in bio with Instagram auto-posting and analytics",
-  "url": "/launches/liinks/",
-  "category": "Marketing",
-  "pricing": "$5/mo",
-  "founder": "Charlie Clark",
-  "revenue": "$31k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/liinks.png",
-  "launch_no": 19,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/convertlabs.png",
+    "launch_no": 20,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$27k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://convertlabs.io",
+    "founder_x": [
+      "rohangilkes"
+    ]
+  },
+  {
+    "name": "Liinks",
+    "tagline": "Link in bio with Instagram auto-posting and analytics",
+    "url": "/launches/liinks/",
+    "category": "Marketing",
+    "pricing": "$5/mo",
+    "founder": "Charlie Clark",
     "revenue": "$31k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://www.liinks.co"
- },
- {
-  "name": "GitBot",
-  "tagline": "Build bots on the coding agent you already use",
-  "url": "/launches/gitbot/",
-  "category": "Dev Tools",
-  "pricing": "Free",
-  "founder": "Sunny, Raunaq Vaisoha, Anil Dukkipatty, Sahil Kathpal",
-  "revenue": null,
-  "revenue_metric": null,
-  "revenue_verified": false,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/gitbot.png",
-  "launch_no": 27,
-  "website": "https://github.com/gitbot-hq/GitBot"
- },
- {
-  "name": "Capgo",
-  "tagline": "Capacitor plugin to update your app without sending to store",
-  "url": "/launches/capgo/",
-  "category": "Dev Tools",
-  "pricing": "$12/mo",
-  "founder": "Martin Donadieu",
-  "revenue": "$31k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/capgo.png",
-  "launch_no": 18,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/liinks.png",
+    "launch_no": 19,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$31k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://www.liinks.co"
+  },
+  {
+    "name": "GitBot",
+    "tagline": "Build bots on the coding agent you already use",
+    "url": "/launches/gitbot/",
+    "category": "Dev Tools",
+    "pricing": "Free",
+    "founder": "Sunny, Raunaq Vaisoha, Anil Dukkipatty, Sahil Kathpal",
+    "revenue": null,
+    "revenue_metric": null,
+    "revenue_verified": false,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/gitbot.png",
+    "launch_no": 27,
+    "website": "https://github.com/gitbot-hq/GitBot",
+    "founder_x": [
+      null,
+      null,
+      "anildukkipatty",
+      null
+    ]
+  },
+  {
+    "name": "Capgo",
+    "tagline": "Capacitor plugin to update your app without sending to store",
+    "url": "/launches/capgo/",
+    "category": "Dev Tools",
+    "pricing": "$12/mo",
+    "founder": "Martin Donadieu",
     "revenue": "$31k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://capgo.app"
- },
- {
-  "name": "Based Labs AI",
-  "tagline": "Turn any idea into stunning images and cinematic video",
-  "url": "/launches/based-labs-ai/",
-  "category": "Video",
-  "pricing": "Freemium",
-  "founder": "Michael Aubry",
-  "revenue": "$29k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/based-labs-ai.png",
-  "launch_no": 17,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/capgo.png",
+    "launch_no": 18,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$31k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://capgo.app",
+    "founder_x": [
+      "martindonadieu"
+    ]
+  },
+  {
+    "name": "Based Labs AI",
+    "tagline": "Turn any idea into stunning images and cinematic video",
+    "url": "/launches/based-labs-ai/",
+    "category": "Video",
+    "pricing": "Freemium",
+    "founder": "Michael Aubry",
     "revenue": "$29k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://basedlabs.ai"
- },
- {
-  "name": "AI Interview Copilot",
-  "tagline": "AI Interview Assistant for real-time support",
-  "url": "/launches/ai-interview-copilot/",
-  "category": "Education",
-  "pricing": "$19/mo",
-  "founder": "Artur Kornatowski",
-  "revenue": "$31k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/ai-interview-copilot.png",
-  "launch_no": 16,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/based-labs-ai.png",
+    "launch_no": 17,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$29k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://basedlabs.ai",
+    "founder_x": [
+      "michaelaubry"
+    ]
+  },
+  {
+    "name": "AI Interview Copilot",
+    "tagline": "AI Interview Assistant for real-time support",
+    "url": "/launches/ai-interview-copilot/",
+    "category": "Education",
+    "pricing": "$19/mo",
+    "founder": "Artur Kornatowski",
     "revenue": "$31k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://interviews.chat"
- },
- {
-  "name": "Squint",
-  "tagline": "Drag a box on your screen and ask AI about it",
-  "url": "/launches/squint/",
-  "category": "Productivity",
-  "pricing": "Freemium",
-  "founder": "Evan Schwartzentruber",
-  "revenue": null,
-  "revenue_metric": null,
-  "revenue_verified": false,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/squint.png",
-  "launch_no": 28,
-  "website": "https://heysquint.com/"
- },
- {
-  "name": "Web3Forms",
-  "tagline": "Contact Form API for Modern Websites",
-  "url": "/launches/web3forms/",
-  "category": "Dev Tools",
-  "pricing": "Freemium",
-  "founder": "Surjith S M",
-  "revenue": "$41k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/web3forms.svg",
-  "launch_no": 15,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/ai-interview-copilot.png",
+    "launch_no": 16,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$31k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://interviews.chat"
+  },
+  {
+    "name": "Squint",
+    "tagline": "Drag a box on your screen and ask AI about it",
+    "url": "/launches/squint/",
+    "category": "Productivity",
+    "pricing": "Freemium",
+    "founder": "Evan Schwartzentruber",
+    "revenue": null,
+    "revenue_metric": null,
+    "revenue_verified": false,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/squint.png",
+    "launch_no": 28,
+    "website": "https://heysquint.com/"
+  },
+  {
+    "name": "Web3Forms",
+    "tagline": "Contact Form API for Modern Websites",
+    "url": "/launches/web3forms/",
+    "category": "Dev Tools",
+    "pricing": "Freemium",
+    "founder": "Surjith S M",
     "revenue": "$41k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://web3forms.com"
- },
- {
-  "name": "Indexsy",
-  "tagline": "We Build, Acquire & Scale Digital Assets",
-  "url": "/launches/indexsy/",
-  "category": "Marketing",
-  "pricing": null,
-  "founder": "Jacky Chou",
-  "revenue": "$41k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/indexsy-r.svg",
-  "launch_no": 14,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/web3forms.svg",
+    "launch_no": 15,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$41k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://web3forms.com",
+    "founder_x": [
+      "surjithctly"
+    ]
+  },
+  {
+    "name": "Indexsy",
+    "tagline": "We Build, Acquire & Scale Digital Assets",
+    "url": "/launches/indexsy/",
+    "category": "Marketing",
+    "pricing": null,
+    "founder": "Jacky Chou",
     "revenue": "$41k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://indexsy.com"
- },
- {
-  "name": "SEOBOT",
-  "tagline": "Fully autonomous SEO robot with AI agents for busy founders",
-  "url": "/launches/seobot/",
-  "category": "Marketing",
-  "pricing": "$49/mo",
-  "founder": "John Rush",
-  "revenue": "$47k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/seobot.png",
-  "launch_no": 13,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/indexsy-r.svg",
+    "launch_no": 14,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$41k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://indexsy.com",
+    "founder_x": [
+      "indexsy"
+    ]
+  },
+  {
+    "name": "SEOBOT",
+    "tagline": "Fully autonomous SEO robot with AI agents for busy founders",
+    "url": "/launches/seobot/",
+    "category": "Marketing",
+    "pricing": "$49/mo",
+    "founder": "John Rush",
     "revenue": "$47k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://seobotai.com"
- },
- {
-  "name": "getcta",
-  "tagline": "An AI teleprompter that lives under your MacBook notch",
-  "url": "/launches/getcta/",
-  "category": "Productivity",
-  "pricing": "Freemium",
-  "founder": "Nikhil Rajpurohit",
-  "revenue": null,
-  "revenue_metric": null,
-  "revenue_verified": false,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/getcta.png",
-  "launch_no": 29,
-  "website": "https://www.getcta.store/"
- },
- {
-  "name": "DataExpert",
-  "tagline": "Master data engineering and AI like a big tech engineer",
-  "url": "/launches/dataexpert/",
-  "category": "Education",
-  "pricing": "$119/mo",
-  "founder": "Zach Wilson",
-  "revenue": "$63k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/dataexpert.svg",
-  "launch_no": 12,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/seobot.png",
+    "launch_no": 13,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$47k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://seobotai.com",
+    "founder_x": [
+      "johnrushx"
+    ]
+  },
+  {
+    "name": "getcta",
+    "tagline": "An AI teleprompter that lives under your MacBook notch",
+    "url": "/launches/getcta/",
+    "category": "Productivity",
+    "pricing": "Freemium",
+    "founder": "Nikhil Rajpurohit",
+    "revenue": null,
+    "revenue_metric": null,
+    "revenue_verified": false,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/getcta.png",
+    "launch_no": 29,
+    "website": "https://www.getcta.store/"
+  },
+  {
+    "name": "DataExpert",
+    "tagline": "Master data engineering and AI like a big tech engineer",
+    "url": "/launches/dataexpert/",
+    "category": "Education",
+    "pricing": "$119/mo",
+    "founder": "Zach Wilson",
     "revenue": "$63k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://dataexpert.io"
- },
- {
-  "name": "AEO Engine",
-  "tagline": "The AI SEO agency that makes you the answer in AI Overviews, ChatGPT, and Google.",
-  "url": "/launches/aeo-engine/",
-  "category": "Marketing",
-  "pricing": "$1,597/mo",
-  "founder": "Vijay C. Jacob, Dan Ashburn",
-  "revenue": "$70k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/aeo-engine.png",
-  "launch_no": 11,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/dataexpert.svg",
+    "launch_no": 12,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$63k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://dataexpert.io",
+    "founder_x": [
+      "EcZachly"
+    ]
+  },
+  {
+    "name": "AEO Engine",
+    "tagline": "The AI SEO agency that makes you the answer in AI Overviews, ChatGPT, and Google.",
+    "url": "/launches/aeo-engine/",
+    "category": "Marketing",
+    "pricing": "$1,597/mo",
+    "founder": "Vijay C. Jacob, Dan Ashburn",
     "revenue": "$70k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://aeoengine.ai"
- },
- {
-  "name": "Vid.AI",
-  "tagline": "Start generating monetizable AI videos on autopilot",
-  "url": "/launches/vid-ai/",
-  "category": "Video",
-  "pricing": "$39/mo",
-  "founder": "Matt Par",
-  "revenue": "$78k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/vid-ai.png",
-  "launch_no": 10,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/aeo-engine.png",
+    "launch_no": 11,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$70k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://aeoengine.ai"
+  },
+  {
+    "name": "Vid.AI",
+    "tagline": "Start generating monetizable AI videos on autopilot",
+    "url": "/launches/vid-ai/",
+    "category": "Video",
+    "pricing": "$39/mo",
+    "founder": "Matt Par",
     "revenue": "$78k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://vid.ai"
- },
- {
-  "category": "Video",
-  "founder": "John Tian",
-  "logo": "/logos/vidsizer-logo.png",
-  "name": "VidSizer",
-  "tagline": "Compress any video to any exact size, 100% locally in browser.",
-  "url": "/launches/vidsizer/",
-  "revenue": null,
-  "launched": "2026-09-30",
-  "pricing": "Free",
-  "plan": "badge",
-  "revenue_metric": null,
-  "revenue_verified": false,
-  "launch_no": 4,
-  "website": "https://vidsizer.com/"
- },
- {
-  "name": "LLM Gateway",
-  "tagline": "Unified API for Multiple LLM Providers",
-  "url": "/launches/llm-gateway/",
-  "category": "Dev Tools",
-  "pricing": "Freemium",
-  "founder": "Luca Steeb, Smakosh",
-  "revenue": "$79k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/llm-gateway.png",
-  "launch_no": 9,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/vid-ai.png",
+    "launch_no": 10,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$78k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://vid.ai",
+    "founder_x": [
+      "MattParOfficial"
+    ]
+  },
+  {
+    "category": "Video",
+    "founder": "John Tian",
+    "logo": "/logos/vidsizer-logo.png",
+    "name": "VidSizer",
+    "tagline": "Compress any video to any exact size, 100% locally in browser.",
+    "url": "/launches/vidsizer/",
+    "revenue": null,
+    "launched": "2026-09-30",
+    "pricing": "Free",
+    "plan": "badge",
+    "revenue_metric": null,
+    "revenue_verified": false,
+    "launch_no": 4,
+    "website": "https://vidsizer.com/"
+  },
+  {
+    "name": "LLM Gateway",
+    "tagline": "Unified API for Multiple LLM Providers",
+    "url": "/launches/llm-gateway/",
+    "category": "Dev Tools",
+    "pricing": "Freemium",
+    "founder": "Luca Steeb, Smakosh",
     "revenue": "$79k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://llmgateway.io"
- },
- {
-  "name": "Codédex",
-  "tagline": "Start Your Coding Adventure",
-  "url": "/launches/codedex/",
-  "category": "Education",
-  "pricing": "$9.99/mo",
-  "founder": "Sonny Li",
-  "revenue": "$85k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/codedex-r.png",
-  "launch_no": 8,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/llm-gateway.png",
+    "launch_no": 9,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$79k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://llmgateway.io",
+    "founder_x": [
+      "steebchen",
+      "smakosh"
+    ]
+  },
+  {
+    "name": "Codédex",
+    "tagline": "Start Your Coding Adventure",
+    "url": "/launches/codedex/",
+    "category": "Education",
+    "pricing": "$9.99/mo",
+    "founder": "Sonny Li",
     "revenue": "$85k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://www.codedex.io"
- },
- {
-  "name": "Supliful",
-  "tagline": "Build a high-performance wellness brand, backed by Supliful",
-  "url": "/launches/supliful/",
-  "category": "E-commerce",
-  "pricing": "$69/mo",
-  "founder": "Martins Lasmanis",
-  "revenue": "$179k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/supliful-r.png",
-  "launch_no": 7,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/codedex-r.png",
+    "launch_no": 8,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$85k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://www.codedex.io",
+    "founder_x": [
+      "sonnynomnom"
+    ]
+  },
+  {
+    "name": "Supliful",
+    "tagline": "Build a high-performance wellness brand, backed by Supliful",
+    "url": "/launches/supliful/",
+    "category": "E-commerce",
+    "pricing": "$69/mo",
+    "founder": "Martins Lasmanis",
     "revenue": "$179k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://supliful.com"
- },
- {
-  "name": "Postiz",
-  "tagline": "Run your social media on autopilot with AI agents",
-  "url": "/launches/postiz/",
-  "category": "Marketing",
-  "pricing": "$29/mo",
-  "founder": "Nevo David",
-  "revenue": "$184k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/postiz.png",
-  "launch_no": 6,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/supliful-r.png",
+    "launch_no": 7,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$179k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://supliful.com",
+    "founder_x": [
+      "martinlasmanis"
+    ]
+  },
+  {
+    "name": "Postiz",
+    "tagline": "Run your social media on autopilot with AI agents",
+    "url": "/launches/postiz/",
+    "category": "Marketing",
+    "pricing": "$29/mo",
+    "founder": "Nevo David",
     "revenue": "$184k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://postiz.com"
- },
- {
-  "name": "Rezi",
-  "tagline": "The #1 AI Resume Builder – Forbes' Top Pick. Trusted by 4.5M",
-  "url": "/launches/rezi/",
-  "category": "AI Writing",
-  "pricing": "Freemium",
-  "founder": "Jacob Jacquet",
-  "revenue": "$261k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-09-30",
-  "plan": "curated",
-  "logo": "/logos/rezi.png",
-  "launch_no": 5,
-  "revenue_history": [
-   {
-    "date": "2026-09-30",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/postiz.png",
+    "launch_no": 6,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$184k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://postiz.com",
+    "founder_x": [
+      "wickedguro"
+    ]
+  },
+  {
+    "name": "Rezi",
+    "tagline": "The #1 AI Resume Builder – Forbes' Top Pick. Trusted by 4.5M",
+    "url": "/launches/rezi/",
+    "category": "AI Writing",
+    "pricing": "Freemium",
+    "founder": "Jacob Jacquet",
     "revenue": "$261k MRR",
-    "note": "Launch"
-   }
-  ],
-  "website": "https://rezi.ai"
- },
- {
-  "name": "Cometly",
-  "tagline": "AI marketing attribution — chat with your ads data",
-  "url": "/launches/cometly/",
-  "category": "Marketing",
-  "pricing": "Usage-based",
-  "founder": "Grant Cooper, Matt Pattoli",
-  "revenue": "$208k",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-10-01",
-  "plan": "curated",
-  "logo": "/logos/cometly.svg",
-  "launch_no": 30,
-  "revenue_history": [
-   {
-    "date": "2026-10-01",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-09-30",
+    "plan": "curated",
+    "logo": "/logos/rezi.png",
+    "launch_no": 5,
+    "revenue_history": [
+      {
+        "date": "2026-09-30",
+        "revenue": "$261k MRR",
+        "note": "Launch"
+      }
+    ],
+    "website": "https://rezi.ai",
+    "founder_x": [
+      "jacob_jacquet"
+    ]
+  },
+  {
+    "name": "Cometly",
+    "tagline": "AI marketing attribution — chat with your ads data",
+    "url": "/launches/cometly/",
+    "category": "Marketing",
+    "pricing": "Usage-based",
+    "founder": "Grant Cooper, Matt Pattoli",
     "revenue": "$208k",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "website": "https://cometly.com"
- },
- {
-  "name": "Stack Influence",
-  "tagline": "Micro-influencer marketing for eCommerce brands",
-  "url": "/launches/stack-influence/",
-  "category": "Marketing",
-  "pricing": "$39/post",
-  "founder": "William Gasner",
-  "revenue": "$761k / 30d",
-  "revenue_metric": "30-day revenue",
-  "revenue_verified": true,
-  "launched": "2026-10-01",
-  "plan": "curated",
-  "logo": "/logos/stackinfluence.svg",
-  "launch_no": 31,
-  "revenue_history": [
-   {
-    "date": "2026-10-01",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/cometly.svg",
+    "launch_no": 30,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$208k",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "website": "https://cometly.com",
+    "founder_x": [
+      "heygrantcooper",
+      "mattpattoli"
+    ]
+  },
+  {
+    "name": "Stack Influence",
+    "tagline": "Micro-influencer marketing for eCommerce brands",
+    "url": "/launches/stack-influence/",
+    "category": "Marketing",
+    "pricing": "$39/post",
+    "founder": "William Gasner",
     "revenue": "$761k / 30d",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "website": "https://www.stackinfluence.com"
- },
- {
-  "name": "PressWhizz",
-  "tagline": "AI-powered link-building marketplace",
-  "url": "/launches/presswhizz/",
-  "category": "Marketing",
-  "pricing": "Pay per link",
-  "founder": "Dusan Novakovic",
-  "revenue": "$189k / 30d",
-  "revenue_metric": "30-day revenue",
-  "revenue_verified": true,
-  "launched": "2026-10-01",
-  "plan": "curated",
-  "logo": "/logos/presswhizz.png",
-  "launch_no": 32,
-  "revenue_history": [
-   {
-    "date": "2026-10-01",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": true,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/stackinfluence.svg",
+    "launch_no": 31,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$761k / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "website": "https://www.stackinfluence.com"
+  },
+  {
+    "name": "PressWhizz",
+    "tagline": "AI-powered link-building marketplace",
+    "url": "/launches/presswhizz/",
+    "category": "Marketing",
+    "pricing": "Pay per link",
+    "founder": "Dusan Novakovic",
     "revenue": "$189k / 30d",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "website": "https://presswhizz.com"
- },
- {
-  "name": "Blogr",
-  "tagline": "AI blogger tool for SaaS, eCommerce & local SEO",
-  "url": "/launches/blogr/",
-  "category": "Marketing",
-  "pricing": "From $29/mo",
-  "founder": "Serg Karakhanyan",
-  "revenue": "$10k all-time",
-  "revenue_metric": "all-time revenue",
-  "revenue_verified": false,
-  "launched": "2026-10-01",
-  "plan": "curated",
-  "logo": "/logos/blogr.svg",
-  "launch_no": 33,
-  "revenue_history": [
-   {
-    "date": "2026-10-01",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": true,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/presswhizz.png",
+    "launch_no": 32,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$189k / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "website": "https://presswhizz.com"
+  },
+  {
+    "name": "Blogr",
+    "tagline": "AI blogger tool for SaaS, eCommerce & local SEO",
+    "url": "/launches/blogr/",
+    "category": "Marketing",
+    "pricing": "From $29/mo",
+    "founder": "Serg Karakhanyan",
     "revenue": "$10k all-time",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "website": "https://blogr.ai"
- },
- {
-  "name": "Bazzly",
-  "tagline": "Get customers from Reddit on autopilot",
-  "url": "/launches/bazzly/",
-  "category": "Marketing",
-  "pricing": "$199/mo",
-  "founder": "Tibo",
-  "revenue": "$10k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": false,
-  "launched": "2026-10-01",
-  "plan": "curated",
-  "logo": "/logos/bazzly.png",
-  "launch_no": 34,
-  "revenue_history": [
-   {
-    "date": "2026-10-01",
+    "revenue_metric": "all-time revenue",
+    "revenue_verified": false,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/blogr.svg",
+    "launch_no": 33,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$10k all-time",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "website": "https://blogr.ai",
+    "founder_x": [
+      "karakhanyans"
+    ]
+  },
+  {
+    "name": "Bazzly",
+    "tagline": "Get customers from Reddit on autopilot",
+    "url": "/launches/bazzly/",
+    "category": "Marketing",
+    "pricing": "$199/mo",
+    "founder": "Tibo",
     "revenue": "$10k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "website": "https://bazzly.ai"
- },
- {
-  "name": "CreativeClaw",
-  "tagline": "AI media studio inside Claude & ChatGPT",
-  "url": "/launches/creativeclaw/",
-  "category": "Dev Tools",
-  "pricing": "Pay as you go",
-  "founder": "Itay Dressler",
-  "revenue": "$12k / 30d",
-  "revenue_metric": "30-day revenue",
-  "revenue_verified": false,
-  "launched": "2026-10-01",
-  "plan": "curated",
-  "logo": "/logos/creativeclaw.png",
-  "launch_no": 35,
-  "revenue_history": [
-   {
-    "date": "2026-10-01",
+    "revenue_metric": "MRR",
+    "revenue_verified": false,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/bazzly.png",
+    "launch_no": 34,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$10k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "website": "https://bazzly.ai",
+    "founder_x": [
+      "tibo_maker"
+    ]
+  },
+  {
+    "name": "CreativeClaw",
+    "tagline": "AI media studio inside Claude & ChatGPT",
+    "url": "/launches/creativeclaw/",
+    "category": "Dev Tools",
+    "pricing": "Pay as you go",
+    "founder": "Itay Dressler",
     "revenue": "$12k / 30d",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "website": "https://creativeclaw.ai"
- },
- {
-  "name": "Launch Club AI",
-  "tagline": "Reddit marketing to rank in AI search",
-  "url": "/launches/launch-club-ai/",
-  "category": "Marketing",
-  "pricing": "Custom",
-  "founder": "Ken Savage",
-  "revenue": "$68.7k / 30d",
-  "revenue_metric": "30-day revenue",
-  "revenue_verified": true,
-  "launched": "2026-10-02",
-  "plan": "curated",
-  "logo": "/logos/launch-club.png",
-  "launch_no": 36,
-  "revenue_history": [
-   {
-    "date": "2026-10-02",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": false,
+    "launched": "2026-10-01",
+    "plan": "curated",
+    "logo": "/logos/creativeclaw.png",
+    "launch_no": 35,
+    "revenue_history": [
+      {
+        "date": "2026-10-01",
+        "revenue": "$12k / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "website": "https://creativeclaw.ai"
+  },
+  {
+    "name": "Launch Club AI",
+    "tagline": "Reddit marketing to rank in AI search",
+    "url": "/launches/launch-club-ai/",
+    "category": "Marketing",
+    "pricing": "Custom",
+    "founder": "Ken Savage",
     "revenue": "$68.7k / 30d",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "website": "https://launchclub.ai"
- },
- {
-  "name": "LocalRank.so",
-  "tagline": "All-in-one AI local SEO software for agencies",
-  "url": "/launches/localrank-so/",
-  "category": "SEO",
-  "pricing": "From $47.50/mo",
-  "founder": "Jacky Chou",
-  "revenue": "$25k MRR",
-  "revenue_metric": "MRR",
-  "revenue_verified": true,
-  "launched": "2026-10-02",
-  "plan": "curated",
-  "logo": "/logos/localrank.svg",
-  "launch_no": 37,
-  "revenue_history": [
-   {
-    "date": "2026-10-02",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": true,
+    "launched": "2026-10-02",
+    "plan": "curated",
+    "logo": "/logos/launch-club.png",
+    "launch_no": 36,
+    "revenue_history": [
+      {
+        "date": "2026-10-02",
+        "revenue": "$68.7k / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "website": "https://launchclub.ai",
+    "founder_x": [
+      "kensavage"
+    ]
+  },
+  {
+    "name": "LocalRank.so",
+    "tagline": "All-in-one AI local SEO software for agencies",
+    "url": "/launches/localrank-so/",
+    "category": "SEO",
+    "pricing": "From $47.50/mo",
+    "founder": "Jacky Chou",
     "revenue": "$25k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "website": "https://localrank.so"
- },
- {
-  "name": "Taja AI",
-  "tagline": "AI video repurposing for creators & SMBs",
-  "url": "/launches/taja-ai/",
-  "category": "Video",
-  "pricing": "From $19.99/mo",
-  "founder": "Ibrahim Mohmed",
-  "revenue": "$13.1k / 30d",
-  "revenue_metric": "30-day revenue",
-  "revenue_verified": true,
-  "launched": "2026-10-02",
-  "plan": "curated",
-  "logo": "/logos/taja-ai.png",
-  "launch_no": 38,
-  "revenue_history": [
-   {
-    "date": "2026-10-02",
+    "revenue_metric": "MRR",
+    "revenue_verified": true,
+    "launched": "2026-10-02",
+    "plan": "curated",
+    "logo": "/logos/localrank.svg",
+    "launch_no": 37,
+    "revenue_history": [
+      {
+        "date": "2026-10-02",
+        "revenue": "$25k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "website": "https://localrank.so",
+    "founder_x": [
+      "indexsy"
+    ]
+  },
+  {
+    "name": "Taja AI",
+    "tagline": "AI video repurposing for creators & SMBs",
+    "url": "/launches/taja-ai/",
+    "category": "Video",
+    "pricing": "From $19.99/mo",
+    "founder": "Ibrahim Mohmed",
     "revenue": "$13.1k / 30d",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "website": "https://www.taja.ai"
- },
- {
-  "launch_no": 39,
-  "name": "bytemail",
-  "slug": "bytemail",
-  "tagline": "Fast, native email for Mac",
-  "url": "https://launch.arr.club/launches/bytemail/",
-  "website": "https://bytemailapp.com",
-  "logo": "/logos/bytemail.svg",
-  "revenue": "$238 / 9d",
-  "revenue_metric": "9-day revenue",
-  "founder": "Serg Karakhanyan",
-  "category": "Email",
-  "pricing": "$29 one-time",
-  "launched": "2026-10-02",
-  "revenue_history": [
-   {
-    "date": "2026-10-02",
+    "revenue_metric": "30-day revenue",
+    "revenue_verified": true,
+    "launched": "2026-10-02",
+    "plan": "curated",
+    "logo": "/logos/taja-ai.png",
+    "launch_no": 38,
+    "revenue_history": [
+      {
+        "date": "2026-10-02",
+        "revenue": "$13.1k / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "website": "https://www.taja.ai"
+  },
+  {
+    "launch_no": 39,
+    "name": "bytemail",
+    "slug": "bytemail",
+    "tagline": "Fast, native email for Mac",
+    "url": "https://launch.arr.club/launches/bytemail/",
+    "website": "https://bytemailapp.com",
+    "logo": "/logos/bytemail.svg",
     "revenue": "$238 / 9d",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 40,
-  "name": "Polyfork",
-  "slug": "polyfork",
-  "tagline": "3D assets you can remix",
-  "url": "https://launch.arr.club/launches/polyfork/",
-  "website": "https://polyfork.dev",
-  "logo": "/logos/polyfork.svg",
-  "revenue": "$4.5k / mo",
-  "revenue_metric": "monthly revenue",
-  "founder": "Lucas Martinic",
-  "category": "3D & Gaming",
-  "pricing": "$15/mo",
-  "launched": "2026-10-02",
-  "revenue_history": [
-   {
-    "date": "2026-10-02",
-    "revenue": "$4.5k September",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 41,
-  "name": "Kleo",
-  "slug": "kleo",
-  "tagline": "#1 AI Personal Brand Tool for LinkedIn",
-  "url": "https://launch.arr.club/launches/kleo/",
-  "website": "https://kleo.so",
-  "logo": "/logos/kleo.png",
-  "revenue": "$1M total",
-  "revenue_metric": "all-time revenue",
-  "founder": "Jake Ward",
-  "category": "LinkedIn",
-  "pricing": "$99/mo",
-  "launched": "2026-10-02",
-  "source": "https://x.com/jakezward",
-  "source_label": "Founder's X post",
-  "revenue_history": [
-   {
-    "date": "2026-10-02",
+    "revenue_metric": "9-day revenue",
+    "founder": "Serg Karakhanyan",
+    "category": "Email",
+    "pricing": "$29 one-time",
+    "launched": "2026-10-02",
+    "revenue_history": [
+      {
+        "date": "2026-10-02",
+        "revenue": "$238 / 9d",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "karakhanyans"
+    ]
+  },
+  {
+    "launch_no": 40,
+    "name": "Polyfork",
+    "slug": "polyfork",
+    "tagline": "3D assets you can remix",
+    "url": "https://launch.arr.club/launches/polyfork/",
+    "website": "https://polyfork.dev",
+    "logo": "/logos/polyfork.svg",
+    "revenue": "$4.5k / mo",
+    "revenue_metric": "monthly revenue",
+    "founder": "Lucas Martinic",
+    "category": "3D & Gaming",
+    "pricing": "$15/mo",
+    "launched": "2026-10-02",
+    "revenue_history": [
+      {
+        "date": "2026-10-02",
+        "revenue": "$4.5k September",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "lucas_martinic"
+    ]
+  },
+  {
+    "launch_no": 41,
+    "name": "Kleo",
+    "slug": "kleo",
+    "tagline": "#1 AI Personal Brand Tool for LinkedIn",
+    "url": "https://launch.arr.club/launches/kleo/",
+    "website": "https://kleo.so",
+    "logo": "/logos/kleo.png",
     "revenue": "$1M total",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 42,
-  "name": "StoryShort",
-  "slug": "storyshort",
-  "tagline": "AI faceless video generator for TikTok & YouTube Shorts",
-  "url": "https://launch.arr.club/launches/storyshort/",
-  "website": "https://storyshort.ai",
-  "logo": "/logos/storyshort.png",
-  "revenue": "$18.8k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Samuel Rondot",
-  "category": "Video",
-  "pricing": "$23/mo",
-  "launched": "2026-10-03",
-  "revenue_history": [
-   {
-    "date": "2026-10-03",
+    "revenue_metric": "all-time revenue",
+    "founder": "Jake Ward",
+    "category": "LinkedIn",
+    "pricing": "$99/mo",
+    "launched": "2026-10-02",
+    "source": "https://x.com/jakezward",
+    "source_label": "Founder's X post",
+    "revenue_history": [
+      {
+        "date": "2026-10-02",
+        "revenue": "$1M total",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "jakezward"
+    ]
+  },
+  {
+    "launch_no": 42,
+    "name": "StoryShort",
+    "slug": "storyshort",
+    "tagline": "AI faceless video generator for TikTok & YouTube Shorts",
+    "url": "https://launch.arr.club/launches/storyshort/",
+    "website": "https://storyshort.ai",
+    "logo": "/logos/storyshort.png",
     "revenue": "$18.8k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 43,
-  "name": "QR Code AI",
-  "slug": "qrcode-ai",
-  "tagline": "AI-powered custom QR codes — artistic QR art from text prompts",
-  "url": "https://launch.arr.club/launches/qrcode-ai/",
-  "website": "https://qrcode-ai.com",
-  "logo": "/logos/qrcode-ai.png",
-  "revenue": "$16k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Thibaut Melen & Nicolas Cella",
-  "category": "Marketing",
-  "pricing": "Free tier",
-  "launched": "2026-10-03",
-  "revenue_history": [
-   {
-    "date": "2026-10-03",
+    "revenue_metric": "MRR",
+    "founder": "Samuel Rondot",
+    "category": "Video",
+    "pricing": "$23/mo",
+    "launched": "2026-10-03",
+    "revenue_history": [
+      {
+        "date": "2026-10-03",
+        "revenue": "$18.8k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "samuelrdt"
+    ]
+  },
+  {
+    "launch_no": 43,
+    "name": "QR Code AI",
+    "slug": "qrcode-ai",
+    "tagline": "AI-powered custom QR codes — artistic QR art from text prompts",
+    "url": "https://launch.arr.club/launches/qrcode-ai/",
+    "website": "https://qrcode-ai.com",
+    "logo": "/logos/qrcode-ai.png",
     "revenue": "$16k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 44,
-  "name": "ChatSEO",
-  "slug": "chatseo",
-  "tagline": "AI SEO agent that reads your Google Search Console and tells you what to do next",
-  "url": "https://launch.arr.club/launches/chatseo/",
-  "website": "https://chatseo.app",
-  "logo": "/logos/chatseo.svg",
-  "revenue": "$33k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Paul Vengeons, Nicholas Dulait & Léo Leducq",
-  "category": "SEO",
-  "pricing": "€29/mo",
-  "launched": "2026-10-03",
-  "revenue_history": [
-   {
-    "date": "2026-10-03",
+    "revenue_metric": "MRR",
+    "founder": "Thibaut Melen & Nicolas Cella",
+    "category": "Marketing",
+    "pricing": "Free tier",
+    "launched": "2026-10-03",
+    "revenue_history": [
+      {
+        "date": "2026-10-03",
+        "revenue": "$16k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "ThibautMelen",
+      "ncella_"
+    ]
+  },
+  {
+    "launch_no": 44,
+    "name": "ChatSEO",
+    "slug": "chatseo",
+    "tagline": "AI SEO agent that reads your Google Search Console and tells you what to do next",
+    "url": "https://launch.arr.club/launches/chatseo/",
+    "website": "https://chatseo.app",
+    "logo": "/logos/chatseo.svg",
     "revenue": "$33k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 45,
-  "name": "fastwrite.io",
-  "slug": "fastwrite",
-  "tagline": "AI writing assistant for academic writing, directly inside Microsoft Word",
-  "url": "https://launch.arr.club/launches/fastwrite/",
-  "website": "https://fastwrite.io",
-  "logo": "/logos/fastwrite.png",
-  "revenue": "$14k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Timothy Williams, Andre Timofeev & Moritz Ledeganck",
-  "category": "Productivity",
-  "pricing": "€22/mo",
-  "launched": "2026-10-03",
-  "revenue_history": [
-   {
-    "date": "2026-10-03",
+    "revenue_metric": "MRR",
+    "founder": "Paul Vengeons, Nicholas Dulait & Léo Leducq",
+    "category": "SEO",
+    "pricing": "€29/mo",
+    "launched": "2026-10-03",
+    "revenue_history": [
+      {
+        "date": "2026-10-03",
+        "revenue": "$33k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      null,
+      "NicholasDulait",
+      null
+    ]
+  },
+  {
+    "launch_no": 45,
+    "name": "fastwrite.io",
+    "slug": "fastwrite",
+    "tagline": "AI writing assistant for academic writing, directly inside Microsoft Word",
+    "url": "https://launch.arr.club/launches/fastwrite/",
+    "website": "https://fastwrite.io",
+    "logo": "/logos/fastwrite.png",
     "revenue": "$14k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 46,
-  "name": "Fastlane",
-  "slug": "fastlane",
-  "tagline": "Create winning short-form content in seconds — AI video engine for TikTok & Reels",
-  "url": "https://launch.arr.club/launches/fastlane/",
-  "website": "https://www.usefastlane.ai/",
-  "logo": "/logos/fastlane.png",
-  "revenue": "$69k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Gaurav Thapa",
-  "category": "Marketing",
-  "pricing": "$29/mo",
-  "launched": "2026-10-03",
-  "source": "https://www.linkedin.com/posts/gauravsthapa_well-send-you-10k-right-now-if-you-do-this-activity-7499999393668837376-DAFI",
-  "source_label": "Founder's LinkedIn post",
-  "revenue_history": [
-   {
-    "date": "2026-10-03",
+    "revenue_metric": "MRR",
+    "founder": "Timothy Williams, Andre Timofeev & Moritz Ledeganck",
+    "category": "Productivity",
+    "pricing": "€22/mo",
+    "launched": "2026-10-03",
+    "revenue_history": [
+      {
+        "date": "2026-10-03",
+        "revenue": "$14k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ]
+  },
+  {
+    "launch_no": 46,
+    "name": "Fastlane",
+    "slug": "fastlane",
+    "tagline": "Create winning short-form content in seconds — AI video engine for TikTok & Reels",
+    "url": "https://launch.arr.club/launches/fastlane/",
+    "website": "https://www.usefastlane.ai/",
+    "logo": "/logos/fastlane.png",
     "revenue": "$69k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 47,
-  "name": "Audn.AI",
-  "slug": "audn-ai",
-  "tagline": "Autonomous AI red teaming — an ethical AI hacker that finds and proves real exploits in your AI agents",
-  "url": "https://launch.arr.club/launches/audn-ai/",
-  "website": "https://audn.ai",
-  "logo": "/logos/audn.png",
-  "revenue": "$15.6k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Ozgur Ozkan",
-  "category": "Dev Tools",
-  "pricing": "$20/mo",
-  "launched": "2026-10-04",
-  "revenue_history": [
-   {
-    "date": "2026-10-04",
+    "revenue_metric": "MRR",
+    "founder": "Gaurav Thapa",
+    "category": "Marketing",
+    "pricing": "$29/mo",
+    "launched": "2026-10-03",
+    "source": "https://www.linkedin.com/posts/gauravsthapa_well-send-you-10k-right-now-if-you-do-this-activity-7499999393668837376-DAFI",
+    "source_label": "Founder's LinkedIn post",
+    "revenue_history": [
+      {
+        "date": "2026-10-03",
+        "revenue": "$69k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "gauravsbuilding"
+    ]
+  },
+  {
+    "launch_no": 47,
+    "name": "Audn.AI",
+    "slug": "audn-ai",
+    "tagline": "Autonomous AI red teaming — an ethical AI hacker that finds and proves real exploits in your AI agents",
+    "url": "https://launch.arr.club/launches/audn-ai/",
+    "website": "https://audn.ai",
+    "logo": "/logos/audn.png",
     "revenue": "$15.6k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 48,
-  "name": "AI Toolbox",
-  "slug": "ai-toolbox",
-  "tagline": "Folders, full-text search, a prompt library and bulk export for ChatGPT, Gemini, Claude and Grok — one Chrome extension",
-  "url": "https://launch.arr.club/launches/ai-toolbox/",
-  "website": "https://ai-toolbox.co",
-  "logo": "/logos/ai-toolbox.png",
-  "revenue": "$20k / 30d",
-  "revenue_metric": "30-day revenue",
-  "founder": "Adi Leviim",
-  "category": "Productivity",
-  "pricing": "$9.99/mo",
-  "launched": "2026-10-04",
-  "revenue_history": [
-   {
-    "date": "2026-10-04",
+    "revenue_metric": "MRR",
+    "founder": "Ozgur Ozkan",
+    "category": "Dev Tools",
+    "pricing": "$20/mo",
+    "launched": "2026-10-04",
+    "revenue_history": [
+      {
+        "date": "2026-10-04",
+        "revenue": "$15.6k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ]
+  },
+  {
+    "launch_no": 48,
+    "name": "AI Toolbox",
+    "slug": "ai-toolbox",
+    "tagline": "Folders, full-text search, a prompt library and bulk export for ChatGPT, Gemini, Claude and Grok — one Chrome extension",
+    "url": "https://launch.arr.club/launches/ai-toolbox/",
+    "website": "https://ai-toolbox.co",
+    "logo": "/logos/ai-toolbox.png",
     "revenue": "$20k / 30d",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 49,
-  "name": "Sleek",
-  "slug": "sleek",
-  "tagline": "AI mobile-app designer — chat with AI to go from idea to beautiful, editable app designs in minutes",
-  "url": "https://launch.arr.club/launches/sleek/",
-  "website": "https://sleek.design",
-  "logo": "/logos/sleek.svg",
-  "revenue": "$10k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Mattia Pomelli",
-  "category": "Dev Tools",
-  "pricing": "$39/mo",
-  "launched": "2026-10-04",
-  "source": "https://www.indiehackers.com/post/tech/hitting-10k-mrr-in-six-weeks-with-an-ai-design-tool-pEvmU5qkWS6ny0AR9SUv",
-  "source_label": "Founder's Indie Hackers post",
-  "revenue_history": [
-   {
-    "date": "2026-10-04",
+    "revenue_metric": "30-day revenue",
+    "founder": "Adi Leviim",
+    "category": "Productivity",
+    "pricing": "$9.99/mo",
+    "launched": "2026-10-04",
+    "revenue_history": [
+      {
+        "date": "2026-10-04",
+        "revenue": "$20k / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ]
+  },
+  {
+    "launch_no": 49,
+    "name": "Sleek",
+    "slug": "sleek",
+    "tagline": "AI mobile-app designer — chat with AI to go from idea to beautiful, editable app designs in minutes",
+    "url": "https://launch.arr.club/launches/sleek/",
+    "website": "https://sleek.design",
+    "logo": "/logos/sleek.svg",
     "revenue": "$10k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 50,
-  "name": "Caldef",
-  "slug": "caldef",
-  "tagline": "AI calorie tracker — describe your meal or snap a photo, get calories and macros in 10 seconds",
-  "url": "https://launch.arr.club/launches/caldef/",
-  "website": "https://caldefapp.com",
-  "logo": "/logos/caldef.png",
-  "revenue": "$280 MRR",
-  "revenue_metric": "MRR",
-  "founder": "Cedric Isubol",
-  "category": "Health",
-  "pricing": "~$3/mo",
-  "launched": "2026-10-05",
-  "source": "https://www.indiehackers.com/post/from-1-000-to-8-000-downloads-and-35-to-280-mrr-5-months-of-growing-an-ai-calorie-tracker-with-0-ads-ec8983e67f",
-  "source_label": "Founder's Indie Hackers post",
-  "revenue_history": [
-   {
-    "date": "2026-10-05",
+    "revenue_metric": "MRR",
+    "founder": "Mattia Pomelli",
+    "category": "Dev Tools",
+    "pricing": "$39/mo",
+    "launched": "2026-10-04",
+    "source": "https://www.indiehackers.com/post/tech/hitting-10k-mrr-in-six-weeks-with-an-ai-design-tool-pEvmU5qkWS6ny0AR9SUv",
+    "source_label": "Founder's Indie Hackers post",
+    "revenue_history": [
+      {
+        "date": "2026-10-04",
+        "revenue": "$10k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "mattiapomelli"
+    ]
+  },
+  {
+    "launch_no": 50,
+    "name": "Caldef",
+    "slug": "caldef",
+    "tagline": "AI calorie tracker — describe your meal or snap a photo, get calories and macros in 10 seconds",
+    "url": "https://launch.arr.club/launches/caldef/",
+    "website": "https://caldefapp.com",
+    "logo": "/logos/caldef.png",
     "revenue": "$280 MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 51,
-  "name": "Subscribr",
-  "slug": "subscribr",
-  "tagline": "AI YouTube production platform — ideate, script and edit a month of videos in a day",
-  "url": "https://launch.arr.club/launches/subscribr/",
-  "website": "https://subscribr.ai",
-  "logo": "/logos/subscribr.png",
-  "revenue": "$62k+ / 30d",
-  "revenue_metric": "30d",
-  "founder": "Gil Hildebrand",
-  "category": "Marketing",
-  "pricing": "$49/mo",
-  "launched": "2026-10-05",
-  "source": "https://www.indiehackers.com/post/tech/leaving-a-funded-startup-and-bootstrapping-to-1m-yr-in-18-months-kPBpdxsTeQitOWOOVs2g",
-  "source_label": "Founder's Indie Hackers interview",
-  "revenue_history": [
-   {
-    "date": "2026-10-05",
+    "revenue_metric": "MRR",
+    "founder": "Cedric Isubol",
+    "category": "Health",
+    "pricing": "~$3/mo",
+    "launched": "2026-10-05",
+    "source": "https://www.indiehackers.com/post/from-1-000-to-8-000-downloads-and-35-to-280-mrr-5-months-of-growing-an-ai-calorie-tracker-with-0-ads-ec8983e67f",
+    "source_label": "Founder's Indie Hackers post",
+    "revenue_history": [
+      {
+        "date": "2026-10-05",
+        "revenue": "$280 MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ]
+  },
+  {
+    "launch_no": 51,
+    "name": "Subscribr",
+    "slug": "subscribr",
+    "tagline": "AI YouTube production platform — ideate, script and edit a month of videos in a day",
+    "url": "https://launch.arr.club/launches/subscribr/",
+    "website": "https://subscribr.ai",
+    "logo": "/logos/subscribr.png",
     "revenue": "$62k+ / 30d",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 52,
-  "name": "RightBlogger",
-  "slug": "rightblogger",
-  "tagline": "AI blog automation tool that researches, writes, publishes, and keeps your site’s posts ranking on Google and ChatGPT",
-  "url": "https://launch.arr.club/launches/rightblogger/",
-  "website": "https://rightblogger.com/",
-  "logo": "/logos/rightblogger.png",
-  "revenue": "$29k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Ryan Robinson, Andy Feliciotti",
-  "category": "SEO",
-  "pricing": "From $20/mo",
-  "launched": "2026-10-06",
-  "source": "https://www.indiehackers.com/post/tech/hitting-29k-mrr-by-building-an-audience-first-KxUy5Zjfn1hJTTGYrl47",
-  "source_label": "Founder's Indie Hackers interview",
-  "revenue_history": [
-   {
-    "date": "2026-10-06",
+    "revenue_metric": "30d",
+    "founder": "Gil Hildebrand",
+    "category": "Marketing",
+    "pricing": "$49/mo",
+    "launched": "2026-10-05",
+    "source": "https://www.indiehackers.com/post/tech/leaving-a-funded-startup-and-bootstrapping-to-1m-yr-in-18-months-kPBpdxsTeQitOWOOVs2g",
+    "source_label": "Founder's Indie Hackers interview",
+    "revenue_history": [
+      {
+        "date": "2026-10-05",
+        "revenue": "$62k+ / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "gilhildebrand"
+    ]
+  },
+  {
+    "launch_no": 52,
+    "name": "RightBlogger",
+    "slug": "rightblogger",
+    "tagline": "AI blog automation tool that researches, writes, publishes, and keeps your site’s posts ranking on Google and ChatGPT",
+    "url": "https://launch.arr.club/launches/rightblogger/",
+    "website": "https://rightblogger.com/",
+    "logo": "/logos/rightblogger.png",
     "revenue": "$29k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 53,
-  "name": "Searchable",
-  "slug": "searchable",
-  "tagline": "AI search visibility & analytics — see how ChatGPT, Google and Perplexity see your brand",
-  "url": "https://launch.arr.club/launches/searchable/",
-  "website": "https://www.searchable.com/",
-  "logo": "/logos/searchable.jpg",
-  "revenue": "$75k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Chris Donnelly, Sam Hogan, Arya Nagabhyru",
-  "category": "SEO",
-  "pricing": "From $125/mo",
-  "launched": "2026-10-06",
-  "source": "https://twstalker.com/imsamhogan",
-  "source_label": "Co-founder's X post (mirror)",
-  "revenue_history": [
-   {
-    "date": "2026-10-06",
+    "revenue_metric": "MRR",
+    "founder": "Ryan Robinson, Andy Feliciotti",
+    "category": "SEO",
+    "pricing": "From $20/mo",
+    "launched": "2026-10-06",
+    "source": "https://www.indiehackers.com/post/tech/hitting-29k-mrr-by-building-an-audience-first-KxUy5Zjfn1hJTTGYrl47",
+    "source_label": "Founder's Indie Hackers interview",
+    "revenue_history": [
+      {
+        "date": "2026-10-06",
+        "revenue": "$29k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "TheRyanRobinson",
+      "sup"
+    ]
+  },
+  {
+    "launch_no": 53,
+    "name": "Searchable",
+    "slug": "searchable",
+    "tagline": "AI search visibility & analytics — see how ChatGPT, Google and Perplexity see your brand",
+    "url": "https://launch.arr.club/launches/searchable/",
+    "website": "https://www.searchable.com/",
+    "logo": "/logos/searchable.jpg",
     "revenue": "$75k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 54,
-  "name": "Yorby",
-  "slug": "yorby",
-  "tagline": "All the tools you need to go viral on social media",
-  "url": "https://launch.arr.club/launches/yorby/",
-  "website": "https://www.yorby.ai",
-  "logo": "/logos/yorby.png",
-  "revenue": "$9.4k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Andrew Meng, Thomas Kim",
-  "category": "Marketing",
-  "pricing": "From $40/mo",
-  "launched": "2026-10-06",
-  "source": "https://www.youtube.com/watch?v=SK_GhGOp08Q",
-  "source_label": "Co-founder's YouTube video",
-  "revenue_history": [
-   {
-    "date": "2026-10-06",
+    "revenue_metric": "MRR",
+    "founder": "Chris Donnelly, Sam Hogan, Arya Nagabhyru",
+    "category": "SEO",
+    "pricing": "From $125/mo",
+    "launched": "2026-10-06",
+    "source": "https://twstalker.com/imsamhogan",
+    "source_label": "Co-founder's X post (mirror)",
+    "revenue_history": [
+      {
+        "date": "2026-10-06",
+        "revenue": "$75k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      null,
+      "imsamhogan",
+      null
+    ]
+  },
+  {
+    "launch_no": 54,
+    "name": "Yorby",
+    "slug": "yorby",
+    "tagline": "All the tools you need to go viral on social media",
+    "url": "https://launch.arr.club/launches/yorby/",
+    "website": "https://www.yorby.ai",
+    "logo": "/logos/yorby.png",
     "revenue": "$9.4k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ]
- },
- {
-  "launch_no": 55,
-  "name": "Lancer",
-  "slug": "lancer",
-  "tagline": "The #1 Upwork AI Agent — land Upwork jobs 24/7 without the grind",
-  "url": "https://launch.arr.club/launches/lancer/",
-  "website": "https://lancer.app",
-  "logo": "/logos/lancer.svg",
-  "revenue": "$10K MRR",
-  "revenue_metric": "MRR",
-  "founder": "Ivan Nedelkovski",
-  "category": "Sales",
-  "pricing": "From $99/mo",
-  "launched": "2026-10-07",
-  "source": "https://www.youtube.com/watch?v=LKARRA0MvY4",
-  "source_label": "Founder's Starter Story interview",
-  "revenue_history": [
-   {
-    "date": "2026-10-07",
+    "revenue_metric": "MRR",
+    "founder": "Andrew Meng, Thomas Kim",
+    "category": "Marketing",
+    "pricing": "From $40/mo",
+    "launched": "2026-10-06",
+    "source": "https://www.youtube.com/watch?v=SK_GhGOp08Q",
+    "source_label": "Co-founder's YouTube video",
+    "revenue_history": [
+      {
+        "date": "2026-10-06",
+        "revenue": "$9.4k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "founder_x": [
+      "mengmengduck",
+      null
+    ]
+  },
+  {
+    "launch_no": 55,
+    "name": "Lancer",
+    "slug": "lancer",
+    "tagline": "The #1 Upwork AI Agent — land Upwork jobs 24/7 without the grind",
+    "url": "https://launch.arr.club/launches/lancer/",
+    "website": "https://lancer.app",
+    "logo": "/logos/lancer.svg",
     "revenue": "$10K MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "growth_story": {
-   "facts": [
-    "Grew to $10K MRR with zero paid advertising",
-    "Recruited top Upwork coaches as affiliates ('connector' strategy), paying 20–30% lifetime commissions",
-    "Secured one coach via personal introduction, another with a $1,000 LinkedIn outreach incentive"
-   ],
-   "sources": [
-    "https://www.youtube.com/watch?v=LKARRA0MvY4",
-    "https://www.youtube.com/watch?v=LKARRA0MvY4",
-    "https://www.youtube.com/watch?v=LKARRA0MvY4"
-   ]
-  }
- },
- {
-  "launch_no": 56,
-  "name": "Arvow",
-  "slug": "arvow",
-  "tagline": "Rank on Google and get cited by AI search — without manual work",
-  "url": "https://launch.arr.club/launches/arvow/",
-  "website": "https://arvow.com",
-  "logo": "/logos/arvow.png",
-  "revenue": "$75K MRR",
-  "revenue_metric": "MRR",
-  "founder": "Vasco Montiero, Afonso Matos",
-  "category": "SEO",
-  "pricing": "From $69/mo",
-  "launched": "2026-10-07",
-  "source": "https://www.youtube.com/watch?v=jNlIhyEoc0M",
-  "source_label": "Founder's YouTube video",
-  "revenue_history": [
-   {
-    "date": "2026-10-07",
+    "revenue_metric": "MRR",
+    "founder": "Ivan Nedelkovski",
+    "category": "Sales",
+    "pricing": "From $99/mo",
+    "launched": "2026-10-07",
+    "source": "https://www.youtube.com/watch?v=LKARRA0MvY4",
+    "source_label": "Founder's Starter Story interview",
+    "revenue_history": [
+      {
+        "date": "2026-10-07",
+        "revenue": "$10K MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "growth_story": {
+      "facts": [
+        "Grew to $10K MRR with zero paid advertising",
+        "Recruited top Upwork coaches as affiliates ('connector' strategy), paying 20–30% lifetime commissions",
+        "Secured one coach via personal introduction, another with a $1,000 LinkedIn outreach incentive"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=LKARRA0MvY4",
+        "https://www.youtube.com/watch?v=LKARRA0MvY4",
+        "https://www.youtube.com/watch?v=LKARRA0MvY4"
+      ]
+    }
+  },
+  {
+    "launch_no": 56,
+    "name": "Arvow",
+    "slug": "arvow",
+    "tagline": "Rank on Google and get cited by AI search — without manual work",
+    "url": "https://launch.arr.club/launches/arvow/",
+    "website": "https://arvow.com",
+    "logo": "/logos/arvow.png",
     "revenue": "$75K MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "growth_story": {
-   "facts": [
-    "Grew from $0 to $79K/month 'all through YouTube'",
-    "Playbook: teaching-not-selling YouTube content, then recruiting 'creators' to run multiple B2B YouTube channels",
-    "Ranks his SaaS on Google and engineers ChatGPT/LLM brand mentions via automated backlinks and stats pages"
-   ],
-   "sources": [
-    "https://www.youtube.com/watch?v=VZ1XspToV1E",
-    "https://www.youtube.com/watch?v=hJ2-hX95eJE",
-    "https://www.youtube.com/watch?v=jNlIhyEoc0M"
-   ]
-  }
- },
- {
-  "launch_no": 57,
-  "name": "Vibe3D",
-  "slug": "vibe3d",
-  "tagline": "3D Render AI for Architecture & Interior Design",
-  "url": "https://launch.arr.club/launches/vibe3d/",
-  "website": "https://vibe3d.ai",
-  "logo": "/logos/vibe3d.png",
-  "revenue": "$10k MRR",
-  "revenue_metric": "MRR",
-  "founder": "Brijesh Patel",
-  "category": "Design Tools",
-  "pricing": "From $19/mo",
-  "launched": "2026-10-07",
-  "source": "https://instalker.org/erione_",
-  "source_label": "Founder's X posts (mirror)",
-  "revenue_history": [
-   {
-    "date": "2026-10-07",
+    "revenue_metric": "MRR",
+    "founder": "Vasco Montiero, Afonso Matos",
+    "category": "SEO",
+    "pricing": "From $69/mo",
+    "launched": "2026-10-07",
+    "source": "https://www.youtube.com/watch?v=jNlIhyEoc0M",
+    "source_label": "Founder's YouTube video",
+    "revenue_history": [
+      {
+        "date": "2026-10-07",
+        "revenue": "$75K MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "growth_story": {
+      "facts": [
+        "Grew from $0 to $79K/month 'all through YouTube'",
+        "Playbook: teaching-not-selling YouTube content, then recruiting 'creators' to run multiple B2B YouTube channels",
+        "Ranks his SaaS on Google and engineers ChatGPT/LLM brand mentions via automated backlinks and stats pages"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=VZ1XspToV1E",
+        "https://www.youtube.com/watch?v=hJ2-hX95eJE",
+        "https://www.youtube.com/watch?v=jNlIhyEoc0M"
+      ]
+    },
+    "founder_x": [
+      "vascoabm",
+      null
+    ]
+  },
+  {
+    "launch_no": 57,
+    "name": "Vibe3D",
+    "slug": "vibe3d",
+    "tagline": "3D Render AI for Architecture & Interior Design",
+    "url": "https://launch.arr.club/launches/vibe3d/",
+    "website": "https://vibe3d.ai",
+    "logo": "/logos/vibe3d.png",
     "revenue": "$10k MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "growth_story": {
-   "facts": [
-    "Went from $1k to $10k MRR in 3 months, shared publicly via monthly X updates",
-    "Monthly build-in-public updates: $3.3k MRR (Sep 2025) → $4.6k MRR (Oct 2025) → $10k MRR",
-    "20k+ designers on board at the $10k MRR mark; free tier (3 renders, no card) as the acquisition hook"
-   ],
-   "sources": [
-    "https://instalker.org/erione_",
-    "https://instalker.org/erione_",
-    "https://instalker.org/erione_"
-   ]
-  }
- },
- {
-  "launch_no": 58,
-  "name": "Sensorhub",
-  "slug": "sensorhub",
-  "tagline": "Get leads from Reddit, LinkedIn, and X",
-  "url": "https://launch.arr.club/launches/sensorhub/",
-  "website": "https://sensorhub.ai",
-  "logo": "/logos/sensorhub.png",
-  "revenue": "$300 MRR",
-  "revenue_metric": "MRR",
-  "founder": "Kalo Yankulov",
-  "category": "Sales",
-  "pricing": "7-day free trial",
-  "launched": "2026-10-08",
-  "source": "https://www.indiehackers.com/kaloyankulov",
-  "source_label": "Founder's Indie Hackers profile",
-  "revenue_history": [
-   {
-    "date": "2026-10-08",
+    "revenue_metric": "MRR",
+    "founder": "Brijesh Patel",
+    "category": "Design Tools",
+    "pricing": "From $19/mo",
+    "launched": "2026-10-07",
+    "source": "https://instalker.org/erione_",
+    "source_label": "Founder's X posts (mirror)",
+    "revenue_history": [
+      {
+        "date": "2026-10-07",
+        "revenue": "$10k MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "growth_story": {
+      "facts": [
+        "Went from $1k to $10k MRR in 3 months, shared publicly via monthly X updates",
+        "Monthly build-in-public updates: $3.3k MRR (Sep 2025) → $4.6k MRR (Oct 2025) → $10k MRR",
+        "20k+ designers on board at the $10k MRR mark; free tier (3 renders, no card) as the acquisition hook"
+      ],
+      "sources": [
+        "https://instalker.org/erione_",
+        "https://instalker.org/erione_",
+        "https://instalker.org/erione_"
+      ]
+    }
+  },
+  {
+    "launch_no": 58,
+    "name": "Sensorhub",
+    "slug": "sensorhub",
+    "tagline": "Get leads from Reddit, LinkedIn, and X",
+    "url": "https://launch.arr.club/launches/sensorhub/",
+    "website": "https://sensorhub.ai",
+    "logo": "/logos/sensorhub.png",
     "revenue": "$300 MRR",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "growth_story": {
-   "facts": [
-    "Launched Sensorhub in February 2026 and reached $300 MRR within two weeks of launch",
-    "Public build-in-public goal: growing Sensorhub from $0 to $10k MRR, documented on Indie Hackers",
-    "Previously bootstrapped Encharge to $2M in revenue and sold it for $800k; scaled it using SEO as the only growth channel"
-   ],
-   "sources": [
-    "https://www.indiehackers.com/kaloyankulov",
-    "https://www.indiehackers.com/kaloyankulov",
-    "https://www.growthmentor.com/mentors/kaloyan-yankulov"
-   ]
-  }
- },
- {
-  "launch_no": 59,
-  "name": "Photo AI",
-  "slug": "photoai",
-  "tagline": "Generate photorealistic images and videos of people with AI",
-  "url": "https://launch.arr.club/launches/photoai/",
-  "website": "https://photoai.com",
-  "logo": "/logos/photoai.png",
-  "revenue": "$161K/mo",
-  "revenue_metric": "monthly revenue",
-  "founder": "Pieter Levels",
-  "category": "Design Tools",
-  "pricing": "Free to try",
-  "launched": "2026-10-08",
-  "source": "https://levels.io/new-420k-mo-revenue-record-lex-fridman",
-  "source_label": "Founder's blog post (originally on X)",
-  "revenue_history": [
-   {
-    "date": "2024-09-22",
+    "revenue_metric": "MRR",
+    "founder": "Kalo Yankulov",
+    "category": "Sales",
+    "pricing": "7-day free trial",
+    "launched": "2026-10-08",
+    "source": "https://www.indiehackers.com/kaloyankulov",
+    "source_label": "Founder's Indie Hackers profile",
+    "revenue_history": [
+      {
+        "date": "2026-10-08",
+        "revenue": "$300 MRR",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "growth_story": {
+      "facts": [
+        "Launched Sensorhub in February 2026 and reached $300 MRR within two weeks of launch",
+        "Public build-in-public goal: growing Sensorhub from $0 to $10k MRR, documented on Indie Hackers",
+        "Previously bootstrapped Encharge to $2M in revenue and sold it for $800k; scaled it using SEO as the only growth channel"
+      ],
+      "sources": [
+        "https://www.indiehackers.com/kaloyankulov",
+        "https://www.indiehackers.com/kaloyankulov",
+        "https://www.growthmentor.com/mentors/kaloyan-yankulov"
+      ]
+    },
+    "founder_x": [
+      "KaloyanYankulov"
+    ]
+  },
+  {
+    "launch_no": 59,
+    "name": "Photo AI",
+    "slug": "photoai",
+    "tagline": "Generate photorealistic images and videos of people with AI",
+    "url": "https://launch.arr.club/launches/photoai/",
+    "website": "https://photoai.com",
+    "logo": "/logos/photoai.png",
     "revenue": "$161K/mo",
-    "note": "Founder-reported"
-   }
-  ],
-  "growth_story": {
-   "facts": [
-    "Launched Photo AI in February 2023: $5.4K in the first week, $28.7K by month 2, $61.8K by month 5, $100K/mo by month 19",
-    "Predecessor AvatarAI made $100K in 10 days (November 2022), then pivoted from novelty avatars to photorealistic AI headshots",
-    "Appearing on the Lex Fridman podcast sent revenue up 2.5x overall, with Photo AI up 3x — the $161K/mo day was that spike",
-    "Has shared revenue publicly on X for 10+ years; over 95% of his 70+ projects failed, worn as a badge of honor"
-   ],
-   "sources": [
-    "https://www.indiehackers.com/post/photo-ai-by-pieter-levels-complete-deep-dive-case-study-0-to-132k-mrr-in-18-months-3a9a2b1579",
-    "https://www.indiehackers.com/post/photo-ai-by-pieter-levels-complete-deep-dive-case-study-0-to-132k-mrr-in-18-months-3a9a2b1579",
-    "https://levels.io/new-420k-mo-revenue-record-lex-fridman",
-    "https://levels.io/new-420k-mo-revenue-record-lex-fridman"
-   ]
-  }
- },
- {
-  "launch_no": 60,
-  "name": "SiteGPT",
-  "slug": "sitegpt",
-  "tagline": "Make AI your expert customer support agent",
-  "url": "https://launch.arr.club/launches/sitegpt/",
-  "website": "https://sitegpt.ai/",
-  "logo": "/logos/sitegpt.png",
-  "revenue": "$50K / 30d",
-  "revenue_metric": "30-day revenue",
-  "founder": "Bhanu Teja P",
-  "category": "AI Agents",
-  "pricing": "7-day free trial",
-  "launched": "2026-10-08",
-  "source": "https://www.instalker.org/pbteja1998",
-  "source_label": "Founder's X posts (mirror)",
-  "revenue_history": [
-   {
-    "date": "2023-09-24",
-    "revenue": "$15k MRR",
-    "note": "Founder-reported"
-   },
-   {
-    "date": "2026",
+    "revenue_metric": "monthly revenue",
+    "founder": "Pieter Levels",
+    "category": "Design Tools",
+    "pricing": "Free to try",
+    "launched": "2026-10-08",
+    "source": "https://levels.io/new-420k-mo-revenue-record-lex-fridman",
+    "source_label": "Founder's blog post (originally on X)",
+    "revenue_history": [
+      {
+        "date": "2024-09-22",
+        "revenue": "$161K/mo",
+        "note": "Founder-reported"
+      }
+    ],
+    "growth_story": {
+      "facts": [
+        "Launched Photo AI in February 2023: $5.4K in the first week, $28.7K by month 2, $61.8K by month 5, $100K/mo by month 19",
+        "Predecessor AvatarAI made $100K in 10 days (November 2022), then pivoted from novelty avatars to photorealistic AI headshots",
+        "Appearing on the Lex Fridman podcast sent revenue up 2.5x overall, with Photo AI up 3x — the $161K/mo day was that spike",
+        "Has shared revenue publicly on X for 10+ years; over 95% of his 70+ projects failed, worn as a badge of honor"
+      ],
+      "sources": [
+        "https://www.indiehackers.com/post/photo-ai-by-pieter-levels-complete-deep-dive-case-study-0-to-132k-mrr-in-18-months-3a9a2b1579",
+        "https://www.indiehackers.com/post/photo-ai-by-pieter-levels-complete-deep-dive-case-study-0-to-132k-mrr-in-18-months-3a9a2b1579",
+        "https://levels.io/new-420k-mo-revenue-record-lex-fridman",
+        "https://levels.io/new-420k-mo-revenue-record-lex-fridman"
+      ]
+    },
+    "founder_x": [
+      "levelsio"
+    ]
+  },
+  {
+    "launch_no": 60,
+    "name": "SiteGPT",
+    "slug": "sitegpt",
+    "tagline": "Make AI your expert customer support agent",
+    "url": "https://launch.arr.club/launches/sitegpt/",
+    "website": "https://sitegpt.ai/",
+    "logo": "/logos/sitegpt.png",
     "revenue": "$50K / 30d",
-    "note": "Launch · Founder-reported"
-   }
-  ],
-  "growth_story": {
-   "facts": [
-    "Launched March 30, 2023 with a tweet — first customers within the hour, ~15K launch-day visitors",
-    "Show HN on April 2 hit the front page; Product Hunt on April 5 became #1 product of the day and #4 of the week",
-    "Crossed $10K MRR in under a month, then faced ~50% month-one churn; steadied around $15K MRR five months in, paid-only from day one",
-    "Previously built Feather, a Notion-based blogging platform, and exited it for $250K",
-    "In 2026: first $50K revenue month this year, and crossed $800K in total revenue — from a weekend side project"
-   ],
-   "sources": [
-    "https://www.starterstory.com/stories/sitegpt",
-    "https://www.starterstory.com/stories/sitegpt",
-    "https://www.starterstory.com/stories/sitegpt",
-    "https://www.starterstory.com/stories/sitegpt",
-    "https://www.instalker.org/pbteja1998"
-   ]
+    "revenue_metric": "30-day revenue",
+    "founder": "Bhanu Teja P",
+    "category": "AI Agents",
+    "pricing": "7-day free trial",
+    "launched": "2026-10-08",
+    "source": "https://www.instalker.org/pbteja1998",
+    "source_label": "Founder's X posts (mirror)",
+    "revenue_history": [
+      {
+        "date": "2023-09-24",
+        "revenue": "$15k MRR",
+        "note": "Founder-reported"
+      },
+      {
+        "date": "2026",
+        "revenue": "$50K / 30d",
+        "note": "Launch · Founder-reported"
+      }
+    ],
+    "growth_story": {
+      "facts": [
+        "Launched March 30, 2023 with a tweet — first customers within the hour, ~15K launch-day visitors",
+        "Show HN on April 2 hit the front page; Product Hunt on April 5 became #1 product of the day and #4 of the week",
+        "Crossed $10K MRR in under a month, then faced ~50% month-one churn; steadied around $15K MRR five months in, paid-only from day one",
+        "Previously built Feather, a Notion-based blogging platform, and exited it for $250K",
+        "In 2026: first $50K revenue month this year, and crossed $800K in total revenue — from a weekend side project"
+      ],
+      "sources": [
+        "https://www.starterstory.com/stories/sitegpt",
+        "https://www.starterstory.com/stories/sitegpt",
+        "https://www.starterstory.com/stories/sitegpt",
+        "https://www.starterstory.com/stories/sitegpt",
+        "https://www.instalker.org/pbteja1998"
+      ]
+    },
+    "founder_x": [
+      "pbteja1998"
+    ]
   }
- }
 ]

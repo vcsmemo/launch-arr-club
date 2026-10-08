@@ -45,6 +45,24 @@ function esc(s) {
   });
 }
 
+/* Founder names with X links. handles: array of X handles parallel to names
+   split on + / & / ,  — names without a handle render as plain text. */
+function founderLinks(founderStr, handles) {
+  if (!founderStr) return esc('–');
+  handles = handles || [];
+  var tokens = String(founderStr).split(/(\s*\+\s*|\s*&\s*|,\s*)/);
+  var hi = 0, out = [];
+  for (var i = 0; i < tokens.length; i++) {
+    var tok = tokens[i];
+    if (/^\s*\+\s*$|^\s*&\s*$|^,\s*$/.test(tok)) { out.push(esc(tok)); continue; }
+    var name = tok.trim(), h = hi < handles.length ? handles[hi] : null;
+    hi++;
+    if (h && name) out.push('<a class="x-link" href="https://x.com/' + esc(h) + '" target="_blank" rel="noopener">' + esc(name) + '</a>');
+    else out.push(esc(name));
+  }
+  return out.join('');
+}
+
 function slugify(name) {
   return (
     String(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) ||
@@ -536,7 +554,7 @@ function detailPage(d, slug, launchNo, others, weekPath) {
   const ccLogo = d.logo
     ? '<img class="cc-logo" src="' + esc(d.logo) + '" alt="' + esc(d.name) + ' logo" loading="lazy" onerror="this.style.display=\'none\'">'
     : '<span class="cc-logo-ph">' + esc(String(d.name || '?').charAt(0)) + '</span>';
-  const ccFounder = d.founder ? '\n        <div class="cc-founder">by ' + esc(d.founder) + '</div>' : '';
+  const ccFounder = d.founder ? '\n        <div class="cc-founder">by ' + founderLinks(d.founder, d.founder_x) + '</div>' : '';
   const celebrateCard = rev
     ? '  <div class="celebrate-card" id="celebrateCard" data-slug="' + esc(slug) + '" data-name="' + esc(d.name) +
       '" data-revenue="' + esc(rev.amount) + '" data-metric="' + esc(metricTxt) + '" data-logo="' + esc(d.logo || '') +
@@ -573,7 +591,7 @@ function detailPage(d, slug, launchNo, others, weekPath) {
     '    <div class="stat-card"><span>Pricing</span><b>' + esc(pricingLabel) + '</b><small>' + esc(pricingSub) + '</small></div>\n' +
     '    <div class="stat-card"><span>Launched</span><b>' + esc(dateLong) + '</b><small>L+0 &middot; Live on MilestoneWins</small></div>\n' +
     '    <div class="stat-card"><span>Category</span><div class="pills">' + catPills + '</div></div>\n' +
-    '    <div class="stat-card"><span>Maker</span><b>' + esc(d.founder || '–') + '</b><small>' + makerSub + '</small></div>\n' +
+    '    <div class="stat-card"><span>Maker</span><b>' + founderLinks(d.founder, d.founder_x) + '</b><small>' + makerSub + '</small></div>\n' +
     '  </div>\n\n';
 
   const timelineSection =

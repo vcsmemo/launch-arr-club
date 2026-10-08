@@ -738,6 +738,9 @@ a.lb-row:hover { background: var(--bg-soft); }
   display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; flex: none; }
 .cc-name { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; }
 .cc-founder { font-size: 0.8rem; color: #d8b4fe; margin-top: 0.15rem; }
+a.x-link { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; }
+a.x-link:hover { color: var(--accent-hover); }
+.cc-founder a.x-link:hover { color: #fff; }
 .cc-cta { margin-top: 1.4rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
   position: relative; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
   border-radius: 12px; padding: 0.85rem 1.1rem; }
