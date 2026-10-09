@@ -47,6 +47,7 @@ function esc(s) {
 
 /* Founder names with X links. handles: array of X handles parallel to names
    split on + / & / ,  — names without a handle render as plain text. */
+var X_ICON_SVG = '<svg class="x-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93z"/></svg>';
 function founderLinks(founderStr, handles) {
   if (!founderStr) return esc('–');
   handles = handles || [];
@@ -57,7 +58,7 @@ function founderLinks(founderStr, handles) {
     if (/^\s*\+\s*$|^\s*&\s*$|^,\s*$/.test(tok)) { out.push(esc(tok)); continue; }
     var name = tok.trim(), h = hi < handles.length ? handles[hi] : null;
     hi++;
-    if (h && name) out.push('<a class="x-link" href="https://x.com/' + esc(h) + '" target="_blank" rel="noopener">' + esc(name) + '</a>');
+    if (h && name) out.push('<a class="x-link" href="https://x.com/' + esc(h) + '" target="_blank" rel="noopener">' + esc(name) + ' ' + X_ICON_SVG + '</a>');
     else out.push(esc(name));
   }
   return out.join('');
