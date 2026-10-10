@@ -1612,5 +1612,120 @@
   "founder_x": [
    "GregorySchier"
   ]
+ },
+ {
+  "launch_no": 64,
+  "name": "Neural Frames",
+  "slug": "neuralframes",
+  "tagline": "Audio-reactive AI music videos for musicians",
+  "url": "https://launch.arr.club/launches/neuralframes/",
+  "website": "https://neuralframes.com/",
+  "logo": "/logos/neuralframes.svg",
+  "revenue": "$5M / yr",
+  "revenue_metric": "annualized revenue",
+  "founder": "Nicolai Klemke",
+  "category": "Video",
+  "pricing": "From $26/mo",
+  "launched": "2026-10-10",
+  "source": "https://share.transistor.fm/s/5026e63e",
+  "source_label": "Founder on TBPN podcast",
+  "revenue_history": [
+   {
+    "date": "2026-08-10",
+    "revenue": "$5M / yr",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Started end of 2022 as an indie side project by physics PhD Nicolai Klemke",
+    "First traction came from the Stable Diffusion subreddit on Reddit; grew through a 30,000-word SEO guide on AI video generation",
+    "Hit $17k MRR by end of October 2023 (first-person founder Q&A)",
+    "Scaled to six-figure monthly revenue by Nov 2025; now a 12-person Berlin team — bootstrapped, profitable, ~6x year-over-year growth"
+   ],
+   "sources": [
+    "https://tbf.fm/episodes/314-nicolai-klemke/transcript",
+    "https://happybootstrapping.com/p/from-laser-physics-to-seven-figure",
+    "https://www.starterstory.com/stories/neural-frames",
+    "https://happybootstrapping.com/p/from-laser-physics-to-seven-figure"
+   ]
+  },
+  "founder_x": null
+ },
+ {
+  "launch_no": 65,
+  "name": "Zigpoll",
+  "slug": "zigpoll",
+  "tagline": "Post-Purchase & On-Site Surveys for Shopify",
+  "url": "https://launch.arr.club/launches/zigpoll/",
+  "website": "https://www.zigpoll.com/",
+  "logo": "/logos/zigpoll.png",
+  "revenue": "$142K MRR",
+  "revenue_metric": "MRR",
+  "founder": "Jason Zigelbaum",
+  "category": "Marketing",
+  "pricing": "Free Lite plan + paid tiers",
+  "launched": "2026-10-10",
+  "source": "https://www.nichepursuits.com/jason-zigelbaum/",
+  "source_label": "Founder interview · Niche Pursuits",
+  "revenue_history": [
+   {
+    "date": "2026-10-10",
+    "revenue": "$142K MRR",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Solo founder arc: ~$10–15K MRR in 2022 → ~$1M ARR earlier this year → ~$142K MRR at interview; goal $2M ARR by year end",
+    "~90% of business flows through the Shopify App Store; reviews-first growth; ~100% year-over-year growth since 2022",
+    "Runs the whole company solo using AI coding agents across dev, design, marketing and support — while still personally answering support email"
+   ],
+   "sources": [
+    "https://www.nichepursuits.com/jason-zigelbaum/",
+    "https://www.nichepursuits.com/jason-zigelbaum/",
+    "https://www.nichepursuits.com/jason-zigelbaum/"
+   ]
+  },
+  "founder_x": null
+ },
+ {
+  "launch_no": 66,
+  "name": "WriteStack",
+  "slug": "writestack",
+  "tagline": "Grow and Monetize Your Substack, Faster",
+  "url": "https://launch.arr.club/launches/writestack/",
+  "website": "https://www.writestack.io",
+  "logo": "/logos/writestack.png",
+  "revenue": "$11K MRR",
+  "revenue_metric": "MRR",
+  "founder": "Orel Zilberman",
+  "category": "Marketing",
+  "pricing": "From $19.99/mo",
+  "launched": "2026-10-10",
+  "source": "http://braginpublic.com/u/orelzman",
+  "source_label": "Founder's X post (Jul 2026)",
+  "revenue_history": [
+   {
+    "date": "2026-07-21",
+    "revenue": "$11K MRR",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Crossed $11,000 MRR with 415 writers on the platform (founder's X post, Jul 21, 2026)",
+    "Platform has since grown to 4,130+ creators",
+    "Founder grew his own newsletter to 6,600+ subscribers using the same playbook"
+   ],
+   "sources": [
+    "http://braginpublic.com/u/orelzman",
+    "https://www.writestack.io",
+    "https://www.writestack.io"
+   ]
+  },
+  "founder_x": [
+   "orelzman"
+  ]
  }
 ]
