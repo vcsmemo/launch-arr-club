@@ -1727,5 +1727,86 @@
   "founder_x": [
    "orelzman"
   ]
+ },
+ {
+  "launch_no": 67,
+  "name": "Launch Fast",
+  "slug": "launchfast",
+  "tagline": "The Amazon seller operating system for better product decisions",
+  "url": "https://launch.arr.club/launches/launchfast/",
+  "website": "https://launchfastlegacyx.com/",
+  "logo": "/logos/launchfast.png",
+  "revenue": "$30K MRR",
+  "revenue_metric": "MRR",
+  "founder": "Hasaam Bhatti",
+  "category": "E-commerce",
+  "pricing": "From $49/mo",
+  "launched": "2026-10-11",
+  "source": "https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9",
+  "source_label": "Founder interview · Indie Hackers",
+  "revenue_history": [
+   {
+    "date": "2026-10",
+    "revenue": "$30K MRR",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Day 30 hit $10K MRR, Day 60 $17-18K, Day 90 $21.8K, now at $30K MRR",
+    "MVP built in 48 hours entirely in Cursor with zero audience; traded equity with the Legacy X coaching program for day-one distribution",
+    "Just shipped an MCP — \"one of the first all-in-one agentic tools for Amazon sellers\"; sellers research products, manage catalogs and optimize ads through AI without bouncing between five tools",
+    "330 active Chrome extension users at Day 90; subscription tiers $49/$89/$199 per month, all paying customers, no free tier"
+   ],
+   "sources": [
+    "https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9",
+    "https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9",
+    "https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9",
+    "https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9"
+   ]
+  },
+  "founder_x": null
+ },
+ {
+  "launch_no": 68,
+  "name": "Visualizee.ai",
+  "slug": "visualizee",
+  "tagline": "Turn car photos into studio shots, furniture into product shots, 3D models into photoreal renders",
+  "url": "https://launch.arr.club/launches/visualizee/",
+  "website": "https://visualizee.ai/",
+  "logo": "/logos/visualizee.png",
+  "revenue": "$9.3K/mo",
+  "revenue_metric": "monthly revenue",
+  "founder": "Piotr Obidowski",
+  "category": "Design Tools",
+  "pricing": "From ~$10/render",
+  "launched": "2026-10-11",
+  "source": "http://braginpublic.com/u/pobidowski",
+  "source_label": "Founder's X post (Aug 2026)",
+  "x_post": "https://x.com/pobidowski/status/2083411643342446642",
+  "revenue_history": [
+   {
+    "date": "2026-08-01",
+    "revenue": "$9.3K/mo",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Product Hunt launch brought 200 signups in 4 days from 4,000 unique visitors, after 12 hours of active community engagement",
+    "Pre-launch: connected with ~400 people on LinkedIn for early visibility before shipping",
+    "Free tier plus paid renders from about $10 per render",
+    "Runs a portfolio model: the same revenue post shows he also operates viztunr.com and was launching morga.ai alongside"
+   ],
+   "sources": [
+    "https://www.StarterStory.com/visualizee-ai-breakdown",
+    "https://www.StarterStory.com/visualizee-ai-breakdown",
+    "https://www.StarterStory.com/visualizee-ai-breakdown",
+    "http://braginpublic.com/u/pobidowski"
+   ]
+  },
+  "founder_x": [
+   "pobidowski"
+  ]
  }
 ]
