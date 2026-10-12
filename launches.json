@@ -1808,5 +1808,49 @@
   "founder_x": [
    "pobidowski"
   ]
+ },
+ {
+  "launch_no": 69,
+  "name": "CNVS",
+  "slug": "cnvs",
+  "tagline": "Canvas runs Claude, Cursor, and Codex in parallel on one canvas: you direct, they build, you ship.",
+  "url": "https://launch.arr.club/launches/cnvs/",
+  "website": "https://cnvs.dev",
+  "logo": "/logos/cnvs.png",
+  "revenue": "$36K+",
+  "revenue_metric": "30-day revenue",
+  "founder": "Max Blade",
+  "category": "Dev Tools",
+  "pricing": "One-time $99",
+  "launched": "2026-10-12",
+  "source": "https://braginpublic.com/u/_maxblade",
+  "source_label": "Founder's X post (Jul 2026)",
+  "x_post": "https://x.com/_MaxBlade/status/2078991290180477071",
+  "revenue_history": [
+   {
+    "date": "2026-07-19",
+    "revenue": "$36K+",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Lifetime licenses are '100x easier to sell than subscriptions' — the founder's own #1 lesson from the CNVS launch",
+    "Daily livestreaming 'forces you to actually show up' — the marketing engine is showing the work, every day",
+    "Built a 500+ member Discord community of vibecoders; their daily feedback 'made the app 1000x better'",
+    "Repeat playbook: his earlier iOS app Quickclaw went from $0 to $7,200 in seven days by listening to the market",
+    "Product edge: 100% voice-controlled, built in Swift, uses buyers' existing AI subscriptions with no API markup"
+   ],
+   "sources": [
+    "https://braginpublic.com/u/_maxblade",
+    "https://braginpublic.com/u/_maxblade",
+    "https://braginpublic.com/u/_maxblade",
+    "https://braginpublic.com/u/_maxblade",
+    "https://www.24vids.com/channel/_maxblade"
+   ]
+  },
+  "founder_x": [
+   "_MaxBlade"
+  ]
  }
 ]
