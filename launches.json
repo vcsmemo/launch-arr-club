@@ -1852,5 +1852,86 @@
   "founder_x": [
    "_MaxBlade"
   ]
+ },
+ {
+  "launch_no": 70,
+  "name": "Job Boardly",
+  "slug": "jobboardly",
+  "tagline": "The all-in-one platform to build, launch, and monetize a professional job board on your own domain.",
+  "url": "https://launch.arr.club/launches/jobboardly/",
+  "website": "https://www.jobboardly.com/",
+  "logo": "/logos/jobboardly.png",
+  "revenue": "$9,193",
+  "revenue_metric": "30-day revenue",
+  "founder": "Nelson Ryan",
+  "founder_x": [
+   "nelsonpryan"
+  ],
+  "category": "SaaS",
+  "pricing": "From $50/mo",
+  "launched": "2026-10-13",
+  "source": "http://braginpublic.com/u/nelsonpryan",
+  "source_label": "Founder's X posts (Jul–Aug 2026)",
+  "revenue_history": [
+   {
+    "date": "2026-08-01",
+    "revenue": "$9,193",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Crossed $9k MRR 'one year on from the acquisition' — growing MRR every month 'up from sub $1k this time last year,' while steadily bringing down churn",
+    "July 2026 revenue was $9,193.10, down 9.63% on fewer annual signups, but MRR kept growing and churn kept falling",
+    "Launched a $30/mo monthly plan to make trying easier — 'actually… leading to more lifetime sales so far'",
+    "Site claims 1,000+ job boards built on the platform, rated 4.89/5 from 95 reviews"
+   ],
+   "sources": [
+    "http://braginpublic.com/u/nelsonpryan",
+    "http://braginpublic.com/u/nelsonpryan",
+    "https://instalker.org/job_boardly",
+    "https://www.jobboardly.com/"
+   ]
+  }
+ },
+ {
+  "launch_no": 71,
+  "name": "Symmetry",
+  "slug": "symmetry",
+  "tagline": "Get an aesthetic physique by climbing ranks.",
+  "url": "https://launch.arr.club/launches/symmetry/",
+  "website": "https://symmetry.club/",
+  "logo": "/logos/symmetry.png",
+  "revenue": "$160,324",
+  "revenue_metric": "MRR",
+  "founder": "Mauro Botanes",
+  "category": "Health & Fitness",
+  "pricing": "Freemium (in-app subscriptions)",
+  "launched": "2026-10-13",
+  "source": "https://www.youtube.com/watch?v=OV09yPLf8BI",
+  "source_label": "Starter Story founder interview (Sep 2026)",
+  "revenue_history": [
+   {
+    "date": "2026-09-09",
+    "revenue": "$160,324",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Launched June 2025; the founders were fitness YouTubers in the Spanish-speaking market, and that existing audience gave the launch its initial spike",
+    "Roughly 3 million downloads across iOS and Android in about a year, with a dominant position in Spain and Mexico",
+    "UGC growth engine: nearly 80,000 videos posted in a year from 500+ creator accounts, close to a billion views — creators are paid nearly half the revenue they generate",
+    "Runs like a science lab: an internal 'EVELYN' experiment system documents every test, and nothing ships without an A/B test in PostHog — one onboarding commitment screen lifted retention 3.73%",
+    "Three-phase philosophy: build what founders want (terrible) → build what users request (mediocre) → only build what controlled experiments prove valuable"
+   ],
+   "sources": [
+    "https://www.startupfinder.co/posts/how-a-22-year-old-built-a-160kmo-fitness-app-ov09",
+    "https://www.startupfinder.co/posts/how-a-22-year-old-built-a-160kmo-fitness-app-ov09",
+    "https://www.startupfinder.co/posts/how-a-22-year-old-built-a-160kmo-fitness-app-ov09",
+    "https://www.startupfinder.co/posts/how-a-22-year-old-built-a-160kmo-fitness-app-ov09",
+    "https://www.startupfinder.co/posts/how-a-22-year-old-built-a-160kmo-fitness-app-ov09"
+   ]
+  }
  }
 ]
