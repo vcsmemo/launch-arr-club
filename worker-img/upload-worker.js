@@ -788,6 +788,9 @@ async function handleApprove(request, env) {
   const rev = revenueOf(d);
   const today = todayISO();
   const revStr = rev ? rev.amount + (rev.metric ? ' ' + rev.metric : '') : null;
+  // Stripe-verified submissions get the Verified badge automatically
+  let stripeVerified = null;
+  try { stripeVerified = d.stripe_verified ? JSON.parse(d.stripe_verified) : null; } catch (e) {}
   idx.unshift({
     launch_no: parseInt(launchNo, 10),
     name: d.name,
@@ -798,6 +801,9 @@ async function handleApprove(request, env) {
     logo: d.logo || null,
     revenue: revStr,
     revenue_metric: rev && rev.metric ? rev.metric : null,
+    revenue_verified: stripeVerified && stripeVerified.mrr_cents > 0 ? true : undefined,
+    revenue_verified_at: stripeVerified && stripeVerified.mrr_cents > 0 ? stripeVerified.at : undefined,
+    revenue_verified_via: stripeVerified && stripeVerified.mrr_cents > 0 ? 'stripe' : undefined,
     founder: d.founder || null,
     category: (d.categories && d.categories[0]) || 'Product',
     pricing: d.pricing || null,
@@ -1278,6 +1284,54 @@ export default {
     }
 
     // URL metadata fetch for submit auto-fill: GET /fetch-url?url=https://...
+    // ---- Stripe revenue verification ----
+    // POST /verify-stripe {stripe_key} -> {verified, mrr_cents, mrr_display}
+    // The key is used once in-memory to query Stripe and NEVER stored.
+    if (request.method === 'POST' && url.pathname === '/verify-stripe') {
+      let data;
+      try { data = await request.json(); }
+      catch (e) { return json({ error: 'invalid json' }, 400); }
+      const key = String(data.stripe_key || '').trim();
+      if (!/^(rk|sk)_(live|test)_/.test(key)) {
+        return json({ verified: false, error: 'invalid_key_format' }, 400);
+      }
+      try {
+        let mrrCents = 0, subCount = 0, url_subs = 'https://api.stripe.com/v1/subscriptions?status=active&limit=100';
+        // paginate through active subscriptions (cap 500)
+        for (let page = 0; page < 5; page++) {
+          const r = await fetch(url_subs, {
+            headers: { 'Authorization': 'Basic ' + btoa(key + ':') },
+          });
+          if (r.status === 401) return json({ verified: false, error: 'invalid_key' }, 200);
+          if (!r.ok) return json({ verified: false, error: 'stripe_error' }, 200);
+          const j = await r.json();
+          for (const sub of (j.data || [])) {
+            if (sub.status !== 'active' && sub.status !== 'trialing') continue;
+            subCount++;
+            for (const item of ((sub.items || {}).data || [])) {
+              const price = item.price || {};
+              const amt = price.unit_amount || 0;
+              const qty = item.quantity || 1;
+              const interval = (price.recurring || {}).interval || 'month';
+              const perMonth = interval === 'year' ? amt / 12
+                : interval === 'week' ? amt * 52 / 12
+                : interval === 'day' ? amt * 365 / 12 : amt;
+              mrrCents += Math.round(perMonth * qty);
+            }
+          }
+          if (!j.has_more) break;
+          const last = j.data[j.data.length - 1];
+          url_subs = 'https://api.stripe.com/v1/subscriptions?status=active&limit=100&starting_after=' + last.id;
+        }
+        const mrrDisplay = mrrCents >= 100000
+          ? '$' + (mrrCents / 100000).toFixed(mrrCents % 100000 === 0 ? 0 : 1) + 'k'
+          : '$' + (mrrCents / 100).toFixed(0);
+        return json({ verified: true, mrr_cents: mrrCents, mrr_display: mrrDisplay + ' MRR', subscriptions: subCount });
+      } catch (e) {
+        return json({ verified: false, error: 'request_failed' }, 200);
+      }
+    }
+
     if (request.method === 'GET' && url.pathname === '/fetch-url') {
       const target = url.searchParams.get('url') || '';
       if (!/^https?:\/\/[^/]+\.[^/]+/.test(target) || target.length > 500) {

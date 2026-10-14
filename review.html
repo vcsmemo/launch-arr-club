@@ -146,6 +146,12 @@
       var rev = hasRev ? esc(d.revenue.amount) + (d.revenue.metric ? ' ' + esc(d.revenue.metric) : '') : '—';
       var revRaw = hasRev ? String(d.revenue.amount).trim() + (d.revenue.metric ? ' ' + String(d.revenue.metric).trim() : '') : '';
       var revPill = '<span class="pill' + (hasRev ? ' rev-hot' : '') + '">💰 ' + rev + '</span>';
+      var stripePill = '';
+      try {
+        var sv = d.stripe_verified ? JSON.parse(d.stripe_verified) : null;
+        if (sv && sv.mrr_cents > 0) stripePill = '<span class="pill" style="background:#ecfdf5;color:#059669">⚡ Stripe-verified ' + esc(sv.mrr_display) + '</span>';
+      } catch (e) {}
+      var proofPill = d.proof_url ? '<span class="pill">📤 Screenshot proof</span>' : '';
       var milestone = '';
       var shots = (d.screenshots || []).map(function(s){ return '<img src="' + esc(s) + '" alt="screenshot" loading="lazy">'; }).join('');
       var story = (d.story || []).map(function(a, k){
@@ -178,7 +184,7 @@
         '<p class="sub-tagline">' + esc(d.tagline || '') + '</p></div></div>' +
         '<div class="sub-meta">' + updatePill + planPill(d.plan) + badgePill(item) +
         '<span class="pill">' + esc(priceLabel(d)) + '</span>' +
-        revPill +
+        revPill + stripePill + proofPill +
         '<span class="pill">' + esc((d.categories || []).join(', ') || 'Product') + '</span>' +
         '<span class="pill">👤 ' + esc(d.founder || '—') + '</span>' +
         '<p class="sub-desc">' + esc(d.description || '') + '</p>' +
