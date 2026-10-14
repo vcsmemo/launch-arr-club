@@ -753,3 +753,9 @@ a.x-link:hover { color: var(--accent-hover); }
   .cc-amount { font-size: 2.7rem; }
   .cc-cta { flex-direction: column; align-items: stretch; text-align: center; }
 }
+
+/* Milestones pages */
+.ms-stats{display:flex;gap:1rem;margin:1.5rem 0;flex-wrap:wrap}
+.ms-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.5rem;text-align:center;min-width:140px}
+.ms-stat b{display:block;font-size:1.6rem;color:var(--accent)}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
