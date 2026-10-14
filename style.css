@@ -800,3 +800,13 @@ a.x-link:hover { color: var(--accent-hover); }
 .celebrate-card.cc-teal .cc-amount{color:#fff;text-shadow:0 2px 32px rgba(20,184,166,.4)}
 .celebrate-card.cc-teal .cc-metric{color:#ccfbf1}
 .celebrate-card.cc-teal .cc-founder{color:#99f6e4}
+
+/* Story pages */
+.story-page .story-hero{margin-bottom:1.5rem}
+.story-kicker{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+.story-byline{font-size:.88rem;color:var(--text-secondary);margin-top:.8rem}
+.story-byline a{color:var(--text)}
+.story-page h2{margin-top:2rem}
+.story-body{line-height:1.75;color:var(--text);font-size:1.02rem}
+.story-body p{margin:.9rem 0}
+.cat-rank{display:inline-flex;align-items:center;justify-content:center;min-width:2rem;height:2rem;border-radius:8px;background:var(--navy);color:#fff;font-weight:800;font-size:.85rem;margin-right:.6rem}
