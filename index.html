@@ -20,7 +20,7 @@
 <header class="site-header">
   <nav class="nav">
     <a class="brand" href="/">Milestone<span>Wins</span></a>
-    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
     <div class="nav-auth" id="authSlot"></div>
   </nav>
 </header>
@@ -79,6 +79,11 @@
     }).catch(function(){});
   })();
   </script>
+
+  <section id="stories">
+    <h2 class="section-title"><span class="dot"></span>Founder stories <a class="view-all" href="/stories/">View all &rsaquo;</a></h2>
+    <div class="seo-launches" id="storyPreview"></div>
+  </section>
 
   <section id="leaderboard">
     <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span> <span class="lb-countdown" id="lbCountdown"></span></h2>
@@ -176,6 +181,19 @@
     }).join('<span class="ticker-sep">·</span>');
     ticker.innerHTML = html + '<span class="ticker-sep">·</span>' + html; /* duplicate for seamless loop */
   }).catch(function(){});
+})();
+/* Story preview on homepage (latest 3) */
+(function(){
+  var el = document.getElementById('storyPreview');
+  if(!el) return;
+  var stories = [
+    {slug: 'rezi-story', title: 'How Rezi hit $261K MRR: the ATS whisperer who beat GPT to market', rev: '$261k MRR'},
+    {slug: 'postiz-story', title: 'How Postiz hit $184K MRR: the dropout who open-sourced his way up', rev: '$184k MRR'},
+    {slug: 'neuralframes-story', title: 'How Neural Frames hit $5M/yr on AI music videos', rev: '$5M/yr'}
+  ];
+  el.innerHTML = stories.map(function(s){
+    return '<a class="launch-card" href="/stories/' + s.slug + '/"><div class="lc-main"><h3>' + s.title + '</h3><p class="lc-rev">' + s.rev + '</p></div></a>';
+  }).join('');
 })();
 /* Leaderboard refresh countdown (daily pipeline publishes ~09:45) */
 (function(){

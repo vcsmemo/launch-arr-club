@@ -818,3 +818,5 @@ a.x-link:hover { color: var(--accent-hover); }
 .vs-table th,.vs-table td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-size:.92rem}
 .vs-table th{background:var(--navy);color:#fff;font-size:.85rem}
 .vs-table tr:last-child td{border-bottom:0}
+.founder-story-link{margin:.6rem 0 1.4rem;font-size:.95rem}
+.founder-story-link a{color:var(--accent);font-weight:600}
