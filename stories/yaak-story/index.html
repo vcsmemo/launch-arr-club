@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Yaak hit $5K MRR: selling open source without selling out — MilestoneWins</title>
+<meta name="description" content="Yaak is 100% open source and does $5K MRR. How Gregory Schier monetized MIT software without paywalls — story and playbook.">
+<link rel="canonical" href="https://milestonewins.com/stories/yaak-story/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261014d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How Yaak hit $5K MRR: selling open source without selling out", "description": "Yaak is 100% open source and does $5K MRR. How Gregory Schier monetized MIT software without paywalls \u2014 story and playbook.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-10-14", "about": {"@type": "Organization", "name": "Yaak"}}</script>
+
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.seo-steps{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:1rem}
+.seo-steps li{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65}
+.seo-steps li b{color:#0f172a}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/stories/">Stories</a> <span>&rsaquo;</span> <strong>Yaak</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">✨ Founder story</span>
+    <h1>How Yaak hit $5K MRR: selling open source without selling out</h1>
+    <p class="lede">Gregory Schier built Insomnia, burned out, and sold it. His second act — Yaak — is 100% MIT open source and still does $5K MRR by charging for commercial binaries. Here&#x27;s the model nobody thought would work.</p>
+    <div class="story-byline">By Gregory Schier · 2026-10-14 · <a href="/launches/yaak/">View on MilestoneWins →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$5K</b><span>MRR</span></div>
+    <div class="ms-stat"><b>100%</b><span>Open source</span></div>
+    <div class="ms-stat"><b>458</b><span>Paying subs</span></div>
+  </div>
+  <div class="story-body">
+  <h2>The burnout that taught him everything</h2>
+  <p>Gregory Schier had already built one successful API client. Insomnia — the open-source REST client he created — grew a large following, and with growth came the familiar pressures: encrypted cloud sync to maintain and debug, feature requests to triage, a business to keep alive. Maintaining it contributed to his burnout, and eventually he sold the company.</p><p>When he quit his job in 2024 to go full-time on Yaak, the spiritual successor to Insomnia, he carried those scars with him. He knew exactly which monetization paths he did not want. Paid cloud sync was off the table — debugging encrypted sync had been a primary contributor to his burnout the first time around, and Yaak's local-only architecture made it philosophically incoherent anyway.</p><p>He also rejected open core. The model — open-source the free features, paywall the rest — would have worked financially, but Schier wanted companies to be able to audit the entire app, and he didn't want the incentive to keep moving features behind a paywall if growth stalled. He called that path a road to enshittification, and he refused to walk it twice.</p><p>So he started with the hardest constraint in software monetization: everything open source, no paywalled features, no cloud service to charge for. The question was whether a business could exist at all inside those walls.</p>
+  <h2>The model nobody believed in</h2>
+  <p>The answer Schier landed on: charge for commercial use of the prebuilt binaries. The source code is MIT-licensed — anyone can build Yaak themselves, for free, forever, including for paid work. But the official downloads, with automatic updates and installers, require a license for commercial use after a 30-day trial. Personal use is free either way.</p><p>He wasn't sure it would work. Anyone could compile the app and never pay him a cent. But he had a hunch, borrowed from closed-source successes like Obsidian and OrbStack: larger companies would rather pay for official builds and automatic updates than maintain their own — especially when a license keeps their legal team happy.</p><p>The hunch held. Yaak now has 37 business and 421 individual subscriptions. Businesses contribute $3,247 of the roughly $5K MRR — two-thirds of recurring revenue from a small minority of subscribers. The largest business account runs around 80 seats. Companies, it turns out, will pay for convenience and compliance even when the free alternative is one compile away.</p><p>The model has a charming honesty to it: the app never locks you out when the trial ends. Schier can't reliably tell whether someone uses Yaak for paid work, so in practice he relies on users to follow the license terms. It's close to a donation model — except commercial users of official builds are required to pay, not merely encouraged.</p>
+  <h2>The downsides are real</h2>
+  <p>Schier is unusually candid about what doesn't work. The biggest downside: payment gets in the way of adoption. A developer may want Yaak, but their company must approve the purchase — and for one or two seats, procurement effort exceeds the pain of just using a free alternative. The 30-day trial doesn't remove that hurdle.</p><p>Then there's the urgency problem: 99% of monthly active users don't pay. Personal use is free by design, and paying unlocks no features — the app is identical for licensed and unlicensed users. There's never a moment where you must stop working and purchase a license to continue. Even well-intentioned buyers may simply never get around to it.</p><p>And sometimes the MIT license works exactly as designed, against him. One large company reached out about migrating roughly 800 users from Postman — what looked like a huge sale ended with the company forking the repo, customizing it, and running their own version. For free. Fully within their rights, and Schier accepts it with grace: perhaps those users will bring Yaak to friends and colleagues elsewhere.</p><p>This transparency about trade-offs is the post's greatest strength. Most monetization writing is advocacy; Schier's is accounting — credits and debits, honestly tallied.</p>
+  <h2>Enough to keep going</h2>
+  <p>The bottom line: after two years of living off savings, Schier's bank balance is finally no longer shrinking each month. The combined income from subscriptions and lifetime sales covers Yaak's operating costs and his basic living expenses. Every feature remains open source. That's what he wanted to make possible when he started.</p><p>He also built in fairness mechanisms that reflect the philosophy. Can't afford commercial use? Build from source, free even for paid work. In a country where the price is too high? Purchasing-power-parity discounts up to 60% off. Hate subscriptions? A perpetual fallback license lets you keep your last covered version forever, or buy lifetime at roughly five times annual.</p><p>The model is already spreading: projects like Cozy Watch have adopted the commercial-binaries approach, citing Yaak as inspiration. Schier would love more examples — he's effectively running a public experiment in sustainable open-source funding, with his own livelihood as the test data.</p><p>Yaak's story is a quiet rebuke to the idea that open source can't pay. It can — if you're willing to accept slower growth, honest trade-offs, and a business that serves users before it serves a cap table. $5K MRR won't make anyone a billionaire. But it bought one developer his independence back, on his own terms, without selling out the second time.</p>
+  <h2>The playbook</h2>
+  <ol class="seo-steps">
+      <li><b>Let past burnout design the constraints</b> — Schier&#x27;s Insomnia experience ruled out cloud sync and open core before Yaak had a business model — constraints became the strategy.</li>
+      <li><b>Charge for convenience, not features</b> — Identical app for everyone; companies pay for official builds, auto-updates, and legal peace of mind.</li>
+      <li><b>Trust the license, accept the forks</b> — An 800-seat company forked Yaak for free — within their rights. The MIT license is the product&#x27;s credibility.</li>
+      <li><b>Price for fairness, not extraction</b> — PPP discounts, perpetual fallback licenses, and build-it-yourself freedom keep the model defensible.</li>
+      <li><b>Publish the downsides</b> — 99% don&#x27;t pay and there&#x27;s no urgency to — saying so publicly builds the trust that converts the 1% who do.</li>
+  </ol>
+  </div>
+  <div class="seo-cta" style="margin-top:2.5rem">
+    <a class="btn" href="/submit.html">🚀 Share your milestone</a>
+    <a class="btn ghost" href="/launches/yaak/">View Yaak →</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 MilestoneWins</span>
+    <span><a href="/">Home</a> · <a href="/stories/">Stories</a> · <a href="/submit.html">Submit</a></span>
+  </div>
+</footer>
+<script src="/auth.js"></script>
+</body>
+</html>
