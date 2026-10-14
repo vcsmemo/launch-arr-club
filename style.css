@@ -759,3 +759,15 @@ a.x-link:hover { color: var(--accent-hover); }
 .ms-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.5rem;text-align:center;min-width:140px}
 .ms-stat b{display:block;font-size:1.6rem;color:var(--accent)}
 .ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.nav-links a.nav-cta{background:var(--navy);color:#fff!important;font-weight:600;padding:.45rem 1rem;border-radius:8px}
+.nav-links a.nav-cta:hover{background:var(--navy-light);color:#fff!important}
+
+/* Maker card */
+.maker-card{display:flex;align-items:center;gap:.9rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.1rem;margin:1.2rem 0}
+.maker-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;flex-shrink:0}
+.maker-info{display:flex;flex-direction:column}
+.maker-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-secondary)}
+.maker-name{font-size:1.02rem}
+.maker-name a{color:var(--text);text-decoration:underline;text-underline-offset:2px}
+.maker-name a:hover{color:var(--accent)}
+.crumb-views{font-size:.8rem;color:var(--text-secondary);margin-left:.6rem}
