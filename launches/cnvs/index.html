@@ -7,7 +7,7 @@
 <meta name="description" content="CNVS did $36K+ in a little over a month — founder-reported. Max Blade sells $99 lifetime licenses for a voice-controlled macOS canvas that runs Claude, Cursor and Codex in parallel.">
 <link rel="canonical" href="https://milestonewins.com/launches/cnvs/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261014b">
+<link rel="stylesheet" href="/style.css?v=20261014d">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CNVS","applicationCategory":"WebApplication","operatingSystem":"Web","description":"CNVS is a native macOS app that runs AI coding agents — Claude, Cursor and Codex — in parallel on one voice-controlled canvas, sold as a $99 lifetime license","offers":{"@type":"Offer","price":"99","priceCurrency":"USD"},"url":"https://milestonewins.com/launches/cnvs/"}
 </script>
@@ -37,7 +37,7 @@
   <div class="revenue-hero">
     <div class="rh-main">
       <span class="rh-label">Revenue</span>
-      <div class="rh-value">$36K</div>
+      <div class="rh-value">$36K <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>
       <span class="rh-sub">30-day revenue · Founder-reported · <a href="https://braginpublic.com/u/_maxblade" target="_blank" rel="noopener">source ↗</a></span>
     </div>
     <div class="rh-verify">
@@ -72,6 +72,11 @@
     </div>
   </div>
   <div class="cc-dl-row">
+    <div class="cc-style-switch" role="group" aria-label="Card style">
+      <button type="button" class="cc-style-btn" aria-pressed="true" data-ccstyle="">Celebration</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-light">Light</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-teal">Teal</button>
+    </div>
     <button class="btn ghost" id="dlCardBtn">&#8681; Download celebration image</button>
   </div>
 
@@ -368,6 +373,19 @@
     } else { finish(null); }
   }
   document.getElementById('dlCardBtn').addEventListener('click', downloadCelebration);
+  /* Celebration card style switcher (free) */
+  Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(btn){
+    btn.addEventListener('click', function(){
+      var card = document.getElementById('celebrateCard');
+      if(!card) return;
+      card.classList.remove('cc-light', 'cc-teal');
+      var style = btn.getAttribute('data-ccstyle');
+      if(style) card.classList.add(style);
+      Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(b){
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+    });
+  });
 })();
 </script>
 

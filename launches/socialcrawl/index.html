@@ -7,7 +7,7 @@
 <meta name="description" content="SocialCrawl is making $12.5K/month — a social media scraper API built by an ex-Oxford neuroscientist after 4 failed products. Founder-reported on MilestoneWins.">
 <link rel="canonical" href="https://milestonewins.com/launches/socialcrawl/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261014b">
+<link rel="stylesheet" href="/style.css?v=20261014d">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"SocialCrawl","applicationCategory":"WebApplication","operatingSystem":"Web","description":"Social media scraper API: live, clean public web data for developers and AI agents, one standardized format across 44+ platforms","url":"https://milestonewins.com/launches/socialcrawl/"}
 </script>
@@ -37,7 +37,7 @@
   <div class="revenue-hero">
     <div class="rh-main">
       <span class="rh-label">Revenue</span>
-      <div class="rh-value">$12.5K</div>
+      <div class="rh-value">$12.5K <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>
       <span class="rh-sub">monthly revenue · Founder-reported · <a href="https://www.indiehackers.com/post/tech/this-founder-left-academia-built-four-failed-products-then-hit-12-5k-mo-xkng30lczEuiLG4983UN" target="_blank" rel="noopener">source ↗</a></span>
     </div>
     <div class="rh-verify">
@@ -72,6 +72,11 @@
     </div>
   </div>
   <div class="cc-dl-row">
+    <div class="cc-style-switch" role="group" aria-label="Card style">
+      <button type="button" class="cc-style-btn" aria-pressed="true" data-ccstyle="">Celebration</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-light">Light</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-teal">Teal</button>
+    </div>
     <button class="btn ghost" id="dlCardBtn">&#8681; Download celebration image</button>
   </div>
 
@@ -371,6 +376,19 @@
     } else { finish(null); }
   }
   document.getElementById('dlCardBtn').addEventListener('click', downloadCelebration);
+  /* Celebration card style switcher (free) */
+  Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(btn){
+    btn.addEventListener('click', function(){
+      var card = document.getElementById('celebrateCard');
+      if(!card) return;
+      card.classList.remove('cc-light', 'cc-teal');
+      var style = btn.getAttribute('data-ccstyle');
+      if(style) card.classList.add(style);
+      Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(b){
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+    });
+  });
 })();
 </script>
 

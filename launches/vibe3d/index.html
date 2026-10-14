@@ -7,7 +7,7 @@
 <meta name="description" content="Vibe3D turns SketchUp, Revit and Rhino models into photorealistic AI renders and cinematic walkthroughs in seconds. $10k MRR, founder-reported.">
 <link rel="canonical" href="https://milestonewins.com/launches/vibe3d/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261014b">
+<link rel="stylesheet" href="/style.css?v=20261014d">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vibe3D","applicationCategory":"WebApplication","operatingSystem":"Web","description":"AI 3D rendering for architecture and interior design: photorealistic renders and walkthrough videos in seconds","offers":{"@type":"Offer","price":"19","priceCurrency":"USD"},"url":"https://milestonewins.com/launches/vibe3d/"}
 </script>
@@ -37,7 +37,7 @@
   <div class="revenue-hero">
     <div class="rh-main">
       <span class="rh-label">Revenue</span>
-      <div class="rh-value">$10k</div>
+      <div class="rh-value">$10k <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>
       <span class="rh-sub">MRR · Founder-reported · <a href="https://instalker.org/erione_" target="_blank" rel="noopener">source ↗</a></span>
     </div>
     <div class="rh-verify">
@@ -72,6 +72,11 @@
     </div>
   </div>
   <div class="cc-dl-row">
+    <div class="cc-style-switch" role="group" aria-label="Card style">
+      <button type="button" class="cc-style-btn" aria-pressed="true" data-ccstyle="">Celebration</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-light">Light</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-teal">Teal</button>
+    </div>
     <button class="btn ghost" id="dlCardBtn">&#8681; Download celebration image</button>
   </div>
 
@@ -239,7 +244,7 @@
   var input = document.getElementById('stripeKeyInput');
   var err = document.getElementById('stripeErr');
   var slug = (location.pathname.match(/\/launches\/([^/]+)\//) || [])[1] || '';
-  /* Public page views (transparency: founders screenshot this) */
+  /* Public page views + verified badge */
   try {
     fetch('https://launch-arr-club-img.johntian2015.workers.dev/stats/' + slug)
       .then(function(r){ return r.ok ? r.json() : null; })
@@ -249,6 +254,13 @@
           if(el){ el.textContent = '👁 ' + j.views.toLocaleString() + ' views'; el.hidden = false; }
         }
       }).catch(function(){});
+    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
+      var hit = items.filter(function(p){ return (p.url || '').indexOf('/launches/' + slug + '/') !== -1; })[0];
+      if(hit && hit.revenue_verified){
+        var vb = document.getElementById('verifiedBadge');
+        if(vb) vb.hidden = false;
+      }
+    }).catch(function(){});
   } catch(e){}
   openBtns.forEach(function(b){
     b.addEventListener('click', function(){ modal.hidden = false; input.focus(); });
@@ -380,6 +392,19 @@
     } else { finish(null); }
   }
   document.getElementById('dlCardBtn').addEventListener('click', downloadCelebration);
+  /* Celebration card style switcher (free) */
+  Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(btn){
+    btn.addEventListener('click', function(){
+      var card = document.getElementById('celebrateCard');
+      if(!card) return;
+      card.classList.remove('cc-light', 'cc-teal');
+      var style = btn.getAttribute('data-ccstyle');
+      if(style) card.classList.add(style);
+      Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(b){
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+    });
+  });
 })();
 </script>
 

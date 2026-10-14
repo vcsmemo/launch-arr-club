@@ -6,7 +6,7 @@
 <title>Ace — Meet Ace, an agentic teammate for work | MilestoneWins</title>
 <meta name="description" content="Ace is an agentic AI coworker from Automat (YC W23) that gets its own Mac, email, and company account, working across Slack, email, text, and WhatsApp to complete real work tasks end-to-end.">
 <link rel="canonical" href="https://milestonewins.com/launches/ace-automat/">
-<link rel="stylesheet" href="/style.css?v=20261014b">
+<link rel="stylesheet" href="/style.css?v=20261014d">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Ace","applicationCategory":"WebApplication","operatingSystem":"Web","description":"Meet Ace, an agentic teammate for work","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://milestonewins.com/launches/ace-automat/"}</script>
 </head>
 <body>
@@ -31,7 +31,7 @@
   <div class="revenue-hero">
     <div class="rh-main">
       <span class="rh-label">Revenue</span>
-      <div class="rh-value">&ndash;</div>
+      <div class="rh-value">&ndash; <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>
       <span class="rh-sub">Not shared yet</span>
     </div>
     <div class="rh-verify">
@@ -66,6 +66,11 @@
     </div>
   </div>
   <div class="cc-dl-row">
+    <div class="cc-style-switch" role="group" aria-label="Card style">
+      <button type="button" class="cc-style-btn" aria-pressed="true" data-ccstyle="">Celebration</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-light">Light</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-teal">Teal</button>
+    </div>
     <button class="btn ghost" id="dlCardBtn">&#8681; Download celebration image</button>
   </div>
 
@@ -315,6 +320,19 @@
     } else { finish(null); }
   }
   document.getElementById('dlCardBtn').addEventListener('click', downloadCelebration);
+  /* Celebration card style switcher (free) */
+  Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(btn){
+    btn.addEventListener('click', function(){
+      var card = document.getElementById('celebrateCard');
+      if(!card) return;
+      card.classList.remove('cc-light', 'cc-teal');
+      var style = btn.getAttribute('data-ccstyle');
+      if(style) card.classList.add(style);
+      Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(b){
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+    });
+  });
 })();
 </script>
 

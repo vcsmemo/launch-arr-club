@@ -6,7 +6,7 @@
 <title>getcta — An AI teleprompter that lives under your MacBook notch | MilestoneWins</title>
 <meta name="description" content="getcta is a macOS teleprompter that sits in a small panel under the MacBook notch, highlighting and auto-scrolling your script as you speak, with AI tools to write and polish scripts.">
 <link rel="canonical" href="https://milestonewins.com/launches/getcta/">
-<link rel="stylesheet" href="/style.css?v=20261014b">
+<link rel="stylesheet" href="/style.css?v=20261014d">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"getcta","applicationCategory":"WebApplication","operatingSystem":"Web","description":"An AI teleprompter that lives under your MacBook notch","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://milestonewins.com/launches/getcta/"}</script>
 </head>
 <body>
@@ -31,7 +31,7 @@
   <div class="revenue-hero">
     <div class="rh-main">
       <span class="rh-label">Revenue</span>
-      <div class="rh-value">&ndash;</div>
+      <div class="rh-value">&ndash; <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>
       <span class="rh-sub">Not shared yet</span>
     </div>
     <div class="rh-verify">
@@ -66,6 +66,11 @@
     </div>
   </div>
   <div class="cc-dl-row">
+    <div class="cc-style-switch" role="group" aria-label="Card style">
+      <button type="button" class="cc-style-btn" aria-pressed="true" data-ccstyle="">Celebration</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-light">Light</button>
+      <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-teal">Teal</button>
+    </div>
     <button class="btn ghost" id="dlCardBtn">&#8681; Download celebration image</button>
   </div>
 
@@ -315,6 +320,19 @@
     } else { finish(null); }
   }
   document.getElementById('dlCardBtn').addEventListener('click', downloadCelebration);
+  /* Celebration card style switcher (free) */
+  Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(btn){
+    btn.addEventListener('click', function(){
+      var card = document.getElementById('celebrateCard');
+      if(!card) return;
+      card.classList.remove('cc-light', 'cc-teal');
+      var style = btn.getAttribute('data-ccstyle');
+      if(style) card.classList.add(style);
+      Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(b){
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+    });
+  });
 })();
 </script>
 
