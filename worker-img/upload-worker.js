@@ -544,227 +544,159 @@ const DETAIL_SHARED_JS = `<script>
 </script>
 `;
 
-function detailPage(d, slug, launchNo, others, weekPath) {
-  const now = new Date();
-  const dateLong = now.getDate() + ' ' + MONTHS[now.getMonth()] + ' ' + now.getFullYear();
-  const weekUrl = '/' + weekPath.replace(/\/index\.html$/, '/');
+/* Render a detail page from the canonical vibe3d template (same layout the
+   daily pipeline generates via ops/gen_launch_page.py). Fetches the template
+   from GitHub main so /review/approve always uses the latest layout. */
+var DETAIL_TEMPLATE_URL = 'https://raw.githubusercontent.com/vcsmemo/launch-arr-club/main/launches/vibe3d/index.html';
+var MONTHS_FULL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
+  const res = await fetch(DETAIL_TEMPLATE_URL);
+  if (!res.ok) throw new Error('template fetch failed: ' + res.status);
+  let t = await res.text();
+
+  const name = d.name || 'Untitled';
+  const tagline = d.tagline || '';
+  const taglineLong = tagline || (d.description || '').slice(0, 160);
+  const website = d.url || '';
+  const logo = d.logo || '';
+  const no = parseInt(launchNo, 10) || 0;
+  const noPad = String(no).padStart(3, '0');
   const rev = revenueOf(d);
-  const metricTxt = rev && rev.metric ? rev.metric : '';
-  const cats = d.categories && d.categories.length ? d.categories : ['Product'];
-  const catPills = cats.map(function (c) { return '<span class="tag cat">' + esc(c) + '</span>'; }).join('');
-  const logoImg = d.logo
-    ? '<img class="d-logo" src="' + esc(d.logo) + '" alt="' + esc(d.name) + ' logo">'
-    : '<span class="d-logo-ph">' + esc(String(d.name || '?').charAt(0)) + '</span>';
+  const revShort = rev ? rev.amount : '';
+  const metric = rev ? rev.metric : '';
+  const founder = d.founder || '';
+  const founderHtml = esc(founder);
+  const category = (d.categories && d.categories[0]) || 'Product';
+  const pricing = d.pricing || '—';
+  const now = new Date();
+  const launchedPretty = now.getDate() + ' ' + MONTHS_FULL[now.getMonth()] + ' ' + now.getFullYear();
+  const metaDesc = tagline || (d.description || '').slice(0, 160);
+  const story = (d.story || []).filter(function (s) { return s && String(s).trim(); });
+  const hasRevenue = !!revShort;
 
-  // story cards (submit flow: 5 structured answers; long ones split by sentence)
-  const storyItems = [];
-  (d.story || []).forEach(function (a, i) {
-    a = a != null ? String(a).trim() : '';
-    if (!a) return;
-    storyItems.push({ label: STORY_QS[i] || ('Note ' + (i + 1)), paras: splitParas(a) });
-  });
-  const storyCards = storyItems.map(function (it, i) {
-    const cls = i === storyItems.length - 1 ? 'story-card wide' : 'story-card';
-    return '    <div class="' + cls + '"><h4>' + esc(it.label) + '</h4>' +
-      it.paras.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>';
-  }).join('\n');
-  const storySection = storyCards
-    ? '  <h2 class="section-title caps"><span class="dot"></span>What ' + esc(d.name) + ' is about</h2>\n' +
-      '  <div class="story-wrap">\n' +
-      '    <div class="story-grid">\n' + storyCards + '\n    </div>\n  </div>\n\n'
-    : '';
+  function rep(oldStr, newStr) {
+    if (t.indexOf(oldStr) === -1) return; // tolerate template drift
+    t = t.split(oldStr).join(newStr);
+  }
 
-  // growth: "How they got there" (only when the founder shared it)
-  const gw = d.growth || {};
-  const gwRows = [];
-  if (gw.first_user_source) gwRows.push(['First user came from', gw.first_user_source + (gw.first_user_detail ? ' — ' + gw.first_user_detail : '')]);
-  if (gw.best_channel) gwRows.push(['Best channel so far', gw.best_channel]);
-  if (gw.days_to_first_dollar) gwRows.push(['Days to first dollar', String(gw.days_to_first_dollar)]);
-  const growthSection = gwRows.length
-    ? '  <h2 class="section-title caps"><span class="dot"></span>How they got there</h2>\n' +
-      '  <div class="story-wrap">\n' +
-      '    <div class="story-grid">\n' +
-      gwRows.map(function (r) { return '    <div class="story-card"><h4>' + esc(r[0]) + '</h4><p>' + esc(r[1]) + '</p></div>'; }).join('\n') +
-      '\n    </div>\n  </div>\n\n'
-    : '';
+  // --- head ---
+  rep('<title>Vibe3D — 3D Render AI for Architecture & Interior Design | MilestoneWins</title>',
+      '<title>' + esc(name) + ' — ' + esc(tagline) + ' | MilestoneWins</title>');
+  t = t.replace(/<meta name="description" content="[^"]*">/,
+      '<meta name="description" content="' + esc(metaDesc) + '">');
+  rep('https://milestonewins.com/launches/vibe3d/',
+      'https://milestonewins.com/launches/' + slug + '/');
+  // JSON-LD
+  rep('"name":"Vibe3D"', '"name":"' + esc(name) + '"');
+  rep('"description":"AI 3D rendering for architecture and interior design: photorealistic renders and walkthrough videos in seconds"',
+      '"description":"' + esc(taglineLong) + '"');
+  rep('"offers":{"@type":"Offer","price":"19","priceCurrency":"USD"},', '');
+  rep('<strong>Vibe3D</strong>', '<strong>' + esc(name) + '</strong>');
 
-  // revenue hero + celebration card (only when revenue was shared)
-  const sourceLink = d.source
-    ? ' · <a href="' + esc(d.source) + '" target="_blank" rel="noopener">source ↗</a>'
-    : '';
-  const revenueHero = rev
-    ? '  <div class="revenue-hero">\n' +
-      '    <div class="rh-main">\n' +
-      '      <span class="rh-label">Revenue</span>\n' +
-      '      <div class="rh-value">' + esc(rev.amount) + '</div>\n' +
-      '      <span class="rh-sub">' + (metricTxt ? esc(metricTxt) + ' · ' : '') + 'Founder-reported' + sourceLink + '</span>\n' +
-      '    </div>\n' +
-      '    <div class="rh-verify">\n' +
-      '      <div class="stripe-verify-row" data-stripe-connect-v2>\n' +
-      STRIPE_BUTTON_HTML + '\n' +
-      '      <span data-stripe-status></span>\n' +
-      '    </div>\n' +
-      '    </div>\n' +
-      '  </div>\n'
-    : '';
-  const ccLogo = d.logo
-    ? '<img class="cc-logo" src="' + esc(d.logo) + '" alt="' + esc(d.name) + ' logo" loading="lazy" onerror="this.style.display=\'none\'">'
-    : '<span class="cc-logo-ph">' + esc(String(d.name || '?').charAt(0)) + '</span>';
-  const ccFounder = d.founder ? '\n        <div class="cc-founder">by ' + founderLinks(d.founder, d.founder_x) + '</div>' : '';
-  const celebrateCard = rev
-    ? '  <div class="celebrate-card" id="celebrateCard" data-slug="' + esc(slug) + '" data-name="' + esc(d.name) +
-      '" data-revenue="' + esc(rev.amount) + '" data-metric="' + esc(metricTxt) + '" data-logo="' + esc(d.logo || '') +
-      '" data-founder="' + esc(d.founder || '') + '">\n' +
-      '    <div class="cc-confetti" aria-hidden="true"></div>\n' +
-      '    <div class="cc-top">\n' +
-      '      <span class="cc-brand">🎉 MILESTONEWINS CELEBRATES</span>\n' +
-      '    </div>\n' +
-      '    <div class="cc-hero">\n' +
-      '      <div class="cc-amount">' + esc(rev.amount) + '</div>\n' +
-      '      <div class="cc-metric">' + (metricTxt ? esc(metricTxt) + ' ' : '') + 'milestone</div>\n' +
-      '    </div>\n' +
-      '    <div class="cc-product">\n' +
-      '      ' + ccLogo + '\n' +
-      '      <div>\n' +
-      '        <div class="cc-name">' + esc(d.name) + '</div>' + ccFounder + '\n' +
-      '      </div>\n' +
-      '    </div>\n' +
-      '    <div class="cc-cta">\n' +
-      '      <span>Built this? Share your next milestone.</span>\n' +
-      '      <a class="cc-cta-btn" href="/submit.html">Share your milestone &rarr;</a>\n' +
-      '    </div>\n' +
-      '  </div>\n' +
-      '  <div class="cc-dl-row">\n' +
-      '    <button class="btn ghost" id="dlCardBtn">&#8681; Download celebration image</button>\n' +
-      '  </div>\n\n'
-    : '';
+  // --- hero ---
+  if (logo) {
+    rep('<img class="d-logo" src="/logos/vibe3d.png" alt="Vibe3D logo">',
+        '<img class="d-logo" src="' + esc(logo) + '" alt="' + esc(name) + ' logo">');
+  } else {
+    rep('<img class="d-logo" src="/logos/vibe3d.png" alt="Vibe3D logo">',
+        '<span class="d-logo-ph">' + esc(name.charAt(0)) + '</span>');
+  }
+  rep('<div class="d-title-row"><h1>Vibe3D</h1><span class="launch-no">#057</span></div>',
+      '<div class="d-title-row"><h1>' + esc(name) + '</h1><span class="launch-no">#' + noPad + '</span></div>');
+  rep('<p class="d-tagline">3D Render AI for Architecture & Interior Design</p>',
+      '<p class="d-tagline">' + esc(tagline) + '</p>');
+  // Free plan links are nofollow (pipeline hard rule)
+  var visitRel = (d.plan === 'free') ? 'noopener nofollow' : 'noopener';
+  rep('<a class="btn dark" href="https://vibe3d.ai" target="_blank" rel="noopener">Visit &#8599;</a>',
+      '<a class="btn dark" href="' + esc(website) + '" target="_blank" rel="' + visitRel + '">Visit &#8599;</a>');
 
-  const pricingLabel = priceLabelOf(d);
-  const pricingSub = /free/i.test(pricingLabel) ? 'No cost to start' : 'Subscription plans';
-  const makerSub = d.founder && /[,;&]| and /i.test(d.founder) ? 'Co-founders' : 'Co-founder';
-  const statGrid =
-    '  <div class="stat-grid">\n\n' +
-    '    <div class="stat-card"><span>Pricing</span><b>' + esc(pricingLabel) + '</b><small>' + esc(pricingSub) + '</small></div>\n' +
-    '    <div class="stat-card"><span>Launched</span><b>' + esc(dateLong) + '</b><small>L+0 &middot; Live on MilestoneWins</small></div>\n' +
-    '    <div class="stat-card"><span>Category</span><div class="pills">' + catPills + '</div></div>\n' +
-    '    <div class="stat-card"><span>Maker</span><b>' + founderLinks(d.founder, d.founder_x) + '</b><small>' + makerSub + '</small></div>\n' +
-    '  </div>\n\n';
+  // --- revenue hero ---
+  if (hasRevenue) {
+    rep('<div class="rh-value">$10k</div>',
+        '<div class="rh-value">' + esc(revShort) + '</div>');
+    rep('<span class="rh-sub">MRR · Founder-reported · <a href="https://instalker.org/erione_" target="_blank" rel="noopener">source ↗</a></span>',
+        '<span class="rh-sub">' + esc(metric) + ' · Founder-reported · <a href="' + esc(website) + '" target="_blank" rel="noopener">source ↗</a></span>');
+  } else {
+    rep('<div class="rh-value">$10k</div>',
+        '<div class="rh-value rh-empty">Not disclosed</div>');
+    rep('<span class="rh-sub">MRR · Founder-reported · <a href="https://instalker.org/erione_" target="_blank" rel="noopener">source ↗</a></span>',
+        '<span class="rh-sub">Revenue not shared yet</span>');
+  }
 
-  const timelineSection =
-    TIMELINE_STYLE + '\n' +
-    '  <h2 class="section-title caps"><span class="dot"></span>Growth timeline</h2>\n' +
-    '  <div class="card growth-timeline">\n' +
-    '    <div class="timeline-track" id="timelineTrack">\n' +
-    '      <!-- Rendered from launches.json -->\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    TIMELINE_SCRIPT_A + JSON.stringify(slug) + ';' + TIMELINE_SCRIPT_B + '\n\n';
+  // --- celebrate card ---
+  rep('<div class="celebrate-card" id="celebrateCard" data-slug="vibe3d" data-name="Vibe3D" data-revenue="$10k" data-metric="MRR" data-logo="/logos/vibe3d.png" data-founder="Brijesh Patel">',
+      '<div class="celebrate-card" id="celebrateCard" data-slug="' + esc(slug) + '" data-name="' + esc(name) + '" data-revenue="' + esc(revShort) + '" data-metric="' + esc(metric) + '" data-logo="' + esc(logo) + '" data-founder="' + esc(founder) + '">');
+  rep('<div class="cc-amount">$10k</div>',
+      '<div class="cc-amount">' + esc(hasRevenue ? revShort : name) + '</div>');
+  rep('<div class="cc-metric">MRR milestone</div>',
+      '<div class="cc-metric">' + esc(hasRevenue ? (metric + ' milestone') : 'First milestone coming soon') + '</div>');
+  if (logo) {
+    rep('<img class="cc-logo" src="/logos/vibe3d.png" alt="Vibe3D logo" loading="lazy" onerror="this.style.display=\'none\'">',
+        '<img class="cc-logo" src="' + esc(logo) + '" alt="' + esc(name) + ' logo" loading="lazy" onerror="this.style.display=\'none\'">');
+  } else {
+    rep('<img class="cc-logo" src="/logos/vibe3d.png" alt="Vibe3D logo" loading="lazy" onerror="this.style.display=\'none\'">', '');
+  }
+  rep('<div class="cc-name">Vibe3D</div>',
+      '<div class="cc-name">' + esc(name) + '</div>');
+  rep('<div class="cc-founder">by Brijesh Patel</div>',
+      '<div class="cc-founder">by ' + founderHtml + '</div>');
 
-  const moreRows = (others || []).map(function (o) {
-    const logo = o.logo
+  // --- story ---
+  rep('<h2 class="section-title caps"><span class="dot"></span>What Vibe3D is about</h2>',
+      '<h2 class="section-title caps"><span class="dot"></span>What ' + esc(name) + ' is about</h2>');
+  var storyOpen = '<div class="story-card wide"><h4>What makes it different</h4>';
+  var si = t.indexOf(storyOpen);
+  if (si !== -1) {
+    var pEnd = t.indexOf('</p>', si);
+    var sClose = t.indexOf('</div>', pEnd) + '</div>'.length;
+    var paras = story.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    t = t.slice(0, si) + storyOpen + paras + '</div>' + t.slice(sClose);
+  }
+
+  // --- stat grid ---
+  rep('<div class="stat-card"><span>Pricing</span><b>From $19/mo</b><small>Subscription plans</small></div>',
+      '<div class="stat-card"><span>Pricing</span><b>' + esc(pricing) + '</b><small>Subscription plans</small></div>');
+  rep('<div class="stat-card"><span>Launched</span><b>7 October 2026</b><small>L+0 &middot; Live on MilestoneWins</small></div>',
+      '<div class="stat-card"><span>Launched</span><b>' + esc(launchedPretty) + '</b><small>L+0 &middot; Live on MilestoneWins</small></div>');
+  rep('<div class="stat-card"><span>Category</span><div class="pills"><span class="tag cat">Design Tools</span></div></div>',
+      '<div class="stat-card"><span>Category</span><div class="pills"><span class="tag cat">' + esc(category) + '</span></div></div>');
+  rep('<div class="stat-card"><span>Maker</span><b>Brijesh Patel</b><small>Founder</small></div>',
+      '<div class="stat-card"><span>Maker</span><b>' + founderHtml + '</b><small>Founder</small></div>');
+
+  // --- more-list (revenue proximity) ---
+  var rows = (others || []).map(function (o) {
+    var r = o.revenue || '';
+    var m = String(r).match(/(\$[\d.]+\s*[kKmM]?)\s*(.*)/);
+    var revHtml = '';
+    if (m) {
+      var amt = m[1].trim(), met = (m[2] || '').trim();
+      revHtml = '<span class="more-rev">' + esc(amt) + (met ? '<small>' + esc(met) + '</small>' : '') + '</span>';
+    } else if (r) {
+      revHtml = '<span class="more-rev">' + esc(r) + '</span>';
+    }
+    var logoHtml = o.logo
       ? '<img src="' + esc(o.logo) + '" alt="' + esc(o.name) + ' logo" loading="lazy">'
       : '<span class="lc-logo-ph">' + esc(String(o.name || '?').charAt(0)) + '</span>';
-    const revParts = (function (r) {
-      if (!r) return null;
-      const m = String(r).match(/(\$[\d.]+\s*[kKmM]?)\s*(.*)/);
-      if (!m) return { amount: r, metric: '' };
-      let metric = (m[2] || '').replace(/^\//, '').trim();
-      const low = metric.toLowerCase();
-      if (/mrr/.test(low) || low === 'mo') metric = 'MRR';
-      else if (/30d/.test(low)) metric = '30-day';
-      else if (/all-time/.test(low)) metric = 'all-time';
-      else if (/total/.test(low)) metric = 'total';
-      return { amount: m[1].trim(), metric: metric };
-    })(o.revenue);
-    const revHtml = revParts
-      ? '<span class="more-rev">' + esc(revParts.amount) + (revParts.metric ? '<small>' + esc(revParts.metric) + '</small>' : '') + '</span>'
-      : '';
-    return '    <a class="more-row" href="' + esc(o.url) + '"><span class="more-rank">#' + esc(o.no) + '</span>' + logo +
-      '<span class="more-main"><strong>' + esc(o.name) + '</strong><p>' + esc(o.tagline || '') + '</p>' +
-      '<small>' + esc((o.categories || []).join(' · ')) + '</small></span>' + revHtml +
-      '</a>';
-  }).join('\n');
+    return '    <a class="more-row" href="' + esc(o.url) + '"><span class="more-rank">#' + esc(o.no) + '</span>' +
+      logoHtml +
+      '<span class="more-main"><strong>' + esc(o.name) + '</strong><p>' + esc(o.tagline) + '</p>' +
+      '<small>' + esc((o.categories && o.categories[0]) || 'Product') + '</small></span>' + revHtml + '</a>';
+  });
+  var mi = t.indexOf('<div class="more-list">');
+  if (mi !== -1) {
+    var aEnd = t.indexOf('</a>', mi);
+    var mClose = t.indexOf('</div>', aEnd) + '</div>'.length;
+    t = t.slice(0, mi) + '<div class="more-list">\n' + rows.join('\n') + '\n  </div>' + t.slice(mClose);
+  }
 
-  const descBase = (d.description || d.tagline || '').trim();
-  const metaDesc = (descBase + (rev ? ' ' + rev.amount + (rev.metric ? ' ' + rev.metric : '') + ', founder-reported.' : '')).slice(0, 160);
-  const priceNum = (function () {
-    const m = /([\d,.]+)/.exec(pricingLabel);
-    return m ? m[1].replace(/,/g, '') : '0';
-  })();
+  // --- js slug refs ---
+  rep('var slug = "vibe3d";', 'var slug = "' + slug + '";');
+  rep("var slug = 'vibe3d';", "var slug = '" + slug + "';");
 
-  return (
-'<!DOCTYPE html>\n' +
-'<html lang="en">\n' +
-'<head>\n' +
-'<meta charset="UTF-8">\n' +
-'<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
-'<title>' + esc(d.name) + ' — ' + esc(d.tagline || '') + ' | MilestoneWins</title>\n' +
-'<meta name="description" content="' + esc(metaDesc) + '">\n' +
-'<link rel="canonical" href="https://milestonewins.com/launches/' + slug + '/">\n' +
-'<link rel="icon" type="image/png" href="/favicon-64.png">\n' +
-'<link rel="stylesheet" href="/style.css?v=20261006d">\n' +
-'<script type="application/ld+json">\n' +
-'{"@context":"https://schema.org","@type":"SoftwareApplication",\n' +
-'"name":' + JSON.stringify(d.name) + ',"applicationCategory":"WebApplication","operatingSystem":"Web",\n' +
-'"description":' + JSON.stringify(d.tagline || '') + ',\n' +
-'"offers":{"@type":"Offer","price":' + JSON.stringify(priceNum) + ',"priceCurrency":"USD"},\n' +
-'"url":"https://milestonewins.com/launches/' + slug + '/"}\n' +
-'</script>\n' +
-'</head>\n' +
-'<body>\n' +
-'<header class="site-header">\n' +
-'  <nav class="nav">\n' +
-'    <a class="brand" href="/">Milestone<span>Wins</span></a>\n' +
-'    <div class="nav-links"></div>\n' +
-'    <div class="nav-auth" id="authSlot"></div>\n' +
-'  </nav>\n' +
-'</header>\n' +
-'<main>\n' +
-'  <nav class="crumbs"><a href="/">MilestoneWins</a> <span>&rsaquo;</span> <a href="/#recently">Launches</a> <span>&rsaquo;</span> <strong>' + esc(d.name) + '</strong><button class="copy-link" data-copy data-label="&#10697; copy link">&#10697; copy link</button></nav>\n' +
-'\n' +
-'  <div class="d-hero">\n' +
-'    ' + logoImg + '\n' +
-'    <div class="d-hero-main">\n' +
-'      <div class="d-title-row"><h1>' + esc(d.name) + '</h1><span class="launch-no">#' + launchNo + '</span></div>\n' +
-'      <p class="d-tagline">' + esc(d.tagline || '') + '</p>\n' +
-'    </div>\n' +
-'    <div class="d-hero-actions">\n' +
-'      <button class="btn ghost" data-copy data-label="Share">Share</button>\n' +
-'      <a class="btn dark" href="' + esc(d.url) + '" target="_blank" rel="noopener">Visit &#8599;</a>\n' +
-'    </div>\n' +
-'  </div>\n' +
-revenueHero +
-celebrateCard +
-storySection +
-growthSection +
-statGrid +
-timelineSection +
-'  <h2 class="section-title caps"><span class="dot"></span>More launches <a class="view-all" href="' + weekUrl + '">View all &rsaquo;</a></h2>\n' +
-'  <div class="more-list">\n' +
-moreRows + '\n' +
-'  </div>\n' +
-DETAIL_SHARED_JS +
-'</main>\n' +
-'<footer class="site-footer">\n' +
-'  <div class="footer-cols">\n' +
-'    <div class="fcol"><h5>Discover</h5><a href="/#recently">Launches</a><a href="' + weekUrl + '">Weekly archive</a><a href="/#leaderboard">Leaderboard</a></div>\n' +
-'    <div class="fcol"><h5>Alternatives</h5><a href="/alternatives/product-hunt/">Product Hunt alternative</a><a href="/alternatives/faslaunch/">FasLaunch alternative</a></div>\n' +
-'    <div class="fcol"><h5>Launch</h5><a href="/launch-your-startup/">Launch your startup</a><a href="/launch-your-ai-tool/">Launch your AI tool</a><a href="/launch-your-saas/">Launch your SaaS</a></div>\n' +
-'    <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a></div>\n' +
-'  </div>\n' +
-'  <div class="footer-inner">\n' +
-'    <span>© 2026 MilestoneWins · <a href="https://www.toolpilot.ai">Listed on ToolPilot</a> · <a target="_blank" href="https://goodaitools.com/ai/launch-arr"><img src="https://goodaitools.com/assets/images/badge.png" alt="Good AI Tools" style="height:20px;vertical-align:middle"></a></span>\n' +
-'  </div>\n' +
-'</footer>\n' +
-'<script src="/auth.js"></script>\n' +
-TRACK_SCRIPT + '\n' +
-STRIPE_MODAL_HTML + '\n' +
-STRIPE_SCRIPT + '\n' +
-CANVAS_SCRIPT_A + JSON.stringify(slug) + ';' + CANVAS_SCRIPT_B + '\n' +
-'</body>\n' +
-'</html>\n'
-  );
+  return t;
 }
+
 
 
 
@@ -846,7 +778,7 @@ async function handleApprove(request, env) {
       };
     });
   // 1. detail page (current template)
-  const detail = detailPage(d, slug, launchNo, others, weekPath);
+  const detail = await renderDetailFromTemplate(env, d, slug, launchNo, others);
 
   // 2. launches.json (matches the pipeline schema)
   const rev = revenueOf(d);
