@@ -1933,5 +1933,123 @@
     "https://www.startupfinder.co/posts/how-a-22-year-old-built-a-160kmo-fitness-app-ov09"
    ]
   }
+ },
+ {
+  "launch_no": 72,
+  "name": "Snag",
+  "slug": "snag",
+  "tagline": "Why pay for something when you can get it for free?",
+  "url": "https://launch.arr.club/launches/snag/",
+  "website": "https://snagapp.com",
+  "logo": "/logos/snag.png",
+  "revenue": "$30,000",
+  "revenue_metric": "MRR",
+  "founder": "Benjamin Chen",
+  "category": "Consumer Apps",
+  "pricing": "Freemium (in-app subscriptions)",
+  "launched": "2026-10-14",
+  "source": "https://www.starterstory.com/snag",
+  "source_label": "Starter Story founder interview (Sep 2026)",
+  "revenue_history": [
+   {
+    "date": "2026-09-24",
+    "revenue": "$30,000",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Built 45+ apps in the past year; launched Snag with his 10x Studio team about four months before the interview (~May 2026)",
+    "Went from $0 to $30K MRR in under four months: 100,000+ authenticated users, 9,000 conversions, $80,000+ total proceeds, ~3,300 App Store ratings",
+    "Distribution engine: UGC creator campaigns at scale — interview and filter creators, keep the ~10% with virality, put winners on a monthly retainer plus CPM, then turn the best creatives into Meta ads",
+    "Economics per creative: one video hit 240,000 views; typically $1,000–$2,000 in subscription profit per 100,000 views",
+    "Build system: reverse-engineer the value proposition first, Figma-wireframe it, then AI-code the app (Cursor + Cloud Code) — a working app in about four to five hours"
+   ],
+   "sources": [
+    "https://www.starterstory.com/snag",
+    "https://www.starterstory.com/snag",
+    "https://www.starterstory.com/snag",
+    "https://www.starterstory.com/snag",
+    "https://www.starterstory.com/snag"
+   ]
+  }
+ },
+ {
+  "launch_no": 73,
+  "name": "GainFrame",
+  "slug": "gainframe",
+  "tagline": "Progress photos that explain what changed.",
+  "url": "https://launch.arr.club/launches/gainframe/",
+  "website": "https://gainframe.app",
+  "logo": "/logos/gainframe.png",
+  "revenue": "$2,354.65",
+  "revenue_metric": "MRR",
+  "founder": "Michael Rode",
+  "category": "Health & Fitness",
+  "pricing": "Freemium (Pro from $5.99/mo)",
+  "launched": "2026-10-14",
+  "source": "https://gainframe.app/blog/free-tools-app-growth/",
+  "source_label": "Founder blog (Sep 15, 2026)",
+  "revenue_history": [
+   {
+    "date": "2026-09-15",
+    "revenue": "$2,354.65",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Free web tools bring ~46% of the site's search traffic: 9,923 of 21,645 Google clicks in the latest 28-day period (Aug 12–Sep 8, 2026)",
+    "App Store click events from tool pages grew 158% — from 100 to 258 across two consecutive 28-day periods",
+    "Sitewide Google clicks grew 7.5x across three 28-day periods (2,871 to 21,645); mid-September saw 1,477–1,598 clicks per day",
+    "Builds in public with monthly SEO/revenue updates; MRR was stalling around $2,000 five days before the Sep 15 post, then rose to $2,354.65"
+   ],
+   "sources": [
+    "https://gainframe.app/blog/free-tools-app-growth/",
+    "https://gainframe.app/blog/free-tools-app-growth/",
+    "https://gainframe.app/blog/free-tools-app-growth/",
+    "https://gainframe.app/blog/free-tools-app-growth/"
+   ]
+  }
+ },
+ {
+  "launch_no": 74,
+  "name": "Personal Best",
+  "slug": "personal-best",
+  "tagline": "The workout tracker for iPhone, iPad, and Apple Watch.",
+  "url": "https://launch.arr.club/launches/personal-best/",
+  "website": "https://getpersonalbest.com",
+  "logo": "/logos/personal-best.png",
+  "revenue": "~$5K",
+  "revenue_metric": "MRR",
+  "founder": "Shaun Donnelly",
+  "category": "Health & Fitness",
+  "pricing": "Freemium (Pro subscriptions)",
+  "launched": "2026-10-14",
+  "source": "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
+  "source_label": "Founder Indie Hackers interview (Sep 2026)",
+  "revenue_history": [
+   {
+    "date": "2026-10-06",
+    "revenue": "~$5K",
+    "note": "Launch · Founder-reported"
+   }
+  ],
+  "growth_story": {
+   "facts": [
+    "Started May 2020 as a ~5-day hobby project during the COVID lockdowns — a quick v1.0 he kept improving because he enjoyed building it",
+    "Grew to 500,000+ downloads and ~50,000 monthly active users; featured on the App Store multiple times; made a cameo in the WWDC 2026 keynote",
+    "Almost no paid marketing — purely organic growth that picked up once Apple began featuring the app",
+    "No server-side component: the app runs entirely on the phone, so every subscription is almost 100% profit with virtually no marginal cost",
+    "Product-led growth via workout image-sharing — turn workouts into editorial-quality images to post on social"
+   ],
+   "sources": [
+    "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
+    "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
+    "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
+    "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
+    "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1"
+   ]
+  }
  }
 ]
