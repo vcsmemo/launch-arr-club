@@ -20,7 +20,7 @@
 <header class="site-header">
   <nav class="nav">
     <a class="brand" href="/">Milestone<span>Wins</span></a>
-    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/vs/">Comparisons</a><a href="/stories/">Stories</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
     <div class="nav-auth" id="authSlot"></div>
   </nav>
 </header>
@@ -83,6 +83,11 @@
   <section id="stories">
     <h2 class="section-title"><span class="dot"></span>Founder stories <a class="view-all" href="/stories/">View all &rsaquo;</a></h2>
     <div class="seo-launches" id="storyPreview"></div>
+  </section>
+
+  <section id="browse-cats">
+    <h2 class="section-title"><span class="dot"></span>Browse by category <a class="view-all" href="/categories/">View all &rsaquo;</a></h2>
+    <div class="seo-launches" id="catPreview"></div>
   </section>
 
   <section id="leaderboard">
@@ -158,7 +163,7 @@
 </main>
 <footer class="site-footer">
   <div class="footer-cols">
-    <div class="fcol"><h5>Discover</h5><a href="/#celebrations">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/#leaderboard">Leaderboard</a></div>
+    <div class="fcol"><h5>Discover</h5><a href="/#celebrations">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/#leaderboard">Leaderboard</a><a href="/stories/">Founder stories</a><a href="/categories/">Categories</a><a href="/milestones/">Milestones</a><a href="/vs/">Comparisons</a></div>
     <div class="fcol"><h5>Alternatives</h5><a href="/alternatives/product-hunt/">Product Hunt alternative</a><a href="/alternatives/faslaunch/">FasLaunch alternative</a></div>
     <div class="fcol"><h5>Launch</h5><a href="/launch-your-startup/">Launch your startup</a><a href="/launch-your-ai-tool/">Launch your AI tool</a><a href="/launch-your-saas/">Launch your SaaS</a></div>
     <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a></div>
@@ -181,6 +186,21 @@
     }).join('<span class="ticker-sep">·</span>');
     ticker.innerHTML = html + '<span class="ticker-sep">·</span>' + html; /* duplicate for seamless loop */
   }).catch(function(){});
+})();
+/* Category preview on homepage */
+(function(){
+  var el = document.getElementById('catPreview');
+  if(!el) return;
+  var cats = [
+    {slug: 'marketing', name: 'Marketing', count: 19},
+    {slug: 'dev-tools', name: 'Dev Tools', count: 13},
+    {slug: 'video', name: 'Video', count: 6},
+    {slug: 'productivity', name: 'Productivity', count: 5},
+    {slug: 'seo', name: 'SEO', count: 5}
+  ];
+  el.innerHTML = cats.map(function(c){
+    return '<a class="launch-card" href="/categories/' + c.slug + '/"><div class="lc-main"><h3>' + c.name + '</h3><p class="lc-rev">' + c.count + ' products ranked by revenue</p></div></a>';
+  }).join('');
 })();
 /* Story preview on homepage (latest 3) */
 (function(){
