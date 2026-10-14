@@ -51,6 +51,14 @@
   .btn-approve:hover { background: var(--accent-dark); }
   .btn-approve:disabled { opacity: 0.5; cursor: wait; }
   .btn-reject { background: #fff; color: #991b1b; border: 1.5px solid #fecaca; border-radius: var(--radius); padding: 0.55rem 1.2rem; font-weight: 600; cursor: pointer; font-size: 0.9rem; font-family: var(--font); }
+  .btn-warn { background: #fffbeb; color: #92400e; border: 1.5px solid #fde68a; border-radius: var(--radius); padding: 0.55rem 1.2rem; font-weight: 600; cursor: pointer; font-size: 0.9rem; font-family: var(--font); }
+  .btn-warn:hover { background: #fef3c7; }
+  .btn-warn:disabled { opacity: 0.5; cursor: wait; }
+  .needsinfo-dialog { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 100; }
+  .needsinfo-box { background: #fff; border-radius: 12px; padding: 1.5rem; max-width: 420px; width: 90%; }
+  .needsinfo-box h3 { margin: 0 0 1rem; }
+  .needsinfo-box label { display: block; padding: 0.4rem 0; font-size: 0.92rem; cursor: pointer; }
+  .needsinfo-box .dialog-actions { display: flex; gap: 0.6rem; margin-top: 1.2rem; justify-content: flex-end; }
   .btn-reject:hover { background: #fef2f2; }
   .btn-reject:disabled { opacity: 0.5; cursor: wait; }
   .empty { text-align: center; color: var(--text-muted); padding: 4rem 0; }
@@ -107,6 +115,7 @@
       if (r.status === 401){ localStorage.removeItem(LS_KEY); showGate('Wrong password, try again.'); throw new Error('auth'); }
       return r.json().then(function(j){ return { status: r.status, body: j }; });
     });
+
   }
   var QS = ['Who is it for?','What problem does it solve?','What job does it do?','How does it solve it?','What makes it different?'];
   function badgePill(item){
@@ -160,6 +169,7 @@
         ? '<span class="sub-when">Manual for now: append to <code>revenue_history</code> in launches.json, then Reject to archive.</span>' +
           '<button class="btn-reject" data-act="reject" type="button">Reject &amp; archive</button>'
         : '<button class="btn-reject" data-act="reject" type="button">Reject</button>' +
+          '<button class="btn-warn" data-act="needsinfo" type="button">✉ Request info</button>' +
           '<button class="btn-approve" data-act="approve" type="button">✓ Approve &amp; publish</button>';
       return '<div class="sub-card" data-i="' + i + '">' +
         '<div class="sub-top">' +
@@ -202,6 +212,7 @@
     var item = items[parseInt(card.getAttribute('data-i'), 10)];
     if (!item) return;
     var act = btn.getAttribute('data-act');
+    if (act === 'needsinfo') { showNeedsInfoDialog(item, card, btn); return; }
     var label = act === 'approve' ? 'Approve and publish "' + item.data.name + '" to the homepage?' : 'Reject "' + item.data.name + '"? (moves to rejected archive)';
     if (!confirm(label)) return;
     btn.disabled = true;
@@ -240,6 +251,42 @@
   document.getElementById('tokenInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') unlock(); });
   if (token()) load(); else showGate('');
 })();
+
+  /* Needs-info dialog: pick missing fields, send email via worker */
+  var NEEDSINFO_FIELDS = ['Product tagline', 'Logo', 'Founder name', 'Revenue number', 'Revenue proof screenshot', 'Product screenshots', 'Website URL', 'Pricing info'];
+  function showNeedsInfoDialog(item, card, btn){
+    var d = item.data || {};
+    var dialog = document.createElement('div');
+    dialog.className = 'needsinfo-dialog';
+    var boxes = NEEDSINFO_FIELDS.map(function(f){
+      return '<label><input type="checkbox" value="' + esc(f) + '"> ' + esc(f) + '</label>';
+    }).join('');
+    dialog.innerHTML = '<div class="needsinfo-box"><h3>What\u2019s missing for "' + esc(d.name || '') + '"?</h3>' + boxes +
+      '<div class="dialog-actions"><button class="btn-reject" data-close type="button">Cancel</button>' +
+      '<button class="btn-warn" data-send type="button">\u2709 Send request</button></div></div>';
+    document.body.appendChild(dialog);
+    dialog.querySelector('[data-close]').addEventListener('click', function(){ dialog.remove(); });
+    dialog.addEventListener('click', function(e){ if (e.target === dialog) dialog.remove(); });
+    dialog.querySelector('[data-send]').addEventListener('click', function(){
+      var missing = Array.prototype.map.call(dialog.querySelectorAll('input:checked'), function(c){ return c.value; });
+      if (!missing.length) { alert('Pick at least one missing field.'); return; }
+      this.disabled = true; this.textContent = 'Sending…';
+      var sendBtn = this;
+      api('/review/needs-info', 'POST', { key: item.key, missing: missing }).then(function(res){
+        if (res.status === 200 && res.body.ok){
+          dialog.remove();
+          card.style.opacity = '0.4';
+          card.querySelector('.sub-actions').innerHTML = '<span class="sub-when">\u2709 Info requested: ' + esc(missing.join(', ')) + '</span>';
+        } else {
+          alert('Failed: ' + (res.body.error || res.status));
+          sendBtn.disabled = false; sendBtn.textContent = '\u2709 Send request';
+        }
+      }).catch(function(err){
+        alert('Failed: ' + err.message);
+        sendBtn.disabled = false; sendBtn.textContent = '\u2709 Send request';
+      });
+    });
+  }
 </script>
 </body>
 </html>
