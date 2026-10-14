@@ -584,7 +584,13 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
   rep('<title>Vibe3D — 3D Render AI for Architecture & Interior Design | MilestoneWins</title>',
       '<title>' + esc(name) + ' — ' + esc(tagline) + ' | MilestoneWins</title>');
   t = t.replace(/<meta name="description" content="[^"]*">/,
-      '<meta name="description" content="' + esc(metaDesc) + '">');
+      '<meta name="description" content="' + esc(metaDesc) + '">\n'
+      + '<meta property="og:title" content="' + esc(name) + ' — ' + esc(tagline) + ' | MilestoneWins">\n'
+      + '<meta property="og:description" content="' + esc(metaDesc) + '">\n'
+      + '<meta property="og:url" content="https://milestonewins.com/launches/' + slug + '/">\n'
+      + '<meta property="og:type" content="website">\n'
+      + (logo ? '<meta property="og:image" content="' + esc(logo) + '">\n' : '')
+      + '<meta name="twitter:card" content="summary">');
   rep('https://milestonewins.com/launches/vibe3d/',
       'https://milestonewins.com/launches/' + slug + '/');
   // JSON-LD
@@ -1278,6 +1284,34 @@ export default {
         } catch (e) {
           return json({ error: 'needs-info failed: ' + (e && e.message ? e.message : String(e)) }, 500);
         }
+      }
+      // Manual resend of the "you're live" email for an already-published slug
+      if (request.method === 'POST' && url.pathname === '/review/resend-live-email') {
+        if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
+        let body;
+        try { body = await request.json(); } catch (e) { return json({ error: 'invalid json' }, 400); }
+        const slug = String(body.slug || '').replace(/[^a-z0-9-]/g, '').slice(0, 60);
+        const to = String(body.to || '').trim();
+        if (!slug || !to || !to.includes('@')) return json({ error: 'slug and to required' }, 400);
+        // Find product name from launches.json on GitHub
+        let pname = slug;
+        try {
+          const lf = await ghFileSha(env, 'launches.json');
+          const idx = JSON.parse(lf.text);
+          const found = (Array.isArray(idx) ? idx : idx.launches || []).find(function(e){ return e.slug === slug; });
+          if (found && found.name) pname = found.name;
+        } catch (e) {}
+        const liveUrl = 'https://milestonewins.com/launches/' + slug + '/';
+        const r = await sendEmail(env, to,
+          'You\u2019re live on MilestoneWins 🚀',
+          emailShell('You\u2019re live on MilestoneWins 🚀',
+            '<p>Hi there,</p>'
+            + '<p>Your <strong>' + esc(pname) + '</strong> is live:</p>'
+            + '<p><a href="' + liveUrl + '" style="color:#0d9488;font-weight:600;">' + liveUrl + '</a></p>'
+            + '<p>Your page includes a celebration card — open the page, hit \u201cDownload celebration image\u201d, and share it anywhere.</p>'
+            + '<p>When you hit your next milestone, submit it and we\u2019ll celebrate again.</p>'
+            + '<p>— The MilestoneWins team</p>'));
+        return json({ ok: r.ok, error: r.error || null });
       }
 
       return json({ error: 'unknown review action' }, 404);
