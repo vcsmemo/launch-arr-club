@@ -771,3 +771,13 @@ a.x-link:hover { color: var(--accent-hover); }
 .maker-name a{color:var(--text);text-decoration:underline;text-underline-offset:2px}
 .maker-name a:hover{color:var(--accent)}
 .crumb-views{font-size:.8rem;color:var(--text-secondary);margin-left:.6rem}
+
+/* Milestone ticker */
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--card);padding:.55rem 0;margin:0}
+.ticker{display:inline-flex;gap:1.2rem;white-space:nowrap;animation:ticker-scroll 40s linear infinite;will-change:transform}
+.ticker:hover{animation-play-state:paused}
+@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{font-size:.85rem;color:var(--text-secondary)}
+.ticker-item b{color:var(--text)}
+.ticker-sep{color:var(--border)}
+.lb-countdown{font-size:.78rem;font-weight:500;color:var(--text-secondary);margin-left:.4rem}

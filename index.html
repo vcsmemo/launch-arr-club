@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://milestonewins.com/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261014b">
+<link rel="stylesheet" href="/style.css?v=20261014c">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"MilestoneWins","url":"https://milestonewins.com/","description":"The launchpad for early-stage AI startups. Hit a milestone and we celebrate it with a shareable card."}
 </script>
@@ -36,6 +36,8 @@
       <a class="btn" href="/submit.html">🎉 Celebrate my milestone</a>
     </div>
   </section>
+
+  <div class="ticker-wrap" aria-hidden="true"><div class="ticker" id="milestoneTicker"></div></div>
 
   <section id="celebrations">
     <h2 class="section-title"><span class="dot"></span>Milestones we&rsquo;re celebrating</h2>
@@ -79,7 +81,7 @@
   </script>
 
   <section id="leaderboard">
-    <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span></h2>
+    <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span> <span class="lb-countdown" id="lbCountdown"></span></h2>
     <div class="lb-tabs" style="margin-bottom:12px;">
       <button class="lb-tab active" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">Top revenue</button><button class="lb-tab" data-tab="week" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">This week</button><button class="lb-tab" data-tab="newest" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">Newest</button><button class="lb-tab" data-tab="discover" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">🎲 Discover</button>
     </div>
@@ -161,6 +163,33 @@
   </div>
 </footer>
 <script>
+/* Milestone ticker: recent revenue milestones scrolling */
+(function(){
+  var ticker = document.getElementById('milestoneTicker');
+  if(!ticker) return;
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  fetch('/launches.json').then(function(r){ return r.json(); }).then(function(j){
+    var items = j.filter(function(p){ return p.revenue; }).slice(0, 12);
+    if(!items.length) return;
+    var html = items.map(function(p){
+      return '<span class="ticker-item">🎉 <b>' + esc(p.name) + '</b> hit ' + esc(p.revenue) + '</span>';
+    }).join('<span class="ticker-sep">·</span>');
+    ticker.innerHTML = html + '<span class="ticker-sep">·</span>' + html; /* duplicate for seamless loop */
+  }).catch(function(){});
+})();
+/* Leaderboard refresh countdown (daily pipeline publishes ~09:45) */
+(function(){
+  var el = document.getElementById('lbCountdown');
+  if(!el) return;
+  function tick(){
+    var now = new Date();
+    var next = new Date(now); next.setHours(9, 45, 0, 0);
+    if(next <= now) next.setDate(next.getDate() + 1);
+    var ms = next - now, h = Math.floor(ms/36e5), m = Math.floor(ms%36e5/6e4);
+    el.textContent = '· updates in ' + h + 'h ' + m + 'm';
+  }
+  tick(); setInterval(tick, 60000);
+})();
 /* Hero search over launches.json */
 (function(){
   var input = document.getElementById('heroSearch'), drop = document.getElementById('searchDrop'), data = [];
