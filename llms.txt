@@ -5,46 +5,46 @@
 
 ## Key pages
 
-- Launch board: https://launch.arr.club/
-- Submit your product: https://launch.arr.club/submit.html
-- Weekly archive: https://launch.arr.club/2026/w40/
-- Revenue leaderboard: https://launch.arr.club/leaderboard/
-- Product Hunt alternative: https://launch.arr.club/alternatives/product-hunt/
-- FasLaunch alternative: https://launch.arr.club/alternatives/faslaunch/
-- Launch your startup: https://launch.arr.club/launch-your-startup/
-- Launch your AI tool: https://launch.arr.club/launch-your-ai-tool/
-- Launch your SaaS: https://launch.arr.club/launch-your-saas/
-- Privacy: https://launch.arr.club/privacy.html
+- Launch board: https://milestonewins.com/
+- Submit your product: https://milestonewins.com/submit.html
+- Weekly archive: https://milestonewins.com/2026/w40/
+- Revenue leaderboard: https://milestonewins.com/leaderboard/
+- Product Hunt alternative: https://milestonewins.com/alternatives/product-hunt/
+- FasLaunch alternative: https://milestonewins.com/alternatives/faslaunch/
+- Launch your startup: https://milestonewins.com/launch-your-startup/
+- Launch your AI tool: https://milestonewins.com/launch-your-ai-tool/
+- Launch your SaaS: https://milestonewins.com/launch-your-saas/
+- Privacy: https://milestonewins.com/privacy.html
 
 ## Launches
-- Ace (#025): Meet Ace, an agentic teammate for work — https://launch.arr.club/launches/ace-automat/
-- Campfire (#026): The shared workspace for humans and coding agents — https://launch.arr.club/launches/campfire/
-- GitBot (#027): Build bots on the coding agent you already use — https://launch.arr.club/launches/gitbot/
-- Squint (#028): Drag a box on your screen and ask AI about it — https://launch.arr.club/launches/squint/
-- getcta (#029): An AI teleprompter that lives under your MacBook notch — https://launch.arr.club/launches/getcta/
+- Ace (#025): Meet Ace, an agentic teammate for work — https://milestonewins.com/launches/ace-automat/
+- Campfire (#026): The shared workspace for humans and coding agents — https://milestonewins.com/launches/campfire/
+- GitBot (#027): Build bots on the coding agent you already use — https://milestonewins.com/launches/gitbot/
+- Squint (#028): Drag a box on your screen and ask AI about it — https://milestonewins.com/launches/squint/
+- getcta (#029): An AI teleprompter that lives under your MacBook notch — https://milestonewins.com/launches/getcta/
 
-- Rezi (AI Writing): The #1 AI Resume Builder – Forbes' Top Pick. Trusted by 4.5M https://launch.arr.club/launches/rezi/
-- Postiz (Marketing): Run your social media on autopilot with AI agents https://launch.arr.club/launches/postiz/
-- Supliful (E-commerce): Build a high-performance wellness brand, backed by Supliful https://launch.arr.club/launches/supliful/
-- Codédex (Education): Start Your Coding Adventure https://launch.arr.club/launches/codedex/
-- LLM Gateway (Dev Tools): Unified API for Multiple LLM Providers https://launch.arr.club/launches/llm-gateway/
-- Vid.AI (Video): Start generating monetizable AI videos on autopilot https://launch.arr.club/launches/vid-ai/
-- AEO Engine (Marketing): The AI SEO agency that makes you the answer in AI Overviews, ChatGPT, and Google. https://launch.arr.club/launches/aeo-engine/
-- DataExpert (Education): Master data engineering and AI like a big tech engineer https://launch.arr.club/launches/dataexpert/
-- SEOBOT (Marketing): Fully autonomous SEO robot with AI agents for busy founders https://launch.arr.club/launches/seobot/
-- Indexsy (Marketing): We Build, Acquire & Scale Digital Assets https://launch.arr.club/launches/indexsy/
-- Web3Forms (#015): Contact Form API for Modern Websites — https://launch.arr.club/launches/web3forms/
-- AI Interview Copilot (Education): AI Interview Assistant for real-time support https://launch.arr.club/launches/ai-interview-copilot/
-- Based Labs AI (Video): Turn any idea into stunning images and cinematic video https://launch.arr.club/launches/based-labs-ai/
-- Capgo (#018): Capacitor plugin to update your app without sending to store — https://launch.arr.club/launches/capgo/
-- Liinks (#019): Link in bio with Instagram auto-posting and analytics — https://launch.arr.club/launches/liinks/
-- ConvertLabs (#020): Run your home service business from one screen — https://launch.arr.club/launches/convertlabs/
-- SuperX (#021): X growth tool: scheduling, analytics, AI content — https://launch.arr.club/launches/superx/
-- Comp AI (Dev Tools): The AI-first compliance platform https://launch.arr.club/launches/comp-ai/
-- MyPlots (Entertainment): Discover & host unforgettable events https://launch.arr.club/launches/myplots/
-- SalesRobot (Sales): Message 100s of people on LinkedIn and cold email. Every week. Automatically. https://launch.arr.club/launches/salesrobot/
-- VidSizer (Video): Compress any video to any exact size, 100% locally in browser. https://launch.arr.club/launches/vidsizer/
+- Rezi (AI Writing): The #1 AI Resume Builder – Forbes' Top Pick. Trusted by 4.5M https://milestonewins.com/launches/rezi/
+- Postiz (Marketing): Run your social media on autopilot with AI agents https://milestonewins.com/launches/postiz/
+- Supliful (E-commerce): Build a high-performance wellness brand, backed by Supliful https://milestonewins.com/launches/supliful/
+- Codédex (Education): Start Your Coding Adventure https://milestonewins.com/launches/codedex/
+- LLM Gateway (Dev Tools): Unified API for Multiple LLM Providers https://milestonewins.com/launches/llm-gateway/
+- Vid.AI (Video): Start generating monetizable AI videos on autopilot https://milestonewins.com/launches/vid-ai/
+- AEO Engine (Marketing): The AI SEO agency that makes you the answer in AI Overviews, ChatGPT, and Google. https://milestonewins.com/launches/aeo-engine/
+- DataExpert (Education): Master data engineering and AI like a big tech engineer https://milestonewins.com/launches/dataexpert/
+- SEOBOT (Marketing): Fully autonomous SEO robot with AI agents for busy founders https://milestonewins.com/launches/seobot/
+- Indexsy (Marketing): We Build, Acquire & Scale Digital Assets https://milestonewins.com/launches/indexsy/
+- Web3Forms (#015): Contact Form API for Modern Websites — https://milestonewins.com/launches/web3forms/
+- AI Interview Copilot (Education): AI Interview Assistant for real-time support https://milestonewins.com/launches/ai-interview-copilot/
+- Based Labs AI (Video): Turn any idea into stunning images and cinematic video https://milestonewins.com/launches/based-labs-ai/
+- Capgo (#018): Capacitor plugin to update your app without sending to store — https://milestonewins.com/launches/capgo/
+- Liinks (#019): Link in bio with Instagram auto-posting and analytics — https://milestonewins.com/launches/liinks/
+- ConvertLabs (#020): Run your home service business from one screen — https://milestonewins.com/launches/convertlabs/
+- SuperX (#021): X growth tool: scheduling, analytics, AI content — https://milestonewins.com/launches/superx/
+- Comp AI (Dev Tools): The AI-first compliance platform https://milestonewins.com/launches/comp-ai/
+- MyPlots (Entertainment): Discover & host unforgettable events https://milestonewins.com/launches/myplots/
+- SalesRobot (Sales): Message 100s of people on LinkedIn and cold email. Every week. Automatically. https://milestonewins.com/launches/salesrobot/
+- VidSizer (Video): Compress any video to any exact size, 100% locally in browser. https://milestonewins.com/launches/vidsizer/
 ## Submit
 
-Founders submit at https://launch.arr.club/submit.html — badge-verified launches are free and dofollow,
+Founders submit at https://milestonewins.com/submit.html — badge-verified launches are free and dofollow,
 instant listing is $5 one-time. Sharing revenue is optional; shared revenue is labeled Founder-reported.

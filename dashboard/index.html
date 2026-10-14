@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Founder Dashboard — MilestoneWins</title>
-<meta name="description" content="Track your product's performance on launch.arr.club: page views, outbound clicks, badge status.">
+<meta name="description" content="Track your product's performance on milestonewins.com: page views, outbound clicks, badge status.">
 <link rel="icon" type="image/png" href="/favicon-64.png">
 <link rel="stylesheet" href="/style.css?v=20261006g">
 <style>
@@ -37,7 +37,7 @@
 <main>
   <div class="dash-hero">
     <h1>📊 Founder Dashboard</h1>
-    <p>Track how your product is performing on launch.arr.club</p>
+    <p>Track how your product is performing on milestonewins.com</p>
   </div>
 
   <div class="dash-select">
@@ -148,10 +148,10 @@ function loadDashboard() {
     const num = product.launch_no ? '#' + String(product.launch_no).padStart(3, '0') : '#025';
     const hasRev = !!product.revenue;
     const badgeUrl = hasRev
-      ? 'https://launch.arr.club/badges/revenue-light.svg?v=2'
-      : 'https://launch.arr.club/badges/numbered-light.svg?v=2';
-    const altText = hasRev ? product.revenue + ' tracked on launch.arr.club' : num + ' on launch.arr.club';
-    const productUrl = 'https://launch.arr.club' + product.url;
+      ? 'https://milestonewins.com/badges/revenue-light.svg?v=2'
+      : 'https://milestonewins.com/badges/numbered-light.svg?v=2';
+    const altText = hasRev ? product.revenue + ' tracked on milestonewins.com' : num + ' on milestonewins.com';
+    const productUrl = 'https://milestonewins.com' + product.url;
 
     document.getElementById('badgePreview').innerHTML =
       '<a href="' + productUrl + '"><img src="' + badgeUrl + '" alt="' + altText + '" style="max-width: 100%;"></a>';

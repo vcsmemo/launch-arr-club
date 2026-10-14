@@ -1,4 +1,4 @@
-/* launch.arr.club image upload + submissions inbox + review console Worker
+/* milestonewins.com image upload + submissions inbox + review console Worker
  * Routes:
  *   POST /upload          multipart form, field "file" -> stores in R2, returns {url}
  *   POST /submit           JSON submission -> stores in R2 under submissions/, returns {ok:true}
@@ -11,7 +11,7 @@
  * Secrets required for review: REVIEW_TOKEN, GITHUB_TOKEN (repo contents read+write)
  */
 
-const ALLOW_ORIGIN = 'https://launch.arr.club';
+const ALLOW_ORIGIN = 'https://milestonewins.com';
 const REPO = 'vcsmemo/launch-arr-club';
 const MAX_BYTES = 5 * 1024 * 1024;
 const MAX_SUBMIT_BYTES = 24000;
@@ -156,7 +156,7 @@ async function checkBadge(siteUrl) {
     clearTimeout(timer);
     if (!r.ok) return null;
     const html = await r.text();
-    return html.indexOf('launch.arr.club/badges/') !== -1;
+    return html.indexOf('milestonewins.com/badges/') !== -1;
   } catch (e) {
     return null;
   }
@@ -466,7 +466,7 @@ const CANVAS_SCRIPT_B = `
         ctx.fillText(fn, sx, ly + 96);
       }
       ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.font = '600 26px system-ui, sans-serif';
-      ctx.fillText('launch.arr.club', W - 60, H - 46); ctx.textAlign = 'left';
+      ctx.fillText('milestonewins.com', W - 60, H - 46); ctx.textAlign = 'left';
       cv.toBlob(function(blob){
         if(!blob) return;
         var a = document.createElement('a');
@@ -662,7 +662,7 @@ function detailPage(d, slug, launchNo, others, weekPath) {
 '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
 '<title>' + esc(d.name) + ' — ' + esc(d.tagline || '') + ' | MilestoneWins</title>\n' +
 '<meta name="description" content="' + esc(metaDesc) + '">\n' +
-'<link rel="canonical" href="https://launch.arr.club/launches/' + slug + '/">\n' +
+'<link rel="canonical" href="https://milestonewins.com/launches/' + slug + '/">\n' +
 '<link rel="icon" type="image/png" href="/favicon-64.png">\n' +
 '<link rel="stylesheet" href="/style.css?v=20261006d">\n' +
 '<script type="application/ld+json">\n' +
@@ -670,7 +670,7 @@ function detailPage(d, slug, launchNo, others, weekPath) {
 '"name":' + JSON.stringify(d.name) + ',"applicationCategory":"WebApplication","operatingSystem":"Web",\n' +
 '"description":' + JSON.stringify(d.tagline || '') + ',\n' +
 '"offers":{"@type":"Offer","price":' + JSON.stringify(priceNum) + ',"priceCurrency":"USD"},\n' +
-'"url":"https://launch.arr.club/launches/' + slug + '/"}\n' +
+'"url":"https://milestonewins.com/launches/' + slug + '/"}\n' +
 '</script>\n' +
 '</head>\n' +
 '<body>\n' +
@@ -785,7 +785,7 @@ async function handleApprove(request, env) {
 
   // launch index + numbers (feed order == launches.json order, newest first)
   const idx = idx0;
-  const selfUrl = 'https://launch.arr.club/launches/' + slug + '/';
+  const selfUrl = 'https://milestonewins.com/launches/' + slug + '/';
   const selfRev = revDollars(typeof d.revenue === 'string' ? d.revenue : (d.revenue && d.revenue.amount));
   const others = idx
     .filter(function (e) { return e.url !== selfUrl; })
@@ -819,7 +819,7 @@ async function handleApprove(request, env) {
     name: d.name,
     slug: slug,
     tagline: d.tagline || '',
-    url: 'https://launch.arr.club/launches/' + slug + '/',
+    url: 'https://milestonewins.com/launches/' + slug + '/',
     website: d.url,
     logo: d.logo || null,
     revenue: revStr,
@@ -847,7 +847,7 @@ async function handleApprove(request, env) {
   );
   sitemap = sitemap.replace(
     '</urlset>',
-    '  <url><loc>https://launch.arr.club/launches/' + slug + '/</loc><lastmod>' + today + '</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n</urlset>'
+    '  <url><loc>https://milestonewins.com/launches/' + slug + '/</loc><lastmod>' + today + '</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n</urlset>'
   );
 
   // 4. weekly archive (only when this week's page already exists)
@@ -882,7 +882,7 @@ async function handleApprove(request, env) {
   });
   await env.IMAGES.delete(key);
 
-  return json({ ok: true, url: 'https://launch.arr.club/launches/' + slug + '/', slug: slug, launch_no: launchNo });
+  return json({ ok: true, url: 'https://milestonewins.com/launches/' + slug + '/', slug: slug, launch_no: launchNo });
 }
 
 async function handleReject(request, env) {
@@ -949,7 +949,7 @@ async function badgeSvg(slug, style, theme, env) {
       + rocket
       + '<rect x="42" y="9" width="' + revWidth + '" height="18" rx="9" fill="' + pillBg + '"' + pillBorder + '/>'
       + '<text x="' + (42 + revWidth / 2) + '" y="22" text-anchor="middle" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="11" font-weight="700" fill="' + pillText + '">' + escXml(rev) + '</text>'
-      + '<text x="' + (42 + revWidth + 8) + '" y="22.5" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="' + textColor + '">tracked on <tspan fill="' + accent + '">launch.arr.club</tspan></text>'
+      + '<text x="' + (42 + revWidth + 8) + '" y="22.5" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="' + textColor + '">tracked on <tspan fill="' + accent + '">milestonewins.com</tspan></text>'
       + '</svg>';
   } else {
     // numbered (default) — use launch number from product or #025 fallback
@@ -968,7 +968,7 @@ async function badgeSvg(slug, style, theme, env) {
       + rocket
       + '<rect x="42" y="9" width="' + numWidth + '" height="18" rx="9" fill="' + pillBg + '"' + pillBorder + '/>'
       + '<text x="' + (42 + numWidth / 2) + '" y="22" text-anchor="middle" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="11" font-weight="700" fill="' + pillText + '">' + escXml(num) + '</text>'
-      + '<text x="' + (42 + numWidth + 8) + '" y="22.5" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="' + textColor + '">on <tspan fill="' + accent + '">launch.arr.club</tspan></text>'
+      + '<text x="' + (42 + numWidth + 8) + '" y="22.5" font-family="Inter,-apple-system,\'Segoe UI\',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="' + textColor + '">on <tspan fill="' + accent + '">milestonewins.com</tspan></text>'
       + '</svg>';
   }
 

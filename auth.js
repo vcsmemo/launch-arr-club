@@ -1,4 +1,4 @@
-/* launch.arr.club shared Google sign-in state.
+/* milestonewins.com shared Google sign-in state.
  * Display-only: stores name/email/picture in localStorage so the profile
  * chip + dropdown show on every page. No backend auth decisions from this.
  * NOTE 2026-10-05: header sign-in hidden via CSS (.nav-auth) — nothing in the

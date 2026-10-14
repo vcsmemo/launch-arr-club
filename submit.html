@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Get your celebration card — MilestoneWins</title>
 <meta name="description" content="Share your revenue milestone on MilestoneWins and get a celebration card ready to post. Free to launch.">
-<link rel="canonical" href="https://launch.arr.club/submit.html">
+<link rel="canonical" href="https://milestonewins.com/submit.html">
 <link rel="icon" type="image/png" href="/favicon-64.png">
 <link rel="stylesheet" href="/style.css?v=20261006g">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -192,9 +192,9 @@
         <div class="badge-flow" id="badgeFlow">
           <h4>Step 1 · Pick a badge style</h4>
           <div class="badge-styles">
-            <div class="badge-opt" role="button" tabindex="0" aria-pressed="true" data-style="dark"><div class="swatch dark">↗ Featured on<br>launch.arr.club</div><div>Dark</div></div>
-            <div class="badge-opt" role="button" tabindex="0" aria-pressed="false" data-style="light"><div class="swatch light">↗ Featured on<br>launch.arr.club</div><div>Light</div></div>
-            <div class="badge-opt" role="button" tabindex="0" aria-pressed="false" data-style="teal"><div class="swatch teal">↗ Featured on<br>launch.arr.club</div><div>Teal</div></div>
+            <div class="badge-opt" role="button" tabindex="0" aria-pressed="true" data-style="dark"><div class="swatch dark">↗ Featured on<br>milestonewins.com</div><div>Dark</div></div>
+            <div class="badge-opt" role="button" tabindex="0" aria-pressed="false" data-style="light"><div class="swatch light">↗ Featured on<br>milestonewins.com</div><div>Light</div></div>
+            <div class="badge-opt" role="button" tabindex="0" aria-pressed="false" data-style="teal"><div class="swatch teal">↗ Featured on<br>milestonewins.com</div><div>Teal</div></div>
           </div>
           <h4>Step 2 · Add it to your homepage</h4>
           <p style="font-size:0.88rem;color:#4a5568">Paste it on the page served at <strong id="badgeDomain">yourwebsite.com</strong> (the homepage), for example in the footer. Keep the link exactly as it is.</p>
@@ -206,7 +206,7 @@
           <div class="code-box" id="codeBox"></div>
           <div class="copy-row"><button type="button" class="mini-btn" id="copyCode">Copy code</button></div>
           <ul class="verify-rules">
-            <li>The link must point to launch.arr.club and must not be nofollow, sponsored or ugc.</li>
+            <li>The link must point to milestonewins.com and must not be nofollow, sponsored or ugc.</li>
             <li>Put it in the HTML of the page, not loaded later by JavaScript, and show it to every visitor.</li>
             <li>Keep it there. We check once a day, and a product whose badge is removed goes back to draft.</li>
           </ul>
@@ -245,7 +245,7 @@
 </main>
 <footer class="site-footer">
   <div class="footer-inner">
-    <span>© 2026 MilestoneWins · <a href="https://www.toolpilot.ai">Listed on ToolPilot</a> · <a target="_blank" href="https://goodaitools.com/ai/launch-arr"><img src="https://goodaitools.com/assets/images/badge.png" alt="Good AI Tools" style="height:20px;vertical-align:middle"></a> · <a href="https://fazier.com/launches/launch.arr.club" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width="120" alt="Fazier badge"></a></span>
+    <span>© 2026 MilestoneWins · <a href="https://www.toolpilot.ai">Listed on ToolPilot</a> · <a target="_blank" href="https://goodaitools.com/ai/launch-arr"><img src="https://goodaitools.com/assets/images/badge.png" alt="Good AI Tools" style="height:20px;vertical-align:middle"></a> · <a href="https://fazier.com/launches/milestonewins.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width="120" alt="Fazier badge"></a></span>
     <span><a href="/">Home</a> · <a href="/privacy">Privacy</a></span>
     
   </div>
@@ -309,9 +309,9 @@
   function code(){
     var d = domain();
     document.getElementById('badgeDomain').textContent = d;
-    if(tab === 'html') return '<a href="https://launch.arr.club/?ref=' + d + '" title="Featured on launch.arr.club">\n  <img src="https://launch.arr.club/badges/badge-' + style + '.svg"\n       alt="Featured on launch.arr.club" width="216" height="64">\n</a>';
-    if(tab === 'react') return '// Add this to your homepage footer component\n<a href={"https://launch.arr.club/?ref=' + d + '"}\n   title="Featured on launch.arr.club">\n  <img src="https://launch.arr.club/badges/badge-' + style + '.svg"\n       alt="Featured on launch.arr.club" width={216} height={64} />\n</a>';
-    return 'Add a "Featured on launch.arr.club" badge to my homepage footer.\nUse this exact HTML, keep the link as-is (no nofollow):\n\n<a href="https://launch.arr.club/?ref=' + d + '" title="Featured on launch.arr.club">\n  <img src="https://launch.arr.club/badges/badge-' + style + '.svg"\n       alt="Featured on launch.arr.club" width="216" height="64">\n</a>';
+    if(tab === 'html') return '<a href="https://milestonewins.com/?ref=' + d + '" title="Featured on milestonewins.com">\n  <img src="https://milestonewins.com/badges/badge-' + style + '.svg"\n       alt="Featured on milestonewins.com" width="216" height="64">\n</a>';
+    if(tab === 'react') return '// Add this to your homepage footer component\n<a href={"https://milestonewins.com/?ref=' + d + '"}\n   title="Featured on milestonewins.com">\n  <img src="https://milestonewins.com/badges/badge-' + style + '.svg"\n       alt="Featured on milestonewins.com" width={216} height={64} />\n</a>';
+    return 'Add a "Featured on milestonewins.com" badge to my homepage footer.\nUse this exact HTML, keep the link as-is (no nofollow):\n\n<a href="https://milestonewins.com/?ref=' + d + '" title="Featured on milestonewins.com">\n  <img src="https://milestonewins.com/badges/badge-' + style + '.svg"\n       alt="Featured on milestonewins.com" width="216" height="64">\n</a>';
   }
   function render(){ document.getElementById('codeBox').textContent = code(); }
   document.querySelectorAll('.badge-opt').forEach(function(o){

@@ -66,7 +66,7 @@
         <div class="mc-revenue" id="mcRev">$100k MRR</div>
         <div class="mc-product" id="mcProduct">Your Product</div>
         <div class="mc-growth" id="mcGrowth">2× growth in 6 months</div>
-        <div class="mc-footer"><span class="rocket">🚀</span> Tracked on launch.arr.club</div>
+        <div class="mc-footer"><span class="rocket">🚀</span> Tracked on milestonewins.com</div>
       </div>
     </div>
   </div>
@@ -74,7 +74,7 @@
   <div class="mile-actions">
     <a href="#" class="btn-share" id="shareX" target="_blank">Share on X</a>
     <button class="btn-download" onclick="downloadCard()">Download PNG</button>
-    <p style="font-size: 13px; color: #64748b; margin-top: 16px;">Every share drives traffic back to your launch.arr.club page.</p>
+    <p style="font-size: 13px; color: #64748b; margin-top: 16px;">Every share drives traffic back to your milestonewins.com page.</p>
   </div>
 </main>
 
@@ -136,8 +136,8 @@ function updateCard() {
   
   // Update X share link
   const slug = opt && opt.dataset.slug ? opt.dataset.slug : '';
-  const url = slug ? 'https://launch.arr.club/launches/' + slug + '/' : 'https://launch.arr.club/';
-  const text = encodeURIComponent('🚀 ' + name + ' just hit ' + rev + (growth ? ' (' + growth + ')' : '') + ' — tracked on launch.arr.club');
+  const url = slug ? 'https://milestonewins.com/launches/' + slug + '/' : 'https://milestonewins.com/';
+  const text = encodeURIComponent('🚀 ' + name + ' just hit ' + rev + (growth ? ' (' + growth + ')' : '') + ' — tracked on milestonewins.com');
   document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + encodeURIComponent(url);
 }
 
