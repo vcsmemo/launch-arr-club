@@ -618,7 +618,7 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
     rep('<span class="rh-sub">MRR · Founder-reported · <a href="https://instalker.org/erione_" target="_blank" rel="noopener">source ↗</a></span>',
         '<span class="rh-sub">' + esc(metric) + ' · Founder-reported · <a href="' + esc(website) + '" target="_blank" rel="noopener">source ↗</a></span>');
   } else {
-    rep('<div class="rh-value">$10k</div>',
+    rep('<div class="rh-value">$10k <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>',
         '<div class="rh-value rh-empty">Not disclosed</div>');
     rep('<span class="rh-sub">MRR · Founder-reported · <a href="https://instalker.org/erione_" target="_blank" rel="noopener">source ↗</a></span>',
         '<span class="rh-sub">Revenue not shared yet</span>');
