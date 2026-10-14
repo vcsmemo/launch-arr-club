@@ -359,14 +359,28 @@
   });
   var freeBtn = document.getElementById('launchFreeNoBtn'), freeHint = document.getElementById('freeHint');
   freeBtn.addEventListener('click', function(){
+    if(!window.__launchUser || !window.__launchIdToken){
+      freeHint.textContent = 'Please sign in with Google first (top of this page) — free launches are tied to your account.';
+      freeHint.className = 'verify-msg';
+      return;
+    }
     freeBtn.disabled = true;
-    postSubmission().then(function(){
+    postSubmission().then(function(j){
       freeBtn.textContent = '✓ Received';
-      freeHint.textContent = '✓ Received! We review every launch personally and publish within 24 hours.';
+      freeHint.textContent = '✓ Received! We review every launch personally and publish within 24 hours.' + (j && typeof j.free_left === 'number' ? ' (' + j.free_left + ' free ' + (j.free_left === 1 ? 'launch' : 'launches') + ' left)' : '');
       freeHint.className = 'verify-msg ok';
-    }).catch(function(){
+      refreshQuota();
+    }).catch(function(err){
       freeBtn.disabled = false;
-      alert('Could not send your submission — check your connection and try again.');
+      if(err && err.quota){
+        freeHint.textContent = "You've used your 2 free launches — the next one is $5 (paid plan above).";
+        freeHint.className = 'verify-msg';
+      } else if(err && err.auth){
+        freeHint.textContent = 'Sign-in expired — please sign in again and retry.';
+        freeHint.className = 'verify-msg';
+      } else {
+        alert('Could not send your submission — check your connection and try again.');
+      }
     });
   });
   /* Image uploads via Cloudflare Worker + R2 (dropzone: click or drag & drop) */
@@ -582,7 +596,8 @@
         best_channel: document.getElementById('f-best-channel').value,
         days_to_first_dollar: document.getElementById('f-days-dollar').value.trim()
       },
-      submitted_at: new Date().toISOString()
+      submitted_at: new Date().toISOString(),
+      id_token: window.__launchIdToken || ''
     };
   }
   function postSubmission(){
@@ -591,11 +606,30 @@
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(collectSubmission())
     }).then(function(r){
+      if(r.status === 402) throw { quota: true };
+      if(r.status === 401) throw { auth: true };
       if(!r.ok) throw new Error('submit failed');
       return r.json();
     }).then(function(j){
       if(!j.ok) throw new Error('submit failed');
+      return j;
     });
+  }
+  /* Free-plan quota display: real remaining count from the Worker */
+  function refreshQuota(){
+    var note = document.querySelector('.left-note');
+    if(!note) return;
+    if(!window.__launchIdToken){
+      note.textContent = 'Sign in to see your free launches';
+      return;
+    }
+    fetch(IMG_WORKER + '/quota?id_token=' + encodeURIComponent(window.__launchIdToken))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        if(j && typeof j.free_left === 'number'){
+          note.textContent = j.free_left + ' of 2 free launches left';
+        }
+      }).catch(function(){});
   }
 
   /* Payments: $5 instant launch (live) + $29 featured (John to provide link) */
@@ -614,6 +648,7 @@
   /* Google Identity Services sign-in (M1: identifies the submitter client-side) */
   var GOOGLE_CLIENT_ID = '659455206571-e0rd1e7iq8os25s4441elss3960bkfjs.apps.googleusercontent.com';
   window.__launchUser = null;
+  window.__launchIdToken = null;
   function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function parseJwt(t){ try{ var p=t.split('.')[1]; var b=p.replace(/-/g,'+').replace(/_/g,'/'); return JSON.parse(decodeURIComponent(escape(atob(b)))); }catch(e){ return null; } }
   function showSignedIn(profile){
@@ -632,6 +667,7 @@
   }
   function signOut(){
     window.__launchUser = null;
+    window.__launchIdToken = null;
     var box = document.getElementById('signedInAs');
     box.hidden = true; box.innerHTML = '';
     document.getElementById('gsiButton').style.display = '';
@@ -642,7 +678,9 @@
   function onGoogleSignIn(resp){
     var profile = parseJwt(resp.credential);
     if(!profile || !profile.email) return;
+    window.__launchIdToken = resp.credential || null;
     showSignedIn(profile);
+    refreshQuota();
   }
   /* Restore session from other pages (e.g. signed in on homepage) */
   function restoreSession(){

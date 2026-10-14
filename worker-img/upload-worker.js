@@ -74,6 +74,24 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
+/* Verify a Google ID token via Google's tokeninfo endpoint and return the
+   user's stable `sub`, or null. Volume is tiny (a few submits/day), so the
+   extra round-trip beats vendoring JWKS verification into the worker. */
+var GOOGLE_CLIENT_ID = '659455206571-e0rd1e7iq8os25s4441elss3960bkfjs.apps.googleusercontent.com';
+async function googleSubFromToken(idToken) {
+  if (!idToken || typeof idToken !== 'string' || idToken.length > 8192) return null;
+  try {
+    const r = await fetch('https://oauth2.googleapis.com/tokeninfo?id_token=' + encodeURIComponent(idToken));
+    if (!r.ok) return null;
+    const d = await r.json();
+    if (d.aud !== GOOGLE_CLIENT_ID || !d.sub) return null;
+    if (d.exp && Number(d.exp) * 1000 < Date.now() - 60000) return null;
+    return String(d.sub);
+  } catch (e) {
+    return null;
+  }
+}
+
 /* Compact MD5 (for claim-interest dedupe keys). Not for security use. */
 function md5(str) {
   var s = unescape(encodeURIComponent(str));
@@ -1118,6 +1136,22 @@ export default {
       if (!data.name || !data.url) {
         return json({ error: 'name and url required' }, 400);
       }
+      // Free-plan quota: 2 free nofollow launches per Google account, then $5 each.
+      // Badge and paid plans are unlimited / verified separately.
+      // Milestone updates (update_for set) never consume quota.
+      let quotaSub = null, freeLeft = null;
+      if (data.plan === 'free' && !data.update_for) {
+        quotaSub = await googleSubFromToken(data.id_token);
+        if (!quotaSub) {
+          return json({ error: 'sign_in_required' }, 401);
+        }
+        const qkey = 'freeq:' + quotaSub;
+        const used = parseInt((await env.STRIPE_KV.get(qkey)) || '0', 10) || 0;
+        if (used >= 2) {
+          return json({ error: 'free_quota_exhausted', free_left: 0 }, 402);
+        }
+        freeLeft = 2 - used - 1;
+      }
       const key =
         'submissions/' +
         todayISO() +
@@ -1126,10 +1160,24 @@ export default {
         '-' +
         crypto.randomUUID().slice(0, 6) +
         '.json';
-      await env.IMAGES.put(key, str, {
+      // Don't persist the raw ID token; keep the verified sub for review visibility.
+      if (data.id_token) delete data.id_token;
+      if (quotaSub) data.quota_sub = quotaSub;
+      await env.IMAGES.put(key, JSON.stringify(data), {
         httpMetadata: { contentType: 'application/json' },
       });
-      return json({ ok: true });
+      if (quotaSub) {
+        await env.STRIPE_KV.put('freeq:' + quotaSub, String(2 - freeLeft));
+      }
+      return json({ ok: true, free_left: freeLeft });
+    }
+
+    // Quota lookup for the submit form: GET /quota?id_token=...
+    if (request.method === 'GET' && url.pathname === '/quota') {
+      const sub = await googleSubFromToken(url.searchParams.get('id_token'));
+      if (!sub) return json({ error: 'sign_in_required' }, 401);
+      const used = parseInt((await env.STRIPE_KV.get('freeq:' + sub)) || '0', 10) || 0;
+      return json({ ok: true, free_left: Math.max(0, 2 - used) });
     }
 
     // ---- Review console (token-gated) ----
