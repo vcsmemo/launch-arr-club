@@ -7,7 +7,7 @@
     "url": "https://milestonewins.com/launches/logicc/",
     "website": "https://logicc.com",
     "logo": "https://www.logicc.com/assets/logo.svg",
-    "revenue": null,
+    "revenue": "$5M ARR",
     "revenue_metric": null,
     "founder": "Emil Woermann, Jacob Leffers, Benjamin Seifert, Santiago Martinez-Avial",
     "category": "AI Tools",
@@ -15,7 +15,13 @@
     "launched": "2026-10-14",
     "source": "arrclub_signal_sync",
     "source_label": null,
-    "revenue_history": [],
+    "revenue_history": [
+      {
+        "date": "2026-10-14",
+        "revenue": "$5M ARR",
+        "note": "ARR Club signal"
+      }
+    ],
     "growth": null
   },
   {
@@ -26,7 +32,7 @@
     "url": "https://milestonewins.com/launches/jobright/",
     "website": "https://jobright.ai/",
     "logo": "https://static.jobright.ai/_next/static/media/logo.8c4935a8.svg",
-    "revenue": null,
+    "revenue": "$10M ARR",
     "revenue_metric": null,
     "founder": "Eric Cheng, Ethan Zheng",
     "category": "HR",
@@ -34,7 +40,13 @@
     "launched": "2026-10-14",
     "source": "arrclub_signal_sync",
     "source_label": null,
-    "revenue_history": [],
+    "revenue_history": [
+      {
+        "date": "2026-10-14",
+        "revenue": "$10M ARR",
+        "note": "ARR Club signal"
+      }
+    ],
     "growth": null
   },
   {
@@ -45,7 +57,7 @@
     "url": "https://milestonewins.com/launches/clinically-ai/",
     "website": "https://www.clinicalnotes.ai/",
     "logo": "https://static.royacdn.com/Site-97be0e90-1d10-4754-9c2f-f92f74376a1c/HomepageV2/clinically_Ai_logo.png",
-    "revenue": null,
+    "revenue": "$5M+ ARR",
     "revenue_metric": null,
     "founder": "Danii Holmes",
     "category": "Health",
@@ -53,7 +65,13 @@
     "launched": "2026-10-14",
     "source": "arrclub_signal_sync",
     "source_label": null,
-    "revenue_history": [],
+    "revenue_history": [
+      {
+        "date": "2026-10-14",
+        "revenue": "$5M+ ARR",
+        "note": "ARR Club signal"
+      }
+    ],
     "growth": null
   },
   {
@@ -64,7 +82,7 @@
     "url": "https://milestonewins.com/launches/cleavr/",
     "website": "https://www.cleavr.fr/",
     "logo": "https://www.cleavr.fr/images/logo/logo.png",
-    "revenue": null,
+    "revenue": "$1.12M ARR",
     "revenue_metric": null,
     "founder": "Baptiste Nassoy, Arthur Guerin, Antoine Grenard",
     "category": "Fintech",
@@ -72,7 +90,13 @@
     "launched": "2026-10-14",
     "source": "arrclub_signal_sync",
     "source_label": null,
-    "revenue_history": [],
+    "revenue_history": [
+      {
+        "date": "2026-10-14",
+        "revenue": "$1.12M ARR",
+        "note": "ARR Club signal"
+      }
+    ],
     "growth": null
   },
   {
@@ -83,7 +107,7 @@
     "url": "https://milestonewins.com/launches/arga-labs/",
     "website": "https://www.argalabs.com/",
     "logo": "https://www.argalabs.com/logo_black.png",
-    "revenue": null,
+    "revenue": "$480K ARR",
     "revenue_metric": null,
     "founder": "Phillip Li, Akira Tong",
     "category": "Dev Tools",
@@ -91,7 +115,13 @@
     "launched": "2026-10-14",
     "source": "arrclub_signal_sync",
     "source_label": null,
-    "revenue_history": [],
+    "revenue_history": [
+      {
+        "date": "2026-10-14",
+        "revenue": "$480K ARR",
+        "note": "ARR Club signal"
+      }
+    ],
     "growth": null
   },
   {
@@ -102,7 +132,7 @@
     "url": "https://milestonewins.com/launches/aizy/",
     "website": "https://tryaizy.com",
     "logo": "https://framerusercontent.com/assets/LeImgD1Qyqx1vmSWuBalfl9hfY.png",
-    "revenue": null,
+    "revenue": "$4.3M ARR",
     "revenue_metric": null,
     "founder": "Stefan Nuijten",
     "category": "Marketing",
@@ -110,7 +140,13 @@
     "launched": "2026-10-14",
     "source": "arrclub_signal_sync",
     "source_label": null,
-    "revenue_history": [],
+    "revenue_history": [
+      {
+        "date": "2026-10-14",
+        "revenue": "$4.3M ARR",
+        "note": "ARR Club signal"
+      }
+    ],
     "growth": null
   },
   {
