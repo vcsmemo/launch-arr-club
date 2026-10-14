@@ -85,11 +85,6 @@
     <div class="seo-launches" id="storyPreview"></div>
   </section>
 
-  <section id="browse-cats">
-    <h2 class="section-title"><span class="dot"></span>Browse by category <a class="view-all" href="/categories/">View all &rsaquo;</a></h2>
-    <div class="seo-launches" id="catPreview"></div>
-  </section>
-
   <section id="leaderboard">
     <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span> <span class="lb-countdown" id="lbCountdown"></span></h2>
     <div class="lb-tabs" style="margin-bottom:12px;">
@@ -186,21 +181,6 @@
     }).join('<span class="ticker-sep">·</span>');
     ticker.innerHTML = html + '<span class="ticker-sep">·</span>' + html; /* duplicate for seamless loop */
   }).catch(function(){});
-})();
-/* Category preview on homepage */
-(function(){
-  var el = document.getElementById('catPreview');
-  if(!el) return;
-  var cats = [
-    {slug: 'marketing', name: 'Marketing', count: 19},
-    {slug: 'dev-tools', name: 'Dev Tools', count: 13},
-    {slug: 'video', name: 'Video', count: 6},
-    {slug: 'productivity', name: 'Productivity', count: 5},
-    {slug: 'seo', name: 'SEO', count: 5}
-  ];
-  el.innerHTML = cats.map(function(c){
-    return '<a class="launch-card" href="/categories/' + c.slug + '/"><div class="lc-main"><h3>' + c.name + '</h3><p class="lc-rev">' + c.count + ' products ranked by revenue</p></div></a>';
-  }).join('');
 })();
 /* Story preview on homepage (latest 3) */
 (function(){
