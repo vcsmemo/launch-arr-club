@@ -129,21 +129,26 @@
             <div class="field"><label>Amount (USD)</label><input type="number" id="f-amount" min="0" placeholder="e.g. 12000"></div>
           </div>
           <div class="field"><label>Revenue proof <span class="hint">(optional — gets you a ✓ Verified badge)</span></label>
-            <div class="verify-tabs">
-              <button type="button" class="vtab active" data-tab="stripe">⚡ Verify with Stripe</button>
-              <button type="button" class="vtab" data-tab="upload">📤 Upload screenshot</button>
-            </div>
-            <div class="vtab-pane" id="vtab-stripe">
-              <input type="password" id="f-stripe-key" placeholder="Paste your Stripe restricted key (rk_live_…)" autocomplete="off">
-              <button type="button" class="btn-small" id="btn-verify-stripe">Verify now</button>
-              <span class="verify-msg" id="stripeMsg"></span>
-              <p class="key-note">🔒 Your key is used once to read your MRR and never stored. Create a restricted key at <a href="https://dashboard.stripe.com/apikeys" target="_blank" rel="noopener">Stripe Dashboard → API keys</a> with only <b>read</b> access to Subscriptions.</p>
-              <input type="hidden" id="f-stripe-verified">
-            </div>
-            <div class="vtab-pane" id="vtab-upload" style="display:none">
-              <input type="file" id="f-proof" accept="image/*">
-              <span class="verify-msg" id="proofMsg"></span>
-              <input type="hidden" id="f-proof-url">
+            <div class="proof-card">
+              <div class="proof-opt">
+                <div class="proof-opt-head"><span class="proof-icon">⚡</span><div><b>Verify with Stripe</b><p>Instant — we read your MRR once, never store your key</p></div></div>
+                <div class="proof-opt-body">
+                  <input type="password" id="f-stripe-key" placeholder="rk_live_…" autocomplete="off">
+                  <button type="button" class="btn-small" id="btn-verify-stripe">Verify now</button>
+                </div>
+                <span class="verify-msg" id="stripeMsg"></span>
+                <p class="key-note">🔒 Create a restricted key at <a href="https://dashboard.stripe.com/apikeys" target="_blank" rel="noopener">Stripe Dashboard → API keys</a> with only <b>read</b> access to Subscriptions.</p>
+                <input type="hidden" id="f-stripe-verified">
+              </div>
+              <div class="proof-divider"><span>or</span></div>
+              <div class="proof-opt">
+                <div class="proof-opt-head"><span class="proof-icon">📤</span><div><b>Upload a screenshot</b><p>Stripe dashboard, bank statement — we verify manually</p></div></div>
+                <div class="proof-opt-body">
+                  <input type="file" id="f-proof" accept="image/*">
+                </div>
+                <span class="verify-msg" id="proofMsg"></span>
+                <input type="hidden" id="f-proof-url">
+              </div>
             </div>
           </div>
           <p class="rev-note" id="revNote">Self-reported for now — labeled honestly on your page. <b>Verify with Stripe</b> for an instant free ✓ Verified badge, or upload a screenshot (Stripe dashboard, bank statement) for manual review. No revenue yet? Just hit Continue →</p>
@@ -376,6 +381,7 @@
       launchBtn.textContent = '✓ Received';
       launchHint.textContent = '✓ Received! We review every launch personally and publish within 24 hours.';
       launchHint.className = 'verify-msg ok';
+      celebrate();
     }).catch(function(){
       launchBtn.disabled = false;
       alert('Could not send your submission — check your connection and try again.');
@@ -392,6 +398,7 @@
     postSubmission().then(function(j){
       clearAutosave();
       freeBtn.textContent = '✓ Received';
+      celebrate();
       freeHint.textContent = '✓ Received! We review every launch personally and publish within 24 hours.' + (j && typeof j.free_left === 'number' ? ' (' + j.free_left + ' free ' + (j.free_left === 1 ? 'launch' : 'launches') + ' left)' : '');
       freeHint.className = 'verify-msg ok';
       refreshQuota();
@@ -411,14 +418,6 @@
   /* Image uploads via Cloudflare Worker + R2 (dropzone: click or drag & drop) */
   var IMG_WORKER = 'https://launch-arr-club-img.johntian2015.workers.dev';
   /* Revenue proof: Stripe verify (instant) or screenshot upload (manual review) */
-  document.querySelectorAll('.vtab').forEach(function(tab){
-    tab.addEventListener('click', function(){
-      document.querySelectorAll('.vtab').forEach(function(t){ t.classList.remove('active'); });
-      tab.classList.add('active');
-      document.getElementById('vtab-stripe').style.display = tab.dataset.tab === 'stripe' ? '' : 'none';
-      document.getElementById('vtab-upload').style.display = tab.dataset.tab === 'upload' ? '' : 'none';
-    });
-  });
   document.getElementById('btn-verify-stripe').addEventListener('click', function(){
     var key = document.getElementById('f-stripe-key').value.trim();
     var msg = document.getElementById('stripeMsg');
@@ -626,6 +625,7 @@
       btn.textContent = '✓ Received';
       hint.hidden = false;
       hint.className = 'verify-msg ok';
+      celebrate();
       hint.textContent = '✓ Received! We review every milestone personally and your Growth Timeline updates within 24 hours.';
     }).catch(function(){
       btn.disabled = false;
@@ -679,7 +679,18 @@
       id_token: window.__launchIdToken || ''
     };
   }
-  function postSubmission(){
+  /* Celebration overlay after successful submission */
+  function celebrate(){
+    var ov = document.getElementById('celebrateOverlay');
+    if(!ov) return;
+    ov.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('celebrateClose').onclick = function(){
+      ov.hidden = true;
+      document.body.style.overflow = '';
+    };
+    ov.onclick = function(e){ if(e.target === ov){ ov.hidden = true; document.body.style.overflow = ''; } };
+  }
     return fetch(IMG_WORKER + '/submit', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -832,5 +843,20 @@
 </script>
 <script>window.LAC_NO_GSI = true;</script>
 <script src="/auth.js"></script>
+  <!-- Submission celebration -->
+  <div class="celebrate-overlay" id="celebrateOverlay" hidden>
+    <div class="celebrate-box">
+      <div class="confetti" aria-hidden="true"></div>
+      <div class="celebrate-emoji">🎉</div>
+      <h2>You're on the board!</h2>
+      <p class="celebrate-sub">Launching on MilestoneWins is a milestone in itself —<br>and we're celebrating it with you.</p>
+      <div class="celebrate-steps">
+        <div><b>1</b> We review every launch personally</div>
+        <div><b>2</b> Your celebration card goes live within 24h</div>
+        <div><b>3</b> Share it — your revenue deserves an audience</div>
+      </div>
+      <button class="btn" id="celebrateClose">Awesome →</button>
+    </div>
+  </div>
 </body>
 </html>
