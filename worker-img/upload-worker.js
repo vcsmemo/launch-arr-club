@@ -661,10 +661,8 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
       '<div class="stat-card"><span>Launched</span><b>' + esc(launchedPretty) + '</b><small>L+0 &middot; Live on MilestoneWins</small></div>');
   rep('<div class="stat-card"><span>Category</span><div class="pills"><span class="tag cat">Design Tools</span></div></div>',
       '<div class="stat-card"><span>Category</span><div class="pills"><span class="tag cat">' + esc(category) + '</span></div></div>');
-  rep('<div class="stat-card"><span>Maker</span><b>Brijesh Patel</b><small>Founder</small></div>',
-      '<div class="stat-card"><span>Maker</span><b>' + founderHtml + '</b><small>Founder</small></div>');
   // --- maker card (rich) ---
-  var founderInitial = esc(String(name || founder || '?').charAt(0));
+  var founderInitial = esc(String(founder || name || '?').charAt(0));
   rep('<div class="maker-avatar">B</div>',
       '<div class="maker-avatar">' + founderInitial + '</div>');
   rep('<b class="maker-name">Brijesh Patel</b>',
