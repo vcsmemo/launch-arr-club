@@ -691,6 +691,7 @@
     };
     ov.onclick = function(e){ if(e.target === ov){ ov.hidden = true; document.body.style.overflow = ''; } };
   }
+  function postSubmission(){
     return fetch(IMG_WORKER + '/submit', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
