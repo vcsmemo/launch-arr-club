@@ -810,3 +810,11 @@ a.x-link:hover { color: var(--accent-hover); }
 .story-body{line-height:1.75;color:var(--text);font-size:1.02rem}
 .story-body p{margin:.9rem 0}
 .cat-rank{display:inline-flex;align-items:center;justify-content:center;min-width:2rem;height:2rem;border-radius:8px;background:var(--navy);color:#fff;font-weight:800;font-size:.85rem;margin-right:.6rem}
+
+/* VS comparison pages */
+.vs-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:640px){.vs-cards{grid-template-columns:1fr}}
+.vs-table{width:100%;border-collapse:collapse;margin:1.2rem 0;background:var(--card);border-radius:12px;overflow:hidden}
+.vs-table th,.vs-table td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-size:.92rem}
+.vs-table th{background:var(--navy);color:#fff;font-size:.85rem}
+.vs-table tr:last-child td{border-bottom:0}
