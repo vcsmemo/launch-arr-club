@@ -880,7 +880,7 @@ async function handleApprove(request, env) {
 
   // 3. sitemap
   let sitemap = sitemap0.replace(
-    /(<loc>https:\/\/launch\.arr\.club\/<\/loc><lastmod>)\d{4}-\d{2}-\d{2}/,
+    /(<loc>https:\/\/milestonewins\.com\/<\/loc><lastmod>)\d{4}-\d{2}-\d{2}/,
     '$1' + today
   );
   sitemap = sitemap.replace(
@@ -1339,6 +1339,43 @@ export default {
       }
 
       return json({ error: 'unknown review action' }, 404);
+    }
+
+    // URL metadata fetch for submit auto-fill: GET /fetch-url?url=https://...
+    if (request.method === 'GET' && url.pathname === '/fetch-url') {
+      const target = url.searchParams.get('url') || '';
+      if (!/^https?:\/\/[^/]+\.[^/]+/.test(target) || target.length > 500) {
+        return json({ error: 'bad url' }, 400);
+      }
+      try {
+        const r = await fetch(target, {
+          headers: { 'User-Agent': 'Mozilla/5.0 (compatible; MilestoneWins/1.0; +https://milestonewins.com)' },
+          redirect: 'follow',
+        });
+        if (!r.ok) return json({ error: 'fetch failed' }, 502);
+        const html = await r.text();
+        const head = html.slice(0, 60000);
+        const meta = function (prop) {
+          const m = head.match(new RegExp('<meta[^>]+(?:property|name)=["\']' + prop + '["\'][^>]*>', 'i'));
+          if (!m) return '';
+          const c = m[0].match(/content=["']([^"']*)["']/i);
+          return c ? c[1].trim().slice(0, 300) : '';
+        };
+        const title = meta('og:title') || (head.match(/<title[^>]*>([^<]{1,200})<\/title>/i) || [])[1] || '';
+        const desc = meta('og:description') || meta('description');
+        let icon = meta('og:image');
+        if (!icon) {
+          const l = head.match(/<link[^>]+rel=["'](?:shortcut )?icon["'][^>]*>/i);
+          if (l) {
+            const h = l[0].match(/href=["']([^"']+)["']/i);
+            if (h) { try { icon = new URL(h[1], r.url).toString(); } catch (e) { icon = ''; } }
+          }
+        }
+        if (!icon) { try { icon = new URL('/favicon.ico', r.url).toString(); } catch (e) {} }
+        return json({ ok: true, title: title.trim(), description: desc.trim(), icon: icon || '' });
+      } catch (e) {
+        return json({ error: 'fetch failed' }, 502);
+      }
     }
 
     // ---- Serve ----

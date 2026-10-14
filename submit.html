@@ -26,12 +26,6 @@
   </section>
 
   <div class="wizard">
-    <div class="card oauth-box" id="oauthBox">
-      <div id="gsiButton"></div>
-      <p class="oauth-note">Sign in to save your progress and submit. We only see your name, email and profile photo.</p>
-      <p class="signed-in" id="signedInAs" hidden></p>
-    </div>
-
     <div class="wiz-progress" aria-hidden="true">
       <div class="wiz-dot now" data-dot="0"></div>
       <div class="wiz-dot" data-dot="1"></div>
@@ -43,7 +37,7 @@
       <section class="wiz-step active card" data-step="0">
         <h2>Step 1 · Your product</h2>
         <div class="field"><label>Product name <span class="req">*</span></label><input type="text" id="f-name" placeholder="e.g. Inkwell AI"></div>
-        <div class="field"><label>Website URL <span class="req">*</span></label><input type="url" id="f-url" placeholder="https://yourproduct.com"></div>
+        <div class="field"><label>Website URL <span class="req">*</span></label><div style="display:flex;gap:0.5rem"><input type="url" id="f-url" placeholder="https://yourproduct.com" style="flex:1"><button type="button" class="mini-btn" id="autofillBtn" style="white-space:nowrap">✨ Auto-fill</button></div><span class="verify-msg" id="autofillMsg"></span></div>
         <div id="listedBanner" class="listed-banner" hidden>
           <span>🎉 <strong id="listedName"></strong> is already celebrating on MilestoneWins.</span>
           <button type="button" id="listedUpdateBtn" class="btn small">Share a new milestone →</button>
@@ -157,6 +151,11 @@
       <section class="wiz-step card" data-step="2">
         <h2>Step 3 · Choose how to launch</h2>
         <p>Pick one. Every option puts your product live the moment it is done.</p>
+        <div class="card oauth-box" id="oauthBox" style="margin-bottom:1.2rem">
+          <div id="gsiButton"></div>
+          <p class="oauth-note">One last step — sign in to submit. We only see your name, email and profile photo. Everything you filled in is saved.</p>
+          <p class="signed-in" id="signedInAs" hidden></p>
+        </div>
         <div class="pick-grid" role="radiogroup" aria-label="Launch options">
           <button type="button" class="pick" role="radio" aria-checked="true" data-plan="badge">
             <span class="radio-dot"></span><span class="best">★ Best value</span>
@@ -347,8 +346,15 @@
     }, 1500);
   });
   launchBtn.addEventListener('click', function(){
+    if(!window.__launchUser){
+      var ob = document.getElementById('oauthBox');
+      if(ob){ ob.scrollIntoView({behavior:'smooth', block:'center'}); ob.style.outline = '2px solid #0d9488'; setTimeout(function(){ ob.style.outline = ''; }, 2000); }
+      launchHint.textContent = 'Please sign in above first — it takes 10 seconds.';
+      return;
+    }
     launchBtn.disabled = true;
     postSubmission().then(function(){
+      clearAutosave();
       launchBtn.textContent = '✓ Received';
       launchHint.textContent = '✓ Received! We review every launch personally and publish within 24 hours.';
       launchHint.className = 'verify-msg ok';
@@ -366,6 +372,7 @@
     }
     freeBtn.disabled = true;
     postSubmission().then(function(j){
+      clearAutosave();
       freeBtn.textContent = '✓ Received';
       freeHint.textContent = '✓ Received! We review every launch personally and publish within 24 hours.' + (j && typeof j.free_left === 'number' ? ' (' + j.free_left + ' free ' + (j.free_left === 1 ? 'launch' : 'launches') + ' left)' : '');
       freeHint.className = 'verify-msg ok';
@@ -546,6 +553,7 @@
     var btn = this, hint = document.getElementById('updateHint');
     btn.disabled = true;
     postSubmission().then(function(){
+      clearAutosave();
       btn.textContent = '✓ Received';
       hint.hidden = false;
       hint.className = 'verify-msg ok';
@@ -645,7 +653,29 @@
     postSubmission().then(goStripe).catch(goStripe); /* payment still works; email captured at checkout lets us follow up */
   });
 
-  /* Google Identity Services sign-in (M1: identifies the submitter client-side) */
+  /* URL auto-fill: fetch og tags via Worker, prefill name/tagline/description/logo */
+  document.getElementById('autofillBtn').addEventListener('click', function(){
+    var btn = this, msg = document.getElementById('autofillMsg');
+    var u = document.getElementById('f-url').value.trim();
+    if(!/^https?:\/\//i.test(u)){ msg.textContent = 'Enter a valid URL first (https://…).'; return; }
+    btn.disabled = true; msg.textContent = 'Fetching…';
+    fetch(IMG_WORKER + '/fetch-url?url=' + encodeURIComponent(u))
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        btn.disabled = false;
+        if(!j.ok){ msg.textContent = 'Could not fetch that URL — please fill in manually.'; return; }
+        var filled = [];
+        if(j.title){ var nm = document.getElementById('f-name'); if(nm && !nm.value.trim()){ nm.value = j.title.split(/[|–—-]/)[0].trim().slice(0, 60); filled.push('name'); } }
+        if(j.description){ var tg = document.getElementById('f-tagline'); if(tg && !tg.value.trim()){ tg.value = j.description.slice(0, 160); filled.push('tagline'); }
+          var ds = document.getElementById('f-desc'); if(ds && !ds.value.trim()){ ds.value = j.description.slice(0, 500); } }
+        if(j.icon){ var lg = document.getElementById('f-logo'); if(lg && !lg.value.trim()){ lg.value = j.icon; filled.push('logo'); } }
+        msg.textContent = filled.length ? '✓ Filled ' + filled.join(', ') + ' — review and edit.' : 'Fetched, but fields already filled.';
+        msg.className = 'verify-msg ok'; autoSave();
+      })
+      .catch(function(){ btn.disabled = false; msg.textContent = 'Could not fetch that URL — please fill in manually.'; });
+  });
+
+  /* Google Identity Services sign-in (moved to final step to cut drop-off) */
   var GOOGLE_CLIENT_ID = '659455206571-e0rd1e7iq8os25s4441elss3960bkfjs.apps.googleusercontent.com';
   window.__launchUser = null;
   window.__launchIdToken = null;
@@ -696,7 +726,36 @@
     google.accounts.id.initialize({ client_id: GOOGLE_CLIENT_ID, callback: onGoogleSignIn });
     google.accounts.id.renderButton(document.getElementById('gsiButton'), { theme: 'outline', size: 'large', width: 280, text: 'signin_with' });
   }
-  function initAll(){ initGsi(); restoreSession(); }
+  /* Auto-save form to localStorage (survives refresh; cleared on successful submit) */
+  var AUTOSAVE_KEY = 'mw_submit_draft_v1';
+  function autoSave(){
+    try {
+      var d = {};
+      var ids = ['f-name','f-url','f-tagline','f-desc','f-founder','f-logo','f-shots','f-x','f-demo','f-deal','f-amount','f-first-detail','f-days-dollar'];
+      ids.forEach(function(id){ var el = document.getElementById(id); if(el) d[id] = el.value; });
+      var sels = ['f-pricing','f-metric','f-first-src','f-best-channel'];
+      sels.forEach(function(id){ var el = document.getElementById(id); if(el) d[id] = el.value; });
+      d.cats = Array.prototype.map.call(document.querySelectorAll('#catChips .chip[aria-pressed="true"]'), function(c){ return c.textContent.trim(); });
+      d.stories = Array.prototype.map.call(document.querySelectorAll('.q'), function(q){ return q.value; });
+      var planEl = document.querySelector('.pick[aria-checked="true"]');
+      d.plan = planEl ? planEl.getAttribute('data-plan') : '';
+      localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(d));
+    } catch(e){}
+  }
+  function autoRestore(){
+    try {
+      var d = JSON.parse(localStorage.getItem(AUTOSAVE_KEY) || 'null');
+      if(!d) return;
+      Object.keys(d).forEach(function(id){
+        if(id === 'cats' || id === 'stories' || id === 'plan') return;
+        var el = document.getElementById(id); if(el && el.value === '') el.value = d[id] || '';
+      });
+      if(d.stories) Array.prototype.forEach.call(document.querySelectorAll('.q'), function(q, i){ if(d.stories[i] && q.value === '') q.value = d.stories[i]; });
+    } catch(e){}
+  }
+  function clearAutosave(){ try { localStorage.removeItem(AUTOSAVE_KEY); } catch(e){} }
+  document.addEventListener('input', function(){ clearTimeout(window.__asT); window.__asT = setTimeout(autoSave, 800); });
+  function initAll(){ initGsi(); restoreSession(); autoRestore(); }
   if(document.readyState === 'complete'){ initAll(); } else { window.addEventListener('load', initAll); }
 })();
 </script>
