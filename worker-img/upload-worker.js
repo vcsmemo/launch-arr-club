@@ -92,6 +92,44 @@ async function googleSubFromToken(idToken) {
   }
 }
 
+/* Transactional email via Resend. Returns {ok:true,id} or {ok:false,error}.
+   Never throws — email failures must not break submit/approve flows. */
+var RESEND_FROM = 'MilestoneWins <hello@milestonewins.com>';
+var RESEND_REPLY_TO = '100marrclub@gmail.com';
+async function sendEmail(env, to, subject, html) {
+  try {
+    if (!env.RESEND_API_KEY) return { ok: false, error: 'resend not configured' };
+    if (!to || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) return { ok: false, error: 'bad recipient' };
+    const r = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + env.RESEND_API_KEY,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: RESEND_FROM,
+        to: [to],
+        reply_to: RESEND_REPLY_TO,
+        subject: subject,
+        html: html,
+      }),
+    });
+    const j = await r.json().catch(function(){ return {}; });
+    if (!r.ok) return { ok: false, error: (j && j.message) || ('resend ' + r.status) };
+    return { ok: true, id: j.id };
+  } catch (e) {
+    return { ok: false, error: String((e && e.message) || e) };
+  }
+}
+
+function emailShell(title, bodyHtml) {
+  return '<div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;max-width:560px;margin:0 auto;padding:24px;color:#1a1a1a;">'
+    + '<div style="font-size:20px;font-weight:700;margin-bottom:16px;">' + title + '</div>'
+    + bodyHtml
+    + '<div style="margin-top:32px;padding-top:16px;border-top:1px solid #eee;font-size:12px;color:#999;">MilestoneWins — celebrating founder milestones<br><a href="https://milestonewins.com" style="color:#0d9488;">milestonewins.com</a></div>'
+    + '</div>';
+}
+
 /* Compact MD5 (for claim-interest dedupe keys). Not for security use. */
 function md5(str) {
   var s = unescape(encodeURIComponent(str));
@@ -882,7 +920,59 @@ async function handleApprove(request, env) {
   });
   await env.IMAGES.delete(key);
 
-  return json({ ok: true, url: 'https://milestonewins.com/launches/' + slug + '/', slug: slug, launch_no: launchNo });
+  // Transactional email 3: you're live (fire-and-forget)
+  const liveUrl = 'https://milestonewins.com/launches/' + slug + '/';
+  if (d.founder_email) {
+    const lname = esc(d.name || 'your product');
+    sendEmail(env, d.founder_email,
+      'You\u2019re live on MilestoneWins 🚀',
+      emailShell('You\u2019re live on MilestoneWins 🚀',
+        '<p>Hi ' + esc(d.founder || 'there') + ',</p>'
+        + '<p>Your <strong>' + lname + '</strong> is live:</p>'
+        + '<p><a href="' + liveUrl + '" style="color:#0d9488;font-weight:600;">' + liveUrl + '</a></p>'
+        + '<p>Your page includes a celebration card — open the page, hit \u201cDownload celebration image\u201d, and share it anywhere.</p>'
+        + '<p>When you hit your next milestone, submit it and we\u2019ll celebrate again.</p>'
+        + '<p>— The MilestoneWins team</p>'));
+  }
+
+  return json({ ok: true, url: liveUrl, slug: slug, launch_no: launchNo });
+}
+
+/* Needs-info: email the submitter about missing fields, park the submission.
+   Body: {key, missing: ["field1", "field2", ...]} */
+async function handleNeedsInfo(request, env) {
+  let body;
+  try { body = await request.json(); } catch (e) { return json({ error: 'invalid json' }, 400); }
+  const key = body && body.key;
+  const missing = Array.isArray(body && body.missing) ? body.missing.filter(function(x){ return typeof x === 'string'; }).slice(0, 10) : [];
+  if (!key || !key.startsWith('submissions/')) return json({ error: 'bad key' }, 400);
+  if (!missing.length) return json({ error: 'missing fields required' }, 400);
+  const obj = await env.IMAGES.get(key);
+  if (!obj) return json({ error: 'submission not found' }, 404);
+  const raw = await obj.text();
+  let d;
+  try { d = JSON.parse(raw); } catch (e) { return json({ error: 'submission is not valid json' }, 400); }
+
+  // Transactional email 2: needs info (fire-and-forget, but report status)
+  let emailStatus = { ok: false, error: 'no recipient' };
+  if (d.founder_email) {
+    const items = missing.map(function(m){ return '<li>' + esc(m) + '</li>'; }).join('');
+    emailStatus = await sendEmail(env, d.founder_email,
+      'One quick thing about your MilestoneWins submission',
+      emailShell('One quick thing about your MilestoneWins submission',
+        '<p>Hi ' + esc(d.founder || 'there') + ',</p>'
+        + '<p>Almost there — we\u2019re missing:</p>'
+        + '<ul>' + items + '</ul>'
+        + '<p>Just reply to this email with the details and we\u2019ll get <strong>' + esc(d.name || 'your product') + '</strong> published.</p>'
+        + '<p>— The MilestoneWins team</p>'));
+  }
+
+  const base = key.split('/').pop();
+  await env.IMAGES.put('reviewed/needs-info/' + base, raw, {
+    httpMetadata: { contentType: 'application/json' },
+  });
+  await env.IMAGES.delete(key);
+  return json({ ok: true, email: emailStatus });
 }
 
 async function handleReject(request, env) {
@@ -1169,6 +1259,17 @@ export default {
       if (quotaSub) {
         await env.STRIPE_KV.put('freeq:' + quotaSub, String(2 - freeLeft));
       }
+      // Transactional email 1: submission received (fire-and-forget)
+      if (data.founder_email) {
+        const cname = esc(data.name || 'your product');
+        sendEmail(env, data.founder_email,
+          'We got your submission 🎉',
+          emailShell('We got your submission 🎉',
+            '<p>Hi ' + esc(data.founder || 'there') + ',</p>'
+            + '<p>Your <strong>' + cname + '</strong> is in our review queue. We personally review every launch and publish within 24 hours.</p>'
+            + '<p>We\u2019ll email you the moment you\u2019re live.</p>'
+            + '<p>— The MilestoneWins team</p>'));
+      }
       return json({ ok: true, free_left: freeLeft });
     }
 
@@ -1225,6 +1326,15 @@ export default {
           return await handleReject(request, env);
         } catch (e) {
           return json({ error: 'reject failed: ' + (e && e.message ? e.message : String(e)) }, 500);
+        }
+      }
+
+      // Needs-info -> email the submitter, park the submission
+      if (request.method === 'POST' && url.pathname === '/review/needs-info') {
+        try {
+          return await handleNeedsInfo(request, env);
+        } catch (e) {
+          return json({ error: 'needs-info failed: ' + (e && e.message ? e.message : String(e)) }, 500);
         }
       }
 
