@@ -22,7 +22,8 @@
         "note": "ARR Club signal"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "All leading AI models on one platform. Hosted in Germany, encrypted, and never trains on your data."
   },
   {
     "launch_no": 80,
@@ -89,7 +90,8 @@
         "note": "ARR Club signal"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "Clinically AI helps behavioral health providers streamline documentation and compliance. 60-80% less time on notes. HIPAA-compliant."
   },
   {
     "launch_no": 78,
@@ -114,7 +116,8 @@
         "note": "ARR Club signal"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "Automate your accounts receivable end-to-end. Multi-channel reminders, AI, debtor portal, and reconciliation. Live in 24h."
   },
   {
     "launch_no": 77,
@@ -139,7 +142,8 @@
         "note": "ARR Club signal"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "Build, seed, and call twins of the services your software acts on \u2014 via API, CLI, or MCP. Test against realistic service doubles without touching production."
   },
   {
     "launch_no": 76,
@@ -164,7 +168,8 @@
         "note": "ARR Club signal"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "Aizy combines proprietary AI software with human expertise for advertising. Platform-independent across Google, Meta and TikTok, focused on growth 24/7."
   },
   {
     "name": "Ace",
