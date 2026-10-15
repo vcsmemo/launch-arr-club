@@ -309,18 +309,28 @@
     ticker.innerHTML = html + '<span class="ticker-sep">·</span>' + html; /* duplicate for seamless loop */
   }).catch(function(){});
 })();
-/* Story preview on homepage (latest 3) */
+/* Story preview on homepage (latest 3, auto-updated) */
 (function(){
   var el = document.getElementById('storyPreview');
   if(!el) return;
-  var stories = [
-    {slug: 'rezi-story', title: 'How Rezi hit $261K MRR: the ATS whisperer who beat GPT to market', rev: '$261k MRR'},
-    {slug: 'postiz-story', title: 'How Postiz hit $184K MRR: the dropout who open-sourced his way up', rev: '$184k MRR'},
-    {slug: 'neuralframes-story', title: 'How Neural Frames hit $5M/yr on AI music videos', rev: '$5M/yr'}
-  ];
-  el.innerHTML = stories.map(function(s){
-    return '<a class="launch-card" href="/stories/' + s.slug + '/"><div class="lc-main"><h3>' + s.title + '</h3><p class="lc-rev">' + s.rev + '</p></div></a>';
-  }).join('');
+  fetch('/stories/').then(function(r){ return r.text(); }).then(function(html){
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var cards = doc.querySelectorAll('a.launch-card[href^="/stories/"]');
+    var out = [];
+    for(var i = 0; i < cards.length && out.length < 3; i++){
+      var a = cards[i];
+      var href = a.getAttribute('href');
+      if(href === '/stories/') continue;
+      var h3 = a.querySelector('h3');
+      var rev = a.querySelector('.lc-rev');
+      if(!h3) continue;
+      out.push({ href: href, title: h3.textContent.trim(), rev: rev ? rev.textContent.trim() : '' });
+    }
+    if(!out.length) return;
+    el.innerHTML = out.map(function(s){
+      return '<a class="launch-card" href="' + s.href + '"><div class="lc-main"><h3>' + s.title.replace(/</g,'&lt;') + '</h3>' + (s.rev ? '<p class="lc-rev">' + s.rev.replace(/</g,'&lt;') + '</p>' : '') + '</div></a>';
+    }).join('');
+  }).catch(function(){});
 })();
 /* Leaderboard refresh countdown (daily pipeline publishes ~09:45) */
 (function(){
