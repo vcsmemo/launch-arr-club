@@ -196,7 +196,7 @@
   <script>
   (function(){
     // Only populate on wide screens
-    if(window.innerWidth < 1280) return;
+    if(window.innerWidth < 1520) return;
     function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
     function revValStr(s){
       var m = String(s||'').match(/\$([\d,.]+)\s*([kKmMbB]?)(?![a-zA-Z])/);

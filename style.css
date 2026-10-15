@@ -865,8 +865,8 @@ a.x-link:hover { color: var(--accent-hover); }
 
 /* Right side panel — wide screens only */
 #sidePanel { display: none; }
-@media (min-width: 1280px) {
-  #sidePanel { display: block; position: fixed; top: 100px; right: calc(50% - 490px - 240px); width: 220px; z-index: 10; max-height: calc(100vh - 140px); overflow-y: auto; }
+@media (min-width: 1520px) {
+  #sidePanel { display: block; position: fixed; top: 100px; left: calc(50% + 510px); width: 220px; z-index: 10; max-height: calc(100vh - 140px); overflow-y: auto; }
   .sp-card { background: #fff; border-radius: 12px; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); margin-bottom: 1rem; }
   .sp-card h4 { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: #94a3b8; margin-bottom: .7rem; }
   .sp-stat { margin-bottom: .7rem; }
