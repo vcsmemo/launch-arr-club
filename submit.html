@@ -732,8 +732,14 @@
   document.getElementById('payBtn').addEventListener('click', function(){
     var btn = this;
     btn.disabled = true;
-    function goStripe(){ btn.disabled = false; window.open('https://buy.stripe.com/fZu9ATdir8uT0kM9Mfcs802', '_blank', 'noopener'); }
-    postSubmission().then(goStripe).catch(goStripe); /* payment still works; email captured at checkout lets us follow up */
+    function goStripe(pendingKey){
+      btn.disabled = false;
+      var url = 'https://buy.stripe.com/fZu9ATdir8uT0kM9Mfcs802';
+      if (pendingKey) url += '?client_reference_id=' + encodeURIComponent(pendingKey);
+      window.open(url, '_blank', 'noopener');
+    }
+    /* Strict mode: submission waits in pending_payment until Stripe webhook confirms $5 */
+    postSubmission().then(function(j){ goStripe(j.pending_key); }).catch(function(){ goStripe(); });
   });
 
   /* URL auto-fill: fetch og tags via Worker, prefill name/tagline/description/logo */
