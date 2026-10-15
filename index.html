@@ -80,9 +80,10 @@
       el.innerHTML = rows.slice(0, 8).map(function(r){
         var p = r.p;
         var logo = p.logo ? '<img src="' + esc(p.logo) + '" alt="" loading="lazy">' : '';
-        return '<a class="celeb-card" href="' + esc(p.url) + '">' + logo
-          + '<span class="celeb-main"><b>' + esc(p.name) + '</b><i>reached ' + esc(r.revenue) + '</i></span>'
-          + '<small>' + esc(fmtDate(r.date)) + '</small></a>';
+        return '<a class="celeb-card" href="' + esc(p.url) + '">'
+          + '<div class="celeb-top">' + logo + '<b>' + esc(p.name) + '</b></div>'
+          + '<div><div class="celeb-rev">' + esc(r.revenue) + '</div><div class="celeb-rev-label">revenue milestone · ' + esc(fmtDate(r.date)) + '</div></div>'
+          + '<div class="celeb-cta">View celebration →</div></a>';
       }).join('');
     }).catch(function(){});
   })();

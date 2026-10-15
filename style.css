@@ -698,18 +698,21 @@ a.lb-row:hover { background: var(--bg-soft); }
 .scroll-hint { font-size: 0.75rem; color: var(--text-secondary); font-weight: 400; margin-left: 0.5rem; }
 section#celebrations { margin-bottom: 0.5rem; }
 section#stories { margin-top: 1rem; }
-.celeb-card { position: relative; display: flex; align-items: center; gap: 0.75rem; background: #fff;
-  border: 1px solid var(--border); border-radius: 14px; padding: 0.8rem 1rem 0.8rem 1.1rem; text-decoration: none;
-  flex: none; width: 280px; scroll-snap-align: start; }
-  border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 1rem; text-decoration: none;
-  color: var(--text); box-shadow: var(--shadow-sm); overflow: hidden; min-width: 0; }
-.celeb-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #f59e0b; }
-.celeb-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-.celeb-card img { width: 36px; height: 36px; border-radius: 9px; object-fit: contain; background: #f8fafc; padding: 3px; flex: none; }
-.celeb-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.celeb-main b { font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.celeb-main i { font-style: normal; font-size: 0.8rem; font-weight: 700; color: #d97706; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.celeb-card small { font-size: 0.72rem; color: var(--text-muted); flex: none; white-space: nowrap; }
+.celeb-card { position: relative; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, #fff 0%, #fefce8 100%);
+  border: 1px solid #fde68a; border-radius: 16px; padding: 1.1rem 1.2rem; text-decoration: none;
+  flex: none; width: 260px; min-height: 170px; scroll-snap-align: start;
+  color: var(--text); box-shadow: var(--shadow-sm); overflow: hidden; }
+.celeb-card::before { content: "🎉"; position: absolute; right: 10px; top: 8px; font-size: 1.6rem; opacity: .35; }
+.celeb-card::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, #0d9488, #f59e0b); }
+.celeb-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.celeb-card:hover .celeb-cta { opacity: 1; }
+.celeb-card img { width: 40px; height: 40px; border-radius: 10px; object-fit: contain; background: #fff; padding: 4px; flex: none; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.celeb-top { display: flex; align-items: center; gap: .7rem; margin-bottom: .6rem; }
+.celeb-top b { font-size: .92rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.celeb-rev { font-size: 1.7rem; font-weight: 800; color: #0d9488; letter-spacing: -.02em; line-height: 1.1; }
+.celeb-rev-label { font-size: .72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
+.celeb-cta { margin-top: .7rem; font-size: .78rem; font-weight: 600; color: #0d9488; opacity: 0; transition: opacity .2s; }
+.celeb-card small { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; }
 @media (max-width: 900px) { .celeb-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) {
   .celeb-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; margin: 0 -1.2rem; padding-left: 1.2rem; padding-right: 1.2rem; }
