@@ -122,6 +122,74 @@ async function sendEmail(env, to, subject, html) {
   }
 }
 
+/* Stripe webhook: verify signature, promote paid submissions.
+   POST /stripe-webhook — Stripe sends checkout.session.completed.
+   Payment Link passes ?client_reference_id=<pending_key> which lands in the session. */
+async function verifyStripeWebhook(rawBody, sigHeader, secret) {
+  if (!sigHeader || !secret) return false;
+  var parts = {};
+  sigHeader.split(',').forEach(function(p){
+    var kv = p.split('=');
+    if (kv.length === 2) parts[kv[0].trim()] = kv[1].trim();
+  });
+  var t = parts.t, sig = parts.v1;
+  if (!t || !sig) return false;
+  // Reject stale (>5 min) to prevent replay
+  if (Math.abs(Date.now()/1000 - parseInt(t,10)) > 300) return false;
+  var key = await crypto.subtle.importKey('raw', new TextEncoder().encode(secret),
+    { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  var mac = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(t + '.' + rawBody));
+  var hex = Array.from(new Uint8Array(mac)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  return hex === sig;
+}
+
+async function handleStripeWebhook(request, env) {
+  var rawBody = await request.text();
+  var sig = request.headers.get('stripe-signature') || '';
+  if (!env.STRIPE_WEBHOOK_SECRET) return json({ error: 'webhook not configured' }, 500);
+  var ok = await verifyStripeWebhook(rawBody, sig, env.STRIPE_WEBHOOK_SECRET);
+  if (!ok) return json({ error: 'bad signature' }, 400);
+  var evt;
+  try { evt = JSON.parse(rawBody); } catch (e) { return json({ error: 'bad json' }, 400); }
+  if (evt.type === 'checkout.session.completed') {
+    var session = evt.data && evt.data.object || {};
+    // Only honor our $5 payment link
+    var ref = session.client_reference_id || '';
+    if (ref && /^pending_payment\//.test(ref)) {
+      var obj = await env.IMAGES.get(ref);
+      if (obj) {
+        var data = await obj.text();
+        var d;
+        try { d = JSON.parse(data); } catch (e) { d = null; }
+        if (d) {
+          d.tier = 'paid';
+          d.paid_at = new Date().toISOString();
+          d.stripe_session = session.id || '';
+          var destKey = ref.replace(/^pending_payment\//, 'submissions/');
+          await env.IMAGES.put(destKey, JSON.stringify(d), {
+            httpMetadata: { contentType: 'application/json' },
+          });
+          await env.IMAGES.delete(ref);
+          // Notify submitter
+          if (d.founder_email) {
+            sendEmail(env, d.founder_email,
+              'Payment received — your launch is in review 🎉',
+              emailShell('Payment received 🎉',
+                '<p>Hi ' + esc(d.founder || 'there') + ',</p>'
+                + '<p>We received your $5 payment for <strong>' + esc(d.name || 'your product') + '</strong>.</p>'
+                + '<p>Your launch is now in our review queue and will go live shortly.</p>'
+                + '<p>— The MilestoneWins team</p>'));
+          }
+          return json({ ok: true, promoted: destKey });
+        }
+      }
+      return json({ ok: false, error: 'pending submission not found' });
+    }
+    return json({ ok: true, ignored: true });
+  }
+  return json({ ok: true, ignored: true });
+}
+
 function emailShell(title, bodyHtml) {
   return '<div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;max-width:560px;margin:0 auto;padding:24px;color:#1a1a1a;">'
     + '<div style="font-size:20px;font-weight:700;margin-bottom:16px;">' + title + '</div>'
@@ -1191,8 +1259,9 @@ export default {
         }
         freeLeft = 2 - used - 1;
       }
+      const isPaid = data.plan === 'paid';
       const key =
-        'submissions/' +
+        (isPaid ? 'pending_payment/' : 'submissions/') +
         todayISO() +
         '-' +
         slugify(data.name) +
@@ -1209,7 +1278,8 @@ export default {
         await env.STRIPE_KV.put('freeq:' + quotaSub, String(2 - freeLeft));
       }
       // Transactional email 1: submission received (fire-and-forget)
-      if (data.founder_email) {
+      // Paid tier: don't send yet — webhook sends "payment received" after $5 confirms.
+      if (data.founder_email && !isPaid) {
         const cname = esc(data.name || 'your product');
         sendEmail(env, data.founder_email,
           'We got your submission 🎉',
@@ -1219,7 +1289,7 @@ export default {
             + '<p>We\u2019ll email you the moment you\u2019re live.</p>'
             + '<p>— The MilestoneWins team</p>'));
       }
-      return json({ ok: true, free_left: freeLeft });
+      return json({ ok: true, free_left: freeLeft, pending_key: isPaid ? key : undefined });
     }
 
     // Quota lookup for the submit form: GET /quota?id_token=...
@@ -1278,6 +1348,14 @@ export default {
         }
       }
 
+      // Stripe webhook: promote paid submissions after $5 confirms (no auth — signature verified)
+      if (request.method === 'POST' && url.pathname === '/stripe-webhook') {
+        try {
+          return await handleStripeWebhook(request, env);
+        } catch (e) {
+          return json({ error: 'webhook failed: ' + (e && e.message ? e.message : String(e)) }, 500);
+        }
+      }
       // Needs-info -> email the submitter, park the submission
       if (request.method === 'POST' && url.pathname === '/review/needs-info') {
         try {
