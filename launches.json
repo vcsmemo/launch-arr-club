@@ -36,18 +36,35 @@
     "revenue_metric": null,
     "founder": "Eric Cheng, Ethan Zheng",
     "category": "HR",
-    "pricing": null,
+    "pricing": "Freemium",
     "launched": "2026-10-14",
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [
       {
+        "date": "2024-12-30",
+        "revenue": "$1M ARR",
+        "note": "Founder milestone"
+      },
+      {
+        "date": "2026-06-23",
+        "revenue": "$7M ARR",
+        "note": "Founder milestone"
+      },
+      {
+        "date": "2026-10-02",
+        "revenue": "$8M ARR",
+        "note": "Founder milestone"
+      },
+      {
         "date": "2026-10-14",
         "revenue": "$10M ARR",
-        "note": "ARR Club signal"
+        "note": "Founder milestone"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "AI-powered job search copilot that crawls 400,000+ fresh jobs daily, matches roles to your resume with AI, and auto-tailors applications. Serves 2M+ job seekers with a team of fewer than 10.",
+    "revenue_verified": true
   },
   {
     "launch_no": 79,
