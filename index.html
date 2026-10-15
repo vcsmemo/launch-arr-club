@@ -95,8 +95,13 @@
 
   <section id="leaderboard">
     <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span> <span class="lb-countdown" id="lbCountdown"></span></h2>
-    <div class="lb-tabs" style="margin-bottom:12px;">
-      <button class="lb-tab active" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">Top revenue</button><button class="lb-tab" data-tab="week" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">This week</button><button class="lb-tab" data-tab="verified" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">✅ Verified</button><button class="lb-tab" data-tab="discover" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">🎲 Discover</button>
+    <div class="lb-tabs" style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div>
+      <button class="lb-tab active" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">Top revenue</button><button class="lb-tab" data-tab="week" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">This week</button><button class="lb-tab" data-tab="discover" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">🎲 Discover</button>
+      </div>
+      <label class="verified-toggle" style="display:flex;align-items:center;gap:6px;font-size:.85rem;color:#475569;cursor:pointer;user-select:none;">
+        <input type="checkbox" id="verifiedOnly" style="width:16px;height:16px;accent-color:#0d9488;cursor:pointer;"> ✅ Verified only
+      </label>
     </div>
     <div class="lb-table">
       <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">Revenue &#8595;</span></div>
@@ -144,14 +149,15 @@
       while(m){ i = Math.floor(rnd() * m--); t = a[m]; a[m] = a[i]; a[i] = t; }
       return a;
     }
+    var verifiedOnly = false;
     function render(tab){
       var items = allItems.slice();
+      if(verifiedOnly){
+        items = items.filter(function(it){ return it.revenue_verified; });
+      }
       if(tab === 'week'){
         var weekAgo = new Date(Date.now() - 7*24*60*60*1000);
         items = items.filter(function(it){ return it.launched && new Date(it.launched+'T00:00:00') >= weekAgo; });
-        items.sort(function(a, b){ return revVal(b) - revVal(a); });
-      } else if(tab === 'verified'){
-        items = items.filter(function(it){ return it.revenue_verified; });
         items.sort(function(a, b){ return revVal(b) - revVal(a); });
       } else if(tab === 'discover'){
         var today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
@@ -175,6 +181,7 @@
           + revCell + '</a>';
       }).join('') : '<div class="lb-row"><span></span><span class="lb-founder">No launches this week yet.</span><span></span><span></span></div>';
     }
+    var currentTab = 'all';
     document.querySelectorAll('.lb-tab').forEach(function(btn){
       btn.addEventListener('click', function(){
         document.querySelectorAll('.lb-tab').forEach(function(b){
@@ -183,8 +190,13 @@
         });
         btn.classList.add('active');
         btn.style.background = '#0d9488'; btn.style.color = '#fff';
-        render(btn.dataset.tab);
+        currentTab = btn.dataset.tab;
+        render(currentTab);
       });
+    });
+    document.getElementById('verifiedOnly').addEventListener('change', function(){
+      verifiedOnly = this.checked;
+      render(currentTab);
     });
     fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
       allItems = items;
