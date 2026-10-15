@@ -901,8 +901,7 @@ a.x-link:hover { color: var(--accent-hover); }
 .celebrate-card:hover .cc-style-overlay { opacity: 1; }
 .cc-style-overlay .cc-style-btn { font-size: .68rem; padding: .25rem .6rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.4); background: rgba(0,0,0,.35); color: #fff; cursor: pointer; backdrop-filter: blur(4px); }
 .cc-style-overlay .cc-style-btn[aria-pressed="true"] { background: rgba(255,255,255,.9); color: #0f172a; border-color: transparent; font-weight: 700; }
-.cc-dl-overlay { position: absolute; bottom: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(0,0,0,.45); color: #fff; font-size: 1.1rem; cursor: pointer; z-index: 5; opacity: 0; transition: opacity .2s; backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; }
-.celebrate-card:hover .cc-dl-overlay { opacity: 1; }
-.cc-dl-overlay:hover { background: #0d9488; }
+.cc-style-overlay .cc-dl-btn { background: #0d9488; border-color: transparent; font-weight: 600; }
+.cc-style-overlay .cc-dl-btn:hover { background: #0b7d74; }
 /* Hide old row layout */
 .cc-dl-row { display: none; }
