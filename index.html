@@ -166,6 +166,81 @@
     }).catch(function(){ document.getElementById('lbBody').innerHTML = ''; });
   })();
   </script>
+
+  <!-- Right side panel (wide screens only) -->
+  <aside id="sidePanel" aria-hidden="true">
+    <div class="sp-card" id="spStats">
+      <h4>By the numbers</h4>
+      <div class="sp-stat"><div class="sp-num" id="spTotal">–</div><div class="sp-label">products launched</div></div>
+      <div class="sp-stat"><div class="sp-num" id="spRevenue">–</div><div class="sp-label">revenue celebrated</div></div>
+      <div class="sp-stat"><div class="sp-num" id="spWeek">–</div><div class="sp-label">milestones this week</div></div>
+    </div>
+    <div class="sp-card" id="spTrending">
+      <h4>🔥 Trending now</h4>
+      <div id="spTrendBody"></div>
+    </div>
+    <div class="sp-card" id="spCats">
+      <h4>📂 Top categories</h4>
+      <div id="spCatBody"></div>
+    </div>
+    <div class="sp-card" id="spMiles">
+      <h4>💰 Recent milestones</h4>
+      <div id="spMileBody"></div>
+    </div>
+    <div class="sp-card">
+      <h4>Submit yours</h4>
+      <p style="font-size:.8rem;color:#64748b;line-height:1.5;">Hit a revenue milestone? We&rsquo;ll celebrate it.</p>
+      <a href="/submit/" style="display:inline-block;margin-top:.5rem;background:#0d9488;color:#fff;font-size:.8rem;font-weight:600;padding:.45rem .9rem;border-radius:8px;text-decoration:none;">Launch &rarr;</a>
+    </div>
+  </aside>
+  <script>
+  (function(){
+    // Only populate on wide screens
+    if(window.innerWidth < 1280) return;
+    function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+    function revValStr(s){
+      var m = String(s||'').match(/\$([\d,.]+)\s*([kKmMbB]?)(?![a-zA-Z])/);
+      if(!m) return -1;
+      var v = parseFloat(m[1].replace(/,/g, ''));
+      var u = (m[2]||'').toLowerCase();
+      if(u==='k') v*=1e3; else if(u==='m') v*=1e6; else if(u==='b') v*=1e9;
+      return v;
+    }
+    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(d){
+      var items = d.launches || d;
+      // Stats
+      document.getElementById('spTotal').textContent = items.length;
+      var tot = items.reduce(function(a,it){ var v = revValStr(it.revenue); return a + (v > 0 ? v : 0); }, 0);
+      document.getElementById('spRevenue').textContent = tot >= 1e9 ? '$'+(tot/1e9).toFixed(1)+'B' : '$'+Math.round(tot/1e6)+'M';
+      var weekAgo = new Date(Date.now() - 7*24*60*60*1000);
+      var wk = items.filter(function(it){ return it.launched && new Date(it.launched+'T00:00:00') >= weekAgo; }).length;
+      document.getElementById('spWeek').textContent = wk;
+      // Trending (top 5 by revenue)
+      var top = items.slice().sort(function(a,b){ return revValStr(b.revenue) - revValStr(a.revenue); }).slice(0,5);
+      document.getElementById('spTrendBody').innerHTML = top.map(function(it){
+        var logo = it.logo ? '<img src="'+String(it.logo).replace(/"/g,'')+'" alt="" loading="lazy" style="width:24px;height:24px;border-radius:6px;object-fit:contain;">'
+          : '<span class="sp-logo-ph">'+esc(String(it.name||'?').charAt(0))+'</span>';
+        return '<a class="sp-row" href="'+esc(it.url||'#')+'">'+logo+'<span class="sp-name">'+esc(it.name)+'</span><span class="sp-rev">'+esc(it.revenue||'')+'</span></a>';
+      }).join('');
+      // Categories
+      var cats = {};
+      items.forEach(function(it){ (it.categories||[]).forEach(function(c){ cats[c] = (cats[c]||0)+1; }); });
+      var catArr = Object.keys(cats).sort(function(a,b){ return cats[b]-cats[a]; }).slice(0,5);
+      document.getElementById('spCatBody').innerHTML = catArr.map(function(c){
+        return '<a class="sp-cat-row" href="/categories/"><span>'+esc(c)+'</span><b>'+cats[c]+'</b></a>';
+      }).join('');
+      // Recent milestones (latest by launched date, with revenue)
+      var miles = items.filter(function(it){ return it.revenue && it.launched; })
+        .sort(function(a,b){ return new Date(b.launched) - new Date(a.launched); }).slice(0,4);
+      document.getElementById('spMileBody').innerHTML = miles.map(function(it){
+        var d = new Date(it.launched+'T00:00:00');
+        var days = Math.max(0, Math.round((Date.now() - d.getTime())/864e5));
+        var when = days === 0 ? 'today' : days === 1 ? '1d' : days + 'd';
+        return '<a class="sp-row" href="'+esc(it.url||'#')+'"><span class="sp-logo-ph">'+esc(String(it.name||'?').charAt(0))+'</span><span class="sp-name">'+esc(it.name)+' hit '+esc(it.revenue)+'</span><span class="sp-when">'+when+'</span></a>';
+      }).join('');
+    }).catch(function(){});
+  })();
+  </script>
 </main>
 <footer class="site-footer">
   <div class="footer-cols">
