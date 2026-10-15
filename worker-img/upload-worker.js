@@ -1301,6 +1301,13 @@ export default {
     }
 
     // ---- Review console (token-gated) ----
+    if (request.method === 'POST' && url.pathname === '/stripe-webhook') {
+      try {
+        return await handleStripeWebhook(request, env);
+      } catch (e) {
+        return json({ error: 'webhook failed: ' + (e && e.message ? e.message : String(e)) }, 500);
+      }
+    }
     if (url.pathname.startsWith('/review/')) {
       if (!env.REVIEW_TOKEN || !env.GITHUB_TOKEN) {
         return json({ error: 'review console not configured' }, 503);
@@ -1348,14 +1355,6 @@ export default {
         }
       }
 
-      // Stripe webhook: promote paid submissions after $5 confirms (no auth — signature verified)
-      if (request.method === 'POST' && url.pathname === '/stripe-webhook') {
-        try {
-          return await handleStripeWebhook(request, env);
-        } catch (e) {
-          return json({ error: 'webhook failed: ' + (e && e.message ? e.message : String(e)) }, 500);
-        }
-      }
       // Needs-info -> email the submitter, park the submission
       if (request.method === 'POST' && url.pathname === '/review/needs-info') {
         try {
