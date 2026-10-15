@@ -204,4 +204,29 @@
     <changefreq>monthly</changefreq>
   </url>
   <url><loc>https://milestonewins.com/stories/indexsy-story/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://milestonewins.com/stories/salesrobot-story/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://milestonewins.com/stories/aeo-engine-story/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://milestonewins.com/stories/launch-club-ai-story/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://milestonewins.com/stories/dataexpert-story/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://milestonewins.com/stories/seobot-story/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
