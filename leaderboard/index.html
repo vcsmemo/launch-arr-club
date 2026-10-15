@@ -48,14 +48,17 @@
 (function(){
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   var PAGE = 25, tab = 'mrr', page = 1, items = [];
-  // Parse "$12k MRR" / "$4.5k / mo" / "$70k / 30d" / "$10k all-time" / "$1M total" -> {v: dollars, m: 'mrr'|'d30'|'all'}
+  // Parse "$12k MRR" / "$10M ARR" / "$1.12M" / "$480K" -> {v: dollars, m: 'mrr'|'d30'|'all'}
+  // The (?![a-zA-Z]) guard stops "MRR" being read as "million".
   function parseRev(r){
     if(!r) return null;
-    var m = String(r).match(/\$([\d.]+)\s*([kKmM]?)/);
+    var m = String(r).match(/\$([\d,.]+)\s*([kKmMbB]?)(?![a-zA-Z])/);
     if(!m) return null;
-    var v = parseFloat(m[1]);
-    if(m[2].toLowerCase() === 'k') v *= 1000;
-    if(m[2].toLowerCase() === 'm') v *= 1000000;
+    var v = parseFloat(m[1].replace(/,/g, ''));
+    var u = (m[2] || '').toLowerCase();
+    if(u === 'k') v *= 1e3;
+    else if(u === 'm') v *= 1e6;
+    else if(u === 'b') v *= 1e9;
     var s = String(r);
     var metric = /all-time|total/i.test(s) ? 'all' : (/\/\s*30d/i.test(s) ? 'd30' : (/MRR|\/ ?mo/i.test(s) ? 'mrr' : (/\/\s*\d+d/i.test(s) ? 'd30' : 'all')));
     return { v: v, m: metric };
