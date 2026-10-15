@@ -224,7 +224,7 @@
       }).join('');
       // Categories
       var cats = {};
-      items.forEach(function(it){ (it.categories||[]).forEach(function(c){ cats[c] = (cats[c]||0)+1; }); });
+      items.forEach(function(it){ var c = it.category; if(c) cats[c] = (cats[c]||0)+1; });
       var catArr = Object.keys(cats).sort(function(a,b){ return cats[b]-cats[a]; }).slice(0,5);
       document.getElementById('spCatBody').innerHTML = catArr.map(function(c){
         return '<a class="sp-cat-row" href="/categories/"><span>'+esc(c)+'</span><b>'+cats[c]+'</b></a>';
