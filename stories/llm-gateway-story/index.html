@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How LLM Gateway hit $79K MRR: the open-source bet on AI model chaos — MilestoneWins</title>
+<meta name="description" content="How Luca Steeb and Ismail (smakosh) built LLM Gateway into a $79K MRR business: an open-source API gateway unifying 200+ AI models, from prisma.io roots to a DevNTell spotlight.">
+<link rel="canonical" href="https://milestonewins.com/stories/llm-gateway-story/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261014d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How LLM Gateway hit $79K MRR: the open-source bet on AI model chaos", "description": "How Luca Steeb and Ismail (smakosh) built LLM Gateway into a $79K MRR business: an open-source API gateway unifying 200+ AI models, from prisma.io roots to a DevNTell spotlight.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-10-15", "about": {"@type": "Organization", "name": "LLM Gateway"}}</script>
+
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.seo-steps{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:1rem}
+.seo-steps li{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65}
+.seo-steps li b{color:#0f172a}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/stories/">Stories</a> <span>&rsaquo;</span> <strong>LLM Gateway</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">✨ Founder story</span>
+    <h1>How LLM Gateway hit $79K MRR: the open-source bet on AI model chaos</h1>
+    <p class="lede">Luca Steeb spent years at prisma.io and hatchet watching developers drown in LLM provider sprawl. With co-founder Ismail (smakosh), he built the open-source gateway he wished existed — one API for 200+ models — and turned infrastructure plumbing into a $79K MRR business.</p>
+    <div class="story-byline">By MilestoneWins · 2026-10-15 · <a href="/launches/llm-gateway/">View on MilestoneWins →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$79k</b><span>MRR</span></div>
+    <div class="ms-stat"><b>200+</b><span>AI models supported</span></div>
+    <div class="ms-stat"><b>20+</b><span>Providers unified</span></div>
+    <div class="ms-stat"><b>OSS</b><span>AGPL-3.0 core</span></div>
+  </div>
+  <div class="story-body">
+  <h2>From ORM plumbing to LLM plumbing</h2>
+  <p>Luca Steeb's GitHub profile tells the story before any interview does. Previous experience at prisma.io — the company that built the next-generation ORM for Node.js — and at hatchet, the orchestration engine for background tasks and AI agents. Then consulting for IT companies on clean code and scalable tech stacks. A career spent in infrastructure: the unglamorous layer that everything else depends on.</p><p>That background matters because LLM Gateway is infrastructure in the purest sense. As AI models multiplied across 2024 and 2025 — OpenAI, Anthropic, Google, and dozens more — every development team faced the same mess: different APIs, different SDKs, different pricing, different failure modes. The problem rhymed exactly with what Prisma had solved for databases: one interface over many backends.</p><p>Steeb teamed up with Ismail, known online as smakosh, and the two started building. In a DevNTell podcast episode (EP 180), they walked through the origin: developers needed middleware between their applications and the exploding universe of LLM providers, and nothing open-source quite did the job.</p><p>The founder-market fit is almost too clean. Steeb had spent years watching developers struggle with provider sprawl at Prisma and Hatchet. He wasn't guessing at the pain — he'd been in the rooms where teams debated which SDK to standardize on.</p>
+  <h2>One endpoint to rule the models</h2>
+  <p>LLM Gateway's pitch fits in a sentence: a unified, OpenAI-compatible API endpoint that routes requests to any large language model provider. Change the base URL, keep your existing code — whether it's cURL, Python, TypeScript, or Go — and switch models across providers by changing one string.</p><p>Under the hood, it's a TypeScript monorepo with real operational depth: smart retries with automatic fallback when a provider fails, centralized API key management so provider credentials stay server-side, real-time cost and token tracking per request, performance monitoring to compare models on accuracy versus cost, and team management with guardrails.</p><p>The open-source decision was structural, not just philosophical. The core is AGPL-3.0 licensed, which means developers can self-host on their own infrastructure — a critical requirement for teams with data residency or compliance constraints. Enterprise features sit behind a commercial license, creating the classic open-core monetization ladder: free self-hosted core, paid hosted service and advanced features.</p><p>This is the same playbook that built Prisma, incidentally. Open-source the core, make it genuinely useful self-hosted, then monetize the teams that want someone else to run it. Steeb had a front-row seat to that model working — then applied it to the hottest infrastructure category of the decade.</p>
+  <h2>Building in public, shipping in the open</h2>
+  <p>The DevNTell appearance is representative of how LLM Gateway grows: developer-to-developer, in public. The episode walked through a live demonstration — self-hosting, integration, the roadmap — with timestamps for each section. No polished marketing, just two founders showing the thing working.</p><p>The GitHub repository backs up the talk. Active development, clear AI gateway positioning, Docker-based self-hosting, dashboard apps for usage analytics — it's a real project with real users, not a landing page with a waitlist. The awesome-llm-gateways community list ranks it among the notable open-source gateways, citing its centralized key management, token and cost tracking, and operational visibility as differentiators over thinner request proxies.</p><p>Steeb's consulting background shows in the product's pragmatism. Features like per-key monthly spend caps (returning 402 when exceeded), role-based access controls, and automatic fallback chains aren't exciting — they're what production teams actually need before they'll trust a gateway with real traffic. Infrastructure buyers don't want vision; they want the thing to not break at 3 AM.</p><p>The 200+ models across 20+ providers figure is the compounding moat. Every new provider integration makes the gateway more valuable to existing users and harder to leave — switching costs grow with each model your team routes through it.</p>
+  <h2>The playbook</h2>
+  <ol class="seo-steps">
+      <li><b>Solve the problem you watched for years</b> — Steeb's time at Prisma and Hatchet meant he'd seen provider sprawl up close. Infrastructure founders win by recognizing rhyming problems in new categories.</li>
+      <li><b>Open-source the core, monetize the operations</b> — AGPL-3.0 self-hosting earns developer trust; hosted service and enterprise features earn revenue. The Prisma playbook, applied to LLMs.</li>
+      <li><b>Build in public with developers</b> — Podcast demos, active GitHub, community lists. Developer tools grow through credibility, not ad spend.</li>
+      <li><b>Ship boring reliability features</b> — Spend caps, retries, fallback chains, key management. Production teams buy the unglamorous stuff that prevents 3 AM pages.</li>
+      <li><b>Compound with integrations</b> — Every new provider makes the gateway stickier. Switching costs grow automatically as teams route more models through one endpoint.</li>
+  </ol>
+  </div>
+  <div class="seo-cta" style="margin-top:2.5rem">
+    <a class="btn" href="/submit.html">🚀 Share your milestone</a>
+    <a class="btn ghost" href="/launches/llm-gateway/">View LLM Gateway →</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 MilestoneWins</span>
+    <span><a href="/">Home</a> · <a href="/stories/">Stories</a> · <a href="/submit.html">Submit</a></span>
+  </div>
+</footer>
+<script src="/auth.js"></script>
+</body>
+</html>

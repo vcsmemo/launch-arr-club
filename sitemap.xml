@@ -188,4 +188,20 @@
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
   </url>
+  <url>
+    <loc>https://milestonewins.com/stories/stack-influence-story/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://milestonewins.com/stories/myplots-story/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://milestonewins.com/stories/llm-gateway-story/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://milestonewins.com/stories/indexsy-story/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
