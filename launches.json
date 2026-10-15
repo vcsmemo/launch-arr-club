@@ -128,7 +128,7 @@
     "launch_no": 76,
     "name": "Aizy",
     "slug": "aizy",
-    "tagline": "AI platform for paid ads — unified marketing dashboard pairing software with human strategists.",
+    "tagline": "AI platform for paid ads \u2014 unified marketing dashboard pairing software with human strategists.",
     "url": "https://milestonewins.com/launches/aizy/",
     "website": "https://tryaizy.com",
     "logo": "https://launch-arr-club-img.johntian2015.workers.dev/img/logos/aizy-dark.svg",
@@ -663,7 +663,7 @@
     ]
   },
   {
-    "name": "Codédex",
+    "name": "Cod\u00e9dex",
     "tagline": "Start Your Coding Adventure",
     "url": "/launches/codedex/",
     "category": "Education",
@@ -742,7 +742,7 @@
   },
   {
     "name": "Rezi",
-    "tagline": "The #1 AI Resume Builder – Forbes' Top Pick. Trusted by 4.5M",
+    "tagline": "The #1 AI Resume Builder \u2013 Forbes' Top Pick. Trusted by 4.5M",
     "url": "/launches/rezi/",
     "category": "AI Writing",
     "pricing": "Freemium",
@@ -768,7 +768,7 @@
   },
   {
     "name": "Cometly",
-    "tagline": "AI marketing attribution — chat with your ads data",
+    "tagline": "AI marketing attribution \u2014 chat with your ads data",
     "url": "/launches/cometly/",
     "category": "Marketing",
     "pricing": "Usage-based",
@@ -784,7 +784,7 @@
       {
         "date": "2026-10-01",
         "revenue": "$208k",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "website": "https://cometly.com",
@@ -811,7 +811,7 @@
       {
         "date": "2026-10-01",
         "revenue": "$761k / 30d",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "website": "https://www.stackinfluence.com"
@@ -834,7 +834,7 @@
       {
         "date": "2026-10-01",
         "revenue": "$189k / 30d",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "website": "https://presswhizz.com"
@@ -857,7 +857,7 @@
       {
         "date": "2026-10-01",
         "revenue": "$10k all-time",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "website": "https://blogr.ai",
@@ -883,7 +883,7 @@
       {
         "date": "2026-10-01",
         "revenue": "$10k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "website": "https://bazzly.ai",
@@ -909,7 +909,7 @@
       {
         "date": "2026-10-01",
         "revenue": "$12k / 30d",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "website": "https://creativeclaw.ai"
@@ -932,7 +932,7 @@
       {
         "date": "2026-10-02",
         "revenue": "$68.7k / 30d",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "website": "https://launchclub.ai",
@@ -958,7 +958,7 @@
       {
         "date": "2026-10-02",
         "revenue": "$25k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "website": "https://localrank.so",
@@ -984,7 +984,7 @@
       {
         "date": "2026-10-02",
         "revenue": "$13.1k / 30d",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "website": "https://www.taja.ai"
@@ -1007,7 +1007,7 @@
       {
         "date": "2026-10-02",
         "revenue": "$238 / 9d",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1032,7 +1032,7 @@
       {
         "date": "2026-10-02",
         "revenue": "$4.5k September",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1059,7 +1059,7 @@
       {
         "date": "2026-10-02",
         "revenue": "$1M total",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1084,7 +1084,7 @@
       {
         "date": "2026-10-03",
         "revenue": "$18.8k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1095,7 +1095,7 @@
     "launch_no": 43,
     "name": "QR Code AI",
     "slug": "qrcode-ai",
-    "tagline": "AI-powered custom QR codes — artistic QR art from text prompts",
+    "tagline": "AI-powered custom QR codes \u2014 artistic QR art from text prompts",
     "url": "https://milestonewins.com/launches/qrcode-ai/",
     "website": "https://qrcode-ai.com",
     "logo": "/logos/qrcode-ai.png",
@@ -1109,7 +1109,7 @@
       {
         "date": "2026-10-03",
         "revenue": "$16k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1127,15 +1127,15 @@
     "logo": "/logos/chatseo.svg",
     "revenue": "$33k MRR",
     "revenue_metric": "MRR",
-    "founder": "Paul Vengeons, Nicholas Dulait & Léo Leducq",
+    "founder": "Paul Vengeons, Nicholas Dulait & L\u00e9o Leducq",
     "category": "SEO",
-    "pricing": "€29/mo",
+    "pricing": "\u20ac29/mo",
     "launched": "2026-10-03",
     "revenue_history": [
       {
         "date": "2026-10-03",
         "revenue": "$33k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1156,13 +1156,13 @@
     "revenue_metric": "MRR",
     "founder": "Timothy Williams, Andre Timofeev & Moritz Ledeganck",
     "category": "Productivity",
-    "pricing": "€22/mo",
+    "pricing": "\u20ac22/mo",
     "launched": "2026-10-03",
     "revenue_history": [
       {
         "date": "2026-10-03",
         "revenue": "$14k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ]
   },
@@ -1170,7 +1170,7 @@
     "launch_no": 46,
     "name": "Fastlane",
     "slug": "fastlane",
-    "tagline": "Create winning short-form content in seconds — AI video engine for TikTok & Reels",
+    "tagline": "Create winning short-form content in seconds \u2014 AI video engine for TikTok & Reels",
     "url": "https://milestonewins.com/launches/fastlane/",
     "website": "https://www.usefastlane.ai/",
     "logo": "/logos/fastlane.png",
@@ -1186,7 +1186,7 @@
       {
         "date": "2026-10-03",
         "revenue": "$69k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1197,7 +1197,7 @@
     "launch_no": 47,
     "name": "Audn.AI",
     "slug": "audn-ai",
-    "tagline": "Autonomous AI red teaming — an ethical AI hacker that finds and proves real exploits in your AI agents",
+    "tagline": "Autonomous AI red teaming \u2014 an ethical AI hacker that finds and proves real exploits in your AI agents",
     "url": "https://milestonewins.com/launches/audn-ai/",
     "website": "https://audn.ai",
     "logo": "/logos/audn.png",
@@ -1211,7 +1211,7 @@
       {
         "date": "2026-10-04",
         "revenue": "$15.6k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ]
   },
@@ -1219,7 +1219,7 @@
     "launch_no": 48,
     "name": "AI Toolbox",
     "slug": "ai-toolbox",
-    "tagline": "Folders, full-text search, a prompt library and bulk export for ChatGPT, Gemini, Claude and Grok — one Chrome extension",
+    "tagline": "Folders, full-text search, a prompt library and bulk export for ChatGPT, Gemini, Claude and Grok \u2014 one Chrome extension",
     "url": "https://milestonewins.com/launches/ai-toolbox/",
     "website": "https://ai-toolbox.co",
     "logo": "/logos/ai-toolbox.png",
@@ -1233,7 +1233,7 @@
       {
         "date": "2026-10-04",
         "revenue": "$20k / 30d",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ]
   },
@@ -1241,7 +1241,7 @@
     "launch_no": 49,
     "name": "Sleek",
     "slug": "sleek",
-    "tagline": "AI mobile-app designer — chat with AI to go from idea to beautiful, editable app designs in minutes",
+    "tagline": "AI mobile-app designer \u2014 chat with AI to go from idea to beautiful, editable app designs in minutes",
     "url": "https://milestonewins.com/launches/sleek/",
     "website": "https://sleek.design",
     "logo": "/logos/sleek.svg",
@@ -1257,7 +1257,7 @@
       {
         "date": "2026-10-04",
         "revenue": "$10k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1268,7 +1268,7 @@
     "launch_no": 50,
     "name": "Caldef",
     "slug": "caldef",
-    "tagline": "AI calorie tracker — describe your meal or snap a photo, get calories and macros in 10 seconds",
+    "tagline": "AI calorie tracker \u2014 describe your meal or snap a photo, get calories and macros in 10 seconds",
     "url": "https://milestonewins.com/launches/caldef/",
     "website": "https://caldefapp.com",
     "logo": "/logos/caldef.png",
@@ -1284,7 +1284,7 @@
       {
         "date": "2026-10-05",
         "revenue": "$280 MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ]
   },
@@ -1292,7 +1292,7 @@
     "launch_no": 51,
     "name": "Subscribr",
     "slug": "subscribr",
-    "tagline": "AI YouTube production platform — ideate, script and edit a month of videos in a day",
+    "tagline": "AI YouTube production platform \u2014 ideate, script and edit a month of videos in a day",
     "url": "https://milestonewins.com/launches/subscribr/",
     "website": "https://subscribr.ai",
     "logo": "/logos/subscribr.png",
@@ -1308,7 +1308,7 @@
       {
         "date": "2026-10-05",
         "revenue": "$62k+ / 30d",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1319,7 +1319,7 @@
     "launch_no": 52,
     "name": "RightBlogger",
     "slug": "rightblogger",
-    "tagline": "AI blog automation tool that researches, writes, publishes, and keeps your site’s posts ranking on Google and ChatGPT",
+    "tagline": "AI blog automation tool that researches, writes, publishes, and keeps your site\u2019s posts ranking on Google and ChatGPT",
     "url": "https://milestonewins.com/launches/rightblogger/",
     "website": "https://rightblogger.com/",
     "logo": "/logos/rightblogger.png",
@@ -1335,7 +1335,7 @@
       {
         "date": "2026-10-06",
         "revenue": "$29k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1347,7 +1347,7 @@
     "launch_no": 53,
     "name": "Searchable",
     "slug": "searchable",
-    "tagline": "AI search visibility & analytics — see how ChatGPT, Google and Perplexity see your brand",
+    "tagline": "AI search visibility & analytics \u2014 see how ChatGPT, Google and Perplexity see your brand",
     "url": "https://milestonewins.com/launches/searchable/",
     "website": "https://www.searchable.com/",
     "logo": "/logos/searchable.jpg",
@@ -1363,7 +1363,7 @@
       {
         "date": "2026-10-06",
         "revenue": "$75k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1392,7 +1392,7 @@
       {
         "date": "2026-10-06",
         "revenue": "$9.4k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "founder_x": [
@@ -1404,7 +1404,7 @@
     "launch_no": 55,
     "name": "Lancer",
     "slug": "lancer",
-    "tagline": "The #1 Upwork AI Agent — land Upwork jobs 24/7 without the grind",
+    "tagline": "The #1 Upwork AI Agent \u2014 land Upwork jobs 24/7 without the grind",
     "url": "https://milestonewins.com/launches/lancer/",
     "website": "https://lancer.app",
     "logo": "/logos/lancer.svg",
@@ -1420,13 +1420,13 @@
       {
         "date": "2026-10-07",
         "revenue": "$10K MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
         "Grew to $10K MRR with zero paid advertising",
-        "Recruited top Upwork coaches as affiliates ('connector' strategy), paying 20–30% lifetime commissions",
+        "Recruited top Upwork coaches as affiliates ('connector' strategy), paying 20\u201330% lifetime commissions",
         "Secured one coach via personal introduction, another with a $1,000 LinkedIn outreach incentive"
       ],
       "sources": [
@@ -1440,7 +1440,7 @@
     "launch_no": 56,
     "name": "Arvow",
     "slug": "arvow",
-    "tagline": "Rank on Google and get cited by AI search — without manual work",
+    "tagline": "Rank on Google and get cited by AI search \u2014 without manual work",
     "url": "https://milestonewins.com/launches/arvow/",
     "website": "https://arvow.com",
     "logo": "/logos/arvow.png",
@@ -1456,7 +1456,7 @@
       {
         "date": "2026-10-07",
         "revenue": "$75K MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
@@ -1496,13 +1496,13 @@
       {
         "date": "2026-10-07",
         "revenue": "$10k MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
         "Went from $1k to $10k MRR in 3 months, shared publicly via monthly X updates",
-        "Monthly build-in-public updates: $3.3k MRR (Sep 2025) → $4.6k MRR (Oct 2025) → $10k MRR",
+        "Monthly build-in-public updates: $3.3k MRR (Sep 2025) \u2192 $4.6k MRR (Oct 2025) \u2192 $10k MRR",
         "20k+ designers on board at the $10k MRR mark; free tier (3 renders, no card) as the acquisition hook"
       ],
       "sources": [
@@ -1532,7 +1532,7 @@
       {
         "date": "2026-10-08",
         "revenue": "$300 MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
@@ -1578,7 +1578,7 @@
       "facts": [
         "Launched Photo AI in February 2023: $5.4K in the first week, $28.7K by month 2, $61.8K by month 5, $100K/mo by month 19",
         "Predecessor AvatarAI made $100K in 10 days (November 2022), then pivoted from novelty avatars to photorealistic AI headshots",
-        "Appearing on the Lex Fridman podcast sent revenue up 2.5x overall, with Photo AI up 3x — the $161K/mo day was that spike",
+        "Appearing on the Lex Fridman podcast sent revenue up 2.5x overall, with Photo AI up 3x \u2014 the $161K/mo day was that spike",
         "Has shared revenue publicly on X for 10+ years; over 95% of his 70+ projects failed, worn as a badge of honor"
       ],
       "sources": [
@@ -1617,16 +1617,16 @@
       {
         "date": "2026",
         "revenue": "$50K / 30d",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "Launched March 30, 2023 with a tweet — first customers within the hour, ~15K launch-day visitors",
+        "Launched March 30, 2023 with a tweet \u2014 first customers within the hour, ~15K launch-day visitors",
         "Show HN on April 2 hit the front page; Product Hunt on April 5 became #1 product of the day and #4 of the week",
         "Crossed $10K MRR in under a month, then faced ~50% month-one churn; steadied around $15K MRR five months in, paid-only from day one",
         "Previously built Feather, a Notion-based blogging platform, and exited it for $250K",
-        "In 2026: first $50K revenue month this year, and crossed $800K in total revenue — from a weekend side project"
+        "In 2026: first $50K revenue month this year, and crossed $800K in total revenue \u2014 from a weekend side project"
       ],
       "sources": [
         "https://www.starterstory.com/stories/sitegpt",
@@ -1660,12 +1660,12 @@
       {
         "date": "2026",
         "revenue": "$42K MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "Idea to $42K MRR in 90 days, with zero paid marketing — founder CJ Zafir tells the full story in his Starter Story video interview",
+        "Idea to $42K MRR in 90 days, with zero paid marketing \u2014 founder CJ Zafir tells the full story in his Starter Story video interview",
         "Solves AI hallucination in coding: generates PRDs, tech specs, wireframes and 50-step implementation plans as spec-driven context",
         "Ships 6 AI-optimized starter kits and boilerplates so developers don't burn tokens fixing setup errors",
         "Trusted by 41,450+ developers; integrates Cursor, Claude Code, Windsurf, VS Code, GitHub Copilot, Replit, Lovable and more"
@@ -1693,7 +1693,7 @@
     "revenue_metric": "monthly revenue",
     "founder": "Selene Lee",
     "category": "Dev Tools",
-    "pricing": "From £15/mo",
+    "pricing": "From \u00a315/mo",
     "launched": "2026-10-09",
     "source": "https://www.indiehackers.com/post/tech/this-founder-left-academia-built-four-failed-products-then-hit-12-5k-mo-xkng30lczEuiLG4983UN",
     "source_label": "Founder's Indie Hackers story",
@@ -1701,14 +1701,14 @@
       {
         "date": "2026-09",
         "revenue": "$12.5K/mo",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "Built the first version in 2 weeks; first paying customer within 48 hours of launch — charged from day one",
+        "Built the first version in 2 weeks; first paying customer within 48 hours of launch \u2014 charged from day one",
         "5th product after 4 failed AI consumer apps; founded Ridio in 2024, left academia summer 2025",
-        "Started her X account with 3 followers and posted every day; now 2,200+ followers — built in public so launch day arrived with a warm audience",
+        "Started her X account with 3 followers and posted every day; now 2,200+ followers \u2014 built in public so launch day arrived with a warm audience",
         "Usage-based model, credits never expire: revenue accelerated when Growth customers upgraded to Pro; now onboarding enterprise clients"
       ],
       "sources": [
@@ -1742,15 +1742,15 @@
       {
         "date": "2026-09",
         "revenue": "$5K MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
         "Quit his job in 2024 to go full-time on Yaak; spent two years living off savings before the model worked",
-        "Novel monetization: MIT-licensed source free forever; charges only for commercial use of prebuilt binaries — 37 business + 421 individual subs",
-        "Businesses contribute $3,247 of ~$5K MRR despite being a small share of subscribers — the largest business account is ~80 seats",
-        "Previously built Insomnia, sold in 2019; Yaak is its spiritual successor — he chose local-first after cloud sync contributed to his burnout"
+        "Novel monetization: MIT-licensed source free forever; charges only for commercial use of prebuilt binaries \u2014 37 business + 421 individual subs",
+        "Businesses contribute $3,247 of ~$5K MRR despite being a small share of subscribers \u2014 the largest business account is ~80 seats",
+        "Previously built Insomnia, sold in 2019; Yaak is its spiritual successor \u2014 he chose local-first after cloud sync contributed to his burnout"
       ],
       "sources": [
         "https://yaak.app/blog/funding-open-source",
@@ -1770,7 +1770,7 @@
     "tagline": "Audio-reactive AI music videos for musicians",
     "url": "https://milestonewins.com/launches/neuralframes/",
     "website": "https://neuralframes.com/",
-    "logo": "https://launch-arr-club-img.johntian2015.workers.dev/img/logos/neuralframes.webp",
+    "logo": "https://launch-arr-club-img.johntian2015.workers.dev/img/logos/neuralframes.png",
     "revenue": "$5M / yr",
     "revenue_metric": "annualized revenue",
     "founder": "Nicolai Klemke",
@@ -1783,7 +1783,7 @@
       {
         "date": "2026-08-10",
         "revenue": "$5M / yr",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
@@ -1791,7 +1791,7 @@
         "Started end of 2022 as an indie side project by physics PhD Nicolai Klemke",
         "First traction came from the Stable Diffusion subreddit on Reddit; grew through a 30,000-word SEO guide on AI video generation",
         "Hit $17k MRR by end of October 2023 (first-person founder Q&A)",
-        "Scaled to six-figure monthly revenue by Nov 2025; now a 12-person Berlin team — bootstrapped, profitable, ~6x year-over-year growth"
+        "Scaled to six-figure monthly revenue by Nov 2025; now a 12-person Berlin team \u2014 bootstrapped, profitable, ~6x year-over-year growth"
       ],
       "sources": [
         "https://tbf.fm/episodes/314-nicolai-klemke/transcript",
@@ -1817,19 +1817,19 @@
     "pricing": "Free Lite plan + paid tiers",
     "launched": "2026-10-10",
     "source": "https://www.nichepursuits.com/jason-zigelbaum/",
-    "source_label": "Founder interview · Niche Pursuits",
+    "source_label": "Founder interview \u00b7 Niche Pursuits",
     "revenue_history": [
       {
         "date": "2026-10-10",
         "revenue": "$142K MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "Solo founder arc: ~$10–15K MRR in 2022 → ~$1M ARR earlier this year → ~$142K MRR at interview; goal $2M ARR by year end",
+        "Solo founder arc: ~$10\u201315K MRR in 2022 \u2192 ~$1M ARR earlier this year \u2192 ~$142K MRR at interview; goal $2M ARR by year end",
         "~90% of business flows through the Shopify App Store; reviews-first growth; ~100% year-over-year growth since 2022",
-        "Runs the whole company solo using AI coding agents across dev, design, marketing and support — while still personally answering support email"
+        "Runs the whole company solo using AI coding agents across dev, design, marketing and support \u2014 while still personally answering support email"
       ],
       "sources": [
         "https://www.nichepursuits.com/jason-zigelbaum/",
@@ -1859,7 +1859,7 @@
       {
         "date": "2026-07-21",
         "revenue": "$11K MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
@@ -1893,19 +1893,19 @@
     "pricing": "From $49/mo",
     "launched": "2026-10-11",
     "source": "https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9",
-    "source_label": "Founder interview · Indie Hackers",
+    "source_label": "Founder interview \u00b7 Indie Hackers",
     "revenue_history": [
       {
         "date": "2026-10",
         "revenue": "$30K MRR",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
         "Day 30 hit $10K MRR, Day 60 $17-18K, Day 90 $21.8K, now at $30K MRR",
         "MVP built in 48 hours entirely in Cursor with zero audience; traded equity with the Legacy X coaching program for day-one distribution",
-        "Just shipped an MCP — \"one of the first all-in-one agentic tools for Amazon sellers\"; sellers research products, manage catalogs and optimize ads through AI without bouncing between five tools",
+        "Just shipped an MCP \u2014 \"one of the first all-in-one agentic tools for Amazon sellers\"; sellers research products, manage catalogs and optimize ads through AI without bouncing between five tools",
         "330 active Chrome extension users at Day 90; subscription tiers $49/$89/$199 per month, all paying customers, no free tier"
       ],
       "sources": [
@@ -1938,7 +1938,7 @@
       {
         "date": "2026-08-01",
         "revenue": "$9.3K/mo",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
@@ -1980,13 +1980,13 @@
       {
         "date": "2026-07-19",
         "revenue": "$36K+",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "Lifetime licenses are '100x easier to sell than subscriptions' — the founder's own #1 lesson from the CNVS launch",
-        "Daily livestreaming 'forces you to actually show up' — the marketing engine is showing the work, every day",
+        "Lifetime licenses are '100x easier to sell than subscriptions' \u2014 the founder's own #1 lesson from the CNVS launch",
+        "Daily livestreaming 'forces you to actually show up' \u2014 the marketing engine is showing the work, every day",
         "Built a 500+ member Discord community of vibecoders; their daily feedback 'made the app 1000x better'",
         "Repeat playbook: his earlier iOS app Quickclaw went from $0 to $7,200 in seven days by listening to the market",
         "Product edge: 100% voice-controlled, built in Swift, uses buyers' existing AI subscriptions with no API markup"
@@ -2021,19 +2021,19 @@
     "pricing": "From $50/mo",
     "launched": "2026-10-13",
     "source": "http://braginpublic.com/u/nelsonpryan",
-    "source_label": "Founder's X posts (Jul–Aug 2026)",
+    "source_label": "Founder's X posts (Jul\u2013Aug 2026)",
     "revenue_history": [
       {
         "date": "2026-08-01",
         "revenue": "$9,193",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "Crossed $9k MRR 'one year on from the acquisition' — growing MRR every month 'up from sub $1k this time last year,' while steadily bringing down churn",
+        "Crossed $9k MRR 'one year on from the acquisition' \u2014 growing MRR every month 'up from sub $1k this time last year,' while steadily bringing down churn",
         "July 2026 revenue was $9,193.10, down 9.63% on fewer annual signups, but MRR kept growing and churn kept falling",
-        "Launched a $30/mo monthly plan to make trying easier — 'actually… leading to more lifetime sales so far'",
+        "Launched a $30/mo monthly plan to make trying easier \u2014 'actually\u2026 leading to more lifetime sales so far'",
         "Site claims 1,000+ job boards built on the platform, rated 4.89/5 from 95 reviews"
       ],
       "sources": [
@@ -2064,16 +2064,16 @@
       {
         "date": "2026-09-09",
         "revenue": "$160,324",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
         "Launched June 2025; the founders were fitness YouTubers in the Spanish-speaking market, and that existing audience gave the launch its initial spike",
         "Roughly 3 million downloads across iOS and Android in about a year, with a dominant position in Spain and Mexico",
-        "UGC growth engine: nearly 80,000 videos posted in a year from 500+ creator accounts, close to a billion views — creators are paid nearly half the revenue they generate",
-        "Runs like a science lab: an internal 'EVELYN' experiment system documents every test, and nothing ships without an A/B test in PostHog — one onboarding commitment screen lifted retention 3.73%",
-        "Three-phase philosophy: build what founders want (terrible) → build what users request (mediocre) → only build what controlled experiments prove valuable"
+        "UGC growth engine: nearly 80,000 videos posted in a year from 500+ creator accounts, close to a billion views \u2014 creators are paid nearly half the revenue they generate",
+        "Runs like a science lab: an internal 'EVELYN' experiment system documents every test, and nothing ships without an A/B test in PostHog \u2014 one onboarding commitment screen lifted retention 3.73%",
+        "Three-phase philosophy: build what founders want (terrible) \u2192 build what users request (mediocre) \u2192 only build what controlled experiments prove valuable"
       ],
       "sources": [
         "https://www.startupfinder.co/posts/how-a-22-year-old-built-a-160kmo-fitness-app-ov09",
@@ -2104,16 +2104,16 @@
       {
         "date": "2026-09-24",
         "revenue": "$30,000",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
         "Built 45+ apps in the past year; launched Snag with his 10x Studio team about four months before the interview (~May 2026)",
         "Went from $0 to $30K MRR in under four months: 100,000+ authenticated users, 9,000 conversions, $80,000+ total proceeds, ~3,300 App Store ratings",
-        "Distribution engine: UGC creator campaigns at scale — interview and filter creators, keep the ~10% with virality, put winners on a monthly retainer plus CPM, then turn the best creatives into Meta ads",
-        "Economics per creative: one video hit 240,000 views; typically $1,000–$2,000 in subscription profit per 100,000 views",
-        "Build system: reverse-engineer the value proposition first, Figma-wireframe it, then AI-code the app (Cursor + Cloud Code) — a working app in about four to five hours"
+        "Distribution engine: UGC creator campaigns at scale \u2014 interview and filter creators, keep the ~10% with virality, put winners on a monthly retainer plus CPM, then turn the best creatives into Meta ads",
+        "Economics per creative: one video hit 240,000 views; typically $1,000\u2013$2,000 in subscription profit per 100,000 views",
+        "Build system: reverse-engineer the value proposition first, Figma-wireframe it, then AI-code the app (Cursor + Cloud Code) \u2014 a working app in about four to five hours"
       ],
       "sources": [
         "https://www.starterstory.com/snag",
@@ -2144,14 +2144,14 @@
       {
         "date": "2026-09-15",
         "revenue": "$2,354.65",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "Free web tools bring ~46% of the site's search traffic: 9,923 of 21,645 Google clicks in the latest 28-day period (Aug 12–Sep 8, 2026)",
-        "App Store click events from tool pages grew 158% — from 100 to 258 across two consecutive 28-day periods",
-        "Sitewide Google clicks grew 7.5x across three 28-day periods (2,871 to 21,645); mid-September saw 1,477–1,598 clicks per day",
+        "Free web tools bring ~46% of the site's search traffic: 9,923 of 21,645 Google clicks in the latest 28-day period (Aug 12\u2013Sep 8, 2026)",
+        "App Store click events from tool pages grew 158% \u2014 from 100 to 258 across two consecutive 28-day periods",
+        "Sitewide Google clicks grew 7.5x across three 28-day periods (2,871 to 21,645); mid-September saw 1,477\u20131,598 clicks per day",
         "Builds in public with monthly SEO/revenue updates; MRR was stalling around $2,000 five days before the Sep 15 post, then rose to $2,354.65"
       ],
       "sources": [
@@ -2182,16 +2182,16 @@
       {
         "date": "2026-10-06",
         "revenue": "~$5K",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "Started May 2020 as a ~5-day hobby project during the COVID lockdowns — a quick v1.0 he kept improving because he enjoyed building it",
+        "Started May 2020 as a ~5-day hobby project during the COVID lockdowns \u2014 a quick v1.0 he kept improving because he enjoyed building it",
         "Grew to 500,000+ downloads and ~50,000 monthly active users; featured on the App Store multiple times; made a cameo in the WWDC 2026 keynote",
-        "Almost no paid marketing — purely organic growth that picked up once Apple began featuring the app",
+        "Almost no paid marketing \u2014 purely organic growth that picked up once Apple began featuring the app",
         "No server-side component: the app runs entirely on the phone, so every subscription is almost 100% profit with virtually no marginal cost",
-        "Product-led growth via workout image-sharing — turn workouts into editorial-quality images to post on social"
+        "Product-led growth via workout image-sharing \u2014 turn workouts into editorial-quality images to post on social"
       ],
       "sources": [
         "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
@@ -2226,7 +2226,7 @@
     "launch_no": 82,
     "name": "BridgeMind",
     "slug": "bridgemind",
-    "tagline": "The Agent Super App — a workspace for vibe coding",
+    "tagline": "The Agent Super App \u2014 a workspace for vibe coding",
     "url": "https://milestonewins.com/launches/bridgemind/",
     "website": "https://www.bridgemind.ai",
     "logo": "/logos/bridgemind.png",
@@ -2242,13 +2242,13 @@
       {
         "date": "2026-09-24",
         "revenue": "$20,000",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "$3,955 to $18,320 MRR in 90 days, posted on his own channel: 'boring, daily, relentless compounding' — he showed up and shipped on livestream every day for three months",
-        "$17,265.86 MRR, up 20.81% month over month — then 'surpassed $20,000 in MRR', with a stated goal of '$1M or bust'",
+        "$3,955 to $18,320 MRR in 90 days, posted on his own channel: 'boring, daily, relentless compounding' \u2014 he showed up and shipped on livestream every day for three months",
+        "$17,265.86 MRR, up 20.81% month over month \u2014 then 'surpassed $20,000 in MRR', with a stated goal of '$1M or bust'",
         "Grew out of the founder's YouTube channel into a self-described 'agentic organization': ~74,000 YouTube subscribers, ~10,000 Discord members, ~31,000 X followers (May 2026)"
       ],
       "sources": [
@@ -2273,19 +2273,19 @@
     "pricing": "Freemium (free plan available)",
     "launched": "2026-10-15",
     "source": "https://ideawave.io/startup/instatus",
-    "source_label": "IdeaWave revenue tracker — founder-listed on ARRFounder, rechecked Oct 14, 2026",
+    "source_label": "IdeaWave revenue tracker \u2014 founder-listed on ARRFounder, rechecked Oct 14, 2026",
     "revenue_history": [
       {
         "date": "2026-10-14",
         "revenue": "$50,000",
-        "note": "Launch · Founder-reported"
+        "note": "Launch \u00b7 Founder-reported"
       }
     ],
     "growth_story": {
       "facts": [
-        "Solo founder Ali Salah, a developer from Egypt, quit his job to build Instatus — a bootstrapped alternative to Atlassian Statuspage",
+        "Solo founder Ali Salah, a developer from Egypt, quit his job to build Instatus \u2014 a bootstrapped alternative to Atlassian Statuspage",
         "Featured in Starter Story twice: the original interview on quitting his job to build it, and a five-year follow-up on running it solo",
-        "Founder-listed $50K MRR on ARRFounder, tracked daily by IdeaWave since Aug 1, 2026 — ranked #88 of 290 tracked startups"
+        "Founder-listed $50K MRR on ARRFounder, tracked daily by IdeaWave since Aug 1, 2026 \u2014 ranked #88 of 290 tracked startups"
       ],
       "sources": [
         "https://www.starterstory.com/stories/instatus",
