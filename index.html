@@ -35,6 +35,7 @@
 <main>
   <section class="hero hero-simple">
     <h1>Hit a milestone. We&rsquo;ll celebrate it.</h1>
+    <p class="hero-sub">Founder-reported revenue milestones, with a shareable celebration card for every win.</p>
     <div class="hero-searchrow">
       <div class="hero-search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
@@ -215,7 +216,7 @@
       <div class="sp-stat"><div class="sp-num" id="spWeek">–</div><div class="sp-label">milestones this week</div></div>
     </div>
     <div class="sp-card" id="spTrending">
-      <h4>🔥 Trending now</h4>
+      <h4>🆕 Newly listed</h4>
       <div id="spTrendBody"></div>
     </div>
     <div class="sp-card" id="spCats">
@@ -254,12 +255,13 @@
       var weekAgo = new Date(Date.now() - 7*24*60*60*1000);
       var wk = items.filter(function(it){ return it.launched && new Date(it.launched+'T00:00:00') >= weekAgo; }).length;
       document.getElementById('spWeek').textContent = wk;
-      // Trending (top 5 by revenue)
-      var top = items.slice().sort(function(a,b){ return revValStr(b.revenue) - revValStr(a.revenue); }).slice(0,5);
+      // Trending (5 most recently launched — different from leaderboard's revenue sort)
+      var top = items.filter(function(it){ return it.launched; })
+        .sort(function(a,b){ return new Date(b.launched) - new Date(a.launched); }).slice(0,5);
       document.getElementById('spTrendBody').innerHTML = top.map(function(it){
         var logo = it.logo ? '<img src="'+String(it.logo).replace(/"/g,'')+'" alt="" loading="lazy" style="width:24px;height:24px;border-radius:6px;object-fit:contain;">'
           : '<span class="sp-logo-ph">'+esc(String(it.name||'?').charAt(0))+'</span>';
-        return '<a class="sp-row" href="'+esc(it.url||'#')+'">'+logo+'<span class="sp-name">'+esc(it.name)+'</span><span class="sp-rev">'+esc(it.revenue||'')+'</span></a>';
+        return '<a class="sp-row" href="'+esc(it.url||'#')+'">'+logo+'<span class="sp-name">'+esc(it.name)+'</span><span class="sp-rev">'+esc(it.revenue||'new')+'</span></a>';
       }).join('');
       // Categories
       var cats = {};
