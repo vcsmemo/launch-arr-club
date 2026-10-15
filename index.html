@@ -111,7 +111,11 @@
     var medals = ['🥇','🥈','🥉'];
     var allItems = [];
     function revVal(it){
-      var s = String(it.revenue || '');
+      return annualized(it.revenue);
+    }
+    // Annualize revenue for fair sorting: MRR×12, 30d×12, ARR/yr/total as-is.
+    function annualized(s){
+      s = String(s || '');
       var m = s.match(/\$([\d,.]+)\s*([kKmMbB]?)(?![a-zA-Z])/);
       if(!m) return -1;
       var v = parseFloat(m[1].replace(/,/g, ''));
@@ -119,7 +123,19 @@
       if(u === 'k') v *= 1e3;
       else if(u === 'm') v *= 1e6;
       else if(u === 'b') v *= 1e9;
+      if(/MRR|\/ ?mo/i.test(s)) v *= 12;
+      else if(/\/\s*30d/i.test(s)) v *= 12;
       return v;
+    }
+    // Short metric label for display: ARR / MRR / 30d / /yr / total
+    function metricTag(s){
+      s = String(s || '');
+      if(/ARR/i.test(s)) return 'ARR';
+      if(/MRR/i.test(s)) return 'MRR';
+      if(/\/\s*30d/i.test(s)) return '30d';
+      if(/\/ ?yr/i.test(s)) return '/yr';
+      if(/all-time|total/i.test(s)) return 'total';
+      return '';
     }
     function seededShuffle(arr, seed){
       var a = arr.slice(), m = a.length, t, i;
@@ -148,8 +164,10 @@
         var logo = it.logo
           ? '<img src="' + String(it.logo).replace(/"/g, '') + '" alt="" loading="lazy">'
           : '<span class="lc-logo-ph">' + esc(String(it.name || '?').charAt(0)) + '</span>';
+        var mt = metricTag(it.revenue);
+        var vBadge = it.revenue_verified ? ' <span class="v-badge" title="Revenue verified">✅</span>' : '';
         var revCell = it.revenue
-          ? '<span class="lb-rev-col has">' + esc(it.revenue) + '</span>'
+          ? '<span class="lb-rev-col has">' + esc(it.revenue) + (mt ? ' <span class="metric-tag">'+esc(mt)+'</span>' : '') + vBadge + '</span>'
           : '<span class="lb-rev-col">\u2013</span>';
         return '<a class="lb-row" href="' + esc(it.url) + '"><span class="lb-rank">' + (medals[i] || (i + 1)) + '</span>'
           + '<span class="lb-startup">' + logo + '<span><strong>' + esc(it.name) + '</strong><p>' + esc(it.tagline || '') + '</p></span></span>'

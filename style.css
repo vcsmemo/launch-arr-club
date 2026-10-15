@@ -884,3 +884,8 @@ a.x-link:hover { color: var(--accent-hover); }
   .sp-cat-row:first-child { border-top: none; }
   .sp-cat-row b { color: #0d9488; }
 }
+
+/* Revenue metric tags + verification badges */
+.metric-tag { display: inline-block; font-size: .68rem; font-weight: 600; color: #64748b; background: #f1f5f9; border-radius: 4px; padding: 1px 5px; margin-left: 4px; vertical-align: 1px; }
+.v-badge { font-size: .8rem; margin-left: 3px; vertical-align: 1px; }
+.lb-rev-col.has { font-variant-numeric: tabular-nums; text-align: right; }

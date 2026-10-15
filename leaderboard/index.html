@@ -48,8 +48,9 @@
 (function(){
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   var PAGE = 25, tab = 'mrr', page = 1, items = [];
-  // Parse "$12k MRR" / "$10M ARR" / "$1.12M" / "$480K" -> {v: dollars, m: 'mrr'|'d30'|'all'}
+  // Parse "$12k MRR" / "$10M ARR" / "$1.12M" / "$480K" -> {v: annualized dollars, m: 'mrr'|'d30'|'all'}
   // The (?![a-zA-Z]) guard stops "MRR" being read as "million".
+  // MRR and 30d are annualized (×12) so sorting is fair across metrics.
   function parseRev(r){
     if(!r) return null;
     var m = String(r).match(/\$([\d,.]+)\s*([kKmMbB]?)(?![a-zA-Z])/);
@@ -61,16 +62,28 @@
     else if(u === 'b') v *= 1e9;
     var s = String(r);
     var metric = /all-time|total/i.test(s) ? 'all' : (/\/\s*30d/i.test(s) ? 'd30' : (/MRR|\/ ?mo/i.test(s) ? 'mrr' : (/\/\s*\d+d/i.test(s) ? 'd30' : 'all')));
+    if(metric === 'mrr' || metric === 'd30') v *= 12;
     return { v: v, m: metric };
+  }
+  function metricTag(s){
+    s = String(s || '');
+    if(/ARR/i.test(s)) return 'ARR';
+    if(/MRR/i.test(s)) return 'MRR';
+    if(/\/\s*30d/i.test(s)) return '30d';
+    if(/\/ ?yr/i.test(s)) return '/yr';
+    if(/all-time|total/i.test(s)) return 'total';
+    return '';
   }
   function row(it, i){
     var logo = it.logo
       ? '<img src="' + String(it.logo).replace(/"/g, '') + '" alt="" loading="lazy">'
       : '<span class="lc-logo-ph">' + esc(String(it.name || '?').charAt(0)) + '</span>';
+    var mt = metricTag(it.revenue);
+    var vBadge = it.revenue_verified ? ' <span class="v-badge" title="Revenue verified">✅</span>' : '';
     return '<a class="lb-row" href="' + esc(it.url) + '"><span class="lb-rank">' + ((page - 1) * PAGE + i + 1) + '</span>'
       + '<span class="lb-startup">' + logo + '<span><strong>' + esc(it.name) + '</strong><p>' + esc(it.tagline || '') + '</p></span></span>'
       + '<span class="lb-founder">' + esc(it.founder || '\u2013') + '</span>'
-      + '<span class="lb-rev-col has">' + esc(it.revenue) + '</span></a>';
+      + '<span class="lb-rev-col has">' + esc(it.revenue) + (mt ? ' <span class="metric-tag">'+esc(mt)+'</span>' : '') + vBadge + '</span></a>';
   }
   function render(){
     var list = items.filter(function(it){ return it._rev && it._rev.m === tab; })
