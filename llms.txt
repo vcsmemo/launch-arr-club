@@ -22,6 +22,8 @@
 - GitBot (#027): Build bots on the coding agent you already use — https://milestonewins.com/launches/gitbot/
 - Squint (#028): Drag a box on your screen and ask AI about it — https://milestonewins.com/launches/squint/
 - getcta (#029): An AI teleprompter that lives under your MacBook notch — https://milestonewins.com/launches/getcta/
+- BridgeMind (#082): The Agent Super App — a workspace for vibe coding — https://milestonewins.com/launches/bridgemind/
+- Instatus (#083): Beautiful status pages & uptime monitoring — https://milestonewins.com/launches/instatus/
 
 - Rezi (AI Writing): The #1 AI Resume Builder – Forbes' Top Pick. Trusted by 4.5M https://milestonewins.com/launches/rezi/
 - Postiz (Marketing): Run your social media on autopilot with AI agents https://milestonewins.com/launches/postiz/
