@@ -68,7 +68,7 @@
       return MONTHS[parseInt(m[2], 10) - 1] + ' ' + parseInt(m[3], 10);
     }
     fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
-      var arr = (items.launches || items).filter(function(p){ return p.launched; });
+      var arr = (items.launches || items).filter(function(p){ return p.launched && !p.revenue; });
       arr.sort(function(a, b){ return a.launched < b.launched ? 1 : -1; });
       var el = document.getElementById('freshGrid');
       if(!el) return;
