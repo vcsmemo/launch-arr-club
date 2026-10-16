@@ -54,7 +54,7 @@
   </section>
 
   <section id="fresh">
-    <h2 class="section-title"><span class="dot"></span>Fresh launches <span class="lb-sub">every launch is a milestone</span></h2>
+    <h2 class="section-title"><span class="dot"></span>Fresh launches <span class="lb-sub">launch is your first milestone</span></h2>
     <div class="celeb-grid" id="freshGrid"><div class="celeb-skeleton">Loading…</div></div>
   </section>
 
@@ -75,7 +75,7 @@
       el.innerHTML = arr.slice(0, 8).map(function(p){
         var logo = p.logo ? '<img src="' + esc(p.logo) + '" alt="" loading="lazy">' : '<span class="sp-logo-ph">' + esc(String(p.name||'?').charAt(0)) + '</span>';
         var rev = p.revenue ? '<div class="celeb-rev" style="font-size:1.1rem;">' + esc(p.revenue) + '</div>' : '<div class="celeb-rev-label">🚀 just launched</div>';
-        return '<a class="celeb-card" href="' + esc(p.url) + '">'
+        return '<a class="celeb-card fresh-card" href="' + esc(p.url) + '">'
           + '<div class="celeb-top">' + logo + '<b>' + esc(p.name) + '</b></div>'
           + rev
           + '<div class="celeb-rev-label">' + esc(fmtDate(p.launched)) + '</div>'

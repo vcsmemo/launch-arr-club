@@ -704,6 +704,10 @@ section#stories { margin-top: 1rem; }
   color: var(--text); box-shadow: var(--shadow-sm); overflow: hidden; }
 .celeb-card::before { content: "🎉"; position: absolute; right: 10px; top: 8px; font-size: 1.6rem; opacity: .35; }
 .celeb-card::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, #0d9488, #f59e0b); }
+/* Fresh launches: blue/purple accent to distinguish from revenue milestones (teal/amber) */
+.celeb-card.fresh-card { background: linear-gradient(135deg, #fff 0%, #eff6ff 100%); border-color: #bfdbfe; }
+.celeb-card.fresh-card::before { content: "🚀"; }
+.celeb-card.fresh-card::after { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
 .celeb-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
 .celeb-card:hover .celeb-cta { opacity: 1; }
 .celeb-card img { width: 40px; height: 40px; border-radius: 10px; object-fit: contain; background: #fff; padding: 4px; flex: none; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
