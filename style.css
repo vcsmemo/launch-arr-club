@@ -365,7 +365,7 @@ a.lb-row:hover { background: var(--bg-soft); }
 .kbd-list strong { color: var(--text); }
 @media (max-width: 560px) {
   .detail-head h1 { font-size: 1.55rem; }
-  .nav-links a:not(.cta) { display: none; }
+  .nav-links a:not(.cta):not(.nav-cta) { display: none; }
   .hero { padding: 1.8rem 0.8rem 1.5rem; }
 }
 
