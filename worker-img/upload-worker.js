@@ -947,7 +947,7 @@ async function handleApprove(request, env) {
         + '<p>Your <strong>' + lname + '</strong> is live:</p>'
         + '<p><a href="' + liveUrl + '" style="color:#0d9488;font-weight:600;">' + liveUrl + '</a></p>'
         + '<p>Your page includes a celebration card — open the page, hit \u201cDownload celebration image\u201d, and share it anywhere.</p>'
-        + '<p>When you hit your next milestone, submit it and we\u2019ll celebrate again.</p>'
+        + '<p>Hit your first revenue milestone? Come back and submit it — we\u2019ll make you a revenue celebration card.</p>'
         + '<p>Have a good founding story? We\u2019d love to feature it — just reply to this email and tell us how it all started.</p>'
         + '<p>— The MilestoneWins team</p>'));
   }
@@ -1387,7 +1387,7 @@ export default {
             + '<p>Your <strong>' + esc(pname) + '</strong> is live:</p>'
             + '<p><a href="' + liveUrl + '" style="color:#0d9488;font-weight:600;">' + liveUrl + '</a></p>'
             + '<p>Your page includes a celebration card — open the page, hit \u201cDownload celebration image\u201d, and share it anywhere.</p>'
-            + '<p>When you hit your next milestone, submit it and we\u2019ll celebrate again.</p>'
+            + '<p>Hit your first revenue milestone? Come back and submit it — we\u2019ll make you a revenue celebration card.</p>'
             + '<p>Have a good founding story? We\u2019d love to feature it — just reply to this email and tell us how it all started.</p>'
             + '<p>— The MilestoneWins team</p>'));
         return json({ ok: r.ok, error: r.error || null });

@@ -45,8 +45,8 @@
   <div class="revenue-hero">
     <div class="rh-main">
       <span class="rh-label">Revenue</span>
-      <div class="rh-value rh-empty">Not disclosed <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>
-      <span class="rh-sub">Revenue not shared yet</span>
+      <div class="rh-value">🚀 Just launched</div>
+      <span class="rh-sub">First revenue milestone coming soon</span>
     </div>
     <div class="rh-verify">
       <div class="stripe-verify-row" data-stripe-connect-v2>
@@ -141,7 +141,13 @@
         document.getElementById('timelineTrack').innerHTML = '<div class="timeline-item"><div class="timeline-note">No revenue shared yet.</div></div>';
         return;
       }
-      var html = product.revenue_history.map(function(h){
+      var entries = product.revenue_history.slice();
+      // Always start timeline with launch day
+      if(product.launched){
+        entries.push({date: product.launched, revenue: '🚀 Launched', note: 'First milestone'});
+      }
+      entries.sort(function(a,b){ return a.date < b.date ? 1 : -1; });
+      var html = entries.map(function(h){
         return '<div class="timeline-item">'
           + '<div class="timeline-date">' + h.date + '</div>'
           + '<div class="timeline-rev">' + h.revenue + '</div>'

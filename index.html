@@ -53,6 +53,38 @@
     <div class="celeb-grid" id="celebGrid"><div class="celeb-skeleton">Loading celebrations…</div></div>
   </section>
 
+  <section id="fresh">
+    <h2 class="section-title"><span class="dot"></span>Fresh launches <span class="lb-sub">every launch is a milestone</span></h2>
+    <div class="celeb-grid" id="freshGrid"><div class="celeb-skeleton">Loading…</div></div>
+  </section>
+
+  <script>
+  (function(){
+    function esc(s){ return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+    function fmtDate(iso){
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+      if(!m) return '';
+      var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return MONTHS[parseInt(m[2], 10) - 1] + ' ' + parseInt(m[3], 10);
+    }
+    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
+      var arr = (items.launches || items).filter(function(p){ return p.launched; });
+      arr.sort(function(a, b){ return a.launched < b.launched ? 1 : -1; });
+      var el = document.getElementById('freshGrid');
+      if(!el) return;
+      el.innerHTML = arr.slice(0, 8).map(function(p){
+        var logo = p.logo ? '<img src="' + esc(p.logo) + '" alt="" loading="lazy">' : '<span class="sp-logo-ph">' + esc(String(p.name||'?').charAt(0)) + '</span>';
+        var rev = p.revenue ? '<div class="celeb-rev" style="font-size:1.1rem;">' + esc(p.revenue) + '</div>' : '<div class="celeb-rev-label">🚀 just launched</div>';
+        return '<a class="celeb-card" href="' + esc(p.url) + '">'
+          + '<div class="celeb-top">' + logo + '<b>' + esc(p.name) + '</b></div>'
+          + rev
+          + '<div class="celeb-rev-label">' + esc(fmtDate(p.launched)) + '</div>'
+          + '<div class="celeb-cta">View launch →</div></a>';
+      }).join('');
+    }).catch(function(){});
+  })();
+  </script>
+
   <script>
   (function(){
     var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -99,7 +131,7 @@
     <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span> <span class="lb-countdown" id="lbCountdown"></span></h2>
     <div class="lb-tabs" style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
       <div>
-      <button class="lb-tab active" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">Top revenue</button><button class="lb-tab" data-tab="week" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">This week</button><button class="lb-tab" data-tab="discover" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">🎲 Discover</button>
+      <button class="lb-tab active" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">Top revenue</button><button class="lb-tab" data-tab="newest" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">🆕 Newest</button><button class="lb-tab" data-tab="week" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">This week</button><button class="lb-tab" data-tab="discover" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">🎲 Discover</button>
       </div>
       <label class="verified-toggle" style="display:flex;align-items:center;gap:6px;font-size:.85rem;color:#475569;cursor:pointer;user-select:none;">
         <input type="checkbox" id="verifiedOnly" style="width:16px;height:16px;accent-color:#0d9488;cursor:pointer;"> ✅ Verified only
@@ -157,7 +189,10 @@
       if(verifiedOnly){
         items = items.filter(function(it){ return it.revenue_verified; });
       }
-      if(tab === 'week'){
+      if(tab === 'newest'){
+        items = items.filter(function(it){ return it.launched; });
+        items.sort(function(a, b){ return a.launched < b.launched ? 1 : -1; });
+      } else if(tab === 'week'){
         var weekAgo = new Date(Date.now() - 7*24*60*60*1000);
         items = items.filter(function(it){ return it.launched && new Date(it.launched+'T00:00:00') >= weekAgo; });
         items.sort(function(a, b){ return revVal(b) - revVal(a); });
