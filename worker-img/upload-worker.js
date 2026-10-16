@@ -95,7 +95,7 @@ async function googleSubFromToken(idToken) {
 /* Transactional email via Resend. Returns {ok:true,id} or {ok:false,error}.
    Never throws — email failures must not break submit/approve flows. */
 var RESEND_FROM = 'MilestoneWins <hello@milestonewins.com>';
-var RESEND_REPLY_TO = '100marrclub@gmail.com';
+var RESEND_REPLY_TO = 'hello@milestonewins.com';
 async function sendEmail(env, to, subject, html) {
   try {
     if (!env.RESEND_API_KEY) return { ok: false, error: 'resend not configured' };
