@@ -2557,5 +2557,58 @@
     "launched": "2026-10-16",
     "source": "producthunt",
     "source_label": "Product Hunt"
+  },
+  {
+    "launch_no": 97,
+    "name": "Founders Today",
+    "slug": "founders-today",
+    "tagline": "Founder community & newsletter giving startups distribution \u2014 854K+ product impressions delivered",
+    "description": "Founders Today is Peter Oberlik's founder community and launch platform: 10,000+ founders, 854K+ product impressions delivered, and a publisher network that distributes launches to real audiences. Launching is free; paid BOOST distributes your product across tech publishers on an eCPM model.",
+    "url": "https://milestonewins.com/launches/founders-today/",
+    "website": "https://founderstoday.news",
+    "logo": "https://launch-arr-club-img.johntian2015.workers.dev/img/logos/founders-today.png",
+    "revenue": "$2,135 MRR",
+    "revenue_metric": "MRR",
+    "founder": "Peter Oberlik",
+    "category": "Marketing",
+    "pricing": "Freemium",
+    "launched": "2026-10-16",
+    "source": "https://www.indiehackers.com/post/we-hit-10-000-founders-anddistributed-over-854-000-productimpressions-2-135-mrr-thisis-a-huge-milestone-for-us-d2f63e5f24",
+    "source_label": "Founder's Indie Hackers milestone post (Aug 2026)",
+    "revenue_history": [
+      {
+        "date": "2026-08-25",
+        "revenue": "$2,135 MRR",
+        "note": "Launch \u00b7 Founder-reported"
+      }
+    ]
+  },
+  {
+    "launch_no": 98,
+    "name": "Voicy",
+    "slug": "voicy",
+    "tagline": "Write with your voice, everywhere \u2014 AI speech-to-text, 3x faster than typing",
+    "description": "Voicy (usevoicy.com) is Kourosh Ghaffari's Whisper-powered AI speech-to-text app: dictation 3x faster than typing on every platform \u2014 Chrome, Windows, Mac, Linux, iOS and Android. Built for seniors and accessibility users. (A different product from the Rotterdam sound-clip platform of the same name.)",
+    "url": "https://milestonewins.com/launches/voicy/",
+    "website": "https://usevoicy.com",
+    "logo": "https://launch-arr-club-img.johntian2015.workers.dev/img/logos/voicy.png",
+    "revenue": "$11K MRR",
+    "revenue_metric": "MRR",
+    "founder": "Kourosh Ghaffari",
+    "founder_x": [
+      "BuildingWaves"
+    ],
+    "category": "Productivity",
+    "pricing": "From $8.49/mo",
+    "launched": "2026-10-16",
+    "source": "https://www.startupfinder.co/posts/how-a-solo-founder-makes-18kmo-in-a-saturated-market-lrld",
+    "source_label": "Startup Finder profile (Oct 2026); founder's X bio self-reports ~$11K MRR",
+    "revenue_history": [
+      {
+        "date": "2026-10-15",
+        "revenue": "$11K MRR",
+        "note": "Launch \u00b7 Founder-reported"
+      }
+    ]
   }
 ]
