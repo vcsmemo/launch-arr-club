@@ -69,7 +69,8 @@
     }
     fetch('/launches.json').then(function(r){ return r.json(); }).then(function(items){
       var arr = (items.launches || items).filter(function(p){ return p.launched && !p.revenue; });
-      arr.sort(function(a, b){ return a.launched < b.launched ? 1 : -1; });
+      function dv(s){ var t = Date.parse(s || ''); return isNaN(t) ? 0 : t; }
+      arr.sort(function(a, b){ return dv(b.launched) - dv(a.launched); });
       var el = document.getElementById('freshGrid');
       if(!el) return;
       el.innerHTML = arr.slice(0, 8).map(function(p){
@@ -191,7 +192,7 @@
       }
       if(tab === 'newest'){
         items = items.filter(function(it){ return it.launched; });
-        items.sort(function(a, b){ return a.launched < b.launched ? 1 : -1; });
+        items.sort(function(a, b){ var ta = Date.parse(a.launched||''), tb = Date.parse(b.launched||''); return (isNaN(tb)?0:tb) - (isNaN(ta)?0:ta); });
       } else if(tab === 'week'){
         var weekAgo = new Date(Date.now() - 7*24*60*60*1000);
         items = items.filter(function(it){ return it.launched && new Date(it.launched+'T00:00:00') >= weekAgo; });
@@ -326,7 +327,7 @@
     <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
   </div>
   <div class="footer-inner">
-    <span>© 2026 MilestoneWins · <a href="https://www.toolpilot.ai">Listed on ToolPilot</a> · <a target="_blank" href="https://goodaitools.com/ai/launch-arr"><img src="https://goodaitools.com/assets/images/badge.png" alt="Good AI Tools" style="height:20px;vertical-align:middle"></a> · <a href="https://fazier.com/launches/milestonewins.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width="120" alt="Fazier badge"></a></span>
+    <span>© 2026 MilestoneWins · <a href="https://www.toolpilot.ai" target="_blank" rel="noopener" style="display:inline-block;background:#0d9488;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;text-decoration:none;vertical-align:middle">Powered by ToolPilot.ai</a> · <a target="_blank" href="https://goodaitools.com/ai/launch-arr"><img src="https://goodaitools.com/assets/images/badge.png" alt="Good AI Tools" style="height:20px;vertical-align:middle"></a> · <a href="https://fazier.com/launches/milestonewins.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width="120" alt="Fazier badge"></a></span>
   </div>
 </footer>
 <script>
