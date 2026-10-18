@@ -165,6 +165,7 @@ async function handleStripeWebhook(request, env) {
           d.tier = 'paid';
           d.paid_at = new Date().toISOString();
           d.stripe_session = session.id || '';
+          d.stripe_payment_intent = session.payment_intent || '';
           var destKey = ref.replace(/^pending_payment\//, 'submissions/');
           await env.IMAGES.put(destKey, JSON.stringify(d), {
             httpMetadata: { contentType: 'application/json' },
@@ -184,6 +185,40 @@ async function handleStripeWebhook(request, env) {
         }
       }
       return json({ ok: false, error: 'pending submission not found' });
+    }
+    return json({ ok: true, ignored: true });
+  }
+  if (evt.type === 'charge.refunded') {
+    // A $5 payment was refunded — pull the submission back out of the review queue.
+    var charge = evt.data && evt.data.object || {};
+    var pi = charge.payment_intent || '';
+    if (!pi) return json({ ok: true, ignored: true });
+    var listed = await env.IMAGES.list({ prefix: 'submissions/' });
+    for (var i = 0; i < listed.objects.length; i++) {
+      var o = listed.objects[i];
+      var obj = await env.IMAGES.get(o.key);
+      if (!obj) continue;
+      var d = null;
+      try { d = await obj.json(); } catch (e) {}
+      if (d && d.stripe_payment_intent === pi) {
+        d.refunded_at = new Date().toISOString();
+        delete d.paid_at;
+        var refundKey = o.key.replace(/^submissions\//, 'pending_payment/');
+        await env.IMAGES.put(refundKey, JSON.stringify(d), {
+          httpMetadata: { contentType: 'application/json' },
+        });
+        await env.IMAGES.delete(o.key);
+        if (d.founder_email) {
+          sendEmail(env, d.founder_email,
+            'Payment refunded — submission on hold',
+            emailShell('Payment refunded',
+              '<p>Hi ' + esc(d.founder || 'there') + ',</p>'
+              + '<p>The $5 payment for <strong>' + esc(d.name || 'your product') + '</strong> was refunded, so the submission has been moved back out of our review queue.</p>'
+              + '<p>If you\'d like to proceed, you can submit again via the $5 paid tier.</p>'
+              + '<p>— The MilestoneWins team</p>'));
+        }
+        return json({ ok: true, demoted: refundKey });
+      }
     }
     return json({ ok: true, ignored: true });
   }
