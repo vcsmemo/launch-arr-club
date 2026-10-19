@@ -3218,14 +3218,14 @@
     "name": "Ritmo",
     "slug": "ritmo",
     "tagline": "Dating app for active singles who love sport and fitness",
-    "description": "Ritmo is a dating app for people who love sport, fitness and staying active. Build a profile around your favourite sports, training habits and personal bests, discover sporty singles nearby, match, chat and meet in real life. Built solo by Adel in 4 weeks \u2014 160 paying subscribers, 5,000+ users, $1,500 MRR.",
+    "description": "Ritmo is a dating app for people who love sport, fitness and staying active. Build a profile around your favourite sports, training habits and personal bests, discover sporty singles nearby, match, chat and meet in real life. Built solo by Adel in 6 weeks \u2014 $0 to $4k MRR, 7,000 users, 400,000+ swipes, 4.5 stars on the App Store.",
     "website": "https://apps.apple.com/us/app/ritmo-sports-dating/id6800200502",
     "url": "/launches/ritmo/",
     "logo": "/logos/ritmo.png",
     "founder": "Adel",
     "founder_x": "adeluxui",
     "category": "Consumer",
-    "revenue": "$1,500 MRR",
+    "revenue": "$4,000 MRR",
     "revenue_metric": "MRR",
     "pricing": "Free with in-app purchases",
     "launched": "2026-10-10",
@@ -3234,6 +3234,11 @@
       {
         "date": "2026-10-10",
         "revenue": "$1,500 MRR",
+        "source": "Founder X post @adeluxui"
+      },
+      {
+        "date": "2026-10-19",
+        "revenue": "$4,000 MRR",
         "source": "Founder X post @adeluxui"
       }
     ]
