@@ -677,7 +677,7 @@ const CANVAS_SCRIPT_B = `
       var nm = name.length > 30 ? name.slice(0, 29) + '…' : name;
       ctx.fillStyle = '#ffffff'; ctx.font = '800 64px system-ui, -apple-system, "Segoe UI", sans-serif';
       ctx.fillText(nm, W / 2, 430);
-      var revLabel = revenue ? (revenue + (metric ? ' ' + metric : '')) : '';
+      var revLabel = revenue || '';
       if(revLabel){
         ctx.fillStyle = '#5eead4'; ctx.font = '700 52px system-ui, -apple-system, "Segoe UI", sans-serif';
         ctx.fillText(revLabel, W / 2, 502);
@@ -708,13 +708,18 @@ const CANVAS_SCRIPT_B = `
         im.src = logo;
       } else { finish(null); }
     }
-    // Compute rank from launches.json
+    // Compute rank from launches.json (match by slug, fallback to URL-derived slug)
     fetch('/launches.json').then(function(r){ return r.json(); }).then(function(d){
       var items = (d.launches || d).filter(function(it){ return annualized(it.revenue) > 0; });
       items.sort(function(a, b){ return annualized(b.revenue) - annualized(a.revenue); });
       var rank = 0;
       for(var i = 0; i < items.length; i++){
-        if(items[i].slug === slug){ rank = i + 1; break; }
+        var itSlug = items[i].slug;
+        if(!itSlug && items[i].url){
+          var m = items[i].url.match(/\/launches\/([^\/]+)\/?/);
+          if(m) itSlug = m[1];
+        }
+        if(itSlug === slug){ rank = i + 1; break; }
       }
       if(!rank) rank = '–';
       doDraw(rank);
