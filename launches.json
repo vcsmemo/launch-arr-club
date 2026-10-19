@@ -2871,7 +2871,7 @@
     "revenue_metric": "ARR",
     "founder": "Fivos Aresti, Dan Rosenthal",
     "category": "Product",
-    "pricing": null,
+    "pricing": "Custom \u2014 subscription or sprint engagements; free playbooks, paid Academy",
     "launched": "2026-10-18",
     "source": "arrclub_signal_sync",
     "source_label": null,
@@ -2882,7 +2882,8 @@
         "note": "Launch \u00b7 Founder-reported"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "Workflows is a go-to-market systems agency for B2B tech companies. Instead of selling software, they embed as a strategic GTM partner \u2014 delivering LinkedIn content engines, automated outbound sequences, RevOps infrastructure, and ABM programs, all built on an AI-first tech stack. Client results include Freckle (42% month-over-month growth over 6 months, 640+ Tier-1 signups from outbound)."
   },
   {
     "launch_no": 113,
@@ -2959,7 +2960,9 @@
     "revenue": "",
     "revenue_metric": "",
     "founder": "Elie Steinbock",
-    "founder_x": ["elie2222"],
+    "founder_x": [
+      "elie2222"
+    ],
     "category": "AI Tools",
     "pricing": "Freemium \u2014 free email app; AI plans from $18/user/mo, 7-day free trial",
     "launched": "2026-10-19",
@@ -3014,7 +3017,9 @@
     "revenue": "",
     "revenue_metric": "",
     "founder": "Mohannad Ali",
-    "founder_x": ["_mohannadali"],
+    "founder_x": [
+      "_mohannadali"
+    ],
     "category": "Education",
     "pricing": "Free \u2014 free plan forever, no credit card; paid plan available",
     "launched": "2026-10-19",
@@ -3033,7 +3038,9 @@
     "revenue": "",
     "revenue_metric": "",
     "founder": "Timothy Lau",
-    "founder_x": ["thetimothylau"],
+    "founder_x": [
+      "thetimothylau"
+    ],
     "category": "AI Tools",
     "pricing": "Freemium \u2014 free up to 3,000 text units/week, Unlimited $6.99/mo or $59.99/yr",
     "launched": "2026-10-19",
