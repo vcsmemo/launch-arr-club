@@ -47,6 +47,21 @@
 <script>
 (function(){
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function founderLinks(founderStr, handles){
+    if(!founderStr) return esc('–');
+    handles = handles || [];
+    var tokens = String(founderStr).split(/(\s*\+\s*|\s*&\s*|,\s*)/);
+    var hi = 0, out = [];
+    for(var i = 0; i < tokens.length; i++){
+      var tok = tokens[i];
+      if(/^\s*\+\s*$|^\s*&\s*$|^,\s*$/.test(tok)){ out.push(esc(tok)); continue; }
+      var name = tok.trim(), h = hi < handles.length ? handles[hi] : null;
+      hi++;
+      if(h && name) out.push('<a class="x-link" href="https://x.com/' + esc(h) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">' + esc(name) + '</a>');
+      else out.push(esc(name));
+    }
+    return out.join('');
+  }
   var PAGE = 25, tab = 'mrr', page = 1, items = [];
   // Parse "$12k MRR" / "$10M ARR" / "$1.12M" / "$480K" -> {v: annualized dollars, m: 'mrr'|'d30'|'all'}
   // The (?![a-zA-Z]) guard stops "MRR" being read as "million".
@@ -82,7 +97,7 @@
     var vBadge = it.revenue_verified ? ' <span class="v-badge" title="Revenue verified">✅</span>' : '';
     return '<a class="lb-row" href="' + esc(it.url) + '"><span class="lb-rank">' + ((page - 1) * PAGE + i + 1) + '</span>'
       + '<span class="lb-startup">' + logo + '<span><strong>' + esc(it.name) + '</strong><p>' + esc(it.tagline || '') + '</p></span></span>'
-      + '<span class="lb-founder">' + esc(it.founder || '\u2013') + '</span>'
+      + '<span class="lb-founder">' + founderLinks(it.founder, it.founder_x) + '</span>'
       + '<span class="lb-rev-col has">' + esc(it.revenue) + (mt ? ' <span class="metric-tag">'+esc(mt)+'</span>' : '') + vBadge + '</span></a>';
   }
   function render(){

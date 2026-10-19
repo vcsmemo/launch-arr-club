@@ -78,6 +78,21 @@
   <script>
   (function(){
     function esc(s){ return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+    function founderLinks(founderStr, handles){
+      if(!founderStr) return esc('–');
+      handles = handles || [];
+      var tokens = String(founderStr).split(/(\s*\+\s*|\s*&\s*|,\s*)/);
+      var hi = 0, out = [];
+      for(var i = 0; i < tokens.length; i++){
+        var tok = tokens[i];
+        if(/^\s*\+\s*$|^\s*&\s*$|^,\s*$/.test(tok)){ out.push(esc(tok)); continue; }
+        var name = tok.trim(), h = hi < handles.length ? handles[hi] : null;
+        hi++;
+        if(h && name) out.push('<a class="x-link" href="https://x.com/' + esc(h) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">' + esc(name) + '</a>');
+        else out.push(esc(name));
+      }
+      return out.join('');
+    }
     function fmtDate(iso){
       var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
       if(!m) return '';
@@ -217,7 +232,7 @@
           : '<span class="lb-rev-col">\u2013</span>';
         return '<a class="lb-row" href="' + esc(it.url) + '"><span class="lb-rank">' + (medals[i] || (i + 1)) + '</span>'
           + '<span class="lb-startup">' + logo + '<span><strong>' + esc(it.name) + '</strong><p>' + esc(it.tagline || '') + '</p></span></span>'
-          + '<span class="lb-founder">' + esc(it.founder || '\u2013') + '</span>'
+          + '<span class="lb-founder">' + founderLinks(it.founder, it.founder_x) + '</span>'
           + revCell + '</a>';
       }).join('') : '<div class="lb-row"><span></span><span class="lb-founder">No launches this week yet.</span><span></span><span></span></div>';
     }

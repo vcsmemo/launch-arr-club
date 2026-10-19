@@ -770,7 +770,7 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
   const revShort = rev ? rev.amount : '';
   const metric = rev ? rev.metric : '';
   const founder = d.founder || '';
-  const founderHtml = esc(founder);
+  const founderHtml = founderLinks(founder, d.founder_x);
   const category = d.category || (d.categories && d.categories[0]) || 'Product';
   const pricing = d.pricing || '—';
   // Use product's actual launch date, not today
