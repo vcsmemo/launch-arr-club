@@ -3102,5 +3102,32 @@
         "source": "https://x.com/NithurM/status/2111804197029212608"
       }
     ]
+  },
+  {
+    "name": "Glasa",
+    "slug": "glasa",
+    "tagline": "B2B Lead Generation & Sales Intelligence Platform",
+    "description": "Glasa is an AI-powered B2B lead generation platform with 800M+ verified contacts. Its AI agents find, qualify, and book dream clients \u2014 scanning 35+ live data sources, triple-verifying every email (99.2% deliverability), and enriching profiles automatically. All-in-one GTM platform: prospect search, inbox warmup, email sequences, and unified inbox on a single credit balance. 7-day free trial with 500 credits.",
+    "website": "https://glasa.io",
+    "logo": "https://glasa.io/SmallBlackLogo.svg",
+    "founder": "Cem Hasoglu",
+    "founder_x": [
+      "cem_hasoglu"
+    ],
+    "category": "Sales",
+    "pricing": "From $9.99/mo",
+    "revenue": "$210k ARR",
+    "revenue_metric": "ARR",
+    "launched": "2026-10-18",
+    "launch_no": 122,
+    "url": "/launches/glasa/",
+    "revenue_history": [
+      {
+        "date": "2026-10-18",
+        "revenue": "$210k ARR",
+        "note": "Launch \u00b7 Founder-reported",
+        "source": "https://x.com/cem_hasoglu/status/2111815781558448217"
+      }
+    ]
   }
 ]
