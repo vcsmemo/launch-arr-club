@@ -70,7 +70,7 @@
       <button type="button" class="cc-style-btn" aria-pressed="true" data-ccstyle="">Celebration</button>
       <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-light">Light</button>
       <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-teal">Teal</button>
-      <button type="button" class="cc-style-btn cc-dl-btn" id="dlCardBtn" title="Download celebration image">⬇ Download</button><button type="button" class="cc-style-btn cc-dl-btn" id="dlRankBtn" title="Download ranking card">🏆 Ranking</button>
+      <button type="button" class="cc-style-btn cc-dl-btn" id="dlCardBtn" title="Download celebration image">⬇ Download</button><button type="button" class="cc-style-btn cc-dl-btn" id="dlRankBtn" title="Download ranking card">🏆 Ranking</button><button type="button" class="cc-style-btn cc-dl-btn" id="shareXBtn" title="Share to X">𝕏 Post</button><button type="button" class="cc-style-btn cc-dl-btn" id="shareLiBtn" title="Share to LinkedIn">in Share</button><button type="button" class="cc-style-btn cc-dl-btn" id="copyTweetBtn" title="Copy tweet text">📋 Copy</button>
     </div>
     <div class="cc-top">
       <span class="cc-brand">🎉 MILESTONEWINS CELEBRATES</span>
@@ -528,6 +528,47 @@
   document.getElementById('dlCardBtn').addEventListener('click', downloadCelebration);
   var dlRankBtn = document.getElementById('dlRankBtn');
   if(dlRankBtn) dlRankBtn.addEventListener('click', downloadRankingCard);
+  /* Share to X / LinkedIn / Copy tweet */
+  function buildTweetText(){
+    var card = document.getElementById('celebrateCard');
+    if(!card) return '';
+    var name = card.dataset.name || '';
+    var revenue = card.dataset.revenue || '';
+    var founder = card.dataset.founder || '';
+    // Get founder X handle from the maker card link if present
+    var xHandle = '';
+    var xLink = document.querySelector('.maker-name a.x-link, .cc-founder a.x-link');
+    if(xLink){
+      var m = xLink.href.match(/x\.com\/([^\/\?]+)/);
+      if(m) xHandle = m[1];
+    }
+    var parts = [];
+    if(revenue) parts.push('\u{1F4B0} ' + name + ' crossed ' + revenue);
+    else parts.push('\u{1F680} ' + name + ' just launched on MilestoneWins');
+    var tagline = document.querySelector('meta[name="description"]');
+    // keep it short: just the milestone line + founder + url
+    if(xHandle) parts.push('Founder @' + xHandle);
+    else if(founder) parts.push('by ' + founder);
+    parts.push(location.href);
+    return parts.join(' \u2014 ');
+  }
+  var shareXBtn = document.getElementById('shareXBtn');
+  if(shareXBtn) shareXBtn.addEventListener('click', function(){
+    var text = buildTweetText();
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank', 'width=550,height=420');
+  });
+  var shareLiBtn = document.getElementById('shareLiBtn');
+  if(shareLiBtn) shareLiBtn.addEventListener('click', function(){
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(location.href), '_blank', 'width=550,height=420');
+  });
+  var copyTweetBtn = document.getElementById('copyTweetBtn');
+  if(copyTweetBtn) copyTweetBtn.addEventListener('click', function(){
+    var text = buildTweetText();
+    navigator.clipboard.writeText(text).then(function(){
+      copyTweetBtn.textContent = 'Copied \u2713';
+      setTimeout(function(){ copyTweetBtn.textContent = '\u{1F4CB} Copy'; }, 1500);
+    });
+  });
   /* Celebration card style switcher (free) */
   Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(btn){
     btn.addEventListener('click', function(){
