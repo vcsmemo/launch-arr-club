@@ -16,7 +16,11 @@
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "founder_x": [
+      "larmbrust",
+      "emilyrcolman"
+    ]
   },
   {
     "launch_no": 90,
@@ -35,7 +39,10 @@
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "founder_x": [
+      "emrre_isik"
+    ]
   },
   {
     "launch_no": 89,
@@ -111,7 +118,10 @@
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "founder_x": [
+      "rubenfiszel"
+    ]
   },
   {
     "launch_no": 85,
@@ -175,7 +185,10 @@
       }
     ],
     "growth": null,
-    "description": "All leading AI models on one platform. Hosted in Germany, encrypted, and never trains on your data."
+    "description": "All leading AI models on one platform. Hosted in Germany, encrypted, and never trains on your data.",
+    "founder_x": [
+      "emilwoermann"
+    ]
   },
   {
     "launch_no": 80,
@@ -295,7 +308,11 @@
       }
     ],
     "growth": null,
-    "description": "Build, seed, and call twins of the services your software acts on \u2014 via API, CLI, or MCP. Test against realistic service doubles without touching production."
+    "description": "Build, seed, and call twins of the services your software acts on \u2014 via API, CLI, or MCP. Test against realistic service doubles without touching production.",
+    "founder_x": [
+      "philliplii",
+      "akkkkiira"
+    ]
   },
   {
     "launch_no": 76,
