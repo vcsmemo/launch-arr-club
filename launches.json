@@ -3075,5 +3075,32 @@
     "launched": "2026-10-19",
     "source": "producthunt",
     "source_label": "Product Hunt"
+  },
+  {
+    "name": "Real Work From Anywhere",
+    "slug": "realworkfromanywhere",
+    "tagline": "Work From Anywhere Jobs - Fully Remote Worldwide",
+    "description": "Real Work From Anywhere is the #1 job board for work from anywhere jobs, carefully curated from 100% worldwide remote companies. Unlike generic remote job boards, it only lists jobs that let you work from anywhere in the world \u2014 complete geographical freedom with just an internet connection. The team verifies that each company hires worldwide before listing, and keeps checking for location restrictions. Free for job seekers, no account needed.",
+    "website": "https://realworkfromanywhere.com",
+    "logo": "https://realworkfromanywhere.com/favicon.ico",
+    "founder": "Nithur",
+    "founder_x": [
+      "NithurM"
+    ],
+    "category": "Jobs",
+    "pricing": "Free for job seekers",
+    "revenue": "$10k+ revenue",
+    "revenue_metric": "revenue",
+    "launched": "2026-10-18",
+    "launch_no": 121,
+    "url": "/launches/realworkfromanywhere/",
+    "revenue_history": [
+      {
+        "date": "2026-10-18",
+        "revenue": "$10k+ revenue",
+        "note": "Launch \u00b7 Founder-reported",
+        "source": "https://x.com/NithurM/status/2111804197029212608"
+      }
+    ]
   }
 ]
