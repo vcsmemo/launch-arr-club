@@ -852,7 +852,22 @@
   }
   function clearAutosave(){ try { localStorage.removeItem(AUTOSAVE_KEY); } catch(e){} }
   document.addEventListener('input', function(){ clearTimeout(window.__asT); window.__asT = setTimeout(autoSave, 800); });
-  function initAll(){ initGsi(); restoreSession(); autoRestore(); }
+  function initAll(){
+    initGsi(); restoreSession(); autoRestore();
+    // URL param: ?update=<slug> -> auto-enter milestone update mode for claimed products
+    try {
+      var up = new URLSearchParams(location.search).get('update');
+      if (up) {
+        getLaunches().then(function(items){
+          var hit = null;
+          for (var i = 0; i < items.length; i++) {
+            if (items[i] && items[i].slug === up) { hit = items[i]; break; }
+          }
+          if (hit) enterUpdateMode(hit);
+        });
+      }
+    } catch(e){}
+  }
   if(document.readyState === 'complete'){ initAll(); } else { window.addEventListener('load', initAll); }
 })();
 </script>

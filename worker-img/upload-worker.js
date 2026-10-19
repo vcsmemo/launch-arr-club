@@ -1262,6 +1262,43 @@ export default {
       return json({ ok: true, count: count, free_spots_left: Math.max(0, 10 - count) });
     }
 
+    // POST /claim-approve (token-gated) {slug, email} -> approve claim, send founder welcome email
+    // Called by Amani after manual verification. Marks product claimed, sends links for
+    // milestone updates + info changes.
+    if (request.method === 'POST' && url.pathname === '/claim-approve') {
+      if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
+      let data;
+      try { data = await request.json(); }
+      catch (e) { return json({ error: 'invalid JSON' }, 400); }
+      const slug = String(data.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 50);
+      const email = String(data.email || '').trim().toLowerCase().slice(0, 120);
+      if (!slug || !email) return json({ error: 'slug and email required' }, 400);
+      const key = 'claim:' + slug + ':' + md5(email);
+      const raw = await env.STRIPE_KV.get(key);
+      if (!raw) return json({ error: 'claim not found' }, 404);
+      const claim = JSON.parse(raw);
+      claim.status = 'approved';
+      claim.approved_at = new Date().toISOString();
+      await env.STRIPE_KV.put(key, JSON.stringify(claim));
+      // Welcome email with action links
+      const productUrl = 'https://milestonewins.com/launches/' + slug + '/';
+      const updateUrl = 'https://milestonewins.com/submit.html?update=' + slug;
+      sendEmail(env, email,
+        'Your page is verified ✅ — here\'s what you can do now',
+        emailShell('You\'re verified ✅',
+          '<p>Hi ' + esc(claim.name || 'there') + ',</p>'
+          + '<p>Your claim for <strong><a href="' + productUrl + '">' + esc(slug) + '</a></strong> is verified. Here\'s what you can do now:</p>'
+          + '<p>📈 <strong><a href="' + updateUrl + '">Share a new revenue milestone →</a></strong><br>'
+          + 'Every milestone gets a celebration card + a spot on the leaderboard. Takes 1 minute.</p>'
+          + '<p>✏️ <strong>Update product info</strong><br>'
+          + 'Reply to this email with any changes (description, logo, pricing, links) and we\'ll update your page within 24 hours.</p>'
+          + (claim.free_featured
+            ? '<p>🎁 <strong>Your FREE Featured placement is active!</strong> Your page now appears in the Featured section.</p>'
+            : '<p>💡 Want more visibility? <a href="https://milestonewins.com/submit.html">Upgrade to Featured ($19)</a>.</p>')
+          + '<p>— The MilestoneWins team</p>'));
+      return json({ ok: true, slug: slug, free_featured: claim.free_featured });
+    }
+
     // ---- Image upload ----
     if (request.method === 'POST' && url.pathname === '/upload') {
       let form;
