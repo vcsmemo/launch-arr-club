@@ -165,6 +165,21 @@
   <script>
   (function(){
     function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+    function founderLinks(founderStr, handles){
+      if(!founderStr) return esc('–');
+      handles = handles || [];
+      var tokens = String(founderStr).split(/(\s*\+\s*|\s*&\s*|,\s*)/);
+      var hi = 0, out = [];
+      for(var i = 0; i < tokens.length; i++){
+        var tok = tokens[i];
+        if(/^\s*\+\s*$|^\s*&\s*$|^,\s*$/.test(tok)){ out.push(esc(tok)); continue; }
+        var name = tok.trim(), h = hi < handles.length ? handles[hi] : null;
+        hi++;
+        if(h && name) out.push('<a class="x-link" href="https://x.com/' + esc(h) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">' + esc(name) + '</a>');
+        else out.push(esc(name));
+      }
+      return out.join('');
+    }
     var medals = ['🥇','🥈','🥉'];
     var allItems = [];
     function revVal(it){
