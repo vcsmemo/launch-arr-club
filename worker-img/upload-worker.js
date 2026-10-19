@@ -799,8 +799,10 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
       + '<meta property="og:description" content="' + esc(metaDesc) + '">\n'
       + '<meta property="og:url" content="https://milestonewins.com/launches/' + slug + '/">\n'
       + '<meta property="og:type" content="website">\n'
-      + (logo ? '<meta property="og:image" content="' + esc(logo) + '">\n' : '')
-      + '<meta name="twitter:card" content="summary">');
+      + (hasRevenue
+          ? '<meta property="og:image" content="https://milestonewins.com/og/' + esc(slug) + '.png">\n'
+          : (logo ? '<meta property="og:image" content="' + esc(logo) + '">\n' : ''))
+      + '<meta name="twitter:card" content="summary_large_image">');
   rep('https://milestonewins.com/launches/vibe3d/',
       'https://milestonewins.com/launches/' + slug + '/');
   // JSON-LD
