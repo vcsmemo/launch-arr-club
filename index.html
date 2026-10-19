@@ -40,10 +40,6 @@
       <a class="btn btn-primary" href="/submit.html">🎉 Submit my product</a>
       <a class="btn btn-ghost" href="#leaderboard">See the leaderboard &darr;</a>
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><b id="statProducts">&ndash;</b><span>products ranked</span></div>
-      <div class="hero-stat"><b id="statVerified">&ndash;</b><span>with verified revenue</span></div>
-    </div>
   </section>
 
   <div class="ticker-wrap" aria-hidden="true"><div class="ticker" id="milestoneTicker"></div></div>
@@ -51,7 +47,7 @@
   <section id="leaderboard">
     <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span> <span class="lb-countdown" id="lbCountdown"></span></h2>
     <div class="lb-submit-cta">
-      <p>💰 你的产品也在赚钱？上榜让所有人看到 &rarr;</p>
+      <p>💰 Making revenue? Get ranked where it counts &rarr;</p>
       <a href="/submit.html">Submit &mdash; free</a>
     </div>
     <div class="lb-tabs" style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
@@ -253,8 +249,8 @@
   <aside id="sidePanel" aria-hidden="true">
     <div class="sp-card" id="spStats">
       <h4>By the numbers</h4>
-      <div class="sp-stat"><div class="sp-num" id="spTotal">–</div><div class="sp-label">products launched</div></div>
-      <div class="sp-stat"><div class="sp-num" id="spRevenue">–</div><div class="sp-label">revenue celebrated</div></div>
+      <div class="sp-stat"><div class="sp-num" id="spTotal">–</div><div class="sp-label">products ranked</div></div>
+      <div class="sp-stat"><div class="sp-num" id="spVerified">–</div><div class="sp-label">with verified revenue</div></div>
       <div class="sp-stat"><div class="sp-num" id="spWeek">–</div><div class="sp-label">milestones this week</div></div>
     </div>
     <div class="sp-card" id="spTop5">
@@ -296,12 +292,10 @@
       var items = d.launches || d;
       // Stats
       document.getElementById('spTotal').textContent = items.length;
-      // Hero stats (dynamic)
-      var hp = document.getElementById('statProducts');
-      if(hp) hp.textContent = items.length;
+      // Verified revenue % (sidebar)
       var vv = items.filter(function(it){ return it.revenue_verified; }).length;
-      var hv = document.getElementById('statVerified');
-      if(hv) hv.textContent = Math.round(vv / items.length * 100) + '%';
+      var sv = document.getElementById('spVerified');
+      if(sv) sv.textContent = Math.round(vv / items.length * 100) + '%';
       // Top 5 mini leaderboard (by revenue, for sidebar)
       var top5 = items.filter(function(it){ return revValStr(it.revenue) > 0; })
         .sort(function(a,b){ return revValStr(b.revenue) - revValStr(a.revenue); }).slice(0,5);

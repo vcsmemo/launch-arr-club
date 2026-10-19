@@ -930,10 +930,10 @@ a.x-link:hover { color: var(--accent-hover); }
 .hero-stat b { font-size: 1.5rem; color: #0d9488; display: block; }
 .hero-stat span { font-size: 0.78rem; color: var(--text-muted); }
 /* Leaderboard submit CTA */
-.lb-submit-cta { background: #fefce8; border: 1px dashed #eab308; border-radius: 12px; padding: 14px 20px; margin: 0 0 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.lb-submit-cta { background: #fefce8; border: 1px dashed #eab308; border-radius: 12px; padding: 14px 20px; margin: 0 0 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .lb-submit-cta p { font-weight: 600; margin: 0; }
 .lb-submit-cta a { background: #eab308; color: #713f12; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; white-space: nowrap; }
 /* Slogan strip */
-.slogan-strip { background: #0f172a; color: #fff; text-align: center; padding: 18px 20px; font-size: 1.05rem; font-weight: 600; }
+.slogan-strip { background: #0f172a; color: #fff; text-align: center !important; padding: 18px 20px; font-size: 1.05rem; font-weight: 600; display: flex; justify-content: center; align-items: center; }
 .slogan-strip em { font-style: normal; color: #5eead4; }
 .slogan-strip p { margin: 0; }
