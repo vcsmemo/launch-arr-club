@@ -381,7 +381,8 @@
         "note": "Launch"
       }
     ],
-    "website": "https://salesrobot.co"
+    "website": "https://salesrobot.co",
+    "description": "SalesRobot is a sales engagement tool for automated cold outreach on LinkedIn and cold email, used by 4,100+ B2B sales teams and lead gen agencies. It differentiates with AI-personalized voice notes and video messages on LinkedIn, an AI appointment setter that nurtures leads until they book, and LinkedIn mobile-app APIs that minimize ban risk."
   },
   {
     "name": "MyPlots",
@@ -511,7 +512,7 @@
     "tagline": "Link in bio with Instagram auto-posting and analytics",
     "url": "/launches/liinks/",
     "category": "Marketing",
-    "pricing": "$5/mo",
+    "pricing": "From $5/mo",
     "founder": "Charlie Clark",
     "revenue": "$31k MRR",
     "revenue_metric": "MRR",
@@ -530,7 +531,8 @@
     "website": "https://www.liinks.co",
     "founder_x": [
       "clarkcharlie03"
-    ]
+    ],
+    "description": "Liinks is a link-in-bio tool for creators and businesses that turns one link into a beautiful mini website with links, photos, videos, forms, tabs, and folders. It offers custom domains, built-in analytics, and one-click migration from Linktree or Beacons. Loved by 10,000+ creators and businesses, every plan starts with a 14-day free trial."
   },
   {
     "name": "GitBot",
@@ -669,14 +671,15 @@
     "website": "https://web3forms.com",
     "founder_x": [
       "surjithctly"
-    ]
+    ],
+    "description": "Web3Forms is a free contact-form-to-email API: add a simple HTML form with an access key and receive submissions directly in your inbox with no server or backend code. It serves 412,000+ users with 13.2M+ emails delivered, plus spam blocking, GDPR compliance, and AWS-powered deliverability. The free plan includes 250 submissions per month forever."
   },
   {
     "name": "Indexsy",
     "tagline": "We Build, Acquire & Scale Digital Assets",
     "url": "/launches/indexsy/",
     "category": "Marketing",
-    "pricing": null,
+    "pricing": "Custom",
     "founder": "Jacky Chou",
     "revenue": "$41k MRR",
     "revenue_metric": "MRR",
@@ -695,14 +698,15 @@
     "website": "https://indexsy.com",
     "founder_x": [
       "indexsy"
-    ]
+    ],
+    "description": "Indexsy builds, acquires, and scales digital assets. For sellers it evaluates high-potential digital businesses and makes cash offers within 24 hours; for growth clients it runs data-driven SEO, content, and link-building programs. It also operates a portfolio of its own marketing-driven products and publishes SEO research."
   },
   {
     "name": "SEOBOT",
     "tagline": "Fully autonomous SEO robot with AI agents for busy founders",
     "url": "/launches/seobot/",
     "category": "Marketing",
-    "pricing": "$49/mo",
+    "pricing": "From $49/mo",
     "founder": "John Rush",
     "revenue": "$47k MRR",
     "revenue_metric": "MRR",
@@ -721,7 +725,8 @@
     "website": "https://seobotai.com",
     "founder_x": [
       "johnrushx"
-    ]
+    ],
+    "description": "SEObot is a fully autonomous SEO AI agent for busy founders that researches a site, builds a content plan, and publishes SEO-optimized articles (up to 4,000 words with images, tables, and videos) every week. It claims 200,000+ articles created driving 1.2 billion impressions and 30 million clicks, with anti-hallucination fact-checking and automatic internal linking. Integrates with WordPress, Webflow, Ghost, Shopify, and more."
   },
   {
     "name": "getcta",
@@ -763,14 +768,15 @@
     "website": "https://dataexpert.io",
     "founder_x": [
       "EcZachly"
-    ]
+    ],
+    "description": "DataExpert.io Academy is a data engineering and AI education platform offering live boot camps (Snowflake, dbt, Airflow analytics engineering) plus self-paced content. Students get free cloud access to Databricks, AWS, Snowflake, and Astronomer with hands-on exercises, and graduates have gone on to work at Meta, Airbnb, and Amazon."
   },
   {
     "name": "AEO Engine",
     "tagline": "The AI SEO agency that makes you the answer in AI Overviews, ChatGPT, and Google.",
     "url": "/launches/aeo-engine/",
     "category": "Marketing",
-    "pricing": "$1,597/mo",
+    "pricing": "From $1,597/mo",
     "founder": "Vijay C. Jacob, Dan Ashburn",
     "revenue": "$70k MRR",
     "revenue_metric": "MRR",
@@ -786,7 +792,8 @@
         "note": "Launch"
       }
     ],
-    "website": "https://aeoengine.ai"
+    "website": "https://aeoengine.ai",
+    "description": "AEO Engine is an AI SEO agency that gets brands cited in AI Overviews, ChatGPT, Perplexity, and Google. It uses a service-as-a-software model where senior strategists set direction while specialized AI agents execute content, schema, authority building, and weekly reporting. It guarantees 30% traffic growth in 90 days for qualified clients or works free until the target is hit."
   },
   {
     "name": "Vid.AI",
@@ -1130,7 +1137,7 @@
     "tagline": "Reddit marketing to rank in AI search",
     "url": "/launches/launch-club-ai/",
     "category": "Marketing",
-    "pricing": "Custom",
+    "pricing": "From $2,500",
     "founder": "Ken Savage",
     "revenue": "$68.7k / 30d",
     "revenue_metric": "30-day revenue",
@@ -1149,7 +1156,8 @@
     "website": "https://launchclub.ai",
     "founder_x": [
       "kensavage"
-    ]
+    ],
+    "description": "Launch Club AI is a Reddit marketing agency for startups and brands. Its AI Search Opportunity Report finds Reddit threads already ranking on Google for your keywords and delivers a plug-and-play posting strategy \u2014 where to comment, what to say, and how to track results. All posts and comments are human-edited, and traffic compounds as threads keep ranking."
   },
   {
     "name": "LocalRank.so",
@@ -1341,7 +1349,7 @@
     "revenue_metric": "MRR",
     "founder": "Paul Vengeons, Nicholas Dulait & L\u00e9o Leducq",
     "category": "SEO",
-    "pricing": "\u20ac29/mo",
+    "pricing": "From \u20ac29/mo",
     "launched": "2026-10-03",
     "revenue_history": [
       {
@@ -1354,7 +1362,8 @@
       null,
       "NicholasDulait",
       null
-    ]
+    ],
+    "description": "ChatSEO is an AI SEO agent that acts as an SEO employee: connect Google Search Console, ask questions, and get prioritized action plans it can apply directly in your CMS (WordPress, Shopify, Webflow). Used by 20,000+ website owners, it positions itself as a replacement for a Semrush + Screaming Frog + Surfer + consultant stack at a fraction of the cost."
   },
   {
     "launch_no": 45,
@@ -1390,7 +1399,7 @@
     "revenue_metric": "MRR",
     "founder": "Gaurav Thapa",
     "category": "Marketing",
-    "pricing": "$29/mo",
+    "pricing": "From $20/mo",
     "launched": "2026-10-03",
     "source": "https://www.linkedin.com/posts/gauravsthapa_well-send-you-10k-right-now-if-you-do-this-activity-7499999393668837376-DAFI",
     "source_label": "Founder's LinkedIn post",
@@ -1403,7 +1412,8 @@
     ],
     "founder_x": [
       "gauravsbuilding"
-    ]
+    ],
+    "description": "Fastlane is an AI marketing agent (Senna) for brands that learns a brand from one URL, studies competitors, builds campaigns, and creates ads and organic content launched across Meta, Instagram, TikTok, and YouTube Shorts. It then reads results and feeds them into the next batch, compounding creative performance. Trusted by 70,000+ brands, free to start with a 7-day trial."
   },
   {
     "launch_no": 47,
@@ -1513,7 +1523,7 @@
     "revenue_metric": "30d",
     "founder": "Gil Hildebrand",
     "category": "Marketing",
-    "pricing": "$49/mo",
+    "pricing": "From $99/mo",
     "launched": "2026-10-05",
     "source": "https://www.indiehackers.com/post/tech/leaving-a-funded-startup-and-bootstrapping-to-1m-yr-in-18-months-kPBpdxsTeQitOWOOVs2g",
     "source_label": "Founder's Indie Hackers interview",
@@ -1526,7 +1536,8 @@
     ],
     "founder_x": [
       "gilhildebrand"
-    ]
+    ],
+    "description": "Subscribr is an all-in-one YouTube platform that automates the full production line: viral idea mining from a 35M+ video outlier database, AI scriptwriting in the channel's voice, thumbnail generation, and finished video rendering (or editing of your footage). It also connects to AI agents like Claude and ChatGPT via MCP so they can drive the channel directly. Trusted by 5,000+ creators."
   },
   {
     "launch_no": 52,
@@ -1689,7 +1700,7 @@
       "vascoabm",
       null
     ],
-    "description": "Arvow is an AI SEO platform built for agencies and marketers, with action-taking AI agents that build backlinks automatically, find and fix technical SEO issues, research keywords, and write and publish content in your brand voice. It also includes an autoblog, an LLM brand-mention tracker, and Google Maps automation, aimed at ranking on Google and getting cited by AI search."
+    "description": "Arvow is an end-to-end AI SEO platform whose agents build backlinks, find and fix technical issues, research keywords, write, and publish content that ranks on Google and gets cited by AI search. Built for agencies and marketers, it includes an autoblog, LLM brand-mention tracker, and Google Maps automation. It claims 20,000+ agencies and marketers as users."
   },
   {
     "launch_no": 57,
@@ -1854,7 +1865,8 @@
     },
     "founder_x": [
       "pbteja1998"
-    ]
+    ],
+    "description": "SiteGPT turns a website's content into a personalized AI customer-support chatbot \u2014 'ChatGPT for your product' \u2014 that answers visitor questions 24/7. Train it by URL, sitemap, files, or integrations (Notion, Google Drive, GitHub), embed it anywhere, and escalate to humans when needed. Enterprise-grade security: SOC 2 Type II, GDPR, and HIPAA assessed."
   },
   {
     "launch_no": 61,
@@ -1895,7 +1907,8 @@
     },
     "founder_x": [
       "cjzafir"
-    ]
+    ],
+    "description": "CodeGuide turns plain-English ideas into a complete project knowledge base \u2014 PRDs, tech specs, wireframes, and task lists \u2014 that AI coding tools like Cursor and Claude Code reference to write correct code. Its autonomous coding agent (Sv2) can analyze codebases and code for hours with 200+ models routed per task. Trusted by 41,450+ developers."
   },
   {
     "launch_no": 62,
@@ -2191,7 +2204,7 @@
     "revenue_metric": "30-day revenue",
     "founder": "Max Blade",
     "category": "Dev Tools",
-    "pricing": "One-time $99",
+    "pricing": "$99 one-time",
     "launched": "2026-10-12",
     "source": "https://braginpublic.com/u/_maxblade",
     "source_label": "Founder's X post (Jul 2026)",
@@ -2221,7 +2234,8 @@
     },
     "founder_x": [
       "_MaxBlade"
-    ]
+    ],
+    "description": "CNVS is a native macOS app that runs Claude, Cursor, and Codex AI coding agents in parallel on one canvas, directed by voice. You orchestrate, the agents build, and you ship \u2014 from idea to first revenue without bottlenecks. It is sold as a one-time purchase with lifetime 1.x updates, no subscription."
   },
   {
     "launch_no": 70,
