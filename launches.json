@@ -460,7 +460,7 @@
     "tagline": "X growth tool: scheduling, analytics, AI content",
     "url": "/launches/superx/",
     "category": "Marketing",
-    "pricing": "$49/mo",
+    "pricing": "From $49/mo",
     "founder": "Rob Hallam",
     "revenue": "$21k MRR",
     "revenue_metric": "MRR",
@@ -479,7 +479,8 @@
     "website": "https://superx.so",
     "founder_x": [
       "robj3d3"
-    ]
+    ],
+    "description": "SuperX is an all-in-one X (Twitter) growth platform for creators, combining AI content generation in your voice, smart scheduling, engagement automation, and deep analytics. It surfaces viral formats in your niche daily and includes a Chrome extension for live insights on any profile. Used by 11,000+ creators generating 5B+ impressions."
   },
   {
     "name": "ConvertLabs",
@@ -505,7 +506,8 @@
     "website": "https://convertlabs.io",
     "founder_x": [
       "rohangilkes"
-    ]
+    ],
+    "description": "ConvertLabs is an all-in-one booking and operations platform for home service businesses like cleaning, lawn care, and carpet cleaning. It combines online booking, scheduling, payments, a website builder, and a mobile app for field teams in one dashboard \u2014 replacing the 4+ tools most operators juggle. Over 1,000 service businesses run on it with 300K+ jobs booked."
   },
   {
     "name": "Liinks",
@@ -606,14 +608,15 @@
     "website": "https://basedlabs.ai",
     "founder_x": [
       "michaelaubry"
-    ]
+    ],
+    "description": "BasedLabs.ai is an AI image and video generator that puts 50+ top AI models in one place \u2014 from Seedance and WAN to Kling and Nano Banana. Its standout feature lets you design an AI influencer character once, then generate new videos of them daily. Free to sign up with no watermarks."
   },
   {
     "name": "AI Interview Copilot",
     "tagline": "AI Interview Assistant for real-time support",
     "url": "/launches/ai-interview-copilot/",
     "category": "Education",
-    "pricing": "$19/mo",
+    "pricing": "From $19/mo",
     "founder": "Artur Kornatowski",
     "revenue": "$31k MRR",
     "revenue_metric": "MRR",
@@ -629,7 +632,8 @@
         "note": "Launch"
       }
     ],
-    "website": "https://interviews.chat"
+    "website": "https://interviews.chat",
+    "description": "Interviews Chat is an AI interview copilot that provides real-time suggestions and live transcription during job interviews, helping candidates handle technical and behavioral questions with confidence. It works across Zoom, Google Meet, and Teams without joining the meeting, and also offers AI-powered interview prep with resume-tailored practice questions. Supports multiple AI models (GPT, Claude, Gemini, Grok) and 40+ languages."
   },
   {
     "name": "Squint",
@@ -1107,7 +1111,8 @@
     "website": "https://bazzly.ai",
     "founder_x": [
       "FilipPanoski"
-    ]
+    ],
+    "description": "Bazzly automates Reddit marketing for founders \u2014 it scans Reddit 24/7 for posts where your product fits, drafts AI replies, and posts them through warmed-up accounts with zero ban risk. It also sends personalized DMs to high-intent leads and boosts comments to rank #1 so your product shows up on Google and in AI answers. Used by 1,666 founders."
   },
   {
     "name": "CreativeClaw",
@@ -1164,7 +1169,7 @@
     "tagline": "All-in-one AI local SEO software for agencies",
     "url": "/launches/localrank-so/",
     "category": "SEO",
-    "pricing": "From $47.50/mo",
+    "pricing": "From $57/mo",
     "founder": "Jacky Chou",
     "revenue": "$25k MRR",
     "revenue_metric": "MRR",
@@ -1183,7 +1188,8 @@
     "website": "https://localrank.so",
     "founder_x": [
       "indexsy"
-    ]
+    ],
+    "description": "LocalRank.so is an all-in-one local SEO platform for agencies, combining Google Maps rank tracking, 550+ directory citations, Google Business Profile automation, and AI visibility monitoring across ChatGPT, Claude, Gemini, and Perplexity. It promises clients ranking #1 in 30 days with a 90-day money-back guarantee. Used by 500+ agencies and 5,000+ local businesses."
   },
   {
     "name": "Taja AI",
@@ -1206,7 +1212,8 @@
         "note": "Launch \u00b7 Founder-reported"
       }
     ],
-    "website": "https://www.taja.ai"
+    "website": "https://www.taja.ai",
+    "description": "Taja AI repurposes long-form videos into shorts, blog posts, and social content automatically. It identifies the most viral-worthy clips, generates thumbnails and captions, and formats everything for mobile platforms \u2014 built for solopreneurs who want reach without becoming full-time content creators. Claims 2.6M+ hours saved."
   },
   {
     "launch_no": 39,
@@ -1298,7 +1305,7 @@
     "revenue_metric": "MRR",
     "founder": "Samuel Rondot",
     "category": "Video",
-    "pricing": "$23/mo",
+    "pricing": "Freemium",
     "launched": "2026-10-03",
     "revenue_history": [
       {
@@ -1309,7 +1316,8 @@
     ],
     "founder_x": [
       "samuelrdt"
-    ]
+    ],
+    "description": "StoryShort is an AI faceless video generator for TikTok, YouTube Shorts, and Instagram Reels. It writes the script, plans every scene, generates images and clips, and adds voiceovers and captions \u2014 keeping your characters consistent across scenes. It can also track creators in your niche, repurpose their viral videos in your style, and auto-post daily."
   },
   {
     "launch_no": 43,
@@ -1323,7 +1331,7 @@
     "revenue_metric": "MRR",
     "founder": "Thibaut Melen & Nicolas Cella",
     "category": "Marketing",
-    "pricing": "Free tier",
+    "pricing": "Free",
     "launched": "2026-10-03",
     "revenue_history": [
       {
@@ -1335,7 +1343,8 @@
     "founder_x": [
       "ThibautMelen",
       "ncella_"
-    ]
+    ],
+    "description": "QR Code AI is a free QR code generator that combines three creation modes: custom-designed QR codes with 50+ parameters, AI-generated artistic QR codes from text prompts, and image-overlaid codes. It supports 60 content types (URL, WiFi, PDF, vCard, social profiles), dynamic codes with scan analytics, bulk generation, and an API. Over 12M codes created, free with no watermark."
   },
   {
     "launch_no": 44,
@@ -1377,7 +1386,7 @@
     "revenue_metric": "MRR",
     "founder": "Timothy Williams, Andre Timofeev & Moritz Ledeganck",
     "category": "Productivity",
-    "pricing": "\u20ac22/mo",
+    "pricing": "Freemium",
     "launched": "2026-10-03",
     "revenue_history": [
       {
@@ -1385,7 +1394,8 @@
         "revenue": "$14k MRR",
         "note": "Launch \u00b7 Founder-reported"
       }
-    ]
+    ],
+    "description": "fastwrite is an AI academic writing assistant that integrates directly into Microsoft Word, built for German-speaking students writing theses, dissertations, and papers. It analyzes uploaded sources (PDFs up to 1,000 pages), suggests phrasings with proper APA 7 citations, and gives feedback based on university criteria. Used by 30,000+ students, with a free version that never expires."
   },
   {
     "launch_no": 46,
@@ -1427,7 +1437,7 @@
     "revenue_metric": "MRR",
     "founder": "Ozgur Ozkan",
     "category": "Dev Tools",
-    "pricing": "$20/mo",
+    "pricing": "From $20/mo",
     "launched": "2026-10-04",
     "revenue_history": [
       {
@@ -1435,7 +1445,8 @@
         "revenue": "$15.6k MRR",
         "note": "Launch \u00b7 Founder-reported"
       }
-    ]
+    ],
+    "description": "Audn.AI is an autonomous agentic cybersecurity platform \u2014 an AI hacker that recons your systems, discovers real exploits, proves them in isolated sandboxes, and verifies patches, running 24/7. Unlike checklist scanners, it uses adversarial reasoning to chain multi-step attacks like prompt injection and data exfiltration against your AI agents and apps. It also offers uncensored offensive-security LLMs (WARLOCK, Pingu Unchained roster) via API for authorized red teaming."
   },
   {
     "launch_no": 48,
@@ -1449,7 +1460,7 @@
     "revenue_metric": "30-day revenue",
     "founder": "Adi Leviim",
     "category": "Productivity",
-    "pricing": "$9.99/mo",
+    "pricing": "Freemium, from $9.99/mo",
     "launched": "2026-10-04",
     "revenue_history": [
       {
@@ -1457,7 +1468,8 @@
         "revenue": "$20k / 30d",
         "note": "Launch \u00b7 Founder-reported"
       }
-    ]
+    ],
+    "description": "AI Toolbox is a Chrome extension that adds folders, full-text search, bulk export, and a prompt library across ChatGPT, Claude, Gemini, and Grok in one install. It solves the chaos of hundreds of unstructured AI conversations with local-first storage so chats never leave your browser. Trusted by 40,000+ users with a 4.7/5 Chrome Web Store rating."
   },
   {
     "launch_no": 49,
@@ -1551,7 +1563,7 @@
     "revenue_metric": "MRR",
     "founder": "Ryan Robinson, Andy Feliciotti",
     "category": "SEO",
-    "pricing": "From $20/mo",
+    "pricing": "From $49/mo",
     "launched": "2026-10-06",
     "source": "https://www.indiehackers.com/post/tech/hitting-29k-mrr-by-building-an-audience-first-KxUy5Zjfn1hJTTGYrl47",
     "source_label": "Founder's Indie Hackers interview",
@@ -1565,7 +1577,8 @@
     "founder_x": [
       "TheRyanRobinson",
       "sup"
-    ]
+    ],
+    "description": "RightBlogger is an AI blog automation platform that finds keywords, writes SEO articles, publishes them to your blog, and shares them on social media \u2014 designed to rank on both Google and ChatGPT. It also keeps older posts fresh with automated site fixes and monitors when AI answers mention your brand. Trusted by 51,000+ bloggers."
   },
   {
     "launch_no": 53,
@@ -1922,7 +1935,7 @@
     "revenue_metric": "monthly revenue",
     "founder": "Selene Lee",
     "category": "Dev Tools",
-    "pricing": "From \u00a315/mo",
+    "pricing": "Pay-as-you-go, from \u00a315",
     "launched": "2026-10-09",
     "source": "https://www.indiehackers.com/post/tech/this-founder-left-academia-built-four-failed-products-then-hit-12-5k-mo-xkng30lczEuiLG4983UN",
     "source_label": "Founder's Indie Hackers story",
@@ -1949,7 +1962,8 @@
     },
     "founder_x": [
       "vaaselene"
-    ]
+    ],
+    "description": "SocialCrawl is a unified social media scraping API covering 68 platforms with 651 endpoints under one auth token and one response schema. Built agent-ready with MCP support and SDKs in six languages, it powers brand monitoring, sentiment analysis, trend detection, and competitive intelligence. 100 free credits on signup; pay-as-you-go credit packs that never expire."
   },
   {
     "launch_no": 63,
@@ -2123,7 +2137,7 @@
     "revenue_metric": "MRR",
     "founder": "Hasaam Bhatti",
     "category": "E-commerce",
-    "pricing": "From $49/mo",
+    "pricing": "From $41/mo",
     "launched": "2026-10-11",
     "source": "https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9",
     "source_label": "Founder interview \u00b7 Indie Hackers",
@@ -2148,7 +2162,8 @@
         "https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9"
       ]
     },
-    "founder_x": null
+    "founder_x": null,
+    "description": "Launch Fast is an Amazon seller operating system for product research and launch decisions. It helps sellers find markets, validate products with historical trend data, analyze Amazon Ads performance, compare suppliers, and track rankings \u2014 all in one workflow instead of juggling tools like Jungle Scout and Helium 10. Plans include 3 free product research reports to start."
   },
   {
     "launch_no": 68,
