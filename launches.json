@@ -2921,12 +2921,12 @@
     "tagline": "Operating system for video agencies, with AI-powered QC for video production.",
     "url": "https://milestonewins.com/launches/timeliner/",
     "website": "https://timeliner.io",
-    "logo": "https://launch-arr-club-img.johntian2015.workers.dev/img/logos/timeliner.png",
+    "logo": "/logos/timeliner.png",
     "revenue": "$500K ARR",
     "revenue_metric": "ARR",
     "founder": "Noam Tryber",
     "category": "Product",
-    "pricing": null,
+    "pricing": "From $89/mo",
     "launched": "2026-10-18",
     "source": "arrclub_signal_sync",
     "source_label": null,
@@ -2937,7 +2937,8 @@
         "note": "Launch \u00b7 Founder-reported"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "Timeliner is the operating system for video agencies. One platform for the entire video workflow: assign editors, review footage with timecoded comments, get client approvals in branded portals, schedule posts across social channels, and track payments. Replaces seven tools (ClickUp, Frame.io, Google Drive, Slack, etc.) with one $89/mo platform. Trusted by video teams in 15+ countries, 4.8/5 on G2."
   },
   {
     "launch_no": 114,
