@@ -917,3 +917,23 @@ a.x-link:hover { color: var(--accent-hover); }
 .claim-offer{color:#0d9488;font-weight:600}
 .claim-banner .btn{white-space:nowrap}
 @media(max-width:640px){.claim-banner{flex-direction:column;align-items:stretch;text-align:center}}
+
+/* === 首页改版 2026-10-19: hero精简+榜单上移 === */
+.hero-simple h1 em { font-style: normal; color: #0d9488; }
+.hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 1.2rem; }
+.btn-primary { background: #0d9488; color: #fff; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1rem; display: inline-block; }
+.btn-primary:hover { background: #0b7d74; }
+.btn-ghost { background: #fff; color: #0f172a; border: 2px solid #e2e8f0; padding: 12px 26px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block; }
+.btn-ghost:hover { border-color: #0d9488; color: #0d9488; }
+.hero-stats { display: flex; gap: 2rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat b { font-size: 1.5rem; color: #0d9488; display: block; }
+.hero-stat span { font-size: 0.78rem; color: var(--text-muted); }
+/* Leaderboard submit CTA */
+.lb-submit-cta { background: #fefce8; border: 1px dashed #eab308; border-radius: 12px; padding: 14px 20px; margin: 0 0 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.lb-submit-cta p { font-weight: 600; margin: 0; }
+.lb-submit-cta a { background: #eab308; color: #713f12; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; white-space: nowrap; }
+/* Slogan strip */
+.slogan-strip { background: #0f172a; color: #fff; text-align: center; padding: 18px 20px; font-size: 1.05rem; font-weight: 600; }
+.slogan-strip em { font-style: normal; color: #5eead4; }
+.slogan-strip p { margin: 0; }

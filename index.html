@@ -34,19 +34,40 @@
 </header>
 <main>
   <section class="hero hero-simple">
-    <h1>Hit a milestone. We&rsquo;ll celebrate it.</h1>
-    <p class="hero-sub">Founder-reported revenue milestones, with a shareable celebration card for every win.</p>
-    <div class="hero-searchrow">
-      <div class="hero-search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
-        <input type="search" id="heroSearch" placeholder="Search launched products…" autocomplete="off" aria-label="Search launched products">
-        <div class="search-drop" id="searchDrop" hidden></div>
-      </div>
-      <a class="btn" href="/submit.html">🎉 Celebrate my milestone</a>
+    <h1>Hit a milestone. <em>We&rsquo;ll celebrate it.</em></h1>
+    <p class="hero-sub">Get ranked on the revenue leaderboard &mdash; by real revenue, not upvotes.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="/submit.html">🎉 Submit my product</a>
+      <a class="btn btn-ghost" href="#leaderboard">See the leaderboard &darr;</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b id="statProducts">&ndash;</b><span>products ranked</span></div>
+      <div class="hero-stat"><b id="statVerified">&ndash;</b><span>with verified revenue</span></div>
     </div>
   </section>
 
   <div class="ticker-wrap" aria-hidden="true"><div class="ticker" id="milestoneTicker"></div></div>
+
+  <section id="leaderboard">
+    <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span> <span class="lb-countdown" id="lbCountdown"></span></h2>
+    <div class="lb-submit-cta">
+      <p>💰 你的产品也在赚钱？上榜让所有人看到 &rarr;</p>
+      <a href="/submit.html">Submit &mdash; free</a>
+    </div>
+    <div class="lb-tabs" style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div>
+      <button class="lb-tab active" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">Top revenue</button><button class="lb-tab" data-tab="newest" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">🆕 Newest</button><button class="lb-tab" data-tab="week" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">This week</button><button class="lb-tab" data-tab="discover" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">🎲 Discover</button>
+      </div>
+      <label class="verified-toggle" style="display:flex;align-items:center;gap:6px;font-size:.85rem;color:#475569;cursor:pointer;user-select:none;">
+        <input type="checkbox" id="verifiedOnly" style="width:16px;height:16px;accent-color:#0d9488;cursor:pointer;"> ✅ Verified only
+      </label>
+    </div>
+    <div class="lb-table">
+      <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">Revenue &#8595;</span></div>
+      <div id="lbBody"><div class="lb-row"><span></span><span class="lb-founder">Loading\u2026</span><span></span><span></span></div></div>
+    </div>
+    <p class="lb-note">Revenue is shared by founders at submission time. <a class="view-all" href="/leaderboard/">View full leaderboard &rsaquo;</a></p>
+  </section>
 
   <section id="celebrations">
     <h2 class="section-title"><span class="dot"></span>Revenue milestones <span class="scroll-hint">→ scroll</span></h2>
@@ -128,22 +149,7 @@
     <div class="seo-launches" id="storyPreview"></div>
   </section>
 
-  <section id="leaderboard">
-    <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span> <span class="lb-countdown" id="lbCountdown"></span></h2>
-    <div class="lb-tabs" style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-      <div>
-      <button class="lb-tab active" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">Top revenue</button><button class="lb-tab" data-tab="newest" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">🆕 Newest</button><button class="lb-tab" data-tab="week" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">This week</button><button class="lb-tab" data-tab="discover" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">🎲 Discover</button>
-      </div>
-      <label class="verified-toggle" style="display:flex;align-items:center;gap:6px;font-size:.85rem;color:#475569;cursor:pointer;user-select:none;">
-        <input type="checkbox" id="verifiedOnly" style="width:16px;height:16px;accent-color:#0d9488;cursor:pointer;"> ✅ Verified only
-      </label>
-    </div>
-    <div class="lb-table">
-      <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">Revenue &#8595;</span></div>
-      <div id="lbBody"><div class="lb-row"><span></span><span class="lb-founder">Loading\u2026</span><span></span><span></span></div></div>
-    </div>
-    <p class="lb-note">Revenue is shared by founders at submission time. <a class="view-all" href="/leaderboard/">View full leaderboard &rsaquo;</a></p>
-  </section>
+
 
   <script>
   (function(){
@@ -251,6 +257,19 @@
       <div class="sp-stat"><div class="sp-num" id="spRevenue">–</div><div class="sp-label">revenue celebrated</div></div>
       <div class="sp-stat"><div class="sp-num" id="spWeek">–</div><div class="sp-label">milestones this week</div></div>
     </div>
+    <div class="sp-card" id="spTop5">
+      <h4><a href="/leaderboard/" style="color:inherit;text-decoration:none;">🏆 Top 5 this week</a></h4>
+      <div id="spTop5Body"><div class="sp-row"><span class="sp-name">Loading…</span></div></div>
+    </div>
+    <div class="sp-card">
+      <h4>Submit yours</h4>
+      <p style="font-size:.8rem;color:#64748b;line-height:1.5;">Hit a milestone? We&rsquo;ll celebrate it.</p>
+      <a href="/submit.html" style="display:inline-block;margin-top:.5rem;background:#0d9488;color:#fff;font-size:.8rem;font-weight:600;padding:.45rem .9rem;border-radius:8px;text-decoration:none;">Launch &rarr;</a>
+    </div>
+    <div class="sp-card" id="spMiles">
+      <h4>💰 Recent milestones</h4>
+      <div id="spMileBody"></div>
+    </div>
     <div class="sp-card" id="spTrending">
       <h4>🆕 Newly listed</h4>
       <div id="spTrendBody"></div>
@@ -258,15 +277,6 @@
     <div class="sp-card" id="spCats">
       <h4>📂 Top categories</h4>
       <div id="spCatBody"></div>
-    </div>
-    <div class="sp-card" id="spMiles">
-      <h4>💰 Recent milestones</h4>
-      <div id="spMileBody"></div>
-    </div>
-    <div class="sp-card">
-      <h4>Submit yours</h4>
-      <p style="font-size:.8rem;color:#64748b;line-height:1.5;">Hit a revenue milestone? We&rsquo;ll celebrate it.</p>
-      <a href="/submit/" style="display:inline-block;margin-top:.5rem;background:#0d9488;color:#fff;font-size:.8rem;font-weight:600;padding:.45rem .9rem;border-radius:8px;text-decoration:none;">Launch &rarr;</a>
     </div>
   </aside>
   <script>
@@ -286,6 +296,23 @@
       var items = d.launches || d;
       // Stats
       document.getElementById('spTotal').textContent = items.length;
+      // Hero stats (dynamic)
+      var hp = document.getElementById('statProducts');
+      if(hp) hp.textContent = items.length;
+      var vv = items.filter(function(it){ return it.revenue_verified; }).length;
+      var hv = document.getElementById('statVerified');
+      if(hv) hv.textContent = Math.round(vv / items.length * 100) + '%';
+      // Top 5 mini leaderboard (by revenue, for sidebar)
+      var top5 = items.filter(function(it){ return revValStr(it.revenue) > 0; })
+        .sort(function(a,b){ return revValStr(b.revenue) - revValStr(a.revenue); }).slice(0,5);
+      var top5el = document.getElementById('spTop5Body');
+      if(top5el){
+        top5el.innerHTML = top5.map(function(it, idx){
+          var logo = it.logo ? '<img src="'+String(it.logo).replace(/"/g,'')+'" alt="" loading="lazy" style="width:24px;height:24px;border-radius:6px;object-fit:contain;">'
+            : '<span class="sp-logo-ph">'+esc(String(it.name||'?').charAt(0))+'</span>';
+          return '<a class="sp-row" href="'+esc(it.url||'#')+'"><span style="font-weight:800;color:#94a3b8;width:18px;">'+(idx+1)+'</span>'+logo+'<span class="sp-name">'+esc(it.name)+'</span><span class="sp-rev">'+esc(it.revenue||'')+'</span></a>';
+        }).join('');
+      }
       var tot = items.reduce(function(a,it){ var v = revValStr(it.revenue); return a + (v > 0 ? v : 0); }, 0);
       document.getElementById('spRevenue').textContent = tot >= 1e9 ? '$'+(tot/1e9).toFixed(1)+'B' : '$'+Math.round(tot/1e6)+'M';
       var weekAgo = new Date(Date.now() - 7*24*60*60*1000);
@@ -319,6 +346,9 @@
   })();
   </script>
 </main>
+<div class="slogan-strip">
+  <p>Tired of popularity contests? <em>Ranked by revenue, not upvotes.</em></p>
+</div>
 <footer class="site-footer">
   <div class="footer-cols">
     <div class="fcol"><h5>Discover</h5><a href="/#celebrations">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/#leaderboard">Leaderboard</a><a href="/stories/">Founder stories</a><a href="/categories/">Categories</a><a href="/milestones/">Milestones</a><a href="/vs/">Comparisons</a><a href="/best/">Best tools</a></div>

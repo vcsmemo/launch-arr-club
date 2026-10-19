@@ -70,7 +70,7 @@
       <button type="button" class="cc-style-btn" aria-pressed="true" data-ccstyle="">Celebration</button>
       <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-light">Light</button>
       <button type="button" class="cc-style-btn" aria-pressed="false" data-ccstyle="cc-teal">Teal</button>
-      <button type="button" class="cc-style-btn cc-dl-btn" id="dlCardBtn" title="Download celebration image">⬇ Download</button>
+      <button type="button" class="cc-style-btn cc-dl-btn" id="dlCardBtn" title="Download celebration image">⬇ Download</button><button type="button" class="cc-style-btn cc-dl-btn" id="dlRankBtn" title="Download ranking card">🏆 Ranking</button>
     </div>
     <div class="cc-top">
       <span class="cc-brand">🎉 MILESTONEWINS CELEBRATES</span>
@@ -418,7 +418,97 @@
       im.src = logo;
     } else { finish(null); }
   }
+    /* Ranking card: dark teal, big rank number. No slogan — celebration only. */
+  function downloadRankingCard(){
+    var card = document.getElementById('celebrateCard');
+    if(!card) return;
+    var slug = card.dataset.slug || '';
+    var name = card.dataset.name || 'Product';
+    var revenue = card.dataset.revenue || '';
+    var metric = card.dataset.metric || '';
+    var logo = card.dataset.logo || '';
+    function annualized(s){
+      s = String(s || '');
+      var m = s.match(/\$([\d,.]+)\s*([kKmMbB]?)(?![a-zA-Z])/);
+      if(!m) return -1;
+      var v = parseFloat(m[1].replace(/,/g, ''));
+      var u = (m[2] || '').toLowerCase();
+      if(u === 'k') v *= 1e3; else if(u === 'm') v *= 1e6; else if(u === 'b') v *= 1e9;
+      if(/MRR|\/ ?mo/i.test(s)) v *= 12;
+      else if(/\/\s*30d/i.test(s)) v *= 12;
+      return v;
+    }
+    function doDraw(rank){
+      var W = 1200, H = 630;
+      var cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+      var ctx = cv.getContext('2d');
+      function rr(c, x, y, w, h, r){
+        c.beginPath(); c.moveTo(x+r, y);
+        c.arcTo(x+w, y, x+w, y+h, r); c.arcTo(x+w, y+h, x, y+h, r);
+        c.arcTo(x, y+h, x, y, r); c.arcTo(x, y, x+w, y, r); c.closePath();
+      }
+      var g = ctx.createLinearGradient(0, 0, W, H);
+      g.addColorStop(0, '#0f172a'); g.addColorStop(1, '#134e4a');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      // Rank
+      ctx.fillStyle = '#5eead4'; ctx.font = '800 190px system-ui, -apple-system, "Segoe UI", sans-serif';
+      ctx.shadowColor = 'rgba(94,234,212,0.35)'; ctx.shadowBlur = 42;
+      ctx.fillText('#' + rank, W / 2, 268);
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = 'rgba(255,255,255,0.65)'; ctx.font = '600 30px system-ui, -apple-system, "Segoe UI", sans-serif';
+      ctx.fillText('on MilestoneWins Revenue Leaderboard', W / 2, 322);
+      // Product name + revenue
+      var nm = name.length > 30 ? name.slice(0, 29) + '…' : name;
+      ctx.fillStyle = '#ffffff'; ctx.font = '800 64px system-ui, -apple-system, "Segoe UI", sans-serif';
+      ctx.fillText(nm, W / 2, 430);
+      var revLabel = revenue ? (revenue + (metric ? ' ' + metric : '')) : '';
+      if(revLabel){
+        ctx.fillStyle = '#5eead4'; ctx.font = '700 52px system-ui, -apple-system, "Segoe UI", sans-serif';
+        ctx.fillText(revLabel, W / 2, 502);
+      }
+      // Logo (small, top-left)
+      function finish(logoImg){
+        if(logoImg){
+          ctx.save(); rr(ctx, 60, 48, 72, 72, 16); ctx.clip();
+          ctx.drawImage(logoImg, 60, 48, 72, 72); ctx.restore();
+        }
+        ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.font = '600 26px system-ui, sans-serif';
+        ctx.fillText('milestonewins.com', W - 60, H - 46);
+        cv.toBlob(function(blob){
+          if(!blob) return;
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = slug + '-ranking.png';
+          document.body.appendChild(a); a.click();
+          setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+        }, 'image/png');
+      }
+      if(logo){
+        var im = new Image(); im.crossOrigin = 'anonymous';
+        var to = setTimeout(function(){ finish(null); }, 3000);
+        im.onload = function(){ clearTimeout(to); finish(im); };
+        im.onerror = function(){ clearTimeout(to); finish(null); };
+        im.src = logo;
+      } else { finish(null); }
+    }
+    // Compute rank from launches.json
+    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(d){
+      var items = (d.launches || d).filter(function(it){ return annualized(it.revenue) > 0; });
+      items.sort(function(a, b){ return annualized(b.revenue) - annualized(a.revenue); });
+      var rank = 0;
+      for(var i = 0; i < items.length; i++){
+        if(items[i].slug === slug){ rank = i + 1; break; }
+      }
+      if(!rank) rank = '–';
+      doDraw(rank);
+    }).catch(function(){ doDraw('–'); });
+  }
+
   document.getElementById('dlCardBtn').addEventListener('click', downloadCelebration);
+  var dlRankBtn = document.getElementById('dlRankBtn');
+  if(dlRankBtn) dlRankBtn.addEventListener('click', downloadRankingCard);
   /* Celebration card style switcher (free) */
   Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(btn){
     btn.addEventListener('click', function(){
