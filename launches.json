@@ -388,7 +388,7 @@
     "tagline": "Discover & host unforgettable events",
     "url": "/launches/myplots/",
     "category": "Entertainment",
-    "pricing": null,
+    "pricing": "Free to host (20% + $1.00 per paid ticket)",
     "founder": "Jack Schwartz",
     "revenue": "$500k / 30d",
     "revenue_metric": "30-day revenue",
@@ -404,7 +404,8 @@
         "note": "Launch"
       }
     ],
-    "website": "https://myplots.com"
+    "website": "https://myplots.com",
+    "description": "MyPlots is a live event discovery and ticketing platform focused on concerts and university shows, where fans discover events and hosts manage everything in one dashboard \u2014 ticket sales, QR entry, team operations, payouts, and marketing. It also runs MyPlots Productions for full event production support and a marketplace for merch and fan-to-fan tickets. Payments are processed securely via Stripe."
   },
   {
     "name": "Comp AI",
@@ -917,7 +918,7 @@
     "tagline": "Run your social media on autopilot with AI agents",
     "url": "/launches/postiz/",
     "category": "Marketing",
-    "pricing": "$29/mo",
+    "pricing": "From $29/mo (7-day free trial)",
     "founder": "Nevo David",
     "revenue": "$3M ARR",
     "revenue_metric": "ARR",
@@ -942,7 +943,8 @@
     "website": "https://postiz.com",
     "founder_x": [
       "wickedguro"
-    ]
+    ],
+    "description": "Postiz is an agentic social media scheduling platform: AI agents (via Claude, ChatGPT, MCP server, or CLI) plan, generate, and schedule posts to 30+ networks, with everything landing in one visual calendar for human review before publishing. It includes AI text, image, and video generation, per-channel analytics, team workspaces, a public API, and integrations with n8n, Make, and Zapier. The same codebase is also published open-source (AGPL-3.0) for self-hosting."
   },
   {
     "name": "Rezi",
@@ -968,7 +970,8 @@
     "website": "https://rezi.ai",
     "founder_x": [
       "jacob_jacquet"
-    ]
+    ],
+    "description": "Rezi is an AI resume builder trusted by 4.5 million job seekers (a Forbes top pick) that creates ATS-optimized resumes designed to pass applicant tracking systems. Its Rezi Score grades resumes section by section, AI keyword targeting matches resumes to specific job descriptions, and the platform also offers AI cover letters, mock interview practice, and job search tools. Users report a 62% interview rate versus roughly 3% on average."
   },
   {
     "name": "Cometly",
@@ -1019,7 +1022,8 @@
         "note": "Launch \u00b7 Founder-reported"
       }
     ],
-    "website": "https://www.stackinfluence.com"
+    "website": "https://www.stackinfluence.com",
+    "description": "Stack Influence is a micro-influencer marketing platform with 410k vetted creators, built for e-commerce brands selling on Amazon, Shopify, Walmart, and TikTok Shop. Brands pay creators with product instead of cash while the platform automates campaign management and collects authentic user-generated content that lifts organic rankings and ad conversions. Customers report 4x ad conversion improvements and use it to scale product launches and grow Amazon businesses."
   },
   {
     "name": "PressWhizz",
@@ -1258,7 +1262,7 @@
     "revenue_metric": "all-time revenue",
     "founder": "Jake Ward",
     "category": "LinkedIn",
-    "pricing": "$99/mo",
+    "pricing": "From $99/mo ($999/yr annual)",
     "launched": "2026-10-02",
     "source": "https://x.com/jakezward",
     "source_label": "Founder's X post",
@@ -1271,7 +1275,8 @@
     ],
     "founder_x": [
       "jakezward"
-    ]
+    ],
+    "description": "Kleo is an AI personal brand tool purpose-built for LinkedIn growth, covering the complete workflow from strategy to publishing: personalized content strategy, AI writing in your own voice, post scheduling, analytics, and a training library with 400+ proven templates. Unlike general AI assistants, it learns your expertise, writing style, audience, and goals so every recommendation becomes more relevant over time. It was founded by creators with 575K+ combined LinkedIn followers and is used by consultants, coaches, and founders."
   },
   {
     "launch_no": 42,
@@ -1483,7 +1488,7 @@
     "revenue_metric": "MRR",
     "founder": "Cedric Isubol",
     "category": "Health",
-    "pricing": "~$3/mo",
+    "pricing": "Freemium (7-day free trial)",
     "launched": "2026-10-05",
     "source": "https://www.indiehackers.com/post/from-1-000-to-8-000-downloads-and-35-to-280-mrr-5-months-of-growing-an-ai-calorie-tracker-with-0-ads-ec8983e67f",
     "source_label": "Founder's Indie Hackers post",
@@ -1493,7 +1498,8 @@
         "revenue": "$280 MRR",
         "note": "Launch \u00b7 Founder-reported"
       }
-    ]
+    ],
+    "description": "Caldef AI is an AI-powered calorie tracker that logs meals in about 10 seconds \u2014 just describe your food in plain words or snap a photo and it instantly calculates calories, protein, carbs, and fat. It sets a personalized daily calorie target using the Mifflin-St Jeor formula and delivers daily AI insights on your eating patterns. Built by founder Cedric Isubol after losing 18kg himself, it focuses on speed and simplicity so users actually stick with tracking."
   },
   {
     "launch_no": 51,
@@ -1985,7 +1991,7 @@
     "revenue_metric": "annualized revenue",
     "founder": "Nicolai Klemke",
     "category": "Video",
-    "pricing": "From $26/mo",
+    "pricing": "Freemium (start creating for free)",
     "launched": "2026-10-10",
     "source": "https://share.transistor.fm/s/5026e63e",
     "source_label": "Founder on TBPN podcast",
@@ -2012,7 +2018,8 @@
     },
     "founder_x": [
       "nicolaiklemke"
-    ]
+    ],
+    "description": "Neural Frames is an AI music video platform built for musicians, turning songs into audio-reactive videos with visuals synced to rhythm, energy, and song structure. It offers three creation modes \u2014 Autopilot song-to-video, a frame-by-frame editor, and a text-to-video timeline editor powered by models like Kling, Seedance, and Runway \u2014 with 4K output, character consistency, and automatic lyric extraction. Trusted by 40,000+ artists, it includes AI upscaling on every export at no extra cost."
   },
   {
     "launch_no": 65,
@@ -2860,7 +2867,7 @@
     "revenue_metric": "ARR",
     "founder": "Molly Liu, Aman Puri",
     "category": "Product",
-    "pricing": null,
+    "pricing": "Custom (no upfront fees, 14-day risk-free trial)",
     "launched": "2026-10-18",
     "source": "arrclub_signal_sync",
     "source_label": null,
@@ -2871,7 +2878,8 @@
         "note": "Launch \u00b7 Founder-reported"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "MAVI is an AI-driven finance talent engine that places pre-vetted global finance and accounting talent \u2014 every candidate clears a 5-stage vetting process, with only the top 2% making it through. Its matching engine, trained on hundreds of thousands of applicants and validated by human experts, delivers US-caliber (often ex-Big 4) talent at 50%+ lower cost, onboarded in as fast as 5 days. MAVI stays on as a continuous partner handling contracts, payments, and compliance, with contractors working in a secure SOC 2-compliant virtual environment."
   },
   {
     "launch_no": 111,
@@ -2885,7 +2893,7 @@
     "revenue_metric": "ARR",
     "founder": "Thomas Chan",
     "category": "Product",
-    "pricing": null,
+    "pricing": "Not published (demo-based)",
     "launched": "2026-10-18",
     "source": "arrclub_signal_sync",
     "source_label": null,
@@ -2896,7 +2904,8 @@
         "note": "Launch \u00b7 Founder-reported"
       }
     ],
-    "growth": null
+    "growth": null,
+    "description": "Lantern is an AI recruiting platform for connected hiring, built on two models: a World People Model that knows the talent market (career paths, what people built, title calibration) and a Company Hiring Model that learns each team's taste from debriefs, scorecards, and past decisions. Sourcing, application review, AI interviews, meeting intelligence, and analytics all share one hiring context, so what one interview teaches improves the next search \u2014 while the hiring team keeps final decision control. It is ISO 27001 and SOC 2 Type II certified with GDPR compliance."
   },
   {
     "launch_no": 112,
