@@ -909,3 +909,11 @@ a.x-link:hover { color: var(--accent-hover); }
 .cc-style-overlay .cc-dl-btn:hover { background: #0b7d74; }
 /* Hide old row layout */
 .cc-dl-row { display: none; }
+
+/* Claim banner on detail pages */
+.claim-banner{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:linear-gradient(135deg,#f0fdfa 0%,#ecfeff 100%);border:1.5px dashed #0d9488;border-radius:14px;padding:1rem 1.25rem;margin:1.2rem 0;flex-wrap:wrap}
+.claim-banner-text{display:flex;flex-direction:column;gap:.25rem;font-size:.95rem;color:#334155}
+.claim-banner-text strong{font-size:1.02rem;color:#0f172a}
+.claim-offer{color:#0d9488;font-weight:600}
+.claim-banner .btn{white-space:nowrap}
+@media(max-width:640px){.claim-banner{flex-direction:column;align-items:stretch;text-align:center}}

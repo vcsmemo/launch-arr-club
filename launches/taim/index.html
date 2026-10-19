@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://milestonewins.com/launches/taim/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261014d">
+<link rel="stylesheet" href="/style.css?v=20261019a">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Taim","applicationCategory":"WebApplication","operatingSystem":"Web","description":"Taim is your thought-capture assistant. Speak your mind and it all falls into place: thoughts land in the right thread automatically, and to-dos become tasks, reminders, and calendar events. Connect via MCP, and every agent you use instantly has your context.","url":"https://milestonewins.com/launches/taim/"}
 </script>
@@ -105,7 +105,35 @@
 
   <div class="maker-card" id="makerCard">
     <div class="maker-avatar">S</div>
-    <div class="maker-info">
+
+  <div class="claim-banner" id="claimBanner">
+    <div class="claim-banner-text">
+      <strong>Is this your product?</strong>
+      <span>Claim this page for free — update info, post milestones.</span>
+      <span class="claim-offer" id="claimOffer" hidden>🎁 First 10 founders get <b>Featured FREE</b> ($19 value)</span>
+    </div>
+    <a class="btn dark" id="claimBtn" href="/claim.html">Claim this page →</a>
+  </div>
+  <script>
+  (function(){
+    var slugMatch = location.pathname.match(/\/launches\/([^\/]+)\//);
+    var slug = slugMatch ? slugMatch[1] : '';
+    var btn = document.getElementById('claimBtn');
+    if (btn && slug) {
+      var h1 = document.querySelector('h1');
+      var name = h1 ? h1.textContent.trim() : slug;
+      btn.href = '/claim.html?product=' + encodeURIComponent(slug) + '&name=' + encodeURIComponent(name);
+    }
+    fetch('https://launch-arr-club-img.johntian2015.workers.dev/claim-count')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d.ok && d.free_spots_left > 0) {
+          var o = document.getElementById('claimOffer');
+          if (o) o.hidden = false;
+        }
+      }).catch(function(){});
+  })();
+  </script>    <div class="maker-info">
       <span class="maker-label">Maker</span>
       <b class="maker-name"><a href="https://www.producthunt.com/@snoozees" target="_blank" rel="noopener">Sofia Pavlidou</a></b>
     </div>

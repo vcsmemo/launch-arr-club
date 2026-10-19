@@ -1208,20 +1208,58 @@ export default {
       return json(result);
     }
 
-    // ---- Claim interest ----
-    // POST /claim-interest {slug, email} -> saves founder claim intent to KV
+    // ---- Claim page ----
+    // POST /claim-interest {slug, name, email, x_handle} -> saves founder claim to KV + R2
+    // First 10 claimants get free Featured. Returns {ok:true, free_featured:boolean, claim_number:number}
     if (request.method === 'POST' && url.pathname === '/claim-interest') {
       let data;
       try { data = await request.json(); }
       catch (e) { return json({ error: 'invalid JSON' }, 400); }
       const slug = String(data.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 50);
+      const name = String(data.name || '').trim().slice(0, 120);
       const email = String(data.email || '').trim().toLowerCase().slice(0, 120);
+      const xHandle = String(data.x_handle || '').trim().replace(/^@/, '').slice(0, 50);
       if (!slug) return json({ error: 'missing slug' }, 400);
+      if (!name) return json({ error: 'missing name' }, 400);
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'invalid email' }, 400);
       if (!env.STRIPE_KV) return json({ error: 'KV not configured' }, 500);
       const key = 'claim:' + slug + ':' + md5(email);
-      await env.STRIPE_KV.put(key, JSON.stringify({ email: email, slug: slug, created_at: new Date().toISOString() }));
-      return json({ ok: true });
+      const existing = await env.STRIPE_KV.get(key);
+      if (existing) return json({ ok: true, duplicate: true });
+      // Count total claims for the free-featured offer (first 10)
+      const countKey = 'claim:count';
+      const count = (parseInt(await env.STRIPE_KV.get(countKey) || '0', 10) || 0) + 1;
+      await env.STRIPE_KV.put(countKey, String(count));
+      const freeFeatured = count <= 10;
+      const claim = {
+        slug: slug, name: name, email: email, x_handle: xHandle,
+        claim_number: count, free_featured: freeFeatured,
+        created_at: new Date().toISOString(), status: 'pending'
+      };
+      await env.STRIPE_KV.put(key, JSON.stringify(claim));
+      // Also save full record to R2 for review
+      const r2key = 'claims/' + new Date().toISOString().slice(0, 10) + '-' + slug + '-' + crypto.randomUUID().slice(0, 6) + '.json';
+      await env.IMAGES.put(r2key, JSON.stringify(claim), {
+        httpMetadata: { contentType: 'application/json' },
+      });
+      // Confirmation email to claimant
+      const productUrl = 'https://milestonewins.com/launches/' + slug + '/';
+      sendEmail(env, email,
+        freeFeatured ? 'Your page is claimed 🎉 + FREE Featured!' : 'Your claim is received 🎉',
+        emailShell(freeFeatured ? 'Your page is claimed 🎉' : 'Claim received 🎉',
+          '<p>Hi ' + esc(name) + ',</p>'
+          + '<p>Thanks for claiming <strong><a href="' + productUrl + '">' + esc(slug) + '</a></strong> on MilestoneWins.</p>'
+          + (freeFeatured
+            ? '<p>🎁 <strong>You\'re one of our first 10 founders — Featured placement is FREE for you</strong> (normally $19). We\'ll upgrade your page within 24 hours after a quick verification.</p>'
+            : '<p>We\'ll verify your claim within 24 hours. Want extra visibility? <a href="https://milestonewins.com/submit.html">Upgrade to Featured ($19)</a>.</p>')
+          + '<p>— The MilestoneWins team</p>'));
+      return json({ ok: true, free_featured: freeFeatured, claim_number: count });
+    }
+
+    // GET /claim-count -> returns {count, free_spots_left} for the claim page
+    if (request.method === 'GET' && url.pathname === '/claim-count') {
+      const count = parseInt(await env.STRIPE_KV.get('claim:count') || '0', 10) || 0;
+      return json({ ok: true, count: count, free_spots_left: Math.max(0, 10 - count) });
     }
 
     // ---- Image upload ----

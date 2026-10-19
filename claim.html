@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H8J7S3S2GW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-H8J7S3S2GW');
+</script>
+<title>Claim your page — MilestoneWins</title>
+<meta name="description" content="Is this your product? Claim your MilestoneWins page for free. First 10 founders get Featured placement free.">
+<link rel="canonical" href="https://milestonewins.com/claim.html">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261019a">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/">← Back home</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main>
+  <section class="hero" style="text-align:center; padding: 48px 20px 24px;">
+    <h1>Claim your page</h1>
+    <p style="font-size:1.1rem; color:#475569; max-width:560px; margin:12px auto;">
+      Is <strong id="productName">this product</strong> yours? Claim it for free —
+      update info, post milestones, and own your celebration page.
+    </p>
+    <div id="freeOffer" style="display:none; max-width:560px; margin:20px auto; padding:16px 20px; background:#f0fdfa; border:2px solid #0d9488; border-radius:12px;">
+      <div style="font-size:1.05rem;">🎁 <strong>Limited offer:</strong> the first 10 founders to claim get <strong>Featured placement FREE</strong> <span style="color:#64748b;">(normally $19)</span></div>
+      <div id="spotsLeft" style="margin-top:8px; font-weight:600; color:#0d9488;"></div>
+    </div>
+  </section>
+
+  <section style="max-width:560px; margin:0 auto; padding:0 20px 64px;">
+    <form id="claimForm" style="background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:28px;">
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-weight:600; margin-bottom:6px;">Product</label>
+        <input type="text" id="f_product" readonly style="width:100%; padding:10px 12px; border:1px solid #e2e8f0; border-radius:8px; background:#f8fafc; color:#64748b;">
+        <input type="hidden" id="f_slug">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-weight:600; margin-bottom:6px;">Your name *</label>
+        <input type="text" id="f_name" required placeholder="Jane Doe" style="width:100%; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-weight:600; margin-bottom:6px;">Work email *</label>
+        <input type="email" id="f_email" required placeholder="jane@yourproduct.com" style="width:100%; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+        <small style="color:#64748b;">We verify via your product's domain or X profile.</small>
+      </div>
+      <div style="margin-bottom:20px;">
+        <label style="display:block; font-weight:600; margin-bottom:6px;">X handle <span style="font-weight:400; color:#64748b;">(optional)</span></label>
+        <input type="text" id="f_x" placeholder="@janedoe" style="width:100%; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+      </div>
+      <button type="submit" id="claimBtn" class="btn dark" style="width:100%; padding:14px; font-size:1.05rem;">Claim this page →</button>
+      <p id="claimMsg" style="margin-top:12px; text-align:center; display:none;"></p>
+    </form>
+    <div id="claimDone" style="display:none; background:#f0fdfa; border:1px solid #0d9488; border-radius:16px; padding:32px; text-align:center;">
+      <div style="font-size:2.5rem;">🎉</div>
+      <h2 id="doneTitle">Claim received!</h2>
+      <p id="doneBody" style="color:#475569;"></p>
+    </div>
+  </section>
+</main>
+<script>
+(function(){
+  var params = new URLSearchParams(location.search);
+  var slug = params.get('product') || '';
+  var name = params.get('name') || slug;
+  document.getElementById('f_slug').value = slug;
+  document.getElementById('f_product').value = name;
+  document.getElementById('productName').textContent = name || 'this product';
+  document.title = 'Claim ' + (name || 'your page') + ' — MilestoneWins';
+
+  // Show free-featured offer with live spots count
+  fetch('https://launch-arr-club-img.johntian2015.workers.dev/claim-count')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.ok && d.free_spots_left > 0) {
+        document.getElementById('freeOffer').style.display = 'block';
+        document.getElementById('spotsLeft').textContent =
+          '⚡ ' + d.free_spots_left + ' of 10 free spots left — claim now!';
+      }
+    }).catch(function(){});
+
+  document.getElementById('claimForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = document.getElementById('claimBtn');
+    var msg = document.getElementById('claimMsg');
+    btn.disabled = true; btn.textContent = 'Claiming…'; msg.style.display = 'none';
+    fetch('https://launch-arr-club-img.johntian2015.workers.dev/claim-interest', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        slug: document.getElementById('f_slug').value,
+        name: document.getElementById('f_name').value.trim(),
+        email: document.getElementById('f_email').value.trim(),
+        x_handle: document.getElementById('f_x').value.trim()
+      })
+    }).then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.ok) {
+        document.getElementById('claimForm').style.display = 'none';
+        var done = document.getElementById('claimDone');
+        done.style.display = 'block';
+        if (d.free_featured) {
+          document.getElementById('doneTitle').textContent = 'Claimed + FREE Featured! 🎁';
+          document.getElementById('doneBody').textContent =
+            "You're founder #" + d.claim_number + " — Featured placement (normally $19) is FREE for you. We'll verify and upgrade your page within 24 hours. Check your email for confirmation.";
+        } else {
+          document.getElementById('doneBody').textContent =
+            "Thanks! We'll verify your claim within 24 hours and email you. Want extra visibility? Check out Featured ($19) anytime.";
+        }
+      } else {
+        msg.style.display = 'block'; msg.style.color = '#dc2626';
+        msg.textContent = d.error === 'duplicate' ? 'You already claimed this page.' : ('Error: ' + (d.error || 'try again'));
+        btn.disabled = false; btn.textContent = 'Claim this page →';
+      }
+    }).catch(function(){
+      msg.style.display = 'block'; msg.style.color = '#dc2626';
+      msg.textContent = 'Network error, please try again.';
+      btn.disabled = false; btn.textContent = 'Claim this page →';
+    });
+  });
+})();
+</script>
+</body>
+</html>

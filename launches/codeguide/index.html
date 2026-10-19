@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://milestonewins.com/launches/codeguide/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261014d">
+<link rel="stylesheet" href="/style.css?v=20261019a">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CodeGuide","applicationCategory":"WebApplication","operatingSystem":"Web","description":"Turn your idea into a project knowledge base — PRDs, tech specs and wireframes your AI coding tools can reference","offers":{"@type":"Offer","price":"24","priceCurrency":"USD"},"url":"https://milestonewins.com/launches/codeguide/"}
 </script>
@@ -104,7 +104,35 @@
   </div>
   <div class="maker-card" id="makerCard">
     <div class="maker-avatar">C</div>
-    <div class="maker-info">
+
+  <div class="claim-banner" id="claimBanner">
+    <div class="claim-banner-text">
+      <strong>Is this your product?</strong>
+      <span>Claim this page for free — update info, post milestones.</span>
+      <span class="claim-offer" id="claimOffer" hidden>🎁 First 10 founders get <b>Featured FREE</b> ($19 value)</span>
+    </div>
+    <a class="btn dark" id="claimBtn" href="/claim.html">Claim this page →</a>
+  </div>
+  <script>
+  (function(){
+    var slugMatch = location.pathname.match(/\/launches\/([^\/]+)\//);
+    var slug = slugMatch ? slugMatch[1] : '';
+    var btn = document.getElementById('claimBtn');
+    if (btn && slug) {
+      var h1 = document.querySelector('h1');
+      var name = h1 ? h1.textContent.trim() : slug;
+      btn.href = '/claim.html?product=' + encodeURIComponent(slug) + '&name=' + encodeURIComponent(name);
+    }
+    fetch('https://launch-arr-club-img.johntian2015.workers.dev/claim-count')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d.ok && d.free_spots_left > 0) {
+          var o = document.getElementById('claimOffer');
+          if (o) o.hidden = false;
+        }
+      }).catch(function(){});
+  })();
+  </script>    <div class="maker-info">
       <span class="maker-label">Maker</span>
       <b class="maker-name"><a class="x-link" href="https://x.com/cjzafir" target="_blank" rel="noopener">CJ Zafir</a></b>
     </div>

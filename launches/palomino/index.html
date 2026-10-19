@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://milestonewins.com/launches/palomino/">
 <link rel="icon" type="image/png" href="/favicon-64.png">
-<link rel="stylesheet" href="/style.css?v=20261014d">
+<link rel="stylesheet" href="/style.css?v=20261019a">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Palomino","applicationCategory":"WebApplication","operatingSystem":"Web","description":"Palomino is a fast, GPU-rendered agent workspace that runs AI coding agents side by side with your terminals, editor, and browser in one window, natively on your Mac.","url":"https://milestonewins.com/launches/palomino/"}
 </script>
@@ -99,7 +99,35 @@
   <div class="stat-grid">
 
     <div class="stat-card"><span>Pricing</span><b>Free</b><small>Subscription plans</small></div>
-    <div class="stat-card"><span>Launched</span><b>17 October 2026</b><small>L+0 &middot; Live on MilestoneWins</small></div>
+
+  <div class="claim-banner" id="claimBanner">
+    <div class="claim-banner-text">
+      <strong>Is this your product?</strong>
+      <span>Claim this page for free — update info, post milestones.</span>
+      <span class="claim-offer" id="claimOffer" hidden>🎁 First 10 founders get <b>Featured FREE</b> ($19 value)</span>
+    </div>
+    <a class="btn dark" id="claimBtn" href="/claim.html">Claim this page →</a>
+  </div>
+  <script>
+  (function(){
+    var slugMatch = location.pathname.match(/\/launches\/([^\/]+)\//);
+    var slug = slugMatch ? slugMatch[1] : '';
+    var btn = document.getElementById('claimBtn');
+    if (btn && slug) {
+      var h1 = document.querySelector('h1');
+      var name = h1 ? h1.textContent.trim() : slug;
+      btn.href = '/claim.html?product=' + encodeURIComponent(slug) + '&name=' + encodeURIComponent(name);
+    }
+    fetch('https://launch-arr-club-img.johntian2015.workers.dev/claim-count')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d.ok && d.free_spots_left > 0) {
+          var o = document.getElementById('claimOffer');
+          if (o) o.hidden = false;
+        }
+      }).catch(function(){});
+  })();
+  </script>    <div class="stat-card"><span>Launched</span><b>17 October 2026</b><small>L+0 &middot; Live on MilestoneWins</small></div>
     <div class="stat-card"><span>Category</span><div class="pills"><span class="tag cat">Dev Tools</span></div></div>
   </div>
 
