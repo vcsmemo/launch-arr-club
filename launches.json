@@ -20,7 +20,8 @@
     "founder_x": [
       "larmbrust",
       "emilyrcolman"
-    ]
+    ],
+    "description": "RonanRx is personalized medicine: a licensed doctor sets your protocol for peptides or GLP-1s, they manufacture your medication to your exact specifications in their own facility, a pharmacist validates it, and it's delivered free in two days. Fully online, no insurance required."
   },
   {
     "launch_no": 90,
@@ -42,7 +43,8 @@
     "growth": null,
     "founder_x": [
       "emrre_isik"
-    ]
+    ],
+    "description": "Spaceflow is a supply risk watcher for procurement teams: it connects plans, requests, supplier activity, evidence and approvals in one workflow, normalizes RFQ quotes across price, lead time and terms, recommends the strongest award or split, and carries approved decisions into POs \u2014 while consequential decisions stay human."
   },
   {
     "launch_no": 89,
@@ -61,7 +63,8 @@
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "description": "Radley is an AI-native radiology practice for hospitals and imaging centers: AI drafts the report before a board-certified radiologist opens the case, they review, correct by voice and sign it \u2014 with results back in minutes instead of days, plus automatic follow-up coordination."
   },
   {
     "launch_no": 88,
@@ -80,7 +83,8 @@
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "description": "Saga is an agentic legal AI platform for law firms and legal teams: AI assistants, a workflow builder, legal research across cases and regulations, grid review of large document sets, and Word and Outlook add-ins. Trusted by 500+ legal teams across 25+ countries, with an adoption program that upskills teams from day one."
   },
   {
     "launch_no": 87,
@@ -94,12 +98,13 @@
     "revenue_metric": null,
     "founder": "Bruno Andrade, Dai Macedo",
     "category": "Dev Tools",
-    "pricing": null,
+    "pricing": "Freemium (free forever tier)",
     "launched": "2026-10-15",
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "description": "SenseLab is continual learning for AI agents: a shared memory space where agents write findings, read briefings and commit outcomes, with outcome-validated learning that weights knowledge by what actually worked in production. Framework-agnostic, with MCP and SDK access and full decision lineage."
   },
   {
     "launch_no": 86,
@@ -113,7 +118,7 @@
     "revenue_metric": null,
     "founder": "Ruben Fiszel",
     "category": "Dev Tools",
-    "pricing": null,
+    "pricing": "Open source (free self-host)",
     "launched": "2026-10-15",
     "source": "arrclub_signal_sync",
     "source_label": null,
@@ -121,7 +126,8 @@
     "growth": null,
     "founder_x": [
       "rubenfiszel"
-    ]
+    ],
+    "description": "Windmill is a code-first orchestration platform for internal software: build scripts, workflows, apps, agents and data pipelines with AI and run them on the fastest self-hostable engine. Self-host on your own infrastructure, with built-in observability, permissions and CI-style review before deploying to prod."
   },
   {
     "launch_no": 85,
@@ -135,12 +141,13 @@
     "revenue_metric": null,
     "founder": "Bruno Andrade, Dai Macedo",
     "category": "Dev Tools",
-    "pricing": null,
+    "pricing": "Freemium (free forever tier)",
     "launched": "2026-10-15",
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "description": "SenseLab is continual learning for AI agents: a shared memory space where agents write findings, read briefings and commit outcomes, with outcome-validated learning that weights knowledge by what actually worked in production. Framework-agnostic, with MCP and SDK access and full decision lineage."
   },
   {
     "launch_no": 84,
@@ -159,7 +166,8 @@
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "description": "Trellis is AI property management software for vacation rentals: AI agents answer guests across Airbnb, Vrbo, WhatsApp and email, coordinate cleaning and maintenance teams, and run daily operations across 200+ integrations. Billing only starts once autopilot reaches 70% accuracy on your channels. Backed by Y Combinator."
   },
   {
     "launch_no": 81,
@@ -345,7 +353,7 @@
     "tagline": "Meet Ace, an agentic teammate for work",
     "url": "/launches/ace-automat/",
     "category": "AI Agents",
-    "pricing": "$1,800/mo",
+    "pricing": "From $1,800/mo",
     "founder": "Lucas Ochoa, Gautam Bose",
     "revenue": null,
     "revenue_metric": null,
@@ -358,7 +366,8 @@
     "founder_x": [
       "lucas0choa",
       null
-    ]
+    ],
+    "description": "Ace is an AI coworker from Automat Workforce that you hire like a teammate: it gets its own computer, phone number, inbox and logins, and does multi-tool admin work inside Gmail, Slack, WhatsApp, docs and phone calls without integrations or APIs. Managed by Automat with a 14-day free trial on a real workflow."
   },
   {
     "name": "SalesRobot",
@@ -434,14 +443,15 @@
       "lewisbuildsai",
       null,
       null
-    ]
+    ],
+    "description": "Comp AI is an AI-first, open-source compliance platform for SOC 2, ISO 27001, HIPAA and GDPR. AI agents automatically collect evidence from 580+ integrations, generate policies tailored to your business, run continuous monitoring and penetration tests, and publish live trust centers \u2014 trusted by 1,000+ companies."
   },
   {
     "name": "Campfire",
     "tagline": "The shared workspace for humans and coding agents",
     "url": "/launches/campfire/",
     "category": "Dev Tools",
-    "pricing": "Free",
+    "pricing": "Free (open source)",
     "founder": "Sergio Rovira",
     "revenue": null,
     "revenue_metric": null,
@@ -453,7 +463,8 @@
     "website": "https://boringinfra.company/campfire",
     "founder_x": [
       "therealsergio91"
-    ]
+    ],
+    "description": "Campfire is a shared place for humans and AI agents to work together: create a workspace with a goal, add people and agents (Codex, Claude Code, OpenCode), and keep the changes, decisions and history together so the next agent never starts from an empty prompt. Open source, local-first."
   },
   {
     "name": "SuperX",
@@ -541,7 +552,7 @@
     "tagline": "Build bots on the coding agent you already use",
     "url": "/launches/gitbot/",
     "category": "Dev Tools",
-    "pricing": "Free",
+    "pricing": "Free (open source)",
     "founder": "Sunny, Raunaq Vaisoha, Anil Dukkipatty, Sahil Kathpal",
     "revenue": null,
     "revenue_metric": null,
@@ -556,7 +567,8 @@
       null,
       "anildukkipatty",
       null
-    ]
+    ],
+    "description": "GitBot is an open-source tool to create reusable bots powered by Claude Code, Codex or OpenCode. Each bot holds reusable instructions, an agent choice and permissions; run it locally across your repositories with persistent threads and no account, no telemetry \u2014 your files stay on your machine."
   },
   {
     "name": "Capgo",
@@ -640,7 +652,7 @@
     "tagline": "Drag a box on your screen and ask AI about it",
     "url": "/launches/squint/",
     "category": "Productivity",
-    "pricing": "Freemium",
+    "pricing": "Freemium (free 10 captures/week; Plus $10/mo)",
     "founder": "Evan Schwartzentruber",
     "revenue": null,
     "revenue_metric": null,
@@ -649,7 +661,8 @@
     "plan": "curated",
     "logo": "/logos/squint.png",
     "launch_no": 28,
-    "website": "https://heysquint.com/"
+    "website": "https://heysquint.com/",
+    "description": "Squint is a desktop app that explains anything on your screen: press a hotkey, drag a box around whatever is confusing, and the answer streams in beside it \u2014 no app-switching, no screenshots to upload, no chat window to feed. Chat history stays on your machine."
   },
   {
     "name": "Web3Forms",
@@ -746,7 +759,8 @@
     "plan": "curated",
     "logo": "/logos/getcta.png",
     "launch_no": 29,
-    "website": "https://www.getcta.store/"
+    "website": "https://www.getcta.store/",
+    "description": "getcta is a teleprompter that lives in a small black panel under your MacBook notch, right below the camera. It follows your speech word by word, scrolls automatically, stays hidden from screen share and recordings, and includes AI tools to write scripts from your notes or docs."
   },
   {
     "name": "DataExpert",
@@ -840,7 +854,8 @@
     "revenue_metric": null,
     "revenue_verified": false,
     "launch_no": 4,
-    "website": "https://vidsizer.com/"
+    "website": "https://vidsizer.com/",
+    "description": "VidSizer is a free browser-based video compressor that compresses any video to any exact size \u2014 20 MB for Discord, 16 MB for WhatsApp, or any custom number. It computes the precise bitrate from your video's duration, verifies the output, and re-encodes if needed \u2014 100% on your device, no upload, no signup, no watermark."
   },
   {
     "name": "LLM Gateway",
@@ -1084,7 +1099,8 @@
     "website": "https://blogr.ai",
     "founder_x": [
       "karakhanyans"
-    ]
+    ],
+    "description": "Blogr.ai is an AI SEO content platform that researches, plans, writes, publishes and continuously optimizes content for organic growth. It pulls topic ideas from your Google Search Console data, builds topical authority maps, generates long-form articles with schema markup, auto-publishes to WordPress/Webflow/Shopify, and improves published pages based on real search performance."
   },
   {
     "name": "Bazzly",
@@ -1227,7 +1243,7 @@
     "revenue_metric": "9-day revenue",
     "founder": "Serg Karakhanyan",
     "category": "Email",
-    "pricing": "$29 one-time",
+    "pricing": "From $3.99/mo",
     "launched": "2026-10-02",
     "revenue_history": [
       {
@@ -1238,7 +1254,8 @@
     ],
     "founder_x": [
       "karakhanyans"
-    ]
+    ],
+    "description": "bytemail is a fast, native email client for Mac built in Swift. All accounts in one window, instant search, tracking pixels blocked, on-device summaries and rewrite via Apple Intelligence, undo send, and an email MCP server so Claude or Cursor can work across your inboxes \u2014 your mail never touches their servers."
   },
   {
     "launch_no": 40,
@@ -1252,7 +1269,7 @@
     "revenue_metric": "monthly revenue",
     "founder": "Lucas Martinic",
     "category": "3D & Gaming",
-    "pricing": "$15/mo",
+    "pricing": "Free; Pro $15/mo",
     "launched": "2026-10-02",
     "revenue_history": [
       {
@@ -1263,7 +1280,8 @@
     ],
     "founder_x": [
       "lucas_martinic"
-    ]
+    ],
+    "description": "Polyfork is a library of 3D assets you can remix: 2,400+ low-poly models as code (typed knobs for colors, proportions, part counts) rather than frozen meshes. Import one line in three.js or export GLB/FBX/USDZ for any engine, with commercial use and an MCP API for AI agents."
   },
   {
     "launch_no": 41,
@@ -1483,7 +1501,7 @@
     "revenue_metric": "MRR",
     "founder": "Mattia Pomelli",
     "category": "Dev Tools",
-    "pricing": "$39/mo",
+    "pricing": "Free plan; from $29/mo",
     "launched": "2026-10-04",
     "source": "https://www.indiehackers.com/post/tech/hitting-10k-mrr-in-six-weeks-with-an-ai-design-tool-pEvmU5qkWS6ny0AR9SUv",
     "source_label": "Founder's Indie Hackers post",
@@ -1496,7 +1514,8 @@
     ],
     "founder_x": [
       "mattiapomelli"
-    ]
+    ],
+    "description": "Sleek is an AI mobile app designer: describe your app in plain language or attach a reference image and it generates complete, on-brand iOS and Android screens. Every screen is editable and exports as React/Tailwind code or native Figma layers, and it plugs into coding agents like Claude Code and Cursor."
   },
   {
     "launch_no": 50,
@@ -1636,7 +1655,8 @@
     "founder_x": [
       "mengmengduck",
       null
-    ]
+    ],
+    "description": "Yorby is an AI toolkit for creators to go viral on social media. It writes short-form scripts that remix proven viral formats, spies on Instagram and TikTok accounts with real-time viral alerts, and surfaces top-performing creator structures \u2014 built by creators for creators."
   },
   {
     "launch_no": 55,
@@ -1650,7 +1670,7 @@
     "revenue_metric": "MRR",
     "founder": "Ivan Nedelkovski",
     "category": "Sales",
-    "pricing": "From $99/mo",
+    "pricing": "$149",
     "launched": "2026-10-07",
     "source": "https://www.youtube.com/watch?v=LKARRA0MvY4",
     "source_label": "Founder's Starter Story interview",
@@ -1672,7 +1692,8 @@
         "https://www.youtube.com/watch?v=LKARRA0MvY4",
         "https://www.youtube.com/watch?v=LKARRA0MvY4"
       ]
-    }
+    },
+    "description": "Lancer is an AI agent for Upwork freelancers and agencies that finds matching jobs and submits personalized proposals automatically, 24/7. It filters jobs across 99+ variables, bids within 10 minutes of posting, and claims a 60% open rate and 21.8% reply rate with a $12 cost per meeting booked."
   },
   {
     "launch_no": 56,
@@ -1727,7 +1748,7 @@
     "revenue_metric": "MRR",
     "founder": "Brijesh Patel",
     "category": "Design Tools",
-    "pricing": "From $19/mo",
+    "pricing": "Freemium (free 3 renders)",
     "launched": "2026-10-07",
     "source": "https://instalker.org/erione_",
     "source_label": "Founder's X posts (mirror)",
@@ -1749,7 +1770,8 @@
         "https://instalker.org/erione_",
         "https://instalker.org/erione_"
       ]
-    }
+    },
+    "description": "Vibe3D is an AI rendering platform for architects and interior designers that turns SketchUp, Revit, Rhino and other 3D models into photorealistic renders and cinematic walkthrough videos in seconds. It preserves geometry, materials and camera angles, runs entirely in the cloud, and works on a transparent credit-based pay-as-you-go model."
   },
   {
     "launch_no": 58,
@@ -1977,7 +1999,7 @@
     "revenue_metric": "MRR",
     "founder": "Gregory Schier",
     "category": "Dev Tools",
-    "pricing": "Free for personal use",
+    "pricing": "Free for personal use; from $79/user/year",
     "launched": "2026-10-09",
     "source": "https://yaak.app/blog/funding-open-source",
     "source_label": "Founder's blog",
@@ -2004,7 +2026,8 @@
     },
     "founder_x": [
       "GregorySchier"
-    ]
+    ],
+    "description": "Yaak is a local-first, open-source API client for REST, GraphQL, WebSocket, gRPC and SSE, built by the creator of Insomnia. Requests live on your machine and are versioned with Git, with no account or cloud sync required, and an agent-friendly CLI and MCP plugin let AI coding agents work in the same workspace."
   },
   {
     "launch_no": 64,
@@ -2123,7 +2146,8 @@
     },
     "founder_x": [
       "orelzman"
-    ]
+    ],
+    "description": "WriteStack is an all-in-one Substack growth platform for creators. It schedules Notes, shows exactly which Notes convert readers into subscribers, generates Notes in your own voice, filters notification noise into a 15-minute activity center, and includes an AI coach plus cross-posting to LinkedIn and X."
   },
   {
     "launch_no": 67,
@@ -2177,7 +2201,7 @@
     "revenue_metric": "monthly revenue",
     "founder": "Piotr Obidowski",
     "category": "Design Tools",
-    "pricing": "From ~$10/render",
+    "pricing": "Freemium (from $15/mo)",
     "launched": "2026-10-11",
     "source": "http://braginpublic.com/u/pobidowski",
     "source_label": "Founder's X post (Aug 2026)",
@@ -2205,7 +2229,8 @@
     },
     "founder_x": [
       "pobidowski"
-    ]
+    ],
+    "description": "Visualizee.ai is a conversational AI rendering platform for architects and designers. Upload a SketchUp screenshot, sketch or photo, tell Vizzy what to change in plain words, and get a photoreal render that keeps your layout and camera \u2014 plus short AI-generated videos of your scenes."
   },
   {
     "launch_no": 69,
@@ -2291,7 +2316,8 @@
         "https://instalker.org/job_boardly",
         "https://www.jobboardly.com/"
       ]
-    }
+    },
+    "description": "Job Boardly is all-in-one job board software to launch a professional job board on your own domain in about an hour. It backfills from 12M+ licensed live listings, monetizes via paywalls, employer subscriptions and featured listings through Stripe, and ships built-in SEO including Google Jobs schema."
   },
   {
     "launch_no": 71,
@@ -2305,7 +2331,7 @@
     "revenue_metric": "MRR",
     "founder": "Mauro Botanes",
     "category": "Health & Fitness",
-    "pricing": "Freemium (in-app subscriptions)",
+    "pricing": "Free",
     "launched": "2026-10-13",
     "source": "https://www.youtube.com/watch?v=OV09yPLf8BI",
     "source_label": "Starter Story founder interview (Sep 2026)",
@@ -2331,7 +2357,8 @@
         "https://www.startupfinder.co/posts/how-a-22-year-old-built-a-160kmo-fitness-app-ov09",
         "https://www.startupfinder.co/posts/how-a-22-year-old-built-a-160kmo-fitness-app-ov09"
       ]
-    }
+    },
+    "description": "Symmetry is a fitness app for building an aesthetic physique: 100% personalized training plans generated in one click, tailored to your body and goals, backed by exercise science. Over 1 million users, with motivation mechanics built around climbing ranks."
   },
   {
     "launch_no": 72,
@@ -2371,7 +2398,8 @@
         "https://www.starterstory.com/snag",
         "https://www.starterstory.com/snag"
       ]
-    }
+    },
+    "description": "Snag helps you find and snag free items near you instead of paying for them \u2014 a local marketplace-style app for free stuff."
   },
   {
     "launch_no": 73,
@@ -2385,7 +2413,7 @@
     "revenue_metric": "MRR",
     "founder": "Michael Rode",
     "category": "Health & Fitness",
-    "pricing": "Freemium (Pro from $5.99/mo)",
+    "pricing": "Free",
     "launched": "2026-10-14",
     "source": "https://gainframe.app/blog/free-tools-app-growth/",
     "source_label": "Founder blog (Sep 15, 2026)",
@@ -2409,7 +2437,8 @@
         "https://gainframe.app/blog/free-tools-app-growth/",
         "https://gainframe.app/blog/free-tools-app-growth/"
       ]
-    }
+    },
+    "description": "GainFrame is an iPhone app that turns gym selfies into physique intelligence: one photo produces estimated body fat, FFMI, lean mass and 12 muscle-group scores, aligned before/after comparisons, a Coach that explains what changed using your trend data, and honest projections of future you. Private by design \u2014 no account required."
   },
   {
     "launch_no": 74,
@@ -2423,7 +2452,7 @@
     "revenue_metric": "MRR",
     "founder": "Shaun Donnelly",
     "category": "Health & Fitness",
-    "pricing": "Freemium (Pro subscriptions)",
+    "pricing": "Free",
     "launched": "2026-10-14",
     "source": "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
     "source_label": "Founder Indie Hackers interview (Sep 2026)",
@@ -2449,7 +2478,8 @@
         "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
         "https://www.indiehackers.com/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1"
       ]
-    }
+    },
+    "description": "Personal Best is an indie workout tracker for iPhone, iPad and Apple Watch. It plans workouts, coaches you toward weekly goals, scrubs through workouts like video with animated route maps and pace charts, and turns workouts into shareable editorial-quality images \u2014 privacy-first with no ads."
   },
   {
     "name": "Novastart",
@@ -2505,7 +2535,8 @@
         "https://www.youtube.com/@bridgemindai",
         "https://github.com/cookie774-gamedev/vibespace/blob/HEAD/research/01-bridgemind-analysis.md"
       ]
-    }
+    },
+    "description": "BridgeMind is the Agent Super App: a native desktop workspace for vibe coding where AI agents (Claude Code, Codex, Cursor, Gemini CLI and more) work in real terminals, with multi-account switching, the fastest voice-to-prompt dictation, and coding threads you read instead of watch. You bring your own AI subscription or API key."
   },
   {
     "launch_no": 83,
@@ -2519,7 +2550,7 @@
     "revenue_metric": "MRR",
     "founder": "Ali Salah",
     "category": "Dev Tools",
-    "pricing": "Freemium (free plan available)",
+    "pricing": "Freemium (free forever plan)",
     "launched": "2026-10-15",
     "source": "https://ideawave.io/startup/instatus",
     "source_label": "IdeaWave revenue tracker \u2014 founder-listed on ARRFounder, rechecked Oct 14, 2026",
@@ -2541,7 +2572,8 @@
         "https://www.starterstory.com/stories/instatus",
         "https://ideawave.io/startup/instatus"
       ]
-    }
+    },
+    "description": "Instatus is a status page and uptime monitoring platform: monitor your services, fix incidents with your team from Slack or Teams, and publish beautiful public or private status pages in 30 seconds. Trusted by teams like Deno, Polymarket and Harvard."
   },
   {
     "launch_no": 92,
@@ -3000,12 +3032,13 @@
     "revenue_metric": null,
     "founder": "Ashton Dobbin, Baylin Spencer",
     "category": "Productivity",
-    "pricing": null,
+    "pricing": "From A$250/mo",
     "launched": "2026-10-18",
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "description": "EstiMate is AI construction estimating software for Australian builders: upload your plan PDFs and it reads them, measures the job by trade with quantities traced back to the drawings, then you price it on your rates and export a quote-ready PDF. $200M+ of projects quoted."
   },
   {
     "launch_no": 115,
@@ -3024,7 +3057,8 @@
     "source": "arrclub_signal_sync",
     "source_label": null,
     "revenue_history": [],
-    "growth": null
+    "growth": null,
+    "description": "Clinware is AI software for skilled nursing and assisted living: a post-acute platform spanning admissions (referral packet review, insurance verification, EHR pre-fill), clinical insights and quality measure tracking, and workforce scheduling tied to resident acuity. HIPAA compliant and SOC 2 certified, built by clinicians."
   },
   {
     "launch_no": 116,
