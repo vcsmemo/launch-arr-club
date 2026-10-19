@@ -1051,7 +1051,7 @@
     "url": "/launches/bazzly/",
     "category": "Marketing",
     "pricing": "$199/mo",
-    "founder": "Tibo",
+    "founder": "Filip Panoski",
     "revenue": "$15k MRR",
     "revenue_metric": "MRR",
     "revenue_verified": false,
@@ -1060,11 +1060,6 @@
     "logo": "/logos/bazzly.png",
     "launch_no": 34,
     "revenue_history": [
-      {
-        "date": "2026-10-01",
-        "revenue": "$10k MRR",
-        "note": "Launch \u00b7 Founder-reported"
-      },
       {
         "date": "2026-09-28",
         "revenue": "$15k MRR",
