@@ -307,8 +307,6 @@
           return '<a class="sp-row" href="'+esc(it.url||'#')+'"><span style="font-weight:800;color:#94a3b8;width:18px;">'+(idx+1)+'</span>'+logo+'<span class="sp-name">'+esc(it.name)+'</span><span class="sp-rev">'+esc(it.revenue||'')+'</span></a>';
         }).join('');
       }
-      var tot = items.reduce(function(a,it){ var v = revValStr(it.revenue); return a + (v > 0 ? v : 0); }, 0);
-      document.getElementById('spRevenue').textContent = tot >= 1e9 ? '$'+(tot/1e9).toFixed(1)+'B' : '$'+Math.round(tot/1e6)+'M';
       var weekAgo = new Date(Date.now() - 7*24*60*60*1000);
       var wk = items.filter(function(it){ return it.launched && new Date(it.launched+'T00:00:00') >= weekAgo; }).length;
       document.getElementById('spWeek').textContent = wk;
