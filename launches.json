@@ -575,7 +575,7 @@
     "tagline": "Capacitor plugin to update your app without sending to store",
     "url": "/launches/capgo/",
     "category": "Dev Tools",
-    "pricing": "$12/mo",
+    "pricing": "Freemium (14-day unlimited free trial)",
     "founder": "Martin Donadieu",
     "revenue": "$31k MRR",
     "revenue_metric": "MRR",
@@ -594,7 +594,8 @@
     "website": "https://capgo.app",
     "founder_x": [
       "martindonadieu"
-    ]
+    ],
+    "description": "Capgo is a platform for shipping Capacitor and Ionic mobile apps: live updates that push JS/CSS fixes to users in minutes without App Store review, cloud-based signed iOS/Android builds, staged rollouts with auto-pause and one-click rollback, push notifications, and 150+ open-source plugins. 9,400+ teams use it, rated 5.0/5."
   },
   {
     "name": "Based Labs AI",
