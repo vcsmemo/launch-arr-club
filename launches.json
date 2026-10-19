@@ -792,7 +792,7 @@
     "tagline": "Start generating monetizable AI videos on autopilot",
     "url": "/launches/vid-ai/",
     "category": "Video",
-    "pricing": "$39/mo",
+    "pricing": "From $39/mo",
     "founder": "Matt Par",
     "revenue": "$78k MRR",
     "revenue_metric": "MRR",
@@ -811,7 +811,8 @@
     "website": "https://vid.ai",
     "founder_x": [
       "MattParOfficial"
-    ]
+    ],
+    "description": "Vid.AI is an AI video generator for faceless YouTube channels, Shorts, TikToks and Reels: type an idea and it writes the script, adds human-sounding ElevenLabs voiceovers, licensed stock footage, captions, music and animated avatars. Trusted by 100K+ creators, it also connects to Claude or ChatGPT so you can create videos conversationally."
   },
   {
     "category": "Video",
@@ -834,7 +835,7 @@
     "tagline": "Unified API for Multiple LLM Providers",
     "url": "/launches/llm-gateway/",
     "category": "Dev Tools",
-    "pricing": "Freemium",
+    "pricing": "Freemium (pay-as-you-go + Enterprise custom)",
     "founder": "Luca Steeb, Smakosh",
     "revenue": "$79k MRR",
     "revenue_metric": "MRR",
@@ -854,14 +855,15 @@
     "founder_x": [
       "steebchen",
       "smakosh"
-    ]
+    ],
+    "description": "LLM Gateway is an open-source (AGPLv3) LLM API gateway offering one OpenAI-compatible API across 250+ models from 40+ providers, with routing, caching, automatic failover, spend caps, guardrails and real-time cost analytics. Teams can use the cloud version, bring their own provider keys, or self-host the gateway entirely on their own infrastructure."
   },
   {
     "name": "Cod\u00e9dex",
     "tagline": "Start Your Coding Adventure",
     "url": "/launches/codedex/",
     "category": "Education",
-    "pricing": "$9.99/mo",
+    "pricing": "Freemium, Club from $9.99/mo",
     "founder": "Sonny Li",
     "revenue": "$85k MRR",
     "revenue_metric": "MRR",
@@ -880,14 +882,15 @@
     "website": "https://www.codedex.io",
     "founder_x": [
       "sonnynomnom"
-    ]
+    ],
+    "description": "Cod\u00e9dex is a gamified, beginner-friendly platform for learning to code, with interactive courses in Python, HTML, CSS, JavaScript and more handcrafted by industry experts. Learners create a character, earn XP and badges, complete bite-sized challenges, and build portfolio projects in an on-platform editor, joined by a community of over a million learners."
   },
   {
     "name": "Supliful",
     "tagline": "Build a high-performance wellness brand, backed by Supliful",
     "url": "/launches/supliful/",
     "category": "E-commerce",
-    "pricing": "$69/mo",
+    "pricing": "From $69/mo",
     "founder": "Martins Lasmanis",
     "revenue": "$179k MRR",
     "revenue_metric": "MRR",
@@ -906,7 +909,8 @@
     "website": "https://supliful.com",
     "founder_x": [
       "martinlasmanis"
-    ]
+    ],
+    "description": "Supliful is a private-label dropshipping platform for supplements, coffee, skincare and pet products, letting entrepreneurs launch their own CPG brand with custom labels and zero inventory. You pick from 190+ US-made, FDA-compliant products, design labels in Canva, and Supliful handles production, fulfillment and shipping when customers order."
   },
   {
     "name": "Postiz",
@@ -971,7 +975,7 @@
     "tagline": "AI marketing attribution \u2014 chat with your ads data",
     "url": "/launches/cometly/",
     "category": "Marketing",
-    "pricing": "Usage-based",
+    "pricing": "Custom",
     "founder": "Grant Cooper, Matt Pattoli",
     "revenue": "$208k",
     "revenue_metric": "MRR",
@@ -991,7 +995,8 @@
     "founder_x": [
       "heygrantcooper",
       "mattpattoli"
-    ]
+    ],
+    "description": "Cometly is an AI marketing attribution platform for B2B SaaS companies that ties every ad dollar to closed-won ARR. It unifies marketing, sales and product data with cookieless cross-device tracking and multi-touch attribution, then syncs accurate conversion signals back to Meta, Google and LinkedIn so ad platforms optimize toward real revenue."
   },
   {
     "name": "Stack Influence",
@@ -1021,7 +1026,7 @@
     "tagline": "AI-powered link-building marketplace",
     "url": "/launches/presswhizz/",
     "category": "Marketing",
-    "pricing": "Pay per link",
+    "pricing": "Pay-per-link (one-time)",
     "founder": "Dusan Novakovic",
     "revenue": "$189k / 30d",
     "revenue_metric": "30-day revenue",
@@ -1037,7 +1042,8 @@
         "note": "Launch \u00b7 Founder-reported"
       }
     ],
-    "website": "https://presswhizz.com"
+    "website": "https://presswhizz.com",
+    "description": "PressWhizz is a link-building marketplace with 72,000+ curated publisher websites across 90+ countries, aimed at SEOs, agencies and affiliates. Buyers can filter by Moz/Ahrefs metrics and traffic data, order guest posts or link insertions with full pricing transparency upfront, and add tiered boosting or managed blogger outreach."
   },
   {
     "name": "Blogr",
@@ -1571,7 +1577,8 @@
       null,
       "imsamhogan",
       null
-    ]
+    ],
+    "description": "Searchable is an AI search visibility and analytics platform that shows brands where they appear across ChatGPT, Google AI Overviews, Perplexity, Copilot, Gemini, Grok, Claude and DeepSeek \u2014 and which competitors show up instead. It maps the questions buyers ask, tracks prompts, and provides audits, content tools and analytics to improve AI-driven discoverability."
   },
   {
     "launch_no": 54,
@@ -1675,7 +1682,8 @@
     "founder_x": [
       "vascoabm",
       null
-    ]
+    ],
+    "description": "Arvow is an AI SEO platform built for agencies and marketers, with action-taking AI agents that build backlinks automatically, find and fix technical SEO issues, research keywords, and write and publish content in your brand voice. It also includes an autoblog, an LLM brand-mention tracker, and Google Maps automation, aimed at ranking on Google and getting cited by AI search."
   },
   {
     "launch_no": 57,
@@ -1764,7 +1772,7 @@
     "revenue_metric": "monthly revenue",
     "founder": "Pieter Levels",
     "category": "Design Tools",
-    "pricing": "Free to try",
+    "pricing": "Paid subscription (Pro/Max/Ultra tiers)",
     "launched": "2026-10-08",
     "source": "https://levels.io/new-420k-mo-revenue-record-lex-fridman",
     "source_label": "Founder's blog post (originally on X)",
@@ -1791,7 +1799,8 @@
     },
     "founder_x": [
       "levelsio"
-    ]
+    ],
+    "description": "Photo AI lets you train a personal AI model from your selfies and generate photorealistic photos and videos of yourself in any scenario \u2014 professional headshots, dating profile pics, lifestyle content and more. Built solo by indie hacker Pieter Levels, it uses DreamBooth fine-tuning on Flux-based models for consistent, lifelike results."
   },
   {
     "launch_no": 60,
@@ -2017,7 +2026,7 @@
     "revenue_metric": "MRR",
     "founder": "Jason Zigelbaum",
     "category": "Marketing",
-    "pricing": "Free Lite plan + paid tiers",
+    "pricing": "Freemium (free plan + paid)",
     "launched": "2026-10-10",
     "source": "https://www.nichepursuits.com/jason-zigelbaum/",
     "source_label": "Founder interview \u00b7 Niche Pursuits",
@@ -2040,7 +2049,8 @@
         "https://www.nichepursuits.com/jason-zigelbaum/"
       ]
     },
-    "founder_x": null
+    "founder_x": null,
+    "description": "Zigpoll is a contextual micro-survey tool built for eCommerce, especially Shopify stores, that triggers small interactive surveys at key moments like the post-purchase thank-you page. Responses are tied to real order data \u2014 revenue, AOV and repeat rate by channel \u2014 powering attribution surveys (\"How did you hear about us?\"), NPS and on-site polls."
   },
   {
     "launch_no": 66,
