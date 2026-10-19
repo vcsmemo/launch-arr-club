@@ -526,7 +526,10 @@
         "note": "Launch"
       }
     ],
-    "website": "https://www.liinks.co"
+    "website": "https://www.liinks.co",
+    "founder_x": [
+      "clarkcharlie03"
+    ]
   },
   {
     "name": "GitBot",
