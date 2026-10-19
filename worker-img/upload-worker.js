@@ -339,6 +339,12 @@ function priceLabelOf(d) {
 }
 
 function revenueOf(d) {
+  // Handle both formats: string "$3M ARR" + revenue_metric, or object {amount, metric}
+  if (typeof d.revenue === 'string' && d.revenue.trim()) {
+    const amount = d.revenue.trim();
+    const metric = (d.revenue_metric || '').trim();
+    return { amount: amount, metric: metric };
+  }
   const rev = d.revenue || {};
   const amount = rev.amount != null ? String(rev.amount).trim() : '';
   if (!amount) return null;
@@ -751,7 +757,7 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
   const name = d.name || 'Untitled';
   const tagline = d.tagline || '';
   const taglineLong = tagline || (d.description || '').slice(0, 160);
-  const website = d.url || '';
+  const website = d.website || d.url || '';
   const logo = d.logo || '';
   const no = parseInt(launchNo, 10) || 0;
   const noPad = String(no).padStart(3, '0');
@@ -760,12 +766,18 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
   const metric = rev ? rev.metric : '';
   const founder = d.founder || '';
   const founderHtml = esc(founder);
-  const category = (d.categories && d.categories[0]) || 'Product';
+  const category = d.category || (d.categories && d.categories[0]) || 'Product';
   const pricing = d.pricing || '—';
-  const now = new Date();
-  const launchedPretty = now.getDate() + ' ' + MONTHS_FULL[now.getMonth()] + ' ' + now.getFullYear();
+  // Use product's actual launch date, not today
+  const launchedDate = d.launched || '';
+  const launchedPretty = (function(){
+    const mm = /^(\d{4})-(\d{2})-(\d{2})$/.exec(launchedDate);
+    if (mm) return parseInt(mm[3], 10) + ' ' + MONTHS_FULL[parseInt(mm[2], 10) - 1] + ' ' + mm[1];
+    return launchedDate || '';
+  })();
   const metaDesc = tagline || (d.description || '').slice(0, 160);
-  const story = (d.story || []).filter(function (s) { return s && String(s).trim(); });
+  // description is a string in launches.json; split into paragraphs for story
+  const story = (d.description || '').split(/\n\n+/).filter(function (s) { return s && String(s).trim(); });
   const hasRevenue = !!revShort;
 
   function rep(oldStr, newStr) {
@@ -1244,6 +1256,37 @@ export default {
       return new Response(null, { status: 204, headers: cors(new Headers()) });
     }
 
+    // ---- Dynamic product pages (milestonewins.com/launches/*) ----
+    // Renders product detail HTML from R2 products/<slug>.json — no deploy needed.
+    // Falls through to origin (static) if product not in R2.
+    if (request.method === 'GET'
+        && url.hostname === 'milestonewins.com'
+        && url.pathname.startsWith('/launches/')
+        && url.pathname !== '/launches/') {
+      const m = url.pathname.match(/^\/launches\/([^\/]+)\/?$/);
+      if (m) {
+        const slug = m[1].toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 50);
+        try {
+          const obj = await env.IMAGES.get('products/' + slug + '.json');
+          if (obj) {
+            const product = JSON.parse(await obj.text());
+            const launchNo = parseInt(product.launch_no, 10) || 0;
+            const html = await renderDetailFromTemplate(env, product, slug, launchNo, []);
+            return new Response(html, {
+              headers: {
+                'content-type': 'text/html; charset=utf-8',
+                'cache-control': 'public, max-age=300', // 5 min cache, instant updates
+              },
+            });
+          }
+        } catch (e) {
+          // fall through to origin on error
+        }
+      }
+      // Not in R2 — let the static origin handle it
+      return fetch(request);
+    }
+
     // ---- Dynamic badge SVG ----
     // GET /badge/:slug.svg?style=numbered|revenue&theme=light|dark
     // Generates a personalized badge with the product's launch number and revenue
@@ -1355,8 +1398,7 @@ export default {
     // POST /claim-approve (token-gated) {slug, email} -> approve claim, send founder welcome email
     // Called by Amani after manual verification. Marks product claimed, sends links for
     // milestone updates + info changes.
-    if (request.method === 'POST' && url.pathname === '/claim-approve') {
-      if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
+    if (request.method === 'POST' && url.pathname === '/claim-approve') {      if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
       let data;
       try { data = await request.json(); }
       catch (e) { return json({ error: 'invalid JSON' }, 400); }
@@ -1387,6 +1429,54 @@ export default {
             : '<p>💡 Want more visibility? <a href="https://milestonewins.com/submit.html">Upgrade to Featured ($19)</a>.</p>')
           + '<p>— The MilestoneWins team</p>'));
       return json({ ok: true, slug: slug, free_featured: claim.free_featured });
+    }
+
+    // POST /publish-product (token-gated) -> write product JSON to R2, instantly live
+    // Body: full product object (name, slug, tagline, description, website, logo, founder,
+    //   category, pricing, revenue, revenue_metric, launched, etc.)
+    // Validates required fields before publishing (no thin pages).
+    if (request.method === 'POST' && url.pathname === '/publish-product') {
+      if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
+      let d;
+      try { d = await request.json(); }
+      catch (e) { return json({ error: 'invalid JSON' }, 400); }
+      const slug = String(d.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 50);
+      if (!slug) return json({ error: 'slug required' }, 400);
+      // Completeness gate: block thin pages
+      const required = ['name', 'tagline', 'description', 'website', 'founder', 'category', 'launched'];
+      const missing = required.filter(function(k){ return !d[k] || !String(d[k]).trim(); });
+      if (missing.length) return json({ error: 'incomplete product', missing: missing }, 400);
+      if (!d.logo) return json({ error: 'incomplete product', missing: ['logo'] }, 400);
+      d.slug = slug;
+      d.url = 'https://milestonewins.com/launches/' + slug + '/';
+      // Auto-assign launch_no (max existing + 1)
+      try {
+        const idxObj = await env.IMAGES.get('products/_index.json');
+        if (idxObj) {
+          const idx = JSON.parse(await idxObj.text());
+          let maxNo = 0;
+          for (const k in idx) {
+            const n = parseInt((idx[k] && idx[k].launch_no) || '0', 10);
+            if (n > maxNo) maxNo = n;
+          }
+          if (!d.launch_no) d.launch_no = maxNo + 1;
+        }
+      } catch (e) {}
+      await env.IMAGES.put('products/' + slug + '.json', JSON.stringify(d), {
+        httpMetadata: { contentType: 'application/json' },
+      });
+      // Update index
+      try {
+        const idxObj = await env.IMAGES.get('products/_index.json');
+        const idx = idxObj ? JSON.parse(await idxObj.text()) : {};
+        idx[slug] = { name: d.name, slug: slug, url: d.url, revenue: d.revenue || null,
+                      launched: d.launched, logo: d.logo, category: d.category,
+                      launch_no: d.launch_no };
+        await env.IMAGES.put('products/_index.json', JSON.stringify(idx), {
+          httpMetadata: { contentType: 'application/json' },
+        });
+      } catch (e) {}
+      return json({ ok: true, slug: slug, url: d.url, launch_no: d.launch_no });
     }
 
     // ---- Image upload ----

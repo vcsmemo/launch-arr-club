@@ -895,8 +895,8 @@
     "category": "Marketing",
     "pricing": "$29/mo",
     "founder": "Nevo David",
-    "revenue": "$184k MRR",
-    "revenue_metric": "MRR",
+    "revenue": "$3M ARR",
+    "revenue_metric": "ARR",
     "revenue_verified": true,
     "launched": "2026-09-30",
     "plan": "curated",
@@ -907,6 +907,12 @@
         "date": "2026-09-30",
         "revenue": "$184k MRR",
         "note": "Launch"
+      },
+      {
+        "date": "2026-10-14",
+        "revenue": "$3M ARR",
+        "note": "Launch \u00b7 Founder-reported",
+        "source": "https://x.com/wickedguro/status/2110347509948146070"
       }
     ],
     "website": "https://postiz.com",
