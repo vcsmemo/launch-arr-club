@@ -1052,7 +1052,7 @@
     "category": "Marketing",
     "pricing": "$199/mo",
     "founder": "Tibo",
-    "revenue": "$10k MRR",
+    "revenue": "$15k MRR",
     "revenue_metric": "MRR",
     "revenue_verified": false,
     "launched": "2026-10-01",
@@ -1064,6 +1064,12 @@
         "date": "2026-10-01",
         "revenue": "$10k MRR",
         "note": "Launch \u00b7 Founder-reported"
+      },
+      {
+        "date": "2026-09-28",
+        "revenue": "$15k MRR",
+        "note": "Launch \u00b7 Founder-reported",
+        "source": "https://x.com/FilipPanoski/status/2104572039243710945"
       }
     ],
     "website": "https://bazzly.ai",
