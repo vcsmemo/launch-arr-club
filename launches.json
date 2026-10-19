@@ -3213,5 +3213,29 @@
         "source": "https://x.com/cem_hasoglu/status/2111815781558448217"
       }
     ]
+  },
+  {
+    "name": "Ritmo",
+    "slug": "ritmo",
+    "tagline": "Dating app for active singles who love sport and fitness",
+    "description": "Ritmo is a dating app for people who love sport, fitness and staying active. Build a profile around your favourite sports, training habits and personal bests, discover sporty singles nearby, match, chat and meet in real life. Built solo by Adel in 4 weeks \u2014 160 paying subscribers, 5,000+ users, $1,500 MRR.",
+    "website": "https://apps.apple.com/us/app/ritmo-sports-dating/id6800200502",
+    "url": "/launches/ritmo/",
+    "logo": "/logos/ritmo.png",
+    "founder": "Adel",
+    "founder_x": "adeluxui",
+    "category": "Consumer",
+    "revenue": "$1,500 MRR",
+    "revenue_metric": "MRR",
+    "pricing": "Free with in-app purchases",
+    "launched": "2026-10-10",
+    "launch_no": 123,
+    "revenue_history": [
+      {
+        "date": "2026-10-10",
+        "revenue": "$1,500 MRR",
+        "source": "Founder X post @adeluxui"
+      }
+    ]
   }
 ]
