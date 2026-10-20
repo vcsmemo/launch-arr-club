@@ -47,7 +47,7 @@
   <div class="ticker-wrap" aria-hidden="true"><div class="ticker" id="milestoneTicker"></div></div>
 
   <section id="leaderboard">
-    <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-sub">ranked by revenue</span> <span class="lb-countdown" id="lbCountdown"></span></h2>
+    <h2 class="section-title"><span class="dot"></span>Leaderboard <span class="lb-countdown" id="lbCountdown"></span></h2>
     <div class="lb-submit-cta">
       <p>💰 Making revenue? Get ranked where it counts &rarr;</p>
       <a href="/submit.html">Submit &mdash; free</a>
@@ -228,9 +228,18 @@
         items = items.filter(function(it){ return it.launched; });
         items.sort(function(a, b){ var ta = Date.parse(a.launched||''), tb = Date.parse(b.launched||''); return (isNaN(tb)?0:tb) - (isNaN(ta)?0:ta); });
       } else if(tab === 'week'){
-        var weekAgo = new Date(Date.now() - 7*24*60*60*1000);
-        items = items.filter(function(it){ return it.launched && new Date(it.launched+'T00:00:00') >= weekAgo; });
-        items.sort(function(a, b){ return revVal(b) - revVal(a); });
+        /* This week = products with activity in the last 7 days (launched or a
+           new revenue milestone), newest activity first so the list actually
+           changes day to day. Revenue breaks ties. */
+        var weekAgoTs = Date.now() - 7*24*60*60*1000;
+        function activityTs(it){
+          var ts = 0, t;
+          if(it.launched){ t = Date.parse(it.launched + 'T00:00:00'); if(!isNaN(t)) ts = Math.max(ts, t); }
+          (it.revenue_history || []).forEach(function(h){ t = Date.parse((h.date || '') + 'T00:00:00'); if(!isNaN(t)) ts = Math.max(ts, t); });
+          return ts;
+        }
+        items = items.filter(function(it){ return activityTs(it) >= weekAgoTs; });
+        items.sort(function(a, b){ var d = activityTs(b) - activityTs(a); return d !== 0 ? d : revVal(b) - revVal(a); });
       } else if(tab === 'discover'){
         var today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
         items = seededShuffle(items, parseInt(today, 10));
@@ -391,10 +400,22 @@
   if(!ticker) return;
   function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   fetch('/launches.json').then(function(r){ return r.json(); }).then(function(j){
-    var items = j.filter(function(p){ return p.revenue; }).slice(0, 12);
+    function latestMs(p){
+      var ts = 0, rev = p.revenue || '';
+      (p.revenue_history || []).forEach(function(h){
+        var t = Date.parse((h.date || '') + 'T00:00:00');
+        if(!isNaN(t) && t >= ts){ ts = t; if(h.revenue) rev = h.revenue; }
+      });
+      if(!ts && p.launched){ var lt = Date.parse(p.launched + 'T00:00:00'); if(!isNaN(lt)) ts = lt; }
+      return { ts: ts, rev: rev };
+    }
+    var items = j.filter(function(p){ return p.revenue; }).map(function(p){
+      var m = latestMs(p);
+      return { name: p.name, rev: m.rev, ts: m.ts };
+    }).sort(function(a, b){ return b.ts - a.ts; }).slice(0, 12);
     if(!items.length) return;
     var html = items.map(function(p){
-      return '<span class="ticker-item">🎉 <b>' + esc(p.name) + '</b> hit ' + esc(p.revenue) + '</span>';
+      return '<span class="ticker-item">🎉 <b>' + esc(p.name) + '</b> hit ' + esc(p.rev) + '</span>';
     }).join('<span class="ticker-sep">·</span>');
     ticker.innerHTML = html + '<span class="ticker-sep">·</span>' + html; /* duplicate for seamless loop */
   }).catch(function(){});
