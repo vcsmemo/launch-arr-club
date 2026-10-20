@@ -399,16 +399,20 @@
     ticker.innerHTML = html + '<span class="ticker-sep">·</span>' + html; /* duplicate for seamless loop */
   }).catch(function(){});
 })();
-/* Story preview on homepage (latest 3, auto-updated) */
+/* Story preview on homepage (3 stories, rotated daily by date seed) */
 (function(){
   var el = document.getElementById('storyPreview');
   if(!el) return;
   fetch('/stories/').then(function(r){ return r.text(); }).then(function(html){
     var doc = new DOMParser().parseFromString(html, 'text/html');
-    var cards = doc.querySelectorAll('a.launch-card[href^="/stories/"]');
+    var cards = Array.prototype.slice.call(doc.querySelectorAll('a.launch-card[href^="/stories/"]'));
+    // daily-seeded shuffle so a different 3 show up each day
+    var seed = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ''), 10);
+    var rnd = function(){ seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    for(var i = cards.length - 1; i > 0; i--){ var j = Math.floor(rnd() * (i + 1)); var t = cards[i]; cards[i] = cards[j]; cards[j] = t; }
     var out = [];
-    for(var i = 0; i < cards.length && out.length < 3; i++){
-      var a = cards[i];
+    for(var k = 0; k < cards.length && out.length < 3; k++){
+      var a = cards[k];
       var href = a.getAttribute('href');
       if(href === '/stories/') continue;
       var h3 = a.querySelector('h3');
