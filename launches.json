@@ -3339,5 +3339,29 @@
     "launched": "2026-10-20",
     "source": "producthunt",
     "source_label": "Product Hunt"
+  },
+  {
+    "launch_no": 129,
+    "slug": "reloop",
+    "name": "Reloop",
+    "url": "/launches/reloop/",
+    "website": "https://reloop.sh/",
+    "tagline": "Open-source email API & infrastructure for developers",
+    "description": "Reloop is an open-source email API and infrastructure platform built for developers \u2014 an alternative to AWS SES. It offers transactional and marketing email delivery, SMTP relay, incoming email webhooks, AI agent inboxes, and deliverability tooling (SPF/DKIM/DMARC, IP warmup, blocklist tracking), available as a hosted cloud service or fully self-hosted under Apache 2.0. Trusted by 250+ developers, with first-party SDKs for Node.js, TypeScript, Python, Go, Rust, PHP and Ruby.",
+    "founder": "Twinkal P",
+    "founder_x": [],
+    "category": "DevTools",
+    "revenue": "$111.13",
+    "revenue_metric": "revenue",
+    "launched": "2026-10-20",
+    "logo": "/logos/reloop.png",
+    "pricing": "Free (3,000 emails/mo), Pro $10/mo, Growth $20/mo",
+    "revenue_history": [
+      {
+        "date": "2026-10-19",
+        "revenue": "$111.13",
+        "source": "Founder LinkedIn post"
+      }
+    ]
   }
 ]
