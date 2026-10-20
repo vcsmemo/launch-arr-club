@@ -812,8 +812,26 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
     return launchedDate || '';
   })();
   const metaDesc = tagline || (d.description || '').slice(0, 160);
-  // description is a string in launches.json; split into paragraphs for story
-  const story = (d.description || '').split(/\n\n+/).filter(function (s) { return s && String(s).trim(); });
+  // description is a string in launches.json; split into paragraphs for story.
+  // Long single blocks get auto-split at sentence boundaries (~340 chars per
+  // paragraph) so the story card never renders as one crowded wall of text.
+  function splitLongPara(text) {
+    text = String(text).trim();
+    if (text.length <= 320) return [text];
+    const sentences = text.match(/.+?[.!?]+(?=\s+[A-Z0-9"']|\s*$)/g);
+    if (!sentences) return [text];
+    const chunks = [];
+    let cur = '';
+    sentences.forEach(function (s) {
+      if (cur && (cur.length + s.length > 340)) { chunks.push(cur.trim()); cur = ''; }
+      cur += s;
+    });
+    if (cur.trim()) chunks.push(cur.trim());
+    return chunks.length ? chunks : [text];
+  }
+  const story = [];
+  (d.description || '').split(/\n\n+/).filter(function (s) { return s && String(s).trim(); })
+    .forEach(function (block) { splitLongPara(block).forEach(function (c) { story.push(c); }); });
   const hasRevenue = !!revShort;
 
   function rep(oldStr, newStr) {
