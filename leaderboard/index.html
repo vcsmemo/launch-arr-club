@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20261019b">
+<link rel="stylesheet" href="/style.css?v=20261020a">
 </head>
 <body>
 <nav class="nav">
@@ -97,10 +97,10 @@
       : '<span class="lc-logo-ph">' + esc(String(it.name || '?').charAt(0)) + '</span>';
     var mt = metricTag(it.revenue);
     var vBadge = it.revenue_verified ? ' <span class="v-badge" title="Revenue verified">✅</span>' : '';
-    return '<a class="lb-row" href="' + esc(it.url) + '"><span class="lb-rank">' + ((page - 1) * PAGE + i + 1) + '</span>'
-      + '<span class="lb-startup">' + logo + '<span><strong>' + esc(it.name) + '</strong><p>' + esc(it.tagline || '') + '</p></span></span>'
+    return '<div class="lb-row"><span class="lb-rank">' + ((page - 1) * PAGE + i + 1) + '</span>'
+      + '<span class="lb-startup">' + logo + '<span><strong><a class="lb-link" href="' + esc(it.url) + '">' + esc(it.name) + '</a></strong><p>' + esc(it.tagline || '') + '</p></span></span>'
       + '<span class="lb-founder">' + founderLinks(it.founder, it.founder_x) + '</span>'
-      + '<span class="lb-rev-col has">' + esc(it.revenue) + (mt ? ' <span class="metric-tag">'+esc(mt)+'</span>' : '') + vBadge + '</span></a>';
+      + '<span class="lb-rev-col has">' + esc(it.revenue) + (mt ? ' <span class="metric-tag">'+esc(mt)+'</span>' : '') + vBadge + '</span></div>';
   }
   function render(){
     var list = items.filter(function(it){ return it._rev && it._rev.m === tab; })
