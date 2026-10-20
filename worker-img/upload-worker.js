@@ -771,6 +771,7 @@ const DETAIL_SHARED_JS = `<script>
    from GitHub main so /review/approve always uses the latest layout. */
 var DETAIL_TEMPLATE_URL = 'https://raw.githubusercontent.com/vcsmemo/launch-arr-club/main/launches/vibe3d/index.html';
 var MONTHS_FULL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
   const res = await fetch(DETAIL_TEMPLATE_URL);
@@ -791,11 +792,23 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
   const founderHtml = founderLinks(founder, d.founder_x);
   const category = d.category || (d.categories && d.categories[0]) || 'Product';
   const pricing = d.pricing || '—';
+  // Pricing card: short headline + full detail as sub (long strings used to overflow)
+  const pricingParts = (function(){
+    const p = String(pricing || '').trim();
+    if (!p || p === '—') return { head: '—', sub: '' };
+    if (p.length <= 22) return { head: p, sub: 'Subscription plans' };
+    if (/^free/i.test(p)) return { head: 'Free to start', sub: p };
+    const fm = p.match(/from\s*(\$[\d.,]+\s*\/?\s*\w*)/i);
+    if (fm) return { head: 'From ' + fm[1].trim(), sub: p };
+    const first = p.split(/[,·•]/)[0].trim();
+    if (first.length < p.length) return { head: first, sub: p };
+    return { head: p, sub: '' };
+  })();
   // Use product's actual launch date, not today
   const launchedDate = d.launched || '';
   const launchedPretty = (function(){
     const mm = /^(\d{4})-(\d{2})-(\d{2})$/.exec(launchedDate);
-    if (mm) return parseInt(mm[3], 10) + ' ' + MONTHS_FULL[parseInt(mm[2], 10) - 1] + ' ' + mm[1];
+    if (mm) return MONTHS_SHORT[parseInt(mm[2], 10) - 1] + ' ' + parseInt(mm[3], 10) + ', ' + mm[1];
     return launchedDate || '';
   })();
   const metaDesc = tagline || (d.description || '').slice(0, 160);
@@ -892,7 +905,7 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
 
   // --- stat grid ---
   rep('<div class="stat-card"><span>Pricing</span><b>From $19/mo</b><small>Subscription plans</small></div>',
-      '<div class="stat-card"><span>Pricing</span><b>' + esc(pricing) + '</b><small>Subscription plans</small></div>');
+      '<div class="stat-card"><span>Pricing</span><b>' + esc(pricingParts.head) + '</b><small>' + esc(pricingParts.sub || 'Subscription plans') + '</small></div>');
   rep('<div class="stat-card"><span>Launched</span><b>7 October 2026</b><small>L+0 &middot; Live on MilestoneWins</small></div>',
       '<div class="stat-card"><span>Launched</span><b>' + esc(launchedPretty) + '</b><small>L+0 &middot; Live on MilestoneWins</small></div>');
   rep('<div class="stat-card"><span>Category</span><div class="pills"><span class="tag cat">Design Tools</span></div></div>',
@@ -903,6 +916,10 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others) {
       '<div class="maker-avatar">' + founderInitial + '</div>');
   rep('<b class="maker-name">Brijesh Patel</b>',
       '<b class="maker-name">' + founderHtml + '</b>');
+  rep('<b class="maker-name">' + founderHtml + '</b>\n    </div>',
+      '<b class="maker-name">' + founderHtml + '</b>\n    </div>\n    <a class="maker-cta" href="/claim.html?product=' + esc(slug) + '&name=' + encodeURIComponent(name) + '">Claim this page &rarr;</a>');
+  rep('<b class="maker-name">' + founderHtml + '</b>\r\n    </div>',
+      '<b class="maker-name">' + founderHtml + '</b>\r\n    </div>\r\n    <a class="maker-cta" href="/claim.html?product=' + esc(slug) + '&name=' + encodeURIComponent(name) + '">Claim this page &rarr;</a>');
 
   // --- more-list (revenue proximity) ---
   var rows = (others || []).map(function (o) {
