@@ -25,8 +25,11 @@
 <main class="wrap">
   <h1 style="margin:1.5rem 0 0.4rem;">Revenue leaderboard</h1>
   <p class="muted" style="margin-bottom:1.2rem;">Ranked within each revenue metric — MRR, 30-day revenue and all-time revenue are never mixed. All numbers are founder-reported.</p>
-  <div class="lb-tabs" style="margin-bottom:12px;">
+  <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">
+  <div class="lb-tabs">
     <button class="lb-tab active" data-tab="mrr" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">MRR</button><button class="lb-tab" data-tab="d30" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">30-day revenue</button><button class="lb-tab" data-tab="all" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;border-radius:0 8px 8px 0;">All-time revenue</button>
+  </div>
+  <input type="search" id="lbSearch" placeholder="Search startups or founders&hellip;" autocomplete="off" style="flex:1;min-width:180px;max-width:300px;margin-left:auto;padding:8px 12px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:.85rem;">
   </div>
   <div class="lb-table">
     <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">Revenue &#8595;</span></div>
@@ -48,6 +51,8 @@
 </footer>
 <script>
 (function(){
+  var searchInput = document.getElementById('lbSearch');
+  searchInput.addEventListener('input', function(){ page = 1; render(); });
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function founderLinks(founderStr, handles){
     if(!founderStr) return esc('–');
@@ -103,8 +108,12 @@
       + '<span class="lb-rev-col has">' + esc(it.revenue) + (mt ? ' <span class="metric-tag">'+esc(mt)+'</span>' : '') + vBadge + '</span></div>';
   }
   function render(){
-    var list = items.filter(function(it){ return it._rev && it._rev.m === tab; })
-      .sort(function(a, b){ return b._rev.v - a._rev.v; });
+    var q = searchInput.value.trim().toLowerCase();
+    var list = items.filter(function(it){
+      if(!(it._rev && it._rev.m === tab)) return false;
+      if(!q) return true;
+      return (it.name + ' ' + (it.tagline || '') + ' ' + (it.founder || '')).toLowerCase().indexOf(q) !== -1;
+    }).sort(function(a, b){ return b._rev.v - a._rev.v; });
     var pages = Math.max(1, Math.ceil(list.length / PAGE));
     if(page > pages) page = pages;
     var slice = list.slice((page - 1) * PAGE, page * PAGE);
