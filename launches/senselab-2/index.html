@@ -368,29 +368,47 @@
     var cv = document.createElement('canvas'); cv.width = W; cv.height = H;
     var ctx = cv.getContext('2d');
     function draw(logoImg){
+      var isLight = card.classList.contains('cc-light');
+      var isTeal = card.classList.contains('cc-teal');
       var g = ctx.createLinearGradient(0, 0, W, H);
-      g.addColorStop(0, '#1e1b4b'); g.addColorStop(0.58, '#3b0764'); g.addColorStop(1, '#701a3a');
+      var brandColor, amountColor, metricColor, nameColor, founderColor, footerColor, confettiAlpha, logoBg;
+      if(isLight){
+        g.addColorStop(0, '#fffbeb'); g.addColorStop(0.6, '#fef3c7'); g.addColorStop(1, '#fde68a');
+        brandColor = '#b45309'; amountColor = '#b45309'; metricColor = '#92400e';
+        nameColor = '#1e1b4b'; founderColor = '#92400e'; footerColor = 'rgba(30,27,75,0.4)';
+        confettiAlpha = [0.3, 0.6]; logoBg = '#b45309';
+      } else if(isTeal){
+        g.addColorStop(0, '#042f2e'); g.addColorStop(0.7, '#0d9488'); g.addColorStop(1, '#14b8a6');
+        brandColor = '#99f6e4'; amountColor = '#ffffff'; metricColor = '#ccfbf1';
+        nameColor = '#ffffff'; founderColor = '#99f6e4'; footerColor = 'rgba(255,255,255,0.5)';
+        confettiAlpha = [0.2, 0.5]; logoBg = '#99f6e4';
+      } else {
+        g.addColorStop(0, '#1e1b4b'); g.addColorStop(0.58, '#3b0764'); g.addColorStop(1, '#701a3a');
+        brandColor = '#fcd34d'; amountColor = '#fbbf24'; metricColor = '#e9d5ff';
+        nameColor = '#ffffff'; founderColor = '#d8b4fe'; footerColor = 'rgba(255,255,255,0.5)';
+        confettiAlpha = [0.22, 0.72]; logoBg = '#fbbf24';
+      }
       ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
       var rnd = mulberry(hashStr(slug || name));
       var colors = ['#fbbf24', '#f472b6', '#5eead4', '#fdba74', '#fcd34d'];
       for(var i = 0; i < 80; i++){
         ctx.fillStyle = colors[Math.floor(rnd() * colors.length)];
-        ctx.globalAlpha = 0.22 + rnd() * 0.5;
+        ctx.globalAlpha = confettiAlpha[0] + rnd() * (confettiAlpha[1] - confettiAlpha[0]);
         ctx.beginPath(); ctx.arc(rnd() * W, rnd() * H, 3 + rnd() * 7, 0, 6.2832); ctx.fill();
       }
       ctx.globalAlpha = 1;
       ctx.textBaseline = 'alphabetic';
       ctx.textAlign = 'left';
-      ctx.fillStyle = '#fcd34d'; ctx.font = '800 30px system-ui, -apple-system, "Segoe UI", sans-serif';
-      ctx.fillText('\u2726 MILESTONEWINS CELEBRATES', 60, 86);
+      ctx.fillStyle = brandColor; ctx.font = '800 30px system-ui, -apple-system, "Segoe UI", sans-serif';
+      ctx.fillText('\\u2726 MILESTONEWINS CELEBRATES', 60, 86);
       ctx.textAlign = 'center';
-      ctx.fillStyle = '#fbbf24'; ctx.font = '800 160px system-ui, -apple-system, "Segoe UI", sans-serif';
-      ctx.shadowColor = 'rgba(251,191,36,0.35)'; ctx.shadowBlur = 42;
-      ctx.fillText(revenue || '\u2013', W / 2, 352);
+      ctx.fillStyle = amountColor; ctx.font = '800 160px system-ui, -apple-system, "Segoe UI", sans-serif';
+      ctx.shadowColor = isLight ? 'rgba(180,83,9,0.25)' : 'rgba(251,191,36,0.35)'; ctx.shadowBlur = 42;
+      ctx.fillText(revenue || '\\u2013', W / 2, 352);
       ctx.shadowBlur = 0;
-      ctx.fillStyle = '#e9d5ff'; ctx.font = '600 40px system-ui, -apple-system, "Segoe UI", sans-serif';
+      ctx.fillStyle = metricColor; ctx.font = '600 40px system-ui, -apple-system, "Segoe UI", sans-serif';
       ctx.fillText((metric ? metric + ' ' : '') + 'milestone', W / 2, 418);
-      var nm = name.length > 26 ? name.slice(0, 25) + '\u2026' : name;
+      var nm = name.length > 26 ? name.slice(0, 25) + '\\u2026' : name;
       ctx.font = '800 56px system-ui, -apple-system, "Segoe UI", sans-serif';
       var nw = ctx.measureText(nm).width;
       var fn = founder ? 'by ' + founder : '';
@@ -403,19 +421,19 @@
         ctx.save(); roundRect(ctx, sx, ly, 84, 84, 18); ctx.clip();
         ctx.drawImage(logoImg, sx, ly, 84, 84); ctx.restore();
       } else {
-        ctx.fillStyle = '#fbbf24';
+        ctx.fillStyle = logoBg;
         ctx.beginPath(); ctx.arc(sx + 42, ly + 42, 42, 0, 6.2832); ctx.fill();
-        ctx.fillStyle = '#1e1b4b'; ctx.font = '800 46px system-ui, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillStyle = isLight ? '#fffbeb' : '#1e1b4b'; ctx.font = '800 46px system-ui, sans-serif'; ctx.textAlign = 'center';
         ctx.fillText(name.charAt(0).toUpperCase(), sx + 42, ly + 59); ctx.textAlign = 'left';
       }
       sx += 108;
-      ctx.fillStyle = '#ffffff'; ctx.font = '800 56px system-ui, -apple-system, "Segoe UI", sans-serif';
+      ctx.fillStyle = nameColor; ctx.font = '800 56px system-ui, -apple-system, "Segoe UI", sans-serif';
       ctx.fillText(nm, sx, ly + 54);
       if(fn){
-        ctx.fillStyle = '#d8b4fe'; ctx.font = '400 30px system-ui, -apple-system, "Segoe UI", sans-serif';
+        ctx.fillStyle = founderColor; ctx.font = '400 30px system-ui, -apple-system, "Segoe UI", sans-serif';
         ctx.fillText(fn, sx, ly + 96);
       }
-      ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.font = '600 26px system-ui, sans-serif';
+      ctx.textAlign = 'right'; ctx.fillStyle = footerColor; ctx.font = '600 26px system-ui, sans-serif';
       ctx.fillText('milestonewins.com', W - 60, H - 46); ctx.textAlign = 'left';
       cv.toBlob(function(blob){
         if(!blob) return;
