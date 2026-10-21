@@ -585,14 +585,14 @@
     });
   });
   /* Celebration card style switcher (free) */
-  Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(btn){
+  Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn[data-ccstyle]'), function(btn){
     btn.addEventListener('click', function(){
       var card = document.getElementById('celebrateCard');
       if(!card) return;
       card.classList.remove('cc-light', 'cc-teal');
       var style = btn.getAttribute('data-ccstyle');
       if(style) card.classList.add(style);
-      Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn'), function(b){
+      Array.prototype.forEach.call(document.querySelectorAll('.cc-style-btn[data-ccstyle]'), function(b){
         b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
       });
     });
