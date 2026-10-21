@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The research team making frozen models better by rewriting everything around them — MilestoneWins</title>
+<meta name="description" content="Harness², from Google Cloud AI Research and Northwestern, recursively evolves an AI agent&#x27;s execution harness without retraining: +11.5 on WorkBuddy-Bench, +4.5 on JobBench, +11.8 on LAB. Open source.">
+<link rel="canonical" href="https://milestonewins.com/stories/harness2-story/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261014d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The research team making frozen models better by rewriting everything around them", "description": "Harness\u00b2, from Google Cloud AI Research and Northwestern, recursively evolves an AI agent's execution harness without retraining: +11.5 on WorkBuddy-Bench, +4.5 on JobBench, +11.8 on LAB. Open source.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-10-21", "about": {"@type": "Organization", "name": "Harness\u00b2"}}</script>
+
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.seo-steps{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:1rem}
+.seo-steps li{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65}
+.seo-steps li b{color:#0f172a}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/stories/">Stories</a> <span>&rsaquo;</span> <strong>Harness²</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">✨ Founder story</span>
+    <h1>The research team making frozen models better by rewriting everything around them</h1>
+    <p class="lede">Nine researchers at Google Cloud AI Research and Northwestern University asked a contrarian question: what if your agent doesn&#x27;t need a better model — just a better harness? Harness² recursively rewrites the prompts, tools, memory and guardrails around a frozen model, no ground-truth verifiers required. One refinement step lifted GLM-5 by 11.5 points on WorkBuddy-Bench. It&#x27;s open source, Apache 2.0.</p>
+    <div class="story-byline">By Ruiyao Xu et al. · 2026-10-21 · <a href="/launches/harness2/">View on MilestoneWins →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>+11.5 pts</b><span>WorkBuddy-Bench gain, one step</span></div>
+    <div class="ms-stat"><b>+4.5 pts</b><span>JobBench gain</span></div>
+    <div class="ms-stat"><b>+11.8 pts</b><span>LAB gain</span></div>
+    <div class="ms-stat"><b>8</b><span>Editable harness components</span></div>
+    <div class="ms-stat"><b>9</b><span>Authors</span></div>
+    <div class="ms-stat"><b>0</b><span>Parameters trained</span></div>
+  </div>
+  <div class="story-body">
+  <h2>The harness is the other half of the agent</h2>
+  <p>There are two ways to make an AI agent smarter: change the model, or change everything around the model. Retraining weights is expensive, slow, and for most teams simply out of reach. But the harness — the prompts, tools, retries, memory, skills and scaffolding that wrap the model — is software you control. That's the quiet thesis behind Harness², a recursive agent harnessing framework published October 9, 2026 by nine researchers at Google Cloud AI Research and Northwestern University, led by first author Ruiyao Xu.</p><p>The paper's title — 'Harness²: Recursive Agent Harnessing for an Open World' — names both the method and the ambition. Harnessing is the process of optimizing everything around a frozen model; the squared part is the recursion. And the results are the kind that make you reread them: a single refinement step improved GLM-5 and Gemini 3.5 Flash over their base harnesses by up to 11.5 points on WorkBuddy-Bench, 4.5 points on JobBench, and 11.8 percentage points on LAB — with zero parameters trained. The framework is open source under Apache 2.0, version 0.1.0, installable with uv on Linux.</p><p>This is a team story told through a paper and its coverage, not an interview — so what follows is the work itself: what the researchers built, why they built it that way, and what the numbers actually say.</p>
+  <h2>Why self-improvement breaks in the open world</h2>
+  <p>The paper starts from a seductive idea with a bad track record: recursive self-improvement, an agent iteratively rewriting its own scaffolding so it gets better the more it works. In the lab, it works. In the open world — the stream of novel, unseen tasks where real agents actually operate — the authors identify two reasons it falls apart.</p><p>First, there is no ground-truth verifier. Real tasks are unseen at design time and novel at test time, so no oracle can tell you whether a harness edit helped. Most self-improvement methods quietly assume labels or test cases exist; online self-improvement without them can happily optimize itself into nonsense. Second, the process doesn't generalize. Most recursive self-improvement is painfully task-specific: tune the harness for task A, learn nothing transferable for task B, start over.</p><p>These two problems are why the field has been stuck between offline optimizers — which search over harness code with fixed training splits and verifiers, then go static at test time — and online methods that either discard experience between tasks or inherit a task-specific harness that breaks when the distribution shifts. Harness² is the researchers' answer to both at once, and the answer has two levels.</p>
+  <h2>Propose, Probe, Compose</h2>
+  <p>The first level is task-level recursion: refining the current task's harness through a contrastive Propose–Probe–Compose step that needs no ground-truth verifier at all. Here's how a step works. The agent runs the task once with the base harness as a reference. Then an editor proposes two candidate harness edits: an invariant candidate targeting general agent failures like planning or tool use, and a domain candidate targeting the knowledge and procedures of the current domain. Both candidates run on the same task. Finally, a composer compares the candidates' trajectories against the reference and keeps only the edits backed by observed behavior.</p><p>The genuinely clever bit, as one commentator put it, is answering 'how do you know an edit helped when there's no answer key?' by comparison instead of absolute scoring. Contrastive probing sidesteps the missing verifier entirely — you don't need to know the right answer if you can reliably tell which attempt behaved better. The step can be scaled with a recursion budget k: parallel mode probes k invariant and k domain candidates then makes k compositions, sequential mode chains k refinement steps, and performance keeps climbing as you spend more budget.</p><p>The harness itself is concrete, not abstract: eight editable components, each mounted as a file — system prompt, guardrails, memory, tool guidance, subagents, skills, scripts, and plugins (middleware) — extending an earlier seven-file split from Agentic Harness Engineering work by one component. The executors in the experiments are OpenCode and Codex, with Claude Opus 4.8 as the default editor, and model-backed runs go through Vertex AI.</p>
+  <h2>The ²: lessons that carry across tasks</h2>
+  <p>The second level is where the 'squared' comes from. Harnessing-level recursion happens after each task: a reflector stores the adopted harness plus an EXPERIENCE.md file of lessons into a library, and that library guides future proposals. Each new task still starts from the base harness — nothing task-specific leaks across — but the improvement process itself gets smarter. Lessons learned on one task make the agent better at future, never-seen tasks.</p><p>This is the part that answers the generalization problem. Task-level recursion makes the current task's harness better; harnessing-level recursion makes the harnessing process better. It's recursion on the task, and recursion on the improvement loop itself. And it's plug-and-play: Harness² sits on top of an existing agent harness rather than replacing it, which matters enormously for adoption — teams don't have to throw out their scaffolding to try it.</p><p>The design also draws a clean line from the team's earlier work. Where their previous projects — ReasoningBank, SkillOS, HyperSkill — retrieved text memories or curated skills, Harness² rewrites the entire executable runtime. The trajectory of the research program is visible: from remembering, to skilling, to rewriting the machine itself.</p>
+  <h2>The numbers, and the caveats</h2>
+  <p>Across three professional benchmarks — WorkBuddy-Bench, JobBench, and Harvey's LAB — and four model-harness configurations, a single step of Harness² consistently beat the base harnesses with frozen weights. The headline numbers, as means over three runs: GLM-5 under OpenCode rose from 64.2 to 75.7 on WorkBuddy-Bench (+11.5 points); Gemini 3.5 Flash under OpenCode went 72.4 to 77.5; on JobBench the gains ran to +4.5; on LAB partial, GLM-5 under OpenCode jumped 59.6 to 71.4 (+11.8 percentage points). Weaker executors gained more — after one step, GLM-5 beat the base Gemini 3.5 Flash on WorkBuddy-Bench, the adapted weaker model surpassing the unadapted stronger one. Scaling parallel recursion to k=5 lifted Gemini under OpenCode to 80.8 on WorkBuddy-Bench, and on JobBench to 39.0 from a 31.5 base. As a bonus, three of four setups also used fewer steps per task — Gemini under OpenCode fell from 25.4 to 21.9 on WorkBuddy-Bench.</p><p>The honest caveats come from the coverage, and they're worth stating plainly. Multi-candidate probing multiplies test-time token costs — every candidate is a real run, so the budget k is also a bill. And the main experiments rely on a frontier editor model, Claude Opus 4.8, doing the proposing; the gains are real, but they're partly bought with a strong editor's judgment. The comparison table also notes that rival methods didn't report these benchmarks themselves, so the head-to-head numbers are the paper's own measurements.</p><p>Still, the direction of travel is hard to argue with. If your agents run in production, the layer you can actually change is the harness — and this team just showed, with numbers, how much performance is sitting in it. The code is at github.com/google-research/harness2, the paper at arXiv:2610.14224, and the project page at harness2.github.io. For a field obsessed with bigger models, nine researchers just made a compelling case for better scaffolding.</p>
+  <h2>The playbook</h2>
+  <ol class="seo-steps">
+      <li><b>Optimize the layer you can actually change</b> — The harness — prompts, tools, memory, skills, guardrails, orchestration — is software your team controls. Harness² bets the untapped performance lives there, not in bigger weights.</li>
+      <li><b>Replace the verifier with a comparison</b> — With no answer key at test time, Harness² compares candidate edits against each other instead of scoring them absolutely. Behavioral contrast replaces the verifier.</li>
+      <li><b>Split the editor&#x27;s attention in two</b> — The editor proposes two candidates per task: an invariant one targeting general failures like planning or tool use, and a domain one targeting knowledge and procedures. Two lenses, one decision.</li>
+      <li><b>Write down what you learned — in a file</b> — After each task, a reflector stores the adopted harness plus an EXPERIENCE.md of lessons into a library that guides future edits. Accumulated experience is a file, not a feeling.</li>
+      <li><b>Scale the search budget, not the model</b> — The recursion budget k scales the search: parallel or sequential, more candidates, more compositions. GLM-5 went from 64.2 to 75.7 at k=1 and kept climbing. Compute is the dial, not the model.</li>
+  </ol>
+  </div>
+  <div class="seo-cta" style="margin-top:2.5rem">
+    <a class="btn" href="/submit.html">🚀 Share your milestone</a>
+    <a class="btn ghost" href="/launches/harness2/">View Harness² →</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 MilestoneWins</span>
+    <span><a href="/">Home</a> · <a href="/stories/">Stories</a> · <a href="/submit.html">Submit</a></span>
+  </div>
+</footer>
+<script src="/auth.js"></script>
+</body>
+</html>
