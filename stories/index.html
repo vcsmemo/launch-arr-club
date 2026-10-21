@@ -21,6 +21,9 @@
   <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <strong>Stories</strong></nav>
   <h1>Founder stories</h1>
   <p class="lede">How AI founders hit their revenue milestones — the playbooks behind the numbers.</p>
+  <div style="margin:0 0 1.2rem;max-width:420px;">
+    <input type="search" id="storySearch" placeholder="Search stories&hellip;" autocomplete="off" style="width:100%;padding:.7rem 1rem;border:1.5px solid #e2e8f0;border-radius:10px;font-size:.9rem;">
+  </div>
   <div class="seo-launches">
       <a class="launch-card" href="/stories/liinks-story/">
         <div class="lc-main">
@@ -368,6 +371,27 @@
     <span><a href="/">Home</a> · <a href="/submit.html">Submit</a></span>
   </div>
 </footer>
+<script>
+(function(){
+  var input = document.getElementById('storySearch');
+  if(!input) return;
+  var grid = document.querySelector('.seo-launches');
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.launch-card'));
+  var empty = document.createElement('p');
+  empty.textContent = 'No stories match your search.';
+  empty.style.cssText = 'color:#94a3b8;padding:2rem 0;display:none;grid-column:1/-1;';
+  grid.appendChild(empty);
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase(), n = 0;
+    cards.forEach(function(c){
+      var hit = !q || c.textContent.toLowerCase().indexOf(q) !== -1;
+      c.style.display = hit ? '' : 'none';
+      if(hit) n++;
+    });
+    empty.style.display = n ? 'none' : '';
+  });
+})();
+</script>
 <script src="/auth.js"></script>
 </body>
 </html>
