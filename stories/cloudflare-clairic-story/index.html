@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloudflare Clairic: The Model That Reads Instead of Writing — MilestoneWins</title>
+<meta name="description" content="Cloudflare&#x27;s Clairic is the first System One extraction model: typed values from unstructured inputs, no output tokens, $0.10 per million input tokens. The story behind the launch.">
+<link rel="canonical" href="https://milestonewins.com/stories/cloudflare-clairic-story/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261014d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cloudflare Clairic: The Model That Reads Instead of Writing", "description": "Cloudflare's Clairic is the first System One extraction model: typed values from unstructured inputs, no output tokens, $0.10 per million input tokens. The story behind the launch.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-10-24", "about": {"@type": "Organization", "name": "Cloudflare Clairic"}}</script>
+
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.seo-steps{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:1rem}
+.seo-steps li{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65}
+.seo-steps li b{color:#0f172a}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/stories/">Stories</a> <span>&rsaquo;</span> <strong>Cloudflare Clairic</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">✨ Founder story</span>
+    <h1>Cloudflare Clairic: The Model That Reads Instead of Writing</h1>
+    <p class="lede">Cloudflare&#x27;s Clairic is the first &#x27;System One&#x27; extraction model: no reasoning, no output tokens — just typed values pulled from messy inputs at $0.10 per million input tokens. Here&#x27;s what the launch tells us about where model design is heading.</p>
+    <div class="story-byline">By Cloudflare team · 2026-10-24 · <a href="/launches/cloudflare-clairic/">View on MilestoneWins →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$0.10</b><span>per million input tokens (no output-token charge)</span></div>
+    <div class="ms-stat"><b>65,536</b><span>token context window</span></div>
+    <div class="ms-stat"><b>0</b><span>output tokens generated per request</span></div>
+    <div class="ms-stat"><b>3.2x</b><span>faster claims pipeline vs all-LLM baseline (Cloudflare test)</span></div>
+  </div>
+  <div class="story-body">
+  <h2>A new class of model</h2>
+  <p>On October 19, 2026, Cloudflare announced Clairic, a preview model on Workers AI that it calls the first in a new class: System One extraction models. The launch post — by Alex Reneau, Michelle Chen, and Kevin Flansburg — borrows its taxonomy from Daniel Kahneman's <i>Thinking, Fast and Slow</i>: System One models are fast and precise, in contrast to System Two models capable of deliberate reasoning, like today's LLMs.</p><p>The concept had been seeded a month earlier when TypeSafe announced Jev, a System One decision model that takes an input state and a list of questions and returns probabilities. Cloudflare's own Clef, which shipped October 1, plays the same role: pick among options, return a probability for each. Clairic opens a second class inside that family. Where decision models choose, extraction models return values — a total, a date, a list, an estimate with a range — pulled directly from the input, computed from it, or predicted beyond it.</p><p>Cloudflare's motivation is brutally practical. Across the industry, frontier LLMs are being hammered with the same structured-output calls again and again: What's the invoice total? When was this delivered? How many days late is it? What will this repair cost? None of these need deliberation, yet each one pays the full price of reasoning. Clairic is Cloudflare's answer to that mismatch — a model purpose-built for the boring, high-volume work that LLMs do expensively.</p>
+  <h2>How it works</h2>
+  <p>Clairic takes a text input, up to four optional images (PNG, JPEG, or WebP), and a map of named fields. Each field declares a type — text, number, date, time, datetime, duration, list, estimate, or forecast — plus optional plain-language instructions. The model answers every field in a single parallel pass: no reasoning step, no generated tokens, typically a response in under a second.</p><p>Every scalar answer carries a confidence score and p_null, the model's estimated probability that the input does not determine the requested value. If the value isn't there, the answer is null rather than a plausible guess — though the response still shows what the model would have picked, so you can audit the miss. Text answers come back with exact source spans and character offsets, letting you highlight the passage a value came from. Estimate and forecast fields return a median with an 80% interval from p10 to p90, always inside bounds you declare; a narrow interval signals the input was informative, a wide one tells you to double-check.</p><p>The model runs hosted on Workers AI as <code>@cf/cloudflare/clairic</code>, callable from a Worker with <code>env.AI.run()</code> or from anywhere via the REST API. The context window is 65,536 tokens, and each pass holds 8,192 tokens of fields plus input — larger field sets are split across parallel passes. Because nothing is generated, there is nothing to mistype: outputs are a value of the type you asked for, or null.</p><p>Two examples from the launch post show the range. Given a customer email, Clairic turned a price and a separate tax amount into their sum as the total paid, worked out the days between two dates in the text, and returned null — with low confidence — for a tracking number that wasn't there. Given comparable home sales, it estimated a subject property at $418,000 with an 80% interval of $370,000 to $470,000, plus a days-on-market forecast whose wide interval honestly signaled low certainty. The pattern is the point: narrow intervals mean the input was informative, wide ones tell your code to trigger another check.</p>
+  <h2>The price of reading</h2>
+  <p>The pricing is the other half of the story. Clairic costs $0.10 per million input tokens, with no output-token charge — billing applies to input only. Cloudflare's showcase is a damaged-product insurance-claim pipeline: Clairic pulls typed values from the customer email, Clef decides on approval, and an LLM writes the customer response. Against an all-LLM baseline, Cloudflare reports the cascade finished in 19.3 seconds versus 61.7 — about 3.2 times faster — at $6,032 per million claims against $11,740, a 49% cost cut. On forecasting, Cloudflare ran Clairic over 21 days of TSA passenger counts: forecasts were off by 3.3% on average, with 17 of 21 actuals landing inside the 80% interval.</p><p>Cloudflare is unusually upfront about what Clairic cannot do yet. Reading is strong, the post says, but multi-step arithmetic isn't reliable; estimates need evidence in the input; forecasting is basic. The model page lists the service "AS IS" and notes Cloudflare may stop offering it. And the weights are not public — Cloudflare says it intends to release them openly "soon," after more checkpoint work on arithmetic, estimation, and forecasting, but gives no date. Today it runs only on Cloudflare's endpoint.</p><p>The reaction across the developer press has been to take the category framing seriously: a taxonomy play that names the fast, non-reasoning extraction tier before anyone else defines it. Whether "System One" sticks as industry vocabulary or not, the economic argument is hard to ignore — a large share of production LLM calls are really extraction calls wearing a chatbot's clothes, and they are about to get much cheaper.</p>
+  <h2>The playbook</h2>
+  <ol class="seo-steps">
+      <li><b>Name the category before competitors do</b> — Cloudflare didn&#x27;t just ship a model — it named the category (&#x27;System One extraction models&#x27;), positioning the fast non-reasoning tier before any competitor defines it.</li>
+      <li><b>Sell the reading, not the writing</b> — Extraction is a distinct job from generation: invoice totals, dates, estimates. A model that only reads can be faster, cheaper, and more precise than one that also writes.</li>
+      <li><b>Price the input, forget the output</b> — With zero output tokens, billing applies to input only — a unit-economics story that undercuts GPT-class extraction pricing on cost per task.</li>
+  </ol>
+  </div>
+  <div class="seo-cta" style="margin-top:2.5rem">
+    <a class="btn" href="/submit.html">🚀 Share your milestone</a>
+    <a class="btn ghost" href="/launches/cloudflare-clairic/">View Cloudflare Clairic →</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 MilestoneWins</span>
+    <span><a href="/">Home</a> · <a href="/stories/">Stories</a> · <a href="/submit.html">Submit</a></span>
+  </div>
+</footer>
+<script src="/auth.js"></script>
+</body>
+</html>

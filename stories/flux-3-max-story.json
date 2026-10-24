@@ -1,0 +1,58 @@
+{
+ "dek": "fal took Black Forest Labs' FLUX 3, post-trained it with its own research team, and made video generation 11.5x faster \u2014 then priced it 75% off. The story of an infrastructure platform becoming a model maker.",
+ "founder": "Burkay Gur, Gorkem Yurtseven",
+ "headline": "FLUX 3 Max: fal's Bet That Post-Training Beats Hosting",
+ "key_numbers": [
+  {
+   "label": "to generate a 10-second 720p clip (vs 126.44s for FLUX 3)",
+   "value": "12.45s"
+  },
+  {
+   "label": "Elo on Artificial Analysis Video Arena, preliminary (tied #1)",
+   "value": "1,139"
+  },
+  {
+   "label": "per second of 720p output during launch (75% off to Nov 7)",
+   "value": "$0.0425"
+  },
+  {
+   "label": "fal valuation at $140M Series D, late 2025 (reported)",
+   "value": "$4.5B"
+  }
+ ],
+ "meta_description": "FLUX 3 Max: fal Research post-trained Black Forest Labs' FLUX 3 into a 12-second 10s-video model, 75% off to Nov 7. How fal became a model maker.",
+ "playbook": [
+  {
+   "detail": "fal didn't train a foundation model from scratch. Specialized post-training, reinforcement learning, and inference optimization on FLUX 3 delivered an 11.5x speedup and a 50-point Elo gain.",
+   "title": "Post-train, don't pre-train"
+  },
+  {
+   "detail": "A ten-second video in about twelve seconds turns generation from a batch job into an interactive loop \u2014 shorter waits mean faster creative revision.",
+   "title": "Sell speed as a feature"
+  },
+  {
+   "detail": "75% off for the first three weeks seeds developer adoption while the benchmarks are fresh \u2014 pricing as a launch event, not just a number.",
+   "title": "Launch with a pricing event"
+  }
+ ],
+ "product_name": "FLUX 3 Max",
+ "product_slug": "flux-3-max",
+ "published": "2026-10-24",
+ "revenue": "",
+ "revenue_label": "",
+ "sections": [
+  {
+   "body_html": "<p>fal was founded in 2021 by Burkay Gur and Gorkem Yurtseven, former Coinbase and Amazon engineers who set out to build the infrastructure layer for generative media. The thesis worked: fal's serverless platform now gives developers API access to more than 600 image, video, and audio models, serving customers including Adobe, Shopify, Canva, Quora, and Perplexity, and processing billions of generative assets a month. In late 2025 the company closed a $140 million Series D led by Sequoia at a reported $4.5 billion valuation.</p><p>But infrastructure has a ceiling: you keep someone else's margin structure. Over the past year fal has been building a second engine \u2014 fal Research, a post-training lab. Its first public result was H3 Max, a post-trained version of MiniMax's H3. On October 19, 2026, fal went further: FLUX 3 Max, a post-trained version of Black Forest Labs' FLUX 3 video model, developed in partnership with the lab itself. Black Forest Labs CEO Robin Rombach described Max as a version of FLUX 3 that fal customized for developers and enterprises on its platform \u2014 the lab builds the foundation, the platform finishes the product.</p><p>The move mirrors a broader shift in the model economy. Four days before the Max launch, Black Forest Labs gave away the weights of FLUX 3 Image Klein for free commercial use. One company publishes the model; the other keeps the post-training, the price, and the customer. fal is betting that the scarce asset isn't the base checkpoint \u2014 it's the research and serving engineering that turns a checkpoint into a product developers will pay for.</p>",
+   "heading": "From pipes to models"
+  },
+  {
+   "body_html": "<p>What fal's researchers actually changed is the interesting part. Starting from Black Forest Labs' FLUX 3, the team applied specialized post-training, reinforcement learning, and inference and serving-path optimization \u2014 no new foundation model, just relentless finishing work. fal reports the result renders a 10-second 720p clip in 12.45 seconds, down from 126.44 seconds for the original FLUX 3: about 11.5 times faster, and roughly 22 times faster than the 277.80 seconds fal lists for ByteDance's Seedance 2.5 at the same quality tier.</p><p>On quality, fal cites a preliminary Artificial Analysis Video Arena snapshot: 1,139 Elo across 4,868 blind human-preference votes, a 50-point gain over FLUX 3's 1,089 and tied for first in image-to-video \u2014 though fal itself notes the confidence intervals overlap, so the leadership claim is best read as \"joint first, pending more votes.\" The API ships three modes \u2014 text-to-video, image-to-video, and keyframes-to-video, which takes a first and last frame and generates the motion between them \u2014 with clips from 5 to 20 seconds, native audio, six aspect ratios from 21:9 to 9:16, and a reasoning-level setting that expands prompts automatically for more detailed results.</p><p>Independent coverage has been careful to separate fal's claims from verified facts: the speed figures come from fal's own benchmarks with no disclosed test protocol, and the quality comparison covers image-to-video only. But even discounted, the direction is clear \u2014 video generation is crossing from minutes per clip into seconds, which changes the workflow from \"render and wait\" to something close to interactive.</p><p>The competitive backdrop matters. Chinese labs are pushing the same frontier from the other direction \u2014 Alibaba's Wan 3.0 and MiniMax's H3 are also racing to cut video generation times and costs. fal's answer is not to out-train them but to out-finish them: take a strong open foundation, apply post-training and serving engineering, and win on the metrics developers feel every day \u2014 seconds per clip and dollars per second. It is a very different capital strategy from the foundation-model arms race, and if it works, it suggests the next wave of video-model competition will be fought in post-training labs, not pre-training clusters.</p>",
+   "heading": "What Max changes"
+  },
+  {
+   "body_html": "<p>The launch pricing is aggressive by design. FLUX 3 Max debuted at 75% off for its first three weeks \u2014 $0.0425 per second of 720p output against a $0.17 list price, through November 7 \u2014 available only through fal's API. There is no other way to buy it: the model maker publishes the model, and the platform keeps the pay. For developers, the pitch is simple: frontier-tier video at a price that makes experimentation cheap, during exactly the window when everyone is benchmarking.</p><p>fal says this is only the first iteration of Max, with further post-training underway to improve visual quality, generation speed, and overall performance. Whether the post-training playbook compounds \u2014 H3 Max, then FLUX 3 Max, then whatever comes next \u2014 will determine whether fal stays an infrastructure company with a research hobby or becomes something rarer: a platform whose models are the reason developers arrive in the first place.</p><p>The deeper story is about where value accrues in generative media. Training a foundation video model costs a fortune; post-training one brilliantly costs far less and can deliver most of the user-visible gain. fal's bet is that the winners won't just host the frontier \u2014 they'll finish it.</p>",
+   "heading": "The platform keeps the customer"
+  }
+ ],
+ "slug": "flux-3-max-story"
+}

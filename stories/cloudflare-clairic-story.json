@@ -1,0 +1,58 @@
+{
+ "dek": "Cloudflare's Clairic is the first 'System One' extraction model: no reasoning, no output tokens \u2014 just typed values pulled from messy inputs at $0.10 per million input tokens. Here's what the launch tells us about where model design is heading.",
+ "founder": "Cloudflare team",
+ "headline": "Cloudflare Clairic: The Model That Reads Instead of Writing",
+ "key_numbers": [
+  {
+   "label": "per million input tokens (no output-token charge)",
+   "value": "$0.10"
+  },
+  {
+   "label": "token context window",
+   "value": "65,536"
+  },
+  {
+   "label": "output tokens generated per request",
+   "value": "0"
+  },
+  {
+   "label": "faster claims pipeline vs all-LLM baseline (Cloudflare test)",
+   "value": "3.2x"
+  }
+ ],
+ "meta_description": "Cloudflare's Clairic is the first System One extraction model: typed values from unstructured inputs, no output tokens, $0.10 per million input tokens. The story behind the launch.",
+ "playbook": [
+  {
+   "detail": "Cloudflare didn't just ship a model \u2014 it named the category ('System One extraction models'), positioning the fast non-reasoning tier before any competitor defines it.",
+   "title": "Name the category before competitors do"
+  },
+  {
+   "detail": "Extraction is a distinct job from generation: invoice totals, dates, estimates. A model that only reads can be faster, cheaper, and more precise than one that also writes.",
+   "title": "Sell the reading, not the writing"
+  },
+  {
+   "detail": "With zero output tokens, billing applies to input only \u2014 a unit-economics story that undercuts GPT-class extraction pricing on cost per task.",
+   "title": "Price the input, forget the output"
+  }
+ ],
+ "product_name": "Cloudflare Clairic",
+ "product_slug": "cloudflare-clairic",
+ "published": "2026-10-24",
+ "revenue": "",
+ "revenue_label": "",
+ "sections": [
+  {
+   "body_html": "<p>On October 19, 2026, Cloudflare announced Clairic, a preview model on Workers AI that it calls the first in a new class: System One extraction models. The launch post \u2014 by Alex Reneau, Michelle Chen, and Kevin Flansburg \u2014 borrows its taxonomy from Daniel Kahneman's <i>Thinking, Fast and Slow</i>: System One models are fast and precise, in contrast to System Two models capable of deliberate reasoning, like today's LLMs.</p><p>The concept had been seeded a month earlier when TypeSafe announced Jev, a System One decision model that takes an input state and a list of questions and returns probabilities. Cloudflare's own Clef, which shipped October 1, plays the same role: pick among options, return a probability for each. Clairic opens a second class inside that family. Where decision models choose, extraction models return values \u2014 a total, a date, a list, an estimate with a range \u2014 pulled directly from the input, computed from it, or predicted beyond it.</p><p>Cloudflare's motivation is brutally practical. Across the industry, frontier LLMs are being hammered with the same structured-output calls again and again: What's the invoice total? When was this delivered? How many days late is it? What will this repair cost? None of these need deliberation, yet each one pays the full price of reasoning. Clairic is Cloudflare's answer to that mismatch \u2014 a model purpose-built for the boring, high-volume work that LLMs do expensively.</p>",
+   "heading": "A new class of model"
+  },
+  {
+   "body_html": "<p>Clairic takes a text input, up to four optional images (PNG, JPEG, or WebP), and a map of named fields. Each field declares a type \u2014 text, number, date, time, datetime, duration, list, estimate, or forecast \u2014 plus optional plain-language instructions. The model answers every field in a single parallel pass: no reasoning step, no generated tokens, typically a response in under a second.</p><p>Every scalar answer carries a confidence score and p_null, the model's estimated probability that the input does not determine the requested value. If the value isn't there, the answer is null rather than a plausible guess \u2014 though the response still shows what the model would have picked, so you can audit the miss. Text answers come back with exact source spans and character offsets, letting you highlight the passage a value came from. Estimate and forecast fields return a median with an 80% interval from p10 to p90, always inside bounds you declare; a narrow interval signals the input was informative, a wide one tells you to double-check.</p><p>The model runs hosted on Workers AI as <code>@cf/cloudflare/clairic</code>, callable from a Worker with <code>env.AI.run()</code> or from anywhere via the REST API. The context window is 65,536 tokens, and each pass holds 8,192 tokens of fields plus input \u2014 larger field sets are split across parallel passes. Because nothing is generated, there is nothing to mistype: outputs are a value of the type you asked for, or null.</p><p>Two examples from the launch post show the range. Given a customer email, Clairic turned a price and a separate tax amount into their sum as the total paid, worked out the days between two dates in the text, and returned null \u2014 with low confidence \u2014 for a tracking number that wasn't there. Given comparable home sales, it estimated a subject property at $418,000 with an 80% interval of $370,000 to $470,000, plus a days-on-market forecast whose wide interval honestly signaled low certainty. The pattern is the point: narrow intervals mean the input was informative, wide ones tell your code to trigger another check.</p>",
+   "heading": "How it works"
+  },
+  {
+   "body_html": "<p>The pricing is the other half of the story. Clairic costs $0.10 per million input tokens, with no output-token charge \u2014 billing applies to input only. Cloudflare's showcase is a damaged-product insurance-claim pipeline: Clairic pulls typed values from the customer email, Clef decides on approval, and an LLM writes the customer response. Against an all-LLM baseline, Cloudflare reports the cascade finished in 19.3 seconds versus 61.7 \u2014 about 3.2 times faster \u2014 at $6,032 per million claims against $11,740, a 49% cost cut. On forecasting, Cloudflare ran Clairic over 21 days of TSA passenger counts: forecasts were off by 3.3% on average, with 17 of 21 actuals landing inside the 80% interval.</p><p>Cloudflare is unusually upfront about what Clairic cannot do yet. Reading is strong, the post says, but multi-step arithmetic isn't reliable; estimates need evidence in the input; forecasting is basic. The model page lists the service \"AS IS\" and notes Cloudflare may stop offering it. And the weights are not public \u2014 Cloudflare says it intends to release them openly \"soon,\" after more checkpoint work on arithmetic, estimation, and forecasting, but gives no date. Today it runs only on Cloudflare's endpoint.</p><p>The reaction across the developer press has been to take the category framing seriously: a taxonomy play that names the fast, non-reasoning extraction tier before anyone else defines it. Whether \"System One\" sticks as industry vocabulary or not, the economic argument is hard to ignore \u2014 a large share of production LLM calls are really extraction calls wearing a chatbot's clothes, and they are about to get much cheaper.</p>",
+   "heading": "The price of reading"
+  }
+ ],
+ "slug": "cloudflare-clairic-story"
+}

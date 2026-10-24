@@ -4530,5 +4530,165 @@
         "url": "https://www.producthunt.com/@bengeekly"
       }
     ]
+  },
+  {
+    "launch_no": 177,
+    "name": "Cloudflare Clairic",
+    "slug": "cloudflare-clairic",
+    "tagline": "Cloudflare's System One extraction model for unstructured data",
+    "description": "Clairic is Cloudflare's new System One extraction model that extracts, computes, estimates, and forecasts values from unstructured inputs \u2014 faster, more accurate, and cheaper than frontier LLMs for structured-output calls. Available in preview on Workers AI as @cf/cloudflare/clairic, with an open-weights release planned.",
+    "url": "https://milestonewins.com/launches/cloudflare-clairic/",
+    "website": "https://www.cloudflare.com",
+    "logo": "/logos/cloudflare-clairic.png",
+    "revenue": "",
+    "revenue_metric": "",
+    "founder": "Cloudflare team",
+    "category": "AI Models",
+    "pricing": "Preview: $0.10 per million input tokens (input only, no output charge)",
+    "launched": "2026-10-24",
+    "source": "producthunt",
+    "source_label": "Product Hunt",
+    "story_materials": [
+      {
+        "facts": "Cloudflare blog (Oct 2026): Clairic is the first System One extraction model; extracts/computes/estimates/forecasts values from unstructured inputs at higher accuracy, faster, cheaper than frontier LLMs. Preview hosted on Workers AI as @cf/cloudflare/clairic; open-weights release intended soon. Returns typed values (numbers with 80% range, names, dates, lists) + confidence scores, or null; no token generation.",
+        "type": "blog",
+        "url": "https://blog.cloudflare.com/clairic-extraction-model/"
+      },
+      {
+        "facts": "PH product page websiteUrl http://www.cloudflare.com; makers listed: Justin Jincaid, Raj Nagulapalle, Faiz Jamadar, Jaros\u0142aw Pra\u017cmo (Cloudflare staff).",
+        "type": "producthunt",
+        "url": "https://www.producthunt.com/products/cloudflare"
+      },
+      {
+        "facts": "Pricing: $0.10 per million input tokens, no output-token charge (input-only billing); 65,536-token context; up to 4 images. Launch post by Alex Reneau, Michelle Chen, Kevin Flansburg, Oct 19, 2026.",
+        "type": "press",
+        "url": "https://www.unite.ai/cloudflare-releases-clairic-its-first-system-one-extraction-model/"
+      }
+    ]
+  },
+  {
+    "launch_no": 178,
+    "name": "MOVO AI",
+    "slug": "movo-ai",
+    "tagline": "The world's first long-form video agent for mobile",
+    "description": "Create complete videos from ideas, references, and assets. MOVO AI is an autonomous video agent that handles scripts, storyboards, scenes, and final video creation \u2014 right from your phone, and on the web.",
+    "url": "https://milestonewins.com/launches/movo-ai/",
+    "website": "https://movoai.pro/",
+    "logo": "/logos/movo-ai.png",
+    "revenue": "",
+    "revenue_metric": "",
+    "founder": "Zac Zuo, Eric ZZ",
+    "category": "AI Video",
+    "pricing": "Free options available",
+    "launched": "2026-10-24",
+    "source": "producthunt",
+    "source_label": "Product Hunt",
+    "story_materials": [
+      {
+        "facts": "Official site movoai.pro: \"AI Video Agent for Long-Form Storytelling\"; autonomous agent handling scripts, storyboards, scenes, final video from ideas/references/assets; phone + web.",
+        "type": "website",
+        "url": "https://movoai.pro/"
+      },
+      {
+        "facts": "PH launch: \"The world's first long-form video agent for mobile\"; makers: Zac Zuo, Eric ZZ, Aimee, Stacy Li, Edward Chen; pricingType free_options.",
+        "type": "producthunt",
+        "url": "https://www.producthunt.com/products/movo-ai"
+      }
+    ]
+  },
+  {
+    "launch_no": 179,
+    "name": "Dots",
+    "slug": "dots",
+    "tagline": "A customizable workspace built into your Mac's notch",
+    "description": "Drop a YouTube link, capture a long page, or make your lock screen feel like your music. Dots puts your everyday tools within reach \u2014 a customizable workspace built into your Mac's notch.",
+    "url": "https://milestonewins.com/launches/dots/",
+    "website": "https://dotsapp.cloudaeri.com/",
+    "logo": "/logos/dots.png",
+    "revenue": "",
+    "revenue_metric": "",
+    "founder": "Jakob Edhel Puri",
+    "category": "Productivity",
+    "pricing": "Free (up to 5 active connections); Dots Pro $5 one-time per Mac",
+    "launched": "2026-10-24",
+    "source": "producthunt",
+    "source_label": "Product Hunt",
+    "story_materials": [
+      {
+        "facts": "Official site: \"Dots \u2014 Your day, within reach.\"; Free tier $0 (up to 5 active connections); Dots Pro $5 one-time, one Mac, unlimited connections.",
+        "type": "website",
+        "url": "https://dotsapp.cloudaeri.com/"
+      },
+      {
+        "facts": "PH launch: \"A customizable workspace built into your Mac's notch\"; maker: Jakob Edhel Puri; pricingType free.",
+        "type": "producthunt",
+        "url": "https://www.producthunt.com/products/dots-7"
+      }
+    ]
+  },
+  {
+    "launch_no": 180,
+    "name": "Peras",
+    "slug": "peras",
+    "tagline": "Pause Claude Code and Codex before they burn your week",
+    "description": "Peras watches your Claude Pro/Max or ChatGPT plan usage, tells you where the week is headed, and pauses the agent (or asks first) at the line you set. Free, MIT, local.",
+    "url": "https://milestonewins.com/launches/peras/",
+    "website": "https://peras.vertias.eu",
+    "logo": "/logos/peras.png",
+    "revenue": "",
+    "revenue_metric": "",
+    "founder": "Kristiyan Ivanov",
+    "category": "Developer Tools",
+    "pricing": "Free & MIT-licensed (CLI); macOS app \u20ac4.99 once",
+    "launched": "2026-10-24",
+    "source": "producthunt",
+    "source_label": "Product Hunt",
+    "story_materials": [
+      {
+        "facts": "Official site: watches Claude Pro/Max or ChatGPT plan usage; `peras set weekly 85 pause`; CLI/SwiftBar/app source free MIT; signed macOS app \u20ac4.99 once (macOS 13+), updates included.",
+        "type": "website",
+        "url": "https://peras.vertias.eu"
+      },
+      {
+        "facts": "PH launch: \"Pause Claude Code and Codex before they burn your week\"; maker: Kristiyan Ivanov.",
+        "type": "producthunt",
+        "url": "https://www.producthunt.com/products/peras"
+      }
+    ]
+  },
+  {
+    "launch_no": 181,
+    "name": "FLUX 3 Max",
+    "slug": "flux-3-max",
+    "tagline": "Text and image to video \u2014 post-trained by fal Research and Black Forest Labs",
+    "description": "FLUX 3 Max, post-trained by fal Research in partnership with Black Forest Labs: tied for #1 in image-to-video quality \u2014 a 10-second video in about 12 seconds. 75% off until November 7.",
+    "url": "https://milestonewins.com/launches/flux-3-max/",
+    "website": "https://fal.ai/flux-3-max",
+    "logo": "/logos/flux-3-max.png",
+    "revenue": "",
+    "revenue_metric": "",
+    "founder": "Burkay Gur, Gorkem Yurtseven",
+    "category": "AI Models",
+    "pricing": "Usage-based API pricing; 75% off until November 7",
+    "launched": "2026-10-24",
+    "source": "producthunt",
+    "source_label": "Product Hunt",
+    "story_materials": [
+      {
+        "facts": "fal.ai model page: FLUX 3 Max post-trained by fal Research + Black Forest Labs; tied #1 image-to-video (Artificial Analysis, preliminary); 10s video in ~12s (~22x faster than Seedance 2.5); 75% off until Nov 7.",
+        "type": "website",
+        "url": "https://fal.ai/flux-3-max"
+      },
+      {
+        "facts": "fal.ai founded 2021 by ex-Coinbase/Amazon engineers Burkay Gur (CEO) and Gorkem Yurtseven (CTO); $140M Series D at $4.5B (Sequoia-led); 600+ models API.",
+        "type": "press",
+        "url": "https://research.contrary.com/company/fal-ai"
+      },
+      {
+        "facts": "PH launch under fal.ai product page: \"Generative media platform for developers\".",
+        "type": "producthunt",
+        "url": "https://www.producthunt.com/products/fal-ai"
+      }
+    ]
   }
 ]
