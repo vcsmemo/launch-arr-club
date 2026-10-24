@@ -183,6 +183,10 @@
         <h2>Step 3 · Choose how to launch</h2>
         <p>Pick one. Every option puts your product live the moment it is done.</p>
         <div class="card oauth-box" id="oauthBox" style="margin-bottom:1.2rem">
+          <label style="display:flex;align-items:flex-start;gap:8px;font-size:.88rem;color:#475569;line-height:1.5;cursor:pointer;margin-bottom:12px;text-align:left;">
+            <input type="checkbox" id="ageCheck" style="margin-top:3px;accent-color:#0d9488;width:16px;height:16px;flex:none;cursor:pointer;">
+            <span>I confirm I am at least 18 years old and agree to the <a href="/terms.html">Terms of Service</a> and <a href="/privacy.html">Privacy Policy</a>.</span>
+          </label>
           <div id="gsiButton"></div>
           <p class="oauth-note">One last step — sign in to submit. We only see your name, email and profile photo. Everything you filled in is saved.</p>
           <p class="signed-in" id="signedInAs" hidden></p>
@@ -377,6 +381,12 @@
     }, 1500);
   });
   launchBtn.addEventListener('click', function(){
+    if(!ageConfirmed()){
+      launchHint.textContent = 'Please confirm you are at least 18 years old first (checkbox above the sign-in button).';
+      var ob2 = document.getElementById('oauthBox');
+      if(ob2){ ob2.scrollIntoView({behavior:'smooth', block:'center'}); ob2.style.outline = '2px solid #ef4444'; setTimeout(function(){ ob2.style.outline = ''; }, 2000); }
+      return;
+    }
     if(!window.__launchUser){
       var ob = document.getElementById('oauthBox');
       if(ob){ ob.scrollIntoView({behavior:'smooth', block:'center'}); ob.style.outline = '2px solid #0d9488'; setTimeout(function(){ ob.style.outline = ''; }, 2000); }
@@ -397,6 +407,13 @@
   });
   var freeBtn = document.getElementById('launchFreeNoBtn'), freeHint = document.getElementById('freeHint');
   freeBtn.addEventListener('click', function(){
+    if(!ageConfirmed()){
+      freeHint.textContent = 'Please confirm you are at least 18 years old first (checkbox above the sign-in button).';
+      freeHint.className = 'verify-msg';
+      var ob3 = document.getElementById('oauthBox');
+      if(ob3){ ob3.scrollIntoView({behavior:'smooth', block:'center'}); ob3.style.outline = '2px solid #ef4444'; setTimeout(function(){ ob3.style.outline = ''; }, 2000); }
+      return;
+    }
     if(!window.__launchUser || !window.__launchIdToken){
       freeHint.textContent = 'Please sign in with Google first (top of this page) — free launches are tied to your account.';
       freeHint.className = 'verify-msg';
@@ -802,7 +819,19 @@
     var fh = document.getElementById('founderHint');
     if(fh) fh.hidden = true;
   }
+  function ageConfirmed(){
+    var c = document.getElementById('ageCheck');
+    return !!(c && c.checked);
+  }
   function onGoogleSignIn(resp){
+    // Age gate: sign-in is only accepted after the 18+ confirmation.
+    if(!ageConfirmed()){
+      var ob = document.getElementById('oauthBox');
+      if(ob){ ob.style.outline = '2px solid #ef4444'; setTimeout(function(){ ob.style.outline = ''; }, 2000); }
+      var note = document.querySelector('#oauthBox .oauth-note');
+      if(note) note.textContent = 'Please confirm you are at least 18 years old first (checkbox above), then sign in.';
+      return;
+    }
     var profile = parseJwt(resp.credential);
     if(!profile || !profile.email) return;
     window.__launchIdToken = resp.credential || null;
