@@ -1,0 +1,82 @@
+{
+ "slug": "flipcorder-story",
+ "product_name": "Flipcorder",
+ "product_slug": "flipcorder",
+ "headline": "After 17 Years Building Apps for Other People, He Finally Shipped His Own \u2014 and Hit #3 in a Weekend",
+ "dek": "Matt Brewer spent nearly two decades building software for other people. Flipcorder, his 1991 camcorder for the iPhone, is the app he wanted for himself as a dad \u2014 and it reached #3 in Top Paid Photo & Video on the US App Store in its first weekend.",
+ "revenue": "",
+ "revenue_label": "",
+ "founder": "Matt Brewer",
+ "published": "2026-10-27",
+ "meta_description": "Matt Brewer built software for other people since 2008 and started Lotus Apps in 2015. Flipcorder, his first app under his own name in a decade, hit #3 in Top Paid Photo & Video on the US App Store in its first weekend.",
+ "key_numbers": [
+  {
+   "value": "#3",
+   "label": "Top Paid Photo & Video on the US App Store in its first weekend"
+  },
+  {
+   "value": "$4.99",
+   "label": "One-time price: no subscription, no ads, no watermarks, no account"
+  },
+  {
+   "value": "20 sec",
+   "label": "Default length of each flip on the day's tape"
+  },
+  {
+   "value": "30 min",
+   "label": "Footage each day's dated tape holds"
+  },
+  {
+   "value": "2008",
+   "label": "Year Matt Brewer started building software for other people"
+  }
+ ],
+ "playbook": [
+  {
+   "title": "Build the product you want for yourself",
+   "detail": "Brewer is a dad who wanted home video that feels real, with the chatter left in. Flipcorder is the app he wanted for himself \u2014 and that personal itch, not a market map, set every design decision."
+  },
+  {
+   "title": "Make the constraint the feature",
+   "detail": "Twenty-second flips, one tape a day, no editing. The limits are the point: they stop the endless pursuit of a perfect clip and leave something closer to a home movie."
+  },
+  {
+   "title": "Charge once, then get out of the way",
+   "detail": "$4.99 once, no subscription, no ads, no watermarks, no account, tapes stay on the phone unless shared. In a market of subscriptions, a single honest price is itself a positioning statement."
+  },
+  {
+   "title": "Design for the device in people's hands",
+   "detail": "Flipcorder was built around the new iPhone Duo \u2014 the fold is the power switch \u2014 but works on every iPhone on iOS 26 or later with a glowing power key instead. One idea, two physical expressions."
+  },
+  {
+   "title": "Never lose a moment to the hardware",
+   "detail": "Closing the phone, an incoming call or low storage always saves the flip. For a camera app, the worst bug is a lost memory \u2014 so the save path is treated as the product."
+  }
+ ],
+ "sections": [
+  {
+   "heading": "Seventeen years of other people's apps",
+   "body_html": "<p>Matt Brewer has built software for other people since 2008, and started Lotus Apps in 2015. For nearly two decades, the apps and software he shipped carried someone else's name. Flipcorder is the break in that pattern: the first app he has put on the App Store under his own name in about a decade \u2014 and, by his own account, a launch that left him, in his words, stupid excited.</p><p>The excitement turned out to be justified fast. In its first weekend, Flipcorder reached #3 in Top Paid Photo &amp; Video on the US App Store. For an independent developer shipping under his own name for the first time in years, that is not just a chart position; it is proof that the itch he was scratching was shared.</p>"
+  },
+  {
+   "heading": "A camcorder for the way life actually looks",
+   "body_html": "<p>Flipcorder is a 1991 camcorder for your iPhone. You film little moments through the day, each one a flip of 20 seconds by default, and they all land on that day's dated tape \u2014 a single tape that holds up to 30 minutes of footage. There is no editing, so the chatter, the pauses and the fumble for the stop button stay in. Tonight, you play back one raw home movie, in a warm VHS or crisp MiniDV look, date stamp and all.</p><p>The idea comes from Brewer's life as a dad. He wanted home video that feels real, and he felt something had been lost chasing perfection for social media: the messiness of a camcorder, he argues, is appealing and comforting. Home movies, in his framing, can be for anyone \u2014 and Flipcorder is for those people, the ones who would rather keep the moment as it happened than cut it into content.</p>"
+  },
+  {
+   "heading": "Built for the fold, at home on every iPhone",
+   "body_html": "<p>Flipcorder was built around the iPhone Duo, the folding iPhone that launched the same week. The fold is the power switch: closed, the outer screen shows a lens cap; open it and the cap comes off. Fully open, the person being filmed sees themselves on the outer screen with a red recording light. It is a rare case of hardware and software designed as one gesture.</p><p>But Brewer did not make the fold a requirement. Flipcorder works on every iPhone running iOS 26 or later, with a big glowing power key instead of the fold. Press it and the viewfinder warms up like an old television; press the big red key and the flip stops by itself at 20 seconds, with a quiet countdown. The same idea, expressed two ways \u2014 one for the new hardware, one for the phone already in your pocket.</p>"
+  },
+  {
+   "heading": "The details that protect the memory",
+   "body_html": "<p>Several of Flipcorder's decisions read like a list of things other camera apps get wrong. It costs $4.99 once \u2014 no subscription, no ads, no watermarks, no account needed. Your tapes stay on your phone unless you share them. And footage is never lost to the device itself: closing the phone, an incoming call or low storage always saves the flip in progress.</p><p>Independent coverage picked up the same notes. Reviewers highlighted the daily-tape structure over a camera roll of loose clips, the VHS colour bleed, tracking wobble and retro date stamp \u2014 or the cleaner MiniDV and high-quality looks for those who want them \u2014 and the flat $4.99 price as a refreshing change from subscription software. The through-line is restraint: an app that does less, on purpose, so the memories survive intact.</p>"
+  },
+  {
+   "heading": "A launch day spent answering questions",
+   "body_html": "<p>Brewer launched Flipcorder the way independent developers often do: with a post, a story, and a promise to stay around. On Product Hunt he introduced himself plainly \u2014 Matt, building apps and software for other people for years, launching one of his own for the first time in about a decade \u2014 and told readers he would be there all day answering questions, asking in return what they would film first and what they would change.</p><p>That posture fits the product's own philosophy. On his site, Brewer describes the move as going back to his roots and shipping his own apps: quality software that he hopes gets people excited. The iPhone Duo detail shows the same instinct applied to hardware: you can snap the foldable phone closed to instantly save a clip, a gesture that turns the device itself into part of the camera. Even the planned 1.1.0 update follows the pattern \u2014 stickers you earn, streaks on home-screen widgets, seasonal in-app events \u2014 small rewards for keeping the habit, not a pivot to a different product.</p><p>It is a deliberately small kind of ambition, and that is the point. Flipcorder does not want to be the camera for everything. It wants to be the camera for the moments that would otherwise go unrecorded: the ordinary afternoon, the joke at dinner, the walk home. A tape a day, kept raw, is a different promise from a feed \u2014 and for one weekend in October, it was enough to reach the top of the paid chart.</p>"
+  },
+  {
+   "heading": "What comes after the first weekend",
+   "body_html": "<p>Brewer is not treating the launch as the finish. A 1.1.0 update was already planned for the week after launch, with earned stickers, subtle streaks for home-screen widgets, and in-app events \u2014 Halloween among them \u2014 with more planned beyond that. The roadmap reads less like feature creep than like the tape itself: small, dated, accumulating pleasures.</p><p>The story underneath is the oldest one in independent software: someone who spent years building for clients finally building for himself, and finding that the thing he wanted \u2014 an honest, unedited record of ordinary days \u2014 was the thing a lot of other people wanted too. The chart position was the validation. The product is the argument: that the best home movies were never the perfect ones.</p>"
+  }
+ ]
+}
