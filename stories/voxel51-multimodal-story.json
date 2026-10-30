@@ -1,0 +1,66 @@
+{
+ "slug": "voxel51-multimodal-story",
+ "product_name": "Voxel51 Multimodal",
+ "product_slug": "voxel51-multimodal",
+ "headline": "Data Eats Models for Lunch: How Brian Moore Built the Databricks of Physical AI",
+ "dek": "Brian Moore never planned to be a founder \u2014 he just wanted to know how things work. A government grant, a consultancy that kept tripping over bad data, and an open-source tool built to fix it turned into Voxel51: roughly $50M raised, a 100,000-person community, and a platform for the robots and cars whose models are only as good as their data.",
+ "founder": "Brian Moore",
+ "published": "2026-10-30",
+ "revenue": "",
+ "revenue_label": "",
+ "meta_description": "Brian Moore went from a Kansas engineering family and a Michigan PhD to co-founding Voxel51, the physical-AI data platform behind FiftyOne. This is how a NIST grant consultancy became a $50M-backed company betting that data quality, not models, decides who wins physical AI.",
+ "key_numbers": [
+  {
+   "value": "$50M",
+   "label": "Approximate total raised, including a Series B led by Bessemer"
+  },
+  {
+   "value": "5M+",
+   "label": "Downloads of the open-source FiftyOne toolkit, per the company"
+  },
+  {
+   "value": "100,000",
+   "label": "Members of the FiftyOne community, plus 11,000+ GitHub stars"
+  },
+  {
+   "value": "$12.5M",
+   "label": "Series A led by Drive Capital, announced September 2022"
+  }
+ ],
+ "playbook": [
+  {
+   "title": "Build the tool your own work is missing",
+   "detail": "Voxel51's platform began as internal tooling for a consultancy that spent its time wrangling, labeling and fixing data instead of building models."
+  },
+  {
+   "title": "Give the tool away, keep the community",
+   "detail": "Open-sourcing FiftyOne built a 100,000-person community that became the company's distribution, hiring pool and moat."
+  },
+  {
+   "title": "Build something 10 people love",
+   "detail": "Moore's rule against chasing a thousand one-time users: depth of love beats breadth of trials, especially for infrastructure."
+  },
+  {
+   "title": "Stay in your layer when the hype moves",
+   "detail": "When the ChatGPT moment pulled everyone into language models, Voxel51 stayed with visual and physical AI \u2014 the data layer it already owned."
+  }
+ ],
+ "sections": [
+  {
+   "heading": "The founder who never meant to found anything",
+   "body_html": "<p>Brian Moore wears a t-shirt that reads \u201cData eats models for lunch.\u201d It is a riposte to an AI moment obsessed with models and architectures, and it names what he calls one of the field's dirty secrets: the hardest problem in artificial intelligence is not the model, it is the data underneath it. The co-founder and CEO of Voxel51 has spent most of the past decade insisting on exactly that \u2014 and he insists, with some amusement, that he never intended or even considered becoming an entrepreneur at all.</p><p>Moore grew up in small-town Kansas, in a family of engineers who mostly worked in aerospace and defense. The influence that stuck came from elsewhere: an uncle who was a physics professor, a man forever trying to get to how things work and why they work. Moore credits that uncle with nudging him toward graduate school \u2014 an influence, he admits, he has never told his uncle about. Curiosity carried him to the University of Michigan for a PhD in electrical engineering, which he is quick to clarify has little to do with circuits. \u201cI can't wire a house,\u201d he says. He studied machine learning and algorithm development, and through an adviser met Jason Corso, a robotics professor from the same department who would become his co-founder.</p><p>During his graduate years Moore interned at Google, helping build the recommender systems that pick what you watch next on YouTube, and spent nights watching DeepMind's AlphaGo beat the world's best Go player \u2014 a tangent he says probably taught him as much as any textbook. His doctorate was never a career calculation. \u201cAt no point did I ever say I really need to be the founder of a company,\u201d he says. \u201cI just want to know how things work.\u201d</p>"
+  },
+  {
+   "heading": "A grant, a consultancy, and the data problem hiding inside it",
+   "body_html": "<p>The legal entity that became Voxel51 was formed in 2017, but not to chase a market. It existed to pursue a government grant: a public-safety program routed through the National Institute of Standards and Technology, in which the company worked with the city of Baltimore on applying computer vision to its camera network to cut first-responder times. For roughly three years the grant functioned as a consultancy.</p><p>The work taught an unexpected lesson. Expecting to spend their time on model architectures, the team instead discovered they needed to wrangle, label and fix data. So they built software to do that for them \u2014 and then, to see where it could lead, released it as open source under the name FiftyOne. It found traction fast in automotive, defense, agriculture and retail, and the community around it grew to some 100,000 people, with more than 11,000 GitHub stars and, by the company's count, over 5 million downloads.</p><p>Only during the fundraising process did Moore realize there was actually a company to be built around FiftyOne. A $2 million seed check from Michigan's eLab Ventures followed in late 2019. \u201cThey had an unusual combination: the technical depth to architect something like FiftyOne and the customer obsession to know exactly what to build,\u201d eLab co-founder Doug Neal said. \u201cThat pairing is rare.\u201d Then came a $12.5 million Series A led by Columbus-based Drive Capital in September 2022, with Top Harvest, Shasta Ventures, eLab Ventures and ID Ventures participating \u2014 and later a Series B led by Bessemer, taking total funding to roughly $50 million.</p>"
+  },
+  {
+   "heading": "Swapping the CEO chair, and staying in the data layer",
+   "body_html": "<p>Moore started as CTO, with Corso as CEO. A few years in, their interests diverged \u2014 Corso toward the technology and the science, Moore toward the business, toward a new set of first principles about how things work. Shortly after the Series A they swapped titles, without drama: Moore became CEO, Corso chief science officer. It does not happen often, and Moore frames it as a natural split of curiosity rather than a power struggle.</p><p>One piece of advice stuck with him from an investor at Bessemer, who told him about asking a successful founder what he wished someone had told him at the start \u2014 what might have spared the stress, the late nights, the pivots. The answer was nothing. \u201cIf anybody told me how hard it was going to be, I never would have even tried,\u201d Moore recounts, and it clearly resonates: \u201cSo don't tell me anything. Just get in there.\u201d</p><p>His other conviction is about where to sit in the stack. Infrastructure, he argues, is durable in a way the application layer is not: once you are the system of record for an enterprise's data, you are hard to rip out, and an open-source core only deepens that. \u201cThere's no incentive to replace something that's open source,\u201d he says. \u201cThe code's already available. Just build on top of it.\u201d When the ChatGPT moment arrived and many companies piled into large language models, Voxel51 stayed with visual AI \u2014 what is now called physical AI, the systems in cars, robots and agricultural machines that take in images, video and sensor data and act in the real world. His ambition, in his words, is to build \u201cthe Databricks of physical AI.\u201d</p>"
+  },
+  {
+   "heading": "Why data quality is the competitive edge",
+   "body_html": "<p>Moore demonstrates the stakes with a self-driving car approaching someone's grandparents, crossing the street in low light at a crowded intersection. Whether the system handles that rare moment, he says, is \u201cthe difference between a product that's ready and beloved by millions\u201d and \u201csomething that's on the front page of the New York Times for all the wrong reasons.\u201d Data quality, in his phrase, is both the competitive advantage of the winners in physical AI and one of its most challenging problems.</p><p>That is what the October 2026 launch of Voxel51 3.0 is for. The platform now brings the full data loop \u2014 search, curation, annotation and evaluation of multimodal data \u2014 into one place, with persistent multimodal search, time-series support for MCAP recordings and Hugging Face LeRobot datasets, synchronized playback across cameras, LiDAR and telemetry, and Voxel51 Agent, which chains the loop into repeatable workflows using 45+ MCP tools. Agentic Labeling uses vision-language models to generate labels from plain-language instructions. The pitch to teams is concrete: stop wasting training runs on bad data, and find what your model is missing before it finds you.</p><p>Moore runs the company from Columbus, Ohio \u2014 \u201cenemy territory,\u201d he jokes, as a Kansas-born Michigan graduate \u2014 after Drive Capital's investment pulled the team there for its talent network. The company went fully remote during the pandemic and has stayed that way; its 55 people are scattered across the Bay Area, New York, Austin and Columbus, pulled together at off-sites twice a year. Asked whether location matters, he is almost indifferent: remote work lets him hire the best talent regardless of geography, and his investors never pushed him to move to a coast. The logic is the same as the product thesis. \u201cOur company is nothing but the quality of the people that are at it, and the mission that we're focused on.\u201d For a founder who never planned to found anything, that is the whole story: follow how things work, build the missing tool, and let the community \u2014 100,000 strong and counting \u2014 do the rest.</p>"
+  }
+ ]
+}
