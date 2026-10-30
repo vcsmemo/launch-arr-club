@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Eats Models for Lunch: How Brian Moore Built the Databricks of Physical AI — MilestoneWins</title>
+<meta name="description" content="Brian Moore went from a Kansas engineering family and a Michigan PhD to co-founding Voxel51, the physical-AI data platform behind FiftyOne. This is how a NIST grant consultancy became a $50M-backed company betting that data quality, not models, decides who wins physical AI.">
+<link rel="canonical" href="https://milestonewins.com/stories/voxel51-multimodal-story/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261014d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Data Eats Models for Lunch: How Brian Moore Built the Databricks of Physical AI", "description": "Brian Moore went from a Kansas engineering family and a Michigan PhD to co-founding Voxel51, the physical-AI data platform behind FiftyOne. This is how a NIST grant consultancy became a $50M-backed company betting that data quality, not models, decides who wins physical AI.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-10-30", "about": {"@type": "Organization", "name": "Voxel51 Multimodal"}}</script>
+
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.seo-steps{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:1rem}
+.seo-steps li{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65}
+.seo-steps li b{color:#0f172a}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/stories/">Stories</a> <span>&rsaquo;</span> <strong>Voxel51 Multimodal</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">✨ Founder story</span>
+    <h1>Data Eats Models for Lunch: How Brian Moore Built the Databricks of Physical AI</h1>
+    <p class="lede">Brian Moore never planned to be a founder — he just wanted to know how things work. A government grant, a consultancy that kept tripping over bad data, and an open-source tool built to fix it turned into Voxel51: roughly $50M raised, a 100,000-person community, and a platform for the robots and cars whose models are only as good as their data.</p>
+    <div class="story-byline">By Brian Moore · 2026-10-30 · <a href="/launches/voxel51-multimodal/">View on MilestoneWins →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$50M</b><span>Approximate total raised, including a Series B led by Bessemer</span></div>
+    <div class="ms-stat"><b>5M+</b><span>Downloads of the open-source FiftyOne toolkit, per the company</span></div>
+    <div class="ms-stat"><b>100,000</b><span>Members of the FiftyOne community, plus 11,000+ GitHub stars</span></div>
+    <div class="ms-stat"><b>$12.5M</b><span>Series A led by Drive Capital, announced September 2022</span></div>
+  </div>
+  <div class="story-body">
+  <h2>The founder who never meant to found anything</h2>
+  <p>Brian Moore wears a t-shirt that reads “Data eats models for lunch.” It is a riposte to an AI moment obsessed with models and architectures, and it names what he calls one of the field's dirty secrets: the hardest problem in artificial intelligence is not the model, it is the data underneath it. The co-founder and CEO of Voxel51 has spent most of the past decade insisting on exactly that — and he insists, with some amusement, that he never intended or even considered becoming an entrepreneur at all.</p><p>Moore grew up in small-town Kansas, in a family of engineers who mostly worked in aerospace and defense. The influence that stuck came from elsewhere: an uncle who was a physics professor, a man forever trying to get to how things work and why they work. Moore credits that uncle with nudging him toward graduate school — an influence, he admits, he has never told his uncle about. Curiosity carried him to the University of Michigan for a PhD in electrical engineering, which he is quick to clarify has little to do with circuits. “I can't wire a house,” he says. He studied machine learning and algorithm development, and through an adviser met Jason Corso, a robotics professor from the same department who would become his co-founder.</p><p>During his graduate years Moore interned at Google, helping build the recommender systems that pick what you watch next on YouTube, and spent nights watching DeepMind's AlphaGo beat the world's best Go player — a tangent he says probably taught him as much as any textbook. His doctorate was never a career calculation. “At no point did I ever say I really need to be the founder of a company,” he says. “I just want to know how things work.”</p>
+  <h2>A grant, a consultancy, and the data problem hiding inside it</h2>
+  <p>The legal entity that became Voxel51 was formed in 2017, but not to chase a market. It existed to pursue a government grant: a public-safety program routed through the National Institute of Standards and Technology, in which the company worked with the city of Baltimore on applying computer vision to its camera network to cut first-responder times. For roughly three years the grant functioned as a consultancy.</p><p>The work taught an unexpected lesson. Expecting to spend their time on model architectures, the team instead discovered they needed to wrangle, label and fix data. So they built software to do that for them — and then, to see where it could lead, released it as open source under the name FiftyOne. It found traction fast in automotive, defense, agriculture and retail, and the community around it grew to some 100,000 people, with more than 11,000 GitHub stars and, by the company's count, over 5 million downloads.</p><p>Only during the fundraising process did Moore realize there was actually a company to be built around FiftyOne. A $2 million seed check from Michigan's eLab Ventures followed in late 2019. “They had an unusual combination: the technical depth to architect something like FiftyOne and the customer obsession to know exactly what to build,” eLab co-founder Doug Neal said. “That pairing is rare.” Then came a $12.5 million Series A led by Columbus-based Drive Capital in September 2022, with Top Harvest, Shasta Ventures, eLab Ventures and ID Ventures participating — and later a Series B led by Bessemer, taking total funding to roughly $50 million.</p>
+  <h2>Swapping the CEO chair, and staying in the data layer</h2>
+  <p>Moore started as CTO, with Corso as CEO. A few years in, their interests diverged — Corso toward the technology and the science, Moore toward the business, toward a new set of first principles about how things work. Shortly after the Series A they swapped titles, without drama: Moore became CEO, Corso chief science officer. It does not happen often, and Moore frames it as a natural split of curiosity rather than a power struggle.</p><p>One piece of advice stuck with him from an investor at Bessemer, who told him about asking a successful founder what he wished someone had told him at the start — what might have spared the stress, the late nights, the pivots. The answer was nothing. “If anybody told me how hard it was going to be, I never would have even tried,” Moore recounts, and it clearly resonates: “So don't tell me anything. Just get in there.”</p><p>His other conviction is about where to sit in the stack. Infrastructure, he argues, is durable in a way the application layer is not: once you are the system of record for an enterprise's data, you are hard to rip out, and an open-source core only deepens that. “There's no incentive to replace something that's open source,” he says. “The code's already available. Just build on top of it.” When the ChatGPT moment arrived and many companies piled into large language models, Voxel51 stayed with visual AI — what is now called physical AI, the systems in cars, robots and agricultural machines that take in images, video and sensor data and act in the real world. His ambition, in his words, is to build “the Databricks of physical AI.”</p>
+  <h2>Why data quality is the competitive edge</h2>
+  <p>Moore demonstrates the stakes with a self-driving car approaching someone's grandparents, crossing the street in low light at a crowded intersection. Whether the system handles that rare moment, he says, is “the difference between a product that's ready and beloved by millions” and “something that's on the front page of the New York Times for all the wrong reasons.” Data quality, in his phrase, is both the competitive advantage of the winners in physical AI and one of its most challenging problems.</p><p>That is what the October 2026 launch of Voxel51 3.0 is for. The platform now brings the full data loop — search, curation, annotation and evaluation of multimodal data — into one place, with persistent multimodal search, time-series support for MCAP recordings and Hugging Face LeRobot datasets, synchronized playback across cameras, LiDAR and telemetry, and Voxel51 Agent, which chains the loop into repeatable workflows using 45+ MCP tools. Agentic Labeling uses vision-language models to generate labels from plain-language instructions. The pitch to teams is concrete: stop wasting training runs on bad data, and find what your model is missing before it finds you.</p><p>Moore runs the company from Columbus, Ohio — “enemy territory,” he jokes, as a Kansas-born Michigan graduate — after Drive Capital's investment pulled the team there for its talent network. The company went fully remote during the pandemic and has stayed that way; its 55 people are scattered across the Bay Area, New York, Austin and Columbus, pulled together at off-sites twice a year. Asked whether location matters, he is almost indifferent: remote work lets him hire the best talent regardless of geography, and his investors never pushed him to move to a coast. The logic is the same as the product thesis. “Our company is nothing but the quality of the people that are at it, and the mission that we're focused on.” For a founder who never planned to found anything, that is the whole story: follow how things work, build the missing tool, and let the community — 100,000 strong and counting — do the rest.</p>
+  <h2>The playbook</h2>
+  <ol class="seo-steps">
+      <li><b>Build the tool your own work is missing</b> — Voxel51&#x27;s platform began as internal tooling for a consultancy that spent its time wrangling, labeling and fixing data instead of building models.</li>
+      <li><b>Give the tool away, keep the community</b> — Open-sourcing FiftyOne built a 100,000-person community that became the company&#x27;s distribution, hiring pool and moat.</li>
+      <li><b>Build something 10 people love</b> — Moore&#x27;s rule against chasing a thousand one-time users: depth of love beats breadth of trials, especially for infrastructure.</li>
+      <li><b>Stay in your layer when the hype moves</b> — When the ChatGPT moment pulled everyone into language models, Voxel51 stayed with visual and physical AI — the data layer it already owned.</li>
+  </ol>
+  </div>
+  <div class="seo-cta" style="margin-top:2.5rem">
+    <a class="btn" href="/submit.html">🚀 Share your milestone</a>
+    <a class="btn ghost" href="/launches/voxel51-multimodal/">View Voxel51 Multimodal →</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 MilestoneWins</span>
+    <span><a href="/">Home</a> · <a href="/stories/">Stories</a> · <a href="/submit.html">Submit</a></span>
+  </div>
+</footer>
+<script src="/auth.js"></script>
+</body>
+</html>
