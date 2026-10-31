@@ -1,0 +1,67 @@
+{
+ "dek": "Furqan Rydhan helped found AppLovin and co-founded thirdweb before building Nebula, an agent workspace. His team's latest project, fastbrowse, is an open-source browser agent that picks only from controls a page actually has \u2014 and cites every claim it makes.",
+ "founder": "Furqan Rydhan",
+ "founder_x": "FurqanR",
+ "headline": "After AppLovin and thirdweb, Building the Browser Layer AI Agents Can Be Trusted With",
+ "key_numbers": [
+  {
+   "label": "Scale of AppLovin, whose founding team included Furqan Rydhan",
+   "value": "$180B"
+  },
+  {
+   "label": "In fastbrowse's recorded demo: shopping a live store in about 4 minutes for $0.29 in model calls",
+   "value": "37 steps"
+  },
+  {
+   "label": "Free plan allowance of runs, no card required; paid plans from $29/month",
+   "value": "$2/mo"
+  },
+  {
+   "label": "Selectors to maintain \u2014 Jev picks only from controls the page actually has",
+   "value": "0"
+  }
+ ],
+ "meta_description": "From AppLovin's founding team to thirdweb to Nebula, Furqan Rydhan keeps building where agents do real work. fastbrowse, from his Agent Labs team, is an open-source browser agent that cites every answer and keeps spending under code control.",
+ "playbook": [
+  {
+   "detail": "From Nebula's shared agent workspace to fastbrowse's browser layer, Rydhan's projects aim at agents executing across tools teams already use \u2014 not chatbots that describe work.",
+   "title": "Agents should do real work, not demos"
+  },
+  {
+   "detail": "Every claim in a finished fastbrowse answer cites a verbatim quote from the page, with a link that scrolls to it \u2014 the answer can be checked, not just believed.",
+   "title": "Verifiability is the feature"
+  },
+  {
+   "detail": "Submit, pay, delete and send all stop until code allows them, and secrets are typed only on the origin they were declared for \u2014 autonomy with a leash.",
+   "title": "Code holds the keys"
+  },
+  {
+   "detail": "fastbrowse ships as a CLI, Python library, Node and Go SDKs, an MCP server and a coding-agent skill \u2014 infrastructure other builders can stand on.",
+   "title": "Build the layer, not just the app"
+  }
+ ],
+ "product_name": "fastbrowse",
+ "product_slug": "fastbrowse",
+ "published": "2026-10-31",
+ "revenue": "",
+ "revenue_label": "",
+ "sections": [
+  {
+   "body_html": "<p>Furqan Rydhan has a habit of being early to the platform shift. He was a founding team member of AppLovin, the mobile advertising company that grew into a business worth roughly $180 billion, and later co-founded thirdweb, the platform that tried to make building web3 apps as straightforward as building web apps. He also co-founded Founders Inc, the venture studio built around investing in itself and building things with people it likes. The throughline is not a single technology \u2014 it is a taste for infrastructure, the unglamorous layer other builders stand on.</p><p>His current chapter is agents. Nebula, his AI workspace, is a Slack-like surface where every channel holds an agent that can execute real work across the tools teams already use \u2014 creating and editing a Google Slides deck end to end, generating images, retrying on failure until the job lands, and turning one-off work into repeatable \u201crecipes\u201d with scheduled triggers. In a 2026 podcast walkthrough, Rydhan showed Nebula creating content on a schedule, and described it as a step toward the one-person business powered by agents. Coverage in October 2026 noted Nebula bringing outside agents \u2014 including Claude and Codex \u2014 into the same shared workspace, charging per seat while metering its own agents separately.</p>",
+   "heading": "A founder who keeps arriving early"
+  },
+  {
+   "body_html": "<p>Anyone who has watched an AI agent use a browser has seen the same failure mode: the agent confidently clicks something that is not there, fills a field that does not exist, or reports a price it never actually read. Browser automation built on hand-written selectors breaks the moment a site changes, and agents that guess at page structure hallucinate with confidence. The demo looks magical until it has to touch money, credentials or an irreversible action \u2014 and then nobody wants to let it.</p><p>fastbrowse, the open-source project from Rydhan's Agent Labs team, is built as the answer to that specific distrust. It does not start from a screenshot or a DOM dump. It indexes every button, link and field a page actually has, and its System One model, Jev, picks the next step from that list. It cannot click something that is not on the page, and there are no selectors to maintain. If it is unsure, it falls back to a standard approach rather than inventing an action. The design choice is philosophical as much as technical: an agent should only ever do what the page provably allows.</p>",
+   "heading": "The problem underneath the agent demo"
+  },
+  {
+   "body_html": "<p>Under the hood, the choice model is Jev, built by Typesafe, which picks from the indexed controls rather than free-generating actions \u2014 the mechanism that makes \u201ccannot click what is not on the page\u201d literally true instead of aspirational. And because the agent runs through a skill file that coding tools like Claude Code and Cursor can adopt, a developer can hand a browser task to the agent they already work with, rather than learning a new harness for every site.</p><p>The second half of fastbrowse's bet is verifiability. Every claim in a finished answer cites a verbatim quote from the page, with a link that scrolls to it, and passing a schema returns validated data rather than a plausible paragraph. In the project's recorded demo, fastbrowse shops a live store \u2014 adding a Raspberry Pi Pico 2 W and an in-stock sensor to a basket, filling in checkout without paying \u2014 in 37 steps, about four minutes, and $0.29 in model calls. The number matters because it is measured, not promised: a browser agent whose cost and behavior can be observed is one a team can actually budget for.</p><p>The third half is control. Credentials, irreversible actions and spending stay under code, not under the model. Submit, pay, delete and send all stop until you allow them. A secret is typed only on the origin it was declared for, and models only ever see its name. Step, time and dollar limits are enforced in code. It is the same instinct that runs through Nebula \u2014 agents doing real work \u2014 with the guardrails made explicit: autonomy, but with a leash held by software rather than hope.</p>",
+   "heading": "Answers you can check, spending you can bound"
+  },
+  {
+   "body_html": "<p>fastbrowse ships the way infrastructure ships: a CLI, a Python library, Node and Go SDKs that need no Python, an MCP server, and a skill for coding agents, under an MIT license. It runs against a managed cloud browser by default, or local Chrome, or any Chromium browser or Electron app already running. The free plan needs no card and carries $2 of runs a month; paid plans start at $29 a month, with per-run pricing that never drops below half a cent.</p><p>For Rydhan, it is a familiar move in a new market: after advertising infrastructure, after web3 developer infrastructure, and after an agent workspace, the browser itself becomes the layer. Agents are about to touch every website on earth. Someone has to build the part that makes sure they only click what is really there, cite what they really read, and stop before they spend what they should not. fastbrowse is Agent Labs' argument that the trustworthy browser agent \u2014 open, cited, and bounded by code \u2014 is the layer the whole agent economy will need.</p>",
+   "heading": "Infrastructure, again"
+  }
+ ],
+ "slug": "fastbrowse-story"
+}

@@ -1,0 +1,66 @@
+{
+ "dek": "Bieber was an early co-founder and CTO of the company behind AITable. When it drifted from its original vision, he walked away and rebuilt the idea from zero as Teable \u2014 real PostgreSQL tables, an AI database agent, and now a phone app. Paying teams have grown 2.8x since July.",
+ "founder": "Bieber",
+ "headline": "He Left the Company He Co-Founded, Then Spent Three Years Rebuilding It From Scratch",
+ "key_numbers": [
+  {
+   "label": "Spent rebuilding Teable from scratch with a new team after leaving AITable",
+   "value": "3 years"
+  },
+  {
+   "label": "Growth in paying teams since the Teable 3.0 launch in July 2026",
+   "value": "2.8x"
+  },
+  {
+   "label": "Apps built on Teable, per the team's Product Hunt mobile launch post",
+   "value": "14,000+"
+  },
+  {
+   "label": "Bieber spent building B2B tools before founding Teable",
+   "value": "8 years"
+  }
+ ],
+ "meta_description": "Teable founder Bieber left the company behind AITable, spent three years rebuilding it from scratch, and launched Teable Mobile after paying teams grew 2.8x. The story of a founder who chose a rebuild over a patch.",
+ "playbook": [
+  {
+   "detail": "When AITable drifted from its original vision and product decisions turned short-sighted, Bieber did not try to fix it from inside \u2014 he left and started over with a new team.",
+   "title": "Rebuild, don't patch"
+  },
+  {
+   "detail": "Every Teable table is a real, physical PostgreSQL table, not a wrapper \u2014 the architectural choice meant to avoid the performance walls teams hit when they take a tool seriously.",
+   "title": "Build on real foundations"
+  },
+  {
+   "detail": "Teable's model is built on long-term B2B retention, backed by investors who also backed Manus and HeyGen, rather than one-time deals.",
+   "title": "Retention over one-time sales"
+  },
+  {
+   "detail": "The team dropped its traditional fixed roadmap because the best ideas emerge during iteration \u2014 a stance that also produced the mobile launch.",
+   "title": "Iterate instead of roadmapping"
+  }
+ ],
+ "product_name": "Teable Mobile",
+ "product_slug": "teable-mobile",
+ "published": "2026-10-31",
+ "revenue": "",
+ "revenue_label": "",
+ "sections": [
+  {
+   "body_html": "<p>Most founders leave a company because it fails. Bieber left one because it succeeded at the wrong thing. He was an early co-founder and CTO of the company behind AITable, a spreadsheet-database tool with real traction. But over time, as he later explained in a public Q&amp;A, AITable drifted from its original vision. Product decisions became increasingly short-sighted, no longer grounded in long-term value. Watching a product you built stagnate, he wrote, was a painful thing to watch \u2014 and it eventually pushed him to start again.</p><p>The decision is rarer than it looks. Founders usually stay and fight for the roadmap, or leave quietly for something unrelated. Bieber did neither. He left, assembled a new team, and spent three years rebuilding the same idea from scratch, determined to leave every other product in the category behind. The result was Teable: an AI database agent that turns one prompt into live databases, apps, automations and insights, aimed at teams whose work lives in spreadsheets, documents and CRMs that never quite talk to each other.</p>",
+   "heading": "The product that drifted away from its own vision"
+  },
+  {
+   "body_html": "<p>The rebuild was not a re-skin. Teable's defining technical choice is that every table is a real, physical PostgreSQL table \u2014 not a wrapper around something else. That matters when a team starts taking a tool seriously: the database underneath has to scale with millions of rows, support relational integrity, and let users run SQL queries without leaving the interface. Bieber's argument, repeated across the team's public answers, is that this architecture is why Teable will not hit the performance walls that other tools hit once usage grows.</p><p>It also keeps the familiar surface teams already know. Teable offers grid, Kanban, calendar and gallery views over the same data, so a sales pipeline, a content calendar and an inventory table can all live in one system without forcing everyone into the same view. And because the AI layer can mix prebuilt models with self-hosted ones, a team with strict data-governance rules can keep sensitive processing inside its own infrastructure while still using outside models where it is safe.</p><p>Around that foundation sits the AI layer that gives Teable its current shape. The platform connects to data from Airtable, spreadsheets, files and other systems, migrates it into one place, and lets teams build what it calls 100% business-fit workflows and custom apps. It integrates multiple AI models \u2014 DeepSeek, OpenAI, Claude and self-hosted models \u2014 so teams can trigger AI actions directly inside their databases, from sentiment analysis to batch content generation, under their own data-governance rules. The pitch to a business user is simple: explain a process the way you would to a new hire, and Teable builds the database, the app and the automations, so the work stops living in your head.</p>",
+   "heading": "Three years, one architectural bet"
+  },
+  {
+   "body_html": "<p>Teable's business model is deliberately built on long-term B2B retention rather than one-time sales \u2014 a point the team stresses when users ask about sustainability. The company says it is backed by investors who supported well-known AI products like Manus and HeyGen, and frames that backing as runway and patience, not just money: the resources to keep building for the long term, and the alignment to do it without chasing short-term decisions. It is, in a sense, the anti-AITable strategy made explicit \u2014 the same mistake, designed out in advance.</p><p>The team also dropped its traditional fixed roadmap. As Bieber's team put it, the best ideas emerge during iteration and almost always beat what was planned. That philosophy shows up in how Teable ships: version 2.0 introduced the AI database agent, version 3.0 in July 2026 repositioned it as the AI spreadsheet for business with connect-and-migrate-anything, and the mobile launch follows the same pattern of shipping what users actually pull toward.</p>",
+   "heading": "Backed by patience, not just capital"
+  },
+  {
+   "body_html": "<p>Teable Mobile, launched on Product Hunt in late October 2026, is the rebuild meeting its users where the work happens. It is on the App Store for iPhone and iPad and on Google Play for Android, and its core interaction is voice: hold to talk, publish to your team, and get notified when the work is done. A manager on a factory floor, a founder between meetings, or a field team far from a desk can trigger the same database, app and automation that the office team uses, without waiting to get back to a laptop.</p><p>The timing is not accidental. Since the Teable 3.0 launch in July, Bieber reported on Product Hunt that paying teams have grown 2.8x, and that more than 14,000 apps have been built on Teable so far. Mobile is the move you make when the desktop product has proven it can hold a team's systems \u2014 you extend it to the moments when those systems are needed most urgently, which are rarely at a desk.</p><p>Teable is free for individuals, with Pro from $13 per seat per month. The larger story, though, is a founder who looked at a company he helped build, decided its direction was unfixable from inside, and spent three years proving he could build it right. Most second acts are a reaction to failure. Bieber's was a reaction to drift \u2014 and Teable Mobile is the latest evidence that the rebuild is outgrowing the original.</p>",
+   "heading": "The phone is the point"
+  }
+ ],
+ "slug": "teable-mobile-story"
+}

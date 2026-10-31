@@ -1,0 +1,66 @@
+{
+ "dek": "Julian Belting builds StepGrab alone from Germany: record a task once, get a numbered guide with annotated screenshots, and never create an account. The 1.6 release brought Windows support, real button names on the Mac, and a pricing model that still offers a one-time lifetime key.",
+ "founder": "Julian Belting",
+ "headline": "One Developer, Two Platforms, Zero Accounts: Documenting Work Without the Cloud",
+ "key_numbers": [
+  {
+   "label": "Steps per guide on Pro, up from 15 on the free plan",
+   "value": "500"
+  },
+  {
+   "label": "Platforms one Pro key unlocks: Mac and Windows, on two devices",
+   "value": "2"
+  },
+  {
+   "label": "One-time lifetime price, alongside $2.99/month and $12.99/year",
+   "value": "$44.99"
+  },
+  {
+   "label": "Accounts required \u2014 no sign-up, no sign-in, no user identifier of any kind",
+   "value": "0"
+  }
+ ],
+ "meta_description": "StepGrab founder Julian Belting built a privacy-first guide maker that records a task once and turns every click into an annotated step. Solo-built, offline-capable, no accounts \u2014 now on Mac and Windows.",
+ "playbook": [
+  {
+   "detail": "All screenshots, click data and guides are processed and stored locally on the user's own machine \u2014 the product's answer to documentation tools that upload your workflow to a server.",
+   "title": "Privacy is a feature, not a footnote"
+  },
+  {
+   "detail": "The 1.6 release \u2014 Windows support, real button names, single-window recording, burn-in redaction \u2014 came, in Julian's words, mostly from user feedback.",
+   "title": "Let feedback set the roadmap"
+  },
+  {
+   "detail": "A Pro license bought on the website unlocks Mac and Windows alike, and projects open on either \u2014 record on one, finish on the other.",
+   "title": "One key, both platforms"
+  },
+  {
+   "detail": "The free plan keeps unlimited recordings with up to 15 steps per guide, so the product earns its upgrade instead of begging for it.",
+   "title": "Free means usable, not a demo"
+  }
+ ],
+ "product_name": "StepGrab",
+ "product_slug": "stepgrab",
+ "published": "2026-10-31",
+ "revenue": "",
+ "revenue_label": "",
+ "sections": [
+  {
+   "body_html": "<p>Documenting a workflow is the kind of task everyone agrees is important and nobody wants to do. It means screenshots, cropping, arrows, and typing out every step \u2014 then redoing it all when the software changes. Support teams, trainers and operations leads write the same how-to more than once, and the guides go stale the moment an interface moves a button.</p><p>StepGrab exists to delete that chore. Hit record, do the task once, and every click comes back as an annotated screenshot assembled into a numbered step-by-step guide. It is built by Julian Belting, a solo developer based in Germany, for Mac and Windows \u2014 and it is built around a conviction that most documentation tools get backwards: your workflow should not have to leave your machine to be documented.</p>",
+   "heading": "The most boring problem in software, taken seriously"
+  },
+  {
+   "body_html": "<p>StepGrab's privacy stance is not a marketing line; it is the product's architecture. All screenshots, click data and generated guides are processed and stored locally on the user's Mac or PC. There are no user accounts at all \u2014 no sign-up, no sign-in, and, as the site puts it, no user identifier of any kind, so there is nothing to create and nothing to delete. Capture works offline, which matters for the internal tools, admin panels and client systems that guides most often describe and that teams least want uploaded anywhere.</p><p>That stance shapes the details, too. When you save a copy of a project, you can burn the blacked-out parts into the image, so whoever receives the file cannot simply remove the black bar. It is a small feature that tells you exactly who the product is for: people documenting real systems with real sensitive data in them, who need redaction to be permanent, not cosmetic.</p>",
+   "heading": "Privacy first, by architecture"
+  },
+  {
+   "body_html": "<p>StepGrab's October 2026 1.6 release reads like a changelog written by its users \u2014 because, in Julian's own account, most of what changed came from feedback. The headline change is Windows support: StepGrab is now in the Microsoft Store for Windows 10 and 11, and projects open on both platforms, so you can record on the Mac and finish the guide on a PC, or the other way round.</p><p>On the Mac, two changes show the same craft. First, a directly downloadable notarized .dmg version can ask the app what you clicked and get the real name of the button or menu item \u2014 so a step says \u201cClick Save\u201d instead of guessing from the screenshot. The Mac App Store version, limited by the sandbox, keeps using text recognition. Second, recording a single window now captures only that window, even if something else is on top of it, while its menus and popovers still show up. A project is also now a single file, which makes guides easier to hand over.</p><p>Julian marked the release the way solo developers do: with discount codes up to 100% off the lifetime license, including just five fully free ones, for the license sold on his website rather than the App Store. It is a small gesture, but it fits the product's economics \u2014 a tool that would rather be bought once and kept than rented forever.</p>",
+   "heading": "Version 1.6: the release users asked for"
+  },
+  {
+   "body_html": "<p>Pro also covers the finishing touches that make a guide feel like yours rather than a screenshot dump: step text and captions in exports, guide language selection, AI-generated text on macOS 26 with Apple Intelligence, brand profiles, your own logo, and custom file names. Exports span PDF, MP4, HTML, Markdown and mobile formats, so the same recording can become a support article, a training video, or a file a new hire opens on their phone.</p><p>StepGrab's pricing is deliberately old-fashioned. The free plan includes unlimited recordings with up to 15 steps per guide, and GIF export is free. Pro raises the limit to 500 steps per guide and unlocks PDF, MP4, HTML, Markdown and mobile export, step text and captions in exports, guide language, AI text on macOS 26 with Apple Intelligence, brand profiles, your own logo and custom file names. It costs $2.99 a month, $12.99 a year, or $44.99 once \u2014 and one key from the website unlocks Pro on Mac and on Windows, on two devices.</p><p><p>Support, meanwhile, is as direct as the product: one developer answering users himself, in the same Product Hunt threads where the roadmap gets debated in public. That closeness is why a 1.6 changelog can read like a list of user requests \u2014 because it largely is.</p>That structure is the whole thesis in miniature. StepGrab does not want your data, does not want an account, and does not insist on a subscription. It wants to be the quiet utility that turns a task you did once into a guide your whole team can follow \u2014 built by one developer, iterated in public through Product Hunt updates, and priced so that the people who document other people's work can afford to keep using it. In a market full of documentation tools that moved to the cloud and started charging rent, that restraint is the differentiator.</p>",
+   "heading": "Priced like a tool, not a subscription trap"
+  }
+ ],
+ "slug": "stepgrab-story"
+}
