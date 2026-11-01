@@ -1,0 +1,66 @@
+{
+ "slug": "specsight-story",
+ "product_name": "Specsight",
+ "product_slug": "specsight",
+ "headline": "Solo in Poland, With a Team of AI Agents: Ola Pi\u0119tka's Bet on Product Observability",
+ "dek": "Ola Pi\u0119tka built Specsight alone after years of translating code into business language for non-technical colleagues. Launched in April 2026, it already has paying customers, a place in the Slush 100, and a pre-seed round in motion \u2014 and she runs the whole company with AI agents instead of employees.",
+ "founder": "Ola Pi\u0119tka",
+ "published": "2026-11-01",
+ "revenue": "",
+ "revenue_label": "",
+ "meta_description": "Ola Pi\u0119tka built Specsight solo after years of translating code into business language. MVP in April 2026, paying customers by summer, five deals closed \u2014 and a team of AI agents instead of employees.",
+ "key_numbers": [
+  {
+   "value": "April 2026",
+   "label": "Specsight's MVP was ready; sales began in June"
+  },
+  {
+   "value": "5 deals",
+   "label": "Closed since June, plus two new pilots"
+  },
+  {
+   "value": "\u20ac150/mo",
+   "label": "One flat price per organisation, up to 3 projects and 50 members"
+  },
+  {
+   "value": "3,000+",
+   "label": "VC firms screened by AI during her fundraising process"
+  }
+ ],
+ "sections": [
+  {
+   "heading": "Translating code into business language",
+   "body_html": "<p>Before founding Specsight, Ola Pi\u0119tka worked at legal and government technology startups. At each one, the same thing kept happening: non-technical colleagues came to her with questions about how the product worked or what had changed, and the answers were in the code. As she told Vestbee, she had to stop everything she was doing and basically translate code to business.</p><p>Then AI coding tools arrived, and the problem got worse instead of better. Software started shipping faster than anyone could explain it \u2014 and keeping up with changes became difficult even for engineers. The bottleneck moved: building was no longer the hard part, knowing what had actually been built was. Pi\u0119tka's answer was to automate the translation she had been doing by hand.</p><p>Specsight, which she launched in April 2026, connects to a GitHub or GitLab repository and analyses features, user flows and product behaviours, then tracks what changes with each release. If a product raises its file-upload limit from 10 MB to 100 MB, Specsight shows the change in user-facing terms rather than lines of code. It can also generate internal digests and release notes from the same understanding. Her argument is that code is a more accurate record of what was built than tickets or documentation, which may describe intentions rather than the finished product \u2014 which is why interpreting a complex, messy production codebase accurately is the whole game.</p>"
+  },
+  {
+   "heading": "From MVP to paying customers",
+   "body_html": "<p>The first MVP was ready in April 2026, and sales began in June. Pi\u0119tka had never sold anything before, and she says so plainly: she did not know how to find clients, how to talk about the product, or how to price it. So she did it the unglamorous way \u2014 hundreds of LinkedIn messages each week, events, and product demos.</p><p>Specsight targets B2B software companies with 20 to 200 employees in Europe and the US, especially teams shipping frequently with AI. Since June she has closed five deals and started two new pilots. Some early customers have cancelled, and what they told her changed the product: they still saw value in Specsight, but they did not want to log into yet another dashboard. As she puts it, people are drowning in tools \u2014 nobody wants one more login, one more tab, one more place to check.</p><p>That feedback reshaped delivery. Rather than relying on a standalone dashboard, Specsight now lets users access product information directly through AI tools like Claude, with email-based updates planned next. She is also moving toward a self-service sales model: some customers have already subscribed through the website after discovering Specsight on LinkedIn, without ever speaking to her, and connecting a repository takes about two minutes. The price is one flat \u20ac150 a month per organisation, covering up to three projects, 50 members and 200 releases a month, with custom pricing for larger teams.</p>"
+  },
+  {
+   "heading": "Myself, I, and my team of AI agents",
+   "body_html": "<p>Pi\u0119tka runs Specsight without employees. She likes to say it is herself and I, and her team of AI agents. She uses Claude, ChatGPT and occasionally Gemini, alongside small applications she builds herself, to automate work across development, marketing, sales and operations: one agent researches potential customers and qualifies leads, while others prepare outreach messages, meeting briefs and follow-ups. She has even automated parts of fundraising, using AI to screen more than 3,000 VC firms for potential investors.</p><p>But she draws the line where human interaction begins. Once a prospect replies to an outreach message, she takes over. AI reviews her sales call transcripts and suggests improvements, but she handles customer conversations and important decisions herself \u2014 she does not want people to talk to AI; people should talk to her. The reliance on technology extends to everyday habits: she uses voice dictation instead of typing so frequently that, as she puts it, her boyfriend makes fun of her for talking to her computer more than to him. And the AI team has not translated into shorter working hours. She is just doing work, for sure, and does not have time for relaxing.</p><p>She does not intend to stay alone indefinitely. She wants to hire a product engineer and someone to lead commercial operations, and she is seeking \u20ac850,000 in pre-seed funding from European and US investors to support those hires and develop Specsight further. The startup is in the Slush 100, and her own summary of the journey \u2014 first line of code in March, paying customers within four months \u2014 is the kind of line most founders would take years to earn.</p>"
+  },
+  {
+   "heading": "The control center ambition",
+   "body_html": "<p>Today, Pi\u0119tka says, Specsight is in an observability phase, focused on understanding what has changed in a product. The ambition is bigger: a control center for companies building software with AI, helping teams verify changes made by coding agents and assess their impact on the business. Monitoring and broader control capabilities remain on the roadmap.</p><p>Asked why GitHub or another developer platform could not build something similar, she points to the focus on business users and the difficulty of interpreting large, messy production codebases \u2014 a focus that may or may not become a durable advantage. Security is part of the same argument: Specsight uses read-only access, and code analysed through Anthropic's Claude API is deleted afterwards rather than stored. She is now working toward security standards such as SOC 2 or ISO certification, which she sees as important for attracting enterprise customers.</p><p>Her longer-term ambitions are stated without hedging: expanding to enterprise customers, raising another funding round, and eventually building a global unicorn as a solo founder. For now, Specsight is an early-stage business adjusting its approach in response to early customer feedback. The next test is whether non-technical teams find its updates valuable enough to keep paying for them \u2014 especially when delivered through tools they already use \u2014 and whether that value holds as customers' codebases grow.</p>"
+  }
+ ],
+ "playbook": [
+  {
+   "title": "Sell the translation, not the technology",
+   "detail": "Specsight's pitch is not code analysis; it is the end of asking engineers what changed. The buyer is the non-technical team drowning in releases, not the developer."
+  },
+  {
+   "title": "Let churn redesign the product",
+   "detail": "Customers who left still valued Specsight but refused another dashboard \u2014 so delivery moved into Claude and email, where users already live."
+  },
+  {
+   "title": "Automate everything except the conversation",
+   "detail": "Agents research leads, write outreach and screen 3,000 VCs \u2014 but the moment a prospect replies, a human takes over."
+  },
+  {
+   "title": "Build in public about the hard parts",
+   "detail": "From the first line of code in March to paying customers in four months, the timeline is the marketing \u2014 including the parts that did not work."
+  }
+ ]
+}
