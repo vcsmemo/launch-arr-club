@@ -1,0 +1,66 @@
+{
+ "slug": "agentmash-story",
+ "product_name": "agentmash",
+ "product_slug": "agentmash",
+ "headline": "Eighteen, All In: Alim Dauletbek's Bet That Coding Agents Need a Shared Room",
+ "dek": "Alim Dauletbek is 18, from Astana, and now full-time on agentmash \u2014 an open-source layer that stops teams' coding agents from overwriting each other's work. He launched it on stage at AI & Digital Bridge in October 2026 with three co-founders, and his next stop, he says, is San Francisco.",
+ "founder": "Alim Dauletbek",
+ "published": "2026-11-02",
+ "revenue": "",
+ "revenue_label": "",
+ "meta_description": "Alim Dauletbek, 18, from Astana, went all in on agentmash: an open-source multiplayer layer for teams' coding agents, launched on stage in October 2026 and now in closed beta.",
+ "key_numbers": [
+  {
+   "value": "18 years old",
+   "label": "Co-founder and CEO, from Astana, Kazakhstan"
+  },
+  {
+   "value": "3 co-founders",
+   "label": "The team behind agentmash, per the founder's site"
+  },
+  {
+   "value": "Closed beta",
+   "label": "Current status; early access by request on agentmash.dev"
+  },
+  {
+   "value": "Free for 2 devs",
+   "label": "Free tier; team plans paid, agents never counted"
+  }
+ ],
+ "sections": [
+  {
+   "heading": "Too many agents, one codebase",
+   "body_html": "<p>agentmash starts from a problem that only appeared once coding agents got good: a team can now have several agents editing the same codebase at once, and nothing tells them about each other. One agent rewrites a file another agent is mid-change on, and the result is the oldest failure mode in software \u2014 overwritten work \u2014 at machine speed.</p><p>The fix, as co-founder and CEO Alim Dauletbek pitches it, is one line of context. Before an agent edits a file another agent is working in, it gets told, in its own context, what is happening there. It adjusts and stays on its task. Around that shared context layer, agentmash adds the multiplayer surface teams already understand from Slack: switch between tasks running on different models, @mention a teammate, your own agent or a teammate's agent, and keep skills, chats and automations in sync. It connects Claude Code, Codex, Antigravity and open-source models, each on its own developer's login.</p>"
+  },
+  {
+   "heading": "Launched on a stage in Astana",
+   "body_html": "<p>Dauletbek is 18, from Astana, Kazakhstan, and describes himself as all in on agentmash: full-time on the startup, while also working two software-engineering jobs part-time and running an auditing studio. The product launched on stage at AI & Digital Bridge in Astana in October 2026, and his own site names the next stop plainly: San Francisco.</p><p>The staging matters because agentmash is not a solo demo. Dauletbek says he builds it with three co-founders, and that he pitches it, sells it, and still writes a lot of the code himself. The closed beta now running is the bridge between that stage launch and a public product: teams can request early access on agentmash.dev, and the free tier covers two developers, with agents themselves never counted against a seat.</p><p>What the team is selling, in practice, is less visible than a new model or a new agent: it is the absence of a specific failure. A teammate's agent renames a function while yours is still writing calls to it; a second agent refactors a file the first one has open. agentmash's shared context layer is supposed to catch those moments before they become broken builds, by giving each agent a line of context about what the others are changing. The @mentions extend the same idea to people: a developer can address a teammate's agent directly, the way they would address the teammate, and the skills, chats and automations the team relies on stay in sync instead of drifting across individual setups.</p>"
+  },
+  {
+   "heading": "A team that has shipped before",
+   "body_html": "<p>The wider team brings a track record that is unusual for its age. Damir Iskakov, agentmash's chief technology officer on Product Hunt, previously built Vetra AI, an AI secretary that turns messages, files and voice notes into tasks and meetings. That project won more than $200,000 in grants from Google, OpenAI and Cloudflare after its team came through the Startup Garage program, according to a Digital Business profile of Iskakov \u2014 grants in credits, not cash, spent on servers, tooling and integrations.</p><p>Dauletbek's own path runs through the same kind of scrappy shipping: he was chief technology officer of Jobee, a marketplace for teen gig work, and he still runs an auditing studio alongside his two part-time engineering jobs. None of that is agentmash revenue, and it should not be read as such \u2014 but it explains the bet. This is a team funding its shot with work, not waiting for permission.</p><p>Dauletbek's own record adds another data point. His LinkedIn profile records Jobee, the teen gig-work marketplace he built as chief technology officer, as raising an $8,000 pre-seed and being selected from more than 100 ventures in a Harvard entrepreneurship program for its market potential and execution. It is a small number by venture standards, and that is the point: this is a founder whose wins so far have come from programs, grants and shipped work rather than large cheques, and agentmash follows the same pattern \u2014 a stage launch, a closed beta, and a free tier designed to earn teams one by one.</p>"
+  },
+  {
+   "heading": "What closed beta has to prove",
+   "body_html": "<p>The question for agentmash is whether the shared context layer holds up on real teams, where agents run for hours and conflicts are subtle rather than obvious. The product's answer so far is deliberately boring in the best sense: no new workflow to learn, just agents that know what the other agents are doing, plus the familiar mentions, lobbies and synced skills that let humans steer them.</p><p>Open source is part of the pitch too. Teams can inspect the layer that sits between their agents and their code, and the model choice stays theirs \u2014 Claude Code, Codex, Cursor or an open model, on their own logins. If the bet pays off, the multiplayer room becomes as unremarkable as version control: infrastructure nobody thinks about, until the day two agents edit the same file and nothing breaks.</p><p>For now, the honest status is the one on the founder's own site: closed beta, early access on request. That framing is doing real work. It tells a team exactly what they are signing up for \u2014 an unfinished multiplayer layer, in exchange for a front-row seat \u2014 and it gives agentmash the thing every infrastructure product needs most before it can charge confidently: evidence from real codebases, with real agents, colliding in real time.</p>"
+  }
+ ],
+ "playbook": [
+  {
+   "title": "Solve the collision, not the agent",
+   "detail": "agentmash does not build another coding agent \u2014 it builds the context layer that keeps existing agents from overwriting each other."
+  },
+  {
+   "title": "Launch where your ecosystem is watching",
+   "detail": "A stage launch at AI & Digital Bridge in Astana put the product in front of Kazakhstan's startup scene first."
+  },
+  {
+   "title": "Keep the free tier genuinely free",
+   "detail": "Two developers free, with agents never counted as seats, lowers the trial cost for a team to almost zero."
+  },
+  {
+   "title": "Fund the bet with work",
+   "detail": "Two part-time engineering jobs and an auditing studio keep the founder full-time on agentmash without outside capital."
+  }
+ ]
+}

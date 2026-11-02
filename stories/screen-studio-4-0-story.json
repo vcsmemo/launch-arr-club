@@ -1,0 +1,70 @@
+{
+ "slug": "screen-studio-4-0-story",
+ "product_name": "Screen Studio 4.0",
+ "product_slug": "screen-studio-4-0",
+ "headline": "The Designer Who Filmed His Own Work: How Adam Pietrasiak Turned Pretty Screen Recordings Into 8,000 Customers",
+ "dek": "Adam Pietrasiak started building websites at 11 in Poland. In late 2022 he scratched his own itch \u2014 screen recordings that looked like Stripe's, without video-editing skills \u2014 and built Screen Studio in public on Twitter. Nine months later it had 8,000 customers, and version 4.0 now teaches a small AI model to upscale old recordings.",
+ "founder": "Adam Pietrasiak",
+ "published": "2026-11-02",
+ "revenue": "",
+ "revenue_label": "",
+ "meta_description": "Adam Pietrasiak built Screen Studio in public on Twitter after wondering why his screen recordings never looked like Stripe's. 8,000 customers in 9 months, bootstrapped \u2014 and now a Mac-specific AI upscaler in version 4.0.",
+ "key_numbers": [
+  {
+   "value": "8,000 customers",
+   "label": "Reached in the first 9 months, per Starter Story"
+  },
+  {
+   "value": "$30K/mo",
+   "label": "Average revenue reported by Starter Story in 2024"
+  },
+  {
+   "value": "$17K+",
+   "label": "Affiliate sales in March 2023 alone, on 50,000+ clicks"
+  },
+  {
+   "value": "5,000 screenshots",
+   "label": "Synthetic macOS screenshots used to train the 4.0 upscaler"
+  }
+ ],
+ "sections": [
+  {
+   "heading": "Stripe made him jealous",
+   "body_html": "<p>Adam Pietrasiak is a self-taught coder and design enthusiast from Poland who built his first website at age 11 and spent years working in startups before building his own product. The idea for Screen Studio came from a specific frustration: the polished screen recordings shared by companies like Stripe looked nothing like what an ordinary recorder produced, and getting close took real video-editing skill. He wondered how much of that process could be automated without losing the aesthetic.</p><p>Past failed ventures had taught him to be realistic about scope. Instead of extensive market research, he trusted his intuition, built a quick proof of concept, and shared his progress on social media to test the waters. The product he sketched was narrow on purpose: record your screen, and get a video that already looks designed \u2014 smooth cursor movement, automatic zoom on clicks, cinematic motion blur, a beautiful background \u2014 with no timeline to wrestle.</p>"
+  },
+  {
+   "heading": "Building in public, one tweet at a time",
+   "body_html": "<p>Screen Studio was built in Electron, the framework that let Pietrasiak lean on the JavaScript, TypeScript and React skills he had used for most of his career. The first prototype took a few months, constrained by his savings, which forced a fast rhythm: design directly in code, ship, gather feedback, repeat. He posted daily updates on Twitter, even when the metrics were low, treating the thread as a public notebook rather than a marketing channel.</p><p>The break came the way build-in-public breaks usually do: a well-known CEO liked one of his tweets, it picked up around 1,000 likes, and the first sales followed. Then a tweet showing what the product could do went properly viral, and the loop that still powers Screen Studio kicked in \u2014 users shared videos made with it, viewers asked how those videos were made, and the answer was the product itself. Every exported video became both a demonstration and an advertisement.</p>"
+  },
+  {
+   "heading": "The product sells itself \u2014 literally",
+   "body_html": "<p>That loop made an affiliate program an obvious next step. Users who were already recommending Screen Studio could earn from it, and in March 2023 alone affiliates generated over $17,000 in sales on more than 50,000 clicks, with creators like Thomas Frank among them. Word of mouth did the heavy lifting, but Pietrasiak has been open about the risk inside that success: marketing that depends on one person's Twitter account is fragile, and diversifying into SEO and content became the corrective lesson.</p><p>The other lesson was about perfectionism. Pietrasiak describes himself as a perfectionist, and Screen Studio's polish is the product \u2014 but shipping an imperfect version early and iterating on real feedback beat waiting for a perfect one. The balance he struck, embracing imperfection where it was permissible, is visible in the product's history: a tool that feels considered, built by someone who learned to let users tell him what mattered.</p><p>The earliest version of that loop was even simpler. In an Indie Hackers post about the first ten customers, Pietrasiak described launching after just a few days of building, picking up three sales from people who simply wanted to support the work, and then seeing a few new customers arrive daily as the public thread kept going. The product started in October 2022, and the same post later recorded the milestone the Starter Story headline celebrates: more than 8,000 customers. The channel that made those first sales possible eventually became the constraint \u2014 when one person's account is the marketing department, every quiet week is a business risk \u2014 which is why the affiliate program and the later push into search and content mattered as much as any feature.</p>"
+  },
+  {
+   "heading": "Bootstrapped on purpose",
+   "body_html": "<p>Screen Studio was bootstrapped deliberately. On the Make Lemonade podcast, Pietrasiak talked about making $30,000 in his first month, and about why he was not planning to take venture funding: staying independent kept creative freedom and let growth follow his own values rather than investor timelines. Starter Story later put the business at an average of $30,000 a month, with 8,000 customers reached within nine months of launch \u2014 a profitable, B2B and B2C business started at the end of 2022.</p><p>The trade was a pricing model that kept evolving. What began as a one-time license moved to subscription in autumn 2025, and today new customers pay $29 a month or $108 a year. Existing lifetime holders were grandfathered, but the direction is clear: Screen Studio is now a subscription product, and version 4.0 is the argument for staying subscribed.</p>"
+  },
+  {
+   "heading": "Version 4.0: teaching a model to see like a Mac",
+   "body_html": "<p>For version 4.0, Pietrasiak described on X a deliberately narrow machine-learning project: a bot generated random SwiftUI apps, captured their screens, reduced the images' resolution, and used the pairs to train an upscaler specialised in macOS interfaces. The result sharpens older or low-resolution recordings by up to 6.5x while preserving interface detail, and it runs locally on the Mac, so recordings never leave the machine.</p><p>It is a fitting next chapter for a product whose whole thesis is that a recording should look designed without a designer in the loop. Screen Studio began by automating the editing decisions \u2014 zoom here, smooth that, blur this \u2014 and 4.0 automates one more: rescuing the recordings you made before you knew how good they could look.</p>"
+  }
+ ],
+ "playbook": [
+  {
+   "title": "Build in public before you have an audience",
+   "detail": "Daily Twitter updates with low early metrics still compounded \u2014 a single liked tweet by a well-known CEO turned into the first sales."
+  },
+  {
+   "title": "Let the output advertise the tool",
+   "detail": "Every video users shared prompted the same question \u2014 how was that made? \u2014 creating a self-reinforcing marketing loop."
+  },
+  {
+   "title": "Turn recommenders into affiliates",
+   "detail": "The affiliate program converted organic word of mouth into $17,000+ of sales in one month, March 2023."
+  },
+  {
+   "title": "Bootstrap for freedom, not just frugality",
+   "detail": "No venture funding kept creative control with the founder, at the cost of a savings-constrained, ship-fast rhythm."
+  }
+ ]
+}
