@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agents Need Passports Too: How Scalekit&#x27;s Founders Turned Freshworks Auth Into an Agent Gateway — MilestoneWins</title>
+<meta name="description" content="Satya Devarakonda and Ravi Madabhushi scaled auth for 50,000 businesses at Freshworks, raised a $5.5M seed for agent identity, and then launched AgentKit — one MCP gateway giving agents 30,000+ tools across 600+ apps, with per-user auth and full audit logs.">
+<link rel="canonical" href="https://milestonewins.com/stories/agentkit-by-scalekit-story/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261014d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Agents Need Passports Too: How Scalekit's Founders Turned Freshworks Auth Into an Agent Gateway", "description": "Satya Devarakonda and Ravi Madabhushi scaled auth for 50,000 businesses at Freshworks, raised a $5.5M seed for agent identity, and then launched AgentKit \u2014 one MCP gateway giving agents 30,000+ tools across 600+ apps, with per-user auth and full audit logs.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-11-04", "about": {"@type": "Organization", "name": "AgentKit by Scalekit"}}</script>
+
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.seo-steps{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:1rem}
+.seo-steps li{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65}
+.seo-steps li b{color:#0f172a}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/stories/">Stories</a> <span>&rsaquo;</span> <strong>AgentKit by Scalekit</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">✨ Founder story</span>
+    <h1>Agents Need Passports Too: How Scalekit&#x27;s Founders Turned Freshworks Auth Into an Agent Gateway</h1>
+    <p class="lede">Satya Devarakonda and Ravi Madabhushi spent years scaling authentication for 50,000 businesses at Freshworks. When agents started logging in instead of people, they saw the next identity problem coming — and built Scalekit, then AgentKit, to give every agent a scoped, auditable way to act.</p>
+    <div class="story-byline">By Satya Devarakonda · 2026-11-04 · <a href="/launches/agentkit-by-scalekit/">View on MilestoneWins →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$5.5M</b><span>Seed round, September 2025, led by Together Fund and Z47</span></div>
+    <div class="ms-stat"><b>50,000</b><span>Businesses whose auth the founders scaled at Freshworks</span></div>
+    <div class="ms-stat"><b>600+</b><span>Apps connected through the AgentKit MCP gateway</span></div>
+    <div class="ms-stat"><b>30,000+</b><span>Tools agents can call through one gateway</span></div>
+  </div>
+  <div class="story-body">
+  <h2>The login problem changed shape</h2>
+  <p>For two decades, software assumed a human would log in to use an application. Then AI agents started invoking business apps and APIs on behalf of users — or entirely on their own — and the identity systems underneath did not know what to do with them. An agent is not a person with a password, and it is not a bot to be blocked either. It is something new: a non-human user that needs to prove who it is, what it is allowed to do, and on whose behalf it is acting.</p><p>Satya Devarakonda and Ravi Madabhushi saw that shift coming earlier than most, because they had lived through the previous version of the problem. At Freshworks, they scaled authentication for 50,000 businesses. They watched what happens when identity infrastructure is treated as an afterthought: brittle, ad hoc solutions, shared credentials doing far more than any one person should, and no clean answer when someone asks who did what. Their conclusion, stated plainly at Scalekit's launch, was that business apps now need to let authenticated agents in — and decide exactly what data they can read or write.</p>
+  <h2>A $5.5M seed for agent identity</h2>
+  <p>On 16 September 2025, Scalekit launched an authentication stack purpose-built for agentic apps and announced a $5.5 million seed round led by Together Fund and Z47, with angel backing from Adam Frankl, Oliver Jay, Jagadeesh Kunda and others. The pitch was deliberately narrow: verify every agent's identity and enforce precise, least-privilege access through a single drop-in toolkit.</p><p>The timing argument came with a number to back it. Gartner predicted that by 2028, a quarter of enterprise breaches would be traced to compromised AI agents. Whether or not that forecast lands exactly, the direction was hard to argue with: agents were already generating short-lived sessions and touching hundreds of applications across a stack, in places where conventional identity systems — built around human directories and long-lived sessions — were ineffective. Girish Mathrubootham, founding partner at Together Fund, framed the bet as infrastructure for the next billion agent identities.</p><p>Scalekit's stack secured both sides of agentic flows: incoming authentication for MCP servers, and outgoing agent actions to third-party tools. Early teams using it as their auth service included Fello, Sifthub, Napkin, Unstract, Hubbl and Aerchain — AI-native applications and SaaS apps adding agentic features, where the question of who an agent is could no longer be deferred.</p>
+  <h2>From who the agent is to what it can do</h2>
+  <p>Identity was the first half of the problem. The second half is capability: once an agent is authenticated, how does it actually do useful work across the apps a team already uses, without a developer hand-wiring every integration and every permission? That is the gap AgentKit, launched on Product Hunt in November 2026, is built to close.</p><p>AgentKit gives agents 30,000-plus tools across more than 600 apps — from Salesforce to GitHub — through one MCP gateway. Instead of building and maintaining each integration, a developer connects once and hands agents a gateway. The crucial part is that the gateway inherits Scalekit's identity thinking: AgentKit handles auth and integrations so that every action runs as the user who asked, within the scopes they granted. An agent does not act with a god-mode API key. It acts as a specific user, with specific permissions, and the call is logged.</p><p>Virtual MCP Servers are the mechanism that makes least privilege practical rather than theoretical. Each agent gets only the tools its job needs. A support agent gets the ticketing tools; a sales agent gets the CRM tools; neither gets the other's. Internal APIs can be added as custom connectors, so the gateway covers the systems a company built itself as well as the SaaS apps it rents. And Triggers start an agent the moment an email lands, so agents can be event-driven rather than only chat-driven.</p>
+  <h2>Built for developers taking agents to production</h2>
+  <p>The phrase Scalekit keeps returning to is production. A demo agent can share one API key and nobody will notice. A production agent cannot: it touches real customer data, real money systems and real inboxes, and when it makes a mistake, someone needs to reconstruct exactly what happened. AgentKit's answer is that every call is logged and attributed — to the agent, to the user it acted for, and to the scope it held at the time.</p><p>That discipline is also the through-line from the founders' Freshworks years. Scaling auth for 50,000 businesses taught them that identity infrastructure is invisible until it fails, and that the failure modes are always the same: over-broad permissions, untraceable actions, and credentials that outlive their purpose. AgentKit applies the same lessons to a world where the user is code. Short-lived, scoped tokens instead of permanent keys. Per-user OAuth instead of shared secrets. Audit logs instead of guesswork.</p><p>AgentKit is free to start with 10,000 tool calls a month, which fits the way developers actually adopt infrastructure: try it on a real agent, watch the logs, and only pay when the agent earns its place in production. The story of Scalekit so far is not a growth chart. It is a sequence of two bets, both about the same idea: first, that agents would need identities; second, that once they had them, they would need a governed way to act. AgentKit is the second bet, shipped.</p>
+  <h2>The playbook</h2>
+  <ol class="seo-steps">
+      <li><b>Treat agents as users, not scripts</b> — If an agent acts on someone&#x27;s behalf, it needs an identity, a scope and an audit trail — the same machinery humans get, rebuilt for code that lives outside user directories.</li>
+      <li><b>Make the permission the product</b> — Virtual MCP Servers give each agent only the tools its job needs, so a compromised or confused agent cannot reach everything the user can.</li>
+      <li><b>Log every call</b> — Attribution is what turns a demo into production infrastructure: when something goes wrong, you can see exactly which agent did what, as whom.</li>
+  </ol>
+  </div>
+  <div class="seo-cta" style="margin-top:2.5rem">
+    <a class="btn" href="/submit.html">🚀 Share your milestone</a>
+    <a class="btn ghost" href="/launches/agentkit-by-scalekit/">View AgentKit by Scalekit →</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 MilestoneWins</span>
+    <span><a href="/">Home</a> · <a href="/stories/">Stories</a> · <a href="/submit.html">Submit</a></span>
+  </div>
+</footer>
+<script src="/auth.js"></script>
+</body>
+</html>
