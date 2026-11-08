@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Coding Agent Runs Hundreds of Commands You Never See. Sentient Watches Them All. — MilestoneWins</title>
+<meta name="description" content="The maker behind Nosaka spent months blindly approving his coding agent&#x27;s permission requests — then built Sentient, an open-source audit layer that captures every command at the kernel level with eBPF and flags the risky ones. No telemetry, Linux-only, free.">
+<link rel="canonical" href="https://milestonewins.com/stories/sentient-story/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261014d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Your Coding Agent Runs Hundreds of Commands You Never See. Sentient Watches Them All.", "description": "The maker behind Nosaka spent months blindly approving his coding agent's permission requests \u2014 then built Sentient, an open-source audit layer that captures every command at the kernel level with eBPF and flags the risky ones. No telemetry, Linux-only, free.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-11-08", "about": {"@type": "Organization", "name": "Sentient"}}</script>
+
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.seo-steps{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:1rem}
+.seo-steps li{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65}
+.seo-steps li b{color:#0f172a}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/stories/">Stories</a> <span>&rsaquo;</span> <strong>Sentient</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">✨ Founder story</span>
+    <h1>Your Coding Agent Runs Hundreds of Commands You Never See. Sentient Watches Them All.</h1>
+    <p class="lede">After months of blindly approving his coding agent&#x27;s permission requests, the maker behind Nosaka built Sentient — an open-source audit layer that watches every shell command, file change and network call from the kernel, so the chat summary is never the only record of what happened.</p>
+    <div class="story-byline">By Nosaka · 2026-11-08 · <a href="/launches/sentient/">View on MilestoneWins →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>5,400</b><span>Shell commands across 19 sessions in the maker&#x27;s own agent history</span></div>
+    <div class="ms-stat"><b>132</b><span>Median command length, in characters</span></div>
+    <div class="ms-stat"><b>10,000+</b><span>Longest single command, in characters</span></div>
+    <div class="ms-stat"><b>678</b><span>Commands that modified files</span></div>
+  </div>
+  <div class="story-body">
+  <h2>The approval you didn&#x27;t really give</h2>
+  <p>After working rigorously with Claude Code for a few months, the developer behind Sentient caught himself doing something he knew was reckless: blindly approving permission requests for the sake of progressing his projects. Each approval felt small. Underneath, his coding agent was generating hundreds of commands he never saw — necessary, but, as he put it, quite scary. The news had already carried the warnings: agents deleting databases or production environments by accident. So he built something to gain visibility into what was actually happening, and potentially block things before they occur.</p><p>The failure mode he named is blind approval. You ask Claude Code to refactor a module. It requests permission. You click yes. Underneath, it runs 47 commands, deletes three files outside your repo, and modifies your shell config. The chat shows none of this. The approval model collapses when you cannot see what you are approving — and the summary the agent shows you is, in the words of a deep-dive published on DEV.to the day Sentient launched, a lie of omission.</p><p>Sentient is the audit layer he built in response: open-source software that captures every action a coding agent takes — file changes, shell commands, network connections — so you can reconstruct exactly what happened, and when. It runs on Linux, and it is free.</p>
+  <h2>What the chat hides</h2>
+  <p>The product page makes the problem concrete with a single real command from the maker's own history. A coding agent ran a sed invocation against dashboard-14.html that deleted lines 357–362, inserted a block of HTML, deleted lines 348–351, and injected CSS. The agent's chat summary: “Updated dashboard styling.” The audit trail shows which lines were removed and what was inserted — the difference between a summary and a record.</p><p>Then come the numbers from that same history, which the site publishes as its evidence: 5,400 shell commands across 19 sessions, a median command length of 132 characters, a longest command of more than 10,000 characters, and around 678 commands that modified files. Most of those commands were invisible in the chat. The point of publishing them is not to shock; it is to size the gap between what developers approve and what actually runs.</p><p>That gap is the whole product. Coding agents operate through shell commands and file edits that never surface in the chat interface — file mutations via sed, awk or direct writes, process spawns for linters and test runners, network calls to registries and APIs, source-control operations including force pushes. Sentient exists because none of that is visible where the approval happens.</p>
+  <h2>Ground truth from the kernel</h2>
+  <p>Sentient's answer is to observe from a boundary the agent cannot reach: the kernel. It runs as a separate process with elevated privileges while the agent runs as a regular user, so the agent cannot disable or tamper with the audit trail. Capture uses eBPF hooks via Tetragon — the runtime-security observability tool from the Cilium project — which collects file, process and network events without requiring kernel modules.</p><p>The pipeline has three stages. Capture gathers the kernel events. Correlation joins them with the agent's session logs — prompts, reasoning, tool calls — by timestamp and process tree, so a command can be traced back to the request that produced it. Flagging classifies operations by risk with deterministic rules: high for sudo, edits outside the repo, rm -rf and force pushes; medium for file deletions, network calls and shell-config edits; low for read-only operations, in-repo edits and test runs. No LLM interprets intent. The dashboard runs locally — sen serve — and no telemetry leaves the machine.</p><p>The design choice that matters most is the second one. Using a model to judge another model's intent would recreate the problem one level up. Rules do not guess: if the command touches /etc or runs sudo, it is high risk; if it deletes a file, it is medium risk; if it reads a file, it is low risk. The classification is boring on purpose.</p>
+  <h2>What it won&#x27;t do — and why that is the point</h2>
+  <p>Sentient is unusually honest about what it does not do, and the honesty is part of the story. It does not block commands — it records and classifies them. It does not catch agent reasoning errors: if the agent misunderstands a prompt, the audit trail shows what it did, not why it was wrong. If you ask the agent to delete your database, Sentient will log it but not stop it. If the agent uses a custom syscall or runs in a VM, the eBPF hooks may miss events; background processes with delayed execution may not map cleanly to session logs.</p><p>The tool assumes the agent is well-intentioned but opaque. It does not defend against adversarial agents or prompt-injection attacks. And the Linux-only constraint is a hard limit: installation needs root privileges for the eBPF hooks, access to the agent's session logs, and a local web server for the dashboard. If your agents run on macOS or Windows, or in ephemeral containers, you need a different approach. If you want real-time blocking, you need a policy engine, not an audit log.</p><p>That is the technical verdict the launch-day writeup reaches, and it is the right frame: Sentient solves the observability gap for coding agents. It does not solve the trust gap. If you blindly approve agent requests, you will still blindly approve them — but you will have a forensic record of what happened.</p>
+  <h2>The record he wished he had</h2>
+  <p>The maker behind Nosaka builds under a handle, not a byline — the project lives at nosaka.ai, the code at github.com/nosaka4i/sentient — but the work speaks in the same plain register as the product: a developer who kept clicking yes, measured what he was actually approving, and built the record he wished he had. The best fit is concrete: agents running on production machines or repos with sensitive data, teams that need a compliance audit trail, developers debugging an agent that did something unexpected and needing to reconstruct the command sequence, and anyone who approves requests in bulk and wants retroactive visibility.</p><p>Sentient launched on Hacker News on 7 November 2026, the same day a detailed technical breakdown of its architecture appeared on DEV.to. The reception, in both places, circled the same point the maker started from: agents can lie in their summaries. The kernel cannot.</p>
+  <h2>The playbook</h2>
+  <ol class="seo-steps">
+      <li><b>Audit at the boundary the agent cannot touch</b> — The agent runs as a normal user; Sentient runs as root, observing from the kernel boundary through eBPF hooks. The thing being watched cannot switch off the watcher.</li>
+      <li><b>Never let an AI audit an AI</b> — Risk is classified by deterministic rules — sudo, edits outside the repo, rm -rf — never by another model guessing intent. It sidesteps the recursion problem of using an AI to audit an AI.</li>
+      <li><b>Record, don&#x27;t block — and say so</b> — Sentient records and classifies; it does not block. Real-time intervention is a policy engine, a different product — and pretending otherwise would oversell the tool.</li>
+      <li><b>Ship your own numbers, not a warning</b> — The pitch is not an abstract warning but the maker&#x27;s own session data: 5,400 commands, a 10,000-character one-liner, 678 file modifications, most of them invisible in the chat.</li>
+      <li><b>Publish the gaps with the features</b> — The docs publish the failure modes plainly: no blocking, no defense against adversarial agents, Linux-only. For a trust product, the gaps are part of the pitch.</li>
+  </ol>
+  </div>
+  <div class="seo-cta" style="margin-top:2.5rem">
+    <a class="btn" href="/submit.html">🚀 Share your milestone</a>
+    <a class="btn ghost" href="/launches/sentient/">View Sentient →</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 MilestoneWins</span>
+    <span><a href="/">Home</a> · <a href="/stories/">Stories</a> · <a href="/submit.html">Submit</a></span>
+  </div>
+</footer>
+<script src="/auth.js"></script>
+</body>
+</html>
