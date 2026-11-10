@@ -786,19 +786,6 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others, isSsr) {
   rep('<a class="btn dark" href="https://vibe3d.ai" target="_blank" rel="noopener">Visit &#8599;</a>',
       '<a class="btn dark" href="' + esc(website) + '" target="_blank" rel="' + visitRel + '">Visit &#8599;</a>');
 
-  // --- revenue hero ---
-  if (hasRevenue) {
-    rep('<div class="rh-value">$10k <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>',
-        '<div class="rh-value">' + esc(revShort) + ' <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>');
-    rep('<span class="rh-sub">MRR · Founder-reported · <a href="https://instalker.org/erione_" target="_blank" rel="noopener">source ↗</a></span>',
-        '<span class="rh-sub">' + esc(metric) + ' · Founder-reported · <a href="' + esc(website) + '" target="_blank" rel="noopener">source ↗</a></span>');
-  } else {
-    rep('<div class="rh-value">$10k <span class="verified-badge" id="verifiedBadge" hidden>✓ Verified</span></div>',
-        '<div class="rh-value rh-empty">Not disclosed</div>');
-    rep('<span class="rh-sub">MRR · Founder-reported · <a href="https://instalker.org/erione_" target="_blank" rel="noopener">source ↗</a></span>',
-        '<span class="rh-sub">Revenue not shared yet</span>');
-  }
-
   // --- celebrate card ---
   rep('<div class="celebrate-card" id="celebrateCard" data-slug="vibe3d" data-name="Vibe3D" data-revenue="$10k" data-metric="MRR" data-logo="/logos/vibe3d.png" data-founder="Brijesh Patel">',
       '<div class="celebrate-card" id="celebrateCard" data-slug="' + esc(slug) + '" data-name="' + esc(name) + '" data-revenue="' + esc(revShort) + '" data-metric="' + esc(metric) + '" data-logo="' + esc(logo) + '" data-founder="' + esc(founder) + '">');
