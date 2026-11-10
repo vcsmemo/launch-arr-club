@@ -149,11 +149,14 @@ main { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
 .lb-startup strong { display: block; font-size: 0.92rem; }
 .lb-startup p { margin: 0; font-size: 0.76rem; color: var(--text-muted);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lb-startup > span { min-width: 0; }
 .lb-founder { font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lb-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.7rem; }
 .lb-sub { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
 @media (max-width: 640px) {
   .lb-row { grid-template-columns: 2rem minmax(0, 1fr) 6.5rem; padding: 0.75rem 0.8rem; gap: 0.5rem; }
+  .lb-submit-cta { flex-direction: column; align-items: flex-start; }
+  .lb-submit-cta a { align-self: stretch; text-align: center; }
   .lb-head { padding: 0.6rem 0.8rem; }
   .lb-head span:nth-child(3),
   .lb-row .lb-founder { display: none; }

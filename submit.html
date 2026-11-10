@@ -12,7 +12,7 @@
   gtag('config', 'G-H8J7S3S2GW');
 </script>
 <title>Launch your product — MilestoneWins</title>
-<meta name="description" content="Launch your product on MilestoneWins, get upvotes and backlinks. Free to launch.">
+<meta name="description" content="Launch your product on MilestoneWins, get visitors and backlinks. Free to launch.">
 <link rel="canonical" href="https://milestonewins.com/submit.html">
 <link rel="icon" type="image/png" href="/favicon-64.png">
 <link rel="stylesheet" href="/style.css?v=20261014d">
@@ -30,7 +30,7 @@
   <section class="hero">
     <span class="eyebrow">Go live the moment you're done</span>
     <h1>Launch your product</h1>
-    <p class="lede">Paste your website, we&rsquo;ll draft your launch page. Get upvotes, visitors and a backlink.</p>
+    <p class="lede">Paste your website, we&rsquo;ll draft your launch page. Get visitors and a backlink.</p>
   </section>
 
   <div class="wizard">
@@ -202,14 +202,6 @@
           </button>
         </div>
         <p class="plan-note">Badge and $5 launches: unlimited. Free nofollow: 2 per account, then $5 each.</p>
-
-        <div class="feat-strip">
-          <div class="feat-copy">
-            <strong>🚀 Featured Launch — $29 <span class="once">once</span></strong>
-            <span>Top of the homepage for 7 days</span>
-          </div>
-          <button type="button" class="btn" id="featBtn">Get featured</button>
-        </div>
 
         <!-- badge subflow -->
         <div class="badge-flow" id="badgeFlow">
@@ -725,12 +717,7 @@
       }).catch(function(){});
   }
 
-  /* Payments: $5 instant launch (live) + $29 featured (John to provide link) */
-  var FEATURED_URL = '';
-  document.getElementById('featBtn').addEventListener('click', function(){
-    if(FEATURED_URL){ window.open(FEATURED_URL, '_blank', 'noopener'); }
-    else { alert('Featured launches open soon — check back shortly.'); }
-  });
+  /* Payments: $5 instant launch (live) */
   document.getElementById('payBtn').addEventListener('click', function(){
     var btn = this;
     btn.disabled = true;

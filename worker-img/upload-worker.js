@@ -598,7 +598,7 @@ const CANVAS_SCRIPT_B = `
       ctx.fillText('#' + rank, W / 2, 268);
       ctx.shadowBlur = 0;
       ctx.fillStyle = 'rgba(255,255,255,0.65)'; ctx.font = '600 30px system-ui, -apple-system, "Segoe UI", sans-serif';
-      ctx.fillText('on MilestoneWins Revenue Leaderboard', W / 2, 322);
+      ctx.fillText('on MilestoneWins', W / 2, 322);
       // Product name + revenue
       var nm = name.length > 30 ? name.slice(0, 29) + '…' : name;
       ctx.fillStyle = '#ffffff'; ctx.font = '800 64px system-ui, -apple-system, "Segoe UI", sans-serif';
