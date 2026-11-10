@@ -139,17 +139,6 @@
           <div class="field"><label>Revenue proof <span class="hint">(optional — gets you a ✓ Verified badge)</span></label>
             <div class="proof-card">
               <div class="proof-opt">
-                <div class="proof-opt-head"><span class="proof-icon">⚡</span><div><b>Verify with Stripe</b><p>Instant — we read your MRR once, never store your key</p></div></div>
-                <div class="proof-opt-body">
-                  <input type="password" id="f-stripe-key" placeholder="rk_live_…" autocomplete="off">
-                  <button type="button" class="btn-small" id="btn-verify-stripe">Verify now</button>
-                </div>
-                <span class="verify-msg" id="stripeMsg"></span>
-                <p class="key-note">🔒 Create a restricted key at <a href="https://dashboard.stripe.com/apikeys" target="_blank" rel="noopener">Stripe Dashboard → API keys</a> with only <b>read</b> access to Subscriptions.</p>
-                <input type="hidden" id="f-stripe-verified">
-              </div>
-              <div class="proof-divider"><span>or</span></div>
-              <div class="proof-opt">
                 <div class="proof-opt-head"><span class="proof-icon">📤</span><div><b>Upload a screenshot</b><p>Stripe dashboard, bank statement — we verify manually</p></div></div>
                 <div class="proof-opt-body">
                   <input type="file" id="f-proof" accept="image/*">
@@ -159,7 +148,7 @@
               </div>
             </div>
           </div>
-          <p class="rev-note" id="revNote">Self-reported for now — labeled honestly on your page. <b>Verify with Stripe</b> for an instant free ✓ Verified badge, or upload a screenshot (Stripe dashboard, bank statement) for manual review. No revenue yet? Just hit Continue →</p>
+          <p class="rev-note" id="revNote">Self-reported for now — labeled honestly on your page. Upload a screenshot above for manual review and a ✓ Verified badge. No revenue yet? Just hit Continue →</p>
         </div>
         <details class="opt-details">
 <summary>How you got there <span class="hint">(optional)</span></summary>
@@ -507,36 +496,6 @@
   });
   /* Image uploads via Cloudflare Worker + R2 (dropzone: click or drag & drop) */
   var IMG_WORKER = 'https://launch-arr-club-img.johntian2015.workers.dev';
-  /* Revenue proof: Stripe verify (instant) or screenshot upload (manual review) */
-  document.getElementById('btn-verify-stripe').addEventListener('click', function(){
-    var key = document.getElementById('f-stripe-key').value.trim();
-    var msg = document.getElementById('stripeMsg');
-    if(!key){ msg.textContent = 'Paste your Stripe restricted key first.'; msg.className = 'verify-msg'; return; }
-    msg.textContent = 'Verifying with Stripe…'; msg.className = 'verify-msg';
-    fetch(IMG_WORKER + '/verify-stripe', {
-      method: 'POST', headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({stripe_key: key})
-    }).then(function(r){ return r.json(); }).then(function(j){
-      // Clear the key from the input immediately after use
-      document.getElementById('f-stripe-key').value = '';
-      if(j.verified){
-        document.getElementById('f-stripe-verified').value = JSON.stringify({mrr_cents: j.mrr_cents, mrr_display: j.mrr_display, at: new Date().toISOString()});
-        // Auto-fill the revenue fields with the verified number
-        document.getElementById('f-metric').value = 'MRR';
-        document.getElementById('f-amount').value = Math.round(j.mrr_cents / 100);
-        msg.textContent = '✓ Verified: ' + j.mrr_display + ' across ' + j.subscriptions + ' active subscriptions.';
-        msg.className = 'verify-msg ok';
-      } else {
-        document.getElementById('f-stripe-verified').value = '';
-        msg.textContent = j.error === 'invalid_key' ? '✗ That key didn\'t work — check it\'s a valid restricted key with Subscriptions read access.'
-          : '✗ Verification failed — try the screenshot upload instead.';
-        msg.className = 'verify-msg err';
-      }
-    }).catch(function(){
-      document.getElementById('f-stripe-key').value = '';
-      msg.textContent = '✗ Connection failed — try again or use screenshot upload.'; msg.className = 'verify-msg err';
-    });
-  });
   /* Revenue proof upload (for free Verified badge) */
   document.getElementById('f-proof').addEventListener('change', function(){
     var f = this.files[0], msg = document.getElementById('proofMsg');
@@ -694,7 +653,7 @@
     document.getElementById('f-name').value = '';
     document.getElementById('f-tagline').value = '';
     document.querySelector('.wiz-step[data-step="1"] h2').innerHTML = 'Step 2 · Your milestone <span class="step-opt">optional, but worth it</span>';
-    document.getElementById('revNote').textContent = 'Self-reported for now — labeled honestly on your page. ✓ Stripe-verified badges coming soon. No revenue yet? Just hit Continue →';
+    document.getElementById('revNote').textContent = 'Self-reported for now — labeled honestly on your page. Upload a screenshot above for manual review and a ✓ Verified badge. No revenue yet? Just hit Continue →';
     document.getElementById('step2Next').hidden = false;
     document.getElementById('updateSubmitBtn').hidden = true;
     document.getElementById('updateHint').hidden = true;
@@ -757,8 +716,7 @@
       revenue: {
         metric: document.getElementById('f-metric').value,
         amount: document.getElementById('f-amount').value.trim(),
-        proof_url: document.getElementById('f-proof-url').value.trim(),
-        stripe_verified: document.getElementById('f-stripe-verified').value.trim()
+        proof_url: document.getElementById('f-proof-url').value.trim()
       },
       growth: {
         first_user_source: document.getElementById('f-first-src').value,
