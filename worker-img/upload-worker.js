@@ -829,6 +829,19 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others, isSsr) {
     t = t.slice(0, si) + storyOpen + paras + '</div>' + t.slice(sClose);
   }
 
+  // --- teardown card: link to the teardown article when this product has one ---
+  // d.teardown is the teardown slug (true = same as product slug). The template
+  // carries an inert <!--TEARDOWN_CARD--> comment after the story card.
+  var teardownCard = '';
+  if (d.teardown) {
+    var tdSlug = (d.teardown === true) ? slug : String(d.teardown);
+    teardownCard = '<a href="/teardowns/' + esc(tdSlug) + '/" class="story-card wide" style="display:block; text-decoration:none; border-color:#0d9488; background:#f0fdfa;">'
+      + '<h4>\uD83D\uDD0D Teardown</h4>'
+      + '<p><b>How ' + esc(name) + ' makes money</b> \u2014 the problem, the price, the customers, and whether you could build it.</p>'
+      + '<p style="font-weight:700; color:#0d9488;">Read the teardown \u2192</p></a>';
+  }
+  rep('<!--TEARDOWN_CARD-->', teardownCard);
+
   // --- stat grid ---
   rep('<div class="stat-card"><span>Pricing</span><b>From $19/mo</b><small>Subscription plans</small></div>',
       '<div class="stat-card"><span>Pricing</span><b>' + esc(pricingParts.head) + '</b><small>' + esc(pricingParts.sub || 'Subscription plans') + '</small></div>');
