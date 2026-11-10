@@ -1410,6 +1410,16 @@ export default {
       if (!data.name || !data.url) {
         return json({ error: 'name and url required' }, 400);
       }
+      // Revenue required (2026-11-10 John: only list products that make money).
+      // Milestone updates (update_for) are exempt — they carry a new revenue
+      // figure for an already-listed product.
+      if (!data.update_for) {
+        const rev = revenueOf(data);
+        const revNum = rev ? parseFloat(String(rev.amount).replace(/[^0-9.]/g, '')) : NaN;
+        if (!rev || !(revNum > 0)) {
+          return json({ error: 'revenue_required' }, 400);
+        }
+      }
       // Free-plan quota: 2 free nofollow launches per Google account, then $5 each.
       // Badge and paid plans are unlimited / verified separately.
       // Milestone updates (update_for set) never consume quota.

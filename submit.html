@@ -120,7 +120,7 @@
 
       <!-- STEP 2 -->
       <section class="wiz-step card" data-step="1">
-        <h2>Step 2 · Your milestone <span class="step-opt">optional, but worth it</span></h2>
+        <h2>Step 2 · Your milestone <span class="step-opt">required — we only list products that make money</span></h2>
         <div class="rev-pitch">
           <p class="rev-pitch-title">🎉 <strong>Share your numbers → get celebrated.</strong></p>
           <ul class="rev-perks">
@@ -134,7 +134,7 @@
             <div class="field"><label>Metric</label>
               <select id="f-metric"><option>MRR</option><option>ARR</option><option>Annual run rate</option><option>Annual revenue</option></select>
             </div>
-            <div class="field"><label>Amount (USD)</label><input type="number" id="f-amount" min="0" placeholder="e.g. 12000"></div>
+            <div class="field"><label>Amount (USD) *</label><input type="number" id="f-amount" min="0" placeholder="e.g. 12000"></div>
           </div>
           <div class="field"><label>Revenue proof <span class="hint">(optional — gets you a ✓ Verified badge)</span></label>
             <div class="proof-card">
@@ -148,7 +148,7 @@
               </div>
             </div>
           </div>
-          <p class="rev-note" id="revNote">Self-reported for now — labeled honestly on your page. Upload a screenshot above for manual review and a ✓ Verified badge. No revenue yet? Just hit Continue →</p>
+          <p class="rev-note" id="revNote">Revenue is required — MilestoneWins only lists products that make money. Upload a screenshot above for manual review and a ✓ Verified badge.</p>
         </div>
         <details class="opt-details">
 <summary>How you got there <span class="hint">(optional)</span></summary>
@@ -292,6 +292,12 @@
         if(bad){ ok = false; }
       });
       if(!ok){ alert('Fill in the required fields.'); return false; }
+      return true;
+    }
+    if(n===1){
+      var amt = document.getElementById('f-amount');
+      if(!amt.value.trim() || Number(amt.value) <= 0){ amt.style.borderColor = 'var(--err)'; alert('Enter your revenue amount — MilestoneWins only lists products that make money.'); amt.focus(); return false; }
+      amt.style.borderColor = '';
       return true;
     }
     return true;
@@ -595,8 +601,8 @@
     document.getElementById('updateSummary').hidden = true;
     document.getElementById('f-name').value = '';
     document.getElementById('f-tagline').value = '';
-    document.querySelector('.wiz-step[data-step="1"] h2').innerHTML = 'Step 2 · Your milestone <span class="step-opt">optional, but worth it</span>';
-    document.getElementById('revNote').textContent = 'Self-reported for now — labeled honestly on your page. Upload a screenshot above for manual review and a ✓ Verified badge. No revenue yet? Just hit Continue →';
+    document.querySelector('.wiz-step[data-step="1"] h2').innerHTML = 'Step 2 · Your milestone <span class="step-opt">required — we only list products that make money</span>';
+    document.getElementById('revNote').textContent = 'Revenue is required — MilestoneWins only lists products that make money. Upload a screenshot above for manual review and a ✓ Verified badge.';
     document.getElementById('step2Next').hidden = false;
     document.getElementById('updateSubmitBtn').hidden = true;
     document.getElementById('updateHint').hidden = true;
