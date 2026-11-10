@@ -10,5 +10,3 @@ id = "e5599539ac3d4da686dab95b31e2af49"
 binding = "IMAGES"
 bucket_name = "launch-images"
 
-[triggers]
-crons = ["0 2 * * *"]

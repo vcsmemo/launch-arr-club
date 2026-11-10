@@ -57,8 +57,6 @@
   <url><loc>https://milestonewins.com/launches/gitbot/</loc><lastmod>2026-09-30</lastmod></url>
   <url><loc>https://milestonewins.com/launches/squint/</loc><lastmod>2026-09-30</lastmod></url>
   <url><loc>https://milestonewins.com/launches/getcta/</loc><lastmod>2026-09-30</lastmod></url>
-  <url><loc>https://milestonewins.com/dashboard/</loc><lastmod>2026-10-01</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://milestonewins.com/milestone/</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://milestonewins.com/launches/cometly/</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://milestonewins.com/launches/stack-influence/</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://milestonewins.com/launches/presswhizz/</loc><lastmod>2026-10-01</lastmod></url>
@@ -81,10 +79,6 @@
   <url><loc>https://milestonewins.com/launches/sleek/</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://milestonewins.com/launches/caldef/</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://milestonewins.com/launches/subscribr/</loc><lastmod>2026-10-05</lastmod></url>
-  <url>
-    <loc>https://milestonewins.com/leaderboard/</loc>
-    <changefreq>daily</changefreq>
-  </url>
   <url><loc>https://milestonewins.com/launches/jobboardly/</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://milestonewins.com/launches/symmetry/</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://milestonewins.com/launches/snag/</loc><lastmod>2026-10-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -96,6 +90,8 @@
   <url><loc>https://milestonewins.com/milestones/1m-arr/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://milestonewins.com/categories/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://milestonewins.com/stories/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://milestonewins.com/teardowns/</loc><lastmod>2026-11-10</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://milestonewins.com/teardowns/dapta/</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://milestonewins.com/categories/marketing/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://milestonewins.com/categories/dev-tools/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://milestonewins.com/categories/video/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>

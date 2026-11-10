@@ -180,11 +180,6 @@
           <p class="oauth-note">One last step — sign in to submit. We only see your name, email and profile photo. Everything you filled in is saved.</p>
           <p class="signed-in" id="signedInAs" hidden></p>
         </div>
-        <div class="field" id="weekPicker" hidden>
-          <label>Launch week</label>
-          <div class="chips" id="weekPicks"></div>
-          <p class="verify-msg" id="weekNote"></p>
-        </div>
         <div class="pick-grid" role="radiogroup" aria-label="Launch options">
           <button type="button" class="pick" role="radio" aria-checked="true" data-plan="badge">
             <span class="radio-dot"></span><span class="best">★ Best value</span>
@@ -325,56 +320,9 @@
       badgeFlow.hidden = plan !== 'badge';
       paidFlow.hidden = plan !== 'paid';
       freeFlow.hidden = plan !== 'free';
-      updateWeekNote();
     });
   });
 
-  // Phase 2: launch-week picker (current + next week, slots left per plan).
-  // If /board/weeks fails, the picker stays hidden and the worker defaults
-  // the submission to the current week.
-  var selectedWeek = '', boardWeeks = null;
-  var weekPicker = document.getElementById('weekPicker'),
-      weekPicks = document.getElementById('weekPicks'),
-      weekNote = document.getElementById('weekNote');
-  function planOf(){
-    var p = document.querySelector('.pick[aria-checked="true"]');
-    return p ? p.getAttribute('data-plan') : 'free';
-  }
-  function updateWeekNote(){
-    if(!boardWeeks || !selectedWeek || !weekNote) return;
-    var w = null;
-    for(var i = 0; i < boardWeeks.length; i++) if(boardWeeks[i].week === selectedWeek) w = boardWeeks[i];
-    if(!w) return;
-    var plan = planOf();
-    weekNote.textContent = plan === 'paid'
-      ? w.premium_left + ' Premium spots left this week (of 10).'
-      : w.free_left + ' free spots left this week (of 25).';
-    weekNote.className = 'verify-msg';
-  }
-  function renderWeekPicker(){
-    if(!boardWeeks || !boardWeeks.length){ weekPicker.hidden = true; return; }
-    weekPicker.hidden = false;
-    if(!selectedWeek) selectedWeek = boardWeeks[0].week;
-    weekPicks.innerHTML = '';
-    boardWeeks.forEach(function(w, i){
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'chip';
-      b.setAttribute('aria-pressed', String(w.week === selectedWeek));
-      b.textContent = (i === 0 ? 'This week · ' : 'Next week · ') + w.label + ' — ' + w.free_left + ' free, ' + w.premium_left + ' Premium left';
-      b.addEventListener('click', function(){
-        selectedWeek = w.week;
-        renderWeekPicker();
-      });
-      weekPicks.appendChild(b);
-    });
-    updateWeekNote();
-  }
-  function loadBoardWeeks(){
-    fetch(IMG_WORKER + '/board/weeks').then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
-      if(j && j.ok && j.weeks && j.weeks.length){ boardWeeks = j.weeks; renderWeekPicker(); }
-    }).catch(function(){ /* picker stays hidden; worker defaults to current week */ });
-  }
 
   // badge style + code
   var style = 'dark', tab = 'html';
@@ -444,9 +392,7 @@
       celebrate();
     }).catch(function(err){
       launchBtn.disabled = false;
-      if(err && err.week_full){
-        launchHint.textContent = 'This week is full — pick next week in the launch-week picker above and retry.';
-      } else if(err && err.relaunch){
+      if(err && err.relaunch){
         launchHint.textContent = 'This product launched ' + (err.launched || 'recently') + ' — relaunches open 28 days after launch.';
       } else {
         alert('Could not send your submission — check your connection and try again.');
@@ -479,9 +425,6 @@
       freeBtn.disabled = false;
       if(err && err.quota){
         freeHint.textContent = "You've used your 2 free launches — the next one is $5 (paid plan above).";
-        freeHint.className = 'verify-msg';
-      } else if(err && err.week_full){
-        freeHint.textContent = 'This week is full — pick next week in the launch-week picker above and retry.';
         freeHint.className = 'verify-msg';
       } else if(err && err.relaunch){
         freeHint.textContent = 'This product launched ' + (err.launched || 'recently') + ' — relaunches open 28 days after launch.';
@@ -696,7 +639,6 @@
       .map(function(s){ return s.trim(); }).filter(Boolean);
     return {
       update_for: updateFor ? updateFor.slug : '',
-      launch_week: (typeof selectedWeek !== 'undefined' && selectedWeek) ? selectedWeek : '',
       name: document.getElementById('f-name').value.trim(),
       url: document.getElementById('f-url').value.trim(),
       tagline: document.getElementById('f-tagline').value.trim(),
@@ -751,9 +693,8 @@
         return j;
       });
       // Error path: read the worker's error code so the UI can tell
-      // "week full" / "relaunch too soon" apart from quota / auth failures.
+      // "relaunch too soon" apart from quota / auth failures.
       return r.json().catch(function(){ return {}; }).then(function(j){
-        if(r.status === 402 && j.error === 'week_full') throw { week_full: true, week: j.week };
         if(r.status === 402) throw { quota: true };
         if(r.status === 401) throw { auth: true };
         if(r.status === 409 && j.error === 'relaunch_too_soon') throw { relaunch: true, launched: j.launched, name: j.name };
@@ -795,14 +736,9 @@
     }
     /* Strict mode: submission waits in pending_payment until Stripe webhook confirms $5 */
     postSubmission().then(function(j){ goStripe(j.pending_key); }).catch(function(err){
-      // Phase 2: if the submission was rejected (week full / relaunch too
-      // soon), do NOT open Stripe — there'd be no pending submission for
-      // the webhook to promote, and the $5 would buy nothing.
-      if(err && err.week_full){
-        btn.disabled = false;
-        alert('This week is full — pick next week in the launch-week picker above and retry.');
-        return;
-      }
+      // If the submission was rejected (relaunch too soon), do NOT open
+      // Stripe — there'd be no pending submission for the webhook to
+      // promote, and the $5 would buy nothing.
       if(err && err.relaunch){
         btn.disabled = false;
         alert('This product launched ' + (err.launched || 'recently') + ' — relaunches open 28 days after launch.');
@@ -927,7 +863,7 @@
   function clearAutosave(){ try { localStorage.removeItem(AUTOSAVE_KEY); } catch(e){} }
   document.addEventListener('input', function(){ clearTimeout(window.__asT); window.__asT = setTimeout(autoSave, 800); });
   function initAll(){
-    initGsi(); restoreSession(); autoRestore(); loadBoardWeeks();
+    initGsi(); restoreSession(); autoRestore();
     // URL param: ?update=<slug> -> auto-enter milestone update mode for claimed products
     try {
       var up = new URLSearchParams(location.search).get('update');
@@ -952,7 +888,7 @@
     <div class="celebrate-box">
       <div class="confetti" aria-hidden="true"></div>
       <div class="celebrate-emoji">🎉</div>
-      <h2>You're on the board!</h2>
+      <h2>You're in!</h2>
       <p class="celebrate-sub">Launching on MilestoneWins is a milestone in itself —<br>and we're celebrating it with you.</p>
       <div class="celebrate-steps">
         <div><b>1</b> We review every launch personally</div>

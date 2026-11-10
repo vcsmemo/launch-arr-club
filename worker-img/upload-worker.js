@@ -6,7 +6,6 @@
  *   GET  /review/list      token-gated: pending submissions with badge check results
  *   POST /review/approve   token-gated: {key} -> builds pages, commits to GitHub, publishes
  *   POST /review/reject    token-gated: {key} -> moves submission to reviewed/rejected/
- *   POST /claim-interest   {slug, email} -> saves founder claim intent to KV (claim:<slug>:<md5(email)>)
  * R2 binding required: IMAGES (bucket: launch-images)
  * Secrets required for review: REVIEW_TOKEN, GITHUB_TOKEN (repo contents read+write)
  */
@@ -233,51 +232,6 @@ function emailShell(title, bodyHtml) {
     + '</div>';
 }
 
-/* Compact MD5 (for claim-interest dedupe keys). Not for security use. */
-function md5(str) {
-  var s = unescape(encodeURIComponent(str));
-  var bytes = [];
-  for (var i = 0; i < s.length; i++) bytes.push(s.charCodeAt(i));
-  var bitLen = bytes.length * 8;
-  bytes.push(0x80);
-  while (bytes.length % 64 !== 56) bytes.push(0);
-  for (var i = 0; i < 4; i++) bytes.push((bitLen >>> (i * 8)) & 0xff);
-  for (var i = 0; i < 4; i++) bytes.push(0);
-  var sft = [7,12,17,22, 7,12,17,22, 7,12,17,22, 7,12,17,22,
-             5, 9,14,20, 5, 9,14,20, 5, 9,14,20, 5, 9,14,20,
-             4,11,16,23, 4,11,16,23, 4,11,16,23, 4,11,16,23,
-             6,10,15,21, 6,10,15,21, 6,10,15,21, 6,10,15,21];
-  var K = [];
-  for (var i = 0; i < 64; i++) K.push(Math.floor(Math.abs(Math.sin(i + 1)) * 4294967296));
-  var a0 = 0x67452301, b0 = 0xefcdab89, c0 = 0x98badcfe, d0 = 0x10325476;
-  for (var off = 0; off < bytes.length; off += 64) {
-    var M = [];
-    for (var j = 0; j < 16; j++)
-      M.push(bytes[off + j * 4] | (bytes[off + j * 4 + 1] << 8) | (bytes[off + j * 4 + 2] << 16) | (bytes[off + j * 4 + 3] << 24));
-    var A = a0, B = b0, C = c0, D = d0;
-    for (var i = 0; i < 64; i++) {
-      var F, g;
-      if (i < 16)      { F = (B & C) | (~B & D); g = i; }
-      else if (i < 32) { F = (D & B) | (~D & C); g = (5 * i + 1) % 16; }
-      else if (i < 48) { F = B ^ C ^ D; g = (3 * i + 5) % 16; }
-      else             { F = C ^ (B | ~D); g = (7 * i) % 16; }
-      F = F + A + K[i] + M[g];
-      A = D; D = C; C = B;
-      B = B + (((F << sft[i]) | (F >>> (32 - sft[i]))) | 0);
-    }
-    a0 = (a0 + A) | 0; b0 = (b0 + B) | 0; c0 = (c0 + C) | 0; d0 = (d0 + D) | 0;
-  }
-  function hexLE(n) {
-    var hex = '0123456789abcdef', s = '';
-    for (var i = 0; i < 4; i++) {
-      var b = (n >>> (i * 8)) & 0xff;
-      s += hex[(b >> 4) & 15] + hex[b & 15];
-    }
-    return s;
-  }
-  return hexLE(a0) + hexLE(b0) + hexLE(c0) + hexLE(d0);
-}
-
 /* ---------- review auth ---------- */
 function reviewAuthed(request, url, env) {
   if (!env.REVIEW_TOKEN) return false;
@@ -378,48 +332,6 @@ function weekArchivePath(now) {
   return d.getUTCFullYear() + '/w' + week + '/index.html';
 }
 
-/* ---- Phase 2 pure helpers (no env access; unit-tested via /tmp harness) ---- */
-/* ISO week parts for a date (Thursday rule, same math as weekArchivePath). */
-function isoWeekParts(date) {
-  var src = date instanceof Date ? date : new Date(date);
-  var d = new Date(Date.UTC(src.getUTCFullYear(), src.getUTCMonth(), src.getUTCDate()));
-  var dayNum = (d.getUTCDay() + 6) % 7;
-  d.setUTCDate(d.getUTCDate() - dayNum + 3);
-  var firstThu = new Date(Date.UTC(d.getUTCFullYear(), 0, 4));
-  var week = 1 + Math.round((d.getTime() - firstThu.getTime()) / (7 * 24 * 3600 * 1000));
-  return { year: d.getUTCFullYear(), week: week };
-}
-/* 'YYYY-Www', e.g. 2026-W46. */
-function weekId(date) {
-  var p = isoWeekParts(date);
-  return p.year + '-W' + String(p.week).padStart(2, '0');
-}
-/* {mon, sun} ISO dates (Mon–Sun UTC) for a week id, or null if malformed. */
-function weekRange(weekIdStr) {
-  var m = /^(\d{4})-W(\d{2})$/.exec(weekIdStr || '');
-  if (!m) return null;
-  var year = parseInt(m[1], 10), week = parseInt(m[2], 10);
-  var jan4 = new Date(Date.UTC(year, 0, 4));
-  var dayNum = (jan4.getUTCDay() + 6) % 7;
-  var mon = new Date(jan4.getTime() - dayNum * 86400000 + (week - 1) * 7 * 86400000);
-  var sun = new Date(mon.getTime() + 6 * 86400000);
-  function iso(d) { return d.toISOString().slice(0, 10); }
-  return { mon: iso(mon), sun: iso(sun) };
-}
-/* 'Nov 10 – Nov 16' style label for a week id. */
-function weekLabel(weekIdStr) {
-  var r = weekRange(weekIdStr);
-  if (!r) return weekIdStr;
-  function fmt(iso) {
-    var p = iso.split('-');
-    return MONTHS_SHORT[parseInt(p[1], 10) - 1] + ' ' + parseInt(p[2], 10);
-  }
-  return fmt(r.mon) + ' – ' + fmt(r.sun);
-}
-/* Slot-counter KV key. 'paid' -> premium pool; 'free'/'badge'/anything else -> free pool. */
-function boardCounterKey(week, plan) {
-  return 'board:' + week + ':' + (plan === 'paid' ? 'premium' : 'free');
-}
 /* Normalize a site URL for same-site comparison: strip protocol/www/trailing slash. */
 function normalizeSite(u) {
   return String(u || '').trim().toLowerCase()
@@ -430,7 +342,6 @@ function slugFromUrl(u) {
   var m = String(u || '').match(/\/launches\/([^\/]+)\/?/);
   return m ? m[1] : '';
 }
-/* ---- end Phase 2 pure helpers ---- */
 
 /* Cached launches.json fetch (60s TTL, module-level). Throws on fetch failure —
    callers must never fake entries when this throws. */
@@ -443,13 +354,6 @@ async function getLaunchesIndex() {
   const data = await r.json();
   LAUNCHES_CACHE = { at: now, data: Array.isArray(data) ? data : (data.launches || []) };
   return LAUNCHES_CACHE.data;
-}
-/* KV int counter read; 0 when KV is unbound, key missing, or value unparsable. */
-async function kvCount(env, key) {
-  try {
-    if (!env.STRIPE_KV) return 0;
-    return parseInt((await env.STRIPE_KV.get(key)) || '0', 10) || 0;
-  } catch (e) { return 0; }
 }
 
 function archiveCard(d, slug, launchNo) {
@@ -877,21 +781,10 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others, isSsr) {
       '<div class="d-title-row"><h1>' + esc(name) + '</h1><span class="launch-no">#' + noPad + '</span></div>');
   rep('<p class="d-tagline">3D Render AI for Architecture & Interior Design</p>',
       '<p class="d-tagline">' + esc(tagline) + '</p>');
-  // Free plan links are nofollow (pipeline hard rule) — unless the maker
-  // unlocked dofollow with >= 3 upvotes this week (Phase 2, SSR path only).
-  var visitRel = (d.plan === 'free' && !d._linkDofollow) ? 'noopener nofollow' : 'noopener';
-  // Phase 2 vote button (SSR live path only, current week only; the static
-  // GitHub fallback page never gets one — handleApprove calls this with
-  // isSsr unset).
-  var voteHtml = '';
-  if (isSsr && d.launch_week && d.launch_week === weekId(new Date())) {
-    voteHtml = ' <button type="button" class="vote-btn" data-vote data-slug="' + esc(slug)
-      + '" data-week="' + esc(d.launch_week) + '" data-website="' + esc(website)
-      + '" style="display:inline-flex;align-items:center;gap:6px;padding:0.55rem 1rem;border-radius:10px;border:1px solid #0d9488;background:#fff;color:#0f766e;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:inherit;">'
-      + '▲ Upvote <span class="vote-count"></span></button>';
-  }
+  // Free plan links are nofollow (pipeline hard rule); badge and paid plans get dofollow.
+  var visitRel = (d.plan === 'free') ? 'noopener nofollow' : 'noopener';
   rep('<a class="btn dark" href="https://vibe3d.ai" target="_blank" rel="noopener">Visit &#8599;</a>',
-      '<a class="btn dark" href="' + esc(website) + '" target="_blank" rel="' + visitRel + '">Visit &#8599;</a>' + voteHtml);
+      '<a class="btn dark" href="' + esc(website) + '" target="_blank" rel="' + visitRel + '">Visit &#8599;</a>');
 
   // --- revenue hero ---
   if (hasRevenue) {
@@ -949,10 +842,6 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others, isSsr) {
       '<div class="maker-avatar">' + founderInitial + '</div>');
   rep('<b class="maker-name">Brijesh Patel</b>',
       '<b class="maker-name">' + founderHtml + '</b>');
-  rep('<b class="maker-name">' + founderHtml + '</b>\n    </div>',
-      '<b class="maker-name">' + founderHtml + '</b>\n    </div>\n    <a class="maker-cta" href="/claim.html?product=' + esc(slug) + '&name=' + encodeURIComponent(name) + '">Claim this page &rarr;</a>');
-  rep('<b class="maker-name">' + founderHtml + '</b>\r\n    </div>',
-      '<b class="maker-name">' + founderHtml + '</b>\r\n    </div>\r\n    <a class="maker-cta" href="/claim.html?product=' + esc(slug) + '&name=' + encodeURIComponent(name) + '">Claim this page &rarr;</a>');
 
   // --- more-list (revenue proximity) ---
   var rows = (others || []).map(function (o) {
@@ -984,13 +873,6 @@ async function renderDetailFromTemplate(env, d, slug, launchNo, others, isSsr) {
   rep('var slug = "vibe3d";', 'var slug = "' + slug + '";');
   rep("var slug = 'vibe3d';", "var slug = '" + slug + "';");
 
-  // Phase 2: shared vote component (SSR live path only, when a vote button
-  // was injected above). vote.js brings its own Google sign-in.
-  if (voteHtml && t.indexOf('</body>') !== -1) {
-    t = t.replace('</body>',
-      '<script src="/vote.js" defer></script>\n'
-      + '<script src="https://accounts.google.com/gsi/client" async defer></script>\n</body>');
-  }
 
   return t;
 }
@@ -1075,30 +957,20 @@ async function handleApprove(request, env) {
         revenue: e.revenue || ''
       };
     });
-  // Phase 2: board fields carried from the submission (default: current week).
-  // maker_sub comes from quota_sub — set for free plans by the quota check,
-  // and best-effort for badge/paid when the submitter was signed in.
-  const launchWeek = (typeof d.launch_week === 'string' && /^\d{4}-W\d{2}$/.test(d.launch_week))
-    ? d.launch_week : weekId(new Date());
-  const makerSub = d.quota_sub || null;
   const plan = d.plan || 'free';
   // 1. detail page (current template)
   const detail = await renderDetailFromTemplate(env, d, slug, launchNo, others);
 
-  // Phase 2: write the R2 product JSON so the SSR detail path (which reads
-  // products/<slug>.json) is the live path for board products — this is what
-  // lets the per-request dofollow-unlock evaluation see launch_week / plan /
-  // maker_sub. NOTE: this deliberately strips a few fields from the spec's
-  // verbatim {...d, ...}: the worker's /img/ handler serves products/*.json
+  // Write the R2 product JSON so the SSR detail path (which reads
+  // products/<slug>.json) is the live path. NOTE: this deliberately strips
+  // a few fields: the worker's /img/ handler serves products/*.json
   // publicly, so founder_email, Stripe session/payment-intent ids and the
   // raw stripe_verified blob must not land in that object. The SSR renderer
   // never reads them; launches.json keeps the public fields.
   const productJson = Object.assign({}, d, {
     slug: slug,
     launch_no: parseInt(launchNo, 10),
-    launch_week: launchWeek,
     plan: plan,
-    maker_sub: makerSub || undefined,
   });
   delete productJson.founder_email;
   delete productJson.stripe_session;
@@ -1138,9 +1010,7 @@ async function handleApprove(request, env) {
     category: (d.categories && d.categories[0]) || 'Product',
     pricing: d.pricing || null,
     launched: today,
-    launch_week: launchWeek,
     plan: plan,
-    maker_sub: makerSub || undefined,
     relaunch: d.relaunch ? true : undefined,
     source: d.source || null,
     source_label: d.source_label || null,
@@ -1260,19 +1130,6 @@ async function handleReject(request, env) {
   const obj = await env.IMAGES.get(key);
   if (!obj) return json({ error: 'submission not found' }, 404);
   const raw = await obj.text();
-  // Phase 2: release the reserved board slot (floor 0). Submissions stored
-  // before Phase 2 have no launch_week and are skipped. Note: there is no
-  // needs-info -> reject path in the console (needs-info items live under
-  // reviewed/needs-info/ and cannot be rejected), so a parked submission's
-  // slot stays reserved — known v1 gap.
-  try {
-    const dd = JSON.parse(raw);
-    if (dd && typeof dd.launch_week === 'string' && /^\d{4}-W\d{2}$/.test(dd.launch_week) && env.STRIPE_KV) {
-      const ck = boardCounterKey(dd.launch_week, dd.plan || 'free');
-      const cur = await kvCount(env, ck);
-      if (cur > 0) await env.STRIPE_KV.put(ck, String(cur - 1));
-    }
-  } catch (e) {}
   const base = key.split('/').pop();
   await env.IMAGES.put('reviewed/rejected/' + base, raw, {
     httpMetadata: { contentType: 'application/json' },
@@ -1407,16 +1264,6 @@ export default {
           if (obj) {
             const product = JSON.parse(await obj.text());
             const launchNo = parseInt(product.launch_no, 10) || 0;
-            // Phase 2: dofollow unlock — a free-plan maker who gave >= 3
-            // upvotes to other products in the same launch week gets
-            // dofollow on their own Visit link for that week.
-            if (product.plan === 'free' && product.maker_sub && product.launch_week) {
-              try {
-                const votedRaw = await env.STRIPE_KV.get('voted:' + product.launch_week + ':' + product.maker_sub);
-                const voted = votedRaw ? JSON.parse(votedRaw) : [];
-                if (Array.isArray(voted) && voted.length >= 3) product._linkDofollow = true;
-              } catch (e) {}
-            }
             const html = await renderDetailFromTemplate(env, product, slug, launchNo, [], true);
             return new Response(html, {
               headers: {
@@ -1445,11 +1292,7 @@ export default {
 
     // ---- Analytics: track page views and outbound clicks ----
     // POST /track {type: 'view'|'click', slug: 'product-slug'}
-    // Phase 2: optional id_token — when present and type is 'click', the
-    // verified Google sub gets a 7-day visit proof (visit:<sub>:<slug>),
-    // which /vote requires. The anonymous path is untouched.
     if (request.method === 'POST' && url.pathname === '/track') {
-      let visitRecorded = false;
       try {
         const body = await request.json();
         const type = body.type;
@@ -1457,256 +1300,18 @@ export default {
         if ((type === 'view' || type === 'click') && slug) {
           await trackEvent(env, type, slug);
         }
-        if (type === 'click' && slug && body.id_token && env.STRIPE_KV) {
-          const sub = await googleSubFromToken(body.id_token);
-          if (sub) {
-            await env.STRIPE_KV.put('visit:' + sub + ':' + slug, '1', { expirationTtl: 7 * 24 * 3600 });
-            visitRecorded = true;
-          }
-        }
       } catch (e) {}
       const headers = cors(new Headers({ 'content-type': 'application/json' }));
-      return new Response(JSON.stringify({ ok: true, visit_recorded: visitRecorded }), { headers });
+      return new Response(JSON.stringify({ ok: true }), { headers });
     }
 
-    // GET /stats/:slug - get view/click counts (public, for founder dashboard)
+    // GET /stats/:slug - get view/click counts (public, shown on detail pages)
     if (request.method === 'GET' && url.pathname.startsWith('/stats/')) {
       const slug = url.pathname.slice(7).replace(/[^a-z0-9-]/g, '').slice(0, 50);
       const stats = await getStats(env, slug);
       return json(stats);
     }
 
-    // ---- Weekly board (Phase 2) ----
-    // GET /board/weeks -> {ok, weeks:[{week, label, mon, sun, free_left, premium_left}]}
-    if (request.method === 'GET' && url.pathname === '/board/weeks') {
-      const cur = weekId(new Date());
-      const nxt = weekId(new Date(Date.now() + 7 * 24 * 3600 * 1000));
-      const weeks = [];
-      for (const w of [cur, nxt]) {
-        const rg = weekRange(w);
-        const freeUsed = await kvCount(env, 'board:' + w + ':free');
-        const premUsed = await kvCount(env, 'board:' + w + ':premium');
-        weeks.push({
-          week: w, label: weekLabel(w), mon: rg.mon, sun: rg.sun,
-          free_left: Math.max(0, 25 - freeUsed),
-          premium_left: Math.max(0, 10 - premUsed),
-        });
-      }
-      return json({ ok: true, weeks: weeks });
-    }
-
-    // GET /board/<week> -> {ok, week, status:'live'|'ended', entries:[...]}
-    // Entries come from launches.json (filtered by launch_week) joined with
-    // KV vote counts. Never fakes entries: launches fetch failure -> error.
-    if (request.method === 'GET' && url.pathname.startsWith('/board/')) {
-      const week = url.pathname.slice(7).replace(/[^0-9W-]/g, '').slice(0, 8);
-      if (!/^\d{4}-W\d{2}$/.test(week)) return json({ error: 'bad week' }, 400);
-      let items;
-      try { items = await getLaunchesIndex(); }
-      catch (e) { return json({ ok: false, error: 'launches unavailable' }, 502); }
-      const status = (week === weekId(new Date())) ? 'live' : 'ended';
-      const entries = [];
-      for (const e of items) {
-        if (e.launch_week !== week) continue;
-        const slug = e.slug || slugFromUrl(e.url);
-        if (!slug) continue;
-        const votes = await kvCount(env, 'vote:' + week + ':' + slug);
-        let unlocked = false;
-        if (e.plan && e.plan !== 'free') unlocked = true;
-        else if (e.maker_sub) {
-          try {
-            const raw = await env.STRIPE_KV.get('voted:' + week + ':' + e.maker_sub);
-            const arr = raw ? JSON.parse(raw) : [];
-            if (Array.isArray(arr) && arr.length >= 3) unlocked = true;
-          } catch (err) {}
-        }
-        entries.push({
-          slug: slug, name: e.name, votes: votes,
-          plan: e.plan || 'free', highlighted: e.plan === 'paid',
-          dofollow_unlocked: unlocked,
-          launch_no: parseInt(e.launch_no, 10) || 0,
-        });
-      }
-      entries.sort(function (a, b) {
-        if (b.votes !== a.votes) return b.votes - a.votes;
-        return b.launch_no - a.launch_no;
-      });
-      const out = entries.map(function (e) {
-        return { slug: e.slug, name: e.name, votes: e.votes, plan: e.plan,
-                 highlighted: e.highlighted, dofollow_unlocked: e.dofollow_unlocked };
-      });
-      return json({ ok: true, week: week, status: status, entries: out });
-    }
-
-    // POST /vote {id_token, slug, week} -> {ok, votes, my_votes_this_week}
-    // 1 vote per account per product; no self-vote; visit proof required.
-    // Votes close Sunday 23:59 UTC (week must be the current week).
-    if (request.method === 'POST' && url.pathname === '/vote') {
-      let body;
-      try { body = await request.json(); }
-      catch (e) { return json({ error: 'invalid json' }, 400); }
-      const sub = await googleSubFromToken(body.id_token);
-      if (!sub) return json({ error: 'sign_in_required' }, 401);
-      const slug = String(body.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 50);
-      const week = String(body.week || '');
-      if (!slug || !/^\d{4}-W\d{2}$/.test(week)) return json({ error: 'bad slug or week' }, 400);
-      if (week !== weekId(new Date())) return json({ error: 'voting_closed' }, 403);
-      let items;
-      try { items = await getLaunchesIndex(); }
-      catch (e) { return json({ ok: false, error: 'launches unavailable' }, 502); }
-      let product = null;
-      for (const it of items) {
-        if ((it.slug || slugFromUrl(it.url)) === slug) { product = it; break; }
-      }
-      if (!product || product.launch_week !== week) return json({ error: 'not_found' }, 404);
-      if (product.maker_sub && product.maker_sub === sub) return json({ error: 'cannot_vote_own' }, 403);
-      const visit = env.STRIPE_KV ? await env.STRIPE_KV.get('visit:' + sub + ':' + slug) : null;
-      if (!visit) return json({ error: 'visit_required', message: 'open the product site first' }, 403);
-      let voted = [];
-      try {
-        const raw = await env.STRIPE_KV.get('voted:' + week + ':' + sub);
-        voted = raw ? JSON.parse(raw) : [];
-        if (!Array.isArray(voted)) voted = [];
-      } catch (e) { voted = []; }
-      const votes = await kvCount(env, 'vote:' + week + ':' + slug);
-      if (voted.indexOf(slug) !== -1) return json({ ok: true, duplicate: true, votes: votes });
-      await env.STRIPE_KV.put('vote:' + week + ':' + slug, String(votes + 1));
-      voted.push(slug);
-      await env.STRIPE_KV.put('voted:' + week + ':' + sub, JSON.stringify(voted));
-      return json({ ok: true, votes: votes + 1, my_votes_this_week: voted.length });
-    }
-
-    // GET /votes/mine?id_token=&week= -> {ok, voted:[slugs], upvotes_given, dofollow_unlocked}
-    if (request.method === 'GET' && url.pathname === '/votes/mine') {
-      const sub = await googleSubFromToken(url.searchParams.get('id_token'));
-      if (!sub) return json({ error: 'sign_in_required' }, 401);
-      const week = url.searchParams.get('week') || weekId(new Date());
-      if (!/^\d{4}-W\d{2}$/.test(week)) return json({ error: 'bad week' }, 400);
-      let voted = [];
-      try {
-        const raw = await env.STRIPE_KV.get('voted:' + week + ':' + sub);
-        voted = raw ? JSON.parse(raw) : [];
-        if (!Array.isArray(voted)) voted = [];
-      } catch (e) { voted = []; }
-      return json({ ok: true, voted: voted, upvotes_given: voted.length, dofollow_unlocked: voted.length >= 3 });
-    }
-
-    // ---- Stripe-verified MRR ----
-    // POST /stripe/connect {slug, stripe_key}
-    if (request.method === 'POST' && url.pathname === '/stripe/connect') {
-      return await handleStripeConnect(request, env);
-    }
-    // GET /stripe/mrr/:slug
-    if (request.method === 'GET' && url.pathname.startsWith('/stripe/mrr/')) {
-      const slug = url.pathname.slice(12).replace(/[^a-z0-9-]/g, '').slice(0, 50);
-      return await handleStripeMrr(slug, env);
-    }
-    // GET /stripe/milestones/:slug - milestone crossings, newest first
-    if (request.method === 'GET' && url.pathname.startsWith('/stripe/milestones/')) {
-      const slug = url.pathname.slice(19).replace(/[^a-z0-9-]/g, '').slice(0, 50);
-      return await handleStripeMilestones(slug, env);
-    }
-    // GET /stripe/refresh (cron or manual, token-gated)
-    if (request.method === 'GET' && url.pathname === '/stripe/refresh') {
-      if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
-      const result = await refreshAllStripeMrr(env);
-      return json(result);
-    }
-
-    // ---- Claim page ----
-    // POST /claim-interest {slug, name, email, x_handle} -> saves founder claim to KV + R2
-    // First 10 claimants get free Featured. Returns {ok:true, free_featured:boolean, claim_number:number}
-    if (request.method === 'POST' && url.pathname === '/claim-interest') {
-      let data;
-      try { data = await request.json(); }
-      catch (e) { return json({ error: 'invalid JSON' }, 400); }
-      const slug = String(data.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 50);
-      const name = String(data.name || '').trim().slice(0, 120);
-      const email = String(data.email || '').trim().toLowerCase().slice(0, 120);
-      const xHandle = String(data.x_handle || '').trim().replace(/^@/, '').slice(0, 50);
-      if (!slug) return json({ error: 'missing slug' }, 400);
-      if (!name) return json({ error: 'missing name' }, 400);
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'invalid email' }, 400);
-      if (!env.STRIPE_KV) return json({ error: 'KV not configured' }, 500);
-      const key = 'claim:' + slug + ':' + md5(email);
-      const existing = await env.STRIPE_KV.get(key);
-      if (existing) return json({ ok: true, duplicate: true });
-      // Count total claims for the free-featured offer (first 10)
-      const countKey = 'claim:count';
-      const count = (parseInt(await env.STRIPE_KV.get(countKey) || '0', 10) || 0) + 1;
-      await env.STRIPE_KV.put(countKey, String(count));
-      const freeFeatured = count <= 10;
-      const claim = {
-        slug: slug, name: name, email: email, x_handle: xHandle,
-        claim_number: count, free_featured: freeFeatured,
-        created_at: new Date().toISOString(), status: 'pending'
-      };
-      await env.STRIPE_KV.put(key, JSON.stringify(claim));
-      // Also save full record to R2 for review
-      const r2key = 'claims/' + new Date().toISOString().slice(0, 10) + '-' + slug + '-' + crypto.randomUUID().slice(0, 6) + '.json';
-      await env.IMAGES.put(r2key, JSON.stringify(claim), {
-        httpMetadata: { contentType: 'application/json' },
-      });
-      // Confirmation email to claimant
-      const productUrl = 'https://milestonewins.com/launches/' + slug + '/';
-      sendEmail(env, email,
-        freeFeatured ? 'Your page is claimed 🎉 + FREE Featured!' : 'Your claim is received 🎉',
-        emailShell(freeFeatured ? 'Your page is claimed 🎉' : 'Claim received 🎉',
-          '<p>Hi ' + esc(name) + ',</p>'
-          + '<p>Thanks for claiming <strong><a href="' + productUrl + '">' + esc(slug) + '</a></strong> on MilestoneWins.</p>'
-          + (freeFeatured
-            ? '<p>🎁 <strong>You\'re one of our first 10 founders — Featured placement is FREE for you</strong> (normally $19). We\'ll upgrade your page within 24 hours after a quick verification.</p>'
-            : '<p>We\'ll verify your claim within 24 hours. Want extra visibility? <a href="https://milestonewins.com/submit.html">Upgrade to Featured ($19)</a>.</p>')
-          + '<p>— The MilestoneWins team</p>'));
-      return json({ ok: true, free_featured: freeFeatured, claim_number: count });
-    }
-
-    // GET /claim-count -> returns {count, free_spots_left} for the claim page
-    if (request.method === 'GET' && url.pathname === '/claim-count') {
-      const count = parseInt(await env.STRIPE_KV.get('claim:count') || '0', 10) || 0;
-      return json({ ok: true, count: count, free_spots_left: Math.max(0, 10 - count) });
-    }
-
-    // POST /claim-approve (token-gated) {slug, email} -> approve claim, send founder welcome email
-    // Called by Amani after manual verification. Marks product claimed, sends links for
-    // milestone updates + info changes.
-    if (request.method === 'POST' && url.pathname === '/claim-approve') {      if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
-      let data;
-      try { data = await request.json(); }
-      catch (e) { return json({ error: 'invalid JSON' }, 400); }
-      const slug = String(data.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 50);
-      const email = String(data.email || '').trim().toLowerCase().slice(0, 120);
-      if (!slug || !email) return json({ error: 'slug and email required' }, 400);
-      const key = 'claim:' + slug + ':' + md5(email);
-      const raw = await env.STRIPE_KV.get(key);
-      if (!raw) return json({ error: 'claim not found' }, 404);
-      const claim = JSON.parse(raw);
-      claim.status = 'approved';
-      claim.approved_at = new Date().toISOString();
-      await env.STRIPE_KV.put(key, JSON.stringify(claim));
-      // Welcome email with action links
-      const productUrl = 'https://milestonewins.com/launches/' + slug + '/';
-      const updateUrl = 'https://milestonewins.com/submit.html?update=' + slug;
-      sendEmail(env, email,
-        'Your page is verified ✅ — here\'s what you can do now',
-        emailShell('You\'re verified ✅',
-          '<p>Hi ' + esc(claim.name || 'there') + ',</p>'
-          + '<p>Your claim for <strong><a href="' + productUrl + '">' + esc(slug) + '</a></strong> is verified. Here\'s what you can do now:</p>'
-          + '<p>📈 <strong><a href="' + updateUrl + '">Share a new revenue milestone →</a></strong><br>'
-          + 'Every milestone gets a celebration card + a spot on the leaderboard. Takes 1 minute.</p>'
-          + '<p>✏️ <strong>Update product info</strong><br>'
-          + 'Reply to this email with any changes (description, logo, pricing, links) and we\'ll update your page within 24 hours.</p>'
-          + (claim.free_featured
-            ? '<p>🎁 <strong>Your FREE Featured placement is active!</strong> Your page now appears in the Featured section.</p>'
-            : '<p>💡 Want more visibility? <a href="https://milestonewins.com/submit.html">Upgrade to Featured ($19)</a>.</p>')
-          + '<p>— The MilestoneWins team</p>'));
-      return json({ ok: true, slug: slug, free_featured: claim.free_featured });
-    }
-
-    // POST /publish-product (token-gated) -> write product JSON to R2, instantly live
-    // Body: full product object (name, slug, tagline, description, website, logo, founder,
-    //   category, pricing, revenue, revenue_metric, launched, etc.)
-    // Validates required fields before publishing (no thin pages).
     if (request.method === 'POST' && url.pathname === '/publish-product') {
       if (!reviewAuthed(request, url, env)) return json({ error: 'unauthorized' }, 401);
       let d;
@@ -1823,32 +1428,15 @@ export default {
       }
       // Phase 2: maker identity for every plan (best-effort, never blocks).
       // The free plan verified the token above; badge/paid send the same
-      // id_token from the form — keep the sub so approve can set maker_sub
-      // (self-vote guard + dofollow unlock). Anonymous paid submissions
-      // simply get no maker_sub. A stale token here never rejects the submit.
+      // id_token from the form. A stale token here never rejects the submit.
       if (!quotaSub && data.id_token && !data.update_for) {
         quotaSub = await googleSubFromToken(data.id_token);
       }
-      // Phase 2: launch week + slot reservation + relaunch guard.
-      // New launches only — milestone updates (update_for) skip all of this.
+      // Relaunch guard: same site launched < 28 days ago -> 409.
+      // New launches only — milestone updates (update_for) skip this.
+      // launches.json unreachable -> fail OPEN: every submission is still
+      // manually reviewed, so a slipped relaunch gets caught at approve.
       if (!data.update_for) {
-        const curWeek = weekId(new Date());
-        const nxtWeek = weekId(new Date(Date.now() + 7 * 24 * 3600 * 1000));
-        const wantWeek = String(data.launch_week || '').trim();
-        const launchWeek = wantWeek || curWeek;
-        if (!/^\d{4}-W\d{2}$/.test(launchWeek) || (launchWeek !== curWeek && launchWeek !== nxtWeek)) {
-          return json({ error: 'invalid_week' }, 400);
-        }
-        // Slot check: free pool 25, premium pool 10 (badge counts as free).
-        const slotKey = boardCounterKey(launchWeek, data.plan);
-        const slotCap = data.plan === 'paid' ? 10 : 25;
-        const slotUsed = await kvCount(env, slotKey);
-        if (slotUsed >= slotCap) {
-          return json({ error: 'week_full', week: launchWeek, plan: data.plan || 'free' }, 402);
-        }
-        // Relaunch guard: same site launched < 28 days ago -> 409.
-        // launches.json unreachable -> fail OPEN: every submission is still
-        // manually reviewed, so a slipped relaunch gets caught at approve.
         let relaunch = false;
         try {
           const idx = await getLaunchesIndex();
@@ -1867,12 +1455,7 @@ export default {
             relaunch = true;
           }
         } catch (e) { /* fail open, see above */ }
-        data.launch_week = launchWeek;
         if (relaunch) data.relaunch = true;
-        // Reserve the slot (after quota + week + relaunch checks pass).
-        // Not atomic with the R2 put below: if the put throws, the slot
-        // leaks by 1 (rare; counters are a submit-time guard, not exact).
-        if (env.STRIPE_KV) await env.STRIPE_KV.put(slotKey, String(slotUsed + 1));
       }
       const isPaid = data.plan === 'paid';
       const key =
@@ -2013,53 +1596,6 @@ export default {
 
     // URL metadata fetch for submit auto-fill: GET /fetch-url?url=https://...
     // ---- Stripe revenue verification ----
-    // POST /verify-stripe {stripe_key} -> {verified, mrr_cents, mrr_display}
-    // The key is used once in-memory to query Stripe and NEVER stored.
-    if (request.method === 'POST' && url.pathname === '/verify-stripe') {
-      let data;
-      try { data = await request.json(); }
-      catch (e) { return json({ error: 'invalid json' }, 400); }
-      const key = String(data.stripe_key || '').trim();
-      if (!/^(rk|sk)_(live|test)_/.test(key)) {
-        return json({ verified: false, error: 'invalid_key_format' }, 400);
-      }
-      try {
-        let mrrCents = 0, subCount = 0, url_subs = 'https://api.stripe.com/v1/subscriptions?status=active&limit=100';
-        // paginate through active subscriptions (cap 500)
-        for (let page = 0; page < 5; page++) {
-          const r = await fetch(url_subs, {
-            headers: { 'Authorization': 'Basic ' + btoa(key + ':') },
-          });
-          if (r.status === 401) return json({ verified: false, error: 'invalid_key' }, 200);
-          if (!r.ok) return json({ verified: false, error: 'stripe_error' }, 200);
-          const j = await r.json();
-          for (const sub of (j.data || [])) {
-            if (sub.status !== 'active' && sub.status !== 'trialing') continue;
-            subCount++;
-            for (const item of ((sub.items || {}).data || [])) {
-              const price = item.price || {};
-              const amt = price.unit_amount || 0;
-              const qty = item.quantity || 1;
-              const interval = (price.recurring || {}).interval || 'month';
-              const perMonth = interval === 'year' ? amt / 12
-                : interval === 'week' ? amt * 52 / 12
-                : interval === 'day' ? amt * 365 / 12 : amt;
-              mrrCents += Math.round(perMonth * qty);
-            }
-          }
-          if (!j.has_more) break;
-          const last = j.data[j.data.length - 1];
-          url_subs = 'https://api.stripe.com/v1/subscriptions?status=active&limit=100&starting_after=' + last.id;
-        }
-        const mrrDisplay = mrrCents >= 100000
-          ? '$' + (mrrCents / 100000).toFixed(mrrCents % 100000 === 0 ? 0 : 1) + 'k'
-          : '$' + (mrrCents / 100).toFixed(0);
-        return json({ verified: true, mrr_cents: mrrCents, mrr_display: mrrDisplay + ' MRR', subscriptions: subCount });
-      } catch (e) {
-        return json({ verified: false, error: 'request_failed' }, 200);
-      }
-    }
-
     if (request.method === 'GET' && url.pathname === '/fetch-url') {
       const target = url.searchParams.get('url') || '';
       if (!/^https?:\/\/[^/]+\.[^/]+/.test(target) || target.length > 500) {
@@ -2119,144 +1655,5 @@ export default {
     return new Response('not found', { status: 404 });
   },
 
-  async scheduled(event, env, ctx) {
-    // Daily cron: refresh all Stripe-verified MRR
-    ctx.waitUntil(refreshAllStripeMrr(env));
-  },
 };
 
-/* ---------- Stripe-verified MRR ---------- */
-// POST /stripe/connect {slug, stripe_key} -> validates key, computes MRR, stores in KV
-// GET  /stripe/mrr/:slug -> returns cached {mrr_cents, currency, updated_at, verified}
-// KV binding required: STRIPE_KV
-
-async function stripeApi(key, path) {
-  const r = await fetch('https://api.stripe.com' + path, {
-    headers: { 'Authorization': 'Bearer ' + key },
-  });
-  if (!r.ok) {
-    const t = await r.text().catch(function(){ return ''; });
-    throw new Error('Stripe API ' + r.status + ': ' + t.slice(0, 200));
-  }
-  return await r.json();
-}
-
-function calcMrrCents(subscriptions) {
-  let total = 0;
-  const subs = subscriptions.data || [];
-  for (const sub of subs) {
-    if (sub.status !== 'active' && sub.status !== 'trialing') continue;
-    const items = (sub.items && sub.items.data) || [];
-    for (const item of items) {
-      const price = item.price || {};
-      const unit = price.unit_amount || 0;
-      const qty = item.quantity || 1;
-      const interval = (price.recurring && price.recurring.interval) || 'month';
-      const count = price.recurring && price.recurring.interval_count ? price.recurring.interval_count : 1;
-      let monthly = 0;
-      if (interval === 'month') monthly = (unit * qty) / count;
-      else if (interval === 'year') monthly = (unit * qty) / (12 * count);
-      else if (interval === 'week') monthly = (unit * qty * 52) / (12 * count);
-      else if (interval === 'day') monthly = (unit * qty * 365) / (12 * count);
-      total += monthly;
-    }
-  }
-  return Math.round(total);
-}
-
-async function handleStripeConnect(request, env) {
-  if (!env.STRIPE_KV) return json({ error: 'stripe KV not configured' }, 500);
-  let body;
-  try { body = await request.json(); } catch (e) { return json({ error: 'invalid JSON' }, 400); }
-  const slug = String(body.slug || '').replace(/[^a-z0-9-]/g, '').slice(0, 50);
-  const key = String(body.stripe_key || '').trim();
-  if (!slug || !key) return json({ error: 'slug and stripe_key required' }, 400);
-  if (!key.startsWith('rk_')) return json({ error: 'must be a Restricted API key (starts with rk_)' }, 400);
-
-  // Validate key by fetching subscriptions
-  let mrrCents, currency;
-  try {
-    const subs = await stripeApi(key, '/v1/subscriptions?status=active&limit=100');
-    mrrCents = calcMrrCents(subs);
-    // Get currency from first subscription or default USD
-    currency = 'usd';
-    const firstSub = (subs.data || [])[0];
-    if (firstSub && firstSub.currency) currency = firstSub.currency;
-  } catch (e) {
-    return json({ error: 'could not validate Stripe key: ' + e.message }, 400);
-  }
-
-  const record = {
-    slug: slug,
-    stripe_key: key, // restricted key, stored in KV (not in git)
-    mrr_cents: mrrCents,
-    currency: currency,
-    connected_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-    verified: true,
-  };
-  await env.STRIPE_KV.put('stripe:' + slug, JSON.stringify(record));
-  return json({ ok: true, slug: slug, mrr_cents: mrrCents, currency: currency, verified: true });
-}
-
-async function handleStripeMrr(slug, env) {
-  if (!env.STRIPE_KV) return json({ error: 'not configured' }, 500);
-  const raw = await env.STRIPE_KV.get('stripe:' + slug);
-  if (!raw) return json({ verified: false });
-  const rec = JSON.parse(raw);
-  return json({
-    verified: true,
-    slug: rec.slug,
-    mrr_cents: rec.mrr_cents,
-    currency: rec.currency,
-    updated_at: rec.updated_at,
-  });
-}
-
-const MILESTONE_THRESHOLDS = [100000, 500000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 100000000]; // cents: $1k, $5k, $10k, $25k, $50k, $100k, $250k, $500k, $1M
-
-async function checkMilestones(env, slug, oldCents, newCents) {
-  if (!Number.isFinite(oldCents) || !Number.isFinite(newCents) || newCents <= oldCents) return [];
-  const crossed = [];
-  const ts = Math.floor(Date.now() / 1000);
-  for (const t of MILESTONE_THRESHOLDS) {
-    if (oldCents < t && t <= newCents) {
-      const rec = { slug: slug, threshold_cents: t, mrr_cents: newCents, crossed_at: new Date().toISOString() };
-      await env.STRIPE_KV.put('milestone:' + slug + ':' + t + ':' + ts, JSON.stringify(rec));
-      crossed.push(t);
-    }
-  }
-  return crossed;
-}
-
-async function handleStripeMilestones(slug, env) {
-  if (!env.STRIPE_KV) return json({ error: 'stripe KV not configured' }, 500);
-  const list = await env.STRIPE_KV.list({ prefix: 'milestone:' + slug + ':' });
-  const out = [];
-  for (const k of list.keys) {
-    try { out.push(JSON.parse(await env.STRIPE_KV.get(k.name))); } catch (e) {}
-  }
-  out.sort(function(a, b){ return a.crossed_at < b.crossed_at ? 1 : -1; });
-  return json({ slug: slug, milestones: out });
-}
-
-async function refreshAllStripeMrr(env) {
-  if (!env.STRIPE_KV) return { error: 'no KV' };
-  const list = await env.STRIPE_KV.list({ prefix: 'stripe:' });
-  let ok = 0, fail = 0, milestones = 0;
-  for (const k of list.keys) {
-    try {
-      const raw = await env.STRIPE_KV.get(k.name);
-      const rec = JSON.parse(raw);
-      const slug = k.name.slice('stripe:'.length);
-      const oldCents = rec.mrr_cents;
-      const subs = await stripeApi(rec.stripe_key, '/v1/subscriptions?status=active&limit=100');
-      rec.mrr_cents = calcMrrCents(subs);
-      rec.updated_at = new Date().toISOString();
-      await env.STRIPE_KV.put(k.name, JSON.stringify(rec));
-      milestones += (await checkMilestones(env, slug, oldCents, rec.mrr_cents)).length;
-      ok++;
-    } catch (e) { fail++; }
-  }
-  return { ok: ok, fail: fail, total: list.keys.length, milestones: milestones };
-}

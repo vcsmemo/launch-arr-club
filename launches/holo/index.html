@@ -36,7 +36,7 @@
 <header class="site-header">
   <nav class="nav">
     <a class="brand" href="/">Milestone<span>Wins</span></a>
-    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/teardowns/">Teardowns</a><a href="/submit.html" class="nav-cta">Submit</a></div>
     <div class="nav-auth" id="authSlot"></div>
   </nav>
 </header>
@@ -106,37 +106,8 @@
       <span class="maker-label">Maker</span>
       <b class="maker-name">Deividas Kovger, Aleksandras Urbanavicius, Karolis Vaiginis, Arnas Puidokas</b>
     </div>
-    <a class="maker-cta" href="/claim.html?product=holo&name=Holo">Claim this page &rarr;</a>
   </div>
 
-  <div class="claim-banner" id="claimBanner">
-    <div class="claim-banner-text">
-      <strong>Is this your product?</strong>
-      <span>Claim this page for free — update info, post milestones.</span>
-      <span class="claim-offer" id="claimOffer" hidden>🎁 First 10 founders get <b>Featured FREE</b> ($19 value)</span>
-    </div>
-    <a class="btn dark" id="claimBtn" href="/claim.html">Claim this page →</a>
-  </div>
-  <script>
-  (function(){
-    var slugMatch = location.pathname.match(/\/launches\/([^\/]+)\//);
-    var slug = slugMatch ? slugMatch[1] : '';
-    var btn = document.getElementById('claimBtn');
-    if (btn && slug) {
-      var h1 = document.querySelector('h1');
-      var name = h1 ? h1.textContent.trim() : slug;
-      btn.href = '/claim.html?product=' + encodeURIComponent(slug) + '&name=' + encodeURIComponent(name);
-    }
-    fetch('https://launch-arr-club-img.johntian2015.workers.dev/claim-count')
-      .then(function(r){ return r.json(); })
-      .then(function(d){
-        if (d.ok && d.free_spots_left > 0) {
-          var o = document.getElementById('claimOffer');
-          if (o) o.hidden = false;
-        }
-      }).catch(function(){});
-  })();
-  </script>
 
     <p class="chart-cap" id="drCap"></p>
   </div>
@@ -222,7 +193,7 @@
 </main>
 <footer class="site-footer">
   <div class="footer-cols">
-    <div class="fcol"><h5>Discover</h5><a href="/#recently">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/#leaderboard">Leaderboard</a><a href="/stories/">Founder stories</a><a href="/categories/">Categories</a><a href="/milestones/">Milestones</a></div>
+    <div class="fcol"><h5>Discover</h5><a href="/#recently">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/#launches">Leaderboard</a><a href="/stories/">Founder stories</a><a href="/categories/">Categories</a><a href="/milestones/">Milestones</a></div>
     <div class="fcol"><h5>Alternatives</h5><a href="/alternatives/product-hunt/">Product Hunt alternative</a><a href="/alternatives/faslaunch/">FasLaunch alternative</a></div>
     <div class="fcol"><h5>Launch</h5><a href="/launch-your-startup/">Launch your startup</a><a href="/launch-your-ai-tool/">Launch your AI tool</a><a href="/launch-your-saas/">Launch your SaaS</a></div>
     <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a></div>

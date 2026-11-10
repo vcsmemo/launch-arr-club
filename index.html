@@ -30,7 +30,7 @@
 <header class="site-header">
   <nav class="nav">
     <a class="brand" href="/">Milestone<span>Wins</span></a>
-    <div class="nav-links"><a href="/#launches">Launches</a><a href="/board/">Weekly board</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-links"><a href="/#launches">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/teardowns/">Teardowns</a><a href="/submit.html" class="nav-cta">Submit</a></div>
     <div class="nav-auth" id="authSlot"></div>
   </nav>
 </header>
@@ -47,24 +47,22 @@
     </div>
   </section>
 
-  <div class="ticker-wrap" aria-hidden="true"><div class="ticker" id="milestoneTicker"></div></div>
-
   <section id="launches">
-    <h2 class="section-title"><span class="dot"></span>Latest launches <span class="lb-countdown" id="lbCountdown"></span></h2>
+    <h2 class="section-title"><span class="dot"></span>Latest launches</h2>
     <div class="lb-submit-cta">
       <p>🚀 Launching something? Get upvotes, visitors and a backlink &rarr;</p>
       <a href="/submit.html">Submit &mdash; free</a>
     </div>
     <div class="lb-tabs" style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
       <div>
-      <button class="lb-tab active" data-tab="newest" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">🆕 Newest</button><button class="lb-tab" data-tab="week" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">This week</button><button class="lb-tab" data-tab="discover" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;cursor:pointer;font-weight:600;border-left:none;">🎲 Discover</button><button class="lb-tab" data-tab="revenue" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">💰 Top revenue</button>
+      <button class="lb-tab active" data-tab="newest" style="padding:8px 14px;border:1px solid #e2e8f0;background:#0d9488;color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-weight:600;">🆕 Newest</button><button class="lb-tab" data-tab="revenue" style="padding:8px 14px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:0 8px 8px 0;cursor:pointer;font-weight:600;border-left:none;">💰 Top revenue</button>
       </div>
     </div>
     <div class="lb-table">
       <div class="lb-row lb-head"><span>#</span><span>Startup</span><span>Founder</span><span style="text-align:right">Revenue</span></div>
       <div id="lbBody"><div class="lb-row"><span></span><span class="lb-founder">Loading\u2026</span><span></span><span></span></div></div>
     </div>
-    <p class="lb-note">Revenue is founder-reported where shown, otherwise Pre-revenue. <a class="view-all" href="/leaderboard/">View full leaderboard &rsaquo;</a></p>
+    <p class="lb-note">Revenue is founder-reported where shown, otherwise Pre-revenue.</p>
   </section>
 
   <section id="stories">
@@ -120,34 +118,11 @@
       if(/all-time|total/i.test(s)) return 'total';
       return '';
     }
-    function seededShuffle(arr, seed){
-      var a = arr.slice(), m = a.length, t, i;
-      var s = seed;
-      function rnd(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }
-      while(m){ i = Math.floor(rnd() * m--); t = a[m]; a[m] = a[i]; a[i] = t; }
-      return a;
-    }
     function render(tab){
       var items = allItems.slice();
       if(tab === 'newest'){
         items = items.filter(function(it){ return it.launched; });
         items.sort(function(a, b){ var ta = Date.parse(a.launched||''), tb = Date.parse(b.launched||''); return (isNaN(tb)?0:tb) - (isNaN(ta)?0:ta); });
-      } else if(tab === 'week'){
-        /* This week = products with activity in the last 7 days (launched or a
-           new revenue milestone), newest activity first so the list actually
-           changes day to day. Revenue breaks ties. */
-        var weekAgoTs = Date.now() - 7*24*60*60*1000;
-        function activityTs(it){
-          var ts = 0, t;
-          if(it.launched){ t = Date.parse(it.launched + 'T00:00:00'); if(!isNaN(t)) ts = Math.max(ts, t); }
-          (it.revenue_history || []).forEach(function(h){ t = Date.parse((h.date || '') + 'T00:00:00'); if(!isNaN(t)) ts = Math.max(ts, t); });
-          return ts;
-        }
-        items = items.filter(function(it){ return activityTs(it) >= weekAgoTs; });
-        items.sort(function(a, b){ var d = activityTs(b) - activityTs(a); return d !== 0 ? d : revVal(b) - revVal(a); });
-      } else if(tab === 'discover'){
-        var today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-        items = seededShuffle(items, parseInt(today, 10));
       } else {
         items.sort(function(a, b){ return revVal(b) - revVal(a); });
       }
@@ -164,7 +139,7 @@
           + '<span class="lb-startup">' + logo + '<span><strong><a class="lb-link" href="' + esc(it.url) + '">' + esc(it.name) + '</a></strong><p>' + esc(it.tagline || '') + '</p></span></span>'
           + '<span class="lb-founder">' + founderLinks(it.founder, it.founder_x) + '</span>'
           + revCell + '</div>';
-      }).join('') : '<div class="lb-row"><span></span><span class="lb-founder">No launches this week yet.</span><span></span><span></span></div>';
+      }).join('') : '<div class="lb-row"><span></span><span class="lb-founder">No launches yet.</span><span></span><span></span></div>';
     }
     var currentTab = 'newest';
     document.querySelectorAll('.lb-tab').forEach(function(btn){
@@ -186,84 +161,13 @@
   })();
   </script>
 
-  <!-- Right side panel (wide screens only): stats + recent milestones -->
-  <aside id="sidePanel" aria-hidden="true">
-    <div class="sp-card" id="spStats">
-      <h4>By the numbers</h4>
-      <div class="sp-stat-row">
-        <div class="sp-stat"><div class="sp-num" id="spTotal">–</div><div class="sp-label">products launched</div></div>
-        <div class="sp-stat"><div class="sp-num" id="spVerified">–</div><div class="sp-label">categories</div></div>
-        <div class="sp-stat"><div class="sp-num" id="spWeek">–</div><div class="sp-label">launches this week</div></div>
-      </div>
-    </div>
-    <div class="sp-card" id="spMiles">
-      <h4>🚀 Recent launches</h4>
-      <div id="spMileBody"></div>
-    </div>
-  </aside>
-  <script>
-  (function(){
-    // Only populate on wide screens
-    if(window.innerWidth < 1520) return;
-    function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-    function revValStr(s){
-      var m = String(s||'').match(/\$([\d,.]+)\s*([kKmMbB]?)(?![a-zA-Z])/);
-      if(!m) return -1;
-      var v = parseFloat(m[1].replace(/,/g, ''));
-      var u = (m[2]||'').toLowerCase();
-      if(u==='k') v*=1e3; else if(u==='m') v*=1e6; else if(u==='b') v*=1e9;
-      return v;
-    }
-    fetch('/launches.json').then(function(r){ return r.json(); }).then(function(d){
-      var items = d.launches || d;
-      // Stats
-      document.getElementById('spTotal').textContent = items.length;
-      // Categories (sidebar)
-      var cats = {};
-      items.forEach(function(it){ if(it.category) cats[it.category] = 1; });
-      var sv = document.getElementById('spVerified');
-      if(sv) sv.textContent = Object.keys(cats).length;
-      // Launches this week: products launched in the last 7 days
-      var weekAgoTs = Date.now() - 7*24*60*60*1000;
-      var wk = items.filter(function(it){
-        if(!it.launched) return false;
-        var t = Date.parse(it.launched + 'T00:00:00');
-        return !isNaN(t) && t >= weekAgoTs;
-      }).length;
-      document.getElementById('spWeek').textContent = wk;
-      // Recent milestones: latest revenue_history entry first (fallback: launched)
-      var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      function latestMs(it){
-        var ts = 0, rev = it.revenue || '';
-        (it.revenue_history || []).forEach(function(h){
-          var t = Date.parse((h.date || '') + 'T00:00:00');
-          if(!isNaN(t) && t >= ts){ ts = t; if(h.revenue) rev = h.revenue; }
-        });
-        if(!ts && it.launched){ var lt = Date.parse(it.launched + 'T00:00:00'); if(!isNaN(lt)) ts = lt; }
-        return { ts: ts, rev: rev };
-      }
-      var miles = items.filter(function(it){ return it.launched; }).map(function(it){
-        var t = Date.parse(it.launched + 'T00:00:00');
-        return { it: it, ts: isNaN(t) ? 0 : t, rev: it.category || '' };
-      }).filter(function(x){ return x.ts > 0; }).sort(function(a, b){ return b.ts - a.ts; }).slice(0, 5);
-      document.getElementById('spMileBody').innerHTML = miles.map(function(x){
-        var it = x.it;
-        var dt = new Date(x.ts);
-        var when = MONTHS[dt.getMonth()] + ' ' + dt.getDate();
-        var logo = it.logo ? '<img src="'+String(it.logo).replace(/"/g,'')+'" alt="" loading="lazy" style="width:26px;height:26px;border-radius:7px;object-fit:contain;flex-shrink:0;">'
-          : '<span class="sp-logo-ph">'+esc(String(it.name||'?').charAt(0))+'</span>';
-        return '<a class="sp-row" href="'+esc(it.url||'#')+'">'+logo+'<span class="sp-mile-meta"><span class="sp-name">'+esc(it.name)+'</span><span class="sp-when">'+when+'</span></span><span class="sp-rev">'+esc(x.rev)+'</span></a>';
-      }).join('');
-    }).catch(function(){});
-  })();
-  </script>
 </main>
 <div class="slogan-strip">
   <p>Launch your product. <em>Get upvotes and backlinks.</em></p>
 </div>
 <footer class="site-footer">
   <div class="footer-cols">
-    <div class="fcol"><h5>Discover</h5><a href="/#launches">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/leaderboard/">Leaderboard</a><a href="/stories/">Founder stories</a><a href="/categories/">Categories</a><a href="/milestones/">Milestones</a><a href="/vs/">Comparisons</a><a href="/best/">Best tools</a></div>
+    <div class="fcol"><h5>Discover</h5><a href="/#launches">Launches</a><a href="/2026/w41/">Weekly archive</a><a href="/stories/">Founder stories</a><a href="/categories/">Categories</a><a href="/milestones/">Milestones</a><a href="/vs/">Comparisons</a><a href="/best/">Best tools</a></div>
     <div class="fcol"><h5>Alternatives</h5><a href="/alternatives/product-hunt/">Product Hunt alternative</a><a href="/alternatives/faslaunch/">FasLaunch alternative</a></div>
     <div class="fcol"><h5>Launch</h5><a href="/launch-your-startup/">Launch your startup</a><a href="/launch-your-ai-tool/">Launch your AI tool</a><a href="/launch-your-saas/">Launch your SaaS</a></div>
     <div class="fcol"><h5>For agents</h5><a href="/llms.txt">llms.txt</a><a href="/submit.html">Submit</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
@@ -273,31 +177,6 @@
   </div>
 </footer>
 <script>
-/* Launch ticker: recent launches scrolling */
-(function(){
-  var ticker = document.getElementById('milestoneTicker');
-  if(!ticker) return;
-  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  fetch('/launches.json').then(function(r){ return r.json(); }).then(function(j){
-    function latestMs(p){
-      var ts = 0, rev = p.revenue || '';
-      (p.revenue_history || []).forEach(function(h){
-        var t = Date.parse((h.date || '') + 'T00:00:00');
-        if(!isNaN(t) && t >= ts){ ts = t; if(h.revenue) rev = h.revenue; }
-      });
-      if(!ts && p.launched){ var lt = Date.parse(p.launched + 'T00:00:00'); if(!isNaN(lt)) ts = lt; }
-      return { ts: ts, rev: rev };
-    }
-    var items = j.filter(function(p){ return p.launched; }).map(function(p){
-      return { name: p.name, ts: Date.parse(p.launched + 'T00:00:00') || 0 };
-    }).filter(function(p){ return p.ts > 0; }).sort(function(a, b){ return b.ts - a.ts; }).slice(0, 12);
-    if(!items.length) return;
-    var html = items.map(function(p){
-      return '<span class="ticker-item">🚀 <b>' + esc(p.name) + '</b> just launched</span>';
-    }).join('<span class="ticker-sep">·</span>');
-    ticker.innerHTML = html + '<span class="ticker-sep">·</span>' + html; /* duplicate for seamless loop */
-  }).catch(function(){});
-})();
 /* Story preview on homepage (3 stories, rotated daily by date seed) */
 (function(){
   var el = document.getElementById('storyPreview');
@@ -324,19 +203,6 @@
       return '<a class="launch-card" href="' + s.href + '"><div class="lc-main"><h3>' + s.title.replace(/</g,'&lt;') + '</h3>' + (s.rev ? '<p class="lc-rev">' + s.rev.replace(/</g,'&lt;') + '</p>' : '') + '</div></a>';
     }).join('');
   }).catch(function(){});
-})();
-/* Feed refresh countdown (daily pipeline publishes ~09:45) */
-(function(){
-  var el = document.getElementById('lbCountdown');
-  if(!el) return;
-  function tick(){
-    var now = new Date();
-    var next = new Date(now); next.setHours(9, 45, 0, 0);
-    if(next <= now) next.setDate(next.getDate() + 1);
-    var ms = next - now, h = Math.floor(ms/36e5), m = Math.floor(ms%36e5/6e4);
-    el.textContent = '· updates in ' + h + 'h ' + m + 'm';
-  }
-  tick(); setInterval(tick, 60000);
 })();
 /* Hero search over launches.json */
 (function(){
@@ -369,53 +235,6 @@
   document.addEventListener('click', function(e){
     if(!document.querySelector('.hero-search').contains(e.target)) drop.hidden = true;
   });
-})();
-</script>
-<script>
-/* Board stats: computed live from launches.json */
-(function(){
-  var board = document.getElementById('boardStats');
-  if(!board) return;
-  function countUp(el, target){
-    var dur = 900, t0 = null;
-    function frame(t){
-      if(!t0) t0 = t;
-      var p = Math.min((t - t0) / dur, 1);
-      var e = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * e);
-      if(p < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-  function mrrKNum(rev){
-    if(!rev) return 0;
-    var m = /\$([\d.]+)k/i.exec(rev);
-    return m ? parseFloat(m[1]) : 0;
-  }
-  function paint(items){
-    var n = items.length;
-    var mrr = items.reduce(function(a,i){ return a + (i.revenue_metric === 'MRR' ? mrrKNum(i.revenue) : 0); }, 0);
-    var verified = items.filter(function(i){ return i.revenue_verified; }).length;
-    var nowMs = Date.now();
-    var week = items.filter(function(i){
-      if(!i.launched) return false;
-      return (nowMs - new Date(i.launched + 'T00:00:00').getTime()) < 7 * 864e5;
-    }).length;
-    var cats = {};
-    items.forEach(function(i){ if(i.category) cats[i.category] = 1; });
-    var drs = items.map(function(i){ return i.dr; }).filter(function(x){ return x != null; });
-    var avgDr = drs.length ? Math.round(drs.reduce(function(a,b){ return a + b; }, 0) / drs.length) : null;
-    var set = function(k, v){ var el = board.querySelector('[data-stat="' + k + '"]'); if(el) el.textContent = v; };
-    set('mrr', '$' + mrr + 'k');
-    var lc = document.getElementById('liveCount'); if(lc) lc.textContent = n;
-    set('dr', avgDr === null ? '–' : String(avgDr));
-    var el;
-    el = board.querySelector('[data-stat="launches"]'); if(el) countUp(el, n);
-    el = board.querySelector('[data-stat="verified"]'); if(el) countUp(el, verified);
-    el = board.querySelector('[data-stat="week"]'); if(el) countUp(el, week);
-    el = board.querySelector('[data-stat="cats"]'); if(el) countUp(el, Object.keys(cats).length);
-  }
-  fetch('/launches.json').then(function(r){ return r.json(); }).then(paint).catch(function(){});
 })();
 </script>
 <script src="/auth.js"></script>
