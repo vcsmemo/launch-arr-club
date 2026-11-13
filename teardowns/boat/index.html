@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How boat.dev Makes Money — MilestoneWins</title>
+<meta name="description" content="boat sells shovels to the AI agent gold rush — raw cloud computers, billed by the second, to developers running coding agents. $1M ARR after 22 months and six pivots.">
+<link rel="canonical" href="https://milestonewins.com/teardowns/boat/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261020d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How boat.dev Makes Money", "description": "boat sells shovels to the AI agent gold rush — raw cloud computers, billed by the second, to developers running coding agents.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-11-13", "about": {"@type": "Organization", "name": "boat"}}</script>
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-body ul{line-height:1.85;margin:0 0 1.3rem;color:#1e293b;padding-left:1.3rem}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.td-table{width:100%;border-collapse:collapse;margin:0 0 1.3rem;font-size:.92rem}
+.td-table th,.td-table td{border:1px solid var(--border);padding:.6rem .8rem;text-align:left;line-height:1.55}
+.td-table th{background:#f8fafc}
+.td-note{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65;margin:0 0 1.3rem}
+.td-sources{font-size:.88rem;color:var(--text-secondary);line-height:1.8}
+.td-sources a{color:var(--accent)}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.seo-cta h2{color:#fff;margin:0 0 .8rem}
+.seo-cta h2::before{display:none}
+.seo-cta p{color:#cbd5e1;margin:0 0 1.5rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#launches">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/teardowns/">Teardowns</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/teardowns/">Teardowns</a> <span>&rsaquo;</span> <strong>boat</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">🔍 Teardown</span>
+    <h1>How boat.dev Makes Money</h1>
+    <p class="lede">boat sells shovels to the AI agent gold rush — raw cloud computers, billed by the second, to developers running coding agents — and it got there by surviving five pivots and selling the infrastructure it built for itself.</p>
+    <div class="story-byline">MilestoneWins · 2026-11-13 · <a href="/launches/boat/">boat on MilestoneWins →</a> · <a href="https://boat.dev" target="_blank" rel="noopener">Visit boat.dev →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$1M ARR</b><span>Founder-reported Nov 7, 2026; dashboard screenshot shows $1.02M</span></div>
+    <div class="ms-stat"><b>$200K → $1M</b><span>In one month, after 16 months to reach $10K</span></div>
+    <div class="ms-stat"><b>$20/mo</b><span>Plans from, after a 7-day free trial</span></div>
+    <div class="ms-stat"><b>4 people</b><span>Paris-based team · YC Fall 2026 batch</span></div>
+  </div>
+  <div class="story-body">
+    <h2>1. What problem does it solve?</h2>
+    <p>An AI coding agent needs a computer to work on — a real one, not a chat window. Give Claude Code or Codex a task and it wants files that persist, Docker, a browser, a terminal, and hours of uninterrupted runtime. Your laptop can't run fifty agents in parallel. The existing options were the wrong shape: short-lived microVMs built for quick function calls, or enterprise sandbox platforms priced for companies, not developers.</p>
+    <p>boat gives each agent a full Ubuntu virtual machine in the cloud — SSH, Docker, systemd, a 60fps virtual desktop, persistent files — that you can fork from a snapshot in seconds and run by the thousands. It feels like a true dev machine, except it's rented by the second and stops billing the moment you stop it.</p>
+    <p>The problem is old (developers have rented servers forever). The new part is the customer: not a human developer, but their agents — and the volume. One developer now runs ten, fifty, a hundred agents at once. The machine is the same; the buyer multiplied.</p>
+
+    <h2>2. Who pays, how much, and in what scenario?</h2>
+    <p><b>The buyer:</b> a developer running coding agents (Claude Code, Codex, OpenCode) in parallel, or a company building an agent product that needs one sandbox per user. The customer is technical, price-sensitive, and allergic to sales calls — which is why boat sells self-serve, with no sales team at all.</p>
+    <table class="td-table">
+      <tr><th>Size</th><th>vCPU</th><th>RAM</th><th>Disk</th><th>$/hour</th><th>$/month</th></tr>
+      <tr><td>small</td><td>2</td><td>4 GB</td><td>51 GB</td><td>$0.018</td><td>$13</td></tr>
+      <tr><td>default</td><td>4</td><td>8 GB</td><td>51 GB</td><td>$0.036</td><td>$26</td></tr>
+      <tr><td>large</td><td>8</td><td>16 GB</td><td>111 GB</td><td>$0.072</td><td>$53</td></tr>
+      <tr><td>xlarge</td><td>16</td><td>32 GB</td><td>251 GB</td><td>$0.200</td><td>$146</td></tr>
+    </table>
+    <p>Plans start at $20 a month after a 7-day free trial. The $20 plan is $20 of VM time for that month — it does not carry over. VM time bills per second, only while the machine runs. Overages come out of a prepaid wallet ($0.036/h for the default size), saved snapshots cost $0.056 a day each, and plans allow 100 to 2,000 machines at once. There is also an organization tier: in a support email the founder sent in October, he quoted a $2,000-a-month organization plan, each seat adding 2,400 included starts a day.</p>
+    <p><b>The scenario that makes someone pay:</b> the first night you want ten agents working while you sleep. A subscription alone doesn't cover a heavy user — and that's the point. The founder says subscriptions are "just a fraction" of total revenue, because heavy users pay for extra machine time on top of their plan. The subscription is the floor; metered usage is the ceiling. The more agents a customer runs, the more boat earns — no renegotiation, no upgrade call.</p>
+    <p class="td-note"><b>Sanity check (our estimate, not a reported figure):</b> $1M ARR is roughly $85,000 a month. At the default machine's $0.036 an hour, that is about 2.4 million VM-hours a month — the equivalent of roughly 3,300 machines running around the clock. That is the scale of compute boat is actually selling, and it explains why the business is a fleet operation, not just a website.</p>
+
+    <h2>3. How did it find these people?</h2>
+    <p>Almost entirely through the founder's own posts on X. From the founder, on October 27: "no paid ads, no events, no big contracts, no sales motion".</p>
+    <p><b>Build in public, with receipts.</b> Founder Anicet Nougaret posts the numbers — the pivots, the flat months, the vertical ones. The November 7 post announcing $1M ARR came with a dashboard screenshot showing $1.02M, and a breakdown of the whole 22-month journey. For a developer audience that distrusts marketing, a revenue chart is the most credible ad there is.</p>
+    <p><b>Win the comparison.</b> boat publishes head-to-head comparison pages against E2B, Daytona, Modal, Vercel Sandbox and other sandbox providers — and a pricing-comparison site, Battleships, that ranks providers on the same workload. On price, boat usually wins, because it usually is the cheapest. A developer googling "cheapest sandbox for agents" lands on a page boat wrote.</p>
+    <p><b>Let the product argue.</b> The homepage leads with a third-party benchmark (StarSling's V8 Web Tooling Benchmark, October 3, 2026): boat at 28.06 runs per second, second of 15 providers — ahead of Daytona, Modal, Vercel Sandbox and E2B. Speed is the other half of the pitch, and it's measured by someone else.</p>
+    <p>YC helped too: boat went through Y Combinator's Fall 2026 batch, which put it in front of exactly the AI builders who became its first customers. But the batch was the introduction, not the engine — the engine is the founder posting, and the numbers doing the talking.</p>
+
+    <h2>4. Why does it work?</h2>
+    <p>boat's wedge is not the virtual machine — VMs are a commodity, and every cloud sells them. The wedge is <b>a full machine, at a commodity price, at the exact moment agent usage exploded</b>: a real Ubuntu box with Docker and a kernel, not a stripped-down microVM, for $0.018 an hour — roughly 13x cheaper per hour than Modal's equivalent rate in the same benchmark run — billed by the second, with no sales process between the developer and the machine. The incumbents were built for a world where a human runs one sandbox at a time; boat was built for a world where one human runs a hundred agents. And the product that finally worked was the infrastructure under an earlier one: the team spent 16 months and five pivots selling products on top of their own cloud VM layer, then realized the layer itself was the business — the founder says the ARR of the product they sold from February to May is now what they add every two hours selling the same VM infrastructure.</p>
+
+    <h2>5. Could you build it?</h2>
+    <p><b>The product, yes. The business, not by copying the product.</b></p>
+    <p><b>Replicable:</b> the shape — a sandbox API that spawns Linux VMs, bills per second, and forks from snapshots — can be assembled from existing virtualization and billing pieces by a small team. The comparison-page and build-in-public playbook is open to anyone.</p>
+    <p><b>Not replicable by cloning:</b> the fleet economics. boat runs its own servers (AMD Ryzen 9 9950X hosts) in EU data centers, and its price is its moat. Undercutting $0.018 an hour requires the same scale, the same utilization, and the same tolerance for thin margins — you can't rent someone else's cloud and resell it cheaper than boat sells its own. And the trust is earned the slow way: 22 months, six pivots, and a public revenue chart.</p>
+    <p><b>The opening it leaves:</b> boat runs only in the EU (Germany, Finland, France). A US or Asia fleet, GPU-equipped sandboxes, or sandboxes pre-loaded for one specific agent are all open ground. So is the segment boat doesn't serve: the non-developer who wants agents but will never touch a CLI. And the founder still answers support emails himself — service is a strength today and a bottleneck tomorrow.</p>
+
+    <h2>The numbers</h2>
+    <table class="td-table">
+      <tr><th>Revenue</th><td>$1M ARR (dashboard screenshot shows $1.02M), founder-reported Nov 7, 2026; ~$85,000/mo (our math)</td></tr>
+      <tr><th>Revenue growth</th><td>$0→$10K in 16 months (5 pivots); $10K→$100K in 4 months (1 pivot); $100K→$200K in 1 month; $200K→$1M in 1 month; adding $40–50K of ARR a day at announcement</td></tr>
+      <tr><th>Total revenue</th><td>Higher than $1M ARR — founder says subscriptions are "just a fraction" and the full run rate is "way more"; no total disclosed</td></tr>
+      <tr><th>Team</th><td>4 people (founder, Oct 2026; YC's directory lists 3) · founded 2025 in Paris · YC Fall 2026 batch</td></tr>
+      <tr><th>Founders</th><td>Anicet Nougaret (CEO) and Kirill Makarov (CTO); met five years earlier, failed a first startup together, came to sandboxes as frustrated users</td></tr>
+      <tr><th>Pricing</th><td>From $20/mo after a 7-day free trial; $0.018–$0.20/hour by size, per-second billing, wallet overage; $2,000/mo organization tier</td></tr>
+      <tr><th>Product</th><td>Full Ubuntu VMs (SSH, Docker, browser, 60fps desktop), snapshot forking, 100–2,000 machines at once, EU regions only</td></tr>
+    </table>
+
+    <h2>What we don't know</h2>
+    <ul>
+      <li>Total revenue run rate — subscriptions are only a fraction, and the founder gave no total, so we don't estimate one.</li>
+      <li>Paying customer count — not disclosed. (Founderland cites 350+ paying users from mid-October; we could not confirm that figure at its source.)</li>
+      <li>Gross margin — the fleet is boat's own hardware, and what share of $0.036 an hour is margin is unknowable from outside.</li>
+      <li>Churn, and how much of the $1M ARR sits with a few heavy users versus a broad base of $20-a-month customers.</li>
+      <li>Whether adding $40–50K of ARR a day is a durable rate or a YC-batch spike — the November 7 post was six days ago.</li>
+    </ul>
+
+    <h2>Sources</h2>
+    <p class="td-sources">
+      The AI Receipts, "How Much Does boat.dev Make? $1M ARR After 6 Pivots (Self-Reported, 2026)" — <a href="https://theaireceipts.com/blog/how-much-does-boat-dev-make/" target="_blank" rel="noopener">theaireceipts.com</a><br>
+      boat.dev homepage — <a href="https://boat.dev/" target="_blank" rel="noopener">boat.dev</a> (product, pricing table, benchmark; checked Nov 13, 2026)<br>
+      YC Fall 2026 batch listing (Boat, formerly Ascii) — <a href="https://www.techstartupslist.com/lists/yc-f26" target="_blank" rel="noopener">techstartupslist.com</a><br>
+      Sparse Media, Instagram case study on Boat ($1M ARR, Nov 7, 2026) — <a href="https://www.instagram.com/reel/DfhEURZzbQz/" target="_blank" rel="noopener">instagram.com</a><br>
+      Threads post sharing the founder's Oct 31, 2026 support email (organization plan pricing) — <a href="https://www.threads.com/@pooria.arab/post/DfKG3oQm0s4" target="_blank" rel="noopener">threads.com</a><br>
+      MilestoneWins listing: <a href="/launches/boat/">milestonewins.com/launches/boat/</a> ($1M ARR, founders Anicet Nougaret, Kirill Makarov)
+    </p>
+  </div>
+  <div class="seo-cta">
+    <h2>More teardowns</h2>
+    <p>About one a day — each one sourced, each one asking whether you could build it.</p>
+    <a class="btn" href="/teardowns/">Browse all teardowns →</a>
+    <a class="btn ghost" href="/launches/boat/">See boat on MilestoneWins →</a>
+  </div>
+</main>
+<footer style="text-align:center;padding:2rem 1rem;color:var(--text-secondary);font-size:.85rem;">
+  <span>© 2026 MilestoneWins</span>
+</footer>
+</body>
+</html>
