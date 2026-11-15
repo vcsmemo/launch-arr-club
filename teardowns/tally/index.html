@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Tally Makes Money — MilestoneWins</title>
+<meta name="description" content="Tally sells the removal of a badge — the free plan is the product, the distribution, and the funnel. $6M ARR, 2.5M users, bootstrapped, $0 VC.">
+<link rel="canonical" href="https://milestonewins.com/teardowns/tally/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261020d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How Tally Makes Money", "description": "Tally sells the removal of a badge — the free plan is the product, the distribution, and the funnel.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-11-15", "about": {"@type": "Organization", "name": "Tally"}}</script>
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#172554 60%,#1e40af 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(96,165,250,.25);border:1px solid rgba(96,165,250,.6);color:#bfdbfe;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#93c5fd}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-body ul{line-height:1.85;margin:0 0 1.3rem;color:#1e293b;padding-left:1.3rem}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.td-table{width:100%;border-collapse:collapse;margin:0 0 1.3rem;font-size:.92rem}
+.td-table th,.td-table td{border:1px solid var(--border);padding:.6rem .8rem;text-align:left;line-height:1.55}
+.td-table th{background:#f8fafc}
+.td-note{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65;margin:0 0 1.3rem}
+.td-sources{font-size:.88rem;color:var(--text-secondary);line-height:1.8}
+.td-sources a{color:var(--accent)}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#1e40af);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.seo-cta h2{color:#fff;margin:0 0 .8rem}
+.seo-cta h2::before{display:none}
+.seo-cta p{color:#cbd5e1;margin:0 0 1.5rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#launches">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/teardowns/">Teardowns</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/teardowns/">Teardowns</a> <span>&rsaquo;</span> <strong>tally</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">🔍 Teardown</span>
+    <h1>How Tally Makes Money</h1>
+    <p class="lede">Tally sells the removal of a badge. The free plan is the product, the distribution, and the funnel — and it found its buyers by being the form builder AI assistants recommend.</p>
+    <div class="story-byline">MilestoneWins · 2026-11-15 · <a href="/launches/tally/">Tally on MilestoneWins →</a> · <a href="https://tally.so" target="_blank" rel="noopener">Visit tally.so →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$6M ARR</b><span>Founder-reported Sept 2026 ($501K MRR)</span></div>
+    <div class="ms-stat"><b>2.5M users</b><span>~17,000 paying (our estimate)</span></div>
+    <div class="ms-stat"><b>43% of new users</b><span>Arrive via AI search — ChatGPT, Claude, Gemini, Perplexity</span></div>
+    <div class="ms-stat"><b>$0 VC</b><span>Bootstrapped — team of 10, Ghent + remote</span></div>
+  </div>
+  <div class="story-body">
+    <h2>1. What problem does it solve?</h2>
+    <p>Forms are a solved problem that every tool somehow still gets wrong. Google Forms is free but limited and ugly. Typeform is beautiful until the bill arrives — the moment you need anything beyond the basics, the meter starts running. Every incumbent rations the thing you actually need: submissions, responses, logic, branding.</p>
+    <p>Tally's answer is a form builder that works like a document. You open a blank page, start typing, and insert question blocks as you go — no drag-and-drop canvas, no 40-field settings panel. It is deliberately opinionated: a clean text-editor interface, keyboard-first, no feature bloat, and an explicit refusal to become a CRM-plus-scheduling-plus-tables platform. The constraint matches the size of the team.</p>
+    <p>The free plan is the point, not a funnel trick. Unlimited forms, unlimited submissions, forever free — conditional logic, payments, signatures, file uploads, 45+ languages, all included. The only price of free is a small "Made with Tally" badge on the form. Everything competitors meter, Tally gives away.</p>
+
+    <h2>2. Who pays, how much, and in what scenario?</h2>
+    <p><b>The buyer:</b> a creator, marketer, freelancer, or small team that collects leads, signups, feedback, applications, or payments through forms — plus, increasingly, organizations that need control over data and retention.</p>
+    <table class="td-table">
+      <tr><th>Plan</th><th>Monthly</th><th>Annual (per month)</th><th>What you get</th></tr>
+      <tr><td>Free</td><td>$0</td><td>$0</td><td>Unlimited forms and submissions, payments, signatures, file uploads, conditional logic, 45+ languages — with a "Made with Tally" badge</td></tr>
+      <tr><td>Pro</td><td>$29/mo</td><td>$24/mo</td><td>Remove all branding, custom domains, unlimited team members, partial submissions, custom CSS, workspaces &amp; folders, unlimited uploads, analytics, premium integrations</td></tr>
+      <tr><td>Business</td><td>—</td><td>$74/mo</td><td>Everything in Pro, plus data-retention control, email verification, 90-day version history</td></tr>
+    </table>
+    <p>Pricing verified from Tally's own pricing page, checked Nov 15, 2026. The Business tier is new: the company's own story until recently was "one paid plan, no games." The org tier is Tally's first step toward monetizing larger customers rather than only individual upgraders. (The monthly Business rate isn't shown on the pricing page — $74 is the annual-billed rate.)</p>
+    <p><b>The scenario that makes someone pay:</b> the badge on a client-facing form. A consultant sending a quote form, a startup running a waitlist, a team sharing a workspace — the moment the form represents the business rather than the person, the badge has to go and a custom domain has to appear. There is no usage cap forcing the upgrade, because there are no caps on free. The trigger is professionalism and collaboration, not a paywall.</p>
+    <p class="td-note"><b>Sanity check (our estimate, not a reported figure):</b> $501,000 MRR ÷ roughly $29 a month implies about 17,000 paying customers — around 0.7% of 2.5 million users. The company has not disclosed the paying count. Marie's blog says about 1% of people who arrive via the "Made with Tally" badge eventually upgrade — that figure is about badge-driven signups, not the whole user base.</p>
+
+    <h2>3. How did it find these people?</h2>
+    <p>Almost entirely through the product itself — and, lately, through machines recommending it.</p>
+    <p><b>The badge loop.</b> Every free form published carries Tally to the people who fill it in. Someone completes a form, sees the badge, signs up. For five years this loop plus word of mouth was the whole growth engine, and it still runs.</p>
+    <p><b>Cold outreach and Product Hunt.</b> The first thousand users came from manual cold outreach in maker and no-code communities. The March 2021 Product Hunt launch doubled the user base in a single day, from about 1,500 to 3,000 users, at roughly $1K MRR.</p>
+    <p><b>Building in public.</b> Marie has written detailed milestone posts for six years — what worked, what was hard, the exact MRR at each step. For the first three years she and Filip answered every support message themselves, often within the hour, in an open Slack channel. The transparency built an audience that later became customers, advocates, and meetup organizers — London, Berlin, Kuala Lumpur, and the first Tally-organized meetup in London in June 2026.</p>
+    <p><b>The channel shift nobody bought.</b> In 2025–26, AI assistants took over: today <b>43% of new users discover Tally through ChatGPT, Claude, Gemini, and Perplexity</b>. The $2M-to-$3M jump took four months in mid-2025 on that wave. Tally invests in the channel — tracking where LLMs mention it, auditing help-center content, keeping comparison pages current — but, as Marie writes, "we never bought this channel. Well, you can't (yet)." A model update could reshuffle recommendations overnight.</p>
+    <p>No paid ads. No sales team. The product is the marketing, the users are the channel.</p>
+
+    <h2>4. Why does it work?</h2>
+    <p>Tally's wedge is not the form builder — form builders are a commodity. The wedge is <b>a free plan that is genuinely complete, attached to a product people love enough to recommend</b>: unlimited everything turns every free user into distribution aimed at exactly the people who build forms; opinionated simplicity (a document, not a dashboard) makes it the tool AI assistants cite when someone asks for "a simple form builder"; and customer-funded discipline — ten people, no investors, AI leverage everywhere from code review to support — keeps revenue per employee near $600,000. Six years of radical transparency is the moat's mortar: when a third-party analytics tool was breached in August 2026 and email addresses and hashed passwords leaked, the company disclosed it to its entire user base immediately — and the replies were mostly supportive. Trust is built in the quiet years and spent in the hard weeks.</p>
+
+    <h2>5. Could you build it?</h2>
+    <p><b>The product, yes. The business, not by copying the product.</b></p>
+    <p><b>Replicable:</b> the shape — a Notion-style form builder with unlimited free usage — can be assembled by a small team. The pieces are commodity, and Tally itself shows how much leverage ten people plus AI tooling can get.</p>
+    <p><b>Not replicable by cloning:</b> the distribution. 2.5 million users' worth of badges pointing at the next user, six years of build-in-public trust, and incumbency in AI recommendations — assistants recommend what people already love, and a new entrant has no citation history to be recommended from. A clone would need its own trust channel, not a better form builder.</p>
+    <p><b>The opening it leaves:</b> the Business tier is Tally admitting the org market was unserved — compliance, retention, verification. A competitor that owns one vertical deeply (forms for a specific profession, or a channel Tally doesn't serve) still has room. And the risk Marie flags herself is real: the 43% channel is rented from model providers, and Tally AI's "joining the AI train" backlash shows even loyal users will push back if the product stops feeling opinionated.</p>
+
+    <h2>The numbers</h2>
+    <table class="td-table">
+      <tr><th>Revenue</th><td>$6M ARR / $501K MRR (founder-reported, Sept 2026)</td></tr>
+      <tr><th>Revenue growth</th><td>$5K MRR (Oct 2021) → $100K (Feb 2024) → $2M ARR (Feb 2025) → $6M (Sept 2026); doubled $3M → $6M in ~15 months</td></tr>
+      <tr><th>Users</th><td>2.5 million (Sept 2026); ~17,000 paying (our estimate)</td></tr>
+      <tr><th>Acquisition</th><td>43% of new users via AI search; ~1% of badge-driven signups upgrade; Product Hunt Mar 2021 doubled users 1,500 → 3,000 in a day</td></tr>
+      <tr><th>Funding</th><td>$0 — bootstrapped, customer-funded, Belgian BV; no outside capital</td></tr>
+      <tr><th>Founders</th><td>Marie Martens, Filip Minev (life partners; ex-Hotspot travel startup, killed by Covid; Filip previously founded Delta, acquired by eToro)</td></tr>
+      <tr><th>Team</th><td>10 people, Ghent + remote; AI-assisted throughout (Claude Code, Codex, Cursor; filip[bot] PR reviewer)</td></tr>
+      <tr><th>Pricing</th><td>Free / Pro $29/mo ($24 annual) / Business $74/mo annual</td></tr>
+      <tr><th>Product</th><td>Notion-style form builder; Tally AI — 30% of new-account forms built with AI, 1M+ AI tool calls/month (Aug 2026)</td></tr>
+    </table>
+
+    <h2>What we don't know</h2>
+    <ul>
+      <li>Exact paying customer count and churn — our ~17,000 is an estimate from MRR ÷ $29, not a reported figure.</li>
+      <li>Business-tier monthly pricing and how much revenue the org tier contributes.</li>
+      <li>The cost of serving 2.5 million free users — gross margin is unknowable from outside, and it is the number the whole free model hangs on.</li>
+      <li>Revenue past September 2026, and whether the 43% AI-search share kept climbing or plateaued.</li>
+      <li>Whether Tally AI stays optional and free, and what it costs to run at 1M+ calls a month.</li>
+    </ul>
+
+    <h2>Sources</h2>
+    <p class="td-sources">
+      Tally blog, "6 years in, $6 million far" (Sept 22, 2026) — <a href="https://blog.tally.so/6-years-in-6-million-far/" target="_blank" rel="noopener">blog.tally.so</a><br>
+      indiefounder, "Marie Martens: Bootstrapping Tally from a Failed Travel Startup…" (Oct 26, 2026) — <a href="https://indiefounder.me/stories/marie-martens-tally/" target="_blank" rel="noopener">indiefounder.me</a><br>
+      Tally pricing page — <a href="https://tally.so/pricing" target="_blank" rel="noopener">tally.so/pricing</a> (checked Nov 15, 2026)<br>
+      Tally homepage — <a href="https://tally.so" target="_blank" rel="noopener">tally.so</a> (checked Nov 15, 2026)<br>
+      MilestoneWins listing: <a href="/launches/tally/">milestonewins.com/launches/tally/</a> ($6M ARR, founders Marie Martens, Filip Minev)
+    </p>
+  </div>
+  <div class="seo-cta">
+    <h2>More teardowns</h2>
+    <p>About one a day — each one sourced, each one asking whether you could build it.</p>
+    <a class="btn" href="/teardowns/">Browse all teardowns →</a>
+    <a class="btn ghost" href="/launches/tally/">See Tally on MilestoneWins →</a>
+  </div>
+</main>
+<footer style="text-align:center;padding:2rem 1rem;color:var(--text-secondary);font-size:.85rem;">
+  <span>© 2026 MilestoneWins</span>
+</footer>
+</body>
+</html>
