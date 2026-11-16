@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How SoftSync Makes Money — MilestoneWins</title>
+<meta name="description" content="SoftSync sells the removal of data entry — a CRM that runs itself. $100K+ MRR, 500+ paying customers, bootstrapped, $0 VC.">
+<link rel="canonical" href="https://milestonewins.com/teardowns/softsync/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261020d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How SoftSync Makes Money", "description": "SoftSync sells the removal of data entry — a CRM that runs itself.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-11-16", "about": {"@type": "Organization", "name": "SoftSync"}}</script>
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-body ul{line-height:1.85;margin:0 0 1.3rem;color:#1e293b;padding-left:1.3rem}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.td-table{width:100%;border-collapse:collapse;margin:0 0 1.3rem;font-size:.92rem}
+.td-table th,.td-table td{border:1px solid var(--border);padding:.6rem .8rem;text-align:left;line-height:1.55}
+.td-table th{background:#f8fafc}
+.td-note{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65;margin:0 0 1.3rem}
+.td-sources{font-size:.88rem;color:var(--text-secondary);line-height:1.8}
+.td-sources a{color:var(--accent)}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.seo-cta h2{color:#fff;margin:0 0 .8rem}
+.seo-cta h2::before{display:none}
+.seo-cta p{color:#cbd5e1;margin:0 0 1.5rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#launches">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/teardowns/">Teardowns</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/teardowns/">Teardowns</a> <span>&rsaquo;</span> <strong>softsync</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">🔍 Teardown</span>
+    <h1>How SoftSync Makes Money</h1>
+    <p class="lede">SoftSync sells the removal of data entry. It found its buyers by asking 750 founders what they wanted before building anything — then built the CRM those founders described.</p>
+    <div class="story-byline">MilestoneWins · 2026-11-16 · <a href="/launches/softsync/">SoftSync on MilestoneWins →</a> · <a href="https://softsync.ai" target="_blank" rel="noopener">Visit softsync.ai →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$100K+ MRR</b><span>Six-figure, company-reported Nov 12, 2026</span></div>
+    <div class="ms-stat"><b>500+ paying customers</b><span>Bootstrapped — profitable, $0 VC</span></div>
+    <div class="ms-stat"><b>+60% in October</b><span>Revenue growth in a single month, six months in</span></div>
+    <div class="ms-stat"><b>750 conversations</b><span>With founders and operators before building</span></div>
+  </div>
+  <div class="story-body">
+    <p>Every number below is either company-reported or labelled as an estimate. Sources at the bottom.</p>
+    <h2>1. What problem does it solve?</h2>
+    <p>Every CRM has the same failure mode: someone has to type everything in. Meeting notes stay in a notebook, follow-ups slip, and the pipeline goes stale within a week. The tool that is supposed to remember the business becomes a second job — and small teams, who have no sales-ops person to feed it, quietly stop using it.</p>
+    <p>SoftSync's founders heard this complaint 750 times before they wrote the product. In co-founder Celine Haaverstad's words, founders and operators kept saying the same thing: "we want AI working for us, not another tool to babysit." The sales day, as the team describes it, is spread across too many disconnected tools: a lead begins on LinkedIn, moves into a spreadsheet, continues by email, becomes a calendar booking, generates meeting notes, and finally needs to be entered into a CRM. Each hop is a chance to lose the thread.</p>
+    <p>SoftSync collapses that chain into one workspace: outreach, meeting, proposal, closing — with the AI doing the work in between. The promise is not a better database with a nicer interface. It is a CRM you barely have to touch.</p>
+
+    <h2>2. Who pays, how much, and in what scenario?</h2>
+    <p><b>The buyer:</b> a founder, startup, or small sales team that lives in outreach, meetings, and follow-ups — and has no one whose job is keeping the CRM honest.</p>
+    <table class="td-table">
+      <tr><th>Plan</th><th>Price</th><th>What you get</th></tr>
+      <tr><td>Pro</td><td>$29/seat/mo billed yearly ($39 monthly)</td><td>Full CRM: records, email sync, campaigns, meeting notes, reports, AI Assistant, Autopilot, API, MCP — up to 5 team members per workspace</td></tr>
+      <tr><td>Business</td><td>$59/seat/mo billed yearly ($79 monthly)</td><td>Everything in Pro, plus Priority Support, a Workspace Consultant, custom integrations, more capacity (25 members, 1M records)</td></tr>
+      <tr><td>Enterprise</td><td>Custom</td><td>Tailored limits, custom integrations, Priority Support</td></tr>
+    </table>
+    <p>Pricing verified from SoftSync's own pricing page, checked Nov 16, 2026. The unusual part is what does <i>not</i> change between plans: every paid plan carries the same features. What you pay more for is room — team members, records, mailbox connections, monthly usage — not capability. There is no free tier listed on the pricing page; the company offers startup pricing on request and no setup fee.</p>
+    <p><b>The scenario that makes someone pay:</b> the first week the pipeline stays accurate without anyone typing. A founder who has been re-entering the same deal details across four tools tries the meeting recorder and the follow-up automation, and the admin that used to eat the morning disappears. Because pricing is per seat, the account then grows the way small teams grow: one person tries it, the rest of the team joins, and the seat count climbs with headcount.</p>
+    <p class="td-note"><b>Sanity check (our estimate, not a reported figure):</b> $100,000+ MRR ÷ $29 a seat implies at least ~3,400 seats if every customer were on Pro — fewer if a meaningful share pays the $59 Business rate. Against 500+ paying customers, that works out to roughly 7 seats per customer on the Pro math. The company has not disclosed the seat count or the Pro/Business split, so treat the average as a rough shape, not a fact: the customer base looks like small teams buying several seats each, not a long tail of single-seat accounts. Six-figure MRR also implies a $1.2M+ annualized run rate by simple multiplication — our arithmetic, not a figure the company reported as ARR.</p>
+
+    <h2>3. How did it find these people?</h2>
+    <p>Three moves, all of them cheap.</p>
+    <p><b>750 conversations before the product existed.</b> The founders spent months listening to founders and operators before positioning anything. Those conversations were the spec — and they were also the launch audience: the exact people who had described the problem were the first to hear the product existed. No ad budget is mentioned anywhere in the company's telling, and none is needed when your research list is your waitlist.</p>
+    <p><b>A launch the market noticed.</b> SoftSync launched in May 2026, was named #1 Product of the Day on Product Hunt, and the launch drew about 1.5 million views on X. For a CRM — a category not known for viral launches — that is a lot of attention, and it says something about how hungry small teams are for the promise of software that does the admin instead of creating more of it.</p>
+    <p><b>Building in public, in writing.</b> Haaverstad published a detailed deep-dive in October 2026 walking through the Meeting Assistant, the MCP server, and Autopilot, and gave interviews explaining the product's origins. The content is aimed at the developers and operators who ask the hard questions — the same people who decide whether a new CRM is worth trusting with their pipeline.</p>
+    <p>The result: six months from launch to six-figure MRR, with revenue up 60% in October alone — the growth accelerated after the launch spike instead of fading.</p>
+
+    <h2>4. Why does it work?</h2>
+    <p>SoftSync's wedge is not the AI — every CRM now ships an AI assistant. The wedge is <b>removing work instead of reorganizing it, in the exact places where trust is the objection</b>: the meeting recorder never joins the call as a bot, so there is no awkward guest in the participant list and no "is it recording?" moment for the customer; the MCP server lets the customer's own ChatGPT or Claude work inside the CRM, within the permissions the team sets, instead of asking the customer to trust yet another model; and Autopilot turns routine work described in plain words into work that just happens, so nobody has to learn prompting to get value. Pricing sells the product, not the tier maze — same features on every plan, pay for room — which is an unusually clean story to tell a buyer who has been burned by CRM pricing before. And the whole thing is bootstrapped and profitable, which means the company answers to customers, not to a growth target set by investors.</p>
+
+    <h2>5. Could you build it?</h2>
+    <p><b>The product, yes. The business, not by copying the product.</b></p>
+    <p><b>Replicable:</b> the shape — a desktop meeting recorder, an MCP server, plain-word workflow automation, email and calendar sync — can be assembled from existing APIs by a small team. The pieces are commodity, and SoftSync itself shows how far two founders can get in six months.</p>
+    <p><b>Not replicable by cloning:</b> the head start. 750 conversations that all said the same thing, a #1 Product Hunt launch, 1.5 million X views, and 500-plus paying customers in the first six months. A clone would need its own trust channel — a different audience that has been listened to first — not a better meeting recorder.</p>
+    <p><b>The opening it leaves:</b> SoftSync is six months old in the most crowded category in SaaS. Its moat is speed and focus, not lock-in: incumbents can add an MCP server and a recorder, and the company has disclosed nothing about retention or churn. A competitor that owns one vertical deeply — a CRM for a specific profession, with that profession's workflow already built in — still has room. And the risk the company carries is the one every per-seat SaaS carries: if teams shrink, or if the AI features become table stakes everywhere, the $29-a-seat math gets harder.</p>
+
+    <h2>The numbers</h2>
+    <table class="td-table">
+      <tr><th>Revenue</th><td>$100K+ MRR (company-reported, Nov 12, 2026; exact figure undisclosed — "six-figure MRR")</td></tr>
+      <tr><th>Revenue growth</th><td>Launched May 2026 → six-figure MRR within six months; +60% in October 2026 alone</td></tr>
+      <tr><th>Annualized run rate</th><td>$1.2M+ (our arithmetic from $100K+ MRR, not a reported ARR)</td></tr>
+      <tr><th>Paying customers</th><td>500+</td></tr>
+      <tr><th>Seats</th><td>~3,400+ if all on Pro $29 (our estimate); ~7 seats per customer on that math</td></tr>
+      <tr><th>Acquisition</th><td>#1 Product of the Day on Product Hunt; ~1.5M views on X at launch; 750 pre-launch conversations</td></tr>
+      <tr><th>Funding</th><td>$0 — bootstrapped, profitable, no outside capital (company-reported)</td></tr>
+      <tr><th>Founders</th><td>Celine Haaverstad, Chris Lee; Delaware C-corp, Wilmington</td></tr>
+      <tr><th>Team origin</th><td>Built after ~750 conversations with founders and operators; launched May 2026</td></tr>
+      <tr><th>Pricing</th><td>Pro $29/seat/mo annual ($39 monthly) / Business $59 ($79 monthly) / Enterprise custom; same features on all paid plans</td></tr>
+      <tr><th>Product</th><td>Meeting Assistant (desktop app, no bot joins the call), MCP server for ChatGPT/Claude, Autopilot workflows; EU hosting (Azure, Stockholm), data never sold or used to train models</td></tr>
+    </table>
+
+    <h2>What we don't know</h2>
+    <ul>
+      <li>The exact MRR — the company disclosed a range ("six-figure"), not a number, so $100K+ is the lower bound.</li>
+      <li>Churn and retention — the two numbers that decide whether 500+ customers in six months is a business or a launch spike.</li>
+      <li>The Pro/Business split and the real average seat count — our ~7 seats per customer is an estimate from MRR ÷ $29, not a reported figure.</li>
+      <li>What drove the +60% October jump — launch tail, Product Hunt, X, or word of mouth — the company did not break it out.</li>
+      <li>Team size and costs — "profitable" is company-reported with no numbers attached, so margins are unknowable from outside.</li>
+      <li>Revenue past November 12, 2026, and whether the October growth rate held.</li>
+      <li>One small discrepancy: the press release calls Celine Haaverstad Co-Founder and CEO, while her dev.to byline and the company website call her COO. We list both founders without titles and flag it here rather than pick one.</li>
+    </ul>
+
+    <h2>Sources</h2>
+    <p class="td-sources">
+      EIN Presswire, "Bootstrapped SoftSync Hits Six-Figure MRR Six Months After Launch, Grows 60% in October" (Nov 12, 2026) — <a href="https://www.einpresswire.com/article/956263457/bootstrapped-softsync-hits-six-figure-mrr-six-months-after-launch-grows-60-in-october" target="_blank" rel="noopener">einpresswire.com</a><br>
+      Celine Haaverstad, "A CRM an AI assistant can actually run: how SoftSync AI handles meetings, MCP and Autopilot" (Oct 29, 2026) — <a href="https://dev.to/softsyncai/a-crm-an-ai-assistant-can-actually-run-how-softsync-ai-handles-meetings-mcp-and-autopilot-4d0n" target="_blank" rel="noopener">dev.to</a><br>
+      Unite.ai, "Celine Haaverstad, COO at SoftSync AI – Interview Series" — <a href="https://www.unite.ai/celine-haaverstad-coo-at-softsync-ai-interview-series/" target="_blank" rel="noopener">unite.ai</a><br>
+      SoftSync pricing page — <a href="https://softsync.ai/pricing" target="_blank" rel="noopener">softsync.ai/pricing</a> (checked Nov 16, 2026)<br>
+      SoftSync homepage — <a href="https://softsync.ai" target="_blank" rel="noopener">softsync.ai</a> (checked Nov 16, 2026)<br>
+      MilestoneWins listing: <a href="/launches/softsync/">milestonewins.com/launches/softsync/</a> ($100K+ MRR, founders Celine Haaverstad, Chris Lee)<br>
+      MilestoneWins founder story: <a href="/stories/softsync-story/">milestonewins.com/stories/softsync-story/</a> (Nov 16, 2026)
+    </p>
+  </div>
+  <div class="seo-cta">
+    <h2>More teardowns</h2>
+    <p>About one a day — each one sourced, each one asking whether you could build it.</p>
+    <a class="btn" href="/teardowns/">Browse all teardowns →</a>
+    <a class="btn ghost" href="/launches/softsync/">See SoftSync on MilestoneWins →</a>
+  </div>
+</main>
+<footer style="text-align:center;padding:2rem 1rem;color:var(--text-secondary);font-size:.85rem;">
+  <span>© 2026 MilestoneWins</span>
+</footer>
+</body>
+</html>
