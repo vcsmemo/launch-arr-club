@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How EmailEngine hit $20K MRR after 13 years of open source — MilestoneWins</title>
+<meta name="description" content="EmailEngine makes $20,000 MRR. How Andris Reinman turned 15 years of open-source email work — Nodemailer, mailparser, IMAP API — into a solo business by changing how he charged.">
+<link rel="canonical" href="https://milestonewins.com/stories/emailengine-story/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261014d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How EmailEngine hit $20K MRR after 13 years of open source", "description": "EmailEngine makes $20,000 MRR. How Andris Reinman turned 15 years of open-source email work \u2014 Nodemailer, mailparser, IMAP API \u2014 into a solo business by changing how he charged.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-11-18", "about": {"@type": "Organization", "name": "EmailEngine"}}</script>
+
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.seo-steps{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:1rem}
+.seo-steps li{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65}
+.seo-steps li b{color:#0f172a}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#celebrations">Launches</a><a href="/milestones/">Milestones</a><a href="/leaderboard/">Leaderboard</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/stories/">Stories</a> <span>&rsaquo;</span> <strong>EmailEngine</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">✨ Founder story</span>
+    <h1>How EmailEngine hit $20K MRR after 13 years of open source</h1>
+    <p class="lede">Andris Reinman spent a decade giving email libraries away for free — then a licence change, not a feature, turned them into a $20,000-a-month business.</p>
+    <div class="story-byline">By <a href="https://x.com/[&#x27;andrisreinman&#x27;]" target="_blank" rel="noopener">Andris Reinman ↗</a> · 2026-11-18 · <a href="/launches/emailengine/">View on MilestoneWins →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$20K</b><span>MRR, November 2026</span></div>
+    <div class="ms-stat"><b>2.7M</b><span>Nodemailer downloads a week</span></div>
+    <div class="ms-stat"><b>€750</b><span>Revenue in the first 1.5 years</span></div>
+    <div class="ms-stat"><b>$1,450</b><span>Standard licence, per year</span></div>
+  </div>
+  <div class="story-body">
+  <h2>Fifteen years of email before the business</h2>
+  <p>To get to the beginning of the story, you have to go back to June 2013. Andris Reinman of Tallinn, Estonia, had already spent a few years developing open-source email libraries for the almost empty Node.js ecosystem — he had started Nodemailer back in 2011, when one of the better options for sending email from a Node.js application was to pipe the data to a PHP script running PHPMailer. Over the years he built the whole stack: mailparser for parsing, ImapFlow for IMAP, WildDuck for an IMAP server, ZoneMTA for outbound delivery, plus the half-dozen small libraries underneath them. Nodemailer now gets about 2.7 million npm downloads a week; mailparser alone gets 75 million downloads a year, and 56,000 repositories depend on it.</p><p>In June 2013 he was listening to The Changelog, which published an interview with Mike Perham, the developer of Sidekiq. Perham explained how he had turned his open-source work into a business by selling licences for commercial features of otherwise free software. Reinman was amazed: you could actually do that — build open-source software, give most of it away for free, and somehow make a living from it? He was hooked from the start. Unfortunately, knowing that something is possible and actually making it happen are two very different things, and over the following years he tried countless experiments with a success rate of exactly zero.</p>
+  <h2>The model that made €750</h2>
+  <p>When COVID hit in 2020, he decided to put more serious effort into it: he registered a company, opened a business bank account, signed up for Stripe, and was finally ready to start charging customers. There was just one small problem — he still had nothing to charge for. His plan was to build new email-related libraries and applications, release them as open source under a restrictive AGPL licence, and offer paid subscribers the same software under a more commercially friendly MIT licence.</p><p>So he started building things to fill the portfolio: a Postfix queue file parser, some other email utilities, and one experiment that eventually became EmailEngine. Back then it was called IMAP API, because that was pretty much what it was — a simple REST API layer on top of IMAP connections. Unlike the other projects, it turned out to be quite large and required a lot more development work, and on GitHub the AGPL version started getting users and stars while the other projects got almost no attention. During the first year and a half, he found three paying customers, each paying €250 — a grand total of €750. Only the third was a real annual subscription; the first two received unrestricted commercial licences because he had not even figured out the licensing terms properly yet.</p><p>At some point he realised the business model was complete nonsense. Large enterprises were not going to start using his relatively unknown software just because he offered an alternative to AGPL licensing, and smaller businesses rarely thought about open-source licences in the first place. They wanted software that solved their problems; whether it was AGPL or MIT was not usually a deciding factor. He was trying to sell a solution to a licensing problem that most of his potential customers did not actually have.</p>
+  <h2>The rename that changed everything</h2>
+  <p>So he made a major change. He renamed IMAP API to EmailEngine, built a new user interface, and changed the licensing model completely: instead of a free AGPL version with an optional MIT licence, EmailEngine now required an active paid subscription to work — without a valid licence key, the software would stop operating. He also changed the software licence itself from AGPL to a commercial licence, which was possible because he had required outside contributors to sign a contributor licence agreement from the beginning. The source code remained publicly available on GitHub, but EmailEngine was no longer open source by definition. It was source-available software.</p><p>He kept the existing price of €250 per year. The first month under the new business model brought in $2,000 — more than twice what he had made during the previous year and a half combined. The software was largely the same; he had just changed how he charged for it. All that revenue came from companies that had already been using the free IMAP API and wanted to continue using it and receive updates. From that moment the direction was decided: he stopped offering the other projects as commercial products, made them freely available instead, and concentrated all his effort on EmailEngine — adding features, fixing bugs, dealing with customers, and gradually raising subscription prices. Today the standard subscription costs $1,450 per year, and increasing prices did not seem to reduce the number of new customers.</p>
+  <h2>Slow growth, on purpose</h2>
+  <p>The growth since has been slow and deliberate. EmailEngine was at $13,000 in monthly recurring revenue, growing roughly 20% a year, when Reinman told the story on Indie Hackers; by late 2025 it was pulling in about $130,000 a year; and in November 2026 his own blog post put it at $20,000 MRR. He still works alone, wearing all the hats, though these days he has his pal AI helping him with much of the work — product development, support, sales, documentation and pretty much everything else, with the exception of accounting. He has no employees, no investors, and no particular plans to change that.</p><p>Distribution, such as it is, comes from the open-source work itself: Nodemailer.com alone, at roughly 50,000 visits a month, sends about 3,000 visitors to EmailEngine, and labelling the product as made by the creator of Nodemailer makes it more trustworthy. Asked whether he would recommend the path to someone who had recently lost their job, his answer was: not necessarily. He first got the idea of making money from open source in 2013, started his company in 2020, and it took another year and a half to figure out a business model that actually worked, and several more years to reach the revenue he has today. As he put it, building useful software and building a viable business are two different things — and in the end, the biggest turning point was not some major technical breakthrough. It was changing the business model.</p>
+  <h2>The playbook</h2>
+  <ol class="seo-steps">
+      <li><b>Sell the problem, not the licence</b> — Customers did not care about AGPL versus MIT. They paid when the software solved their problem and required a subscription.</li>
+      <li><b>Let open source be the distribution</b> — Nodemailer&#x27;s millions of weekly downloads send a steady stream of developers to EmailEngine, month after month.</li>
+      <li><b>Raise prices when the value is there</b> — From €250 a year to $1,450 a year — and new customers kept coming, because the price was never the deciding factor.</li>
+      <li><b>One product, all the focus</b> — He stopped selling the other libraries as commercial products and concentrated everything on EmailEngine.</li>
+      <li><b>Patience is the moat</b> — Thirteen years from the idea to $20K MRR. The business compounded because he kept going when it made almost nothing.</li>
+  </ol>
+  </div>
+  <div class="seo-cta" style="margin-top:2.5rem">
+    <a class="btn" href="/submit.html">🚀 Share your milestone</a>
+    <a class="btn ghost" href="/launches/emailengine/">View EmailEngine →</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 MilestoneWins</span>
+    <span><a href="/">Home</a> · <a href="/stories/">Stories</a> · <a href="/submit.html">Submit</a></span>
+  </div>
+</footer>
+<script src="/auth.js"></script>
+</body>
+</html>
