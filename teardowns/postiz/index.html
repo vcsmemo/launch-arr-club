@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Postiz Makes Money — MilestoneWins</title>
+<meta name="description" content="Postiz sells the hour back to people who post everywhere — write once, publish to 30+ networks — and it found its buyers by open-sourcing the product and marketing every feature like a launch, until the agent wave turned its API into the distribution. $400K+ MRR, 12,533 subscribers, solo.">
+<link rel="canonical" href="https://milestonewins.com/teardowns/postiz/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261020d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How Postiz Makes Money", "description": "Postiz sells the hour back to people who post everywhere — write once, publish to 30+ networks — and it found its buyers by open-sourcing the product and marketing every feature like a launch, until the agent wave turned its API into the distribution.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-11-19", "about": {"@type": "Organization", "name": "Postiz"}}</script>
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-body ul{line-height:1.85;margin:0 0 1.3rem;color:#1e293b;padding-left:1.3rem}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.td-table{width:100%;border-collapse:collapse;margin:0 0 1.3rem;font-size:.92rem}
+.td-table th,.td-table td{border:1px solid var(--border);padding:.6rem .8rem;text-align:left;line-height:1.55}
+.td-table th{background:#f8fafc}
+.td-note{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65;margin:0 0 1.3rem}
+.td-sources{font-size:.88rem;color:var(--text-secondary);line-height:1.8}
+.td-sources a{color:var(--accent)}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.seo-cta h2{color:#fff;margin:0 0 .8rem}
+.seo-cta h2::before{display:none}
+.seo-cta p{color:#cbd5e1;margin:0 0 1.5rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#launches">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/teardowns/">Teardowns</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/teardowns/">Teardowns</a> <span>&rsaquo;</span> <strong>Postiz</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">🔍 Teardown</span>
+    <h1>How Postiz Makes Money</h1>
+    <p class="lede">Postiz sells the hour back to people who post everywhere — write once, publish to 30+ networks — and it found its buyers by open-sourcing the product and marketing every feature like a launch, until the agent wave turned its API into the distribution.</p>
+    <div class="story-byline">MilestoneWins · 2026-11-19 · <a href="/launches/postiz/">Postiz on MilestoneWins →</a> · <a href="https://postiz.com" target="_blank" rel="noopener">Visit postiz.com →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$400K+</b><span>MRR, Nov 2026, founder-reported</span></div>
+    <div class="ms-stat"><b>12,533</b><span>Subscribers (Nov 14, 2026)</span></div>
+    <div class="ms-stat"><b>~28x</b><span>MRR growth in 12 months ($14K → $400K+)</span></div>
+    <div class="ms-stat"><b>$29/mo</b><span>Entry plan, 5 channels</span></div>
+  </div>
+  <div class="story-body">
+    <h2>1. What problem does it solve?</h2>
+    <p>Posting is the tax on making things. A creator or indie founder who wants to be on X, LinkedIn, Instagram, TikTok, YouTube and the rest faces the same post pasted by hand, platform by platform, every day — an hour a day of copying, by one founder's own measure. The schedulers that existed were built for teams: seats, approval flows, client reporting, priced like it. And by 2026 a new buyer had appeared: the AI agent. An agent that writes content still needs somewhere to publish it, and the incumbent schedulers were not built to be called by Claude or an n8n workflow.</p>
+    <p>Postiz does one job: write once, publish to 30+ networks from one dashboard, reviewed in a visual calendar before anything goes out. AI agents plan, generate and schedule through the same product — via MCP server, CLI or API — and the same codebase is open-source (AGPL-3.0) for anyone who would rather self-host.</p>
+
+    <h2>2. Who pays, how much, and in what scenario?</h2>
+    <p><b>The buyer:</b> a solo creator or indie founder posting daily across several networks; a small brand or agency managing client accounts; and — increasingly — a developer whose n8n workflow or AI agent needs to publish. Not an enterprise social team.</p>
+    <table class="td-table">
+      <tr><th>Plan</th><th>Price</th><th>What you get</th></tr>
+      <tr><td>Standard</td><td>$29/mo</td><td>5 channels, unlimited posts, AI copilot, 3 AI videos/mo</td></tr>
+      <tr><td>Team</td><td>$39/mo</td><td>10 channels, unlimited team members, 10 AI videos/mo</td></tr>
+      <tr><td>Pro</td><td>$49/mo</td><td>30 channels, 30 AI videos/mo</td></tr>
+      <tr><td>Ultimate</td><td>$99/mo</td><td>100 channels, 60 AI videos/mo</td></tr>
+    </table>
+    <p>Pricing is by <b>connected channel</b>, not by seat — and every plan includes the MCP server, CLI and API, so there is no separate agent tier. Annual billing runs about 20% cheaper ($23/$31/$39/$79 a month), and every plan starts with a 7-day free trial. (Pricing from postiz.com/pricing, checked Nov 19, 2026.)</p>
+    <p><b>The scenario that makes someone pay:</b> the day manual posting breaks — a video goes out late, a platform gets skipped, or the founder counts the hours. For the developer buyer the trigger is different: an n8n workflow that already posts to social media and wants a supported, open-source way to do it.</p>
+    <p class="td-note"><b>Sanity check (our estimate, not a reported figure):</b> $400K+ MRR ÷ 12,533 subscribers ≈ $32 per subscriber per month — between the $29 Standard and $39 Team plans, consistent once annual discounts are factored in. That also suggests the 12,533 are paying subscribers, not free signups, though the founder only said "subscribers."</p>
+
+    <h2>3. How did it find these people?</h2>
+    <p>Almost entirely by marketing in public — after the conventional route failed. Founder Nevo David's first instinct was SEO: four months and about $12,000 on an Upwork freelancer buying backlinks, with zero to show for it against incumbents holding fifteen years of domain authority. So he did what he already knew from his time doing marketing at Novu, where he had helped grow an open-source project to 30,000 GitHub stars in two years: on September 1, 2024 he open-sourced Postiz with a polished README and launched it on Reddit. It exploded.</p>
+    <p>The part most founders would miss: he relaunched every month. Every minor feature was a release, posted again on Reddit and DEV — "market as much as coding or more," in his words. By January 2025 the funnel read $2,000 MRR, 15,000 GitHub stars, 584,000 Docker downloads and about 4,000 cloud registrations.</p>
+    <p>The second engine was n8n. In August 2025 he noticed developers posting to social media through n8n workflows — "developers willing to pay, and they would choose an open-source solution" — shipped an official integration, improved the public API, and cold-pitched Skool communities. Monthly revenue almost doubled in a month, from $6,523 in July to $12,648 in August.</p>
+    <p>The third engine was the agent wave. By June 2026 Postiz was "leaning towards agentic use": MCP server, CLI and API on every plan, so Claude, ChatGPT or any agent can schedule on a user's behalf. Then the curve bent hard — $113K MRR in June, $400K+ by November — adding "around $5K MRR per day" in early November. Today's marketing is louder and paid: booking influencers, pumping content, running ads, including $10,000 for one creator to make a two-minute AI video. He hires writers by reach, not by Postiz knowledge: "we don't need a Postiz professional; we need a marketing professional."</p>
+
+    <h2>4. Why does it work?</h2>
+    <p>Postiz's wedge is not the scheduler — cross-posting is a commodity, and Buffer and Hootsuite have sold it for a decade. The wedge is <b>distribution, and the price that distribution allows</b>: open source is the channel — stars turn into downloads, downloads into cloud signups, signups into MRR, with the license as the marketing budget. Two decisions compound it. First, feature parity: the self-hosted and cloud versions are the same product, which removes the biggest objection to an open-source tool ("what if we need to leave?") while convenience still converts. Second, the pricing principle he stated in November 2025: "charge only for cloud costs, never force developers to pay" — a $29 entry plan undercuts team-priced incumbents for the solo buyer. Then the agent wave handed it a second act for free: the same "publish once" job, now done by Claude or ChatGPT on the user's behalf, through interfaces the incumbents were slower to ship — and on every plan, not a premium tier.</p>
+    <p>Underneath, the founder's apprenticeship matters. David didn't finish high school; he spent ten years as a software engineer and team lead, then two years learning open-source growth as Novu's marketing person. Most founders learn distribution by burning their own runway. David learned it on someone else's — then applied the lessons to his own company from day one, and now teaches the playbook through Gitroom, his project for founders growing open-source tools.</p>
+
+    <h2>5. Could you build it?</h2>
+    <p><b>The product, yes. The business, not by copying the product.</b></p>
+    <p><b>Replicable:</b> a cross-posting scheduler is well-trodden ground — thirty platform APIs, a queue, a calendar, caption overrides — and the agent interfaces (MCP server, CLI, public API) are now standard patterns. The pricing shape is copyable too: charge per channel, unlimited posts, keep the surface area small.</p>
+    <p><b>Not replicable by cloning:</b> the distribution. Two years of monthly relaunches in front of exactly the developers who feel this pain, a public revenue record that turns transparency into trust, and a founder who is himself the target customer. A new entrant would need its own trust channel with the same audience, not a better scheduler.</p>
+    <p><b>The opening it leaves:</b> thirty platform APIs are thirty relationships that can break — policy changes, price hikes, or a platform deciding schedulers are competition. And the agent wave cuts both ways: if ChatGPT and Claude become the posting surface, the scheduler risks becoming invisible plumbing. The defence so far is the same as the wedge — being the simple, cheap, open default the agents call.</p>
+
+    <h2>The numbers</h2>
+    <table class="td-table">
+      <tr><th>Metric</th><th>Figure</th></tr>
+      <tr><td>MRR</td><td>Dec 2024 $1.6K → Nov 2025 $14K → Jun 2026 $113K → Nov 2026 $400K+ (founder-reported, via Indie Hackers)</td></tr>
+      <tr><td>MRR growth</td><td>~28x in 12 months; ~$5K added per day in early Nov 2026</td></tr>
+      <tr><td>Subscribers</td><td>12,533 (Nov 14, 2026)</td></tr>
+      <tr><td>Stripe cash collected</td><td>Jan 2026 $18,077 → Oct 2026 $386,066; $464K in the 30 days to Nov 16 (cash, not MRR)</td></tr>
+      <tr><td>Annualized</td><td>~$4.8M (our annualization of $400K MRR — not a separately reported ARR figure)</td></tr>
+      <tr><td>Target</td><td>$20M ARR — the founder's stated aim (Nov 15, 2026), not current revenue</td></tr>
+      <tr><td>Pricing</td><td>$29 → $39 → $49 → $99/mo; annual billing ~20% off</td></tr>
+      <tr><td>Open source</td><td>AGPL-3.0; launched Sep 2024; 15,000+ GitHub stars by Jan 2025</td></tr>
+    </table>
+
+    <h2>What we don't know</h2>
+    <ul>
+      <li>Churn and retention — the two numbers that decide whether 12,533 subscribers is a compounding base or a leaky bucket. Neither has been disclosed.</li>
+      <li>Monthly vs. annual plan mix — October's Stripe cash ($386,066) and November's MRR ($400K+) are different measures, and annual prepayments would flatter cash, so don't read one as the other.</li>
+      <li>How much of the June-to-November jump is agent-driven vs. regular cloud signups.</li>
+      <li>Current GitHub stars and self-hosted usage — 15,000+ stars is a January 2025 snapshot.</li>
+      <li>Whether the ~$5K-a-day MRR adds in early November sustained, or was a spike.</li>
+      <li>Funding status — no outside funding has been disclosed.</li>
+    </ul>
+
+    <h2>Sources</h2>
+    <p class="td-sources">
+      Indie Hackers, Lukas Brenner, "An open-source social media scheduler has passed $400K MRR, its founder says" (Nov 16, 2026) — <a href="https://indiehackers.com/post/numbers/an-open-source-social-media-scheduler-has-passed-400k-mrr-its-founder-says-oP6Ojv6lcrtLTEBWbl9h" target="_blank" rel="noopener">indiehackers.com</a><br>
+      Postiz pricing page (checked Nov 19, 2026) — <a href="https://postiz.com/pricing" target="_blank" rel="noopener">postiz.com/pricing</a><br>
+      Postiz homepage — <a href="https://postiz.com" target="_blank" rel="noopener">postiz.com</a><br>
+      Founder Nevo David on X (@wickedguro)<br>
+      MilestoneWins listing: <a href="/launches/postiz/">milestonewins.com/launches/postiz/</a> ($4.8M ARR, founder Nevo David) · Founder story: <a href="/stories/postiz-story/">How Postiz hit $184K MRR</a>
+    </p>
+  </div>
+  <div class="seo-cta">
+    <h2>More teardowns</h2>
+    <p>About one a day — each one sourced, each one asking whether you could build it.</p>
+    <a class="btn" href="/teardowns/">Browse all teardowns →</a>
+    <a class="btn ghost" href="/launches/postiz/">See Postiz on MilestoneWins →</a>
+  </div>
+</main>
+<footer style="text-align:center;padding:2rem 1rem;color:var(--text-secondary);font-size:.85rem;">
+  <span>© 2026 MilestoneWins</span>
+</footer>
+</body>
+</html>
