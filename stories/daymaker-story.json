@@ -1,0 +1,67 @@
+{
+ "dek": "William Lindholm started selling at 12, built Daymaker with Lovable without knowing how to code, and turned cakes with pitches printed on top into a $130K-a-month business \u2014 35% of his first ten campaigns ended in a booked meeting.",
+ "founder": "William Lindholm",
+ "founder_x": "daymakerguy",
+ "headline": "How a 20-year-old turned pitch cakes into $130K a month",
+ "key_numbers": [
+  {
+   "label": "Monthly revenue (Apr 2026)",
+   "value": "$130K"
+  },
+  {
+   "label": "Campaigns ending in a meeting",
+   "value": "35%"
+  },
+  {
+   "label": "Price per cake",
+   "value": "~$85"
+  },
+  {
+   "label": "Pitch campaigns done",
+   "value": "10"
+  }
+ ],
+ "meta_description": "Daymaker makes $130K a month. How William Lindholm, 20, turned cakes with pitches printed on top into a sales machine \u2014 35% of campaigns booked meetings.",
+ "playbook": [
+  {
+   "title": "Sell the meeting, not the product",
+   "detail": "The cake is a door-opener, not the business. A 35% meeting rate against roughly 1% for cold email is the number that matters \u2014 the product is whatever reliably produces it."
+  },
+  {
+   "title": "Earn the right to build it",
+   "detail": "Before Daymaker there was $60,000 made by building websites live on cold calls, and a free cake offered for a meeting. Revenue first, then the product that scales it."
+  },
+  {
+   "title": "Let one loud customer do the marketing",
+   "detail": "Seven cakes, five VC meetings, one post that blew up \u2014 and suddenly more inbound than the team could handle. A single vivid customer story beats a launch campaign."
+  },
+  {
+   "title": "Be the middleman, not the bakery",
+   "detail": "No ovens, no drivers: a network of local bakeries does the work while Daymaker keeps roughly 30% of about $85 a cake. The cake itself is a beta for a vendor network that can make anything."
+  }
+ ],
+ "product_name": "Daymaker",
+ "product_slug": "daymaker",
+ "published": "2026-11-23",
+ "revenue": "$130K/mo",
+ "revenue_label": "Monthly revenue (Apr 2026)",
+ "sections": [
+  {
+   "heading": "Selling since he was twelve",
+   "body_html": "<p>William Lindholm started working in sales at 12. By 2025, the Norwegian founder \u2014 then 20, now living in San Francisco \u2014 had won third place in a national competition by booking 17 meetings in four hours, including one with KPMG, on the back of automating cake deliveries. That is the whole business in miniature: a physical object, delivered at the right moment, doing what a thousand cold emails cannot.</p><p>He got there without knowing how to code. About a year and a half before Inc. profiled him in April 2026, he started using Lovable, the Swedish AI coding platform, to find newly registered companies in Norway that did not have websites. On cold calls he would tell prospects he was using AI, build a live website prototype while speaking to them, and finish it in 20 minutes after hanging up. After a couple of months he had made $60,000 \u2014 money he used to bootstrap Daymaker\u2019s launch. \u201cLovable is an amazing tool,\u201d he told Inc. \u201cI didn\u2019t have any technical experience when I started up. But then again, we managed to build a technical platform that scaled to a serious business.\u201d Building with Lovable also helped Daymaker land angel investors, secure its first 50 customers, sell around 200 cakes, and raise $100,000 on a $3 million valuation. The team has since moved to Cursor to scale further.</p><p>The lesson is not that AI writes code. It is that Lindholm never waited for permission to be technical. He sold first \u2014 websites, then cakes, then meetings \u2014 and let the tools catch up with the selling.</p>"
+  },
+  {
+   "heading": "Birthday cakes that did not fit",
+   "body_html": "<p>Daymaker did not start with sales. When Lindholm launched it in September 2025 with two colleagues, it was built around sending birthday cakes to employees. Companies could upload staff lists through integrated HR systems, set rules \u2014 a vanilla cake at 30, chocolate at 40 \u2014 and Daymaker handled the rest, even emailing managers before birthdays to confirm delivery.</p><p>It sort of worked. Lindholm grew the business to about $10,000 a month by cold-calling companies in Norway and offering a free cake in exchange for a meeting. But the setup was too much work for employers, who had to gather staff lists and import them themselves. \u201cIt was too much work and too little output for them,\u201d he said. \u201cThat\u2019s why we just never really found the product market fit that we found today.\u201d</p><p>The turn came after the team moved to San Francisco and joined Founders, Inc., the venture studio. The birthday idea was not hitting, and the team changed the question. \u201cWe were doing the birthday thing and it wasn\u2019t really hitting,\u201d Lindholm said. \u201cAnd then we just changed the value proposition to say, \u2018Hey, do you want customers?\u2019 And everyone wants customers. So, if you can get creative with the way you market something to customers then that\u2019s something people are very desperate for.\u201d Same cake, same delivery network, different buyer: from HR departments buying appreciation to sales teams buying meetings.</p>"
+  },
+  {
+   "heading": "Seven cakes, five meetings",
+   "body_html": "<p>The pivot\u2019s first customer proved the point in one afternoon. Mandalo founder Andrew Anderson was fundraising for his financial platform; Daymaker sent his pitch deck, printed on cakes, to seven VCs. He scored five meetings. \u201cThat blew up on social media,\u201d Lindholm said, \u201cand ever since that, it\u2019s been crazy. We have so much inbound, we don\u2019t know what to do with it.\u201d</p><p>The numbers behind the story are unusually concrete for a company this young. In roughly six weeks, monthly revenue grew from $10,000 to $130,000. Thirty-five percent of the ten campaigns run so far resulted in meetings \u2014 against the roughly 1% a cold email manages. Daymaker charges around $85 for each cake, including delivery and the photo on top, and at first worked with a single baker in Oslo; by April it employed an agent to find bakeries in multiple cities, covering the Bay Area, New York, Houston, Montreal, Los Angeles, Florida and the UK. The Side Hustle Show, which covered the business in mid-2026, put it at around $4,000 a day in revenue at roughly 30% margins \u2014 about $1,000 a day in profit \u2014 and a podcast interview that April had Lindholm at $120,000 in monthly revenue just weeks after the pivot.</p><p>The customer stories kept compounding. Librar Labs, an AI library-tech startup, began with 20 cakes, saw it work, ordered 100 more and eventually planned quarterly campaigns for all its customers. The largest order so far came from Archy, a dental software company, which jumped straight to 1,000 cakes after hearing about Daymaker \u2014 far easier than its previous effort coordinating hundreds of pizzas by itself. By April the team had completed 10 pitch campaigns and had a list of 50 companies lined up next. Customers often start small and scale once they see results, which is exactly how a $85 cake becomes a quarterly budget line.</p>"
+  },
+  {
+   "heading": "The numbers, and what they are not",
+   "body_html": "<p>Read the figures carefully, because two of them look alike and are not the same. The $130,000 a month is Daymaker\u2019s cold-caking revenue as of April 2026, reported by Inc. after the pivot; the founder\u2019s own X post from March 18 said March invoicing was almost $100,000, up from $10,000 the month before, which is the same trajectory a month earlier. The \u201c$150K ARR\u201d figure that shows up in some roundups belongs to the old birthday-cake business, not to cold caking, and it does not belong in Daymaker\u2019s revenue line.</p><p>There are two honest caveats. First, the figures are from March and April 2026, and the company has not published newer revenue since. The freshest public signal is the November 2026 Product Hunt relaunch post, which says companies like Monaco, Nowadays, Rippling, Salesforce, Serval and PostHog spent over $100,000 on cakes in the prior two weeks \u2014 customer spend on cakes, not Daymaker revenue, but evidence the engine was still running at scale seven months later. Second, a cake business has cake margins: about 30% by the Side Hustle Show\u2019s account, because the bakeries take their cut. Revenue is not profit, and $130,000 a month of cake orders is a different business from $130,000 a month of software.</p><p>That is also the point of the story. Lindholm does not think the cake is the business. \u201cThe cake to me is just a beta,\u201d he said. \u201cIf we can create that vendor network of just local vendors who are able to create these customizable things, that\u2019s the future of marketing.\u201d Some clients have already begun asking for pizzas, donuts, and even ping pong tables. The relaunch says it out loud: from today, Daymaker finds your prospects, reads 800 public sources on each, and picks the gift they will love \u2014 the ad engine you put your daily spend into, where Facebook finds the audience and Daymaker finds the person. The cake opened the door. The network is the company.</p>"
+  }
+ ],
+ "slug": "daymaker-story"
+}
