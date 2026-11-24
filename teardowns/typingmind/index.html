@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How TypingMind Makes Money — MilestoneWins</title>
+<meta name="description" content="TypingMind sells a better window onto the AI you already pay for — a one-time $39 license with no server behind it — and it found its buyers the same way it was built: in public, one tweet at a time. $137K monthly revenue.">
+<link rel="canonical" href="https://milestonewins.com/teardowns/typingmind/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261020d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How TypingMind Makes Money", "description": "TypingMind sells a better window onto the AI you already pay for — a one-time $39 license with no server behind it — and it found its buyers the same way it was built: in public, one tweet at a time.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-11-24", "about": {"@type": "Organization", "name": "TypingMind"}}</script>
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-body ul{line-height:1.85;margin:0 0 1.3rem;color:#1e293b;padding-left:1.3rem}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.td-table{width:100%;border-collapse:collapse;margin:0 0 1.3rem;font-size:.92rem}
+.td-table th,.td-table td{border:1px solid var(--border);padding:.6rem .8rem;text-align:left;line-height:1.55}
+.td-table th{background:#f8fafc}
+.td-note{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65;margin:0 0 1.3rem}
+.td-sources{font-size:.88rem;color:var(--text-secondary);line-height:1.8}
+.td-sources a{color:var(--accent)}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.seo-cta h2{color:#fff;margin:0 0 .8rem}
+.seo-cta h2::before{display:none}
+.seo-cta p{color:#cbd5e1;margin:0 0 1.5rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#launches">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/teardowns/">Teardowns</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/teardowns/">Teardowns</a> <span>&rsaquo;</span> <strong>TypingMind</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">🔍 Teardown</span>
+    <h1>How TypingMind Makes Money</h1>
+    <p class="lede">TypingMind sells a better window onto the AI you already pay for — a one-time $39 license with no server behind it — and it found its buyers the same way it was built: in public, one tweet at a time.</p>
+    <div class="story-byline">MilestoneWins · 2026-11-24 · <a href="/launches/typingmind/">TypingMind on MilestoneWins →</a> · <a href="https://typingmind.com" target="_blank" rel="noopener">Visit typingmind.com →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$137K</b><span>Monthly revenue, founder's X bio, Nov 2026 — not MRR</span></div>
+    <div class="ms-stat"><b>$210K+</b><span>Best month ever, Dec 2025</span></div>
+    <div class="ms-stat"><b>$1M</b><span>Revenue in the 12 months to Nov 2024</span></div>
+    <div class="ms-stat"><b>72 hours</b><span>To build the first version, Mar 2023</span></div>
+  </div>
+  <div class="story-body">
+    <p>Every number below is founder-reported (via Tony Dinh's newsletter, X posts, or his X bio as read by The AI Receipts on Nov 18, 2026) or labelled as an estimate. The headline figure is monthly revenue — not MRR, not profit.</p>
+
+    <h2>1. What problem does it solve?</h2>
+    <p>In March 2023, ChatGPT's web interface was slow, went down often, and locked you into one model in one tab. Power users — the people actually living inside AI all day — wanted something else: one window for every model, their own API keys, their chats stored on their own machine, and no monthly rent for the privilege.</p>
+    <p>TypingMind is that window. It puts ChatGPT, Claude, Gemini and more than 20 other models in a single chat app, lets you bring your own API keys and pay the providers directly for usage, and stores chats locally on your device by default. On top of the chat box it adds AI agents, plugins, MCP support, projects, multi-model parallel chats and team workspaces — plus local models through Ollama and LM Studio, with no server to run.</p>
+    <p>The problem is old (a power tool beats a web page) and the timing was new: OpenAI announced the ChatGPT API on March 1, 2023. Dinh had the idea the same day, registered the domain on March 2, and shipped the MVP on March 6. Being first with a polished version of an obvious idea is the whole story — and the reason the story is hard to repeat.</p>
+
+    <h2>2. Who pays, how much, and in what scenario?</h2>
+    <p><b>The buyer:</b> two of them. The individual power user who chats with AI all day and wants one fast front end; and the team that wants a shared internal AI platform — one workspace, preset API keys, admin controls — without building one.</p>
+    <p><b>The pricing (from TypingMind's own buy page and docs, checked November 2026):</b></p>
+    <table class="td-table">
+      <tr><th>Plan</th><th>Price</th><th>What you get</th></tr>
+      <tr><td>Standard</td><td>$39 one-time</td><td>Basic chat, agents, plugins, voice input</td></tr>
+      <tr><td>Extended</td><td>$79 one-time</td><td>+ web search, vision, image generation, text-to-speech, document upload</td></tr>
+      <tr><td>Premium</td><td>$99 one-time (list $198)</td><td>+ multi-model parallel chats, projects, artifacts, unlimited plugins and MCP</td></tr>
+      <tr><td>Bulk</td><td>$395 one-time</td><td>Premium for up to 10 users on 50 devices</td></tr>
+      <tr><td>Teams</td><td>From $99/mo for 5 seats</td><td>Cloud workspaces: SSO, roles, usage limits, chat logs, audit logs</td></tr>
+    </table>
+    <p>The catch every buyer should understand: the license buys the front end only. Every message is billed by the model provider under your own API key, at per-token rates, with no ceiling. A $39 license can quietly become a $500 OpenAI invoice.</p>
+    <p><b>The scenario that makes someone pay:</b> the moment juggling three AI subscriptions gets old, or a team lead realises everyone is expensing ChatGPT Plus separately with no oversight. The Team plan is the second act of the business: by October 2025, recurring B2B Team revenue was already over half of monthly revenue — the one-time license gets them in, the team subscription is what keeps the money coming.</p>
+    <p class="td-note"><b>Sanity check (our estimate, not a reported figure):</b> $1M in the twelve months to November 2024 averages ~$83K a month. October 2025's $130–160K a month is roughly 60–90% above that average — growth, not a contradiction. And the $137K bio figure sits inside the October 2025 range, so no trend can be read into it. If Team is still over half of the total, the recurring half is ~$70K+ a month — at $99 a month per five-seat workspace, that implies hundreds of paying team workspaces, with larger plans paying more. The other half is lumpy one-time license sales: at $39–$99 a license, tens of thousands of dollars a month means hundreds of new licenses a month. Both halves are plausible; neither split is disclosed.</p>
+
+    <h2>3. How did it find these people?</h2>
+    <p>Almost entirely through the founder's own feed. Dinh calls tweeting every feature his "entire marketing strategy" — and the numbers back him up: 99% of early sales came from his Twitter reach, then around 76,000 followers.</p>
+    <p><b>Build in public, from day one.</b> He shared the MVP on March 6, 2023 as "my weekend project," free with your own OpenAI key, and added payment only after it got attention. First sale the same day. Then he shipped and tweeted a feature a day: $1K, $2K, $4K, $10K in cumulative revenue by March 10.</p>
+    <p><b>A Product Hunt launch that converted.</b> March 11, 2023: #1 Product of the Day with 902 votes, taking total revenue to $22.7K in the first week. He relaunched on Product Hunt in June 2026 with an Agent Skills feature.</p>
+    <p><b>An audience built before the product.</b> Dinh grew from 100 followers to 180,000+ on X by building in public, and he arrived with credibility: he had already sold two products, Black Magic for $128,000 and Xnapper for $150,000. The newsletter did the pricing work — an early-bird $19 license, rising to $29 and then $39 after launch.</p>
+    <p><b>Word of mouth took over.</b> By October 2025 most sales came from word of mouth. The one channel he tried and abandoned was paid ads: $600 spent for two conversions in 2025. "I've been attempting other marketing channels... nothing has worked for me."</p>
+    <p>The funnel, in short: an audience that watched the product get built, a launch that proved it in public, and a product good enough that users became the marketing.</p>
+
+    <h2>4. Why does it work?</h2>
+    <p>TypingMind's wedge is not the AI — a chat box over an API is a weekend project now, and open-source alternatives exist. The wedge is <b>the business model, matched to the moment</b>: a one-time license when everyone else charged monthly, possible only because there was no backend to pay for. A static web app, no server, no database, keys stored locally — "almost nothing to host." The price feels like buying a tool, not renting one, and that is exactly what a power user wants to hear.</p>
+    <p>Then the second act fixed the model's weakness. One-time revenue is lumpy — it has to be re-earned every month. Teams turned the same product into recurring revenue without changing its soul: companies pay monthly for admin, SSO, shared keys and usage limits, while the individual product stays a one-time purchase. By October 2025 the recurring half was already the bigger half.</p>
+    <p>The moat is not the chat box. It is three years of shipping — 150+ updates in 2025 alone, 8,000+ new customers that year — an audience of 180,000 who watched it happen, and a Team install base that renews. A clone can copy the interface in a week. It cannot copy the timing (day one of the ChatGPT API), the audience, or the shipping record.</p>
+
+    <h2>5. Could you build it?</h2>
+    <p><b>The product, yes. The business, not by copying the product.</b></p>
+    <p><b>Replicable:</b> the shape — a bring-your-own-key chat client across many providers, with local models and a team layer — can be assembled from existing APIs by a small team. Open-source projects already do most of it for free.</p>
+    <p><b>Not replicable by cloning:</b> the distribution. 180,000 followers who trust one founder, three years of daily building in public, and a Team customer base that arrived through word of mouth. A new entrant would need its own trust channel — a different audience, a different wedge — not a better chat box.</p>
+    <p><b>The opening it leaves:</b> the license model caps lifetime value per user, the multi-model workflow that most buyers actually want sits behind the $99 Premium tier, and API costs are the buyer's problem. A competitor that bundles usage into one simple price, or owns one vertical's team workspace completely, still has room — and so does anyone who makes the team tier cheap enough to be the default.</p>
+
+    <h2>The numbers</h2>
+    <table class="td-table">
+      <tr><th>Metric</th><th>Figure</th></tr>
+      <tr><td>Monthly revenue</td><td>$137K (founder's X bio, read Nov 18, 2026; monthly revenue, not MRR, not profit)</td></tr>
+      <tr><td>Oct 2025</td><td>~$130–160K/month; recurring B2B Team revenue over half</td></tr>
+      <tr><td>Best month</td><td>$210K+ (Dec 2025); 8,000+ new customers and 150+ updates shipped in 2025</td></tr>
+      <tr><td>Trailing 12 months to Nov 2024</td><td>$1M revenue</td></tr>
+      <tr><td>Feb 2024</td><td>$500K total revenue; subscriptions at $15K MRR</td></tr>
+      <tr><td>Aug 2023</td><td>$6K MRR from subscriptions</td></tr>
+      <tr><td>First week (Mar 2023)</td><td>$22K; $22.7K total by the Mar 11 Product Hunt launch (#1 Product of the Day, 902 votes)</td></tr>
+      <tr><td>Pricing</td><td>$39 / $79 / $99 one-time (Premium list $198); Bulk $395; Teams from $99/mo for 5 seats; API usage billed separately</td></tr>
+      <tr><td>Founder</td><td>Tony Dinh, Vietnamese indie hacker; sold Black Magic ($128K) and Xnapper ($150K); 100 → 180K+ X followers</td></tr>
+      <tr><td>Funding</td><td>Bootstrapped, none</td></tr>
+      <tr><td>Product</td><td>BYOK front end, 20+ models, local-first, no server (personal); cloud sync + Teams hosted or self-hosted</td></tr>
+    </table>
+
+    <h2>What we don't know</h2>
+    <ul>
+      <li><b>What period the $137K covers.</b> The founder has published no dated revenue update since January 1, 2026. The bio figure has no period attached — it could be a recent month, a trailing average, or a peak — so we do not read a trend into it.</li>
+      <li><b>The current split</b> between one-time licenses and Team subscriptions (only October 2025 is disclosed: Team over half).</li>
+      <li><b>Customer count, churn and refunds</b> — how many of 2025's 8,000+ new customers were Team seats vs. individual licenses, and how many stay.</li>
+      <li><b>Profit and costs.</b> Hosting was "almost nothing" at the start, but the Team cloud product now runs servers and databases. No cost or margin figure has been disclosed.</li>
+      <li><b>Whether December 2025's $210K was a spike or a new level</b> — nothing published since resolves it.</li>
+      <li><b>Total customers / active users</b> — undisclosed.</li>
+    </ul>
+
+    <h2>Sources</h2>
+    <p class="td-sources">
+      The AI Receipts, "TypingMind Case Study: How It Makes Money" (updated Nov 18, 2026) — <a href="https://theaireceipts.com/case-studies/typingmind/" target="_blank" rel="noopener">theaireceipts.com</a><br>
+      Tony Dinh, "Oct 2025 Updates: Code, Money, and Travel" — <a href="https://news.tonydinh.com/p/oct-2025-updates-code-money-and-travel" target="_blank" rel="noopener">news.tonydinh.com</a><br>
+      Tony Dinh, "Making $22K in 7 days" — <a href="https://news.tonydinh.com/p/making-22k-in-7-days-the-story" target="_blank" rel="noopener">news.tonydinh.com</a><br>
+      Tony Dinh, 2025 recap (Jan 1, 2026) — x.com/tonydinh<br>
+      TypingMind docs, "TypingMind Alternatives" (pricing checked Nov 9, 2026) — <a href="https://docs.typingmind.com/resources/typingmind-alternatives" target="_blank" rel="noopener">docs.typingmind.com</a><br>
+      TypingMind homepage — <a href="https://typingmind.com" target="_blank" rel="noopener">typingmind.com</a> (checked Nov 24, 2026)<br>
+      Supabird, "From 100 to 180k followers: Tony Dinh's Twitter/X growth tactics" — <a href="https://supabird.io/articles/from-100-to-180k-followers-tony-dinh-s-twitter-x-growth-tactics-that-still-work-in-2026" target="_blank" rel="noopener">supabird.io</a><br>
+      MilestoneWins listing: <a href="/launches/typingmind/">milestonewins.com/launches/typingmind/</a> ($137K/mo, founder Tony Dinh)<br>
+      MilestoneWins founder story: <a href="/stories/typingmind-story/">milestonewins.com/stories/typingmind-story/</a>
+    </p>
+  </div>
+  <div class="seo-cta">
+    <h2>More teardowns</h2>
+    <p>About one a day — each one sourced, each one asking whether you could build it.</p>
+    <a class="btn" href="/teardowns/">Browse all teardowns →</a>
+    <a class="btn ghost" href="/launches/typingmind/">See TypingMind on MilestoneWins →</a>
+  </div>
+</main>
+<footer style="text-align:center;padding:2rem 1rem;color:var(--text-secondary);font-size:.85rem;">
+  <span>© 2026 MilestoneWins</span>
+</footer>
+</body>
+</html>
