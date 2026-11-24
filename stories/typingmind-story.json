@@ -1,0 +1,67 @@
+{
+ "dek": "Tony Dinh built TypingMind in 72 hours because ChatGPT\u2019s web app was too slow. Three years later it makes $137K a month \u2014 one-time licenses, your own API keys, and an audience of 180,000 he grew one post at a time.",
+ "founder": "Tony Dinh",
+ "founder_x": "tonydinh",
+ "headline": "How Tony Dinh turned a weekend chat UI into $137K a month",
+ "key_numbers": [
+  {
+   "label": "Monthly revenue (Nov 2026)",
+   "value": "$137K"
+  },
+  {
+   "label": "Best month (Dec 2025)",
+   "value": "$210K+"
+  },
+  {
+   "label": "First-week revenue",
+   "value": "$22K"
+  },
+  {
+   "label": "Followers on X",
+   "value": "180K+"
+  }
+ ],
+ "meta_description": "TypingMind makes $137K a month. How Tony Dinh built a better front end for ChatGPT, Claude and Gemini in one weekend \u2014 and grew it in public to 180K followers.",
+ "playbook": [
+  {
+   "title": "Sell the missing piece, not the model",
+   "detail": "ChatGPT\u2019s interface was the pain; the models are commodities. Dinh charged for the window into the models, not the models themselves \u2014 and that window is his to keep improving."
+  },
+  {
+   "title": "Charge once, keep the customer",
+   "detail": "A one-time license fits bring-your-own-key perfectly: no subscription fatigue, no churn math, and every happy customer becomes a permanent referrer instead of a monthly cancellation risk."
+  },
+  {
+   "title": "Let the audience compound before the product",
+   "detail": "Two years of posting came before TypingMind. When the launch post went out it reached people who already trusted him \u2014 the $22K first week was audience rent coming due, not launch luck."
+  },
+  {
+   "title": "Follow the money into teams",
+   "detail": "Solo licenses got TypingMind to $1M a year. Team workspaces \u2014 shared admin, SSO, usage limits \u2014 pushed recurring B2B revenue over half of the total, which is what turns a lumpy license business into a steadier one."
+  }
+ ],
+ "product_name": "TypingMind",
+ "product_slug": "typingmind",
+ "published": "2026-11-24",
+ "revenue": "$137K/mo",
+ "revenue_label": "Monthly revenue (Nov 2026)",
+ "sections": [
+  {
+   "heading": "A weekend project that outgrew its weekend",
+   "body_html": "<p>Tony Dinh built TypingMind in 72 hours in March 2023. He was frustrated with ChatGPT\u2019s web interface \u2014 slow, frequently down, and restrictive \u2014 so he built a faster front end that talks to the APIs directly, stores chats locally in the browser, and lets you switch models without switching apps. It made $22,000 in its first week and $100,000 in its first month. Within a year it had passed $500,000 in total revenue, and by November 2024 the trailing twelve months had crossed $1 million \u2014 all bootstrapped, with no outside funding and no ad spend that ever worked.</p><p>The launch post carried a quiet footnote that explains a lot about what came next: Dinh had decided to stop sharing revenue after the launch. He had spent two years building an audience by sharing everything \u2014 from 100 followers to tens of thousands \u2014 and the launch itself was the payoff for that work. The product was not the bet. The audience was, and the product was what the audience was waiting to buy.</p><p>What they were buying was simple: one window for every model. ChatGPT, Claude, Gemini, local models through Ollama \u2014 plus agents, plugins, MCP support, projects and multi-model parallel chats layered on top. You bring your own API keys, so the usage bill comes from the provider, not from Dinh. The app is a one-time license, $39 to $99, with team workspaces sold separately. It is the rare AI product whose pitch is not about the AI at all. The models are someone else\u2019s. The interface is his.</p>"
+  },
+  {
+   "heading": "Selling the interface, not the intelligence",
+   "body_html": "<p>The bring-your-own-key model looks like a limitation until you see the economics. A subscription chat app has to pay for your tokens and hope the margin survives. TypingMind never touches the token bill: the customer pays OpenAI or Anthropic directly, and Dinh keeps the license fee. There is no usage to subsidize, no heavy user to lose money on, and no monthly cancellation decision for the customer to make. A $39 license that never expires is an easy yes, and an easy yes compounds \u2014 the site showed more than 20,600 customers by November 2026.</p><p>That model has a ceiling, though, and Dinh found it the same way every solo founder does: one-time revenue is lumpy. A great month is a launch or a viral post; a quiet month is just quiet. The answer was teams. TypingMind Teams adds shared workspaces, admin controls, SSO, chat logs and per-model usage limits, starting at $99 a month for five seats. By October 2025, recurring B2B Team revenue was over half of the monthly total \u2014 the part of the business that behaves like a subscription, sitting on top of the part that behaves like a product launch.</p><p>The same logic explains the June 2026 Product Hunt relaunch, which added an Agent Skills feature. Each relaunch is a new reason for the existing audience to look again, and for new users to discover a product that has been quietly compounding for three years. Dinh keeps shipping \u2014 an AI email client, an iPhone website builder, a browser game built entirely by directing Claude Code \u2014 but TypingMind remains the flagship, and the flagship keeps getting the features that make the license worth more than the $39 it started at.</p>"
+  },
+  {
+   "heading": "The audience is the moat",
+   "body_html": "<p>Strip away the product and TypingMind is a story about distribution. Dinh grew from 100 followers to more than 180,000 on X by posting constantly: demo videos, revenue screenshots, build-in-public threads, the occasional failure. Black Magic, a Twitter tool, peaked at about $14,000 a month and sold for $128,000; Xnapper, a screenshot tool, sold for $150,000. Each product fed the audience and the audience fed the next product. By the time TypingMind launched, the distribution was already built \u2014 the $22,000 first week was the audience paying rent.</p><p>It is worth noting what he stopped doing, too. After the TypingMind launch he stopped posting revenue updates, even as the product grew past a million dollars a year. The $137,000-a-month figure in his X bio in November 2026 is the quiet version of the same transparency: not a milestone post, just a line in a profile, read and documented by outside trackers. The October 2025 newsletter put the range at $130,000 to $160,000 a month; the January 1, 2026 post said December 2025 had been the best month ever at more than $210,000. The bio figure sits inside that range, which is the best cross-check available for a number the founder no longer announces.</p><p>The lesson for anyone copying the playbook is the timeline, not the tactic. Dinh did not go viral once; he posted for years, sold two smaller products, and let the trust accumulate. The weekend build is the part everyone wants to copy. The two years of posting before it is the part that made the weekend work.</p>"
+  },
+  {
+   "heading": "The numbers, and what they are not",
+   "body_html": "<p>Read the $137,000 carefully, because it is not MRR. TypingMind sells one-time licenses, so most months are a mix of new license sales and team subscriptions, and the total moves in lumps: $130,000 to $160,000 a month in October 2025, over $210,000 in December 2025, $137,000 in the November 2026 bio. The honest label is monthly revenue, and the honest trend is a band, not a line \u2014 roughly flat across the last year, at a level most bootstrapped founders would take without blinking.</p><p>There are two more caveats. First, revenue is not profit, and TypingMind\u2019s costs are mostly Dinh\u2019s time plus a small team \u2014 the margin is high, but nobody outside the business has seen the books. Second, the figures are founder-reported throughout: the X bio, the newsletter, the January post. No payment processor has verified them, and the last dated update from Dinh himself is the January 1 post about December. The bio figure is current as of November 18, 2026, when it was read and recorded, and it is consistent with everything he published in the year before it.</p><p>None of that dims the achievement. A solo founder, no funding, no ads, one weekend of building, three years of compounding \u2014 and a chat window that now makes more in a month than most startups raise in a pre-seed. The interface was the product all along.</p>"
+  }
+ ],
+ "slug": "typingmind-story"
+}
