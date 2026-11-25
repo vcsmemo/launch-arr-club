@@ -1,0 +1,67 @@
+{
+ "dek": "Rishi Mohan spent four years selling screenshots to marketers. When they kept asking him to make the images for them, he built Orshot \u2014 an API that renders them instead. Nineteen months later it makes $10,259 a month, with a team of one.",
+ "founder": "Rishi Mohan",
+ "founder_x": "thelifeofrishi",
+ "headline": "How Rishi Mohan turned a support inbox into $10K MRR",
+ "key_numbers": [
+  {
+   "label": "MRR (Oct 29, 2026)",
+   "value": "$10,259"
+  },
+  {
+   "label": "Users",
+   "value": "28,500+"
+  },
+  {
+   "label": "Renders all time",
+   "value": "1.3M+"
+  },
+  {
+   "label": "Paying customers",
+   "value": "200+"
+  }
+ ],
+ "meta_description": "Orshot makes $10K MRR. How solo founder Rishi Mohan turned a screenshot tool\u2019s support inbox into an API that renders marketing visuals on demand.",
+ "playbook": [
+  {
+   "title": "Sell the output, not the tool",
+   "detail": "Pika sold a place to make an image; Orshot sells the finished image. The customer never opens an editor, so the product can live inside their workflow instead of competing for their attention."
+  },
+  {
+   "title": "One unit for every output",
+   "detail": "A credit is an image, a PDF page or a second of video, so the buyer\u2019s mental arithmetic never changes as formats do \u2014 and the price per thousand credits falls from $26 to $4.65 as they grow, so the ladder sells the upgrade."
+  },
+  {
+   "title": "Get listed where the buyer already works",
+   "detail": "Webflow, Claude, n8n, Make, Zapier: every listing is distribution with a gatekeeper, and the entry price is review time \u2014 six weeks for Claude \u2014 not ad spend."
+  },
+  {
+   "title": "Publish the dashboard",
+   "detail": "An open startup page turns every milestone into a number strangers can check, and it compounds: the $10K post points at the same page the $5K post did."
+  }
+ ],
+ "product_name": "Orshot",
+ "product_slug": "orshot",
+ "published": "2026-11-25",
+ "revenue": "$10K MRR",
+ "revenue_label": "MRR (Oct 2026)",
+ "sections": [
+  {
+   "heading": "A screenshot tool\u2019s inbox became the product",
+   "body_html": "<p>Rishi Mohan is a designer who spent four years running Pika, a $15-a-month screenshot and mockup editor for marketing teams. Pika crossed $100,000 in earnings on the back of SEO, building in public and word of mouth \u2014 and its support inbox kept delivering the same request. Teams did not want another place to make images. They wanted the images made for them, from a data source, without anyone opening a design tool.</p><p>That request was the missing half of Pika\u2019s job, and Mohan built Orshot to be it. He started in February 2025, registered a company called DaSkrad, and went full-time on his own products after years of side projects. He shares everything in public as @thelifeofrishi, posting revenue numbers, features, wins and failures as they happen \u2014 a habit he credits with changing his life more than once.</p><p>The first year ended with more than 4,000 users, more than 100 paying customers and $5,000 a month. It was not a breakout. It was nineteen months of small increments, and the milestone post that announced $10,000 MRR says so plainly: there was no single big moment, just lots of small things, every day, compounding.</p>"
+  },
+  {
+   "heading": "Sell the render, not the editor",
+   "body_html": "<p>Orshot\u2019s pitch is one sentence: design a template once, then let a spreadsheet row, a webhook or an AI agent fill in the parts that change. One API call returns one finished file \u2014 an image, a PDF page, or a second of video. The editor, called the Studio, is the setup step. The product is the output, and the output is what the customer pays for.</p><p>The pricing makes that logic concrete. One credit buys one image, one PDF page or one second of video, so the buyer\u2019s mental arithmetic never changes as formats do. The free plan renews 100 credits every month; Launch is $39 for 1,500 credits, Grow is $160 for 20,000, and Scale is $349 for 75,000. Social publishing sits outside the ladder at $12 a month per connected account, and annual billing gives two months free. Early customers still pay what they signed up for.</p><p>The customers show why a per-unit price works. ClickUp generates yearly wrap banners for more than 100,000 users, at more than 300 banners a minute. Brendi produces branded marketing images for more than 5,000 restaurants across Brazil. CreatorCore has automated more than 100,000 visuals for influencer campaigns, and Cashew.sg, a mortgage advisory in Singapore, went from about nine posts a month to twenty-five. Divide $10,259 by 200-plus paying customers and the average account is worth about $50 a month \u2014 most of them near the entry price, with a small number of heavier accounts carrying the rest.</p>"
+  },
+  {
+   "heading": "Distribution inside other people\u2019s tools",
+   "body_html": "<p>Orshot\u2019s distribution bet is to be listed inside the tools its buyers already run. Webflow\u2019s App Marketplace listed it on August 19, 2026. Claude\u2019s connector directory accepted it on September 30, after about six weeks of back and forth with reviewers. The agents page now shows a hosted MCP endpoint and setup guides for Claude, ChatGPT, Codex, Cursor, Antigravity, Lovable, Replit, Warp, Zed and six more, plus n8n, Make and Zapier for the no-code crowd.</p><p>Every one of those surfaces belongs to another company, and every one has a reviewer with a queue. Mohan published his queue time \u2014 six weeks for one directory \u2014 which is the real entry price of the channel. It is distribution with a gatekeeper, and the dependence runs one way: the platform can change the rules, and Orshot has to live with them.</p><p>The second surface is content written for people already searching for the job they have. The blog runs 18 automation tutorials, 34 product updates, 13 developer guides and 11 agent guides, including comparison pages for buyers whose current tool disappointed them. The template library is the third: more than 2,000 public templates a visitor can render before paying anything. Underneath it all is shipping volume \u2014 more than 80 product updates in the first year, and 807 commits in the thirty days before November 4. A fix today beats a launch next month, and the same-week ship is a promise a one-person company can keep.</p><p>There is an honest gap in the record. Orshot states where it is listed and stops there, so nothing separates a signup from n8n from a signup from the Claude directory. Mohan\u2019s own posts from September say he had been experimenting with many ways to grow for months and that nothing had worked significantly \u2014 and revenue doubled anyway.</p>"
+  },
+  {
+   "heading": "The numbers, and what they are not",
+   "body_html": "<p>The milestone itself is dated October 29, 2026: Orshot crossed $10,000 in monthly recurring revenue that week, reading $10,259 on its public open-startup page, with 28,500-plus users, more than 1.3 million images, videos and PDFs automated, and a team size of one. By November 4 the same dashboard read $10,855, with 33,062 users and 1.41 million renders. The March one-year post had put it at $5,000 a month \u2014 seven months, roughly $750 of net new recurring revenue a month, and a doubling.</p><p>Read the figure for what it is. MRR is recurring subscription revenue. It is not profit \u2014 render compute and Mohan\u2019s time both cost money, and neither is published. It is not thirty-day cash, either: annual prepayments and one-off credit top-ups can make a month\u2019s cash look bigger than the recurring line. The open dashboard is what makes the claim checkable: anyone can read the same numbers Mohan reads, and the milestone post points straight at it.</p><p>What stays private is what a buyer of the business would ask first. Churn, acquisition cost, plan mix, gross margin after render compute, and whether those 200 customers are monthly or annual are all unpublished. The 0.41% conversion rate the dashboard reports arrives without a definition, so it can describe anything from signup to paid. None of that dims the achievement: a solo founder, no funding, one support inbox, nineteen months of increments \u2014 and an API that now makes more in a month than most startups raise in a pre-seed. The milestone post ends by announcing Muzekit, his next product, with the line that explains the whole arc: now that Orshot pays for itself, he can take more risks.</p>"
+  }
+ ],
+ "slug": "orshot-story"
+}
