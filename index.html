@@ -124,6 +124,7 @@
         items = items.filter(function(it){ return it.launched; });
         items.sort(function(a, b){ var ta = Date.parse(a.launched||''), tb = Date.parse(b.launched||''); return (isNaN(tb)?0:tb) - (isNaN(ta)?0:ta); });
       } else {
+        items = items.filter(function(it){ return !it.revenue_is_gmv; });
         items.sort(function(a, b){ return revVal(b) - revVal(a); });
       }
       items = items.slice(0, 10);
@@ -131,7 +132,7 @@
         var logo = it.logo
           ? '<img src="' + String(it.logo).replace(/"/g, '') + '" alt="" loading="lazy">'
           : '<span class="lc-logo-ph">' + esc(String(it.name || '?').charAt(0)) + '</span>';
-        var mt = metricTag(it.revenue);
+        var mt = it.revenue_is_gmv ? 'GMV' : metricTag(it.revenue);
         var revCell = it.revenue
           ? '<span class="lb-rev-col has">' + esc(it.revenue) + (mt ? ' <span class="metric-tag">'+esc(mt)+'</span>' : '') + '</span>'
           : '<span class="lb-rev-col">Pre-revenue</span>';
