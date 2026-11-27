@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Didit Makes Money — MilestoneWins</title>
+<meta name="description" content="Didit sells trust by the check — $0.33 to prove a person is real, no sales call, no contract — and it found its buyers by being the cheapest credible answer to the question every app now has to answer. $5M ARR, 4,000+ companies.">
+<link rel="canonical" href="https://milestonewins.com/teardowns/didit/">
+<link rel="icon" type="image/png" href="/favicon-64.png">
+<link rel="stylesheet" href="/style.css?v=20261020d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How Didit Makes Money", "description": "Didit sells trust by the check — $0.33 to prove a person is real, no sales call, no contract — and it found its buyers by being the cheapest credible answer to the question every app now has to answer.", "author": {"@type": "Organization", "name": "MilestoneWins"}, "publisher": {"@type": "Organization", "name": "MilestoneWins"}, "datePublished": "2026-11-27", "about": {"@type": "Organization", "name": "Didit"}}</script>
+<style>
+.story-hero{background:linear-gradient(135deg,#0b1c32 0%,#0d2b3e 60%,#0d4a42 100%);color:#fff;border-radius:20px;padding:3rem 2.5rem;margin:0 0 2rem;position:relative;overflow:hidden}
+.story-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%)}
+.story-kicker{display:inline-block;background:rgba(13,148,136,.25);border:1px solid rgba(13,148,136,.6);color:#5eead4;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+.story-hero h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin:0 0 1rem;letter-spacing:-.02em}
+.story-hero .lede{font-size:1.08rem;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 1.4rem}
+.story-byline{font-size:.9rem;color:#94a3b8}
+.story-byline a{color:#5eead4}
+.story-page .crumbs{margin-bottom:1.2rem}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:0 0 2.5rem}
+.ms-stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1rem;text-align:center;transition:transform .15s,box-shadow .15s}
+.ms-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ms-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.ms-stat span{font-size:.82rem;color:var(--text-secondary)}
+.story-body{max-width:720px}
+.story-body p{line-height:1.85;margin:0 0 1.3rem;color:#1e293b}
+.story-body ul{line-height:1.85;margin:0 0 1.3rem;color:#1e293b;padding-left:1.3rem}
+.story-page h2{font-size:1.35rem;margin:2.6rem 0 1.1rem;letter-spacing:-.01em;position:relative;padding-left:0}
+.story-page h2::before{content:'';display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:4px;margin-right:.7rem;vertical-align:-3px}
+.story-body > p:first-of-type::first-letter{font-size:3.2em;font-weight:800;color:var(--accent);float:left;line-height:.9;margin:.08em .12em 0 0}
+.td-table{width:100%;border-collapse:collapse;margin:0 0 1.3rem;font-size:.92rem}
+.td-table th,.td-table td{border:1px solid var(--border);padding:.6rem .8rem;text-align:left;line-height:1.55}
+.td-table th{background:#f8fafc}
+.td-note{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.1rem 1.3rem;line-height:1.65;margin:0 0 1.3rem}
+.td-sources{font-size:.88rem;color:var(--text-secondary);line-height:1.8}
+.td-sources a{color:var(--accent)}
+.seo-cta{background:linear-gradient(135deg,#0b1c32,#0d4a42);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-top:3rem}
+.seo-cta .btn{background:#fff;color:#0b1c32}
+.seo-cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.seo-cta h2{color:#fff;margin:0 0 .8rem}
+.seo-cta h2::before{display:none}
+.seo-cta p{color:#cbd5e1;margin:0 0 1.5rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">Milestone<span>Wins</span></a>
+    <div class="nav-links"><a href="/#launches">Launches</a><a href="/milestones/">Milestones</a><a href="/stories/">Stories</a><a href="/teardowns/">Teardowns</a><a href="/submit.html" class="nav-cta">Submit</a></div>
+    <div class="nav-auth" id="authSlot"></div>
+  </nav>
+</header>
+<main class="seo-page story-page">
+  <nav class="crumbs"><a href="/">milestonewins.com</a> <span>&rsaquo;</span> <a href="/teardowns/">Teardowns</a> <span>&rsaquo;</span> <strong>Didit</strong></nav>
+  <div class="story-hero">
+    <span class="story-kicker">🔍 Teardown</span>
+    <h1>How Didit Makes Money</h1>
+    <p class="lede">Didit sells trust by the check — $0.33 to prove a person is real, no sales call, no contract — and it found its buyers by being the cheapest credible answer to the question every app now has to answer.</p>
+    <div class="story-byline">MilestoneWins · 2026-11-27 · <a href="/launches/didit/">Didit on MilestoneWins →</a> · <a href="https://didit.me" target="_blank" rel="noopener">Visit didit.me →</a></div>
+  </div>
+  <div class="ms-stats">
+    <div class="ms-stat"><b>$5M</b><span>ARR, founder-reported Nov 2026 (Stripe data only)</span></div>
+    <div class="ms-stat"><b>5x</b><span>$1M → $5M in 8 months since YC W26 demo day</span></div>
+    <div class="ms-stat"><b>4,000+</b><span>Companies using Didit, Oct 2026</span></div>
+    <div class="ms-stat"><b>$7.5M</b><span>Seed raised; profitable since 2026</span></div>
+  </div>
+  <div class="story-body">
+    <h2>1. What problem does it solve?</h2>
+    <p>AI made fake identities cheap. A photo, a voice, a video, a whole business — all of it can now be generated at internet scale. The founders' own pitch for Didit puts it bluntly: "We're Alberto and Alejandro Rosas, identical twins and co-founders of Didit. We've spent our lives impersonating each other. That used to be rare. Today, AI has your photos and your voice."</p>
+    <p>Every app that moves money or trust now has to answer the same question: is this person real? A fintech onboarding a user, a crypto exchange screening a wallet, a marketplace fighting multi-account abuse, a mobility company verifying a driver — all of them need to know who is behind the account, and to stop the ones who aren't who they claim to be.</p>
+    <p>The old answer was a pile of tools that don't talk to each other: five to ten vendors stitched together, a sales call before you can read the docs, hidden pricing, annual contracts, verifications that take days. Real users get stuck uploading the same document twice; attackers get through anyway.</p>
+    <p>Didit replaces the pile with one API and one workflow: identity document checks, biometrics and liveness, business verification (KYB), AML screening and ongoing monitoring, transaction monitoring, wallet screening, and authentication — built from scratch on in-house AI models, with 200+ fraud signals on every check, covering 220+ countries and 14,000+ document types. A real human verifies in seconds; fraud gets blocked by default. The long-term bet is bigger: reusable identity — verify once, carry it everywhere — so the check itself eventually becomes the product's past, not its future.</p>
+
+    <h2>2. Who pays, how much, and in what scenario?</h2>
+    <p><b>The buyer:</b> a B2B team that has to check identities under the law or under attack — fintech, crypto, marketplaces, iGaming, mobility, government. The customer count tells the story: 700+ B2B customers at the time of its Y Combinator application, about 1,500 in May 2026, more than 4,000 by October 2026.</p>
+    <table class="td-table">
+      <tr><th>Plan</th><th>Price</th><th>What you get</th></tr>
+      <tr><td>Free</td><td>$0/mo</td><td>$10 credit a month, sandbox, every check at list price</td></tr>
+      <tr><td>Growth</td><td>$99/mo</td><td>$115 credit, 4% off every check</td></tr>
+      <tr><td>Scale</td><td>$299/mo</td><td>$350 credit, 10% off every check</td></tr>
+      <tr><td>Enterprise</td><td>From $15,000/yr</td><td>Contract prices, named team, private Slack channel</td></tr>
+    </table>
+    <p>Per check, at list price: a full ID check (KYC) is <b>$0.33</b>, AML screening <b>$0.20</b>, business verification (KYB) <b>from $2.00</b>, a payment check <b>$0.001</b>. The first 50,000 authentication users a month are free on every plan. There are no minimums and no sales call to start — the prices are public, in USD, on the page.</p>
+    <p><b>The scenario that makes someone pay:</b> the moment the question becomes unavoidable — a regulator requires KYC, a wave of fake accounts starts draining support, or a fraud ring starts opening duplicate accounts. The free tier is the on-ramp: $10 of credit and a sandbox let a developer run real checks before spending anything or talking to anyone. Once the checks work, usage grows with the customer's own growth, and the plan tiers exist to discount the volume, not to gate the product.</p>
+    <p class="td-note"><b>Sanity check (our estimate, not a reported figure):</b> $5M ARR at $0.33 per full KYC check implies roughly 15 million checks a year, about 1.25 million a month — around 300 checks per customer per month across 4,000 customers. The real mix skews that average hard in both directions: KYB checks cost $2 and up, enterprise customers pay contract prices, Growth and Scale plans discount every check — and the $5M figure itself is Stripe data only (the founder's own footnote: bank transfers not included), so true volume is higher. The range, not the point estimate, is the honest number.</p>
+
+    <h2>3. How did it find these people?</h2>
+    <p>Almost entirely through product-led growth, run by the founder himself. At the time of its Y Combinator application the company described itself as "pure PLG so far, now layering outbound" — and the funnel is built to be found, not sold: a free sandbox, public docs, public prices, no sales call standing between a developer and a first real check.</p>
+    <p>The distribution engine has three parts:</p>
+    <p><b>First, the founder is the go-to-market team.</b> Alberto Rosas, a technical founder with no background in sales or marketing, says he ran go-to-market largely solo for Didit until it reached millions in revenue — including running paid media directly with Claude (Meta and Google Ads, conversion engineering, daily ROAS optimization). The company's About page notes, with some pride, that "our CEO still runs the demo himself" — live, in the console, no slides.</p>
+    <p><b>Second, milestones as marketing.</b> Every revenue post is itself distribution: the November 2026 post announcing $5M ARR ("Since YC W26 demo day, we went from $1M to $5M in 8 months") is the kind of post other founders share, and an investor re-posted it the same week. The YC Winter 2026 batch and a Hacker News launch titled "Stripe for Identity Verification" gave it the developer audience first.</p>
+    <p><b>Third, developer surface area.</b> An MCP server lets an AI agent set up and run identity checks from Claude, Cursor, VS Code or ChatGPT — Didit meeting developers inside the tools they already live in — and the team open-sourced Didit Events, an event app built on its own verification stack.</p>
+    <p>The expansion engine underneath is retention: the YC profile claims <b>300%+ net revenue retention by month 6</b> and <b>~90% paid customer retention at month 6</b>. Land with one check type, expand across the whole identity stack — that is the revenue engine, and it shows in the customer count nearly tripling in five months.</p>
+
+    <h2>4. Why does it work?</h2>
+    <p>Didit's wedge is not the AI — identity models are increasingly available off the shelf. The wedge is <b>price transparency plus completeness plus proof, in a market that sells the opposite</b>. Incumbents sell KYC through sales calls and annual contracts at dollars per check; Didit publishes every price and starts at $0.33. Owning the whole stack — everything built from scratch, in-house models — is what makes that price possible. And in a business where the product <i>is</i> trust, audited proof beats a pitch deck: SOC 2 Type 1 and 2, ISO/IEC 27001, iBeta Level 1 and 2 liveness, and a year-long Spanish Treasury sandbox (SEPBLAC, CNMV, Bank of Spain) that concluded its remote verification was at least as safe as in-person checks. Usage-based pricing aligns cost with the customer's growth — a startup pays cents, a scale-up pays thousands — and the tailwind is structural: AI-generated fraud and the EU's new anti-money-laundering rules are making identity checks mandatory, not optional.</p>
+
+    <h2>5. Could you build it?</h2>
+    <p><b>The product, yes. The business, not by copying the product.</b></p>
+    <p><b>Replicable:</b> the shape — one API, per-check pricing, a no-code workflow builder — can be assembled from existing vendors and APIs by a small team. The "describe the checks you need and the agent builds the flow" loop (now via MCP) is the hard product work, but it is well-trodden ground.</p>
+    <p><b>Not replicable by cloning:</b> the coverage and the trust. Document verification across 220+ countries and 14,000+ document types, fraud models trained on millions of real verifications, and certifications that each take months of audits — plus a government sandbox validation no competitor can buy. A new entrant would need its own wedge: one vertical (iGaming, crypto, mobility), one geography, or one check type done 10x cheaper — not a better KYC form.</p>
+    <p><b>The opening it leaves:</b> per-check pricing is transparent but still a tax on growth. A competitor that prices identity as a flat subscription for high-volume customers has a clean story to tell. And Didit's own long-term bet cuts both ways: if reusable identity wins and a person verifies once instead of once per app, the per-check model compresses — the company that owns the wallet owns the market.</p>
+
+    <h2>What we don't know</h2>
+    <ul>
+      <li>Check volume and customer concentration — how much of the $5M is a few large customers versus the long tail of 4,000.</li>
+      <li>Gross margin per check — in-house models and per-country data sources have real costs, and none are disclosed.</li>
+      <li>Current churn and net revenue retention — the 300%+ NRR and ~90% retention figures are from the YC-application era, not today.</li>
+      <li>True ARR including bank transfers — the founder's own footnote says $5M is Stripe only.</li>
+      <li>Current team size — ~30 people is a May 2026 figure; the technical team was 4.</li>
+      <li>Don't confuse the two $5M figures: the founders also run Santé, a Barcelona med spa doing around $5M a year — a separate business, not Didit revenue.</li>
+    </ul>
+
+    <h2>Sources</h2>
+    <p class="td-sources">
+      Alberto Rosas (@albertorosasg), X post, Nov 2026 — "We just crossed $5M ARR at @didit 🎉 Since YC W26 demo day, we went from $1M to $5M in 8 months. We serve 4,000 happy customers worldwide" (footnote: "Stripe data only, bank transfers not included")<br>
+      Tekedia Capital, "Congrats DIDIT for Hitting $5M ARR", Nov 24, 2026 — <a href="https://www.tekedia.com/forum/topic/congrats-didit-for-hitting-5m-arr/?part=1" target="_blank" rel="noopener">tekedia.com</a> ("In the last 26 days, it topped $1m in ARR")<br>
+      Biometric Update, "Didit raises $6M to expand identity and fraud infrastructure platform", May 27, 2026 — <a href="https://www.biometricupdate.com/202605/didit-raises-6m-to-expand-identity-and-fraud-infrastructure-platform" target="_blank" rel="noopener">biometricupdate.com</a> ($3.3M revenue in 2025; profitable; &gt;30% MoM growth; ~1,500 customers; ~30 employees)<br>
+      PR Newswire, "Didit Closes $7.5M Seed Round to Build Identity Infrastructure for the AI Era", May 2026 — <a href="https://www.prnewswire.com/news-releases/didit-closes-7-5m-seed-round-to-build-identity-infrastructure-for-the-ai-era-302782036.html" target="_blank" rel="noopener">prnewswire.com</a><br>
+      Didit pricing — <a href="https://didit.me/pricing" target="_blank" rel="noopener">didit.me/pricing</a> (checked Nov 27, 2026: Free $0 / Growth $99 / Scale $299 / Enterprise from $15K/yr; KYC $0.33, AML $0.20, KYB from $2.00)<br>
+      Didit About — <a href="https://didit.me/about-us" target="_blank" rel="noopener">didit.me/about-us</a> (4,000+ companies as of Oct 2026; $7.5M raised; profitable since 2026; SOC 2, ISO 27001, iBeta; CEO runs demos)<br>
+      Y Combinator, Didit company page — <a href="https://www.ycombinator.com/companies/didit" target="_blank" rel="noopener">ycombinator.com</a> (W26; "pure PLG"; 700+ B2B customers; 300%+ NRR by month 6; ~90% paid retention at month 6)<br>
+      MilestoneWins listing: <a href="/launches/didit/">milestonewins.com/launches/didit/</a> ($5M ARR, founders Alberto Rosas, Alejandro Rosas)
+    </p>
+  </div>
+  <div class="seo-cta">
+    <h2>More teardowns</h2>
+    <p>About one a day — each one sourced, each one asking whether you could build it.</p>
+    <a class="btn" href="/teardowns/">Browse all teardowns →</a>
+    <a class="btn ghost" href="/launches/didit/">See Didit on MilestoneWins →</a>
+  </div>
+</main>
+<footer style="text-align:center;padding:2rem 1rem;color:var(--text-secondary);font-size:.85rem;">
+  <span>© 2026 MilestoneWins</span>
+</footer>
+</body>
+</html>
