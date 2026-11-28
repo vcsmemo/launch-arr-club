@@ -1,0 +1,71 @@
+{
+ "dek": "Atta Ur Rehman Shah spent years posting on LinkedIn with nothing to show for it, then built the system that fixed it for himself. When thousands of users asked for teams instead of tools, he threw the product away and rebuilt it from an empty folder.",
+ "founder": "Atta Ur Rehman Shah",
+ "founder_x": "attacomsian",
+ "headline": "How Atta Ur Rehman Shah rebuilt Depost AI from an empty folder",
+ "key_numbers": [
+  {
+   "label": "MRR (Nov 6, 2026)",
+   "value": "$734"
+  },
+  {
+   "label": "All-time revenue (Oct 2026)",
+   "value": "$13.3K"
+  },
+  {
+   "label": "Active subscriptions",
+   "value": "25"
+  },
+  {
+   "label": "Team",
+   "value": "3 people"
+  },
+  {
+   "label": "Price from",
+   "value": "$59/mo"
+  }
+ ],
+ "meta_description": "Depost AI makes $734 MRR. How Atta Ur Rehman Shah turned his own LinkedIn system into an AI content team \u2014 and rebuilt it from scratch when users asked for teams, not tools.",
+ "playbook": [
+  {
+   "title": "Automate the forty minutes, not the twenty",
+   "detail": "Writing was the easy part of posting on LinkedIn. The hour went to deciding what to write, making the graphic, picking a time, answering replies and knowing what worked. Depost AI 2 is built around everything after the draft."
+  },
+  {
+   "title": "A request you get four times is the roadmap",
+   "detail": "Approvals, workspaces, teams and chat sat on the roadmap for about a year before the team understood they were the roadmap. Four words, repeated month after month, meant the product had to change shape, not gain features."
+  },
+  {
+   "title": "A constraint you choose becomes a feature",
+   "detail": "Publishing only through LinkedIn\u2019s official API and requiring a human yes before anything goes out both started as things the team gave up. They are now two of the main reasons people trust the product with an account they cannot afford to lose."
+  },
+  {
+   "title": "Price the unit of value",
+   "detail": "Depost AI charges per LinkedIn account, not per seat, because per-seat pricing charges you for involving the reviewer, the client and the person who should have seen the draft. Price the thing the customer values, not the people around it."
+  }
+ ],
+ "product_name": "Depost AI",
+ "product_slug": "depost-ai",
+ "published": "2026-11-28",
+ "revenue": "$734 MRR",
+ "revenue_label": "MRR (Nov 2026)",
+ "sections": [
+  {
+   "heading": "The system he built for himself",
+   "body_html": "<p>Atta Ur Rehman Shah is a solo founder and software engineer from Pakistan who runs Fore Studio, a one-person studio, and co-founded Remoteen, a software company. He has published programming tutorials on attacomsian.com since 2018 \u2014 an archive of more than 500 articles on Java, JavaScript, Node.js and Spring Boot that drew a large developer audience. He designs, builds and ships on his own, and writes about how that actually goes, including the conflict of interest: when he writes about his own products, he is writing about his own business.</p><p>Depost AI started as a private system. Atta had spent years on LinkedIn doing what everyone does \u2014 posting, liking and scrolling \u2014 with plenty of activity and no pipeline to show for it. Growth only came when he stopped starting from a blank page every morning and built context instead: what works in the niche, what sounds like him, and what the numbers say to do next. The system worked, and it was miserable to run by hand. Seven tools, twenty open tabs, and a spreadsheet holding it together. That system became Depost AI, and it grew his own LinkedIn to around 14,000 followers.</p><p>The product is operated by Remoteen, and the team is three people on purpose: Atta as co-founder and CEO, Yasir Abbas as co-founder and CTO, and Hasan Shah as content specialist. The about page says it plainly \u2014 Depost AI is three people building the AI Head of Content they wished existed, and running their own LinkedIn with it every day. Everything sent through the contact page lands with one of the three of them.</p>"
+  },
+  {
+   "heading": "Version 1.0 solved the wrong twenty minutes",
+   "body_html": "<p>Depost AI 1.0 launched on June 30, 2025, after eight months and a long beta. Thousands of people used it. Their feedback was consistent, and it was not what the team expected. Nobody said the writing was bad. They said the writing was the easy part \u2014 difficult to hear when writing is the thing you built, but it held up every time they checked it. What ate the hour was not the draft. It was everything around the draft: deciding what to write about in the first place, making a graphic to go with it, picking a time to post, being there when the replies came in, and knowing, a week later, whether any of it had worked.</p><p>Atta put it in one sentence in the rebuild post: \u201cWe had automated the twenty minutes and left the other forty exactly where it was.\u201d It is the same pattern he had written about with vibe coding, where the tools make starting easy and leave the hard part untouched. The requests that arrived most often were not about writing at all. Four words came back month after month. Approvals \u2014 marketing teams needed a review step, somebody to sign off before a post went out under the company name. Workspaces \u2014 agencies were running LinkedIn for a dozen clients out of one login, with no way to keep the brands apart. Teams \u2014 founders had ghostwriters who needed access that was not the founder\u2019s own password. Chat \u2014 everyone was tired of picking a tool, filling in a form, and copying the result somewhere else.</p><p>None of those are features you can add to a single-user generator. They describe a different product. Version 1.0 was a set of tools: you opened a generator, filled in a form, got a draft and took it elsewhere. There was no room in that shape for a second person, never mind a second brand. Adding to it would have produced a worse version of the thing people were describing. So they rebuilt it. This is the second product Atta has chosen to rebuild rather than extend \u2014 StartupBase was the first, for the same reason.</p>"
+  },
+  {
+   "heading": "Four decisions behind the rebuild",
+   "body_html": "<p>Depost AI 2, launched in September 2026, is closer to a content team than to a writing tool. It starts from your numbers: impressions, engagement and full follower history sync from the LinkedIn account you connect, and every post is measured against your own average, so what beat your baseline last month is what next week\u2019s ideas get ranked from. Four agents do the work, and every brand you run gets its own set: one reads the analytics, one finds the angles, one writes the post in your voice, and one designs the graphic in your colors. You brief it in a chat \u2014 plan my week, write this in my voice, interview me about this topic \u2014 and a full editor sits underneath for when you would rather write it yourself. The calendar fills from drafts you approved, at times suggested by your own engagement data, with the first comment already written.</p><p>Most of the work went into a handful of calls that were not obvious at the time. Publishing goes through LinkedIn\u2019s official API only. The official API is narrower than what a tool can technically do by other means, and working inside it meant saying no to features that would have shipped faster and demoed better. But for most users a LinkedIn account is not a marketing channel they could replace next quarter \u2014 it is a decade of professional history and the reason clients answer their messages. Second, there is no autopilot. The most requested thing the team will never build is a mode where the product runs the account by itself: nothing publishes without a human yes, and Depost AI sends no automated connection requests, no automated DMs and no automated comments. Replies and outreach arrive drafted in your voice, and you send them.</p><p>Third, the price is per account, not per seat. A product built for teams cannot charge per seat, because per-seat pricing charges you for involving the reviewer, the client and the person who should have seen the draft before it went out. Solo stayed $59 a month, unchanged from version 1.0 \u2014 a full rebuild, no price increase. Fourth, MCP ships on every plan, including Solo: the whole product is reachable from Claude, ChatGPT or Cursor with a key scoped to one brand or workspace, because putting the integration everyone wants behind the expensive plan is a tax on the people who can least afford it. The team also published comparison pages against Taplio, Kleo and Stanley, and is candid about the trade-offs: if you only want better drafts, Stanley or Kleo is lighter to learn; if you want the longest feature list and are comfortable with automation on your account, Taplio is built for that.</p>"
+  },
+  {
+   "heading": "The numbers, and what they are not",
+   "body_html": "<p>The revenue is small and it is real. Atta publicly reported $13.3K in all-time revenue for Depost AI in October 2026. Payment-provider data read on November 6, 2026 shows $734 in monthly recurring revenue from 25 active subscriptions, with $838 received in the last 30 days and $11,449 over the trailing twelve months. That is a business doing under a thousand dollars a month, three people, no funding, no launch spike behind it \u2014 the kind of number most directories would round away, and exactly the kind MilestoneWins exists to record: a real product, real paying customers, a founder writing about the work in public.</p><p>Read the figure for what it is. MRR is recurring subscription revenue, and $734 a month is roughly $8,800 annualized. It is not profit: three salaries, server infrastructure and payment processing all come out of it, and none of those costs are public. It is not thirty-day cash either \u2014 the last-30-days figure of $838 runs slightly ahead of MRR, which fits a mix that includes the $399 lifetime deal running during the Black Friday offer. And it is early: version 2.0 is barely two months old, and the rebuild reset the product while the audience was still small.</p><p>What stays private is what a buyer of the business would ask first. Churn, acquisition cost, plan mix, and how much of the $734 comes from the $59 Solo plan versus the $199 Team plan are all unpublished. None of that dims the achievement: an indie maker who spent a decade shipping his own products, built the tool he wished existed for his own LinkedIn, listened when thousands of users told him the writing was the easy part, and threw the product away to rebuild it around the forty minutes that actually matter. The next milestone to watch is not a launch \u2014 it is whether the rebuild converts the teams who asked for it into the subscriptions that pay for it.</p>"
+  }
+ ],
+ "slug": "depost-ai-story"
+}
